@@ -1,0 +1,819 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/js-animation by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:52 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Animaciones JavaScript</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="js-animation.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Animaciones JavaScript"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Animaciones JavaScript"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="css-animations.html"><link rel="next" href="web-components.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Animaciones JavaScript"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/js-animation"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="js-animation.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/js-animation"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/js-animation"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/js-animation"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/js-animation"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/js-animation"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjs-animation" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fjs-animation" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/js-animation">English</option><option value="https://es.javascript.info/js-animation" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/js-animation">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/js-animation">Italiano</option><option value="https://ja.javascript.info/js-animation">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/js-animation">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/js-animation">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="3" max="3" data-tooltip="Lección 3 de 3"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="animation.html"><span>Animaciones</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Animaciones","item":"https://es.javascript.info/animation"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Animaciones JavaScript</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Animaciones JavaScript"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Las animaciones de JavaScript pueden manejar cosas que CSS no puede.</p>
+<p>Por ejemplo, moverse a lo largo de una ruta compleja, con una función de sincronización diferente a las curvas de Bézier, o una animación en un canvas.</p>
+<h2><a class="main__anchor" name="usando-setinterval" href="#usando-setinterval">Usando setInterval</a></h2><p>Una animación se puede implementar como una secuencia de frames, generalmente pequeños cambios en las propiedades de HTML/CSS.</p>
+<p>Por ejemplo, cambiar <code>style.left</code> de <code>0px</code> a <code>100px</code> mueve el elemento. Y si lo aumentamos en <code>setInterval</code>, cambiando en <code>2px</code> con un pequeño retraso, como 50 veces por segundo, entonces se ve suave. Ese es el mismo principio que en el cine: 24 frames por segundo son suficientes para que se vea suave.</p>
+<p>El pseudocódigo puede verse así:</p>
+<div id="58tnx7n73u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let timer = setInterval(function() {
+  if (animation complete) clearInterval(timer);
+  else increase style.left by 2px
+}, 20); // cambiar en 2px cada 20ms, aproximadamente 50 frames por segundo</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ejemplo más completo de la animación:</p>
+<div id="s39n67q5av" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let start = Date.now(); // recordar la hora de inicio
+
+let timer = setInterval(function() {
+  // ¿Cuánto tiempo pasó desde el principio?
+  let timePassed = Date.now() - start;
+
+  if (timePassed &gt;= 2000) {
+    clearInterval(timer); // terminar la animación después de 2 segundos
+    return;
+  }
+
+  // dibujar la animación en el momento timePassed
+  draw(timePassed);
+
+}, 20);
+
+// mientras timePassed va de 0 a 2000
+// left obtiene valores de 0px a 400px
+function draw(timePassed) {
+  train.style.left = timePassed / 5 + 'px';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Haz clic para ver la demostración:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/js-animation/move/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/mpxSFrY9Z060JY3w?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/js-animation/move/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;style&gt;
+    #train {
+      position: relative;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img id=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot;&gt;
+
+
+  &lt;script&gt;
+    train.onclick = function() {
+      let start = Date.now();
+
+      let timer = setInterval(function() {
+        let timePassed = Date.now() - start;
+
+        train.style.left = timePassed / 5 + 'px';
+
+        if (timePassed &gt; 2000) clearInterval(timer);
+
+      }, 20);
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><h2><a class="main__anchor" name="usando-requestanimationframe" href="#usando-requestanimationframe">Usando requestAnimationFrame</a></h2><p>Imaginemos que tenemos varias animaciones ejecutándose simultáneamente.</p>
+<p>Si las ejecutamos por separado, aunque cada una tenga <code>setInterval (..., 20)</code>, el navegador tendría que volver a pintar con mucha más frecuencia que cada <code>20ms</code>.</p>
+<p>Eso es porque tienen un tiempo de inicio diferente, por lo que “cada 20ms” difiere entre las diferentes animaciones. Los intervalos no están alineados. Así que tendremos varias ejecuciones independientes dentro de <code>20ms</code>.</p>
+<p>En otras palabras, esto:</p>
+<div id="hdlxl974tm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>setInterval(function() {
+  animate1();
+  animate2();
+  animate3();
+}, 20)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Es más ligero que tres llamadas independientes:</p>
+<div id="zhfc3lg222" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>setInterval(animate1, 20); // animaciones independientes
+setInterval(animate2, 20); // en diferentes lugares del script
+setInterval(animate3, 20);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Estos varios redibujos independientes deben agruparse para facilitar el redibujado al navegador y, por lo tanto, cargar menos CPU y verse más fluido.</p>
+<p>Hay una cosa más a tener en cuenta. A veces, cuando el CPU está sobrecargado, o hay otras razones para volver a dibujar con menos frecuencia (como cuando la pestaña del navegador está oculta), no deberíamos ejecutarlo cada <code>20ms</code>.</p>
+<p>Pero, ¿cómo sabemos eso en JavaScript? Hay una especificación <a href="https://www.w3.org/TR/animation-timing/">Sincronización de animación</a> que proporciona la función <code>requestAnimationFrame</code>. Aborda todos estos problemas y aún más.</p>
+<p>La sintaxis:</p>
+<div id="4fdo37jmov" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let requestId = requestAnimationFrame(callback)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso programa la función <code>callback</code> para que se ejecute en el tiempo más cercano cuando el navegador quiera hacer una animación.</p>
+<p>Si hacemos cambios en los elementos dentro de <code>callback</code>, entonces se agruparán con otros callbacks de <code>requestAnimationFrame</code> y con animaciones CSS. Así que habrá un recálculo y repintado de geometría en lugar de muchos.</p>
+<p>El valor devuelto <code>requestId</code> se puede utilizar para cancelar la llamada:</p>
+<div id="lp3iuiqcdd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// cancelar la ejecución programada del callback
+cancelAnimationFrame(requestId);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El <code>callback</code> obtiene un argumento: el tiempo transcurrido desde el inicio de la carga de la página en microsegundos. Este tiempo también se puede obtener llamando a <a href="https://developer.mozilla.org/es/docs/Web/API/Performance/now">performance.now()</a>.</p>
+<p>Por lo general, el <code>callback</code> se ejecuta muy pronto, a menos que el CPU esté sobrecargado o la batería de la laptop esté casi descargada, o haya otra razón.</p>
+<p>El siguiente código muestra el tiempo entre las primeras 10 ejecuciones de <code>requestAnimationFrame</code>. Por lo general, son 10-20ms:</p>
+<div id="vvfu4jur7t" data-trusted="1" class="code-example" data-demo-height="40" data-refresh="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  let prev = performance.now();
+  let times = 0;
+
+  requestAnimationFrame(function measure(time) {
+    document.body.insertAdjacentHTML(&quot;beforeEnd&quot;, Math.floor(time - prev) + &quot; &quot;);
+    prev = time;
+
+    if (times++ &lt; 10) requestAnimationFrame(measure);
+  })
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="animacion-estructurada" href="#animacion-estructurada">Animación estructurada</a></h2><p>Ahora podemos hacer una función de animación más universal basada en <code>requestAnimationFrame</code>:</p>
+<div id="jiz0y0ec4e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function animate({timing, draw, duration}) {
+
+  let start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    // timeFraction va de 0 a 1
+    let timeFraction = (time - start) / duration;
+    if (timeFraction &gt; 1) timeFraction = 1;
+
+    // calcular el estado actual de la animación
+    let progress = timing(timeFraction)
+
+    draw(progress); // dibujar
+
+    if (timeFraction &lt; 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función <code>animate</code> acepta 3 parámetros que básicamente describen la animación:</p>
+<dl>
+<dt><code>duration</code></dt>
+<dd>
+<p>Tiempo total de animación. Como: <code>1000</code>.</p>
+</dd>
+<dt><code>timing(timeFraction)</code></dt>
+<dd>
+<p>Función de sincronización, como la propiedad CSS <code>transition-timing-function</code> que obtiene la fracción de tiempo que pasó (<code>0</code> al inicio, <code>1</code> al final) y devuelve la finalización de la animación (como <code>y</code> en la curva de Bézier).</p>
+<p>Por ejemplo, una función lineal significa que la animación continúa uniformemente con la misma velocidad:</p>
+<div id="rpr6s6aolw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function linear(timeFraction) {
+  return timeFraction;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Su gráfico:
+<img src="article/js-animation/linear.svg" alt="" width="234" height="240"></p>
+<p>Eso es como <code>transition-timing-function: linear</code>. A continuación se muestran variantes más interesantes.</p>
+</dd>
+<dt><code>draw(progress)</code></dt>
+<dd>
+<p>La función que toma el estado de finalización de la animación y la dibuja. El valor <code>progress=0</code> denota el estado inicial de la animación y <code>progress=1</code> – el estado final.</p>
+<p>Esta es la función que realmente dibuja la animación.</p>
+<p>Puede mover el elemento:</p>
+<div id="31u8fd0ixk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function draw(progress) {
+  train.style.left = progress + 'px';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…O hacer cualquier otra cosa, podemos animar cualquier cosa, de cualquier forma.</p>
+</dd>
+</dl>
+<p>Vamos a animar el elemento <code>width</code> de <code>0</code> a <code>100%</code> usando nuestra función.</p>
+<p>Haz clic en el elemento de la demostración:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">animate.js</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/js-animation/width/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/W3U78xZC38RKf7Ry?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:60px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/js-animation/width/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>function animate({duration, draw, timing}) {
+
+  let start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    let timeFraction = (time - start) / duration;
+    if (timeFraction &gt; 1) timeFraction = 1;
+
+    let progress = timing(timeFraction)
+
+    draw(progress);
+
+    if (timeFraction &lt; 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;style&gt;
+    progress {
+      width: 5%;
+    }
+  &lt;/style&gt;
+  &lt;script src=&quot;animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;progress id=&quot;elem&quot;&gt;&lt;/progress&gt;
+
+  &lt;script&gt;
+    elem.onclick = function() {
+      animate({
+        duration: 1000,
+        timing: function(timeFraction) {
+          return timeFraction;
+        },
+        draw: function(progress) {
+          elem.style.width = progress * 100 + '%';
+        }
+      });
+    };
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>El código para ello:</p>
+<div id="2lw2lept0n" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>animate({
+  duration: 1000,
+  timing(timeFraction) {
+    return timeFraction;
+  },
+  draw(progress) {
+    elem.style.width = progress * 100 + '%';
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A diferencia de la animación CSS, aquí podemos hacer cualquier función de sincronización y cualquier función de dibujo. La función de sincronización no está limitada por las curvas de Bézier. Y <code>draw</code> puede ir más allá de las propiedades, crear nuevos elementos para la animación de fuegos artificiales o algo así.</p>
+<h2><a class="main__anchor" name="funciones-de-sincronizacion" href="#funciones-de-sincronizacion">Funciones de sincronización</a></h2><p>Vimos arriba la función de sincronización lineal más simple.</p>
+<p>Veamos más de ellas. Intentaremos animaciones de movimiento con diferentes funciones de sincronización para ver cómo funcionan.</p>
+<h3><a class="main__anchor" name="potencia-de-n" href="#potencia-de-n">Potencia de n</a></h3><p>Si queremos acelerar la animación, podemos usar <code>progress</code> en la potencia <code>n</code>.</p>
+<p>Por ejemplo, una curva parabólica:</p>
+<div id="dxwzxzf18p" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function quad(timeFraction) {
+  return Math.pow(timeFraction, 2)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La gráfica:</p>
+<figure><div class="image" style="width:234px">
+      <div class="image__ratio" style="padding-top:102.56410256410255%"></div>
+      <object type="image/svg+xml" data="article/js-animation/quad.svg" width="234" height="240" class="image__image" data-use-theme>
+        <img src="article/js-animation/quad.svg" alt="" width="234" height="240">
+      </object>
+      </div></figure><p>Velo en acción (haz clic para activar):</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/js-animation/quad/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/article/js-animation/quad/"></iframe>
+  </div><p>…O la curva cúbica o incluso mayor <code>n</code>. Aumentar la potencia hace que se acelere más rápido.</p>
+<p>Aquí está el gráfico de <code>progress</code> en la potencia <code>5</code>:</p>
+<figure><div class="image" style="width:234px">
+      <div class="image__ratio" style="padding-top:102.56410256410255%"></div>
+      <object type="image/svg+xml" data="article/js-animation/quint.svg" width="234" height="240" class="image__image" data-use-theme>
+        <img src="article/js-animation/quint.svg" alt="" width="234" height="240">
+      </object>
+      </div></figure><p>En acción:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/js-animation/quint/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/article/js-animation/quint/"></iframe>
+  </div><h3><a class="main__anchor" name="el-arco" href="#el-arco">El arco</a></h3><p>Función:</p>
+<div id="2vo3ez16wd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function circ(timeFraction) {
+  return 1 - Math.sin(Math.acos(timeFraction));
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La gráfica:</p>
+<figure><div class="image" style="width:234px">
+      <div class="image__ratio" style="padding-top:102.56410256410255%"></div>
+      <object type="image/svg+xml" data="article/js-animation/circ.svg" width="234" height="240" class="image__image" data-use-theme>
+        <img src="article/js-animation/circ.svg" alt="" width="234" height="240">
+      </object>
+      </div></figure><div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/js-animation/circ/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/article/js-animation/circ/"></iframe>
+  </div><h3><a class="main__anchor" name="back-tiro-con-arco" href="#back-tiro-con-arco">Back: tiro con arco</a></h3><p>Esta función realiza el “tiro con arco”. Primero “tiramos de la cuerda del arco”, y luego “disparamos”.</p>
+<p>A diferencia de las funciones anteriores, depende de un parámetro adicional <code>x</code>, el “coeficiente de elasticidad”. La distancia de “tirar de la cuerda del arco” está definida por él.</p>
+<p>El código:</p>
+<div id="dre2jlmmwu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function back(x, timeFraction) {
+  return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>The graph for <code>x = 1.5</code>:</strong></p>
+<figure><div class="image" style="width:234px">
+      <div class="image__ratio" style="padding-top:102.56410256410255%"></div>
+      <object type="image/svg+xml" data="article/js-animation/back.svg" width="234" height="240" class="image__image" data-use-theme>
+        <img src="article/js-animation/back.svg" alt="" width="234" height="240">
+      </object>
+      </div></figure><p>Para la animación lo usamos con un valor específico de <code>x</code>. Ejemplo de <code>x = 1.5</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/js-animation/back/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/article/js-animation/back/"></iframe>
+  </div><h3><a class="main__anchor" name="rebotar" href="#rebotar">Rebotar</a></h3><p>Imagina que dejamos caer una pelota. Se cae, luego rebota unas cuantas veces y se detiene.</p>
+<p>La función <code>bounce</code> hace lo mismo, pero en orden inverso: el “rebote” comienza inmediatamente. Utiliza algunos coeficientes especiales para eso:</p>
+<div id="tujdly0qvz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function bounce(timeFraction) {
+  for (let a = 0, b = 1; 1; a += b, b /= 2) {
+    if (timeFraction &gt;= (7 - 4 * a) / 11) {
+      return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+    }
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En acción:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/js-animation/bounce/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/article/js-animation/bounce/"></iframe>
+  </div><h3><a class="main__anchor" name="animacion-elastica" href="#animacion-elastica">Animación elástica</a></h3><p>Una función “elástica” más que acepta un parámetro adicional <code>x</code> para el “rango inicial”.</p>
+<div id="m29lfmy73f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function elastic(x, timeFraction) {
+  return Math.pow(2, 10 * (timeFraction - 1)) * Math.cos(20 * Math.PI * x / 3 * timeFraction)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>La gráfica para <code>x=1.5</code>:</strong>
+<img src="article/js-animation/elastic.svg" alt="" width="233" height="388"></p>
+<p>En acción para <code>x=1.5</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/js-animation/elastic/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/article/js-animation/elastic/"></iframe>
+  </div><h2><a class="main__anchor" name="inversion-ease" href="#inversion-ease">Inversión: ease*</a></h2><p>Entonces tenemos una colección de funciones de sincronización. Su aplicación directa se llama “easyIn”.</p>
+<p>A veces necesitamos mostrar la animación en orden inverso. Eso se hace con la transformación “easyOut”.</p>
+<h3><a class="main__anchor" name="easeout" href="#easeout">easeOut</a></h3><p>En el modo “easyOut”, la función <code>de sincronización</code> se coloca en un wrapper <code>timingEaseOut</code>:</p>
+<div id="hpilpuhtov" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>timingEaseOut(timeFraction) = 1 - timing(1 - timeFraction)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En otras palabras, tenemos una función de “transformación” <code>makeEaseOut</code> que toma una función de sincronización “regular” y devuelve el wrapper envolviéndola:</p>
+<div id="k3j2ah96n7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// acepta una función de sincronización, devuelve la variante transformada
+function makeEaseOut(timing) {
+  return function(timeFraction) {
+    return 1 - timing(1 - timeFraction);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo, podemos tomar la función <code>bounce</code> descrita anteriormente y aplicarla:</p>
+<div id="m1ffgpveat" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let bounceEaseOut = makeEaseOut(bounce);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces el rebote no estará al principio, sino al final de la animación. Se ve aún mejor:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/js-animation/bounce-easeout/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/v6NSfMa0ypglZabT?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/js-animation/bounce-easeout/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#brick {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#path {
+  outline: 1px solid #E8C48E;
+  width: 540px;
+  height: 20px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;script src=&quot;https://js.cx/libs/animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;div id=&quot;path&quot;&gt;
+    &lt;div id=&quot;brick&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    function makeEaseOut(timing) {
+      return function(timeFraction) {
+        return 1 - timing(1 - timeFraction);
+      }
+    }
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1; 1; a += b, b /= 2) {
+        if (timeFraction &gt;= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+
+    let bounceEaseOut = makeEaseOut(bounce);
+
+    brick.onclick = function() {
+      animate({
+        duration: 3000,
+        timing: bounceEaseOut,
+        draw: function(progress) {
+          brick.style.left = progress * 500 + 'px';
+        }
+      });
+    };
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>Aquí podemos ver cómo la transformación cambia el comportamiento de la función:</p>
+<figure><div class="image" style="width:234px">
+      <div class="image__ratio" style="padding-top:102.56410256410255%"></div>
+      <object type="image/svg+xml" data="article/js-animation/bounce-inout.svg" width="234" height="240" class="image__image" data-use-theme>
+        <img src="article/js-animation/bounce-inout.svg" alt="" width="234" height="240">
+      </object>
+      </div></figure><p>Si hay un efecto de animación al principio, como rebotar, se mostrará al final.</p>
+<p>En el gráfico anterior, el <span style="color:#EE6B47">rebote regular</span> tiene el color rojo y el <span style="color:#62C0DC">rebote easyOut</span> es azul.</p>
+<ul>
+<li>Rebote regular: el objeto rebota en la parte inferior y luego, al final, salta bruscamente hacia la parte superior.</li>
+<li>Después de <code>easyOut</code> – primero salta a la parte superior, luego rebota allí.</li>
+</ul>
+<h3><a class="main__anchor" name="easeinout" href="#easeinout">easeInOut</a></h3><p>También podemos mostrar el efecto tanto al principio como al final de la animación. La transformación se llama “easyInOut”.</p>
+<p>Dada la función de tiempo, calculamos el estado de la animación de la siguiente manera:</p>
+<div id="w369jk2ats" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (timeFraction &lt;= 0.5) { // primera mitad de la animación
+  return timing(2 * timeFraction) / 2;
+} else { // segunda mitad de la animación
+  return (2 - timing(2 * (1 - timeFraction))) / 2;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código wrapper:</p>
+<div id="sjyuclrnwi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeEaseInOut(timing) {
+  return function(timeFraction) {
+    if (timeFraction &lt; .5)
+      return timing(2 * timeFraction) / 2;
+    else
+      return (2 - timing(2 * (1 - timeFraction))) / 2;
+  }
+}
+
+bounceEaseInOut = makeEaseInOut(bounce);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En acción, <code>bounceEaseInOut</code>:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/js-animation/bounce-easeinout/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/Vh0Q3ShC7IOHEyQN?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/js-animation/bounce-easeinout/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#brick {
+  width: 40px;
+  height: 20px;
+  background: #EE6B47;
+  position: relative;
+  cursor: pointer;
+}
+
+#path {
+  outline: 1px solid #E8C48E;
+  width: 540px;
+  height: 20px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;script src=&quot;https://js.cx/libs/animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;div id=&quot;path&quot;&gt;
+    &lt;div id=&quot;brick&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script&gt;
+    function makeEaseInOut(timing) {
+      return function(timeFraction) {
+        if (timeFraction &lt; .5)
+          return timing(2 * timeFraction) / 2;
+        else
+          return (2 - timing(2 * (1 - timeFraction))) / 2;
+      }
+    }
+
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1; 1; a += b, b /= 2) {
+        if (timeFraction &gt;= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+
+    let bounceEaseInOut = makeEaseInOut(bounce);
+
+    brick.onclick = function() {
+      animate({
+        duration: 3000,
+        timing: bounceEaseInOut,
+        draw: function(progress) {
+          brick.style.left = progress * 500 + 'px';
+        }
+      });
+    };
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>La transformación “easyInOut” une dos gráficos en uno: <code>easyIn</code> (regular) para la primera mitad de la animación y <code>easyOut</code> (invertido) – para la segunda parte.</p>
+<p>El efecto se ve claramente si comparamos las gráficas de <code>easyIn</code>, <code>easyOut</code> y <code>easyInOut</code> de la función de sincronización <code>circ</code>:</p>
+<figure><div class="image" style="width:234px">
+      <div class="image__ratio" style="padding-top:102.56410256410255%"></div>
+      <object type="image/svg+xml" data="article/js-animation/circ-ease.svg" width="234" height="240" class="image__image" data-use-theme>
+        <img src="article/js-animation/circ-ease.svg" alt="" width="234" height="240">
+      </object>
+      </div></figure><ul>
+<li><span style="color:#EE6B47">Rojo</span> es la variante regular de <code>circ</code> (<code>easeIn</code>).</li>
+<li><span style="color:#8DB173">Verde</span> – <code>easeOut</code>.</li>
+<li><span style="color:#62C0DC">Azul</span> – <code>easeInOut</code>.</li>
+</ul>
+<p>Como podemos ver, el gráfico de la primera mitad de la animación es el <code>easyIn</code> reducido y la segunda mitad es el <code>easyOut</code> reducido. Como resultado, la animación comienza y termina con el mismo efecto.</p>
+<h2><a class="main__anchor" name="dibujar-mas-interesante" href="#dibujar-mas-interesante">“Dibujar” más interesante</a></h2><p>En lugar de mover el elemento podemos hacer otra cosa. Todo lo que necesitamos es escribir la función <code>draw</code> adecuada.</p>
+<p>Aquí está la escritura de texto animada “rebotando”:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/js-animation/text/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/pzNmYk0GHZZgqXhw?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/js-animation/text/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>textarea {
+  display: block;
+  border: 1px solid #BBB;
+  color: #444;
+  font-size: 110%;
+}
+
+button {
+  margin-top: 10px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;script src=&quot;https://js.cx/libs/animate.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+
+  &lt;textarea id=&quot;textExample&quot; rows=&quot;5&quot; cols=&quot;60&quot;&gt;Tomó su espada vorpal en mano:
+Hace mucho tiempo que el enemigo manxome buscaba—
+Así descansó junto al árbol Tumtum,
+Y se quedó un rato en el pensamiento.
+  &lt;/textarea&gt;
+
+  &lt;button onclick=&quot;animateText(textExample)&quot;&gt;¡Ejecuta la escritura animada!&lt;/button&gt;
+
+  &lt;script&gt;
+    function animateText(textArea) {
+      let text = textArea.value;
+      let to = text.length,
+        from = 0;
+
+      animate({
+        duration: 5000,
+        timing: bounce,
+        draw: function(progress) {
+          let result = (to - from) * progress + from;
+          textArea.value = text.slice(0, Math.ceil(result))
+        }
+      });
+    }
+
+
+    function bounce(timeFraction) {
+      for (let a = 0, b = 1; 1; a += b, b /= 2) {
+        if (timeFraction &gt;= (7 - 4 * a) / 11) {
+          return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+        }
+      }
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Para animaciones que CSS no puede manejar bien, o aquellas que necesitan un control estricto, JavaScript puede ayudar. Las animaciones de JavaScript deben implementarse a través de <code>requestAnimationFrame</code>. Ese método integrado permite configurar una función callback para que se ejecute cuando el navegador esté preparando un repintado. Por lo general, es muy pronto, pero el tiempo exacto depende del navegador.</p>
+<p>Cuando una página está en segundo plano, no se repinta en absoluto, por lo que el callback no se ejecutará: la animación se suspenderá y no consumirá recursos. Eso es genial.</p>
+<p>Aquí está la función auxiliar <code>animate</code> para configurar la mayoría de las animaciones:</p>
+<div id="5hcr33fspe" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function animate({timing, draw, duration}) {
+
+  let start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    // timeFraction va de 0 a 1
+    let timeFraction = (time - start) / duration;
+    if (timeFraction &gt; 1) timeFraction = 1;
+
+    // calcular el estado actual de la animación
+    let progress = timing(timeFraction);
+
+    draw(progress); // dibujar
+
+    if (timeFraction &lt; 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Opciones:</p>
+<ul>
+<li><code>duration</code> – el tiempo total de animación en ms.</li>
+<li><code>timing</code> – la función para calcular el progreso de la animación. Obtiene una fracción de tiempo de 0 a 1, devuelve el progreso de la animación, generalmente de 0 a 1.</li>
+<li><code>draw</code> – la función para dibujar la animación.</li>
+</ul>
+<p>Seguramente podríamos mejorarlo, agregar más campanas y silbidos, pero las animaciones de JavaScript no se aplican a diario. Se utilizan para hacer algo interesante y no estándar. Por lo tanto, querrás agregar las funciones que necesitas cuando las necesites.</p>
+<p>Las animaciones JavaScript pueden utilizar cualquier función de sincronización. Cubrimos muchos ejemplos y transformaciones para hacerlos aún más versátiles. A diferencia de CSS, aquí no estamos limitados a las curvas de Bézier.</p>
+<p>Lo mismo ocurre con <code>draw</code>: podemos animar cualquier cosa, no solo propiedades CSS.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#animar-la-pelota-que-rebota" name="animar-la-pelota-que-rebota">Animar la pelota que rebota</a></h3><a class="task__open-link" href="task/animate-ball.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Haz una pelota que rebote. Haz clic para ver cómo debería verse:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:250px" src="https://es.js.cx/task/animate-ball/solution/"></iframe>
+  </div><p><a href="https://plnkr.co/edit/Qc0KSOBFhZ3tMoEt?p=preview" target="_blank" data-plunk-id="Qc0KSOBFhZ3tMoEt">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para rebotar podemos usar la propiedad CSS <code>top</code> y <code>position:absolute</code> para la pelota dentro del campo con <code>position:relative</code>.</p>
+<p>La coordenada inferior del campo es <code>field.clientHeight</code>. La propiedad CSS <code>top</code> se refiere al borde superior de la bola. Por lo tanto, debe ir desde <code>0</code> hasta <code>field.clientHeight - ball.clientHeight</code>, que es la posición final más baja del borde superior de la pelota.</p>
+<p>Para obtener el efecto de “rebote”, podemos usar la función de sincronización <code>bounce</code> en el modo <code>easeOut</code>.</p>
+<p>Aquí está el código final de la animación:</p>
+<div id="zv3quwct29" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let to = field.clientHeight - ball.clientHeight;
+
+animate({
+  duration: 2000,
+  timing: makeEaseOut(bounce),
+  draw(progress) {
+    ball.style.top = to * progress + 'px'
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/Q6hfJnQ0TJhNGqID?p=preview" target="_blank" data-plunk-id="Q6hfJnQ0TJhNGqID">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#animar-la-pelota-rebotando-hacia-la-derecha" name="animar-la-pelota-rebotando-hacia-la-derecha">Animar la pelota rebotando hacia la derecha</a></h3><a class="task__open-link" href="task/animate-ball-hops.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Haz que la pelota rebote hacia la derecha. Así:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:250px" src="https://es.js.cx/task/animate-ball-hops/solution/"></iframe>
+  </div><p>Escribe el código de la animación. La distancia a la izquierda es <code>100px</code>.</p>
+<p>Toma la solución de la tarea anterior <a href="task/animate-ball.html">Animar la pelota que rebota</a> como fuente.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>En la tarea <a href="task/animate-ball.html">Animar la pelota que rebota</a> solo teníamos una propiedad para animar. Ahora necesitamos una más: <code>elem.style.left</code>.</p>
+<p>La coordenada horizontal cambia por otra ley: no “rebota”, sino que aumenta gradualmente desplazando la pelota hacia la derecha.</p>
+<p>Podemos escribir una <code>animate</code> más para ello.</p>
+<p>Como función de tiempo podríamos usar <code>linear</code>, pero algo como <code>makeEaseOut(quad)</code> se ve mucho mejor.</p>
+<p>El código:</p>
+<div id="4vag817diu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let height = field.clientHeight - ball.clientHeight;
+let width = 100;
+
+// animate top (rebotando)
+animate({
+  duration: 2000,
+  timing: makeEaseOut(bounce),
+  draw: function(progress) {
+    ball.style.top = height * progress + 'px'
+  }
+});
+
+// animate left (moviéndose a la derecha)
+animate({
+  duration: 2000,
+  timing: makeEaseOut(quad),
+  draw: function(progress) {
+    ball.style.left = width * progress + &quot;px&quot;
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/IxSgJkUixfz6d7qk?p=preview" target="_blank" data-plunk-id="IxSgJkUixfz6d7qk">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="css-animations.html" data-tooltip="Animaciones CSS"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="web-components.html" data-tooltip="Componentes Web"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjs-animation" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fjs-animation" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/js-animation","identifier":"\/js-animation"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="animation.html">Animaciones</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#usando-setinterval">Usando setInterval</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#usando-requestanimationframe">Usando requestAnimationFrame</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#animacion-estructurada">Animación estructurada</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#funciones-de-sincronizacion">Funciones de sincronización</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#inversion-ease">Inversión: ease*</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dibujar-mas-interesante">“Dibujar” más interesante</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (2)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjs-animation" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fjs-animation" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/7-animation/3-js-animation" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/js-animation by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:54 GMT -->
+</html>

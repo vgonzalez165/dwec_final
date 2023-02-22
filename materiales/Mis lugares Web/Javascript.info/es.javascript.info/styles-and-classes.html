@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/styles-and-classes by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Estilos y clases</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="styles-and-classes.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Estilos y clases"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Estilos y clases"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="modifying-document.html"><link rel="next" href="size-and-scroll.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Estilos y clases"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/styles-and-classes"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/styles-and-classes"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="styles-and-classes.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/styles-and-classes"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/styles-and-classes"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/styles-and-classes"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/styles-and-classes"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/styles-and-classes"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/styles-and-classes"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/styles-and-classes"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/styles-and-classes"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fstyles-and-classes" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fstyles-and-classes" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/styles-and-classes">عربي</option><option value="https://javascript.info/styles-and-classes">English</option><option value="https://es.javascript.info/styles-and-classes" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/styles-and-classes">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/styles-and-classes">Italiano</option><option value="https://ja.javascript.info/styles-and-classes">日本語</option><option value="https://ko.javascript.info/styles-and-classes">한국어</option><option value="https://learn.javascript.ru/styles-and-classes">Русский</option><option value="https://tr.javascript.info/styles-and-classes">Türkçe</option><option value="https://uk.javascript.info/styles-and-classes">Українська</option><option value="https://zh.javascript.info/styles-and-classes">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="8" max="32" data-tooltip="Lección 8 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="document.html"><span>Documento</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Documento","item":"https://es.javascript.info/document"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Estilos y clases</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Estilos y clases"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Antes de profundizar en cómo JavaScript maneja las clases y los estilos, hay una regla importante. Aunque es lo suficientemente obvio, aún tenemos que mencionarlo.</p>
+<p>Por lo general, hay dos formas de dar estilo a un elemento:</p>
+<ol>
+<li>Crear una clase <code>css</code> y agregarla: <code>&lt;div class=&quot;...&quot;&gt;</code></li>
+<li>Escribir las propiedades directamente en <code>style</code>: <code>&lt;div style=&quot;...&quot;&gt;</code>.</li>
+</ol>
+<p>JavaScript puede modificar ambos, clases y las propiedades de <code>style</code>.</p>
+<p>Nosotros deberíamos preferir las clases <code>css</code> en lugar de <code>style</code>. Este último solo debe usarse si las clases “no pueden manejarlo”.</p>
+<p>Por ejemplo, <code>style</code> es aceptable si nosotros calculamos las coordenadas de un elemento dinámicamente y queremos establecer estas desde JavaScript, así:</p>
+<div id="c3s0kpjg4y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let top = /* cálculos complejos */;
+let left = /* cálculos complejos */;
+
+elem.style.left = left; // ej. '123px', calculado en tiempo de ejecución
+elem.style.top = top; // ej. '456px'</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para otros casos como convertir un texto en rojo, agregar un icono de fondo. Escribir eso en CSS y luego agregar la clase (JavaScript puede hacer eso), es más flexible y más fácil de mantener.</p>
+<h2><a class="main__anchor" name="classname-y-classlist" href="#classname-y-classlist">className y classList</a></h2><p>Cambiar una clase es una de las acciones más utilizadas.</p>
+<p>En la antigüedad, había una limitación en JavaScript: una palabra reservada como <code>&quot;class&quot;</code> no podía ser una propiedad de un objeto. Esa limitación no existe ahora, pero en ese momento era imposible tener una propiedad <code>&quot;class&quot;</code>, como <code>elem.class</code>.</p>
+<p>Entonces para clases de similares propiedades, <code>&quot;className&quot;</code> fue introducido: el <code>elem.className</code> corresponde al atributo <code>&quot;class&quot;</code>.</p>
+<p>Por ejemplo:</p>
+<div id="juoe0f3dmg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body class=&quot;main page&quot;&gt;
+  &lt;script&gt;
+    alert(document.body.className); // página principal
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si asignamos algo a <code>elem.className</code>, reemplaza toda la cadena de clases. A veces es lo que necesitamos, pero a menudo queremos agregar o eliminar una sola clase.</p>
+<p>Hay otra propiedad para eso: <code>elem.classList</code>.</p>
+<p>El <code>elem.classList</code> es un objeto especial con métodos para agregar, eliminar y alternar (<code>add/remove/toggle</code>) una sola clase.</p>
+<p>Por ejemplo:</p>
+<div id="hvkeg4jhsc" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body class=&quot;main page&quot;&gt;
+  &lt;script&gt;
+    // agregar una clase
+    document.body.classList.add('article');
+
+    alert(document.body.className); // clase &quot;article&quot; de la página principal
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces podemos trabajar con ambos: todas las clases como una cadena usando <code>className</code> o con clases individuales usando <code>classList</code>. Lo que elijamos depende de nuestras necesidades.</p>
+<p>Métodos de <code>classList</code>:</p>
+<ul>
+<li><code>elem.classList.add/remove(&quot;class&quot;)</code> – agrega o remueve la clase.</li>
+<li><code>elem.classList.toggle(&quot;class&quot;)</code> – agrega la clase si no existe, si no la remueve.</li>
+<li><code>elem.classList.contains(&quot;class&quot;)</code> – verifica si tiene la clase dada, devuelve <code>true/false</code>.</li>
+</ul>
+<p>Además, <code>classList</code> es iterable, entonces podemos listar todas las clases con <code>for..of</code>, así:</p>
+<div id="eqyl8oz2ra" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body class=&quot;main page&quot;&gt;
+  &lt;script&gt;
+    for (let name of document.body.classList) {
+      alert(name); // main y luego page
+    }
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="style-de-un-elemento" href="#style-de-un-elemento"><code>style</code> de un elemento</a></h2><p>La propiedad <code>elem.style</code> es un objeto que corresponde a lo escrito en el atributo <code>&quot;style&quot;</code>. Establecer <code>elem.style.width=&quot;100px&quot;</code> funciona igual que sí tuviéramos en el atributo <code>style</code> una cadena con <code>width:100px</code>.</p>
+<p>Para propiedades de varias palabras se usa <code>camelCase</code>:</p>
+<div id="v69n0b9zr4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>background-color  =&gt; elem.style.backgroundColor
+z-index           =&gt; elem.style.zIndex
+border-left-width =&gt; elem.style.borderLeftWidth</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo:</p>
+<div id="1c2x88ctqi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.body.style.backgroundColor = prompt('background color?', 'green');</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Propiedades prefijadas</span></div>
+            <div class="important__content"><p>Propiedades con prefijos del navegador como <code>-moz-border-radius</code>, <code>-webkit-border-radius</code> también siguen la misma regla: un guion significa mayúscula.</p>
+<p>Por ejemplo:</p>
+<div id="5uwmvwejdp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>button.style.MozBorderRadius = '5px';
+button.style.WebkitBorderRadius = '5px';</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="reseteando-la-propiedad-style" href="#reseteando-la-propiedad-style">Reseteando la propiedad <code>style</code></a></h2><p>A veces queremos asignar una propiedad de estilo y luego removerla.</p>
+<p>Por ejemplo, para ocultar un elemento, podemos establecer <code>elem.style.display = &quot;none&quot;</code>.</p>
+<p>Luego, más tarde, es posible que queramos remover <code>style.display</code> como si no estuviera establecido. En lugar de <code>delete elem.style.display</code> deberíamos asignarle una cadena vacía: <code>elem.style.display = &quot;&quot;</code>.</p>
+<div id="ohuj4tq4cu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// si ejecutamos este código, el &lt;body&gt; parpadeará
+document.body.style.display = &quot;none&quot;; // ocultar
+
+setTimeout(() =&gt; document.body.style.display = &quot;&quot;, 1000); // volverá a lo normal</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si establecemos <code>style.display</code> como una cadena vacía, entonces el navegador aplica clases y estilos CSS incorporados normalmente por el navegador, como si no existiera tal <code>style.display</code>.</p>
+<p>También hay un método especial para eso, <code>elem.style.removeProperty('style property')</code>. Así, podemos quitar una propiedad:</p>
+<div id="13ql6qls49" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.body.style.background = 'red'; //establece background a rojo
+
+setTimeout(() =&gt; document.body.style.removeProperty('background'), 1000); // quitar background después de 1 segundo</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Reescribir todo usando <code>style.cssText</code></span></div>
+            <div class="important__content"><p>Normalmente, podemos usar <code>style.*</code> para asignar propiedades de estilo individuales. No podemos establecer todo el estilo como <code>div.style=&quot;color: red; width: 100px&quot;</code>, porque <code>div.style</code> es un objeto y es solo de lectura.</p>
+<p>Para establecer todo el estilo como una cadena, hay una propiedad especial: <code>style.cssText</code>:</p>
+<div id="rkjubqml5a" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div id=&quot;div&quot;&gt;Button&lt;/div&gt;
+
+&lt;script&gt;
+  // podemos establecer estilos especiales con banderas como &quot;important&quot;
+  div.style.cssText=`color: red !important;
+    background-color: yellow;
+    width: 100px;
+    text-align: center;
+  `;
+
+  alert(div.style.cssText);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esta propiedad es rara vez usada, porque tal asignación remueve todo los estilos: no agrega estilos sino que los reemplaza en su totalidad. Ocasionalmente podría eliminar algo necesario. Pero podemos usarlo de manera segura para nuevos elementos, cuando sabemos que no vamos a eliminar un estilo existente.</p>
+<p>Lo mismo se puede lograr estableciendo un atributo: <code>div.setAttribute('style', 'color: red...')</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="cuidado-con-las-unidades-css" href="#cuidado-con-las-unidades-css">Cuidado con las unidades CSS</a></h2><p>No olvidar agregar las unidades CSS a los valores.</p>
+<p>Por ejemplo, nosotros no debemos establecer <code>elem.style.top</code> a <code>10</code>, sino más bien a <code>10px</code>. De lo contrario no funcionaría:</p>
+<div id="d1tt32fwn1" data-trusted="1" class="code-example" data-demo-height="100" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body&gt;
+  &lt;script&gt;
+    // ¡no funciona!
+    document.body.style.margin = 20;
+    alert(document.body.style.margin); // '' (cadena vacía, la asignación es ignorada)
+
+    // ahora agregamos la unidad CSS (px) y esta sí funciona
+    document.body.style.margin = '20px';
+    alert(document.body.style.margin); // 20px
+
+    alert(document.body.style.marginTop); // 20px
+    alert(document.body.style.marginLeft); // 20px
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta: el navegador “desempaqueta” la propiedad <code>style.margin</code> en las últimas lineas e infiere <code>style.marginLeft</code> y <code>style.marginTop</code> de eso.</p>
+<h2><a class="main__anchor" name="estilos-calculados-getcomputedstyle" href="#estilos-calculados-getcomputedstyle">Estilos calculados: getComputedStyle</a></h2><p>Entonces, modificar un estilo es fácil. ¿Pero cómo <em>leerlo</em>?</p>
+<p>Por ejemplo, queremos saber el tamaño, los márgenes, el color de un elemento. ¿Cómo hacerlo?</p>
+<p><strong>La propiedad <code>style</code> solo opera en el valor del atributo <code>&quot;style&quot;</code>, sin ninguna cascada de <code>css</code>.</strong></p>
+<p>Entonces no podemos leer ninguna clase CSS usando <code>elem.style</code>.</p>
+<p>Por ejemplo, aquí <code>style</code> no ve el margen:</p>
+<div id="wv92vr452g" data-trusted="1" class="code-example" data-demo-height="60" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;head&gt;
+  &lt;style&gt; body { color: red; margin: 5px } &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  El texto en rojo
+  &lt;script&gt;
+    alert(document.body.style.color); // vacío
+    alert(document.body.style.marginTop); // vacío
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pero si necesitamos incrementar el margen a  <code>20px</code>? vamos el querer el valor de la misma.</p>
+<p>Hay otro método para eso: <code>getComputedStyle</code>.</p>
+<p>La sintaxis es:</p>
+<div id="wox0lt8mw2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>getComputedStyle(element, [pseudo])</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt>element</dt>
+<dd>Elemento del cual se va a leer el valor.</dd>
+<dt>pseudo</dt>
+<dd>Un pseudo-elemento es requerido, por ejemplo <code>::before</code>. Una cadena vacía o sin argumento significa el elemento mismo.</dd>
+</dl>
+<p>El resultado es un objeto con estilos, como <code>elem.style</code>, pero ahora con respecto a todas las clases CSS.</p>
+<p>Por ejemplo:</p>
+<div id="yd9cj28atq" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;head&gt;
+  &lt;style&gt; body { color: red; margin: 5px } &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;script&gt;
+    let computedStyle = getComputedStyle(document.body);
+
+    // ahora podemos leer los márgenes y el color de ahí
+
+    alert( computedStyle.marginTop ); // 5px
+    alert( computedStyle.color ); // rgb(255, 0, 0)
+  &lt;/script&gt;
+
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Valores calculado y resueltos</span></div>
+            <div class="important__content"><p>Hay dos conceptos en <a href="https://drafts.csswg.org/cssom/#resolved-values">CSS</a>:</p>
+<ol>
+<li>Un estilo <em>calculado</em> es el valor final de aplicar todas las reglas y herencias CSS, como resultado de la cascada CSS. Puede parecer <code>height:1em</code> o <code>font-size:125%</code>.</li>
+<li>Un estilo <em>resuelto</em> es la que finalmente se aplica al elemento. Valores como <code>1em</code> o <code>125%</code> son relativos. El navegador toma el valor calculado y hace que todas las unidades sean fijas y absolutas, por ejemplo: <code>height:20px</code> o <code>font-size:16px</code>. Para las propiedades de geometría los valores resueltos pueden tener un punto flotante, como <code>width:50.5px</code>.</li>
+</ol>
+<p>Hace mucho tiempo <code>getComputedStyle</code> fue creado para obtener los valores calculados, pero los valores resueltos son muchos más convenientes, y el estándar cambió.</p>
+<p>Así que hoy en día <code>getComputedStyle</code> en realidad devuelve el valor resuelto de la propiedad, usualmente en <code>px</code> para geometría.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">El método <code>getComputedStyle</code> requiere el nombre completo de la propiedad</span></div>
+            <div class="important__content"><p>Siempre deberíamos preguntar por la propiedad exacta que queremos, como <code>paddingLeft</code> o <code>marginTop</code> o <code>borderTopWidth</code>. De lo contrario, no se garantiza el resultado correcto.</p>
+<p>Por ejemplo, si hay propiedades <code>paddingLeft/paddingTop</code>, entonces ¿qué deberíamos obtener de <code>getComputedStyle(elem).padding</code>? ¿Nada, o tal vez un valor “generado” de los paddings? No hay una regla estándar aquí.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¡Los estilos aplicados a los enlaces <code>:visited</code> están ocultos!</span></div>
+            <div class="important__content"><p>Los enlaces visitados pueden ser coloreados usando la pseudo-clase <code>:visited</code> de CSS.</p>
+<p>Pero <code>getComputedStyle</code> no da acceso a ese color, porque de lo contrario una página cualquiera podría averiguar si el usuario visitó un enlace creándolo en la página y verificar los estilos.</p>
+<p>JavaScript no puede ver los estilos aplicados por <code>:visited</code>. También hay una limitación en CSS que prohíbe la aplicación de estilos de cambio de geometría en <code>:visited</code>. Eso es para garantizar que no haya forma para que una página maligna pruebe si un enlace fue visitado y vulnere la privacidad.</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Para manejar clases, hay dos propiedades del DOM:</p>
+<ul>
+<li><code>className</code> – el valor de la cadena, perfecto para manejar todo el conjunto de clases.</li>
+<li><code>classList</code> – el objeto con los métodos: <code>add/remove/toggle/contains</code>, perfecto para clases individuales.</li>
+</ul>
+<p>Para cambiar los estilos:</p>
+<ul>
+<li>
+<p>La propiedad <code>style</code> es un objeto con los estilos en <code>camelcase</code>.
+Leer y escribir tiene el mismo significado que modificar propiedades individuales en el atributo <code>&quot;style&quot;</code>. Para ver cómo aplicar <code>important</code> y otras cosas raras, hay una lista de métodos en <a href="https://developer.mozilla.org/es/docs/Web/API/CSSStyleDeclaration">MDN</a>.</p>
+</li>
+<li>
+<p>La propiedad <code>style.cssText</code> corresponde a todo el atributo <code>&quot;style&quot;</code>, la cadena completa de estilos.</p>
+</li>
+</ul>
+<p>Para leer los estilos resueltos (con respecto a todas las clases, después de que se aplica todo el <code>css</code> y se calculan los valores finales):</p>
+<ul>
+<li>El método <code>getComputedStyle(elem, [pseudo])</code> retorna el objeto de estilo con ellos (solo lectura).</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crear-una-notificacion" name="crear-una-notificacion">Crear una notificación</a></h3><a class="task__open-link" href="task/create-notification.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribir una función <code>showNotification(options)</code> que cree una notificación: <code>&lt;div class=&quot;notification&quot;&gt;</code> con el contenido dado. La notificación debería desaparecer automáticamente despues de 1.5 segundos.</p>
+<p>Las opciones son:</p>
+<div id="ekaenxkafl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// muestra un elemento con el texto &quot;Hello&quot; cerca de la parte superior de la ventana
+showNotification({
+  top: 10, // 10px desde la parte superior de la ventana (por defecto es 0px)
+  right: 10, // 10px desde el borde derecho de la ventana (por defecto es 0px)
+  html: &quot;Hello!&quot;, // el HTML de la notificación
+  className: &quot;welcome&quot; // una clase adicional para el &quot;div&quot; (opcional)
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://es.js.cx/task/create-notification/solution/" target="blank">Demo en nueva ventana</a></p><p>Usar posicionamiento CSS para mostrar el elemento en las coordenadas (top/right) dadas. El documento tiene los estilos necesarios.</p>
+<p><a href="https://plnkr.co/edit/l4vN8NjMWDGzKaA6?p=preview" target="_blank" data-plunk-id="l4vN8NjMWDGzKaA6">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p><a href="https://plnkr.co/edit/y5O6jdDHC9iXzDCM?p=preview" target="_blank" data-plunk-id="y5O6jdDHC9iXzDCM">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="modifying-document.html" data-tooltip="Modificando el documento"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="size-and-scroll.html" data-tooltip="Tamaño de elementos y desplazamiento"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fstyles-and-classes" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fstyles-and-classes" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/styles-and-classes","identifier":"\/styles-and-classes"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.html">Documento</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#classname-y-classlist">className y classList</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#style-de-un-elemento"><code>style</code> de un elemento</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#reseteando-la-propiedad-style">Reseteando la propiedad <code>style</code></a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#cuidado-con-las-unidades-css">Cuidado con las unidades CSS</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#estilos-calculados-getcomputedstyle">Estilos calculados: getComputedStyle</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fstyles-and-classes" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fstyles-and-classes" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/1-document/08-styles-and-classes" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/styles-and-classes by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:26 GMT -->
+</html>

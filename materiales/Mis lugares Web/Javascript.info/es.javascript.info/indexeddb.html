@@ -1,0 +1,887 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/indexeddb by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">IndexedDB</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="indexeddb.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="IndexedDB"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="IndexedDB"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="localstorage.html"><link rel="next" href="animation.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><script src="../cdn.jsdelivr.net/npm/idb%403.0.2/build/idb.min.js"></script><meta property="og:title" content="IndexedDB"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/indexeddb"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="indexeddb.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/indexeddb"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/indexeddb"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/indexeddb"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/indexeddb"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/indexeddb"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/indexeddb"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Findexeddb" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Findexeddb" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/indexeddb">English</option><option value="https://es.javascript.info/indexeddb" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/indexeddb">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/">Italiano</option><option value="https://ja.javascript.info/indexeddb">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/indexeddb">Русский</option><option value="https://tr.javascript.info/indexeddb">Türkçe</option><option value="https://uk.javascript.info/indexeddb">Українська</option><option value="https://zh.javascript.info/indexeddb">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="3" max="3" data-tooltip="Lección 3 de 3"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="data-storage.html"><span>Almacenando datos en el navegador</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Almacenando datos en el navegador","item":"https://es.javascript.info/data-storage"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 12 de julio de 2022"><div class="updated-at__content">12 de julio de 2022</div></div></div><h1 class="main__header-title">IndexedDB</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="IndexedDB"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>IndexedDB es una base de datos construida dentro del navegador, mucho más potente que <code>localStorage</code>.</p>
+<ul>
+<li>Almacena casi todo tipo de valores por claves, tipos de clave múltiple.</li>
+<li>Soporta transacciones para confiabilidad.</li>
+<li>Soporta consultas de rango por clave, e índices.</li>
+<li>Puede almacenar mucho mayor volumen de datos que <code>localStorage</code>.</li>
+</ul>
+<p>Toda esta potencia es normalmente excesiva para las aplicaciones cliente-servidor tradicionales. IndexedDB está previsto para aplicaciones fuera de línea, para ser combinado con ServiceWorkers y otras tecnologías.</p>
+<p>La interfaz nativa de IndexedDB, descrita en la <a href="https://www.w3.org/TR/IndexedDB">https://www.w3.org/TR/IndexedDB</a>, está basada en eventos.</p>
+<p>También podemos usar <code>async/await</code> con la ayuda de un contenedor basado en promesas como idb <a href="https://github.com/jakearchibald/idb">https://github.com/jakearchibald/idb</a>. Aunque esto es muy conveniente, hay que tener en cuenta que el contenedor no es perfecto y no puede reemplazar a los eventos en todos los casos. Así que comenzaremos con eventos y, cuando hayamos avanzado en el entendimiento de IndexedDb, usaremos el contenedor.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Dónde están los datos?</span></div>
+            <div class="important__content"><p>Técnicamente, los datos son almacenados bajo el directorio raíz del usuario junto con la configuración personal del navegador, extensiones, etc.</p>
+<p>Navegadores y usuarios diferentes tendrán cada uno su propio almacenamiento independiente.</p>
+</div></div>
+<h2><a class="main__anchor" name="apertura-de-una-base-de-datos-open" href="#apertura-de-una-base-de-datos-open">Apertura de una base de datos, “open”</a></h2><p>Para empezar a trabajar con IndexedDB, primero necesitamos conectarnos o “abrir” (<code>open</code>) una base de datos.</p>
+<p>La sintaxis:</p>
+<div id="m3n0v7n6h9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let openRequest = indexedDB.open(name, version);</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><code>name</code> – un string, el nombre de la base de datos.</li>
+<li><code>version</code> – un entero positivo, predeterminado en <code>1</code> (explicado más abajo).</li>
+</ul>
+<p>Podemos tener muchas bases de datos con nombres diferentes, pero todas ellas existen dentro del mismo origen (dominio/protocolo/puerto). Un sitio web no puede acceder bases de datos de otro.</p>
+<p>La llamada devuelve un objeto <code>openRequest</code>, debemos escuchar en él los eventos:</p>
+<ul>
+<li><code>success</code>: la base de datos está lista. Hay un “objeto database” en <code>openRequest.result</code> que habremos de usar en las llamadas subsiguientes.</li>
+<li><code>error</code>: Apertura fallida.</li>
+<li><code>upgradeneeded</code>: La base de datos está lista, pero su versión es obsoleta (ver abajo).</li>
+</ul>
+<p><strong>IndexedDB tiene incorporado un mecanismo de “versión de esquema”, ausente en bases de datos de servidor.</strong></p>
+<p>A diferencia de las bases de datos del lado del servidor, IndexedDB se ejecuta en el lado del cliente y los datos son almacenados en el navegador, así que nosotros, desarrolladores, no tenemos acceso permanente a esas bases. Entonces, cuando publicamos una nueva versión de nuestra app y el usuario visita nuestra página web, podemos necesitar actualizar la estructura de su base de datos.</p>
+<p>Si la versión de la base es menor a la especificada en <code>open</code>, entonces se dispara un evento especial <code>upgradeneeded</code> (actualización-requerida), donde podemos comparar versiones y hacer la actualización de la estructura de datos que se necesite.</p>
+<p>El evento <code>upgradeneeded</code> también se dispara cuando la base aún no existe (técnicamente, su versión es <code>0</code>), lo cual nos permite llevar a cabo su inicialización.</p>
+<p>Digamos que publicamos la primera versión de nuestra app.</p>
+<p>Entonces podemos abrir la base con version <code>1</code> y hacer la inicialización en un manejador <code>upgradeneeded</code>:</p>
+<div id="lg9lbkhuoo" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:42,&quot;end&quot;:43}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let openRequest = indexedDB.open(&quot;store&quot;, 1);
+
+openRequest.onupgradeneeded = function() {
+  // se dispara si el cliente no tiene la base de datos
+  // ...ejecuta la inicialización...
+};
+
+openRequest.onerror = function() {
+  console.error(&quot;Error&quot;, openRequest.error);
+};
+
+openRequest.onsuccess = function() {
+  let db = openRequest.result;
+  // continúa trabajando con la base de datos usando el objeto db
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Luego, más tarde, publicamos la segunda versión.</p>
+<p>Podemos abrirla con version <code>2</code> y ejecutar la actualización así:</p>
+<div id="439ih9mlmm" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:42,&quot;end&quot;:43}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let openRequest = indexedDB.open(&quot;store&quot;, 2);
+
+openRequest.onupgradeneeded = function(event) {
+  // la versión de la base existente es menor que 2 (o ni siquiera existe)
+  let db = openRequest.result;
+  switch(event.oldVersion) { // versión de db existente
+    case 0:
+      // version 0 significa que el cliente no tiene base de datos
+      // ejecutar inicialización
+    case 1:
+      // el cliente tiene la versión 1
+      // actualizar
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenlo en cuenta: como nuestra versión actual es <code>2</code>, el manejador <code>onupgradeneeded</code> tiene una rama de código para la versión <code>0</code>, adecuada para usuarios que acceden por primera vez y no tienen una base de datos, y otra rama para la versión <code>1</code>, para su actualización.</p>
+<p>Entonces, y solamente si el manejador de <code>onupgradeneeded</code> finaliza sin errores, se dispara el evento <code>openRequest.onsuccess</code> y se considera que la base de datos fue abierta con éxito.</p>
+<p>Para borrar una base de datos:</p>
+<div id="si2bhm7v10" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let deleteRequest = indexedDB.deleteDatabase(name)
+// deleteRequest.onsuccess/onerror rastrea el resultado</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">No se puede abrir una base de datos usando una versión más vieja de open</span></div>
+            <div class="important__content"><p>Si la base del usuario tiene una versión mayor que el <code>open</code> que la abre, por ejemplo: la base existente tiene versión <code>3</code> e intentamos <code>open(...2)</code>, se producirá un error que disparará <code>openRequest.onerror</code>.</p>
+<p>Es una situación rara, pero puede ocurrir cuando un visitante carga código JavaScript viejo (por ejemplo desde un caché proxy). Así el código es viejo, pero la base de datos nueva.</p>
+<p>Para prevenir errores, debemos verificar <code>db.version</code> y sugerir la recarga de página. Usa cabeceras HTTP de caché apropiadas para evitar la carga de código viejo, así nunca tendrás tales problemas.</p>
+</div></div>
+<h3><a class="main__anchor" name="el-problema-de-la-actualizacion-paralela" href="#el-problema-de-la-actualizacion-paralela">El problema de la actualización paralela</a></h3><p>Hablando de versionado, encaremos un pequeño problema relacionado.</p>
+<p>Supongamos que:</p>
+<ol>
+<li>Un visitante, en una pestaña de su navegador, abrió nuestro sitio con un base de datos con la versión <code>1</code>.</li>
+<li>Luego publicamos una actualización, así que nuestro código es más reciente.</li>
+<li>Y el mismo visitante abre nuestro sitio en otra pestaña.</li>
+</ol>
+<p>Entonces hay una primera pestaña con una conexión abierta a una base con versión <code>1</code>, mientras la segunda intenta actualizarla a la versión <code>2</code> en su manejador <code>upgradeneeded</code>.</p>
+<p>El problema es que la misma base está compartida entre las dos pestañas, por ser del mismo sitio y origen. Y no puede ser versión <code>1</code> y <code>2</code> al mismo tiempo. Para ejecutar la actualización a la versión <code>2</code>, todas las conexiones a la versión 1 deben ser cerradas, incluyendo las de la primera pestaña.</p>
+<p>Para detectar estas situaciones, se dispara automáticamente el evento <code>versionchange</code> (cambio-de-versión) en el objeto de base de datos. Debemos escuchar dicho evento y cerrar la conexión vieja (y probablemente sugerir una recarga de página, para cargar el código actualizado).</p>
+<p>Si no escuchamos el evento <code>versionchange</code> y no cerramos la conexión vieja, entonces la segunda y más nueva no se podrá hacer. El objeto <code>openRequest</code> emitirá el evento <code>blocked</code> en lugar de <code>success</code>. Entonces la segunda pestaña no funcionará.</p>
+<p>Aquí tenemos el código para manejar correctamente la actualización paralela. Este instala un manejador <code>onversionchange</code> que se dispara si la conexión actual queda obsoleta y la cierra (la versión se actualiza en algún otro lado):</p>
+<div id="nbl24uekgj" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:16,&quot;end&quot;:21},{&quot;start&quot;:8,&quot;end&quot;:11}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let openRequest = indexedDB.open(&quot;store&quot;, 2);
+
+openRequest.onupgradeneeded = ...;
+openRequest.onerror = ...;
+
+openRequest.onsuccess = function() {
+  let db = openRequest.result;
+
+  db.onversionchange = function() {
+    db.close();
+    alert(&quot;La base de datos está desactualizada, por favor recargue la página.&quot;)
+  };
+
+  // ...la base db está lista, úsala...
+};
+
+openRequest.onblocked = function() {
+  // este evento no debería dispararse si hemos manejado onversionchange correctamente
+
+  // significa que hay otra conexión abierta a la misma base
+  // que no fue cerrada después de que se disparó db.onversionchange
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí hacemos dos cosas:</p>
+<ol>
+<li>La escucha a <code>db.onversionchange</code> nos informa de un intento de actualización paralela si la conexión actual se volvió obsoleta.</li>
+<li>La escucha a <code>openRequest.onblocked</code> nos informa de la situación opuesta: hay una conexión obsoleta en algún otro lugar que no fue cerrada y por eso la conexión nueva no se pudo realizar.</li>
+</ol>
+<p>Podemos manejar las cosas más suavemente en <code>db.onversionchange</code>, como pedirle al visitante que guarde los datos antes de cerrar la conexión.</p>
+<p>Como alternativa podríamos no cerrar la base en <code>db.onversionchange</code> sino usar <code>onblocked</code> de la nueva pestaña para advertirle que no puede crear una nueva conexión hasta que cierre las viejas.</p>
+<p>Estas colisiones ocurren raramente, pero deberíamos tener algún manejo de ella, como mínimo un manejador <code>onblocked</code> para evitar que nuestro script muera silenciosamente.</p>
+<h2><a class="main__anchor" name="almacen-de-objetos-store" href="#almacen-de-objetos-store">Almacén de objetos, “store”</a></h2><p>Para almacenar algo en IndexedDB, necesitamos un “almacén de objetos” <em>object store</em>.</p>
+<p>Un almacén de objetos es un concepto central de IndexedDB. Equivale a lo que en otras bases de datos se denominan “tablas” o “colecciones”. Es donde los datos son almacenados. Una base de datos puede tener múltiples almacenes: uno para usuarios, otro para bienes, etc.</p>
+<p>A pesar de llamarse “almacén de objetos”, también puede almacenar tipos primitivos.</p>
+<p><strong>Podemos almacenar casi cualquier valor, incluyendo objetos complejos.</strong></p>
+<p>IndexedDB usa el <a href="https://www.w3.org/TR/html53/infrastructure.html#section-structuredserializeforstorage">algoritmo de serialización estándar</a> para clonar-y-almacenar un objeto. Es como <code>JSON.stringify</code>; pero más poderoso, capaz de almacenar muchos tipos de datos más.</p>
+<p>Hay objetos que no pueden ser almacenados, por ejemplo los que tienen referencias circulares. Tales objetos no son serializables. <code>JSON.stringify</code> también falla con ellos.</p>
+<p><strong>Debe haber una clave <code>key</code> única para cada valor del almacén.</strong></p>
+<p>Una clave debe ser de uno de estos tipos: number, date, string, binary, o array. Es un identificador único, así podemos buscar/borrar/modificar valores por medio de la clave.</p>
+<figure><div class="image" style="width:484px">
+      <div class="image__ratio" style="padding-top:55.16528925619835%"></div>
+      <object type="image/svg+xml" data="article/indexeddb/indexeddb-structure.svg" width="484" height="267" class="image__image" data-use-theme>
+        <img src="article/indexeddb/indexeddb-structure.svg" alt="" width="484" height="267">
+      </object>
+      </div></figure><p>Como veremos pronto, cuando agregamos un valor al almacén podemos proporcionarle una clave, de forma similar a <code>localStorage</code>. Pero cuando lo que almacenamos son objetos, IndexedDB permite asignar una propiedad del objeto como clave, lo que es mucho más conveniente. También podemos usar claves que se generan automáticamente.</p>
+<p>Pero primero, necesitamos crear el almacén de objetos.</p>
+<p>La sintaxis para crear un almacén de objetos u “object store”:</p>
+<div id="xusggra13g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>db.createObjectStore(name[, keyOptions]);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que esta operación es sincrónica, no requiere <code>await</code>.</p>
+<ul>
+<li><code>name</code> es el nombre del almacén, por ejemplo <code>&quot;books&quot;</code>,</li>
+<li><code>keyOptions</code> es un objeto opcional con una de estas dos propiedades:
+<ul>
+<li><code>keyPath</code> – la ruta a una propiedad del objeto que IndexedDB usará como clave, por ejemplo <code>id</code>.</li>
+<li><code>autoIncrement</code> – si es <code>true</code>, la clave para el objeto nuevo que se almacene se generará automáticamente con un número autoincremental.</li>
+</ul>
+</li>
+</ul>
+<p>Si no establecemos <code>keyOptions</code>, necesitaremos proporcionar una clave explícitamente más tarde: al momento de almacenar un objeto.</p>
+<p>Por ejemplo, este objeto usa la propiedad <code>id</code> como clave:</p>
+<div id="0ex5a0xc47" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>db.createObjectStore('books', {keyPath: 'id'});</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>Un almacén de objetos solo puede ser creado o modificado durante la actualización de su versión, esto es, en el manejador <code>upgradeneeded</code>.</strong></p>
+<p>Esto es una limitación técnica. Fuera del manejador podremos agregar/borrar/modificar los datos, pero los almacenes de objetos solo pueden ser creados/borrados/alterados durante la actualización de versión.</p>
+<p>Para hacer una actualización de base de datos, hay principalmente dos enfoques:</p>
+<ol>
+<li>Podemos implementar una función de actualización por versión: desde 1 a 2, de 2 a 3, de 3 a 4, etc. Así en <code>upgradeneeded</code> podemos comparar versiones (ejemplo: vieja 2, ahora 4) y ejecutar actualizaciones por versión paso a paso para cada versión intermedia (en el ejemplo: 2 a 3, luego 3 a 4).</li>
+<li>O podemos simplemente examinar la base y alterarla en un paso. Obtenemos una lista de los almacenes existentes como <code>db.objectStoreNames</code>. Este objeto es un <a href="https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#domstringlist">DOMStringList</a> que brinda el método <code>contains(name)</code> para chequear existencias. Y podemos entonces hacer actualizaciones dependiendo de lo que existe y lo que no.</li>
+</ol>
+<p>En bases de datos pequeñas la segunda variante puede ser más simple.</p>
+<p>Aquí hay un demo del segundo enfoque:</p>
+<div id="r1pncblzdi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let openRequest = indexedDB.open(&quot;db&quot;, 2);
+
+// crea/actualiza la base de datos sin chequeo de versiones
+openRequest.onupgradeneeded = function() {
+  let db = openRequest.result;
+  if (!db.objectStoreNames.contains('books')) { // si no hay un almacén de libros (&quot;books&quot;),
+    db.createObjectStore('books', {keyPath: 'id'}); // crearlo
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para borrar un almacén de objetos:</p>
+<div id="4tgxcb6hpr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>db.deleteObjectStore('books')</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="transacciones" href="#transacciones">Transacciones</a></h2><p>El término transacción es genérico, usado por muchos tipos de bases de datos.</p>
+<p>Una transacción es un grupo de operaciones cuyos resultados están vinculados: todas deben ser exitosas o todas fallar.</p>
+<p>Por ejemplo, cuando una persona compra algo, necesitamos:</p>
+<ol>
+<li>Restar el dinero de su cuenta personal.</li>
+<li>Agregar el ítem a su inventario.</li>
+</ol>
+<p>Sería muy malo que si se completara la primera operación y algo saliera mal (como un corte de luz), fallara la segunda. Ambas deberían ser exitosas (compra completa, ¡bien!) o ambas fallar (al menos la persona mantuvo su dinero y puede reintentar).</p>
+<p>Las transacciones garantizan eso.</p>
+<p><strong>Todas las operaciones deben ser hechas dentro de una transacción en IndexedDB.</strong></p>
+<p>Para iniciar una transacción:</p>
+<div id="778t3ww94c" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>db.transaction(store[, type]);</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><code>store</code> – el nombre de almacén al que la transacción va a acceder, por ejemplo <code>&quot;books&quot;</code>. Puede ser un array de nombres de almacenes si vamos a acceder a múltiples almacenes.</li>
+<li><code>type</code> – el tipo de transacción, uno de estos dos:
+<ul>
+<li><code>readonly</code> – solo puede leer (es el predeterminado).</li>
+<li><code>readwrite</code> – puede leer o escribir datos (pero no crear/quitar/alterar almacenes de objetos).</li>
+</ul>
+</li>
+</ul>
+<p>También existe el tipo de transacción <code>versionchange</code>: tal transacción puede hacer de todo, pero no podemos crearla nosotros a mano. IndexedDB la crea automáticamente cuando abre la base de datos para el manejador <code>upgradeneeded</code>. Por ello, es el único lugar donde podemos actualizar la estructura de base de datos, crear o quitar almacenes de objetos.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Por qué hay diferentes tipos de transacciones?</span></div>
+            <div class="important__content"><p>El rendimiento es la razón por la que necesitamos identificar las transacciones como <code>readonly</code> (lectura solamente) o <code>readwrite</code> (lectura y escritura).</p>
+<p>Muchas transacciones <code>readonly</code> pueden leer en un mismo almacén concurrentemente, en cambio las transacciones de escritura <code>readwrite</code>, no. Una transacción <code>readwrite</code> bloquea el almacén para escribir en él. La siguiente transacción debe esperar a que la anterior termine antes de acceder al mismo almacén.</p>
+</div></div>
+<p>Una vez que la transacción ha sido creada, podemos agregar un ítem al almacén:</p>
+<div id="en5bub98oc" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:11},{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let transaction = db.transaction(&quot;books&quot;, &quot;readwrite&quot;); // (1)
+
+// obtiene un almacén de objetos para operar con él
+let books = transaction.objectStore(&quot;books&quot;); // (2)
+
+let book = {
+  id: 'js',
+  price: 10,
+  created: new Date()
+};
+
+let request = books.add(book); // (3)
+
+request.onsuccess = function() { // (4)
+  console.log(&quot;Libro agregado al almacén&quot;, request.result);
+};
+
+request.onerror = function() {
+  console.log(&quot;Error&quot;, request.error);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Básicamente, hay cuatro pasos:</p>
+<ol>
+<li>Crea una transacción, mencionando todos los almacenes a los que irá a acceder, en <code>(1)</code>.</li>
+<li>Obtiene el almacén usando <code>transaction.objectStore(name)</code>, en <code>(2)</code>.</li>
+<li>Ejecuta lo petición al almacén <code>books.add(book)</code>, en <code>(3)</code>.</li>
+<li>…Maneja el éxito o fracaso de la petición <code>(4)</code>, a continuación podemos hacer otras peticiones si lo necesitamos, etc.</li>
+</ol>
+<p>Los almacenes de objetos soportan dos métodos para almacenar un valor:</p>
+<ul>
+<li>
+<p><strong>put(value, [key])</strong>
+Agrega <code>value</code> al almacén. La clave <code>key</code> debe ser suministrada solo si al almacén no se le asignó la opción <code>keyPath</code> o <code>autoIncrement</code>. Si ya hay un valor con la misma clave, este será reemplazado.</p>
+</li>
+<li>
+<p><strong>add(value, [key])</strong>
+Lo mismo que <code>put</code>, pero si ya hay un valor con la misma clave, la petición falla y se genera un error con el nombre <code>&quot;ConstraintError&quot;</code>.</p>
+</li>
+</ul>
+<p>Al igual que al abrir una base de datos, podemos enviar una petición: <code>books.add(book)</code> y quedar a la espera  de los eventos <code>success/error</code>.</p>
+<ul>
+<li>El resultado <code>request.result</code> de <code>add</code> es la clave del nuevo objeto.</li>
+<li>El error, si lo hay, está en <code>request.error</code>.</li>
+</ul>
+<h2><a class="main__anchor" name="commit-culminacion-automatica-de-las-transacciones" href="#commit-culminacion-automatica-de-las-transacciones">Commit, culminación automática de las transacciones</a></h2><p>En el ejemplo anterior, empezamos la transacción e hicimos una petición <code>add</code>. Pero, como explicamos antes, una transacción puede tener muchas peticiones asociadas, que deben todas ser exitosas o todas fallar. ¿Cómo marcamos que una transacción se da por finalizada, que no tendrá más peticiones asociadas?</p>
+<p>Respuesta corta: no lo hacemos.</p>
+<p>En la siguiente versión 3.0 de la especificación, probablemente haya una manera de finalizarla manualmente, pero ahora mismo en la 2.0 no la hay.</p>
+<p><strong>Cuando todas las peticiones de una transacción terminaron y la <a href="microtask-queue.html">cola de microtareas</a> está vacía, se hace un commit (consumación) automático.</strong></p>
+<p>De forma general, podemos asumir que una transacción se consuma cuando todas sus peticiones fueron completadas y el código actual finaliza.</p>
+<p>Entonces, en el ejemplo anterior no se necesita una llamada especial para finalizar la transacción.</p>
+<p>El principio de auto-commit de las transacciones tiene un efecto colateral importante. No podemos insertar una operación asincrónica como <code>fetch</code>, <code>setTimeout</code> en mitad de una transacción. IndexedDB no mantendrá la transacción esperando a que terminen.</p>
+<p>En el siguiente código, <code>request2</code> en la línea <code>(*)</code> falla, porque la transacción ya está finalizada y no podemos hacer más peticiones sobre ella:</p>
+<div id="vmlkgwixlh" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let request1 = books.add(book);
+
+request1.onsuccess = function() {
+  fetch('/').then(response =&gt; {
+    let request2 = books.add(anotherBook); // (*)
+    request2.onerror = function() {
+      console.log(request2.error.name); // TransactionInactiveError
+    };
+  });
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto es porque <code>fetch</code> es una operación asincrónica, una macrotarea. Las transacciones se cierran antes de que el navegador comience con las macrotareas.</p>
+<p>Los autores de la especificación de IndexedDB creen que las transacciones deben ser de corta vida. Mayormente por razones de rendimiento.</p>
+<p>Es de notar que las transacciones <code>readwrite</code> “traban” los almacenes para escritura. Entonces si una parte de la aplicación inició <code>readwrite</code> en el almacén <code>books</code>, cuando otra parte quiera hacer lo mismo tendrá que esperar: la nueva transacción “se cuelga” hasta que la primera termine. Esto puede llevar a extraños retardos si las transacciones toman un tiempo largo.</p>
+<p>Entonces, ¿qué hacer?</p>
+<p>En el ejemplo de arriba podemos hacer una nueva <code>db.transaction</code> justo antes de la nueva petición <code>(*)</code>.</p>
+<p>Pero, si queremos mantener las operaciones juntas en una transacción, será mucho mejor separar las transacciones IndexedDB de la parte asincrónica.</p>
+<p>Primero, hacer <code>fetch</code> y preparar todos los datos que fueran necesarios y, solo entonces, crear una transacción y ejecutar todas las peticiones de base de datos. Así, funcionaría.</p>
+<p>Para detectar el momento de finalización exitosa, podemos escuchar al evento <code>transaction.oncomplete</code>:</p>
+<div id="l9f6gor8y1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let transaction = db.transaction(&quot;books&quot;, &quot;readwrite&quot;);
+
+// ...ejecutar las operaciones...
+
+transaction.oncomplete = function() {
+  console.log(&quot;Transacción completa&quot;);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Solo <code>complete</code> garantiza que la transacción fue guardada como un todo. Las peticiones individuales pueden ser exitosas, pero la operación final de escritura puede ir mal (por ejemplo por un error de Entrada/Salida u otra cosa).</p>
+<p>Para abortar una transacción manualmente:</p>
+<div id="g38swhsjst" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>transaction.abort();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto cancela todas las modificaciones hechas por las peticiones y dispara el evento <code>transaction.onabort</code>.</p>
+<h2><a class="main__anchor" name="manejo-de-error" href="#manejo-de-error">Manejo de error</a></h2><p>Las peticiones de escritura pueden fallar.</p>
+<p>Esto es esperable, no solo por posibles errores de nuestro lado, sino también por razones no relacionadas con la transacción en si misma. Por ejemplo, la cuota de almacenamiento podría haberse exedido. Por tanto, debemos estar preparados para manejar tal caso.</p>
+<p><strong>Una petición fallida automáticamente aborta la transacción, cancelando todos sus cambios.</strong></p>
+<p>En algunas situaciones, podemos querer manejar el fallo (por ejemplo, intentar otra petición) sin cancelar los cambios en curso, y continuar la transacción. Eso es posible. El manejador <code>request.onerror</code> es capaz de evitar el aborto de la transacción llamando a <code>event.preventDefault()</code>.</p>
+<p>En el ejemplo que sigue, un libro nuevo es agregado con la misma clave (<code>id</code>) que otro existente. El método <code>store.add</code> genera un <code>&quot;ConstraintError&quot;</code> en ese caso. Lo manejamos sin cancelar la transacción:</p>
+<div id="cjtaz5n3xl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let transaction = db.transaction(&quot;books&quot;, &quot;readwrite&quot;);
+
+let book = { id: 'js', price: 10 };
+
+let request = transaction.objectStore(&quot;books&quot;).add(book);
+
+request.onerror = function(event) {
+  // ConstraintError ocurre cuando un objeto con el mismo id ya existe
+  if (request.error.name == &quot;ConstraintError&quot;) {
+    console.log(&quot;Ya existe un libro con ese id&quot;); // manejo del error
+    event.preventDefault(); // no abortar la transacción
+    // ¿usar otra clave para el libro?
+  } else {
+    // error inesperado, no podemos manejarlo
+    // la transacción se abortará
+  }
+};
+
+transaction.onabort = function() {
+  console.log(&quot;Error&quot;, transaction.error);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="delegacion-de-eventos" href="#delegacion-de-eventos">Delegación de eventos</a></h3><p>¿Necesitamos onerror/onsuccess en cada petición? No siempre. En su lugar podemos usar la delegación de eventos.</p>
+<p><strong>Propagación de eventos IndexedDB: <code>request</code> → <code>transaction</code> → <code>database</code>.</strong></p>
+<p>Todos los eventos son eventos DOM, con captura y propagación, pero generalmente solo se usa el escenario de la propagación.</p>
+<p>Así que podemos capturar todos los errores usando el manejador <code>db.onerror</code>, para reportarlos u otros propósitos:</p>
+<div id="lwntqwm29m" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>db.onerror = function(event) {
+  let request = event.target; // la petición (request) que causó el error
+
+  console.log(&quot;Error&quot;, request.error);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero ¿y si el error fue completamente manejado? No queremos elevarlo en ese caso.</p>
+<p>Podemos detener la propagación y en consecuencia <code>db.onerror</code> usando <code>event.stopPropagation()</code> en <code>request.onerror</code>.</p>
+<div id="9aramjl3t7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>request.onerror = function(event) {
+  if (request.error.name == &quot;ConstraintError&quot;) {
+    console.log(&quot;Ya existe un libro con ese id&quot;); // manejo de error
+    event.preventDefault(); // no abortar la transacción
+    event.stopPropagation(); // no propagar el error
+  } else {
+    // no hacer nada
+    // la transacción será abortada
+    // podemos encargarnos del error en transaction.onabort
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="busquedas" href="#busquedas">Búsquedas</a></h2><p>Hay dos maneras principales de buscar en un almacén de objetos:</p>
+<ol>
+<li>Por clave o por rango de claves. En nuestro almacén “books”, puede ser por un valor o por un rango de valores de <code>book.id</code>.</li>
+<li>Por algún otro campo del objeto, por ejemplo <code>book.price</code>. Esto requiere una estructura de datos adicional llamada índice “index”.</li>
+</ol>
+<h3><a class="main__anchor" name="por-clave" href="#por-clave">Por clave</a></h3><p>Veamos el primer tipo de búsqueda: por clave.</p>
+<p>Los métodos de búsqueda soportan tanto las claves exactas como las denominadas “consultas por rango” que son objetos <a href="https://www.w3.org/TR/IndexedDB/#keyrange">IDBKeyRange</a> que especifican un “rango de claves” aceptable.</p>
+<p>Los objetos <code>IDBKeyRange</code> son creados con las siguientes llamadas:</p>
+<ul>
+<li><code>IDBKeyRange.lowerBound(lower, [open])</code> significa: <code>≥ lower</code> (o <code>&gt; lower</code> si <code>open</code> es true)</li>
+<li><code>IDBKeyRange.upperBound(upper, [open])</code> significa: <code>≤ upper</code> (o <code>&lt; upper</code> si <code>open</code> es true)</li>
+<li><code>IDBKeyRange.bound(lower, upper, [lowerOpen], [upperOpen])</code> significa: entre <code>lower</code> y <code>upper</code>. Si el indicador “open” es true, la clave correspondiente no es incluida en el rango.</li>
+<li><code>IDBKeyRange.only(key)</code> – es un rango compuesto solamente por una clave <code>key</code>, es raramente usado.</li>
+</ul>
+<p>Veremos ejemplos prácticos de uso muy pronto.</p>
+<p>Para efectuar la búsqueda, existen los siguientes métodos. Ellos aceptan un argumento <code>query</code> que puede ser una clave exacta o un rango de claves:</p>
+<ul>
+<li><code>store.get(query)</code> – busca el primer valor, por clave o por rango.</li>
+<li><code>store.getAll([query], [count])</code> – busca todos los valores, limitado a la cantidad <code>count</code> si esta se especifica.</li>
+<li><code>store.getKey(query)</code> – busca la primera clave que satisface la consulta, usualmente un rango.</li>
+<li><code>store.getAllKeys([query], [count])</code> – busca todas las claves que satisfacen la consulta, usualmente un rango, hasta la cantidad <code>count</code> si es suministrada.</li>
+<li><code>store.count([query])</code> – obtiene la cantidad de claves que satisfacen la consulta, usualmente un rango.</li>
+</ul>
+<p>Por ejemplo, tenemos un montón de libros en nuestro almacén. Recuerda, el campo <code>id</code> es la clave, así que todos estos métodos pueden buscar por <code>id</code>.</p>
+<p>Ejemplos de peticiones:</p>
+<div id="pfgrnbditm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// obtiene un libro
+books.get('js')
+
+// obtiene libros con: 'css' &lt;= id &lt;= 'html'
+books.getAll(IDBKeyRange.bound('css', 'html'))
+
+// obtiene libros con  id &lt; 'html'
+books.getAll(IDBKeyRange.upperBound('html', true))
+
+// obtiene todos los libros
+books.getAll()
+
+// obtiene todas las claves donde id &gt; 'js'
+books.getAllKeys(IDBKeyRange.lowerBound('js', true))</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">El almacén de objetos siempre está ordenado</span></div>
+            <div class="important__content"><p>El almacén internamente guarda los valores ordenados por clave.</p>
+<p>Entonces, en las peticiones que devuelvan varios valores, estos siempre estarán ordenados por la clave.</p>
+</div></div>
+<h2><a class="main__anchor" name="buscando-por-cualquier-campo-con-un-indice" href="#buscando-por-cualquier-campo-con-un-indice">Buscando por cualquier campo con un índice</a></h2><p>Para buscar por otro campo del objeto, necesitamos crear una estructura de datos adicional llamada “índice (index)”.</p>
+<p>Un índice es un agregado al almacén que rastrea un campo determinado del objeto dado. Para cada valor de ese campo, almacena una lista de claves de objetos que tienen ese valor. Veremos una imagen más detallada abajo.</p>
+<p>La sintaxis:</p>
+<div id="ungz0fz35x" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>objectStore.createIndex(name, keyPath, [options]);</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><strong><code>name</code></strong> – nombre del índice,</li>
+<li><strong><code>keyPath</code></strong> – ruta al campo del objeto que el índice debe seguir (vamos a buscar por ese campo),</li>
+<li><strong><code>option</code></strong> – un objeto opcional con las propiedades:
+<ul>
+<li><strong><code>unique</code></strong> – si es true, un valor no podrá repetirse en el índice. Solamente puede haber un único objeto en el almacén con un valor dado de su <code>keyPath</code>. El índice forzará esto generando un error si intentamos agregar un duplicado.</li>
+<li><strong><code>multiEntry</code></strong> – solo se usa si el valor en <code>keyPath</code> es un array. En ese caso, de manera predeterminada, el índice tratará el array completo como clave. Pero si <code>multiEntry</code> es true, entonces el índice mantendrá una lista de objetos almacenados para cada valor en ese array. Así los miembros del array se vuelven claves de ese índice.</li>
+</ul>
+</li>
+</ul>
+<p>En nuestro ejemplo, almacenamos libros usando la propiedad <code>id</code> como clave.</p>
+<p>Digamos que queremos buscar por precio <code>price</code>.</p>
+<p>Primero necesitamos crear un índice. Esto debe hacerse en <code>upgradeneeded</code>, al igual que hacíamos la creación del almacén de objetos.</p>
+<div id="fbutv43tys" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>openRequest.onupgradeneeded = function() {
+  // debemos crear el índice aquí, en la transacción versionchange
+  let books = db.createObjectStore('books', {keyPath: 'id'});
+  let index = books.createIndex('price_idx', 'price');
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li>El índice hará seguimiento del campo <code>price</code>.</li>
+<li>El precio no es único, puede haber múltiples libros con el mismo precio así que no establecemos la opción <code>unique</code>.</li>
+<li>El precio no es un array, entonces el indicador <code>multiEntry</code> no es aplicable.</li>
+</ul>
+<p>Imagine que nuestro <code>inventory</code> tiene 4 libros. Aquí la imagen muestra exactamente lo que es el <code>índice</code>:</p>
+<figure><div class="image" style="width:440px">
+      <div class="image__ratio" style="padding-top:65.68181818181819%"></div>
+      <object type="image/svg+xml" data="article/indexeddb/indexeddb-index.svg" width="440" height="289" class="image__image" data-use-theme>
+        <img src="article/indexeddb/indexeddb-index.svg" alt="" width="440" height="289">
+      </object>
+      </div></figure><p>Como se dijo, el índice para cada valor de <code>price</code> (segundo argumento) mantiene la lista de claves que tienen ese precio.</p>
+<p>El índice se mantiene actualizado automáticamente, no necesitamos preocuparnos de eso.</p>
+<p>Ahora, cuando queremos buscar por un determinado precio, simplemente aplicamos el mismo método de búsqueda al índice:</p>
+<div id="c7958vxwb3" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let transaction = db.transaction(&quot;books&quot;); // readonly
+let books = transaction.objectStore(&quot;books&quot;);
+let priceIndex = books.index(&quot;price_idx&quot;);
+
+let request = priceIndex.getAll(10);
+
+request.onsuccess = function() {
+  if (request.result !== undefined) {
+    console.log(&quot;Books&quot;, request.result); // array de libros con precio = 10
+  } else {
+    console.log(&quot;No hay libros así&quot;);
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos usar <code>IDBKeyRange</code> para crear rangos y vistas de libros baratos/caros:</p>
+<div id="vm5gftrui3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// encontrar libros donde price &lt;= 5
+let request = priceIndex.getAll(IDBKeyRange.upperBound(5));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los índices están ordenados internamente por el campo del índice, en nuestro caso <code>price</code>. Entonces cuando hacemos la búsqueda, los resultados también estarán ordenados por <code>price</code>.</p>
+<h2><a class="main__anchor" name="borrando-del-almacen" href="#borrando-del-almacen">Borrando del almacén</a></h2><p>El método <code>delete</code> (eliminar) busca a través de una consulta valores para borrarlos. El formato de la llamada es similar a <code>getAll</code>:</p>
+<ul>
+<li><strong><code>delete(query)</code></strong> – elimina valores coincidentes con una consulta (query).</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="rn02pn7tvt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// borra el libro cuyo id='js'
+books.delete('js');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si queremos borrar libros basados en un precio u otro campo del objeto, debemos primero encontrar la clave en el índice, luego llamar a <code>delete</code> con dicha clave:</p>
+<div id="u4v1k9vay4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// encuentra la clave donde price = 5
+let request = priceIndex.getKey(5);
+
+request.onsuccess = function() {
+  let id = request.result;
+  let deleteRequest = books.delete(id);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para borrar todo:</p>
+<div id="fxxit4w3d0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>books.clear(); // clear &quot;limpia&quot; el almacén.</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="cursores" href="#cursores">Cursores</a></h2><p>Métodos como <code>getAll/getAllKeys</code> devuelven un array de claves/valores.</p>
+<p>Pero un almacén de objetos puede ser enorme, incluso más que la memoria disponible. Entonces <code>getAll</code> fallaría al tratar de llenar de registros el array.</p>
+<p>¿Qué hacer?</p>
+<p>Los cursores brindan los medios para manejar esta situación.</p>
+<p><strong>Un <em>cursor</em> es un objeto especial que, dada una consulta, recorre el almacén y devuelve un solo par clave/valor cada vez, ahorrando así memoria.</strong></p>
+<p>Como un almacén está ordenado internamente por clave, un cursor lo recorre en el orden de la clave (ascendente de forma predeterminada).</p>
+<p>La sintaxis:</p>
+<div id="pitz3j6zqz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// como getAll, pero con un cursor:
+let request = store.openCursor(query, [direction]);
+
+// para obtener las claves y no sus valores (como getAllKeys): store.openKeyCursor</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><strong><code>query</code></strong> (consulta) es una clave o un rango de claves, al igual que para <code>getAll</code>.</li>
+<li><strong><code>direction</code></strong> es un argumento opcional, el orden que se va a usar:
+<ul>
+<li><code>&quot;next&quot;</code> – el predeterminado: el cursor recorre en orden ascendente comenzando por la clave más baja.</li>
+<li><code>&quot;prev&quot;</code> – el orden inverso: decrece comenzando con el registro con la clave más alta.</li>
+<li><code>&quot;nextunique&quot;</code>, <code>&quot;prevunique&quot;</code> – igual que las anteriores, pero saltando los registros con la misma clave (válido solo para cursores sobre índices; por ejemplo, de múltiples libros con price=5, solamente el primero será devuelto).</li>
+</ul>
+</li>
+</ul>
+<p><strong>La diferencia principal del cursor es que <code>request.onsuccess</code> se dispara múltiples veces: una por cada resultado.</strong></p>
+<p>Aquí hay un ejemplo de cómo usar un cursor:</p>
+<div id="emt06j1i9i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let transaction = db.transaction(&quot;books&quot;);
+let books = transaction.objectStore(&quot;books&quot;);
+
+let request = books.openCursor();
+
+// llamado por cada libro encontrado por el cursor
+request.onsuccess = function() {
+  let cursor = request.result;
+  if (cursor) {
+    let key = cursor.key; // clave del libro (el campo id)
+    let value = cursor.value; // el objeto libro
+    console.log(key, value);
+    cursor.continue();
+  } else {
+    console.log(&quot;No hay más libros&quot;);
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los principales métodos de cursor son:</p>
+<ul>
+<li><code>advance(count)</code> – avanza el cursor <code>count</code> veces, saltando valores.</li>
+<li><code>continue([key])</code> – avanza el cursor al siguiente valor en el rango o, si se provee la clave <code>key</code>, al valor inmediatamente posterior a <code>key</code>.</li>
+</ul>
+<p>El evento <code>onsuccess</code> será llamado haya o no más valores coincidentes, y en <code>result</code> obtenemos el cursor apuntando al siguiente registro o <code>undefined</code>.</p>
+<p>En el ejemplo anterior, el cursor fue hecho sobre el almacén de objetos.</p>
+<p>Pero también podemos hacerlo sobre un índice. Recordamos, los índices nos permiten buscar por los campos del objeto. Los cursores sobre índices hacen precisamente lo mismo que sobre el almacén de objetos: ahorran memoria al devolver un solo valor cada vez.</p>
+<p>Para cursores sobre índices, <code>cursor.key</code> es la clave del índice (es decir “price”), y debemos usar la propiedad <code>cursor.primaryKey</code> para la clave del objeto:</p>
+<div id="8ex3ysnx7v" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let request = priceIdx.openCursor(IDBKeyRange.upperBound(5));
+
+// es llamado para cada registro
+request.onsuccess = function() {
+  let cursor = request.result;
+  if (cursor) {
+    let primaryKey = cursor.primaryKey; // la siguiente clave (campo id) del almacén
+    let value = cursor.value; // el siguiente objeto (objeto book) del almacén
+    let key = cursor.key; // siguiente clave del índice (price)
+    console.log(key, value);
+    cursor.continue();
+  } else {
+    console.log(&quot;No hay más libros&quot;);
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="contenedor-promisificador" href="#contenedor-promisificador">Contenedor promisificador</a></h2><p>Agregar <code>onsuccess/onerror</code> a cada petición es una tarea agobiante. A veces podemos hacernos la vida más fácil usando delegación de eventos (por ejemplo, estableciendo manejadores para las transacciones completas), pero <code>async/await</code> es mucho más conveniente.</p>
+<p>Usemos en adelante para este capítulo un contenedor (wrapper) liviano que añade promesas <a href="https://github.com/jakearchibald/idb">https://github.com/jakearchibald/idb</a>. Este contenedor crea un objeto global <code>idb</code> con métodos IndexedDB <a href="promisify.html">promisificados</a>.</p>
+<p>Entonces, en lugar de <code>onsuccess/onerror</code>, podemos escribir:</p>
+<div id="yr5irwt2y1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let db = await idb.openDB('store', 1, db =&gt; {
+  if (db.oldVersion == 0) {
+    // ejecuta la inicialización
+    db.createObjectStore('books', {keyPath: 'id'});
+  }
+});
+
+let transaction = db.transaction('books', 'readwrite');
+let books = transaction.objectStore('books');
+
+try {
+  await books.add(...);
+  await books.add(...);
+
+  await transaction.complete;
+
+  console.log('jsbook saved');
+} catch(err) {
+  console.log('error', err.message);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Así tenemos todo lo dulce de “código async plano” y “try…catch”.</p>
+<h3><a class="main__anchor" name="manejo-de-error-2" href="#manejo-de-error-2">Manejo de Error</a></h3><p>Si no atrapamos un error, este se propaga hasta el <code>try..catch</code> externo más cercano.</p>
+<p>Un error no atrapado se vuelve un evento “rechazo de promesa no manejado” sobre el objeto <code>window</code>.</p>
+<p>Podemos manejar tales errores así:</p>
+<div id="imcqqcudh7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.addEventListener('unhandledrejection', event =&gt; {
+  let request = event.target; // objeto request nativo de IndexedDB
+  let error = event.reason; //  objeto error no manejado, igual que request.error
+  ...reportar el error...
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="la-trampa-transaccion-inactiva" href="#la-trampa-transaccion-inactiva">La trampa “transacción inactiva”</a></h3><p>Como sabemos, una transacción se autofinaliza tan pronto como el navegador termina el código actual y las microtareas. Por tanto, si ponemos una <em>macrotarea</em> como <code>fetch</code> en el medio de una transacción, la transacción no esperará a que termine. Simplemente se autofinaliza. Así la siguiente petición fallaría.</p>
+<p>Para el contenedor de promisificación y <code>async/await</code> la situación es la misma.</p>
+<p>Este es un ejemplo de <code>fetch</code> en el medio de una transacción:</p>
+<div id="zqmbedjgb7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let transaction = db.transaction(&quot;inventory&quot;, &quot;readwrite&quot;);
+let inventory = transaction.objectStore(&quot;inventory&quot;);
+
+await inventory.add({ id: 'js', price: 10, created: new Date() });
+
+await fetch(...); // (*)
+
+await inventory.add({ id: 'js', price: 10, created: new Date() }); // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El <code>inventory.add</code> que sigue a <code>fetch</code> <code>(*)</code> falla con el error “transacción inactiva”, porque la transacción se autocompletó y, llegado ese momento, ya está cerrada.</p>
+<p>La forma de sortear esto es la misma que con el IndexedDB nativo: Hacer una nueva transacción o simplemente partir las cosas.</p>
+<ol>
+<li>Preparar los datos y buscar todo lo que sea necesario primero.</li>
+<li>Solo entonces, grabar en la base de datos.</li>
+</ol>
+<h3><a class="main__anchor" name="obtener-objetos-nativos" href="#obtener-objetos-nativos">Obtener objetos nativos</a></h3><p>Internamente, el contenedor ejecuta una petición IndexedDB nativa, agregándole <code>onerror/onsuccess</code> y devolviendo una promesa que rechaza/resuelve con el resultado.</p>
+<p>Esto funciona bien la mayor parte del tiempo. Los ejemplos están en la página lib de idb <a href="https://github.com/jakearchibald/idb">https://github.com/jakearchibald/idb</a>.</p>
+<p>En algunos raros casos necesitamos el objeto <code>request</code> original. Podemos accederlo con la propiedad <code>promise.request</code> de la promesa:</p>
+<div id="h81rjkallu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let promise = books.add(book); // obtiene una promesa (no espera por su resultado)
+
+let request = promise.request; // objeto request nativo
+let transaction = request.transaction; // objeto transaction nativo
+
+// ...hace algún vudú IndexedDB...
+
+let result = await promise; // si aún se necesita</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>IndexedDB puede considerarse como “localStorage con esteroides”. Es una simple base de datos de clave-valor, suficientemente poderosa para apps fuera de línea y fácil de usar.</p>
+<p>El mejor manual es la especificación, <a href="https://www.w3.org/TR/IndexedDB-2/">la actual</a> es 2.0, pero algunos métodos de <a href="https://w3c.github.io/IndexedDB/">3.0</a> (no muy diferente) están soportados parcialmente.</p>
+<p>El uso básico puede ser descrito en pocas frases:</p>
+<ol>
+<li>Obtenga un contenedor promisificador como <a href="https://github.com/jakearchibald/idb">idb</a>.</li>
+<li>Abra la base de datos: <code>idb.openDb(name, version, onupgradeneeded)</code>
+<ul>
+<li>Cree almacenes de objetos e índices en el manejador <code>onupgradeneeded</code> o ejecute la actualización de versión cuando sea necesario.</li>
+</ul>
+</li>
+<li>Para peticiones:
+<ul>
+<li>Cree una transacción <code>db.transaction('books')</code> (readwrite si es necesario).</li>
+<li>Obtenga el almacén de objetos <code>transaction.objectStore('books')</code>.</li>
+</ul>
+</li>
+<li>Entonces, para buscar por clave, llame métodos sobre el almacén directamente.
+<ul>
+<li>Para buscar por un campo de objeto, cree un índice.</li>
+</ul>
+</li>
+<li>Si los datos son demasiados para la memoria, use un cursor.</li>
+</ol>
+<p>Una pequeña app de demo:</p>
+<div class="code-tabs"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch">Resultado</div><div class="code-tabs__switch code-tabs__switch_current">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/indexeddb/books/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/FZY0VJ3rZQAhKXmg?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section"><iframe class="code-tabs__result" src="article/indexeddb/books/index.html"></iframe></div><div class="code-tabs__section code-tabs__section_current"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/idb@3.0.2/build/idb.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;button onclick=&quot;addBook()&quot;&gt;Add a book&lt;/button&gt;
+&lt;button onclick=&quot;clearBooks()&quot;&gt;Clear books&lt;/button&gt;
+
+&lt;p&gt;Books list:&lt;/p&gt;
+
+&lt;ul id=&quot;listElem&quot;&gt;&lt;/ul&gt;
+
+&lt;script&gt;
+let db;
+
+init();
+
+async function init() {
+  db = await idb.openDb('booksDb', 1, db =&gt; {
+    db.createObjectStore('books', {keyPath: 'name'});
+  });
+
+  list();
+}
+
+async function list() {
+  let tx = db.transaction('books');
+  let bookStore = tx.objectStore('books');
+
+  let books = await bookStore.getAll();
+
+  if (books.length) {
+    listElem.innerHTML = books.map(book =&gt; `&lt;li&gt;
+        name: ${book.name}, price: ${book.price}
+      &lt;/li&gt;`).join('');
+  } else {
+    listElem.innerHTML = '&lt;li&gt;No books yet. Please add books.&lt;/li&gt;'
+  }
+
+
+}
+
+async function clearBooks() {
+  let tx = db.transaction('books', 'readwrite');
+  await tx.objectStore('books').clear();
+  await list();
+}
+
+async function addBook() {
+  let name = prompt(&quot;Book name?&quot;);
+  let price = +prompt(&quot;Book price?&quot;);
+
+  let tx = db.transaction('books', 'readwrite');
+
+  try {
+    await tx.objectStore('books').add({name, price});
+    await list();
+  } catch(err) {
+    if (err.name == 'ConstraintError') {
+      alert(&quot;Such book exists already&quot;);
+      await addBook();
+    } else {
+      throw err;
+    }
+  }
+}
+
+window.addEventListener('unhandledrejection', event =&gt; {
+  alert(&quot;Error: &quot; + event.reason.message);
+});
+
+&lt;/script&gt;</code></pre></div></div></div></div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="localstorage.html" data-tooltip="LocalStorage, sessionStorage"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="animation.html" data-tooltip="Animaciones"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Findexeddb" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Findexeddb" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/indexeddb","identifier":"\/indexeddb"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-storage.html">Almacenando datos en el navegador</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#apertura-de-una-base-de-datos-open">Apertura de una base de datos, “open”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#almacen-de-objetos-store">Almacén de objetos, “store”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transacciones">Transacciones</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#commit-culminacion-automatica-de-las-transacciones">Commit, culminación automática de las transacciones</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#manejo-de-error">Manejo de error</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#busquedas">Búsquedas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#buscando-por-cualquier-campo-con-un-indice">Buscando por cualquier campo con un índice</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#borrando-del-almacen">Borrando del almacén</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#cursores">Cursores</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#contenedor-promisificador">Contenedor promisificador</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Findexeddb" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Findexeddb" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/6-data-storage/03-indexeddb" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/indexeddb by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:48 GMT -->
+</html>

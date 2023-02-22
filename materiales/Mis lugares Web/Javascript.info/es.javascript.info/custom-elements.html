@@ -1,0 +1,511 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/custom-elements by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:56 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Elementos personalizados</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="custom-elements.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Elementos personalizados"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Elementos personalizados"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="webcomponents-intro.html"><link rel="next" href="shadow-dom.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><script>
+  /*
+class TimeFormatted extends HTMLElement {
+
+  render() {
+    let date = new Date(this.getAttribute('datetime') || Date.now());
+
+    this.innerHTML = new Intl.DateTimeFormat("default", {
+      year: this.getAttribute('year') || undefined,
+      month: this.getAttribute('month') || undefined,
+      day: this.getAttribute('day') || undefined,
+      hour: this.getAttribute('hour') || undefined,
+      minute: this.getAttribute('minute') || undefined,
+      second: this.getAttribute('second') || undefined,
+      timeZoneName: this.getAttribute('time-zone-name') || undefined,
+    }).format(date);
+  }
+
+  connectedCallback() { // (2)
+    if (!this.rendered) {
+      this.render();
+      this.rendered = true;
+    }
+  }
+
+  static get observedAttributes() { // (3)
+    return ['datetime', 'year', 'month', 'day', 'hour', 'minute', 'second', 'time-zone-name'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) { // (4)
+    this.render();
+  }
+
+}
+
+window.customElements && customElements.define("time-formatted", TimeFormatted);
+*/
+</script>
+<meta property="og:title" content="Elementos personalizados"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/custom-elements"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="custom-elements.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/custom-elements"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/custom-elements"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/custom-elements"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/custom-elements"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/custom-elements"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/custom-elements"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/custom-elements"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcustom-elements" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcustom-elements" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/custom-elements">English</option><option value="https://es.javascript.info/custom-elements" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/custom-elements">Français</option><option value="https://id.javascript.info/custom-elements">Indonesia</option><option value="https://it.javascript.info/custom-elements">Italiano</option><option value="https://ja.javascript.info/custom-elements">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/custom-elements">Русский</option><option value="https://tr.javascript.info/custom-elements">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/custom-elements">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="2" max="7" data-tooltip="Lección 2 de 7"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="web-components.html"><span>Componentes Web</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Componentes Web","item":"https://es.javascript.info/web-components"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 12 de julio de 2022"><div class="updated-at__content">12 de julio de 2022</div></div></div><h1 class="main__header-title">Elementos personalizados</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Elementos personalizados"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Podemos crear elementos HTML personalizados con nuestras propias clases; con sus propios métodos, propiedades, eventos y demás.</p>
+<p>Una vez que definimos el elemento personalizado, podemos usarlo a la par de elementos HTML nativos.</p>
+<p>Esto es grandioso, porque el el diccionario HTML es rico, pero no infinito. No hay <code>&lt;aletas-faciles&gt;</code>, <code>&lt;gira-carrusel&gt;</code>, <code>&lt;bella-descarga&gt;</code>… Solo piensa en cualquier otra etiqueta que puedas necesitar.</p>
+<p>Podemos definirlos con una clase especial, y luego usarlos como si siempre hubieran sido parte del HTML.</p>
+<p>Hay dos clases de elementos personalizados:</p>
+<ol>
+<li><strong>Elementos personalizados autónomos</strong> – son elementos “todo-nuevo”, extensiones de la clase abstracta <code>HTMLElement</code>.</li>
+<li><strong>Elementos nativos personalizados</strong> – son extensiones de elementos nativos, por ejemplo un botón personalizado basado en <code>HTMLButtonElement</code>.</li>
+</ol>
+<p>Primero cubriremos los elementos autónomos, luego pasaremos a la personalización de elementos nativos.</p>
+<p>Para crear un elemento personalizado, necesitamos decirle al navegador varios detalles acerca de él: cómo mostrarlo, qué hacer cuando el elemento es agregado o quitado de la página, etc.</p>
+<p>Eso se logra creando una clase con métodos especiales. Es fácil, son unos pocos métodos y todos ellos son opcionales.</p>
+<p>Este es el esquema con la lista completa:</p>
+<div id="04fr4cs75b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class MyElement extends HTMLElement {
+  constructor() {
+    super();
+    // elemento creado
+  }
+
+  connectedCallback() {
+    // el navegador llama a este método cuando el elemento es agregado al documento
+    // (puede ser llamado varias veces si un elemento es agregado y quitado repetidamente)
+  }
+
+  disconnectedCallback() {
+    // el navegador llama a este método cuando el elemento es quitado del documento
+    // (puede ser llamado varias veces si un elemento es agregado y quitado repetidamente)
+  }
+
+  static get observedAttributes() {
+    return [/* array de nombres de atributos a los que queremos monitorear por cambios */];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    // es llamado cuando uno de los atributos listados arriba es modificado
+  }
+
+  adoptedCallback() {
+    // es llamado cuando el elemento es movido a un nuevo documento
+    // (ocurre en document.adoptNode, muy raramente usado)
+  }
+
+  // puede haber otros métodos y propiedades de elemento
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Después de ello, necesitamos registrar el elemento:</p>
+<div id="cj0yscyhe4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// hacer saber al navegador que &lt;my-element&gt; es servido por nuestra nueva clase
+customElements.define(&quot;my-element&quot;, MyElement);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A partir de ello, para cada elemento HTML con la etiqueta <code>&lt;my-element&gt;</code> se crea una instancia de <code>MyElement</code> y se llaman los métodos mencionados. También podemos insertarlo con JavaScript: <code>document.createElement('my-element')</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Los nombres de los elementos personalizados deben incluir un guion <code>-</code></span></div>
+            <div class="important__content"><p>Los elemento personalizados deben incluir un guion corto <code>-</code> en su nombre. Por ejemplo, <code>my-element</code> y <code>super-button</code> son nombres válidos, pero <code>myelement</code> no lo es.</p>
+<p>Esto se hace para asegurar que no haya conflicto de nombres entre los elementos nativos y los personalizados.</p>
+</div></div>
+<h2><a class="main__anchor" name="ejemplo-time-formatted" href="#ejemplo-time-formatted">Ejemplo: “time-formatted”</a></h2><p>Ya existe un elemento <code>&lt;time&gt;</code> en HTML para presentar fecha y hora, pero este no hace ningún formateo por sí mismo.</p>
+<p>Construyamos el elemento <code>&lt;time-formatted&gt;</code> que muestre la hora en un bonito formato y reconozca la configuración de lengua local:</p>
+<div id="s7gu9266v7" data-trusted="1" class="code-example" data-demo-height="50" data-highlight="[{&quot;start&quot;:23,&quot;end&quot;:23},{&quot;start&quot;:19,&quot;end&quot;:19},{&quot;start&quot;:1,&quot;end&quot;:1}]" data-autorun="no-epub">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+class TimeFormatted extends HTMLElement { // (1)
+
+  connectedCallback() {
+    let date = new Date(this.getAttribute('datetime') || Date.now());
+
+    this.innerHTML = new Intl.DateTimeFormat(&quot;default&quot;, {
+      year: this.getAttribute('year') || undefined,
+      month: this.getAttribute('month') || undefined,
+      day: this.getAttribute('day') || undefined,
+      hour: this.getAttribute('hour') || undefined,
+      minute: this.getAttribute('minute') || undefined,
+      second: this.getAttribute('second') || undefined,
+      timeZoneName: this.getAttribute('time-zone-name') || undefined,
+    }).format(date);
+  }
+
+}
+
+customElements.define(&quot;time-formatted&quot;, TimeFormatted); // (2)
+&lt;/script&gt;
+
+&lt;!-- (3) --&gt;
+&lt;time-formatted datetime=&quot;2019-12-01&quot;
+  year=&quot;numeric&quot; month=&quot;long&quot; day=&quot;numeric&quot;
+  hour=&quot;numeric&quot; minute=&quot;numeric&quot; second=&quot;numeric&quot;
+  time-zone-name=&quot;short&quot;
+&gt;&lt;/time-formatted&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-s7gu9266v7"
+            style="height:50px"
+            src="about:blank"></iframe>
+        </div>
+      </div><ol>
+<li>La clase tiene un solo método, <code>connectedCallback()</code>, que es llamado por el navegador cuando se agrega el elemento <code>&lt;time-formatted&gt;</code> a la página o cuando el analizador HTML lo detecta. Este método usa el formateador de datos nativo <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat">Intl.DateTimeFormat</a>, bien soportado por los navegadores, para mostrar una agradable hora formateada.</li>
+<li>Necesitamos registrar nuestro nuevo elemento con <code>customElements.define(tag, class)</code>.</li>
+<li>Y podremos usarlo por doquier.</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Actualización de elementos personalizados</span></div>
+            <div class="important__content"><p>Si el navegador encuentra algún <code>&lt;time-formatted&gt;</code> antes de <code>customElements.define</code>, no es un error. Pero el elemento es todavía desconocido, como cualquier etiqueta no estándar.</p>
+<p>Tal elemento “undefined” puede ser estilizado con el selector CSS <code>:not(:defined)</code>.</p>
+<p>Una vez que <code>customElement.define</code> es llamado, estos elementos son “actualizados”: para cada elemento, una nueva instancia de <code>TimeFormatted</code>
+es creada y <code>connectedCallback</code> es llamado. Se vuelven <code>:defined</code>.</p>
+<p>Para obtener información acerca de los elementos personalizados, tenemos los métodos:</p>
+<ul>
+<li><code>customElements.get(name)</code> – devuelve la clase del elemento personalizado con el <code>name</code> dado,</li>
+<li><code>customElements.whenDefined(name)</code> – devuelve una promesa que se resuelve (sin valor) cuando un elemento personalizado con el <code>name</code> dado se vuelve <code>defined</code>.</li>
+</ul>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Renderizado en <code>connectedCallback</code>, no en el <code>constructor</code></span></div>
+            <div class="important__content"><p>En el ejemplo de arriba, el contenido del elemento es renderizado (construido) en <code>connectedCallback</code>.</p>
+<p>¿Por qué no en el <code>constructor</code>?</p>
+<p>La razón es simple: cuando el <code>constructor</code> es llamado, es aún demasiado pronto. El elemento es creado, pero el navegador aún no procesó ni asignó atributos en este estado, entonces las llamadas a <code>getAttribute</code> devolverían <code>null</code>. Así que no podemos renderizar ahora.</p>
+<p>Por otra parte, si lo piensas, es más adecuado en términos de performance: demorar el trabajo hasta que realmente se lo necesite.</p>
+<p>El <code>connectedCallback</code> se dispara cuando el elemento es agregado al documento. No apenas agregado a otro elemento como hijo, sino cuando realmente se vuelve parte de la página. Así podemos construir un DOM separado, crear elementos y prepararlos para uso futuro. Ellos serán realmente renderizados una vez que estén dentro de la página.</p>
+</div></div>
+<h2><a class="main__anchor" name="observando-atributos" href="#observando-atributos">Observando atributos</a></h2><p>En la implementación actual de <code>&lt;time-formatted&gt;</code>, después de que el elemento fue renderizado, cambios posteriores en sus atributos no tendrán ningún efecto. Eso es extraño para un elemento HTML, porque cuando cambiamos un atributo (como en <code>a.href</code>) esperamos que dicho cambio sea visible de inmediato. Corrijamos esto.</p>
+<p>Podemos observar atributos suministrando la lista de ellos al getter estático <code>observedAttributes()</code>. Cuando esos atributos son modificados, se dispara <code>attributeChangedCallback</code>. No se dispara para los atributos no incluidos en la lista, por razones de performance.</p>
+<p>A continuación, el nuevo <code>&lt;time-formatted&gt;</code> que se actualiza cuando los atributos cambian:</p>
+<div id="ifgrmd4doa" data-trusted="1" class="code-example" data-demo-height="50" data-highlight="[{&quot;start&quot;:40,&quot;end&quot;:40},{&quot;start&quot;:28,&quot;end&quot;:28},{&quot;start&quot;:24,&quot;end&quot;:24},{&quot;start&quot;:17,&quot;end&quot;:17},{&quot;start&quot;:3,&quot;end&quot;:3}]" data-autorun="no-epub">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+class TimeFormatted extends HTMLElement {
+
+  render() { // (1)
+    let date = new Date(this.getAttribute('datetime') || Date.now());
+
+    this.innerHTML = new Intl.DateTimeFormat(&quot;default&quot;, {
+      year: this.getAttribute('year') || undefined,
+      month: this.getAttribute('month') || undefined,
+      day: this.getAttribute('day') || undefined,
+      hour: this.getAttribute('hour') || undefined,
+      minute: this.getAttribute('minute') || undefined,
+      second: this.getAttribute('second') || undefined,
+      timeZoneName: this.getAttribute('time-zone-name') || undefined,
+    }).format(date);
+  }
+
+  connectedCallback() { // (2)
+    if (!this.rendered) {
+      this.render();
+      this.rendered = true;
+    }
+  }
+
+  static get observedAttributes() { // (3)
+    return ['datetime', 'year', 'month', 'day', 'hour', 'minute', 'second', 'time-zone-name'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) { // (4)
+    this.render();
+  }
+
+}
+
+customElements.define(&quot;time-formatted&quot;, TimeFormatted);
+&lt;/script&gt;
+
+&lt;time-formatted id=&quot;elem&quot; hour=&quot;numeric&quot; minute=&quot;numeric&quot; second=&quot;numeric&quot;&gt;&lt;/time-formatted&gt;
+
+&lt;script&gt;
+setInterval(() =&gt; elem.setAttribute('datetime', new Date()), 1000); // (5)
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-ifgrmd4doa"
+            style="height:50px"
+            src="about:blank"></iframe>
+        </div>
+      </div><ol>
+<li>La lógica de renderizado fue movida al método ayudante <code>render()</code>.</li>
+<li>Lo llamamos una vez cuando el elemento es insertado en la página.</li>
+<li>Al cambiar un atributo listado en <code>observedAttributes()</code>, se dispara <code>attributeChangedCallback</code>.</li>
+<li>…y se re-renderiza el elemento.</li>
+<li>Como resultado, ahora podemos crear un reloj dinámico con facilidad.</li>
+</ol>
+<h2><a class="main__anchor" name="orden-de-renderizado" href="#orden-de-renderizado">Orden de renderizado</a></h2><p>Cuando el “parser” construye el DOM, los elementos son procesados uno tras otro, padres antes que hijos. Por ejemplo si tenemos <code>&lt;outer&gt;&lt;inner&gt;&lt;/inner&gt;&lt;/outer&gt;</code>, el elemento <code>&lt;outer&gt;</code> es creado y conectado al DOM primero, y luego <code>&lt;inner&gt;</code>.</p>
+<p>Esto lleva a consecuencias importantes para los elementos personalizados.</p>
+<p>Por ejemplo, si un elemento personalizado trata de acceder a <code>innerHTML</code> en <code>connectedCallback</code>, no obtiene nada:</p>
+<div id="asjpygef7s" data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10},{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+customElements.define('user-info', class extends HTMLElement {
+
+  connectedCallback() {
+    alert(this.innerHTML); // vacío (*)
+  }
+
+});
+&lt;/script&gt;
+
+&lt;user-info&gt;John&lt;/user-info&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si lo ejecutas, el <code>alert</code> estará vacío.</p>
+<p>Esto es porque no hay hijos en aquel estadio, pues el DOM no está finalizado. Se conectó el elemento personalizado <code>&lt;user-info&gt;</code> y está por proceder con sus hijos, pero no lo hizo aún.</p>
+<p>Si queremos pasar información al elemento personalizado, podemos usar atributos. Estos están disponibles inmediatamente.</p>
+<p>O, si realmente necesitamos acceder a los hijos, podemos demorar el acceso a ellos con un <code>setTimeout</code> de tiempo cero.</p>
+<p>Esto funciona:</p>
+<div id="3a4bmmsuvv" data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10},{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+customElements.define('user-info', class extends HTMLElement {
+
+  connectedCallback() {
+    setTimeout(() =&gt; alert(this.innerHTML)); // John (*)
+  }
+
+});
+&lt;/script&gt;
+
+&lt;user-info&gt;John&lt;/user-info&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora el <code>alert</code> en la línea <code>(*)</code> muestra “John” porque lo corremos asincrónicamente, después de que el armado HTML está completo. Podemos procesar los hijos si lo necesitamos y finalizar la inicialización.</p>
+<p>Por otro lado, la solución tampoco es perfecta. Si los elementos anidados también usan <code>setTimeout</code> para inicializarse, entonces van a la cola: el <code>setTimeout</code> externo se dispara primero y luego el interno.</p>
+<p>Como consecuencia, el elemento externo termina la inicialización antes que el interno.</p>
+<p>Demostrémoslo con un ejemplo:</p>
+<div id="e3otyczfc6" data-trusted="1" class="code-example" data-demo-height="0" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:11}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+customElements.define('user-info', class extends HTMLElement {
+  connectedCallback() {
+    alert(`${this.id} connected.`);
+    setTimeout(() =&gt; alert(`${this.id} initialized.`));
+  }
+});
+&lt;/script&gt;
+
+&lt;user-info id=&quot;outer&quot;&gt;
+  &lt;user-info id=&quot;inner&quot;&gt;&lt;/user-info&gt;
+&lt;/user-info&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Orden de salida:</p>
+<ol>
+<li>outer conectado.</li>
+<li>inner conectado.</li>
+<li>outer inicializado.</li>
+<li>inner inicializado.</li>
+</ol>
+<p>Claramente vemos que el elemento finaliza su inicialización <code>(3)</code> antes que el interno <code>(4)</code>.</p>
+<p>No existe un callback nativo que se dispare después de que los elementos anidados estén listos. Si es necesario, podemos implementarlo nosotros mismos. Por ejemplo, los elementos internos pueden disparar eventos como <code>initialized</code>, y los externos pueden escucharlos para reaccionar a ellos.</p>
+<h2><a class="main__anchor" name="elementos-nativos-personalizados" href="#elementos-nativos-personalizados">Elementos nativos personalizados</a></h2><p>Los elementos nuevos que creamos, tales como <code>&lt;time-formatted&gt;</code>, no tienen ninguna semántica asociada. Para los motores de búsqueda son desconocidos, y los dispositivos de accesibilidad tampoco pueden manejarlos.</p>
+<p>Pero estas cosas son importantes. Por ejemplo, un motor de búsqueda podría estar interesado en saber que realmente mostramos la hora. y si hacemos una clase especial de botón, ¿por qué no reusar la funcionalidad ya existente de <code>&lt;button&gt;</code>?</p>
+<p>Podemos extender y personalizar elementos HTML nativos, heredando desde sus clases.</p>
+<p>Por ejemplo, los botones son instancias de <code>HTMLButtonElement</code>, construyamos sobre ello.</p>
+<ol>
+<li>
+<p>Extender <code>HTMLButtonElement</code> con nuestra clase:</p>
+<div id="n9alv4xtw5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class HelloButton extends HTMLButtonElement { /* métodos de elemento personalizado */ }</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Ponemos el tercer argumento de <code>customElements.define</code>, el cual especifica la etiqueta:</p>
+<div id="qem08c2xzl" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:51,&quot;end&quot;:70}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>customElements.define('hello-button', HelloButton, {extends: 'button'});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puede haber diferentes etiquetas que comparten la misma clase DOM, por eso se necesita especificar <code>extends</code>.</p>
+</li>
+<li>
+<p>Por último, para usar nuestro elemento personalizado, insertamos una etiqueta común <code>&lt;button&gt;</code>, pero le agregamos <code>is=&quot;hello-button&quot;</code>:</p>
+<div id="amkuw698gt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;button is=&quot;hello-button&quot;&gt;...&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>El ejemplo completo:</p>
+<div id="f1wcmohfbw" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:14,&quot;end&quot;:14},{&quot;start&quot;:12,&quot;end&quot;:12},{&quot;start&quot;:9,&quot;end&quot;:9},{&quot;start&quot;:3,&quot;end&quot;:3}]" data-autorun="no-epub">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+// El botón que dice &quot;hello&quot; al hacer clic
+class HelloButton extends HTMLButtonElement {
+  constructor() {
+    super();
+    this.addEventListener('click', () =&gt; alert(&quot;Hello!&quot;));
+  }
+}
+
+customElements.define('hello-button', HelloButton, {extends: 'button'});
+&lt;/script&gt;
+
+&lt;button is=&quot;hello-button&quot;&gt;Click me&lt;/button&gt;
+
+&lt;button is=&quot;hello-button&quot; disabled&gt;Disabled&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-f1wcmohfbw"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Nuestro nuevo botón extiende el ‘button’ nativo. Así mantenemos los mismos estilos y características estándar, como por ejemplo el atributo <code>disabled</code>.</p>
+<h2><a class="main__anchor" name="referencias" href="#referencias">Referencias</a></h2><ul>
+<li>HTML estándar vivo: <a href="https://html.spec.whatwg.org/#custom-elements">https://html.spec.whatwg.org/#custom-elements</a>.</li>
+<li>Compatibilidad: <a href="https://caniuse.com/#feat=custom-elementsv1">https://caniuse.com/#feat=custom-elementsv1</a>.</li>
+</ul>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Los elementos personalizados pueden ser de dos tipos:</p>
+<ol>
+<li>
+<p>“Autónomos” – son etiquetas nuevas, se crean extendiendo <code>HTMLElement</code>.</p>
+<p>Esquema de definición:</p>
+<div id="p9ad1ojpfd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class MyElement extends HTMLElement {
+  constructor() { super(); /* ... */ }
+  connectedCallback() { /* ... */ }
+  disconnectedCallback() { /* ... */  }
+  static get observedAttributes() { return [/* ... */]; }
+  attributeChangedCallback(name, oldValue, newValue) { /* ... */ }
+  adoptedCallback() { /* ... */ }
+ }
+customElements.define('my-element', MyElement);
+/* &lt;my-element&gt; */</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>“Elementos nativos personalizados” – se crean extendiendo elementos ya existentes.</p>
+<p>Requiere un argumento más <code>.define</code>, y <code>is=&quot;...&quot;</code> en HTML:</p>
+<div id="nay9f0v5sm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class MyButton extends HTMLButtonElement { /*...*/ }
+customElements.define('my-button', MyElement, {extends: 'button'});
+/* &lt;button is=&quot;my-button&quot;&gt; */</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>Los elementos personalizados tienen muy buen soporte entre los navegadores. Existe un polyfill <a href="https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs">https://github.com/webcomponents/polyfills/tree/master/packages/webcomponentsjs</a>.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#elemento-reloj-dinamico" name="elemento-reloj-dinamico">Elemento reloj dinámico</a></h3><a class="task__open-link" href="task/live-timer.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>Ya tenemos un elemento <code>&lt;time-formatted&gt;</code> para mostrar la hora agradablemente formateada.</p>
+<p>Crea el elemento <code>&lt;live-timer&gt;</code> para mostrar la hora actual:</p>
+<ol>
+<li>Internamente debe usar <code>&lt;time-formatted&gt;</code>, no duplicar su funcionalidad.</li>
+<li>Aactualiza (¡tic!) cada segundo.</li>
+<li>Por cada tic, se debe generar un evento personalizado llamado <code>tick</code> con la fecha actual en <code>event.detail</code> (ver artículo <a href="dispatch-events.html">Envío de eventos personalizados</a>).</li>
+</ol>
+<p>Uso:</p>
+<div id="tgiur4e3iq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;live-timer id=&quot;elem&quot;&gt;&lt;/live-timer&gt;
+
+&lt;script&gt;
+  elem.addEventListener('tick', event =&gt; console.log(event.detail));
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Demo:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/task/live-timer/solution/"></iframe>
+  </div><p><a href="https://plnkr.co/edit/LiYwol7SG1NF8i1u?p=preview" target="_blank" data-plunk-id="LiYwol7SG1NF8i1u">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Por favor ten en cuenta:</p>
+<ol>
+<li>Borramos el temporizador <code>setInterval</code> cuando el elemento es quitado del documento. Esto es importante, de otro modo continuará ejecutando aunque no se lo necesite más, y el navegador no puede liberar la memoria asignada a este elemento.</li>
+<li>Podemos acceder a la fecha actual con la propiedad <code>elem.date</code>. Todos los métodos y propiedades de clase son naturalmente métodos y propiedades del elemento.</li>
+</ol>
+<p><a href="https://plnkr.co/edit/jxf7vvmW56B1xpZf?p=preview" target="_blank" data-plunk-id="jxf7vvmW56B1xpZf">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="webcomponents-intro.html" data-tooltip="Desde la altura orbital"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="shadow-dom.html" data-tooltip="Shadow DOM"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcustom-elements" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcustom-elements" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/custom-elements","identifier":"\/custom-elements"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="web-components.html">Componentes Web</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ejemplo-time-formatted">Ejemplo: “time-formatted”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#observando-atributos">Observando atributos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#orden-de-renderizado">Orden de renderizado</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#elementos-nativos-personalizados">Elementos nativos personalizados</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#referencias">Referencias</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcustom-elements" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fcustom-elements" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/8-web-components/2-custom-elements" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/custom-elements by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:56 GMT -->
+</html>

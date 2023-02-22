@@ -1,0 +1,441 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/property-descriptors by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "tm";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Indicadores y descriptores de propiedad</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="property-descriptors.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Indicadores y descriptores de propiedad"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Indicadores y descriptores de propiedad"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="object-properties.html"><link rel="next" href="property-accessors.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Indicadores y descriptores de propiedad"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/property-descriptors"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/property-descriptors"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="property-descriptors.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/property-descriptors"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/property-descriptors"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/property-descriptors"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/property-descriptors"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/property-descriptors"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/property-descriptors"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/property-descriptors"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/property-descriptors"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/property-descriptors"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/property-descriptors"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fproperty-descriptors" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fproperty-descriptors" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/property-descriptors">عربي</option><option value="https://javascript.info/property-descriptors">English</option><option value="https://es.javascript.info/property-descriptors" selected>Español</option><option value="https://fa.javascript.info/property-descriptors">فارسی</option><option value="https://fr.javascript.info/property-descriptors">Français</option><option value="https://id.javascript.info/property-descriptors">Indonesia</option><option value="https://it.javascript.info/property-descriptors">Italiano</option><option value="https://ja.javascript.info/property-descriptors">日本語</option><option value="https://ko.javascript.info/property-descriptors">한국어</option><option value="https://learn.javascript.ru/property-descriptors">Русский</option><option value="https://tr.javascript.info/property-descriptors">Türkçe</option><option value="https://uk.javascript.info/property-descriptors">Українська</option><option value="https://zh.javascript.info/property-descriptors">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="60" max="93" data-tooltip="Lección 60 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="object-properties.html"><span>Configuración de las propiedades de objetos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Configuración de las propiedades de objetos","item":"https://es.javascript.info/object-properties"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 1 de noviembre de 2022"><div class="updated-at__content">1 de noviembre de 2022</div></div></div><h1 class="main__header-title">Indicadores y descriptores de propiedad</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Indicadores y descriptores de propiedad"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Como sabemos, los objetos pueden almacenar propiedades.</p>
+<p>Hasta ahora, para nosotros una propiedad era un simple par “clave-valor”. Pero una propiedad de un objeto es algo más flexible y poderoso.</p>
+<p>En este capítulo vamos a estudiar opciones adicionales de configuración, y en el siguiente veremos como convertirlas invisiblemente en funciones ‘getter/setter’ para obtener/asignar valores.</p>
+<h2><a class="main__anchor" name="indicadores-de-propiedad" href="#indicadores-de-propiedad">Indicadores de propiedad</a></h2><p>Las propiedades de objeto, aparte de un <strong><code>value</code></strong>, tienen tres atributos especiales (también llamados “indicadores”):</p>
+<ul>
+<li><strong><code>writable</code></strong> – si es <code>true</code>, puede ser editado, de otra manera es de solo lectura.</li>
+<li><strong><code>enumerable</code></strong> – si es <code>true</code>, puede ser listado en bucles, de otro modo no puede serlo.</li>
+<li><strong><code>configurable</code></strong> – si es <code>true</code>, la propiedad puede ser borrada y estos atributos pueden ser modificados, de otra forma no.</li>
+</ul>
+<p>No los vimos hasta ahora porque generalmente no se muestran. Cuando creamos una propiedad “de la forma usual”, todos ellos son <code>true</code>. Pero podemos cambiarlos en cualquier momento.</p>
+<p>Primero, veamos como obtener estos indicadores.</p>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/getOwnPropertyDescriptor">Object.getOwnPropertyDescriptor</a> permite consultar <em>toda</em> la información sobre una propiedad.</p>
+<p>La sintaxis es:</p>
+<div id="2x2akobwg3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let descriptor = Object.getOwnPropertyDescriptor(obj, propertyName);</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt><code>obj</code></dt>
+<dd>El objeto del que se quiere obtener la información.</dd>
+<dt><code>propertyName</code></dt>
+<dd>El nombre de la propiedad.</dd>
+</dl>
+<p>El valor devuelto es el objeto llamado “descriptor de propiedad”: este contiene el valor de todos los indicadores.</p>
+<p>Por ejemplo:</p>
+<div id="s27ygoo8ca" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;Juan&quot;
+};
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+alert( JSON.stringify(descriptor, null, 2 ) );
+/* descriptor de propiedad:
+{
+  &quot;value&quot;: &quot;Juan&quot;,
+  &quot;writable&quot;: true,
+  &quot;enumerable&quot;: true,
+  &quot;configurable&quot;: true
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para modificar los indicadores podemos usar <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/defineProperty">Object.defineProperty</a>.</p>
+<p>La sintaxis es:</p>
+<div id="gwjgnkze99" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>Object.defineProperty(obj, propertyName, descriptor)</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt><code>obj</code>, <code>propertyName</code></dt>
+<dd>el objeto y la propiedad con los que se va a trabajar.</dd>
+<dt><code>descriptor</code></dt>
+<dd>descriptor de propiedad a aplicar.</dd>
+</dl>
+<p>Si la propiedad existe, <code>defineProperty</code> actualiza sus indicadores. De otra forma, creará la propiedad con el valor y el indicador dado; en ese caso, si el indicador no es proporcionado, es asumido como <code>false</code>.</p>
+<p>En el ejemplo a continuación, se crea una propiedad <code>name</code> con todos los indicadores en <code>false</code>:</p>
+<div id="x2fskb5szk" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;end&quot;:14},{&quot;start&quot;:2,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {};
+
+Object.defineProperty(user, &quot;name&quot;, {
+  value: &quot;Juan&quot;
+});
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+alert( JSON.stringify(descriptor, null, 2 ) );
+/*
+{
+  &quot;value&quot;: &quot;Juan&quot;,
+  &quot;writable&quot;: false,
+  &quot;enumerable&quot;: false,
+  &quot;configurable&quot;: false
+}
+ */</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Comparado con la creada “de la forma usual” <code>user.name</code>: ahora todos los indicadores son <code>false</code>. Si no es lo que queremos, es mejor que los establezcamos en <code>true</code> en el <code>descriptor</code>.</p>
+<p>Ahora veamos los efectos de los indicadores con ejemplo.</p>
+<h2><a class="main__anchor" name="non-writable" href="#non-writable">Non-writable</a></h2><p>Vamos a hacer <code>user.name</code> de solo lectura cambiando el indicador <code>writable</code>:</p>
+<div id="aqdyyvnrsb" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8},{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;Juan&quot;
+};
+
+Object.defineProperty(user, &quot;name&quot;, {
+  writable: false
+});
+
+user.name = &quot;Pedro&quot;; // Error: No se puede asignar a la propiedad de solo lectura 'name'...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora nadie puede cambiar el nombre de nuestro usuario, a menos que le apliquen su propio <code>defineProperty</code> para sobrescribir el nuestro.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Los errores aparecen solo en modo estricto</span></div>
+            <div class="important__content"><p>En el modo no estricto, no se producen errores al intentar escribir en propiedades no grabables; pero la operación no tendrá éxito. Las acciones que infringen el indicador se ignoran silenciosamente en el modo no estricto.</p>
+</div></div>
+<p>Aquí está el mismo ejemplo, pero la propiedad se crea desde cero:</p>
+<div id="dhwaudtm2r" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = { };
+
+Object.defineProperty(user, &quot;name&quot;, {
+
+  value: &quot;Pedro&quot;,
+  // para las nuevas propiedades se necesita listarlas explícitamente como true
+  enumerable: true,
+  configurable: true
+});
+
+alert(user.name); // Pedro
+user.name = &quot;Alicia&quot;; // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="non-enumerable" href="#non-enumerable">Non-enumerable</a></h2><p>Ahora vamos a añadir un <code>toString</code> personalizado a <code>user</code>.</p>
+<p>Normalmente, en los objetos un <code>toString</code> nativo es no enumerable, no se muestra en un bucle <code>for..in</code>. Pero si añadimos nuestro propio <code>toString</code>, por defecto éste se muestra en los bucles <code>for..in</code>:</p>
+<div id="ukgij3cifi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;Juan&quot;,
+  toString() {
+    return this.name;
+  }
+};
+
+// Por defecto, nuestras propiedades se listan:
+for (let key in user) alert(key); // name, toString</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si no es lo que queremos, podemos establecer <code>enumerable:false</code>. Entonces no aparecerá en bucles <code>for..in</code>, exactamente como el toString nativo:</p>
+<div id="l64c0x97mo" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:11},{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;Juan&quot;,
+  toString() {
+    return this.name;
+  }
+};
+
+Object.defineProperty(user, &quot;toString&quot;, {
+  enumerable: false
+});
+
+// Ahora nuestro toString desaparece:
+for (let key in user) alert(key); // nombre</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las propiedades no enumerables también se excluyen de <code>Object.keys</code>:</p>
+<div id="zw2y7ll6jj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(Object.keys(user)); // name</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="non-configurable" href="#non-configurable">Non-configurable</a></h2><p>El indicador “no-configurable” (<code>configurable:false</code>) a veces está preestablecido para los objetos y propiedades nativos.</p>
+<p>Una propiedad no configurable no puede ser eliminada, y sus atributos no pueden ser modificados.</p>
+<p>Por ejemplo, <code>Math.PI</code> es de solo lectura, no enumerable y no configurable:</p>
+<div id="o2hnq4p611" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let descriptor = Object.getOwnPropertyDescriptor(Math, 'PI');
+
+alert( JSON.stringify(descriptor, null, 2 ) );
+/*
+{
+  &quot;value&quot;: 3.141592653589793,
+  &quot;writable&quot;: false,
+  &quot;enumerable&quot;: false,
+  &quot;configurable&quot;: false
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Así, un programador es incapaz de cambiar el valor de <code>Math.PI</code> o sobrescribirlo.</p>
+<div id="r8e4zge408" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>Math.PI = 3; // Error, porque tiene writable: false
+
+// delete Math.PI tampoco funcionará</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tampoco podemos cambiar <code>Math.PI</code> a <code>writable</code> de vuelta:</p>
+<div id="un4yttg1gj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Error, porque configurable: false
+Object.defineProperty(Math, &quot;PI&quot;, { writable: true });</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No hay nada en absoluto que podamos hacer con <code>Math.PI</code>.</p>
+<p>Convertir una propiedad en no configurable es una calle de un solo sentido. No podremos cambiarla de vuelta con <code>defineProperty</code>.</p>
+<p><strong>Observa que “configurable: false” impide cambios en los indicadores de la propiedad y su eliminación, pero permite el cambio de su valor.</strong></p>
+<p>Aquí <code>user.name</code> es “non-configurable”, pero aún puede cambiarse (por ser “writable”):</p>
+<div id="vp3grmnk12" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John&quot;
+};
+
+Object.defineProperty(user, &quot;name&quot;, {
+  configurable: false
+});
+
+user.name = &quot;Pete&quot;; // funciona
+delete user.name; // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y aquí hacemos <code>user.name</code> una constante “sellada para siempre”, tal como la constante nativa <code>Math.PI</code>:</p>
+<div id="8aqphczdqd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John&quot;
+};
+
+Object.defineProperty(user, &quot;name&quot;, {
+  writable: false,
+  configurable: false
+});
+
+// No seremos capaces de cambiar usuario.nombre o sus identificadores
+// Nada de esto funcionará:
+user.name = &quot;Pedro&quot;;
+delete user.name;
+Object.defineProperty(user, &quot;name&quot;, { value: &quot;Pedro&quot; });</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Único cambio de atributo posible: writable true → false</span></div>
+            <div class="important__content"><p>Hay una excepción menor acerca del cambio de indicadores.</p>
+<p>Podemos cambiar <code>writable: true</code> a <code>false</code> en una propiedad no configurable, impidiendo en más la modificación de su valor (sumando una capa de protección). Aunque no hay vuelta atrás.</p>
+</div></div>
+<h2><a class="main__anchor" name="object-defineproperties" href="#object-defineproperties">Object.defineProperties</a></h2><p>Existe un método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/defineProperties">Object.defineProperties(obj, descriptors)</a> que permite definir varias propiedades de una sola vez.</p>
+<p>La sintaxis es:</p>
+<div id="5t91uwy5kq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>Object.defineProperties(obj, {
+  prop1: descriptor1,
+  prop2: descriptor2
+  // ...
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo:</p>
+<div id="y5zsoycwl9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>Object.defineProperties(user, {
+  name: { value: &quot;Juan&quot;, writable: false },
+  surname: { value: &quot;Perez&quot;, writable: false },
+  // ...
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces podemos asignar varias propiedades al mismo tiempo.</p>
+<h2><a class="main__anchor" name="object-getownpropertydescriptors" href="#object-getownpropertydescriptors">Object.getOwnPropertyDescriptors</a></h2><p>Para obtener todos los descriptores al mismo tiempo, podemos usar el método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/getOwnPropertyDescriptors">Object.getOwnPropertyDescriptors(obj)</a>.</p>
+<p>Junto con <code>Object.defineProperties</code>, puede ser usado como una forma “consciente de los indicadores” de clonar un objeto:</p>
+<div id="tyl2lyy6bk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let clone = Object.defineProperties({}, Object.getOwnPropertyDescriptors(obj));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normalmente, cuando clonamos un objeto, usamos una asignación para copiar las propiedades:</p>
+<div id="2nxg9i06ns" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>for (let key in user) {
+  clone[key] = user[key]
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>… pero esto no copia los indicadores. Así que si queremos un “mejor” clon entonces se prefiere <code>Object.defineProperties</code>.</p>
+<p>Otra diferencia es que <code>for..in</code> ignora las propiedades simbólicas y las no enumerables, pero <code>Object.getOwnPropertyDescriptors</code> devuelve <em>todos</em> los descriptores de propiedades incluyendo simbólicas y no enumerables.</p>
+<h2><a class="main__anchor" name="sellando-un-objeto-globalmente" href="#sellando-un-objeto-globalmente">Sellando un objeto globalmente</a></h2><p>Los descriptores de propiedad trabajan al nivel de propiedades individuales.</p>
+<p>También hay métodos que limitan el acceso al objeto <em>completo</em>:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/preventExtensions">Object.preventExtensions(obj)</a></dt>
+<dd>Prohíbe añadir propiedades al objeto.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/seal">Object.seal(obj)</a></dt>
+<dd>Prohíbe añadir/eliminar propiedades, establece todas las propiedades existentes como <code>configurable: false</code>.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/freeze">Object.freeze(obj)</a></dt>
+<dd>Prohíbe añadir/eliminar/cambiar propiedades, establece todas las propiedades existentes como <code>configurable: false, writable: false</code>.</dd>
+</dl>
+<p>También tenemos formas de probarlos:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/isExtensible">Object.isExtensible(obj)</a></dt>
+<dd>Devuelve <code>false</code> si esta prohibido añadir propiedades, si no <code>true</code>.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/isSealed">Object.isSealed(obj)</a></dt>
+<dd>Devuelve <code>true</code> si añadir/eliminar propiedades está prohibido, y todas las propiedades existentes tienen <code>configurable: false</code>.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/isFrozen">Object.isFrozen(obj)</a></dt>
+<dd>Devuelve <code>true</code> si añadir/eliminar/cambiar propiedades está prohibido, y todas las propiedades son <code>configurable: false, writable: false</code>.</dd>
+</dl>
+<p>Estos métodos son usados rara vez en la práctica.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="object-properties.html" data-tooltip="Configuración de las propiedades de objetos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="property-accessors.html" data-tooltip="&quot;Getters&quot; y &quot;setters&quot; de propiedad"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fproperty-descriptors" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fproperty-descriptors" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/property-descriptors","identifier":"\/property-descriptors"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-properties.html">Configuración de las propiedades de objetos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#indicadores-de-propiedad">Indicadores de propiedad</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#non-writable">Non-writable</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#non-enumerable">Non-enumerable</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#non-configurable">Non-configurable</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#object-defineproperties">Object.defineProperties</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#object-getownpropertydescriptors">Object.getOwnPropertyDescriptors</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#sellando-un-objeto-globalmente">Sellando un objeto globalmente</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fproperty-descriptors" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fproperty-descriptors" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/07-object-properties/01-property-descriptors" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/property-descriptors by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:07 GMT -->
+</html>

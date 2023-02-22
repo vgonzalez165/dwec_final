@@ -1,0 +1,541 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/promise-chaining by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:16 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Encadenamiento de promesas</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="promise-chaining.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Encadenamiento de promesas"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Encadenamiento de promesas"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="promise-basics.html"><link rel="next" href="promise-error-handling.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><script>
+function loadScript(src) {
+  return new Promise(function(resolve, reject) {
+    let script = document.createElement('script');
+    script.src = src;
+
+    script.onload = () => resolve(script);
+    script.onerror = () => reject(new Error("Error de carga de script: " + src));
+
+    document.head.append(script);
+  });
+}
+</script>
+
+<style>
+.promise-avatar-example {
+  border-radius: 50%;
+  position: fixed;
+  left: 10px;
+  top: 10px;
+}
+</style>
+<meta property="og:title" content="Encadenamiento de promesas"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/promise-chaining"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/promise-chaining"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="promise-chaining.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/promise-chaining"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/promise-chaining"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/promise-chaining"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/promise-chaining"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/promise-chaining"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/promise-chaining"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/promise-chaining"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/promise-chaining"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/promise-chaining"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/promise-chaining"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fpromise-chaining" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fpromise-chaining" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/promise-chaining">عربي</option><option value="https://javascript.info/promise-chaining">English</option><option value="https://es.javascript.info/promise-chaining" selected>Español</option><option value="https://fa.javascript.info/promise-chaining">فارسی</option><option value="https://fr.javascript.info/promise-chaining">Français</option><option value="https://id.javascript.info/promise-chaining">Indonesia</option><option value="https://it.javascript.info/promise-chaining">Italiano</option><option value="https://ja.javascript.info/promise-chaining">日本語</option><option value="https://ko.javascript.info/promise-chaining">한국어</option><option value="https://learn.javascript.ru/promise-chaining">Русский</option><option value="https://tr.javascript.info/promise-chaining">Türkçe</option><option value="https://uk.javascript.info/promise-chaining">Українська</option><option value="https://zh.javascript.info/promise-chaining">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="77" max="93" data-tooltip="Lección 77 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="async.html"><span>Promesas y async/await</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Promesas y async/await","item":"https://es.javascript.info/async"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 2 de septiembre de 2022"><div class="updated-at__content">2 de septiembre de 2022</div></div></div><h1 class="main__header-title">Encadenamiento de promesas</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Encadenamiento de promesas"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Volvamos al problema mencionado en el capítulo <a href="callbacks.html">Introducción: callbacks</a>: tenemos una secuencia de tareas asincrónicas que deben realizarse una tras otra, por ejemplo, cargar scripts. ¿Cómo podemos codificarlo correctamente?</p>
+<p>Las promesas proporcionan un par de maneras para hacerlo.</p>
+<p>En este capítulo cubrimos el encadenamiento de promesas.</p>
+<p>Se ve así:</p>
+<div id="n0t3t7k2nm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>new Promise(function(resolve, reject) {
+
+  setTimeout(() =&gt; resolve(1), 1000); // (*)
+
+}).then(function(result) { // (**)
+
+  alert(result); // 1
+  return result * 2;
+
+}).then(function(result) { // (***)
+
+  alert(result); // 2
+  return result * 2;
+
+}).then(function(result) {
+
+  alert(result); // 4
+  return result * 2;
+
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La idea es que el resultado pase a través de la cadena de manejadores <code>.then</code>.</p>
+<p>Aquí el flujo es:</p>
+<ol>
+<li>La promesa inicial se resuelve en 1 segundo <code>(*)</code>,</li>
+<li>Entonces se llama el manejador <code>.then</code>  <code>(**)</code>, que a su vez crea una nueva promesa (resuelta con el valor <code>2</code>).</li>
+<li>El siguiente <code>.then</code> <code>(***)</code> obtiene el resultado del anterior, lo procesa (duplica) y lo pasa al siguiente manejador.</li>
+<li>…y así sucesivamente.</li>
+</ol>
+<p>A medida que el resultado se pasa a lo largo de la cadena de controladores, podemos ver una secuencia de llamadas de alerta: <code>1</code> → <code>2</code> → <code>4</code>.</p>
+<figure><div class="image" style="width:165px">
+      <div class="image__ratio" style="padding-top:205.45454545454547%"></div>
+      <object type="image/svg+xml" data="article/promise-chaining/promise-then-chain.svg" width="165" height="339" class="image__image" data-use-theme>
+        <img src="article/promise-chaining/promise-then-chain.svg" alt="" width="165" height="339">
+      </object>
+      </div></figure><p>Todo funciona, porque cada llamada a <code>promise.then</code> devuelve una nueva promesa, para que podamos llamar al siguiente <code>.then</code> con ella.</p>
+<p>Cuando un controlador devuelve un valor, se convierte en el resultado de esa promesa, por lo que se llama al siguiente <code>.then</code>.</p>
+<p><strong>Un error clásico de principiante: técnicamente también podemos agregar muchos ‘.then’ a una sola promesa: eso no es encadenamiento.</strong></p>
+<p>Por ejemplo:</p>
+<div id="ip17rbwf3y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let promise = new Promise(function(resolve, reject) {
+  setTimeout(() =&gt; resolve(1), 1000);
+});
+
+promise.then(function(result) {
+  alert(result); // 1
+  return result * 2;
+});
+
+promise.then(function(result) {
+  alert(result); // 1
+  return result * 2;
+});
+
+promise.then(function(result) {
+  alert(result); // 1
+  return result * 2;
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Lo que hicimos aquí fue varios controladores para una sola promesa. No se pasan el resultado el uno al otro; en su lugar lo procesan de forma independiente.</p>
+<p>Aquí está la imagen (compárala con el encadenamiento anterior):</p>
+<figure><div class="image" style="width:373px">
+      <div class="image__ratio" style="padding-top:40.75067024128686%"></div>
+      <object type="image/svg+xml" data="article/promise-chaining/promise-then-many.svg" width="373" height="152" class="image__image" data-use-theme>
+        <img src="article/promise-chaining/promise-then-many.svg" alt="" width="373" height="152">
+      </object>
+      </div></figure><p>Todos los ‘.then’ en la misma promesa obtienen el mismo resultado: el resultado de esa promesa. Entonces, en el código sobre todo <code>alert</code> muestra lo mismo: <code>1</code>.</p>
+<p>En la práctica, rara vez necesitamos múltiples manejadores para una promesa. El encadenamiento se usa mucho más a menudo.</p>
+<h2><a class="main__anchor" name="devolviendo-promesas" href="#devolviendo-promesas">Devolviendo promesas</a></h2><p>Un controlador (“handler”), utilizado en <code>.then(handler)</code>, puede crear y devolver una promesa.</p>
+<p>En ese caso, otros manejadores esperan hasta que se estabilice (resuelva o rechace) y luego obtienen su resultado.</p>
+<p>Por ejemplo:</p>
+<div id="rb6w4z107l" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>new Promise(function(resolve, reject) {
+
+  setTimeout(() =&gt; resolve(1), 1000);
+
+}).then(function(result) {
+
+  alert(result); // 1
+
+  return new Promise((resolve, reject) =&gt; { // (*)
+    setTimeout(() =&gt; resolve(result * 2), 1000);
+  });
+
+}).then(function(result) { // (**)
+
+  alert(result); // 2
+
+  return new Promise((resolve, reject) =&gt; {
+    setTimeout(() =&gt; resolve(result * 2), 1000);
+  });
+
+}).then(function(result) {
+
+  alert(result); // 4
+
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En este código el primer <code>.then</code> muestra <code>1</code> y devuelve <code>new Promise(...)</code> en la línea <code>(*)</code>. Después de un segundo, se resuelve, y el resultado (el argumento de <code>resolve</code>, aquí es <code>result * 2</code>) se pasa al controlador del segundo <code>.then</code>. Ese controlador está en la línea <code>(**)</code>, muestra <code>2</code> y hace lo mismo.</p>
+<p>Por lo tanto, la salida es la misma que en el ejemplo anterior: 1 → 2 → 4, pero ahora con 1 segundo de retraso entre las llamadas de alerta.</p>
+<p>Devolver las promesas nos permite construir cadenas de acciones asincrónicas.</p>
+<h2><a class="main__anchor" name="el-ejemplo-loadscript" href="#el-ejemplo-loadscript">El ejemplo: loadScript</a></h2><p>Usemos esta función con el <code>loadScript</code> promisificado, definido en el <a href="promise-basics.html#loadscript">capítulo anterior</a>, para cargar los scripts uno por uno, en secuencia:</p>
+<div id="vprv3e1l4q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>loadScript(&quot;/article/promise-chaining/one.js&quot;)
+  .then(function(script) {
+    return loadScript(&quot;/article/promise-chaining/two.js&quot;);
+  })
+  .then(function(script) {
+    return loadScript(&quot;/article/promise-chaining/three.js&quot;);
+  })
+  .then(function(script) {
+    // usamos las funciones declaradas en los scripts
+    // para demostrar que efectivamente se cargaron
+    one();
+    two();
+    three();
+  });</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este código se puede acortar un poco con las funciones de flecha:</p>
+<div id="bp51ohxa23" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>loadScript(&quot;/article/promise-chaining/one.js&quot;)
+  .then(script =&gt; loadScript(&quot;/article/promise-chaining/two.js&quot;))
+  .then(script =&gt; loadScript(&quot;/article/promise-chaining/three.js&quot;))
+  .then(script =&gt; {
+    // los scripts se cargaron, podemos usar las funciones declaradas en ellos
+    one();
+    two();
+    three();
+  });</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí cada llamada a <code>loadScript</code> devuelve una promesa, y el siguiente <code>.then</code> se ejecuta cuando se resuelve. Luego inicia la carga del siguiente script. Entonces los scripts se cargan uno tras otro.</p>
+<p>Podemos agregar más acciones asincrónicas a la cadena. Tenga en cuenta que el código sigue siendo “plano”: crece hacia abajo, no a la derecha. No hay signos de la “pirámide del destino”.</p>
+<p>Técnicamente, podríamos agregar <code>.then</code> directamente a cada <code>loadScript</code>, así:</p>
+<div id="279nm6r0lu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>loadScript(&quot;/article/promise-chaining/one.js&quot;).then(script1 =&gt; {
+  loadScript(&quot;/article/promise-chaining/two.js&quot;).then(script2 =&gt; {
+    loadScript(&quot;/article/promise-chaining/three.js&quot;).then(script3 =&gt; {
+      // esta función tiene acceso a las variables script1, script2 y script3
+      one();
+      two();
+      three();
+    });
+  });
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este código hace lo mismo: carga 3 scripts en secuencia. Pero “crece hacia la derecha”. Entonces tenemos el mismo problema que con los callbacks.</p>
+<p>Quienes comienzan a usar promesas pueden desconocer el encadenamiento, y por ello escribirlo de esta manera. En general, se prefiere el encadenamiento.</p>
+<p>A veces es aceptable escribir <code>.then</code> directamente, porque la función anidada tiene acceso al ámbito externo. En el ejemplo anterior, el callback más anidado tiene acceso a todas las variables <code>script1</code>, <code>script2</code>, <code>script3</code>. Pero eso es una excepción más que una regla.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Objetos Thenables</span></div>
+            <div class="important__content"><p>Para ser precisos, un controlador puede devolver no exactamente una promesa, sino un objeto llamado “thenable”, un objeto arbitrario que tiene un método <code>.then</code>. Será tratado de la misma manera que una promesa.</p>
+<p>La idea es que las librerías de terceros puedan implementar sus propios objetos “compatibles con la promesa”. Pueden tener un conjunto extendido de métodos, pero también ser compatibles con las promesas nativas, porque implementan <code>.then</code>.</p>
+<p>Aquí hay un ejemplo de un objeto “thenable”:</p>
+<div id="y5a37k6m7w" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:13,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class Thenable {
+  constructor(num) {
+    this.num = num;
+  }
+  then(resolve, reject) {
+    alert(resolve); // function() { código nativo }
+    // resolve con this.num*2 después de 1 segundo
+    setTimeout(() =&gt; resolve(this.num * 2), 1000); // (**)
+  }
+}
+
+new Promise(resolve =&gt; resolve(1))
+  .then(result =&gt; {
+    return new Thenable(result); // (*)
+  })
+  .then(alert); // muestra 2 después de 1000 ms</code></pre>
+        </div>
+      </div>
+      
+      </div><p>JavaScript comprueba el objeto devuelto por el controlador <code>.then</code> en la línea <code>(*)</code>: si tiene un método invocable llamado <code>then</code>, entonces llama a ese método que proporciona funciones nativas <code>resolve</code>, <code>accept</code> como argumentos (similar a un ejecutor) y espera hasta que se llame a uno de ellos. En el ejemplo anterior, se llama a <code>resolve(2)</code> después de 1 segundo <code>(**)</code>. Luego, el resultado se pasa más abajo en la cadena.</p>
+<p>Esta característica nos permite integrar objetos personalizados con cadenas de promesa sin tener que heredar de <code>Promise</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="ejemplo-mas-grande-fetch" href="#ejemplo-mas-grande-fetch">Ejemplo más grande: fetch</a></h2><p>En la programación “frontend”, las promesas a menudo se usan para solicitudes de red. Veamos un ejemplo extendido de esto.</p>
+<p>Utilizaremos el método <a href="fetch.html">fetch</a> para cargar la información sobre el usuario desde el servidor remoto. Tiene muchos parámetros opcionales cubiertos en <a href="fetch.html">capítulos separados</a>, pero la sintaxis básica es bastante simple:</p>
+<div id="6y0s81i5jn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let promise = fetch(url);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto hace una solicitud de red a la <code>url</code> y devuelve una promesa. La promesa se resuelve con un objeto ‘response’ cuando el servidor remoto responde con encabezados, pero  <em>antes de que se descargue la respuesta completa</em>.</p>
+<p>Para leer la respuesta completa, debemos llamar al método <code>response.text()</code>: devuelve una promesa que se resuelve cuando se descarga el texto completo del servidor remoto, con ese texto como resultado.</p>
+<p>El siguiente código hace una solicitud a <code>user.json</code> y carga su texto desde el servidor:</p>
+<div id="mlaa2vop4q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>fetch('/article/promise-chaining/user.json')
+  // .a continuación, se ejecuta cuando el servidor remoto responde
+  .then(function(response) {
+    // response.text() devuelve una nueva promesa que se resuelve con el texto de respuesta completo
+    // cuando se carga
+    return response.text();
+  })
+  .then(function(text) {
+    // ...y aquí está el contenido del archivo remoto
+    alert(text); // {&quot;name&quot;: &quot;iliakan&quot;, isAdmin: true}
+  });</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El objeto <code>response</code> devuelto por <code>fetch</code> también incluye el método <code>response.json()</code> que lee los datos remotos y los analiza como JSON. En nuestro caso, eso es aún más conveniente, así que pasemos a ello.</p>
+<p>También usaremos las funciones de flecha por brevedad:</p>
+<div id="y1kwcdlbjd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// igual que el anterior, pero response.json() analiza el contenido remoto como JSON
+fetch('/article/promise-chaining/user.json')
+  .then(response =&gt; response.json())
+  .then(user =&gt; alert(user.name)); // iliakan, tengo nombre de usuario</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora hagamos algo con el usuario cargado.</p>
+<p>Por ejemplo, podemos hacer una solicitud más a GitHub, cargar el perfil de usuario y mostrar el avatar:</p>
+<div id="md3mssae9h" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Hacer una solicitud para user.json
+fetch('/article/promise-chaining/user.json')
+  // Cárgalo como json
+  .then(response =&gt; response.json())
+  // Hacer una solicitud a GitHub
+  .then(user =&gt; fetch(`https://api.github.com/users/${user.name}`))
+  // Carga la respuesta como json
+  .then(response =&gt; response.json())
+  // Mostrar la imagen de avatar (githubUser.avatar_url) durante 3 segundos (tal vez animarla)
+  .then(githubUser =&gt; {
+    let img = document.createElement('img');
+    img.src = githubUser.avatar_url;
+    img.className = &quot;promise-avatar-example&quot;;
+    document.body.append(img);
+
+    setTimeout(() =&gt; img.remove(), 3000); // (*)
+  });</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código funciona; ver comentarios sobre los detalles. Sin embargo, hay un problema potencial, un error típico para aquellos que comienzan a usar promesas.</p>
+<p>Mire la línea <code>(*)</code>: ¿cómo podemos hacer algo <em>después de</em> que el avatar haya terminado de mostrarse y se elimine? Por ejemplo, nos gustaría mostrar un formulario para editar ese usuario u otra cosa. A partir de ahora, no hay manera.</p>
+<p>Para que la cadena sea extensible, debemos devolver una promesa que se resuelva cuando el avatar termine de mostrarse.</p>
+<p>Como esto:</p>
+<div id="xd6cozg7uz" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;end&quot;:12},{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>fetch('/article/promise-chaining/user.json')
+  .then(response =&gt; response.json())
+  .then(user =&gt; fetch(`https://api.github.com/users/${user.name}`))
+  .then(response =&gt; response.json())
+  .then(githubUser =&gt; new Promise(function(resolve, reject) { // (*)
+    let img = document.createElement('img');
+    img.src = githubUser.avatar_url;
+    img.className = &quot;promise-avatar-example&quot;;
+    document.body.append(img);
+
+    setTimeout(() =&gt; {
+      img.remove();
+      resolve(githubUser); // (**)
+    }, 3000);
+  }))
+  // se dispara después de 3 segundos
+  .then(githubUser =&gt; alert(`Terminado de mostrar ${githubUser.name}`));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Es decir, el controlador <code>.then</code> en la línea <code>(*)</code> ahora devuelve <code>new Promise</code>, que se resuelve solo después de la llamada de <code>resolve(githubUser)</code> en <code>setTimeout</code> <code>(**)</code>. El siguiente ‘.then’ en la cadena esperará eso.</p>
+<p>Como buena práctica, una acción asincrónica siempre debe devolver una promesa. Eso hace posible planificar acciones posteriores; incluso si no planeamos extender la cadena ahora, es posible que la necesitemos más adelante.</p>
+<p>Finalmente, podemos dividir el código en funciones reutilizables:</p>
+<div id="zuoujqw9ma" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function loadJson(url) {
+  return fetch(url)
+    .then(response =&gt; response.json());
+}
+
+function loadGithubUser(name) {
+  return loadJson(`https://api.github.com/users/${name}`);
+}
+
+function showAvatar(githubUser) {
+  return new Promise(function(resolve, reject) {
+    let img = document.createElement('img');
+    img.src = githubUser.avatar_url;
+    img.className = &quot;promise-avatar-example&quot;;
+    document.body.append(img);
+
+    setTimeout(() =&gt; {
+      img.remove();
+      resolve(githubUser);
+    }, 3000);
+  });
+}
+
+// Úsalos:
+loadJson('/article/promise-chaining/user.json')
+  .then(user =&gt; loadGithubUser(user.name))
+  .then(showAvatar)
+  .then(githubUser =&gt; alert(`Finished showing ${githubUser.name}`));
+  // ...</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Si un controlador <code>.then</code> (o <code>catch/finally</code>, no importa) devuelve una promesa, el resto de la cadena espera hasta que se asiente. Cuando lo hace, su resultado (o error) se pasa más allá.</p>
+<p>Aquí hay una imagen completa:</p>
+<figure><div class="image" style="width:659px">
+      <div class="image__ratio" style="padding-top:53.110773899848255%"></div>
+      <object type="image/svg+xml" data="article/promise-chaining/promise-handler-variants.svg" width="659" height="350" class="image__image" data-use-theme>
+        <img src="article/promise-chaining/promise-handler-variants.svg" alt="" width="659" height="350">
+      </object>
+      </div></figure></div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#promesa-then-versus-catch" name="promesa-then-versus-catch">Promesa: then versus catch</a></h3><a class="task__open-link" href="task/then-vs-catch.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>¿Son iguales estos fragmentos de código? En otras palabras, ¿se comportan de la misma manera en cualquier circunstancia, para cualquier función de controlador?</p>
+<div id="meoi9apwwu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>promise.then(f1).catch(f2);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Versus:</p>
+<div id="1thp0kz8gr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>promise.then(f1, f2);</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La respuesta corta es: <strong>no, no son iguales</strong>:</p>
+<p>La diferencia es que si ocurre un error en <code>f1</code>, entonces aqui es manejado por <code>.catch</code>:</p>
+<div id="re7dml64h1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>promise
+  .then(f1)
+  .catch(f2);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero no aquí:</p>
+<div id="5ezt7lmq3o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>promise
+  .then(f1, f2);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto se debe a que se pasa un error por la cadena y en la segunda pieza del código no hay una cadena debajo de <code>f1</code>.</p>
+<p>En otras palabras, <code>.then</code> pasa los resultados/errores al siguiente <code>.then/catch</code>. Entonces, en el primer ejemplo, hay un <code>catch</code> debajo, y en el segundo no lo hay, por lo que el error no se maneja.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="promise-basics.html" data-tooltip="Promesa"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="promise-error-handling.html" data-tooltip="Manejo de errores con promesas"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fpromise-chaining" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fpromise-chaining" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/promise-chaining","identifier":"\/promise-chaining"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="async.html">Promesas y async/await</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#devolviendo-promesas">Devolviendo promesas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#el-ejemplo-loadscript">El ejemplo: loadScript</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ejemplo-mas-grande-fetch">Ejemplo más grande: fetch</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fpromise-chaining" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fpromise-chaining" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/11-async/03-promise-chaining" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/promise-chaining by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:17 GMT -->
+</html>

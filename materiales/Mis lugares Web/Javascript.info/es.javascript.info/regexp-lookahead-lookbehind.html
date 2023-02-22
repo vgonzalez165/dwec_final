@@ -1,0 +1,359 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/regexp-lookahead-lookbehind by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Lookahead y lookbehind (revisar delante/detrás)</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-lookahead-lookbehind.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Lookahead y lookbehind (revisar delante/detrás)"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Lookahead y lookbehind (revisar delante/detrás)"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="regexp-alternation.html"><link rel="next" href="regexp-catastrophic-backtracking.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Lookahead y lookbehind (revisar delante/detrás)"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/regexp-lookahead-lookbehind"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/regexp-lookahead-lookbehind"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-lookahead-lookbehind.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/regexp-lookahead-lookbehind"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/regexp-lookahead-lookbehind"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/regexp-lookahead-lookbehind"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/regexp-lookahead-lookbehind"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/regexp-lookahead-lookbehind"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-lookahead-lookbehind" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-lookahead-lookbehind" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/regexp-lookahead-lookbehind">عربي</option><option value="https://javascript.info/regexp-lookahead-lookbehind">English</option><option value="https://es.javascript.info/regexp-lookahead-lookbehind" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/regexp-lookahead-lookbehind">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/regexp-lookahead-lookbehind">Italiano</option><option value="https://ja.javascript.info/regexp-lookahead-lookbehind">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/regexp-lookahead-lookbehind">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/regexp-lookahead-lookbehind">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="14" max="17" data-tooltip="Lección 14 de 17"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="regular-expressions.html"><span>Expresiones Regulares</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Expresiones Regulares","item":"https://es.javascript.info/regular-expressions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 13 de junio de 2022"><div class="updated-at__content">13 de junio de 2022</div></div></div><h1 class="main__header-title">Lookahead y lookbehind (revisar delante/detrás)</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Lookahead y lookbehind (revisar delante/detrás)"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>A veces necesitamos buscar únicamente aquellas coincidencias donde un patrón es precedido o seguido por otro patrón.</p>
+<p>Existe una sintaxis especial para eso llamadas “lookahead” y “lookbehind” (“ver delante” y “ver detrás”), juntas son conocidas como “lookaround” (“ver alrededor”).</p>
+<p>Para empezar, busquemos el precio de la cadena siguiente <code class="subject">1 pavo cuesta 30€</code>. Eso es: un número, seguido por el signo <code class="subject">€</code>.</p>
+<h2><a class="main__anchor" name="lookahead" href="#lookahead">Lookahead</a></h2><p>La sintaxis es: <code class="pattern">X(?=Y)</code>. Esto significa &quot;buscar <code class="pattern">X</code>, pero considerarlo una coincidencia solo si es seguido por <code class="pattern">Y</code>&quot;. Puede haber cualquier patrón en <code class="pattern">X</code> y <code class="pattern">Y</code>.</p>
+<p>Para un número entero seguido de <code class="subject">€</code>, la expresión regular será <code class="pattern">\d+(?=€)</code>:</p>
+<div id="sikkix7lkq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;1 pavo cuesta 30€&quot;;
+
+alert( str.match(/\d+(?=€)/) ); // 30, el número 1 es ignorado porque no está seguido de €</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta que “lookahead” es solamente una prueba, lo contenido en los paréntesis <code class="pattern">(?=...)</code> no es incluido en el resultado <code class="match">30</code>.</p>
+<p>Cuando buscamos <code class="pattern">X(?=Y)</code>, el motor de expresión regular encuentra <code class="pattern">X</code> y luego verifica si existe <code class="pattern">Y</code> inmediatamente después de él. Si no existe, entonces la coincidencia potencial es omitida y la búsqueda continúa.</p>
+<p>Es posible realizar pruebas más complejas, por ejemplo <code class="pattern">X(?=Y)(?=Z)</code> significa:</p>
+<ol>
+<li>Encuentra <code class="pattern">X</code>.</li>
+<li>Verifica si <code class="pattern">Y</code> está inmediatamente después de <code class="pattern">X</code> (omite si no es así).</li>
+<li>Verifica si <code class="pattern">Z</code> está también inmediatamente después de <code class="pattern">X</code> (omite si no es así).</li>
+<li>Si ambas verificaciones se cumplen, el <code class="pattern">X</code> es una coincidencia. De lo contrario continúa buscando.</li>
+</ol>
+<p>En otras palabras, dicho patrón significa que estamos buscando por <code class="pattern">X</code> seguido de <code class="pattern">Y</code> y <code class="pattern">Z</code> al mismo tiempo.</p>
+<p>Eso es posible solamente si los patrones <code class="pattern">Y</code> y <code class="pattern">Z</code> no se excluyen mutuamente.</p>
+<p>Por ejemplo, <code class="pattern">\d+(?=\s)(?=.*30)</code> busca un <code class="pattern">\d+</code> que sea seguido por un espacio <code class="pattern">(?=\s)</code> y que también tenga un <code>30</code> en algún lugar después de él <code class="pattern">(?=.*30)</code>:</p>
+<div id="ja2srdee4i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;1 pavo cuesta 30€&quot;;
+
+alert( str.match(/\d+(?=\s)(?=.*30)/) ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En nuestra cadena eso coincide exactamente con el número <code>1</code>.</p>
+<h2><a class="main__anchor" name="lookahead-negativo" href="#lookahead-negativo">Lookahead negativo</a></h2><p>Digamos que queremos una cantidad, no un precio de la misma cadena. Eso es el número <code class="pattern">\d+</code> NO seguido por <code class="subject">€</code>.</p>
+<p>Para eso se puede aplicar un “lookahead negativo”.</p>
+<p>La sintaxis es: <code class="pattern">X(?!Y)</code>, que significa &quot;busca <code class="pattern">X</code>, pero solo si no es seguido por <code class="pattern">Y</code>&quot;.</p>
+<div id="ye1s8h3ktg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;2 pavos cuestan 60€&quot;;
+
+alert( str.match(/\d+\b(?!€)/g) ); // 2 (el precio es omitido)</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="lookbehind" href="#lookbehind">Lookbehind</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Compatibilidad de navegadores en lookbehind</span></div>
+            <div class="important__content"><p>Ten en cuenta: Lookbehind no está soportado en navegadores que no utilizan V8, como Safari, Internet Explorer.</p>
+</div></div>
+<p>“lookahead” permite agregar una condición para “lo que sigue”.</p>
+<p>“Lookbehind” es similar. Permite coincidir un patrón solo si hay algo anterior a él.</p>
+<p>La sintaxis es:</p>
+<ul>
+<li>Lookbehind positivo: <code class="pattern">(?&lt;=Y)X</code>, coincide <code class="pattern">X</code>, pero solo si hay <code class="pattern">Y</code> antes de él.</li>
+<li>Lookbehind negativo: <code class="pattern">(?&lt;!Y)X</code>, coincide <code class="pattern">X</code>, pero solo si no hay <code class="pattern">Y</code> antes de él.</li>
+</ul>
+<p>Por ejemplo, cambiemos el precio a dólares estadounidenses. El signo de dólar usualmente va antes del número, entonces para buscar <code>$30</code> usaremos <code class="pattern">(?&lt;=\$)\d+</code>: una cantidad precedida por <code class="subject">$</code>:</p>
+<div id="ghzguo2zb5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;1 pavo cuesta $30&quot;;
+
+// el signo de dólar se ha escapado \$
+alert( str.match(/(?&lt;=\$)\d+/) ); // 30 (omite los números aislados)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y si necesitamos la cantidad (un número no precedida por <code class="subject">$</code>), podemos usar “lookbehind negativo” <code class="pattern">(?&lt;!\$)\d+</code>:</p>
+<div id="moivynoydp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;2 pavos cuestan $60&quot;;
+
+alert( str.match(/(?&lt;!\$)\b\d+/g) ); // 2 (el precio es omitido)</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="atrapando-grupos" href="#atrapando-grupos">Atrapando grupos</a></h2><p>Generalmente, los contenidos dentro de los paréntesis de “lookaround” (ver alrededor) no se convierten en parte del resultado.</p>
+<p>Ejemplo en el patrón <code class="pattern">\d+(?=€)</code>, el signo <code class="pattern">€</code>  no es capturado como parte de la coincidencia. Eso es esperado: buscamos un número <code class="pattern">\d+</code>, mientras <code class="pattern">(?=€)</code> es solo una prueba que indica que debe ser seguida por <code class="subject">€</code>.</p>
+<p>Pero en algunas situaciones nosotros podríamos querer capturar también la expresión en “lookaround”, o parte de ella. Eso es posible: solo hay que rodear esa parte con paréntesis adicionales.</p>
+<p>En los ejemplos de abajo el signo de divisa <code class="pattern">(€|kr)</code> es capturado junto con la cantidad:</p>
+<div id="26ganbn8kq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;1 pavo cuesta 30€&quot;;
+let regexp = /\d+(?=(€|kr))/; // paréntesis extra alrededor de €|kr
+
+alert( str.match(regexp) ); // 30, €</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Lo mismo para “lookbehind”:</p>
+<div id="shk1riimah" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;1 pavo cuesta $30&quot;;
+let regexp = /(?&lt;=(\$|£))\d+/;
+
+alert( str.match(regexp) ); // 30, $</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Lookahead y lookbehind (en conjunto conocidos como “lookaround”) son útiles cuando queremos hacer coincidir algo dependiendo del contexto antes/después.</p>
+<p>Para expresiones regulares simples podemos hacer lo mismo manualmente. Esto es: coincidir todo, en cualquier contexto, y luego filtrar por contexto en el bucle.</p>
+<p>Recuerda, <code>str.match</code> (sin el indicador <code class="pattern">g</code>) y <code>str.matchAll</code> (siempre) devuelven las coincidencias como un array con la propiedad <code>index</code>, así que sabemos exactamente dónde están dentro del texto y podemos comprobar su contexto.</p>
+<p>Pero generalmente “lookaround” es más conveniente.</p>
+<p>Tipos de “lookaround”:</p>
+<table>
+<thead>
+<tr>
+<th>Patrón</th>
+<th>Tipo</th>
+<th>Coincidencias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X(?=Y)</code></td>
+<td>lookahead positivo</td>
+<td><code class="pattern">X</code> si está seguido por <code class="pattern">Y</code></td>
+</tr>
+<tr>
+<td><code>X(?!Y)</code></td>
+<td>lookahead negativo</td>
+<td><code class="pattern">X</code> si no está seguido por <code class="pattern">Y</code></td>
+</tr>
+<tr>
+<td><code>(?&lt;=Y)X</code></td>
+<td>lookbehind positivo</td>
+<td><code class="pattern">X</code> si está después de <code class="pattern">Y</code></td>
+</tr>
+<tr>
+<td><code>(?&lt;!Y)X</code></td>
+<td>lookbehind negativo</td>
+<td><code class="pattern">X</code> si no está después de <code class="pattern">Y</code></td>
+</tr>
+</tbody>
+</table>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#encontrar-enteros-no-negativos" name="encontrar-enteros-no-negativos">Encontrar enteros no negativos</a></h3><a class="task__open-link" href="task/find-non-negative-integers.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>Tenemos un string de números enteros.</p>
+<p>Crea una expresión regular que encuentre solamente los no negativos (el cero está permitido).</p>
+<p>Un ejemplo de uso:</p>
+<div id="tjcbxpvzgm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /tu regexp/g;
+
+let str = &quot;0 12 -5 123 -18&quot;;
+
+alert( str.match(regexp) ); // 0, 12, 123</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La expresión regular para un número entero es <code class="pattern">\d+</code>.</p>
+<p>Podemos excluir los negativos anteponiendo un “lookbehind negativo”: <code class="pattern">(?&lt;!-)\d+</code>.</p>
+<p>Pero al probarlo, notamos un resultado de más:</p>
+<div id="7w4my04w2n" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:49,&quot;end&quot;:50}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /(?&lt;!-)\d+/g;
+
+let str = &quot;0 12 -5 123 -18&quot;;
+
+console.log( str.match(regexp) ); // 0, 12, 123, 8</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como puedes ver, hay coincidencia de <code class="match">8</code>, con <code class="subject">-18</code>. Para excluirla necesitamos asegurarnos de que <code>regexp</code> no comience la búsqueda desde el medio de otro número (no coincidente).</p>
+<p>Podemos hacerlo especificando otra precedencia “lookbehind negativo”: <code class="pattern">(?&lt;!-)(?&lt;!\d)\d+</code>. Ahora <code class="pattern">(?&lt;!\d)</code> asegura que la coicidencia no comienza después de otro dígito, justo lo que necesitamos.</p>
+<p>También podemos unirlos en un único “lookbehind”:</p>
+<div id="fgax2jfglr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /(?&lt;![-\d])\d+/g;
+
+let str = &quot;0 12 -5 123 -18&quot;;
+
+alert( str.match(regexp) ); // 0, 12, 123</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#insertar-despues-de-la-cabecera" name="insertar-despues-de-la-cabecera">Insertar después de la cabecera</a></h3><a class="task__open-link" href="task/insert-after-head.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>Tenemos un string con un documento HTML.</p>
+<p>Escribe una expresión regular que inserte <code>&lt;h1&gt;Hello&lt;/h1&gt;</code> inmediatamente después de la etiqueta <code>&lt;body&gt;</code>. La etiqueta puede tener atributos.</p>
+<p>Por ejemplo:</p>
+<div id="tianow9t61" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /tu expresión regular/;
+
+let str = `
+&lt;html&gt;
+  &lt;body style=&quot;height: 200px&quot;&gt;
+  ...
+  &lt;/body&gt;
+&lt;/html&gt;
+`;
+
+str = str.replace(regexp, `&lt;h1&gt;Hello&lt;/h1&gt;`);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Después de esto el valor de <code>str</code> debe ser:</p>
+<div id="pruk2l70eq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;html&gt;
+  &lt;body style=&quot;height: 200px&quot;&gt;&lt;h1&gt;Hello&lt;/h1&gt;
+  ...
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para insertar algo después de la etiqueta <code>&lt;body&gt;</code>, primero debemos encontrarla. Para ello  podemos usar la expresión regular <code class="pattern">&lt;body.*?&gt;</code>.</p>
+<p>En esta tarea no necesitamos modificar la etiqueta <code>&lt;body&gt;</code>. Solamente agregar texto después de ella.</p>
+<p>Veamos cómo podemos hacerlo:</p>
+<div id="k6ogznshsd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '...&lt;body style=&quot;...&quot;&gt;...';
+str = str.replace(/&lt;body.*?&gt;/, '$&amp;&lt;h1&gt;Hello&lt;/h1&gt;');
+
+alert(str); // ...&lt;body style=&quot;...&quot;&gt;&lt;h1&gt;Hello&lt;/h1&gt;...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el string de reemplazo, <code>$&amp;</code> significa la coincidencia misma, la parte del texto original que corresponde a <code class="pattern">&lt;body.*?&gt;</code>. Es reemplazada por sí misma más <code>&lt;h1&gt;Hello&lt;/h1&gt;</code>.</p>
+<p>Una alternativa es el uso de “lookbehind”:</p>
+<div id="pny32jc1tj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '...&lt;body style=&quot;...&quot;&gt;...';
+str = str.replace(/(?&lt;=&lt;body.*?&gt;)/, `&lt;h1&gt;Hello&lt;/h1&gt;`);
+
+alert(str); // ...&lt;body style=&quot;...&quot;&gt;&lt;h1&gt;Hello&lt;/h1&gt;...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como puedes ver, solo está presente la parte “lookbehind” en esta expresión regular.</p>
+<p>Esto funciona así:</p>
+<ul>
+<li>En cada posición en el texto:</li>
+<li>Verifica si está precedida por <code class="pattern">&lt;body.*?&gt;</code>.</li>
+<li>Si es así, tenemos una coincidencia.</li>
+</ul>
+<p>La etiqueta <code class="pattern">&lt;body.*?&gt;</code> no será devuelta. El resultado de esta expresión regular es un string vacío, pero coincide solo en las posiciones precedidas por <code class="pattern">&lt;body.*?&gt;</code>.</p>
+<p>Entonces reemplaza la “linea vacía”, precedida por <code class="pattern">&lt;body.*?&gt;</code>, con <code>&lt;h1&gt;Hello&lt;/h1&gt;</code>. Esto es, la inserción después de <code>&lt;body&gt;</code>.</p>
+<p>P.S. Los indicadores de Regexp tales como <code class="pattern">s</code> y <code class="pattern">i</code> también nos pueden ser útiles: <code class="pattern">/&lt;body.*?&gt;/si</code>. El indicador <code class="pattern">s</code> hace que que el punto <code class="pattern">.</code> coincida también con el carácter de salto de línea, y el indicador <code class="pattern">i</code> hace que <code class="pattern">&lt;body&gt;</code> también acepte coincidencias <code class="match">&lt;BODY&gt;</code> en mayúsculas y minúsculas.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-alternation.html" data-tooltip="Alternancia (O) |"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="regexp-catastrophic-backtracking.html" data-tooltip="Backtracking catastrófico"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-lookahead-lookbehind" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-lookahead-lookbehind" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/regexp-lookahead-lookbehind","identifier":"\/regexp-lookahead-lookbehind"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.html">Expresiones Regulares</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#lookahead">Lookahead</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#lookahead-negativo">Lookahead negativo</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#lookbehind">Lookbehind</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#atrapando-grupos">Atrapando grupos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (2)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-lookahead-lookbehind" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fregexp-lookahead-lookbehind" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/9-regular-expressions/14-regexp-lookahead-lookbehind" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/regexp-lookahead-lookbehind by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:03 GMT -->
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/javascript-specials by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Especiales JavaScript</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="javascript-specials.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Especiales JavaScript"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Especiales JavaScript"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="arrow-functions-basics.html"><link rel="next" href="code-quality.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Especiales JavaScript"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/javascript-specials"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/javascript-specials"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="javascript-specials.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/javascript-specials"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/javascript-specials"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/javascript-specials"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/javascript-specials"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/javascript-specials"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/javascript-specials"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/javascript-specials"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/javascript-specials"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/javascript-specials"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/javascript-specials"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjavascript-specials" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fjavascript-specials" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/javascript-specials">عربي</option><option value="https://javascript.info/javascript-specials">English</option><option value="https://es.javascript.info/javascript-specials" selected>Español</option><option value="https://fa.javascript.info/javascript-specials">فارسی</option><option value="https://fr.javascript.info/javascript-specials">Français</option><option value="https://id.javascript.info/javascript-specials">Indonesia</option><option value="https://it.javascript.info/javascript-specials">Italiano</option><option value="https://ja.javascript.info/javascript-specials">日本語</option><option value="https://ko.javascript.info/javascript-specials">한국어</option><option value="https://learn.javascript.ru/javascript-specials">Русский</option><option value="https://tr.javascript.info/javascript-specials">Türkçe</option><option value="https://uk.javascript.info/javascript-specials">Українська</option><option value="https://zh.javascript.info/javascript-specials">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="22" max="93" data-tooltip="Lección 22 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="first-steps.html"><span>Fundamentos de JavaScript</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Fundamentos de JavaScript","item":"https://es.javascript.info/first-steps"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 13 de junio de 2022"><div class="updated-at__content">13 de junio de 2022</div></div></div><h1 class="main__header-title">Especiales JavaScript</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Especiales JavaScript"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Este capítulo resume brevemente las características de JavaScript que hemos aprendido hasta ahora, prestando especial atención a los detalles relevantes.</p>
+<h2><a class="main__anchor" name="estructura-de-codigo" href="#estructura-de-codigo">Estructura de Código</a></h2><p>Las declaraciones se delimitan con un punto y coma:</p>
+<div id="joobt0lcan" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Hola'); alert('Mundo');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En general, un salto de línea también se trata como un delimitador, por lo que también funciona:</p>
+<div id="2g3k8cykl2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Hola')
+alert('Mundo')</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto se llama “inserción automática de punto y coma”. A veces no funciona, por ejemplo:</p>
+<div id="wfkzl3u3n6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(&quot;Habrá un error después de este mensaje.&quot;)
+
+[1, 2].forEach(alert)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La mayoría de las guías de estilo de código coinciden en que debemos poner un punto y coma después de cada declaración.</p>
+<p>Los puntos y comas no son necesarios después de los bloques de código <code>{...}</code> y los constructores de sintaxis como los bucles:</p>
+<div id="h8c82tjnks" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  // no se necesita punto y coma después de la declaración de función
+}
+
+for(;;) {
+  // no se necesita punto y coma después del bucle
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero incluso si colocásemos un punto y coma “extra” en alguna parte, eso no sería un error. Solo sería ignorado.</p>
+<p>Más en: <a href="structure.html">Estructura del código</a>.</p>
+<h2><a class="main__anchor" name="modo-estricto" href="#modo-estricto">Modo estricto</a></h2><p>Para habilitar completamente todas las características de JavaScript moderno, debemos comenzar los scripts con <code>&quot;use strict&quot;</code>.</p>
+<div id="c2ukzmh5fn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>'use strict';
+
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La directiva debe estar en la parte superior de un script o al comienzo de una función.</p>
+<p>Sin la directiva <code>&quot;use strict&quot;</code> todo sigue funcionando, pero algunas características se comportan de la manera antigua y “compatible”. Generalmente preferimos el comportamiento moderno.</p>
+<p>Algunas características modernas del lenguaje (como las clases que estudiaremos en el futuro) activan el modo estricto implícitamente.</p>
+<p>Más en: <a href="strict-mode.html">El modo moderno, &quot;use strict&quot;</a>.</p>
+<h2><a class="main__anchor" name="variables" href="#variables">Variables</a></h2><p>Se pueden declarar usando:</p>
+<ul>
+<li><code>let</code></li>
+<li><code>const</code> (constante, no se puede cambiar)</li>
+<li><code>var</code> (estilo antiguo, lo veremos más tarde)</li>
+</ul>
+<p>Un nombre de variable puede incluir:</p>
+<ul>
+<li>Letras y dígitos, pero el primer carácter no puede ser un dígito.</li>
+<li>Los caracteres <code>$</code> y <code>_</code> son normales, al igual que las letras.</li>
+<li>Los alfabetos y jeroglíficos no latinos también están permitidos, pero comúnmente no se usan.</li>
+</ul>
+<p>Las variables se escriben dinámicamente. Pueden almacenar cualquier valor:</p>
+<div id="aefd6uwb3q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let x = 5;
+x = &quot;John&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Hay 8 tipos de datos:</p>
+<ul>
+<li><code>number</code> tanto para números de punto flotante como enteros,</li>
+<li><code>bigint</code> para números enteros de largo arbitrario,</li>
+<li><code>string</code> para textos,</li>
+<li><code>boolean</code> para valores lógicos: <code>true/false</code>,</li>
+<li><code>null</code> – un tipo con el valor único <code>null</code>, que significa “vacío” o “no existe”,</li>
+<li><code>undefined</code> – un tipo con el valor único <code>undefined</code>, que significa “no asignado”,</li>
+<li><code>object</code> y <code>symbol</code> – para estructuras de datos complejas e identificadores únicos, aún no los hemos aprendido.</li>
+</ul>
+<p>El operador <code>typeof</code> devuelve el tipo de un valor, con dos excepciones:</p>
+<div id="b8c3htfj16" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>typeof null == &quot;object&quot; // error del lenguaje
+typeof function(){} == &quot;function&quot; // las funciones son tratadas especialmente</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Más en: <a href="variables.html">Variables</a> y <a href="types.html">Tipos de datos</a>.</p>
+<h2><a class="main__anchor" name="interaccion" href="#interaccion">Interacción</a></h2><p>Estamos utilizando un navegador como entorno de trabajo, por lo que las funciones básicas de la interfaz de usuario serán:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/API/Window/prompt"><code>prompt(question, [default])</code></a></dt>
+<dd>Hace una pregunta <code>question</code>, y devuelve lo que ingresó el visitante o <code>null</code> si presiona “cancelar”.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/API/Window/confirm"><code>confirm(question)</code></a></dt>
+<dd>Hace una pregunta <code>question</code>, y sugiere elegir entre Aceptar y Cancelar. La elección se devuelve como booleano <code>true/false</code>.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/API/Window/alert"><code>alert(message)</code></a></dt>
+<dd>Muestra un <code>message</code>.</dd>
+</dl>
+<p>Todas estas funciones son <em>modales</em>, pausan la ejecución del código y evitan que el visitante interactúe con la página hasta que responda.</p>
+<p>Por ejemplo:</p>
+<div id="wyf90hwo8u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let userName = prompt(&quot;¿Su nombre?&quot;, &quot;Alice&quot;);
+let isTeaWanted = confirm(&quot;¿Quiere té?&quot;);
+
+alert( &quot;Visitante: &quot; + userName ); // Alice
+alert( &quot;Quiere té: &quot; + isTeaWanted ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Más en: <a href="alert-prompt-confirm.html">Interacción: alert, prompt, confirm</a>.</p>
+<h2><a class="main__anchor" name="operadores" href="#operadores">Operadores</a></h2><p>JavaScript soporta los siguientes operadores:</p>
+<dl>
+<dt>Aritméticos</dt>
+<dd>
+<p>Los normales: <code>* + - /</code>, también <code>%</code> para los restos y <code>**</code> para aplicar potencia de un número.</p>
+<p>El binario más <code>+</code> concatena textos. Si uno de los operandos es un texto, el otro también se convierte en texto:</p>
+<div id="087jbt627u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( '1' + 2 ); // '12', texto
+alert( 1 + '2' ); // '12', texto</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt>Asignaciones</dt>
+<dd>
+<p>Existen las asignaciones simples: <code>a = b</code> y las combinadas <code>a *= 2</code>.</p>
+</dd>
+<dt>Operador bit a bit</dt>
+<dd>
+<p>Los operadores bit a bit funcionan con enteros de 32 bits al más bajo nivel, el de bit: vea la <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators#operadores_binarios_bit_a_bit">documentación</a> cuando los necesite.</p>
+</dd>
+<dt>Condicional</dt>
+<dd>
+<p>El único operador con 3 parámetros: <code>cond ? resultA : resultB</code>. Sí <code>cond</code> es verdadera, devuelve <code>resultA</code>, de lo contrario <code>resultB</code>.</p>
+</dd>
+<dt>Operadores Lógicos</dt>
+<dd>
+<p>Los operadores lógicos Y <code>&amp;&amp;</code> y Ó <code>||</code> realizan una evaluación de circuito corto y luego devuelven el valor donde se detuvo (no necesariamente true/false). El operador lógico NOT <code>!</code> convierte el operando a tipo booleano y devuelve el valor inverso.</p>
+</dd>
+<dt>Operador “Nullish coalescing”</dt>
+<dd>
+<p>El operador <code>??</code> brinda una forma de elegir el primer valor “definido” de una lista de variables. El resultado de <code>a ?? b</code> es <code>a</code> salvo que esta sea <code>null/undefined</code>, en cuyo caso será <code>b</code>.</p>
+</dd>
+<dt>Comparaciones</dt>
+<dd>
+<p>Para verificar la igualdad <code>==</code> de valores de diferentes tipos, estos se convierten a número (excepto <code>null</code> y <code>undefined</code> que son iguales entre sí y nada más), por lo que son iguales:</p>
+<div id="7u792o25cf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 0 == false ); // true
+alert( 0 == '' ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Otras comparaciones también se convierten en un número.</p>
+<p>El operador de igualdad estricta <code>===</code> no realiza la conversión: diferentes tipos siempre significan diferentes valores.</p>
+<p>Los valores <code>null</code> y <code>undefined</code> son especiales: son iguales <code>==</code> el uno al otro y no son iguales a nada más.</p>
+<p>Las comparaciones mayor/menor comparan las cadenas carácter por carácter, los demás tipos de datos se convierten a número.</p>
+</dd>
+<dt>Otros operadores</dt>
+<dd>
+<p>Hay algunos otros, como un operador de coma.</p>
+</dd>
+</dl>
+<p>Más en: <a href="operators.html">Operadores básicos, matemáticas</a>, <a href="comparison.html">Comparaciones</a>, <a href="logical-operators.html">Operadores Lógicos</a>, <a href="nullish-coalescing-operator.html">Operador Nullish Coalescing '??'</a>.</p>
+<h2><a class="main__anchor" name="bucles" href="#bucles">Bucles</a></h2><ul>
+<li>
+<p>Cubrimos 3 tipos de bucles:</p>
+<div id="61nuziftp8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 1
+while (condition) {
+  ...
+}
+
+// 2
+do {
+  ...
+} while (condition);
+
+// 3
+for(let i = 0; i &lt; 10; i++) {
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>La variable declarada en el bucle <code>for(let...)</code> sólo es visible dentro del bucle. Pero también podemos omitir el <code>let</code> y reutilizar una variable existente.</p>
+</li>
+<li>
+<p>Directivas <code>break/continue</code> permiten salir de todo el ciclo/iteración actual. Use etiquetas para romper bucles anidados.</p>
+</li>
+</ul>
+<p>Detalles en: <a href="while-for.html">Bucles: while y for</a>.</p>
+<p>Más adelante estudiaremos más tipos de bucles para tratar con objetos.</p>
+<h2><a class="main__anchor" name="la-construccion-switch" href="#la-construccion-switch">La construcción “switch”</a></h2><p>La construcción “switch” puede reemplazar múltiples revisiones con <code>if</code>. “switch” utiliza <code>===</code> (comparación estricta).</p>
+<p>Por ejemplo:</p>
+<div id="g6g29ijp2t" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = prompt('¿Su Edad?', 18);
+
+switch (age) {
+  case 18:
+
+    alert(&quot;No funciona&quot;); // el resultado de la petición es un string, no un número
+
+  case &quot;18&quot;:
+    alert(&quot;¡Funciona!&quot;);
+    break;
+
+  default:
+    alert(&quot;Todo valor que no sea igual a uno de arriba&quot;);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Detalles en: <a href="switch.html">La sentencia &quot;switch&quot;</a>.</p>
+<h2><a class="main__anchor" name="funciones" href="#funciones">Funciones</a></h2><p>Cubrimos tres formas de crear una función en JavaScript:</p>
+<ol>
+<li>
+<p>Declaración de función: la función en el flujo del código principal</p>
+<div id="uapoekefuy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sum(a, b) {
+  let result = a + b;
+
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Expresión de función: la función en el contexto de una expresión</p>
+<div id="7r9nh1voos" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let sum = function(a, b) {
+  let result = a + b;
+
+  return result;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Funciones de flecha:</p>
+<div id="2pfwf8roaj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// la expresión en el lado derecho
+let sum = (a, b) =&gt; a + b;
+
+// o sintaxis multilínea { ... }, aquí necesita return:
+let sum = (a, b) =&gt; {
+  // ...
+  return a + b;
+}
+
+// sin argumentos
+let sayHi = () =&gt; alert(&quot;Hello&quot;);
+
+// con un único argumento
+let double = n =&gt; n * 2;</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<ul>
+<li>Las funciones pueden tener variables locales: son aquellas declaradas dentro de su cuerpo. Estas variables solo son visibles dentro de la función.</li>
+<li>Los parámetros pueden tener valores predeterminados: <code>function sum(a = 1, b = 2) {...}</code>.</li>
+<li>Las funciones siempre devuelven algo. Si no hay <code>return</code>, entonces el resultado es <code>undefined</code>.</li>
+</ul>
+<p>Más: ver <a href="function-basics.html">Funciones</a>, <a href="arrow-functions-basics.html">Funciones Flecha, lo básico</a>.</p>
+<h2><a class="main__anchor" name="mas-por-venir" href="#mas-por-venir">Más por venir</a></h2><p>Esa fue una breve lista de características de JavaScript. Por ahora solo hemos estudiado lo básico. Más adelante en el tutorial encontrará más características especiales y avanzadas de JavaScript.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="arrow-functions-basics.html" data-tooltip="Funciones Flecha, lo básico"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="code-quality.html" data-tooltip="Calidad del código"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjavascript-specials" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fjavascript-specials" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/javascript-specials","identifier":"\/javascript-specials"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.html">Fundamentos de JavaScript</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#estructura-de-codigo">Estructura de Código</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#modo-estricto">Modo estricto</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#variables">Variables</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#interaccion">Interacción</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#operadores">Operadores</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bucles">Bucles</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-construccion-switch">La construcción “switch”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#funciones">Funciones</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#mas-por-venir">Más por venir</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjavascript-specials" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fjavascript-specials" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/02-first-steps/18-javascript-specials" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/javascript-specials by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:48 GMT -->
+</html>

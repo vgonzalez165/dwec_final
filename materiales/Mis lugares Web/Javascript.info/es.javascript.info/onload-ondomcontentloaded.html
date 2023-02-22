@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/onload-ondomcontentloaded by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Página: DOMContentLoaded, load, beforeunload, unload</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="onload-ondomcontentloaded.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Página: DOMContentLoaded, load, beforeunload, unload"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Página: DOMContentLoaded, load, beforeunload, unload"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="loading.html"><link rel="next" href="script-async-defer.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Página: DOMContentLoaded, load, beforeunload, unload"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="onload-ondomcontentloaded.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/onload-ondomcontentloaded"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/onload-ondomcontentloaded"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonload-ondomcontentloaded" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fonload-ondomcontentloaded" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/onload-ondomcontentloaded">عربي</option><option value="https://javascript.info/onload-ondomcontentloaded">English</option><option value="https://es.javascript.info/onload-ondomcontentloaded" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/onload-ondomcontentloaded">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/onload-ondomcontentloaded">Italiano</option><option value="https://ja.javascript.info/onload-ondomcontentloaded">日本語</option><option value="https://ko.javascript.info/onload-ondomcontentloaded">한국어</option><option value="https://learn.javascript.ru/onload-ondomcontentloaded">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/onload-ondomcontentloaded">Українська</option><option value="https://zh.javascript.info/onload-ondomcontentloaded">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="27" max="32" data-tooltip="Lección 27 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="loading.html"><span>El documento y carga de recursos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"El documento y carga de recursos","item":"https://es.javascript.info/loading"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Página: DOMContentLoaded, load, beforeunload, unload</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Página: DOMContentLoaded, load, beforeunload, unload"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>El ciclo de vida de una página HTML tiene tres eventos importantes:</p>
+<ul>
+<li><code>DOMContentLoaded</code> – el navegador HTML está completamente cargado y el árbol DOM está construido, pero es posible que los recursos externos como <code>&lt;img&gt;</code> y hojas de estilo aún no se hayan cargado.</li>
+<li><code>load</code> – no solo se cargó el HTML, sino también todos los recursos externos: imágenes, estilos, etc.</li>
+<li><code>beforeunload/unload</code> – el usuario sale de la pagina.</li>
+</ul>
+<p>Cada evento puede ser útil:</p>
+<ul>
+<li>Evento <code>DOMContentLoaded</code> – DOM está listo, por lo que el controlador puede buscar nodos DOM, inicializar la interfaz.</li>
+<li>Evento <code>load</code> – se cargan recursos externos, por lo que se aplican estilos, se conocen tamaños de imagen, etc.</li>
+<li>Evento <code>beforeunload</code> – el usuario se va: podemos comprobar si el usuario guardó los cambios y preguntarle si realmente quiere irse.</li>
+<li>Evento <code>unload</code> – el usuario casi se fue, pero aún podemos iniciar algunas operaciones, como enviar estadísticas.</li>
+</ul>
+<p>Exploremos los detalles de estos eventos.</p>
+<h2><a class="main__anchor" name="domcontentloaded" href="#domcontentloaded">DOMContentLoaded</a></h2><p>El evento <code>DOMContentLoaded</code> ocurre en el objeto <code>document</code>.</p>
+<p>Debemos usar <code>addEventListener</code> para capturarlo:</p>
+<div id="6q8km2r0vy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.addEventListener(&quot;DOMContentLoaded&quot;, ready);
+// no &quot;document.onDOMContentLoaded = ...&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo:</p>
+<div id="1jq7bk07pn" data-trusted="1" class="code-example" data-demo-height="200" data-refresh="1" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  function ready() {
+    alert('DOM is ready');
+
+    // la imagen aún no está cargada (a menos que se haya almacenado en caché), por lo que el tamaño es 0x0
+    alert(`Image size: ${img.offsetWidth}x${img.offsetHeight}`);
+  }
+
+  document.addEventListener(&quot;DOMContentLoaded&quot;, ready);
+&lt;/script&gt;
+
+&lt;img id=&quot;img&quot; src=&quot;https://en.js.cx/clipart/train.gif?speed=1&amp;cache=0&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el ejemplo, el controlador del evento <code>DOMContentLoaded</code> se ejecuta cuando el documento está cargado, por lo que puede ver todos los elementos, incluido el <code>&lt;img&gt;</code> que está después de él.</p>
+<p>Pero no espera a que se cargue la imagen. Entonces, <code>alert</code> muestra los tamaños en cero.</p>
+<p>A primera vista, el evento <code>DOMContentLoaded</code> es muy simple. El árbol DOM está listo – aquí está el evento. Sin embargo, hay algunas peculiaridades.</p>
+<h3><a class="main__anchor" name="domcontentloaded-y-scripts" href="#domcontentloaded-y-scripts">DOMContentLoaded y scripts</a></h3><p>Cuando el navegador procesa un documento HTML y se encuentra con una etiqueta <code>&lt;script&gt;</code>, debe ejecutarla antes de continuar construyendo el DOM. Esa es una precaución, ya que los scripts pueden querer modificar el DOM, e incluso hacer <code>document.write</code> en él, por lo que<code>DOMContentLoaded</code> tiene que esperar.</p>
+<p>Entonces DOMContentLoaded siempre ocurre después de tales scripts:</p>
+<div id="ybuhmvtpy8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  document.addEventListener(&quot;DOMContentLoaded&quot;, () =&gt; {
+    alert(&quot;DOM listo!&quot;);
+  });
+&lt;/script&gt;
+
+&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  alert(&quot;Libreria cargada, linea de script ejecutada&quot;);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el ejemplo anterior, primero vemos “Biblioteca cargada …” y luego “¡DOM listo!” (se ejecutan todos los scripts).</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Scripts que no bloquean DOMContentLoaded</span></div>
+            <div class="important__content"><p>Hay dos excepciones a esta regla:</p>
+<ol>
+<li>Scripts con el atributo <code>async</code>, que cubriremos <a href="script-async-defer.html">un poco más tarde</a>, no bloquea el <code>DOMContentLoaded</code>.</li>
+<li>Los scripts que se generan dinámicamente con <code>document.createElement('script')</code> y luego se agregan a la página web, tampoco bloquean este evento.</li>
+</ol>
+</div></div>
+<h3><a class="main__anchor" name="domcontentloaded-y-estilos" href="#domcontentloaded-y-estilos">DOMContentLoaded y estilos</a></h3><p>Las hojas de estilo externas no afectan a DOM, por lo que <code>DOMContentLoaded</code> no las espera.</p>
+<p>Pero hay una trampa. Si tenemos un script después del estilo, entonces ese script debe esperar hasta que se cargue la hoja de estilo:</p>
+<div id="y1qk3t51g4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;script&gt;
+  // el script no se ejecuta hasta que se cargue la hoja de estilo
+  alert(getComputedStyle(document.body).marginTop);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La razón de esto es que el script puede querer obtener coordenadas y otras propiedades de elementos dependientes del estilo, como en el ejemplo anterior. Naturalmente, tiene que esperar a que se carguen los estilos.</p>
+<p>Como DOMContentLoaded espera los scripts, ahora también espera a los estilos que están antes que ellos.</p>
+<h3><a class="main__anchor" name="autocompletar-del-navegador-integrado" href="#autocompletar-del-navegador-integrado">Autocompletar del navegador integrado</a></h3><p>Firefox, Chrome y Opera autocompletan formularios en <code>DOMContentLoaded</code>.</p>
+<p>Por ejemplo, si la página tiene un formulario con nombre de usuario y contraseña, y el navegador recuerda los valores, entonces en <code>DOMContentLoaded</code> puede intentar completarlos automáticamente (si el usuario lo aprueba).</p>
+<p>Entonces, si <code>DOMContentLoaded</code> es pospuesto por scripts de largo tiempo de carga, el autocompletado también espera. Probablemente haya visto eso en algunos sitios (si usa la función de autocompletar del navegador): los campos de inicio de sesión/contraseña no se autocompletan inmediatamente, sino con retraso hasta que la página se carga por completo. En realidad es el retraso hasta el evento <code>DOMContentLoaded</code>.</p>
+<h2><a class="main__anchor" name="window-onload" href="#window-onload">window.onload</a></h2><p>El evento <code>load</code> en el objeto <code>window</code> se activa cuando se carga toda la página, incluidos estilos, imágenes y otros recursos. Este evento está disponible a través de la propiedad <code>onload</code>.</p>
+<p>El siguiente ejemplo muestra correctamente los tamaños de las imágenes, porque <code>window.onload</code> espera todas las imágenes:</p>
+<div id="5t7png61q1" data-trusted="1" class="code-example" data-demo-height="200" data-refresh="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  window.onload = function() { // también puede usar window.addEventListener('load', (event) =&gt; {
+    alert('Página cargada');
+
+    // la imagen es cargada al mismo tiempo
+    alert(`Tamaño de imagen: ${img.offsetWidth}x${img.offsetHeight}`);
+  };
+&lt;/script&gt;
+
+&lt;img id=&quot;img&quot; src=&quot;https://en.js.cx/clipart/train.gif?speed=1&amp;cache=0&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="window-onunload" href="#window-onunload">window.onunload</a></h2><p>Cuando un visitante abandona la página, el evento <code>unload</code> se activa en <code>window</code>. Podemos hacer algo allí que no implique un retraso, como cerrar ventanas emergentes relacionadas.</p>
+<p>La excepción notable es el envío de análisis.</p>
+<p>Supongamos que recopilamos datos sobre cómo se usa la página: clicks del mouse, desplazamientos, áreas de página visitadas, etc.</p>
+<p>Naturalmente, el evento <code>unload</code> sucede cuando el usuario nos deja y nos gustaría guardar los datos en nuestro servidor.</p>
+<p>Existe un método especial <code>navigator.sendBeacon(url, data)</code> para tales necesidades, descrito en la especificación <a href="https://w3c.github.io/beacon/">https://w3c.github.io/beacon/</a>.</p>
+<p>Este envía los datos en segundo plano. La transición a otra página no se retrasa: el navegador abandona la página, pero aún realiza <code>sendBeacon</code>.</p>
+<p>Así es como se usa:</p>
+<div id="dwml4jruex" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let analyticsData = { /* objeto con datos recopilados */ };
+
+window.addEventListener(&quot;unload&quot;, function() {
+  navigator.sendBeacon(&quot;/analytics&quot;, JSON.stringify(analyticsData));
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li>La solicitud se envía como POST.</li>
+<li>Podemos enviar no solo una cadena, sino también formularios y otros formatos, como se describe en el capítulo &lt;info: fetch&gt;, pero generalmente es un objeto string.</li>
+<li>Los datos están limitados por 64 kb.</li>
+</ul>
+<p>Cuando finaliza la solicitud <code>sendBeacon</code>, es probable que el navegador ya haya abandonado el documento, por lo que no hay forma de obtener la respuesta del servidor (que suele estar vacía para análisis).</p>
+<p>También hay una bandera <code>keepalive</code> para hacer tales solicitudes “after-page-left” en el método [fetch](info: fetch) para solicitudes de red genéricas. Puede encontrar más información en el capítulo &lt;info: fetch-api&gt;.</p>
+<p>Si queremos cancelar la transición a otra página, no podemos hacerlo aquí. Pero podemos usar otro evento: <code>onbeforeunload</code>.</p>
+<h2><a class="main__anchor" name="window.onbeforeunload" href="#window.onbeforeunload">window.onbeforeunload</a></h2><p>Si un visitante inició la navegación fuera de la página o intenta cerrar la ventana, el controlador <code>beforeunload</code> solicita una confirmación adicional.</p>
+<p>Si cancelamos el evento, el navegador puede preguntar al visitante si está seguro.</p>
+<p>Puede probarlo ejecutando este código y luego recargando la página:</p>
+<div id="e1k10mv1xy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.onbeforeunload = function() {
+  return false;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por razones históricas, devolver una cadena no vacía también cuenta como cancelar el evento. Hace algún tiempo, los navegadores solían mostrarlo como un mensaje, pero como dice la <a href="https://html.spec.whatwg.org/#unloading-documents">especificación moderna</a>, no deberían.</p>
+<p>Aquí hay un ejemplo:</p>
+<div id="mf4d45yfod" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.onbeforeunload = function() {
+  return &quot;Hay cambios sin guardar. ¿Salir ahora?&quot;;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El comportamiento se modificó, porque algunos webmasters abusaron de este controlador de eventos mostrando mensajes engañosos y molestos. Entonces, en este momento, los navegadores antiguos aún pueden mostrarlo como un mensaje, pero aparte de eso, no hay forma de personalizar el mensaje que se muestra al usuario.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">El <code>event.preventDefault()</code> no funciona desde un manejador <code>beforeunload</code></span></div>
+            <div class="important__content"><p>Esto puede sonar extraño, pero la mayoría de los navegadores ignoran <code>event.preventDefault()</code>.</p>
+<p>Lo que significa que el siguiente código puede no funcionar:</p>
+<div id="xm9nhy87et" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.addEventListener(&quot;beforeunload&quot;, (event) =&gt; {
+  // no funciona, así que el manejador de evento no hace nada
+  event.preventDefault();
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En lugar de ello, en tales manejadores uno debe establecer <code>event.returnValue</code> a un string para obtener un resultado similar al pretendido en el código de arriba:</p>
+<div id="99eedn73pd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.addEventListener(&quot;beforeunload&quot;, (event) =&gt; {
+  // funciona, lo mismo que si devolviera desde window.onbeforeunload
+  event.returnValue = &quot;Hsy cambios sin grabar. ¿Abandonar ahora?&quot;;
+});</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="readystate" href="#readystate">readyState</a></h2><p>¿Qué sucede si configuramos el controlador <code>DOMContentLoaded</code> después de cargar el documento?</p>
+<p>Naturalmente, nunca se ejecutará.</p>
+<p>Hay casos en los que no estamos seguros de si el documento está listo o no. Nos gustaría que nuestra función se ejecute cuando se cargue el DOM, ya sea ahora o más tarde.</p>
+<p>La propiedad <code>document.readyState</code> nos informa sobre el estado de carga actual.</p>
+<p>Hay 3 valores posibles:</p>
+<ul>
+<li><code>&quot;loading&quot;</code> – el documento se está cargando.</li>
+<li><code>&quot;interactive&quot;</code> – el documento fue leído por completo.</li>
+<li><code>&quot;complete&quot;</code> – el documento se leyó por completo y todos los recursos (como imágenes) también se cargaron.</li>
+</ul>
+<p>Entonces podemos verificar <code>document.readyState</code> y configurar un controlador o ejecutar el código inmediatamente si está listo.</p>
+<p>Como esto:</p>
+<div id="91rmyxj5pu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function work() { /*...*/ }
+
+if (document.readyState == 'loading') {
+  // cargando todavía, esperar el evento
+  document.addEventListener('DOMContentLoaded', work);
+} else {
+  // DOM está listo!
+  work();
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También existe el evento <code>readystatechange</code> que se activa cuando cambia el estado, por lo que podemos imprimir todos estos estados así:</p>
+<div id="oqlbqnmb1b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// estado actual
+console.log(document.readyState);
+
+//imprimir los cambios de estado
+document.addEventListener('readystatechange', () =&gt; console.log(document.readyState));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El evento <code>readystatechange</code> es una mecánica alternativa para rastrear el estado de carga del documento, apareció hace mucho tiempo. Hoy en día, rara vez se usa.</p>
+<p>Veamos el flujo de eventos completo para ver si están completados.</p>
+<p>Aquí hay un documento con <code>&lt;iframe&gt;</code>, <code>&lt;img&gt;</code> y controladores que registran eventos:</p>
+<div id="f05yoggytt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  log('initial readyState:' + document.readyState);
+
+  document.addEventListener('readystatechange', () =&gt; log('readyState:' + document.readyState));
+  document.addEventListener('DOMContentLoaded', () =&gt; log('DOMContentLoaded'));
+
+  window.onload = () =&gt; log('window onload');
+&lt;/script&gt;
+
+&lt;iframe src=&quot;iframe.html&quot; onload=&quot;log('iframe onload')&quot;&gt;&lt;/iframe&gt;
+
+&lt;img src=&quot;https://en.js.cx/clipart/train.gif&quot; id=&quot;img&quot;&gt;
+&lt;script&gt;
+  img.onload = () =&gt; log('img onload');
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El ejemplo práctico está <a href="https://plnkr.co/edit/DY1kIoW2Gu2ctnWp?p=preview">en el sandbox</a>.</p>
+<p>La salida típica:</p>
+<ol>
+<li>[1] readyState inicial: loading</li>
+<li>[2] readyState: interactive</li>
+<li>[2] DOMContentLoaded</li>
+<li>[3] iframe onload</li>
+<li>[4] img onload</li>
+<li>[4] readyState: complete</li>
+<li>[4] window onload</li>
+</ol>
+<p>Los números entre corchetes denotan el tiempo aproximado en el que ocurre. Los eventos etiquetados con el mismo dígito ocurren aproximadamente al mismo tiempo (+ – unos pocos ms).</p>
+<ul>
+<li><code>document.readyState</code> se convierte en <code>interactive</code> justo antes de <code>DOMContentLoaded</code>. Estas dos cosas realmente significan lo mismo.</li>
+<li><code>document.readyState</code> se convierte en <code>complete</code> cuando se cargan todos los recursos (<code>iframe</code> e <code>img</code>). Aquí podemos ver que ocurre aproximadamente al mismo tiempo que <code>img.onload</code> (<code>img</code> es el último recurso) y <code>window.onload</code>. Cambiar al estado <code>complete</code> significa lo mismo que “window.onload”. La diferencia es que <code>window.onload</code> siempre funciona después de todos los demás controladores <code>load</code>.</li>
+</ul>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Eventos de carga de página:</p>
+<ul>
+<li>El evento <code>DOMContentLoaded</code> se activa en el <code>document</code> cuando el DOM está listo. Podemos aplicar JavaScript a elementos en esta etapa.
+<ul>
+<li>Secuencias de comandos como <code>&lt;script&gt; ... &lt;/script&gt;</code> o <code>&lt;script src =&quot; ... &quot;&gt; &lt;/script&gt;</code> bloquean DOMContentLoaded, el navegador espera a que se ejecuten.</li>
+<li>Las imágenes y otros recursos también pueden seguir cargándose.</li>
+</ul>
+</li>
+<li>El evento <code>load</code> en <code>window</code> se activa cuando se cargan la página y todos los recursos. Rara vez lo usamos, porque generalmente no hay necesidad de esperar tanto.</li>
+<li>El evento <code>beforeunload</code> en <code>window</code> se activa cuando el usuario quiere salir de la página. Si cancelamos el evento, el navegador pregunta si el usuario realmente quiere irse (por ejemplo, tenemos cambios sin guardar).</li>
+<li>El evento <code>unload</code> en <code>window</code> se dispara cuando el usuario finalmente se está yendo, en el controlador solo podemos hacer cosas simples que no impliquen demoras o preguntas al usuario. Debido a esa limitación, rara vez se usa. Podemos enviar una solicitud de red con <code>navigator.sendBeacon</code>.</li>
+<li><code>document.readyState</code> es el estado actual del documento, los cambios se pueden rastrear con el evento <code>readystatechange</code>:
+<ul>
+<li><code>loading</code> – el documento esta cargando.</li>
+<li><code>interactive</code> – el documento se analiza, ocurre aproximadamente casi al mismo tiempo que <code>DOMContentLoaded</code>, pero antes.</li>
+<li><code>complete</code> – el documento y los recursos se cargan, ocurre aproximadamente casi al mismo tiempo que <code>window.onload</code>, pero antes.</li>
+</ul>
+</li>
+</ul>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="loading.html" data-tooltip="El documento y carga de recursos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="script-async-defer.html" data-tooltip="Scripts: async, defer"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonload-ondomcontentloaded" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fonload-ondomcontentloaded" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/onload-ondomcontentloaded","identifier":"\/onload-ondomcontentloaded"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="loading.html">El documento y carga de recursos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#domcontentloaded">DOMContentLoaded</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#window-onload">window.onload</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#window-onunload">window.onunload</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#window.onbeforeunload">window.onbeforeunload</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#readystate">readyState</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonload-ondomcontentloaded" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fonload-ondomcontentloaded" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/5-loading/01-onload-ondomcontentloaded" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/onload-ondomcontentloaded by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+</html>

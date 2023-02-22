@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/regexp-unicode by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "tm";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Unicode: bandera &quot;u&quot; y clase \p{...}</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-unicode.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Unicode: bandera &quot;u&quot; y clase \p{...}"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Unicode: bandera &quot;u&quot; y clase \p{...}"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="regexp-character-classes.html"><link rel="next" href="regexp-anchors.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Unicode: bandera &quot;u&quot; y clase \p{...}"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/regexp-unicode"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-unicode.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/regexp-unicode"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/regexp-unicode"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/regexp-unicode"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/regexp-unicode"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/regexp-unicode"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/regexp-unicode"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/regexp-unicode"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/regexp-unicode"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-unicode" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-unicode" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/regexp-unicode">English</option><option value="https://es.javascript.info/regexp-unicode" selected>Español</option><option value="https://fa.javascript.info/regexp-unicode">فارسی</option><option value="https://fr.javascript.info/regexp-unicode">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/regexp-unicode">Italiano</option><option value="https://ja.javascript.info/regexp-unicode">日本語</option><option value="https://ko.javascript.info/regexp-unicode">한국어</option><option value="https://learn.javascript.ru/regexp-unicode">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/regexp-unicode">Українська</option><option value="https://zh.javascript.info/regexp-unicode">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="3" max="17" data-tooltip="Lección 3 de 17"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="regular-expressions.html"><span>Expresiones Regulares</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Expresiones Regulares","item":"https://es.javascript.info/regular-expressions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 26 de agosto de 2022"><div class="updated-at__content">26 de agosto de 2022</div></div></div><h1 class="main__header-title">Unicode: bandera &quot;u&quot; y clase \p{...}</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Unicode: bandera &quot;u&quot; y clase \p{...}"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript utiliza <a href="https://en.wikipedia.org/wiki/Unicode">codificación Unicode</a> para las cadenas. La mayoría de los caracteres están codificados con 2 bytes, esto permite representar un máximo de 65536 caracteres.</p>
+<p>Ese rango no es lo suficientemente grande como para codificar todos los caracteres posibles, es por eso que algunos caracteres raros se codifican con 4 bytes, por ejemplo como <code>𝒳</code> (X matemática) o <code>😄</code> (una sonrisa), algunos sinogramas, etc.</p>
+<p>Aquí los valores unicode de algunos caracteres:</p>
+<table>
+<thead>
+<tr>
+<th>Carácter</th>
+<th>Unicode</th>
+<th>conteo de Bytes en unicode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td><code>0x0061</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td>≈</td>
+<td><code>0x2248</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td>𝒳</td>
+<td><code>0x1d4b3</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td>𝒴</td>
+<td><code>0x1d4b4</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td>😄</td>
+<td><code>0x1f604</code></td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>Entonces los caracteres como <code>a</code> e <code>≈</code> ocupan 2 bytes, mientras que los códigos para <code>𝒳</code>, <code>𝒴</code> y <code>😄</code> son más largos, tienen 4 bytes.</p>
+<p>Hace mucho tiempo, cuando se creó el lenguaje JavaScript, la codificación Unicode era más simple: no había caracteres de 4 bytes. Por lo tanto, algunas características del lenguaje aún los manejan incorrectamente.</p>
+<p>Por ejemplo, aquí <code>length</code> interpreta que hay dos caracteres:</p>
+<div id="12kjf4plfk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('😄'.length); // 2
+alert('𝒳'.length); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero podemos ver que solo hay uno, ¿verdad? El punto es que <code>length</code> maneja 4 bytes como dos caracteres de 2 bytes. Eso es incorrecto, porque debe considerarse como uno solo (el llamado “par sustituto”, puede leer sobre ellos en el artículo <a href="string.html">Strings</a>).</p>
+<p>Por defecto, las expresiones regulares manejan los “caracteres largos” de 4 bytes como un par de caracteres de 2 bytes cada uno. Y, como sucede con las cadenas, eso puede conducir a resultados extraños. Lo veremos un poco más tarde, en el artículo <span class="markdown-error">No se encontró el artículo &quot;regexp-character-sets-and-range&quot;</span>.</p>
+<p>A diferencia de las cadenas, las expresiones regulares tienen la bandera <code class="pattern">u</code> que soluciona tales problemas. Con dicha bandera, una expresión regular maneja correctamente los caracteres de 4 bytes. Y podemos usar la búsqueda de propiedades Unicode, que veremos a continuación.</p>
+<h2><a class="main__anchor" name="propiedades-unicode-p" href="#propiedades-unicode-p">Propiedades Unicode \p{…}</a></h2><p>Cada carácter en Unicode tiene varias propiedades. Describen a qué “categoría” pertenece el carácter, contienen información diversa al respecto.</p>
+<p>Por ejemplo, si un carácter tiene la propiedad <code>Letter</code>, significa que pertenece a un alfabeto (de cualquier idioma). Y la propiedad <code>Number</code> significa que es un dígito: tal vez árabe o chino, y así sucesivamente.</p>
+<p>Podemos buscar caracteres por su propiedad, usando <code class="pattern">\p{...}</code>. Para usar <code class="pattern">\p{...}</code>, una expresión regular debe usar también <code class="pattern">u</code>.</p>
+<p>Por ejemplo, <code>\p{Letter}</code> denota una letra en cualquiera de los idiomas. También podemos usar <code>\p{L}</code>, ya que <code>L</code> es un alias de <code>Letter</code>. Casi todas las propiedades tienen alias cortos.</p>
+<p>En el ejemplo a continuación se encontrarán tres tipos de letras: inglés, georgiano y coreano.</p>
+<div id="w4ul6ksu3l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;A ბ ㄱ&quot;;
+
+alert( str.match(/\p{L}/gu) ); // A,ბ,ㄱ
+alert( str.match(/\p{L}/g) ); // null (sin coincidencia, como no hay bandera &quot;u&quot;)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Estas son las principales categorías y subcategorías de caracteres:</p>
+<ul>
+<li>Letter (Letra) <code>L</code>:
+<ul>
+<li>lowercase (minúscula) <code>Ll</code></li>
+<li>modifier (modificador) <code>Lm</code>,</li>
+<li>titlecase (capitales) <code>Lt</code>,</li>
+<li>uppercase (mayúscula) <code>Lu</code>,</li>
+<li>other (otro) <code>Lo</code>.</li>
+</ul>
+</li>
+<li>Number (número) <code>N</code>:
+<ul>
+<li>decimal digit (dígito decimal) <code>Nd</code>,</li>
+<li>letter number (número de letras) <code>Nl</code>,</li>
+<li>other (otro) <code>No</code>.</li>
+</ul>
+</li>
+<li>Punctuation (puntuación) <code>P</code>:
+<ul>
+<li>connector (conector) <code>Pc</code>,</li>
+<li>dash (guión) <code>Pd</code>,</li>
+<li>initial quote (comilla inicial) <code>Pi</code>,</li>
+<li>final quote (comilla final) <code>Pf</code>,</li>
+<li>open (abre) <code>Ps</code>,</li>
+<li>close (cierra) <code>Pe</code>,</li>
+<li>other (otro) <code>Po</code>.</li>
+</ul>
+</li>
+<li>Mark (marca) <code>M</code> (acentos etc):
+<ul>
+<li>spacing combining (combinación de espacios) <code>Mc</code>,</li>
+<li>enclosing (encerrado) <code>Me</code>,</li>
+<li>non-spacing (sin espaciado) <code>Mn</code>.</li>
+</ul>
+</li>
+<li>Symbol (símbolo) <code>S</code>:
+<ul>
+<li>currency (moneda) <code>Sc</code>,</li>
+<li>modifier (modificador) <code>Sk</code>,</li>
+<li>math (matemática) <code>Sm</code>,</li>
+<li>other (otro) <code>So</code>.</li>
+</ul>
+</li>
+<li>Separator (separador) <code>Z</code>:
+<ul>
+<li>line (línea) <code>Zl</code>,</li>
+<li>paragraph (párrafo)<code>Zp</code>,</li>
+<li>space (espacio) <code>Zs</code>.</li>
+</ul>
+</li>
+<li>Other (otros) <code>C</code>:
+<ul>
+<li>control <code>Cc</code>,</li>
+<li>format (formato) <code>Cf</code>,</li>
+<li>not assigned (sin asignación) <code>Cn</code>,</li>
+<li>private use (uso privado) <code>Co</code>,</li>
+<li>surrogate (sustituto) <code>Cs</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Entonces, por ejemplo si necesitamos letras en minúsculas, podemos escribir <code class="pattern">\p{Ll}</code>, signos de puntuación: <code class="pattern">\p{P}</code> y así sucesivamente.</p>
+<p>También hay otras categorías derivadas, como:</p>
+<ul>
+<li><code>Alphabetic</code> (alfabético) (<code>Alfa</code>), incluye letras <code>L</code>, más números de letras <code>Nl</code> (por ejemplo, Ⅻ – un carácter para el número romano 12), y otros símbolos <code>Other_Alphabetic</code> (<code>OAlpha</code>).</li>
+<li><code>Hex_Digit</code> incluye dígitos hexadecimales: <code>0-9</code>, <code>a-f</code>.</li>
+<li>…Y así.</li>
+</ul>
+<p>Unicode admite muchas propiedades diferentes, la lista completa es muy grande, estas son las referencias:</p>
+<ul>
+<li>Lista de todas las propiedades por carácter: https://unicode.org/cldr/utility/character.jsp (enlace no disponible).</li>
+<li>Lista de caracteres por propiedad: <a href="https://unicode.org/cldr/utility/list-unicodeset.jsp">https://unicode.org/cldr/utility/list-unicodeset.jsp</a>. (enlace no disponible)</li>
+<li>Alias cortos para propiedades: <a href="https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt">https://www.unicode.org/Public/UCD/latest/ucd/PropertyValueAliases.txt</a>.</li>
+<li>Aquí una base completa de caracteres Unicode en formato de texto, con todas las propiedades: <a href="https://www.unicode.org/Public/UCD/latest/ucd/">https://www.unicode.org/Public/UCD/latest/ucd/</a>.</li>
+</ul>
+<h3><a class="main__anchor" name="ejemplo-numeros-hexadecimales" href="#ejemplo-numeros-hexadecimales">Ejemplo: números hexadecimales</a></h3><p>Por ejemplo, busquemos números hexadecimales, escritos como <code>xFF</code> donde<code>F</code> es un dígito hexadecimal (0…9 o A…F).</p>
+<p>Un dígito hexadecimal se denota como <code class="pattern">\p{Hex_Digit}</code>:</p>
+<div id="u9ia7e4zpx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /x\p{Hex_Digit}\p{Hex_Digit}/u;
+
+alert(&quot;número: xAF&quot;.match(regexp)); // xAF</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="ejemplo-sinogramas-chinos" href="#ejemplo-sinogramas-chinos">Ejemplo: sinogramas chinos</a></h3><p>Busquemos sinogramas chinos.</p>
+<p>Hay una propiedad Unicode <code>Script</code> (un sistema de escritura), que puede tener un valor: <code>Cyrillic</code>, <code>Greek</code>, <code>Arabic</code>, <code>Han</code> (chino), etc. <a href="https://en.wikipedia.org/wiki/Script_(Unicode)">lista completa</a>.</p>
+<p>Para buscar caracteres de un sistema de escritura dado, debemos usar <code class="pattern">Script=&lt;value&gt;</code>, por ejemplo para letras cirílicas: <code class="pattern">\p{sc=Cyrillic}</code>, para sinogramas chinos: <code class="pattern">\p{sc=Han}</code>, y así sucesivamente:</p>
+<div id="364cn52zvc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /\p{sc=Han}/gu; // devuelve sinogramas chinos
+
+let str = `Hello Привет 你好 123_456`;
+
+alert( str.match(regexp) ); // 你,好</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="ejemplo-moneda" href="#ejemplo-moneda">Ejemplo: moneda</a></h3><p>Los caracteres que denotan una moneda, como <code>$</code>, <code>€</code>, <code>¥</code>, tienen la propiedad unicode <code class="pattern">\p{Currency_Symbol}</code>, el alias corto: <code class="pattern">\p{Sc}</code>.</p>
+<p>Usémoslo para buscar precios en el formato “moneda, seguido de un dígito”:</p>
+<div id="4002v5kafm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /\p{Sc}\d/gu;
+
+let str = `Precios: $2, €1, ¥9`;
+
+alert( str.match(regexp) ); // $2,€1,¥9</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Más adelante, en el artículo <a href="regexp-quantifiers.html">Cuantificadores +, *, ? y {n}</a> veremos cómo buscar números que contengan muchos dígitos.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>La bandera <code class="pattern">u</code> habilita el soporte de Unicode en expresiones regulares.</p>
+<p>Eso significa dos cosas:</p>
+<ol>
+<li>Los caracteres de 4 bytes se manejan correctamente: como un solo carácter, no dos caracteres de 2 bytes.</li>
+<li>Las propiedades Unicode se pueden usar en las búsquedas: <code>\p{…}</code>.</li>
+</ol>
+<p>Con las propiedades Unicode podemos buscar palabras en determinados idiomas, caracteres especiales (comillas, monedas), etc.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-character-classes.html" data-tooltip="Clases de caracteres"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="regexp-anchors.html" data-tooltip="Anclas: inicio ^ y final $ de cadena"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-unicode" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-unicode" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/regexp-unicode","identifier":"\/regexp-unicode"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.html">Expresiones Regulares</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#propiedades-unicode-p">Propiedades Unicode \p{…}</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-unicode" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fregexp-unicode" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/9-regular-expressions/03-regexp-unicode" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/regexp-unicode by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:59 GMT -->
+</html>

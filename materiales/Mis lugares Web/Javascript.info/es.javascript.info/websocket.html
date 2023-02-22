@@ -1,0 +1,404 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/websocket by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">WebSocket</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="websocket.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="WebSocket"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="WebSocket"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="long-polling.html"><link rel="next" href="server-sent-events.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="WebSocket"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/websocket"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="websocket.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/websocket"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/websocket"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/websocket"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/websocket"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/websocket"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/websocket"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/websocket"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fwebsocket" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fwebsocket" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/websocket">English</option><option value="https://es.javascript.info/websocket" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/websocket">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/websocket">Italiano</option><option value="https://ja.javascript.info/websocket">日本語</option><option value="https://ko.javascript.info/websocket">한국어</option><option value="https://learn.javascript.ru/websocket">Русский</option><option value="https://tr.javascript.info/websocket">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/websocket">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="11" max="12" data-tooltip="Lección 11 de 12"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="network.html"><span>Solicitudes de red</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Solicitudes de red","item":"https://es.javascript.info/network"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">WebSocket</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="WebSocket"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>El protocolo <code>WebSocket</code>, descrito en la especificación <a href="https://datatracker.ietf.org/doc/html/rfc6455">RFC 6455</a>, brinda una forma de intercambiar datos entre el navegador y el servidor por medio de una conexión persistente. Los datos pueden ser pasados en ambas direcciones como paquetes “packets”, sin cortar la conexión y sin pedidos adicionales de HTTP “HTTP-requests”.</p>
+<p>WebSocket es especialmente bueno para servicios que requieren intercambio de información continua, por ejemplo juegos en línea, sistemas de negocios en tiempo real, entre otros.</p>
+<h2><a class="main__anchor" name="un-ejemplo-simple" href="#un-ejemplo-simple">Un ejemplo simple</a></h2><p>Para abrir una conexión websocket, necesitamos crearla <code>new WebSocket</code> usando el protocolo especial <code>ws</code> en la url:</p>
+<div id="ds0fkw4w65" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:28,&quot;end&quot;:30}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let socket = new WebSocket(&quot;ws://javascript.info&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También hay una versión encriptada <code>wss://</code>. Equivale al HTTPS para los websockets.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Siempre dé preferencia a <code>wss://</code></span></div>
+            <div class="important__content"><p>El protocolo <code>wss://</code> no solamente está encriptado, también es más confiable.</p>
+<p>Esto es porque los datos en <code>ws://</code> no están encriptados y son visibles para cualquier intermediario. Entonces los servidores proxy viejos que no reconocen el protocolo WebSocket podrían interpretar los datos como cabeceras “extrañas” y abortar la conexión.</p>
+<p>En cambio <code>wss://</code> es WebSocket sobre TLS (al igual que HTTPS es HTTP sobre TLS), la seguridad de la capa de transporte encripta los datos en el envío y los desencripta en el destino. Así, los paquetes de datos pasan encriptados a través de los proxy, estos servidores no pueden ver lo que hay dentro y los dejan pasar.</p>
+</div></div>
+<p>Una vez que el socket es creado, debemos escuchar los eventos que ocurren en él. Hay en total 4 eventos:</p>
+<ul>
+<li><strong><code>open</code></strong> – conexión establecida,</li>
+<li><strong><code>message</code></strong> – datos recibidos,</li>
+<li><strong><code>error</code></strong> – error en websocket,</li>
+<li><strong><code>close</code></strong> – conexión cerrada.</li>
+</ul>
+<p>…Y si queremos enviar algo, <code>socket.send(data)</code> lo hará.</p>
+<p>Aquí un ejemplo:</p>
+<div id="mgz640v56i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let socket = new WebSocket(&quot;wss://javascript.info/article/websocket/demo/hello&quot;);
+
+socket.onopen = function(e) {
+  alert(&quot;[open] Conexión establecida&quot;);
+  alert(&quot;Enviando al servidor&quot;);
+  socket.send(&quot;Mi nombre es John&quot;);
+};
+
+socket.onmessage = function(event) {
+  alert(`[message] Datos recibidos del servidor: ${event.data}`);
+};
+
+socket.onclose = function(event) {
+  if (event.wasClean) {
+    alert(`[close] Conexión cerrada limpiamente, código=${event.code} motivo=${event.reason}`);
+  } else {
+    // ej. El proceso del servidor se detuvo o la red está caída
+    // event.code es usualmente 1006 en este caso
+    alert('[close] La conexión se cayó');
+  }
+};
+
+socket.onerror = function(error) {
+  alert(`[error]`);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para propósitos de demostración, tenemos un pequeño servidor <a href="article/websocket/demo/server.js">server.js</a>, escrito en Node.js, ejecutándose para el ejemplo de arriba. Este responde con “Hello from server, John”, espera 5 segundos, y cierra la conexión.</p>
+<p>Entonces verás los eventos <code>open</code> → <code>message</code> → <code>close</code>.</p>
+<p>Eso es realmente todo, ya podemos conversar con WebSocket. Bastante simple, ¿no es cierto?</p>
+<p>Ahora hablemos más en profundidad.</p>
+<h2><a class="main__anchor" name="abriendo-un-websocket" href="#abriendo-un-websocket">Abriendo un websocket</a></h2><p>Cuando se crea <code>new WebSocket(url)</code>, comienza la conexión de inmediato.</p>
+<p>Durante la conexión, el navegador (usando cabeceras o “header”) le pregunta al servidor: “¿Soportas Websockets?” y si si el servidor responde “Sí”, la comunicación continúa en el protocolo WebSocket, que no es HTTP en absoluto.</p>
+<figure><div class="image" style="width:429px">
+      <div class="image__ratio" style="padding-top:81.11888111888112%"></div>
+      <object type="image/svg+xml" data="article/websocket/websocket-handshake.svg" width="429" height="348" class="image__image" data-use-theme>
+        <img src="article/websocket/websocket-handshake.svg" alt="" width="429" height="348">
+      </object>
+      </div></figure><p>Aquí hay un ejemplo de cabeceras de navegador para una petición hecha por <code>new WebSocket(&quot;wss://javascript.info/chat&quot;)</code>.</p>
+<div id="09ouyqgdnh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>GET /chat
+Host: javascript.info
+Origin: https://javascript.info
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==
+Sec-WebSocket-Version: 13</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><code>Origin</code> – La página de origen del cliente, ej. <code>https://javascript.info</code>. Los objetos WebSocket son cross-origin por naturaleza. No existen las cabeceras especiales ni otras limitaciones. De cualquier manera los servidores viejos son incapaces de manejar WebSocket, asi que no hay problemas de compatibilidad. Pero la cabecera <code>Origin</code> es importante, pues habilita al servidor decidir si permite o no la comunicación WebSocket con el sitio web.</li>
+<li><code>Connection: Upgrade</code> – señaliza que el cliente quiere cambiar el protocolo.</li>
+<li><code>Upgrade: websocket</code> – el protocolo requerido es “websocket”.</li>
+<li><code>Sec-WebSocket-Key</code> – una clave de aleatoria generada por el navegador, usada para asegurar que el servidor soporta el protocolo WebSocket. Es aleatoria para evitar que servidores proxy almacenen en cache la comunicación que sigue.</li>
+<li><code>Sec-WebSocket-Version</code> – Versión del protocolo WebSocket, 13 es la actual.</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">El intercambio WebSocket no puede ser emulado</span></div>
+            <div class="important__content"><p>No podemos usar <code>XMLHttpRequest</code> o <code>fetch</code> para hacer este tipo de peticiones HTTP, porque JavaScript no tiene permitido establecer esas cabeceras.</p>
+</div></div>
+<p>Si el servidor concede el cambio a WebSocket, envía como respuesta el código 101:</p>
+<div id="gyd764yvof" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí <code>Sec-WebSocket-Accept</code> es <code>Sec-WebSocket-Key</code>, recodificado usando un algoritmo especial. Al verlo, el navegador entiende que el servidor realmente soporta el protocolo WebSocket.</p>
+<p>A continuación los datos son transferidos usando el protocolo WebSocket. Pronto veremos su estructura (“frames”, marcos o cuadros en español). Y no es HTTP en absoluto.</p>
+<h3><a class="main__anchor" name="extensiones-y-subprotocolos" href="#extensiones-y-subprotocolos">Extensiones y subprotocolos</a></h3><p>Puede tener las cabeceras adicionales <code>Sec-WebSocket-Extensions</code> y <code>Sec-WebSocket-Protocol</code> que describen extensiones y  subprotocolos.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>
+<p><code>Sec-WebSocket-Extensions: deflate-frame</code> significa que el navegador soporta compresión de datos. una extensión es algo relacionado a la transferencia de datos, funcionalidad que extiende el protocolo WebSocket. La cabecera <code>Sec-WebSocket-Extensions</code> es enviada automáticamente por el navegador, con la lista de todas las extensiones que soporta.</p>
+</li>
+<li>
+<p><code>Sec-WebSocket-Protocol: soap, wamp</code> significa que queremos transferir no cualquier dato, sino datos en protocolos <a href="https://es.wikipedia.org/wiki/Simple_Object_Access_Protocol">SOAP</a> o WAMP (“The WebSocket Application Messaging Protocol”). Los subprotocolos de WebSocket están registrados en el <a href="https://www.iana.org/assignments/websocket/websocket.xml">catálogo IANA</a>. Entonces, esta cabecera describe los formatos de datos que vamos a usar.</p>
+<p>Esta cabecera opcional se establece usando el segundo parámetro de <code>new WebSocket</code>, que es el array de subprotocolos. Por ejemplo, si queremos usar SOAP o WAMP:</p>
+<div id="2y93ebuyzm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let socket = new WebSocket(&quot;wss://javascript.info/chat&quot;, [&quot;soap&quot;, &quot;wamp&quot;]);</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<p>El servidor debería responder con una lista de protocolos o extensiones que acepta usar.</p>
+<p>Por ejemplo, la petición:</p>
+<div id="el73wl8d9k" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>GET /chat
+Host: javascript.info
+Upgrade: websocket
+Connection: Upgrade
+Origin: https://javascript.info
+Sec-WebSocket-Key: Iv8io/9s+lYFgZWcXczP8Q==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: deflate-frame
+Sec-WebSocket-Protocol: soap, wamp</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Respuesta:</p>
+<div id="tn8zr78fwl" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: hsBlbuDTkk24srzEOTBUlZAlC2g=
+Sec-WebSocket-Extensions: deflate-frame
+Sec-WebSocket-Protocol: soap</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí el servidor responde que soporta la extensión “deflate-frame”, y únicamente SOAP de los subprotocolos solicitados.</p>
+<h2><a class="main__anchor" name="transferencia-de-datos" href="#transferencia-de-datos">Transferencia de datos</a></h2><p>La comunicación WebSocket consiste de “frames” (cuadros) de fragmentos de datos, que pueden ser enviados de ambos lados y pueden ser de varias clases:</p>
+<ul>
+<li>“text frames” – contiene datos de texto que las partes se mandan entre sí.</li>
+<li>“binary data frames” – contiene datos binarios que las partes se mandan entre sí.</li>
+<li>“ping/pong frames” son usados para testear la conexión; enviados desde el servidor, el navegador responde automáticamente.</li>
+<li>También existe “connection close frame”, y algunos otros frames de servicio.</li>
+</ul>
+<p>En el navegador, trabajamos directamente solamente con frames de texto y binarios.</p>
+<p><strong>El método WebSocket <code>.send()</code> puede enviar tanto datos de texto como binarios.</strong></p>
+<p>Una llamada <code>socket.send(body)</code> permite en <code>body</code> datos en formato string o binarios, incluyendo <code>Blob</code>, <code>ArrayBuffer</code>, etc. No se requiere configuración: simplemente se envían en cualquier formato.</p>
+<p><strong>Cuando recibimos datos, el texto siempre viene como string. Y para datos binarios, podemos elegir entre los formatos <code>Blob</code> y <code>ArrayBuffer</code>.</strong></p>
+<p>Esto se establece en la propiedad <code>socket.binaryType</code>, que es <code>&quot;blob&quot;</code> por defecto y entonces los datos binarios vienen como objetos <code>Blob</code>.</p>
+<p><a href="blob.html">Blob</a> es un objeto binario de alto nivel que se integra directamente con <code>&lt;a&gt;</code>, <code>&lt;img&gt;</code> y otras etiquetas, así que es una opción predeterminada saludable. Pero para procesamiento binario, para acceder a bytes individuales, podemos cambiarlo a <code>&quot;arraybuffer&quot;</code>:</p>
+<div id="djdekm0vz9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>socket.binaryType = &quot;arraybuffer&quot;;
+socket.onmessage = (event) =&gt; {
+  // event.data puede ser string (si es texto) o arraybuffer (si es binario)
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="limitaciones-de-velocidad" href="#limitaciones-de-velocidad">Limitaciones de velocidad</a></h2><p>Supongamos que nuestra app está generando un montón de datos para enviar. Pero el usuario tiene una conexión de red lenta, posiblemente internet móvil fuera de la ciudad.</p>
+<p>Podemos llamar <code>socket.send(data)</code> una y otra vez. Pero los datos serán acumulados en memoria (en un “buffer”) y enviados solamente tan rápido como la velocidad de la red lo permita.</p>
+<p>La propiedad <code>socket.bufferedAmount</code> registra cuántos bytes quedan almacenados (“buffered”) hasta el momento esperando a ser enviados a la red.</p>
+<p>Podemos examinarla  para ver si el “socket” está disponible para transmitir.</p>
+<div id="ed5bp1yps4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// examina el socket cada 100ms y envía más datos
+// solamente si todos los datos existentes ya fueron enviados
+setInterval(() =&gt; {
+  if (socket.bufferedAmount == 0) {
+    socket.send(moreData());
+  }
+}, 100);</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="cierre-de-conexion" href="#cierre-de-conexion">Cierre de conexión</a></h2><p>Normalmente, cuando una parte quiere cerrar la conexión (servidor o navegador, ambos tienen el mismo derecho), envía un “frame de cierre de conexión” con un código numérico y un texto con el motivo.</p>
+<p>El método para eso es:</p>
+<div id="k1quwj7o7g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>socket.close([code], [reason]);</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><code>code</code> es un código especial de cierre de WebSocket (opcional)</li>
+<li><code>reason</code> es un string que describe el motivo de cierre (opcional)</li>
+</ul>
+<p>Entonces el manejador del evento <code>close</code> de la otra parte obtiene el código y el motivo, por ejemplo:</p>
+<div id="fgjdt8micz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// la parte que hace el cierre:
+socket.close(1000, &quot;Work complete&quot;);
+
+// la otra parte:
+socket.onclose = event =&gt; {
+  // event.code === 1000
+  // event.reason === &quot;Work complete&quot;
+  // event.wasClean === true (clean close)
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los códigos más comunes:</p>
+<ul>
+<li><code>1000</code> – cierre normal. Es el predeterminado (usado si no se proporciona <code>code</code>),</li>
+<li><code>1006</code> – no hay forma de establecerlo manualmente, indica que la conexión se perdió (no hay frame de cierre).</li>
+</ul>
+<p>Hay otros códigos como:</p>
+<ul>
+<li><code>1001</code> – una parte se va, por ejemplo el server se está apagando, o el navegador deja la página,</li>
+<li><code>1009</code> – el mensaje es demasiado grande para procesar,</li>
+<li><code>1011</code> – error inesperado en el servidor,</li>
+<li>…y así.</li>
+</ul>
+<p>La lista completa puede encontrarse en <a href="https://tools.ietf.org/html/rfc6455#section-7.4.1">RFC6455, §7.4.1</a>.</p>
+<p>Los códigos de WebSocket son como los que hay de HTTP, pero diferentes. En particular, los códigos menores a <code>1000</code> son reservados, habrá un error si tratamos de establecerlos.</p>
+<div id="jmof1xk2q6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// en caso de conexión que se rompe
+socket.onclose = event =&gt; {
+  // event.code === 1006
+  // event.reason === &quot;&quot;
+  // event.wasClean === false (no hay un frame de cierre)
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="estado-de-la-conexion" href="#estado-de-la-conexion">Estado de la conexión</a></h2><p>Para obtener el estado (state) de la conexión, tenemos la propiedad <code>socket.readyState</code> con valores:</p>
+<ul>
+<li><strong><code>0</code></strong> – “CONNECTING”: la conexión aún no fue establecida,</li>
+<li><strong><code>1</code></strong> – “OPEN”: comunicando,</li>
+<li><strong><code>2</code></strong> – “CLOSING”: la conexión se está cerrando,</li>
+<li><strong><code>3</code></strong> – “CLOSED”: la conexión está cerrada.</li>
+</ul>
+<h2><a class="main__anchor" name="ejemplo-chat" href="#ejemplo-chat">Ejemplo Chat</a></h2><p>Revisemos un ejemplo de chat usando la API WebSocket del navegador y el módulo WebSocket de Node.js <a href="https://github.com/websockets/ws">https://github.com/websockets/ws</a>. Prestaremos atención al lado del cliente, pero el servidor es igual de simple.</p>
+<p>HTML: necesitamos un <code>&lt;form&gt;</code> para enviar mensajes y un <code>&lt;div&gt;</code> para los mensajes entrantes:</p>
+<div id="otfff0k2ry" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;!-- message form --&gt;
+&lt;form name=&quot;publish&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;message&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Send&quot;&gt;
+&lt;/form&gt;
+
+&lt;!-- div with messages --&gt;
+&lt;div id=&quot;messages&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>De JavaScript queremos tres cosas:</p>
+<ol>
+<li>Abrir la conexión.</li>
+<li>Ante el “submit” del form, enviar <code>socket.send(message)</code> el mensaje.</li>
+<li>Al llegar un mensaje, agregarlo a <code>div#messages</code>.</li>
+</ol>
+<p>Aquí el código:</p>
+<div id="egr6h3ti56" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let socket = new WebSocket(&quot;wss://javascript.info/article/websocket/chat/ws&quot;);
+
+// enviar el mensaje del form
+document.forms.publish.onsubmit = function() {
+  let outgoingMessage = this.message.value;
+
+  socket.send(outgoingMessage);
+  return false;
+};
+
+// mensaje recibido - muestra el mensaje en div#messages
+socket.onmessage = function(event) {
+  let message = event.data;
+
+  let messageElem = document.createElement('div');
+  messageElem.textContent = message;
+  document.getElementById('messages').prepend(messageElem);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código de servidor está fuera de nuestro objetivo. Aquí usaremos Node.js, pero no necesitas hacerlo. Otras plataformas también tienen sus formas de trabajar con WebSocket.</p>
+<p>El algoritmo de lado de servidor será:</p>
+<ol>
+<li>Crear <code>clients = new Set()</code> – un conjunto de sockets.</li>
+<li>Para cada websocket aceptado, sumarlo al conjunto <code>clients.add(socket)</code> y establecer un “event listener” <code>message</code> para obtener sus mensajes.</li>
+<li>Cuando un mensaje es recibido: iterar sobre los clientes y enviarlo a todos ellos.</li>
+<li>Cuando una conexión se cierra: <code>clients.delete(socket)</code>.</li>
+</ol>
+<div id="k1w9oo7uez" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const ws = new require('ws');
+const wss = new ws.Server({noServer: true});
+
+const clients = new Set();
+
+http.createServer((req, res) =&gt; {
+  // aquí solo manejamos conexiones websocket
+  // en proyectos reales tendremos también algún código para manejar peticiones no websocket
+  wss.handleUpgrade(req, req.socket, Buffer.alloc(0), onSocketConnect);
+});
+
+function onSocketConnect(ws) {
+  clients.add(ws);
+
+  ws.on('message', function(message) {
+    message = message.slice(0, 50); // la longitud máxima del mensaje será 50
+
+    for(let client of clients) {
+      client.send(message);
+    }
+  });
+
+  ws.on('close', function() {
+    clients.delete(ws);
+  });
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí está el ejemplo funcionando:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="tutorial/zipview/chat0d2a.zip?plunkId=BddqA8szEIuWbUJK" target="_blank" title="descargar como zip" class="toolbar__button toolbar__button_download"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:100px" src="https://es.js.cx/article/websocket/chat/"></iframe>
+  </div><p>Puedes descargarlo (botón arriba/derecha en el iframe) y ejecutarlo localmente. No olvides instalar <a href="https://nodejs.org/en/">Node.js</a> y <code>npm install ws</code> antes de hacerlo.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>WebSocket es la forma moderna de tener conexiones persistentes entre navegador y servidor .</p>
+<ul>
+<li>Los WebSockets no tienen limitaciones “cross-origin”.</li>
+<li>Están muy bien soportados en los navegadores.</li>
+<li>Pueden enviar y recibir datos string y binarios.</li>
+</ul>
+<p>La API es simple.</p>
+<p>Métodos:</p>
+<ul>
+<li><code>socket.send(data)</code>,</li>
+<li><code>socket.close([code], [reason])</code>.</li>
+</ul>
+<p>Eventos:</p>
+<ul>
+<li><code>open</code>,</li>
+<li><code>message</code>,</li>
+<li><code>error</code>,</li>
+<li><code>close</code>.</li>
+</ul>
+<p>El WebSocket por sí mismo no incluye reconexión, autenticación ni otros mecanismos de alto nivel. Hay librerías cliente/servidor para eso, y también es posible implementar esas capacidades manualmente.</p>
+<p>A veces, para integrar WebSocket a un proyecto existente, se ejecuta un servidor WebSocket en paralelo con el servidor HTTP principal compartiendo la misma base de datos. Las peticiones a WebSocket usan <code>wss://ws.site.com</code>, un subdominio que se dirige al servidor de WebSocket mientras que <code>https://site.com</code> va al servidor HTTP principal.</p>
+<p>Seguro, otras formas de integración también son posibles.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="long-polling.html" data-tooltip="Sondeo largo"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="server-sent-events.html" data-tooltip="Eventos enviados por el servidor"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fwebsocket" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fwebsocket" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/websocket","identifier":"\/websocket"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="network.html">Solicitudes de red</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#un-ejemplo-simple">Un ejemplo simple</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#abriendo-un-websocket">Abriendo un websocket</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transferencia-de-datos">Transferencia de datos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#limitaciones-de-velocidad">Limitaciones de velocidad</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#cierre-de-conexion">Cierre de conexión</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#estado-de-la-conexion">Estado de la conexión</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ejemplo-chat">Ejemplo Chat</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fwebsocket" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fwebsocket" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/5-network/11-websocket" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/websocket by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:45 GMT -->
+</html>

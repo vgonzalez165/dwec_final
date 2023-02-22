@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/types by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Tipos de datos</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="types.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Tipos de datos"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Tipos de datos"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="variables.html"><link rel="next" href="alert-prompt-confirm.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Tipos de datos"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/types"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/types"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="types.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/types"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/types"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/types"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/types"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/types"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/types"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/types"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/types"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/types"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/types"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ftypes" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Ftypes" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/types">عربي</option><option value="https://javascript.info/types">English</option><option value="https://es.javascript.info/types" selected>Español</option><option value="https://fa.javascript.info/types">فارسی</option><option value="https://fr.javascript.info/types">Français</option><option value="https://id.javascript.info/types">Indonesia</option><option value="https://it.javascript.info/types">Italiano</option><option value="https://ja.javascript.info/types">日本語</option><option value="https://ko.javascript.info/types">한국어</option><option value="https://learn.javascript.ru/types">Русский</option><option value="https://tr.javascript.info/types">Türkçe</option><option value="https://uk.javascript.info/types">Українська</option><option value="https://zh.javascript.info/types">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="9" max="93" data-tooltip="Lección 9 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="first-steps.html"><span>Fundamentos de JavaScript</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Fundamentos de JavaScript","item":"https://es.javascript.info/first-steps"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 14 de noviembre de 2022"><div class="updated-at__content">14 de noviembre de 2022</div></div></div><h1 class="main__header-title">Tipos de datos</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Tipos de datos"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Un valor en JavaScript siempre pertenece a un tipo de dato determinado. Por ejemplo, un string o un número.</p>
+<p>Hay ocho tipos de datos básicos en JavaScript. En este capítulo los cubriremos en general y en los próximos hablaremos de cada uno de ellos en detalle.</p>
+<p>Podemos almacenar un valor de cualquier tipo dentro de una variable. Por ejemplo, una variable puede contener en un momento un string y luego almacenar un número:</p>
+<div id="39fsvjl3zp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// no hay error
+let message = &quot;hola&quot;;
+message = 123456;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los lenguajes de programación que permiten estas cosas, como JavaScript, se denominan “dinámicamente tipados”, lo que significa que allí hay tipos de datos, pero las variables no están vinculadas rígidamente a ninguno de ellos.</p>
+<h2><a class="main__anchor" name="number" href="#number">Number</a></h2><div id="v8r1ne2n57" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let n = 123;
+n = 12.345;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El tipo <em>number</em> representa tanto números enteros como de punto flotante.</p>
+<p>Hay muchas operaciones para números. Por ejemplo, multiplicación <code>*</code>, división <code>/</code>, suma <code>+</code>, resta <code>-</code>, y demás.</p>
+<p>Además de los números comunes, existen los llamados “valores numéricos especiales” que también pertenecen a este tipo de datos: <code>Infinity</code>, <code>-Infinity</code> y <code>NaN</code>.</p>
+<ul>
+<li>
+<p><code>Infinity</code> representa el <a href="https://es.wikipedia.org/wiki/Infinito">Infinito</a> matemático ∞. Es un valor especial que es mayor que cualquier número.</p>
+<p>Podemos obtenerlo como resultado de la división por cero:</p>
+<div id="ghwj2mgaw0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 1 / 0 ); // Infinity</code></pre>
+        </div>
+      </div>
+      
+      </div><p>O simplemente hacer referencia a él directamente:</p>
+<div id="nn59qwribc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Infinity ); // Infinity</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><code>NaN</code> representa un error de cálculo. Es el resultado de una operación matemática incorrecta o indefinida, por ejemplo:</p>
+<div id="58p6mdclip" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( &quot;no es un número&quot; / 2 ); // NaN, tal división es errónea</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>NaN</code> es “pegajoso”. Cualquier otra operación sobre <code>NaN</code> devuelve <code>NaN</code>:</p>
+<div id="6y3a41ed0o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( NaN + 1 ); // NaN
+alert( 3 * NaN ); // NaN
+alert( &quot;not a number&quot; / 2 - 1 ); // NaN</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por lo tanto, si hay un <code>NaN</code> en alguna parte de una expresión matemática, se propaga a todo el resultado (con una única excepción: <code>NaN ** 0</code> es <code>1</code>).</p>
+</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Las operaciones matemáticas son seguras</span></div>
+            <div class="important__content"><p>Hacer matemáticas es “seguro” en JavaScript. Podemos hacer cualquier cosa: dividir por cero, tratar las cadenas no numéricas como números, etc.</p>
+<p>El script nunca se detendrá con un error fatal (“morir”). En el peor de los casos, obtendremos <code>NaN</code> como resultado.</p>
+</div></div>
+<p>Los valores numéricos especiales pertenecen formalmente al tipo “número”. Por supuesto que no son números en el sentido estricto de la palabra.</p>
+<p>Veremos más sobre el trabajo con números en el capítulo <a href="number.html">Números</a>.</p>
+<h2><a class="main__anchor" name="bigint-type" href="#bigint-type">BigInt</a></h2><p>En JavaScript, el tipo “number” no puede representar de forma segura valores enteros mayores que <code>(2<sup>53</sup>-1)</code> (eso es <code>9007199254740991</code>), o menor que <code>-(2<sup>53</sup>-1)</code> para negativos.</p>
+<p>Para ser realmente precisos, el tipo de dato “number” puede almacenar enteros muy grandes (hasta <code>1.7976931348623157 * 10<sup>308</sup></code>), pero fuera del rango de enteros seguros <code>±(2<sup>53</sup>-1)</code> habrá un error de precisión, porque no todos los dígitos caben en el almacén fijo de 64-bit. Así que es posible que se almacene un valor “aproximado”.</p>
+<p>Por ejemplo, estos dos números (justo por encima del rango seguro) son iguales:</p>
+<div id="kcb958sq0w" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>console.log(9007199254740991 + 1); // 9007199254740992
+console.log(9007199254740991 + 2); // 9007199254740992</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos decir que ningún entero impar mayor que <code>(2<sup>53</sup>-1)</code> puede almacenarse en el tipo de dato “number”.</p>
+<p>Para la mayoría de los propósitos, el rango <code>±(2<sup>53</sup>-1)</code> es suficiente, pero a veces necesitamos números realmente grandes; por ejemplo, para criptografía o marcas de tiempo de precisión de microsegundos.</p>
+<p><code>BigInt</code> se agregó recientemente al lenguaje para representar enteros de longitud arbitraria.</p>
+<p>Un valor <code>BigInt</code> se crea agregando <code>n</code> al final de un entero:</p>
+<div id="oqc91olat0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// la &quot;n&quot; al final significa que es un BigInt
+const bigInt = 1234567890123456789012345678901234567890n;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como los números <code>BigInt</code> rara vez se necesitan, no los cubrimos aquí sino que les dedicamos un capítulo separado &lt;info: bigint&gt;. Léelo cuando necesites números tan grandes.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Problemas de compatibilidad</span></div>
+            <div class="important__content"><p>En este momento, <code>BigInt</code> está soportado por Firefox/Chrome/Edge/Safari, pero no por IE.</p>
+</div></div>
+<p>Puedes revisar la <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt#Browser_compatibility">tabla de compatibilidad de BigInt en <em>MDN</em></a> para saber qué versiones de navegador tienen soporte.</p>
+<h2><a class="main__anchor" name="string" href="#string">String</a></h2><p>Un <em>string</em> en JavaScript es una cadena de caracteres y debe colocarse entre comillas.</p>
+<div id="xkeg49hlli" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;Hola&quot;;
+let str2 = 'Las comillas simples también están bien';
+let phrase = `se puede incrustar otro ${str}`;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En JavaScript, hay 3 tipos de comillas.</p>
+<ol>
+<li>Comillas dobles: <code>&quot;Hola&quot;</code>.</li>
+<li>Comillas simples: <code>'Hola'</code>.</li>
+<li>Backticks (comillas invertidas): <code>`Hola`</code>.</li>
+</ol>
+<p>Las comillas dobles y simples son comillas “sencillas” (es decir, funcionan igual). No hay diferencia entre ellas en JavaScript.</p>
+<p>Los backticks son comillas de “funcionalidad extendida”. Nos permiten incrustar variables y expresiones en una cadena de caracteres encerrándolas en <code>${...}</code>, por ejemplo:</p>
+<div id="andrlxtg2u" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;cols&quot;:[{&quot;start&quot;:24,&quot;end&quot;:32}]},{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:14,&quot;end&quot;:21}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let name = &quot;John&quot;;
+
+// incrustar una variable
+alert( `Hola, ${name}!` ); // Hola, John!
+
+// incrustar una expresión
+alert( `el resultado es ${1 + 2}` ); //el resultado es 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La expresión dentro de <code>${...}</code> se evalúa y el resultado pasa a formar parte de la cadena. Podemos poner cualquier cosa ahí dentro: una variable como <code>name</code>, una expresión aritmética como <code>1 + 2</code>, o algo más complejo.</p>
+<p>Toma en cuenta que esto sólo se puede hacer con los backticks. ¡Las otras comillas no tienen esta capacidad de incrustación!</p>
+<div id="mj1oc0oxbv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( &quot;el resultado es ${1 + 2}&quot; ); // el resultado es ${1 + 2} (las comillas dobles no hacen nada)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el capítulo <a href="string.html">Strings</a> trataremos más a fondo las cadenas.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">No existe el tipo <em>carácter</em></span></div>
+            <div class="important__content"><p>En algunos lenguajes, hay un tipo especial “carácter” para un solo carácter. Por ejemplo, en el lenguaje C y en Java es <code>char</code>.</p>
+<p>En JavaScript no existe tal tipo. Sólo hay un tipo: <code>string</code>. Un string puede estar formado por un solo carácter, por ninguno, o por varios de ellos.</p>
+</div></div>
+<h2><a class="main__anchor" name="boolean-tipo-logico" href="#boolean-tipo-logico">Boolean (tipo lógico)</a></h2><p>El tipo <em>boolean</em> tiene sólo dos valores posibles: <code>true</code> y <code>false</code>.</p>
+<p>Este tipo se utiliza comúnmente para almacenar valores de sí/no: <code>true</code> significa “sí, correcto, verdadero”, y <code>false</code> significa “no, incorrecto, falso”.</p>
+<p>Por ejemplo:</p>
+<div id="sj3tkqxx7k" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let nameFieldChecked = true; // sí, el campo name está marcado
+let ageFieldChecked = false; // no, el campo age no está marcado</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los valores booleanos también son el resultado de comparaciones:</p>
+<div id="6c064xqsi0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let isGreater = 4 &gt; 1;
+
+alert( isGreater ); // verdadero (el resultado de la comparación es &quot;sí&quot;)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el capítulo <a href="logical-operators.html">Operadores Lógicos</a> trataremos más a fondo el tema de los booleanos.</p>
+<h2><a class="main__anchor" name="el-valor-null-nulo" href="#el-valor-null-nulo">El valor “null” (nulo)</a></h2><p>El valor especial <code>null</code> no pertenece a ninguno de los tipos descritos anteriormente.</p>
+<p>Forma un tipo propio separado que contiene sólo el valor <code>null</code>:</p>
+<div id="keg5uvrzig" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = null;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En JavaScript, <code>null</code> no es una “referencia a un objeto inexistente” o un “puntero nulo” como en otros lenguajes.</p>
+<p>Es sólo un valor especial que representa “nada”, “vacío” o “valor desconocido”.</p>
+<p>El código anterior indica que el valor de <code>age</code> es desconocido o está vacío por alguna razón.</p>
+<h2><a class="main__anchor" name="el-valor-undefined-indefinido" href="#el-valor-undefined-indefinido">El valor “undefined” (indefinido)</a></h2><p>El valor especial <code>undefined</code> también se distingue. Hace un tipo propio, igual que <code>null</code>.</p>
+<p>El significado de <code>undefined</code> es “valor no asignado”.</p>
+<p>Si una variable es declarada, pero no asignada, entonces su valor es <code>undefined</code>:</p>
+<div id="fum8g4gwrg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age;
+
+alert(age); // muestra &quot;undefined&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Técnicamente, es posible asignar <code>undefined</code> a cualquier variable:</p>
+<div id="idylvvdrur" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = 100;
+
+// cambiando el valor a undefined
+age = undefined;
+
+alert(age); // &quot;undefined&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero no recomendamos hacer eso. Normalmente, usamos <code>null</code> para asignar un valor “vacío” o “desconocido” a una variable, mientras <code>undefined</code> es un valor inicial reservado para cosas que no han sido asignadas.</p>
+<h2><a class="main__anchor" name="object-y-symbol" href="#object-y-symbol">Object y Symbol</a></h2><p>El tipo <code>object</code> (objeto) es especial.</p>
+<p>Todos los demás tipos se llaman “primitivos” porque sus valores pueden contener una sola cosa (ya sea una cadena,  un número o lo que sea). Por el contrario, los objetos se utilizan para almacenar colecciones de datos y entidades más complejas.</p>
+<p>Siendo así de importantes, los objetos merecen un trato especial. Nos ocuparemos de ellos más adelante en el capítulo <a href="object.html">Objetos</a> después de aprender más sobre los primitivos.</p>
+<p>El tipo <code>symbol</code> (símbolo) se utiliza para crear identificadores únicos para los objetos. Tenemos que mencionarlo aquí para una mayor integridad, pero es mejor estudiar este tipo después de los objetos.</p>
+<h2><a class="main__anchor" name="type-typeof" href="#type-typeof">El operador typeof</a></h2><p>El operador <code>typeof</code> devuelve el tipo de dato del operando. Es útil cuando queremos procesar valores de diferentes tipos de forma diferente o simplemente queremos hacer una comprobación rápida.</p>
+<p>La llamada a <code>typeof x</code> devuelve una cadena con el nombre del tipo:</p>
+<div id="z3g50zr4vq" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:16,&quot;end&quot;:16},{&quot;start&quot;:14,&quot;end&quot;:14},{&quot;start&quot;:12,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>typeof undefined // &quot;undefined&quot;
+
+typeof 0 // &quot;number&quot;
+
+typeof 10n // &quot;bigint&quot;
+
+typeof true // &quot;boolean&quot;
+
+typeof &quot;foo&quot; // &quot;string&quot;
+
+typeof Symbol(&quot;id&quot;) // &quot;symbol&quot;
+
+typeof Math // &quot;object&quot;  (1)
+
+typeof null // &quot;object&quot;  (2)
+
+typeof alert // &quot;function&quot;  (3)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las últimas tres líneas pueden necesitar una explicación adicional:</p>
+<ol>
+<li><code>Math</code> es un objeto incorporado que proporciona operaciones matemáticas. Lo aprenderemos en el capítulo <a href="number.html">Números</a>. Aquí sólo sirve como ejemplo de un objeto.</li>
+<li>El resultado de <code>typeof null</code> es <code>&quot;object&quot;</code>. Esto está oficialmente reconocido como un error de comportamiento de <code>typeof</code> que proviene de los primeros días de JavaScript y se mantiene por compatibilidad. Definitivamente <code>null</code> no es un objeto. Es un valor especial con un tipo propio separado.</li>
+<li>El resultado de <code>typeof alert</code> es <code>&quot;function&quot;</code> porque <code>alert</code> es una función. Estudiaremos las funciones en los próximos capítulos donde veremos que no hay ningún tipo especial “function” en JavaScript. Las funciones pertenecen al tipo objeto. Pero <code>typeof</code> las trata de manera diferente, devolviendo <code>function</code>. Además proviene de los primeros días de JavaScript. Técnicamente dicho comportamiento es incorrecto, pero puede ser conveniente en la práctica.</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Sintaxis de <code>typeof(x)</code></span></div>
+            <div class="important__content"><p>Se puede encontrar otra sintaxis en algún código: <code>typeof(x)</code>. Es lo mismo que <code>typeof x</code>.</p>
+<p>Para ponerlo en claro: <code>typeof</code> es un operador, no una función. Los paréntesis aquí no son parte del operador <code>typeof</code>. Son del tipo usado en agrupamiento matemático.</p>
+<p>Usualmente, tales paréntesis contienen expresiones matemáticas tales como <code>(2 + 2)</code>, pero aquí solo tienen un argumento <code>(x)</code>. Sintácticamente, permiten evitar el espacio entre el operador <code>typeof</code> y su argumento, y a algunas personas les gusta así.</p>
+<p>Algunos prefieren <code>typeof(x)</code>, aunque la sintaxis <code>typeof x</code> es mucho más común.</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Hay 8 tipos básicos en JavaScript.</p>
+<ul>
+<li>Siete tipos de datos primitivos
+<ul>
+<li><code>number</code> para números de cualquier tipo: enteros o de punto flotante, los enteros están limitados por <code>±(2<sup>53</sup>-1)</code>.</li>
+<li><code>bigint</code> para números enteros de longitud arbitraria.</li>
+<li><code>string</code> para cadenas. Una cadena puede tener cero o más caracteres, no hay un tipo especial para un único carácter.</li>
+<li><code>boolean</code> para verdadero y falso: <code>true</code>/<code>false</code>.</li>
+<li><code>null</code> para valores desconocidos – un tipo independiente que tiene un solo valor nulo: <code>null</code>.</li>
+<li><code>undefined</code> para valores no asignados – un tipo independiente que tiene un único valor “indefinido”: <code>undefined</code>.</li>
+<li><code>symbol</code> para identificadores únicos.</li>
+</ul>
+</li>
+<li>Y un tipo de dato no primitivo:
+<ul>
+<li><code>object</code> para estructuras de datos complejas.</li>
+</ul>
+</li>
+</ul>
+<p>El operador <code>typeof</code> nos permite ver qué tipo está almacenado en una variable.</p>
+<ul>
+<li>Dos formas: <code>typeof x</code> o <code>typeof(x)</code>.</li>
+<li>Devuelve una cadena con el nombre del tipo. Por ejemplo <code>&quot;string&quot;</code>.</li>
+<li>Para <code>null</code> devuelve <code>&quot;object&quot;</code>: esto es un error en el lenguaje, en realidad no es un objeto.</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#comillas" name="comillas">Comillas</a></h3><a class="task__open-link" href="task/string-quotes.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>¿Cuál es la salida del script?</p>
+<div id="930igapa9e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let name = &quot;Ilya&quot;;
+
+alert( `Hola ${1}` ); // ?
+
+alert( `Hola ${&quot;name&quot;}` ); // ?
+
+alert( `Hola ${name}` ); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Los backticks incrustan la expresión dentro de <code>${...}</code> en la cadena.</p>
+<div id="5jttth95lg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let name = &quot;Ilya&quot;;
+
+// la expresión es un número 1
+alert( `hola ${1}` ); // hola 1
+
+// la expresión es una cadena &quot;nombre&quot;
+alert( `hola ${&quot;name&quot;}` ); // hola name
+
+// la expresión es una variable, incrustada
+alert( `hola ${name}` ); // hola Ilya</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="variables.html" data-tooltip="Variables"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="alert-prompt-confirm.html" data-tooltip="Interacción: alert, prompt, confirm"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ftypes" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Ftypes" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/types","identifier":"\/types"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.html">Fundamentos de JavaScript</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#number">Number</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bigint-type">BigInt</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#string">String</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#boolean-tipo-logico">Boolean (tipo lógico)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#el-valor-null-nulo">El valor “null” (nulo)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#el-valor-undefined-indefinido">El valor “undefined” (indefinido)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#object-y-symbol">Object y Symbol</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#type-typeof">El operador typeof</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ftypes" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Ftypes" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/02-first-steps/05-types" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/types by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:46 GMT -->
+</html>

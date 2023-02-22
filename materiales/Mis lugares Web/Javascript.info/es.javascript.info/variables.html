@@ -1,0 +1,533 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/variables by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:46 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Variables</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="variables.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Variables"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Variables"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="strict-mode.html"><link rel="next" href="types.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Variables"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/variables"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/variables"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="variables.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/variables"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/variables"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/variables"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/variables"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/variables"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/variables"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/variables"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/variables"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/variables"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/variables"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fvariables" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fvariables" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/variables">عربي</option><option value="https://javascript.info/variables">English</option><option value="https://es.javascript.info/variables" selected>Español</option><option value="https://fa.javascript.info/variables">فارسی</option><option value="https://fr.javascript.info/variables">Français</option><option value="https://id.javascript.info/variables">Indonesia</option><option value="https://it.javascript.info/variables">Italiano</option><option value="https://ja.javascript.info/variables">日本語</option><option value="https://ko.javascript.info/variables">한국어</option><option value="https://learn.javascript.ru/variables">Русский</option><option value="https://tr.javascript.info/variables">Türkçe</option><option value="https://uk.javascript.info/variables">Українська</option><option value="https://zh.javascript.info/variables">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="8" max="93" data-tooltip="Lección 8 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="first-steps.html"><span>Fundamentos de JavaScript</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Fundamentos de JavaScript","item":"https://es.javascript.info/first-steps"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 21 de noviembre de 2022"><div class="updated-at__content">21 de noviembre de 2022</div></div></div><h1 class="main__header-title">Variables</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Variables"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>La mayoría del tiempo, una aplicación de JavaScript necesita trabajar con información. Aquí hay 2 ejemplos:</p>
+<ol>
+<li>Una tienda en línea – La información puede incluir los bienes a la venta y un “carrito de compras”.</li>
+<li>Una aplicación de chat – La información puede incluir los usuarios, mensajes, y mucho más.</li>
+</ol>
+<p>Utilizamos las variables para almacenar esta información.</p>
+<h2><a class="main__anchor" name="una-variable" href="#una-variable">Una variable</a></h2><p>Una <a href="https://es.wikipedia.org/wiki/Variable_(programación)">variable</a> es un “almacén con un nombre” para guardar datos. Podemos usar variables para almacenar golosinas, visitantes, y otros datos.</p>
+<p>Para generar una variable en JavaScript, se usa la palabra clave <code>let</code>.</p>
+<p>La siguiente declaración genera (en otras palabras: <em>declara</em> o <em>define</em>) una variable con el nombre “message”:</p>
+<div id="d1snjf4bwr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora podemos introducir datos en ella al utilizar el operador de asignación <code>=</code>:</p>
+<div id="c7t9u6fx1g" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message;
+
+message = 'Hola'; // almacenar la cadena 'Hola' en la variable llamada message</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La cadena ahora está almacenada en el área de la memoria asociada con la variable. La podemos acceder utilizando el nombre de la variable:</p>
+<div id="4nzis8s5ud" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message;
+message = 'Hola!';
+
+alert(message); // muestra el contenido de la variable</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para ser concisos, podemos combinar la declaración de la variable y su asignación en una sola línea:</p>
+<div id="yv4jjxm2tt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message = 'Hola!'; // define la variable y asigna un valor
+
+alert(message); // Hola!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos declarar variables múltiples en una sola línea:</p>
+<div id="v8ojzis0sd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = 'John', age = 25, message = 'Hola';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto puede parecer más corto, pero no lo recomendamos. Por el bien de la legibilidad, por favor utiliza una línea por variable.</p>
+<p>La versión de líneas múltiples es un poco más larga, pero se lee más fácil:</p>
+<div id="rlpxqglhwr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = 'John';
+let age = 25;
+let message = 'Hola';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Algunas personas también definen variables múltiples en estilo multilínea:</p>
+<div id="krsyleqqn3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = 'John',
+  age = 25,
+  message = 'Hola';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Incluso en este estilo “coma primero”:</p>
+<div id="21yo6m78ao" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = 'John'
+  , age = 25
+  , message = 'Hola';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Técnicamente, todas estas variantes hacen lo mismo. Así que, es cuestión de gusto personal y preferencia estética.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>var</code> en vez de <code>let</code></span></div>
+            <div class="important__content"><p>En scripts más viejos, a veces se encuentra otra palabra clave: <code>var</code> en lugar de <code>let</code>:</p>
+<div id="94ty8ibyzs" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:3}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>var mensaje = 'Hola';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La palabra clave <code>var</code> es <em>casi</em> lo mismo que <code>let</code>. También hace la declaración de una variable, aunque de un modo ligeramente distinto, y más antiguo.</p>
+<p>Existen sutiles diferencias entre <code>let</code> y <code>var</code>, pero no nos interesan en este momento. Cubriremos el tema a detalle en el capítulo <a href="var.html">La vieja &quot;var&quot;</a>.</p>
+</div></div>
+<h2><a class="main__anchor" name="una-analogia-de-la-vida-real" href="#una-analogia-de-la-vida-real">Una analogía de la vida real</a></h2><p>Podemos comprender fácilmente el concepto de una “variable” si nos la imaginamos como una “caja” con una etiqueta de nombre único pegada en ella.</p>
+<p>Por ejemplo, podemos imaginar la variable <code>message</code> como una caja etiquetada <code>&quot;message&quot;</code> con el valor <code>&quot;Hola!&quot;</code> adentro:</p>
+<figure><div class="image" style="width:166px">
+      <div class="image__ratio" style="padding-top:87.34939759036145%"></div>
+      <object type="image/svg+xml" data="article/variables/variable.svg" width="166" height="145" class="image__image" data-use-theme>
+        <img src="article/variables/variable.svg" alt="" width="166" height="145">
+      </object>
+      </div></figure><p>Podemos introducir cualquier valor a la caja.</p>
+<p>También la podemos cambiar cuantas veces queramos:</p>
+<div id="3gyjivyezm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message;
+
+message = 'Hola!';
+
+message = 'Mundo!'; // valor alterado
+
+alert(message);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando el valor ha sido alterado, los datos antiguos serán removidos de la variable:</p>
+<figure><div class="image" style="width:392px">
+      <div class="image__ratio" style="padding-top:48.97959183673469%"></div>
+      <object type="image/svg+xml" data="article/variables/variable-change.svg" width="392" height="192" class="image__image" data-use-theme>
+        <img src="article/variables/variable-change.svg" alt="" width="392" height="192">
+      </object>
+      </div></figure><p>También podemos declarar dos variables y copiar datos de una a la otra.</p>
+<div id="dq7q1w4rym" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let hello = 'Hola mundo!';
+
+let message;
+
+// copia 'Hola mundo' de hello a message
+message = hello;
+
+// Ahora, ambas variables contienen los mismos datos
+alert(hello); // Hola mundo!
+alert(message); // Hola mundo!</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Declarar dos veces lanza un error</span></div>
+            <div class="important__content"><p>Una variable debe ser declarada solamente una vez.</p>
+<p>Una declaración repetida de la misma variable es un error:</p>
+<div id="4mjz4m4xcq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message = &quot;This&quot;;
+
+// 'let' repetidos lleva a un error
+let message = &quot;That&quot;; // SyntaxError: 'message' ya fue declarado</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Debemos declarar una variable una sola vez y desde entonces referirnos a ella sin <code>let</code>.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Lenguajes funcionales</span></div>
+            <div class="important__content"><p>Es interesante notar la existencia de la <a href="https://es.wikipedia.org/wiki/Programación_funcional">programación funcional</a>. Los lenguajes funcionales “puros”, como <a href="https://es.wikipedia.org/wiki/Haskell">Haskell</a>, prohíben cambiar el valor de las variables.</p>
+<p>En tales lenguajes, una vez que la variable ha sido almacenada “en la caja”, permanece allí por siempre. Si necesitamos almacenar algo más, el lenguaje nos obliga a crear una nueva caja (generar una nueva variable). No podemos reusar la antigua.</p>
+<p>Aunque a primera vista puede parecer un poco extraño, estos lenguajes son muy capaces de desarrollo serio. Más aún: existen áreas, como la computación en paralelo, en las cuales esta limitación otorga ciertas ventajas.</p>
+</div></div>
+<h2><a class="main__anchor" name="variable-naming" href="#variable-naming">Nombramiento de variables</a></h2><p>Existen dos limitaciones de nombre de variables en JavaScript:</p>
+<ol>
+<li>El nombre únicamente puede incluir letras, dígitos, o los símbolos <code>$</code> y <code>_</code>.</li>
+<li>El primer carácter no puede ser un dígito.</li>
+</ol>
+<p>Ejemplos de nombres válidos:</p>
+<div id="g82z0bzvua" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let userName;
+let test123;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando el nombre contiene varias palabras, se suele usar el estilo <a href="https://es.wikipedia.org/wiki/Camel_case">camelCase</a> (capitalización en camello), donde las palabras van pegadas una detrás de otra, con cada inicial en mayúscula: <code>miNombreMuyLargo</code>.</p>
+<p>Es interesante notar que el símbolo del dólar <code>'$'</code> y el guion bajo <code>'_'</code> también se utilizan en nombres. Son símbolos comunes, tal como las letras, sin ningún significado especial.</p>
+<p>Los siguientes nombres son válidos:</p>
+<div id="41t900g71k" data-trusted="0" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let $ = 1; // Declara una variable con el nombre &quot;$&quot;
+let _ = 2; // y ahora una variable con el nombre &quot;_&quot;
+
+alert($ + _); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ejemplos de nombres incorrectos:</p>
+<div id="aiicb2720y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let 1a; // no puede iniciar con un dígito
+
+let my-name; // los guiones '-' no son permitidos en nombres</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">La Capitalización es Importante</span></div>
+            <div class="important__content"><p>Dos variables con nombres <code>manzana</code> y <code>MANZANA</code> son variables distintas.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Las letras que no son del alfabeto inglés están permitidas, pero no se recomiendan</span></div>
+            <div class="important__content"><p>Es posible utilizar letras de cualquier alfabeto, incluyendo letras del cirílico, logogramas chinos, etc.:</p>
+<div id="e3ichaomgo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let имя = '...';
+let 我 = '...';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Técnicamente, no existe ningún error aquí. Tales nombres están permitidos, pero existe una tradición internacional de utilizar inglés en el nombramiento de variables. Incluso si estamos escribiendo un script pequeño, este puede tener una larga vida por delante. Puede ser necesario que gente de otros países deba leerlo en algún momento.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Nombres reservados</span></div>
+            <div class="important__content"><p>Hay una <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords">lista de palabras reservadas</a>, las cuales no pueden ser utilizadas como nombre de variable porque el lenguaje en sí las utiliza.</p>
+<p>Por ejemplo: <code>let</code>, <code>class</code>, <code>return</code>, y <code>function</code> están reservadas.</p>
+<p>El siguiente código nos da un error de sintaxis:</p>
+<div id="io6qacxab3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let let = 5; // no se puede le nombrar &quot;let&quot; a una variable  ¡Error!
+let return = 5; // tampoco se le puede nombrar &quot;return&quot;, ¡Error!</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Una asignación sin utilizar <code>use strict</code></span></div>
+            <div class="important__content"><p>Normalmente, debemos definir una variable antes de utilizarla. Pero, en los viejos tiempos, era técnicamente posible crear una variable simplemente asignando un valor sin utilizar ‘let’. Esto aún funciona si no ponemos ‘use strict’ en nuestros scripts para mantener la compatibilidad con scripts antiguos.</p>
+<div id="gpzb8zreic" data-trusted="1" class="code-example" data-no-strict="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// nota: no se utiliza &quot;use strict&quot; en este ejemplo
+
+num = 5; // se crea la variable &quot;num&quot; si no existe antes
+
+alert(num); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto es una mala práctica que causaría errores en ‘strict mode’:</p>
+<div id="p2mcmxcu3s" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>&quot;use strict&quot;;
+
+num = 5; // error: num no está definida</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="constantes" href="#constantes">Constantes</a></h2><p>Para declarar una variable constante (inmutable) use <code>const</code> en vez de <code>let</code>:</p>
+<div id="i17k806uyh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const myBirthday = '18.04.1982';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las variables declaradas utilizando <code>const</code> se llaman “constantes”. No pueden ser alteradas. Al intentarlo causaría un error:</p>
+<div id="eea5pea061" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const myBirthday = '18.04.1982';
+
+myBirthday = '01.01.2001'; // ¡error, no se puede reasignar la constante!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando un programador está seguro de que una variable nunca cambiará, puede declarar la variable con <code>const</code> para garantizar y comunicar claramente este hecho a todos.</p>
+<h3><a class="main__anchor" name="constantes-mayusculas" href="#constantes-mayusculas">Constantes mayúsculas</a></h3><p>Existe una práctica utilizada ampliamente de utilizar constantes como aliases de valores difíciles-de-recordar y que se conocen previo a la ejecución.</p>
+<p>Tales constantes se nombran utilizando letras mayúsculas y guiones bajos.</p>
+<p>Por ejemplo, creemos constantes para los colores en el formato “web” (hexadecimal):</p>
+<div id="8o4gcs3yah" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const COLOR_RED = &quot;#F00&quot;;
+const COLOR_GREEN = &quot;#0F0&quot;;
+const COLOR_BLUE = &quot;#00F&quot;;
+const COLOR_ORANGE = &quot;#FF7F00&quot;;
+
+// ...cuando debemos elegir un color
+let color = COLOR_ORANGE;
+alert(color); // #FF7F00</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ventajas:</p>
+<ul>
+<li><code>COLOR_ORANGE</code> es mucho más fácil de recordar que <code>&quot;#FF7F00&quot;</code>.</li>
+<li>Es mucho más fácil escribir mal <code>&quot;#FF7F00&quot;</code> que <code>COLOR_ORANGE</code>.</li>
+<li>Al leer el código, <code>COLOR_ORANGE</code> tiene mucho más significado que <code>#FF7F00</code>.</li>
+</ul>
+<p>¿Cuándo se deben utilizar letras mayúsculas para una constante, y cuando se debe nombrarla de manera normal? Dejémoslo claro.</p>
+<p>Ser una “constante” solo significa que el valor de la variable nunca cambia. Pero hay constantes que son conocidas previo a la ejecución (como el valor hexadecimal del color rojo) y hay constantes que son <em>calculadas</em> en el tiempo de ejecución, pero no cambian después de su asignación inicial.</p>
+<p>Por ejemplo:</p>
+<div id="zj5iped52e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const pageLoadTime = /* el tiempo que tardó la página web para cargar */;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El valor de <code>pageLoadTime</code> no se conoce antes de cargar la página, así que la nombramos normalmente. No obstante, es una constante porque no cambia después de su asignación inicial.</p>
+<p>En otras palabras, las constantes con nombres en mayúscula son utilizadas solamente como alias para valores invariables y preestablecidos (“hard-coded”).</p>
+<h2><a class="main__anchor" name="nombrar-cosas-correctamente" href="#nombrar-cosas-correctamente">Nombrar cosas correctamente</a></h2><p>Estando en el tema de las variables, existe una cosa de mucha importancia.</p>
+<p>Una variable debe tener un nombre claro, de significado evidente, que describa el dato que almacena.</p>
+<p>Nombrar variables es una de las habilidades más importantes y complejas en la programación. Un vistazo rápido a el nombre de las variables nos revela cuál código fue escrito por un principiante o por un desarrollador experimentado.</p>
+<p>En un proyecto real, la mayor parte de el tiempo se pasa modificando y extendiendo una base de código en vez de empezar a escribir algo desde cero. Cuando regresamos a algún código después de hacer algo distinto por un rato, es mucho más fácil encontrar información que está bien etiquetada. O, en otras palabras, cuando las variables tienen nombres adecuados.</p>
+<p>Por favor pasa tiempo pensando en el nombre adecuado para una variable antes de declararla. Hacer esto te da un retorno muy sustancial.</p>
+<p>Algunas reglas buenas para seguir:</p>
+<ul>
+<li>Use términos legibles para humanos como <code>userName</code> p <code>shoppingCart</code>.</li>
+<li>Evite abreviaciones o nombres cortos <code>a</code>, <code>b</code>, <code>c</code>, al menos que en serio sepa lo que está haciendo.</li>
+<li>Cree nombres que describen al máximo lo que son y sean concisos. Ejemplos que no son adecuados son <code>data</code> y <code>value</code>. Estos nombres no nos dicen nada. Estos solo está bien usarlos en el contexto de un código que deje excepcionalmente obvio cuál valor o cuales datos está referenciando la variable.</li>
+<li>Acuerda en tu propia mente y con tu equipo cuáles términos se utilizarán. Si a un visitante se le llamara “user”, debemos llamar las variables relacionadas <code>currentUser</code> o <code>newUser</code> en vez de <code>currentVisitor</code> o <code>newManInTown</code>.</li>
+</ul>
+<p>¿Suena simple? De hecho lo es, pero no es tan fácil crear nombres de variables descriptivos y concisos a la hora de practicar. Inténtelo.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Reusar o crear?</span></div>
+            <div class="important__content"><p>Una última nota. Existen programadores haraganes que, en vez de declarar una variable nueva, tienden a reusar las existentes.</p>
+<p>El resultado de esto es que sus variables son como cajas en las cuales la gente introduce cosas distintas sin cambiar sus etiquetas. ¿Que existe dentro de la caja? ¿Quién sabe? Necesitamos acercarnos y revisar.</p>
+<p>Dichos programadores se ahorran un poco durante la declaración de la variable, pero pierden diez veces más a la hora de depuración.</p>
+<p>Una variable extra es algo bueno, no algo malvado.</p>
+<p>Los minificadores de JavaScript moderno, y los navegadores optimizan el código suficientemente bien para no generar cuestiones de rendimiento. Utilizar diferentes variables para distintos valores incluso puede ayudar a optimizar su código</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Podemos declarar variables para almacenar datos al utilizar las palabra clave <code>var</code>, <code>let</code>, o <code>const</code>.</p>
+<ul>
+<li><code>let</code> – es la forma moderna de declaración de una variable.</li>
+<li><code>var</code> – es la declaración de variable de vieja escuela. Normalmente no lo utilizamos en absoluto. Cubriremos sus sutiles diferencias con <code>let</code> en el capítulo <a href="var.html">La vieja &quot;var&quot;</a>, por si lo necesitaras.</li>
+<li><code>const</code> – es como <code>let</code>, pero el valor de la variable no puede ser alterado.</li>
+</ul>
+<p>Las variables deben ser nombradas de tal manera que entendamos fácilmente lo que está en su interior.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#trabajando-con-variables" name="trabajando-con-variables">Trabajando con variables.</a></h3><a class="task__open-link" href="task/hello-variables.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 2</span></div><div class="task__content"><div class="task__formatted"><ol>
+<li>Declara dos  variables: <code>admin</code> y <code>name</code>.</li>
+<li>Asigna el valor <code>&quot;John&quot;</code> a <code>name</code>.</li>
+<li>Copia el valor de <code>name</code> a <code>admin</code>.</li>
+<li>Muestra el valor de <code>admin</code> usando <code>alert</code> (debe salir “John”).</li>
+</ol>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>En el siguiente código, cada línea corresponde al elemento en la lista de tareas.</p>
+<div id="phtg3ahwch" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let admin, name; // Puedes declarar dos variables a la vez.
+
+name = &quot;John&quot;;
+
+admin = name;
+
+alert( admin ); // &quot;John&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dando-el-nombre-correcto" name="dando-el-nombre-correcto">Dando el nombre correcto</a></h3><a class="task__open-link" href="task/declare-variables.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 3</span></div><div class="task__content"><div class="task__formatted"><ol>
+<li>Crea una variable con el nombre de nuestro planeta. ¿Cómo nombrarías a dicha variable?</li>
+<li>Crea una variable para almacenar el nombre del usuario actual de un sitio web. ¿Cómo nombrarías a dicha variable?</li>
+</ol>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">La variable para nuestro planeta.</button><div class="task__answer-content"><h4 class="task__step-title">La variable para nuestro planeta.</h4><div class="formatted"><p>Eso es simple:</p>
+<div id="tr5yvgvqan" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let ourPlanetName = &quot;Tierra&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nota, podríamos usar un nombre más corto <code>planeta</code>, pero podría no ser obvio a qué planeta se refiere. Es una buena idea ser más detallado, siempre y cuando la variable noSeaMuyLarga.</p>
+</div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">El nombre del usuario actual</button><div class="task__answer-content"><h4 class="task__step-title">El nombre del usuario actual</h4><div class="formatted"><div id="322xedaqp2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let currentUserName = &quot;Juan&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Una vez más, podríamos acortar eso a <code>userName</code> si estamos seguros que es el usuario actual (current).</p>
+<p>Los editores modernos y el autocompletado hacen que los nombres de variables largos sean fáciles de escribir. No ahorres caracteres. Un nombre de 3 palabras está bien.</p>
+<p>Y si tu editor no tiene un autocompletado apropiado, consigue <a href="code-editors.html">uno nuevo</a>.</p>
+</div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#const-mayusculas" name="const-mayusculas">¿const mayúsculas?</a></h3><a class="task__open-link" href="task/uppercast-constant.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Examina el siguiente código:</p>
+<div id="k9fd3a6t7g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const birthday = '18.04.1982';
+
+const age = someCode(birthday);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí tenemos una constante <code>birthday</code> para la fecha de cumpleaños, y la edad <code>age</code>, que también es constante.</p>
+<p><code>age</code> es calculada desde <code>birthday</code> con la ayuda de “cierto código” <code>someCode()</code>, que es una llamada a función que no hemos explicado aún (¡lo haremos pronto!); los detalles no importan aquí, el punto es que <code>age</code> se calcula de alguna forma basándose en <code>birthday</code>.</p>
+<p>¿Sería correcto usar mayúsculas en <code>birthday</code>? ¿Y en <code>age</code>? ¿O en ambos?</p>
+<div id="ym09m4t18v" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const BIRTHDAY = '18.04.1982'; // ¿birthday en mayúsculas?
+
+const AGE = someCode(BIRTHDAY); // ¿age en mayúsculas?</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Generalmente usamos mayúsculas para constantes que están “hard-codeadas”. En otras palabras, cuando el valor se conoce antes de la ejecución y se escribe directamente en el código.</p>
+<p>En este código, <code>birthday</code> es exactamente así, por lo que podemos escribirla en mayúsculas.</p>
+<p>En cambio, <code>age</code> es evaluada en ejecución. Hoy tenemos una edad, un año después tendremos otra. Es constante en el sentido que no cambia durante la ejecución del código, pero es un poco “menos constante” que <code>birthday</code> ya que se calcula, por lo que debemos mantenerla en minúscula.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="strict-mode.html" data-tooltip="El modo moderno, &quot;use strict&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="types.html" data-tooltip="Tipos de datos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fvariables" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fvariables" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/variables","identifier":"\/variables"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.html">Fundamentos de JavaScript</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#una-variable">Una variable</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#una-analogia-de-la-vida-real">Una analogía de la vida real</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#variable-naming">Nombramiento de variables</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#constantes">Constantes</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#nombrar-cosas-correctamente">Nombrar cosas correctamente</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fvariables" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fvariables" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/02-first-steps/04-variables" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/variables by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:46 GMT -->
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/rest-parameters-spread by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "ar";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Parámetros Rest y operador Spread</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="rest-parameters-spread.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Parámetros Rest y operador Spread"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Parámetros Rest y operador Spread"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="recursion.html"><link rel="next" href="closure.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Parámetros Rest y operador Spread"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/rest-parameters-spread"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="rest-parameters-spread.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/rest-parameters-spread"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Frest-parameters-spread" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Frest-parameters-spread" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/rest-parameters-spread">عربي</option><option value="https://javascript.info/rest-parameters-spread">English</option><option value="https://es.javascript.info/rest-parameters-spread" selected>Español</option><option value="https://fa.javascript.info/rest-parameters-spread">فارسی</option><option value="https://fr.javascript.info/rest-parameters-spread">Français</option><option value="https://id.javascript.info/rest-parameters-spread">Indonesia</option><option value="https://it.javascript.info/rest-parameters-spread">Italiano</option><option value="https://ja.javascript.info/rest-parameters-spread">日本語</option><option value="https://ko.javascript.info/rest-parameters-spread">한국어</option><option value="https://learn.javascript.ru/">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/rest-parameters-spread">Українська</option><option value="https://zh.javascript.info/rest-parameters-spread">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="50" max="93" data-tooltip="Lección 50 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="advanced-functions.html"><span>Trabajo avanzado con funciones</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Trabajo avanzado con funciones","item":"https://es.javascript.info/advanced-functions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 1 de noviembre de 2022"><div class="updated-at__content">1 de noviembre de 2022</div></div></div><h1 class="main__header-title">Parámetros Rest y operador Spread</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Parámetros Rest y operador Spread"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Muchas funciones nativas de JavaScript soportan un número arbitrario de argumentos.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li><code>Math.max(arg1, arg2, ..., argN)</code> – devuelve el argumento más grande.</li>
+<li><code>Object.assign(dest, src1, ..., srcN)</code> – copia las propiedades de <code>src1..N</code> en <code>dest</code>.</li>
+<li>…y otros más</li>
+</ul>
+<p>En este capítulo aprenderemos como hacer lo mismo. Y, además, cómo trabajar cómodamente con dichas funciones y arrays.</p>
+<h2><a class="main__anchor" name="parametros-rest" href="#parametros-rest">Parámetros Rest <code>...</code></a></h2><p>Una función puede ser llamada con cualquier número de argumentos sin importar cómo sea definida.</p>
+<p>Por ejemplo::</p>
+<div id="emkkdjvz01" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sum(a, b) {
+  return a + b;
+}
+
+alert( sum(1, 2, 3, 4, 5) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No habrá ningún error por “exceso” de argumentos. Pero, por supuesto, en el resultado solo los dos primeros serán tomados en cuenta, entonces el resultado del código anterior es <code>3</code>.</p>
+<p>El resto de los parámetros pueden ser referenciados en la definición de una función con 3 puntos <code>...</code> seguidos por el nombre del array que los contendrá. Literalmente significan “Reunir los parámetros restantes en un array”.</p>
+<p>Por ejemplo, para reunir todos los parámetros en un array <code>args</code>:</p>
+<div id="bpsmoulcvi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sumAll(...args) { // args es el nombre del array
+  let sum = 0;
+
+  for (let arg of args) sum += arg;
+
+  return sum;
+}
+
+alert( sumAll(1) ); // 1
+alert( sumAll(1, 2) ); // 3
+alert( sumAll(1, 2, 3) ); // 6</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos elegir obtener los primeros parámetros como variables, y juntar solo el resto.</p>
+<p>Aquí los primeros dos argumentos van a variables y el resto va al array <code>titles</code>:</p>
+<div id="vdddeutqw8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function showName(firstName, lastName, ...titles) {
+  alert( firstName + ' ' + lastName ); // Julio Cesar
+
+  // el resto va en el array titles
+  // por ejemplo titles = [&quot;Cónsul&quot;, &quot;Emperador&quot;]
+  alert( titles[0] ); // Cónsul
+  alert( titles[1] ); // Emperador
+  alert( titles.length ); // 2
+}
+
+showName(&quot;Julio&quot;, &quot;Cesar&quot;, &quot;Cónsul&quot;, &quot;Emperador&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Los parámetros rest deben ir al final</span></div>
+            <div class="important__content"><p>Los parámetros rest recogen todos los argumentos sobrantes, por lo que el siguiente código no tiene sentido y causa un error:</p>
+<div id="cjbanxoh31" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f(arg1, ...rest, arg2) { // arg2 después de ...rest ?!
+  // error
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>...rest</code> debe ir siempre último.</p>
+</div></div>
+<h2><a class="main__anchor" name="la-variable-arguments" href="#la-variable-arguments">La variable “arguments”</a></h2><p>También existe un objeto símil-array especial llamado <code>arguments</code> que contiene todos los argumentos indexados.</p>
+<p>Por ejemplo:</p>
+<div id="77eyc3tjko" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function showName() {
+  alert( arguments.length );
+  alert( arguments[0] );
+  alert( arguments[1] );
+
+  // arguments es iterable
+  // for(let arg of arguments) alert(arg);
+}
+
+// muestra: 2, Julio, Cesar
+showName(&quot;Julio&quot;, &quot;Cesar&quot;);
+
+// muestra: 1, Ilya, undefined (no hay segundo argumento)
+showName(&quot;Ilya&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Antiguamente, los parámetros rest no existían en el lenguaje, y usar <code>arguments</code> era la única manera de obtener todos los argumentos de una función. Y aún funciona, podemos encontrarlo en código antiguo.</p>
+<p>Pero la desventaja es que a pesar de que <code>arguments</code> es símil-array e iterable, no es un array. No soporta los métodos de array, no podemos ejecutar <code>arguments.map(...)</code> por ejemplo.</p>
+<p>Además, siempre contiene todos los argumentos. No podemos capturarlos parcialmente como hicimos con los parámetros rest.</p>
+<p>Por lo tanto, cuando necesitemos estas funcionalidades, los parámetros rest son preferidos.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Las funciones flecha no poseen <code>&quot;arguments&quot;</code></span></div>
+            <div class="important__content"><p>Si accedemos el objeto <code>arguments</code> desde una función flecha, toma su valor dela función “normal” externa.</p>
+<p>Aquí hay un ejemplo:</p>
+<div id="a5a9dgzlgl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  let showArg = () =&gt; alert(arguments[0]);
+  showArg();
+}
+
+f(1); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como recordamos, las funciones de flecha no tienen su propio <code>this</code>. Ahora sabemos que tampoco tienen el objeto especial <code>arguments</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="spread-syntax" href="#spread-syntax">Sintaxis Spread</a></h2><p>Acabamos de ver cómo obtener un array de la lista de parámetros.</p>
+<p>Pero a veces necesitamos hacer exactamente lo opuesto.</p>
+<p>Por ejemplo, existe una función nativa <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Math/max">Math.max</a> que devuelve el número más grande de una lista:</p>
+<div id="tnqj2o4g0k" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Math.max(3, 5, 1) ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora bien, supongamos que tenemos un array <code>[3, 5, 1]</code>. ¿Cómo ejecutamos <code>Math.max</code> con él?</p>
+<p>Pasando la variable no funcionará, porque <code>Math.max</code> espera una lista de argumentos numéricos, no un único array:</p>
+<div id="gmwhm8c29m" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [3, 5, 1];
+
+alert( Math.max(arr) ); // NaN</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y seguramente no podremos listar manualmente los ítems en el código <code>Math.max(arr[0], arr[1], arr[2])</code>, porque tal vez no sepamos cuántos son. A medida que nuestro script se ejecuta, podría haber muchos elementos, o podría no haber ninguno. Y eso podría ponerse feo.</p>
+<p>¡<em>Operador Spread</em> al rescate!  Es similar a los parámetros rest, también usa <code>...</code>, pero hace exactamente lo opuesto.</p>
+<p>Cuando <code>...arr</code> es usado en el llamado de una función, “expande” el objeto iterable <code>arr</code> en una lista de argumentos.</p>
+<p>Para <code>Math.max</code>:</p>
+<div id="k7bwe5slyp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [3, 5, 1];
+
+alert( Math.max(...arr) ); // 5 (spread convierte el array en una lista de argumentos)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos pasar múltiples iterables de esta manera:</p>
+<div id="ej00lwqidy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, -8, 1];
+
+alert( Math.max(...arr1, ...arr2) ); // 8</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Incluso podemos combinar el operador spread con valores normales:</p>
+<div id="mclje9qflh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr1 = [1, -2, 3, 4];
+let arr2 = [8, 3, -8, 1];
+
+alert( Math.max(1, ...arr1, 2, ...arr2, 25) ); // 25</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Además, el operador spread puede ser usado para combinar arrays:</p>
+<div id="wdbq0ifmly" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [3, 5, 1];
+let arr2 = [8, 9, 15];
+
+let merged = [0, ...arr, 2, ...arr2];
+
+alert(merged); // 0,3,5,1,2,8,9,15 (0, luego arr, después 2, después arr2)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En los ejemplos de arriba utilizamos un array para demostrar el operador spread, pero cualquier iterable funcionará también.</p>
+<p>Por ejemplo, aquí usamos el operador spread para convertir la cadena en un array de caracteres:</p>
+<div id="utw2oqkk46" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;Hola&quot;;
+
+alert( [...str] ); // H,o,l,a</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El operador spread utiliza internamente iteradores para iterar los elementos, de la misma manera que <code>for..of</code> hace.</p>
+<p>Entonces, para una cadena <code>for..of</code> retorna caracteres y <code>...str</code> se convierte en <code>&quot;H&quot;,&quot;o&quot;,&quot;l&quot;,&quot;a&quot;</code>. La lista de caracteres es pasada a la inicialización del array <code>[...str]</code>.</p>
+<p>Para esta tarea en particular también podríamos haber usado <code>Array.from</code>, ya que convierte un iterable (como una cadena de caracteres) en un array:</p>
+<div id="17um50jo0q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;Hola&quot;;
+
+// Array.from convierte un iterable en un array
+alert( Array.from(str) ); // H,o,l,a</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El resultado es el mismo que <code>[...str]</code>.</p>
+<p>Pero hay una sutil diferencia entre <code>Array.from(obj)</code> y <code>[...obj]</code>:</p>
+<ul>
+<li><code>Array.from</code> opera con símil-arrays e iterables.</li>
+<li>El operador spread solo opera con iterables.</li>
+</ul>
+<p>Por lo tanto, para la tarea de convertir algo en un array, <code>Array.from</code> tiende a ser más universal.</p>
+<h2><a class="main__anchor" name="copia-de-un-objeto-array" href="#copia-de-un-objeto-array">Copia de un objeto array</a></h2><p>¿Recuerdas cuando hablamos acerca de <code>Object.assign()</code> <a href="object-copy.html#cloning-and-merging-object-assign">anteriormente</a>?</p>
+<p>Es posible hacer lo mismo con la sintaxis de spread</p>
+<div id="vbq1mw2r9d" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 3];
+
+let arrCopy = [...arr]; // separa el array en una lista de parameters
+                        // luego pone el resultado en un nuevo array
+
+// ¿los arrays tienen el mismo contenido?
+alert(JSON.stringify(arr) === JSON.stringify(arrCopy)); // true
+
+// ¿los arrays son iguales?
+alert(arr === arrCopy); // false (no es la misma referencia)
+
+// modificando nuestro array inicial no modifica la copia:
+arr.push(4);
+alert(arr); // 1, 2, 3, 4
+alert(arrCopy); // 1, 2, 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nota que es posible hacer lo mismo para hacer una copia de un objeto:</p>
+<div id="gaqyzwjzsa" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = { a: 1, b: 2, c: 3 };
+
+let objCopy = { ...obj }; // separa el objeto en una lista de parámetros
+                          // luego devuelve el resultado en un nuevo objeto
+
+// ¿tienen los objetos el mismo contenido?
+alert(JSON.stringify(obj) === JSON.stringify(objCopy)); // true
+
+// ¿son iguales los objetos?
+alert(obj === objCopy); // false (no es la misma referencia)
+
+// modificando el objeto inicial no modifica la copia:
+obj.d = 4;
+alert(JSON.stringify(obj)); // {&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4}
+alert(JSON.stringify(objCopy)); // {&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esta manera de copiar un objeto es mucho más corta que <code>let objCopy = Object.assign({}, obj);</code> o para un array <code>let arrCopy = Object.assign([], arr);</code> por lo que preferimos usarla siempre que podemos.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Cuando veamos <code>&quot;...&quot;</code> en el código, son los parámetros rest o el operador spread.</p>
+<p>Hay una manera fácil de distinguir entre ellos:</p>
+<ul>
+<li>Cuando <code>...</code> se encuentra al final de los parámetros de una función, son los “parámetros rest” y recogen el resto de la lista de argumentos en un array.</li>
+<li>Cuando <code>...</code> está en el llamado de una función o similar, se llama “operador spread” y expande un array en una lista.</li>
+</ul>
+<p>Patrones de uso:</p>
+<ul>
+<li>Los parámetros rest son usados para crear funciones que acepten cualquier número de argumentos.</li>
+<li>El operador spread es usado para pasar un array a funciones que normalmente requieren una lista de muchos argumentos.</li>
+</ul>
+<p>Ambos ayudan a ir entre una lista y un array de parámetros con facilidad.</p>
+<p>Todos los argumentos de un llamado a una función están también disponibles en el “viejo” <code>arguments</code>: un objeto símil-array iterable.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="recursion.html" data-tooltip="Recursión y pila"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="closure.html" data-tooltip="Ámbito de Variable y el concepto &quot;closure&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Frest-parameters-spread" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Frest-parameters-spread" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/rest-parameters-spread","identifier":"\/rest-parameters-spread"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.html">Trabajo avanzado con funciones</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#parametros-rest">Parámetros Rest <code>...</code></a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-variable-arguments">La variable “arguments”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#spread-syntax">Sintaxis Spread</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#copia-de-un-objeto-array">Copia de un objeto array</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Frest-parameters-spread" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Frest-parameters-spread" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/06-advanced-functions/02-rest-parameters-spread" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/rest-parameters-spread by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:02 GMT -->
+</html>

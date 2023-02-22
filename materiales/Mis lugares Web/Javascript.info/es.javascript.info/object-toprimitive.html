@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/object-toprimitive by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Conversión de objeto a valor primitivo</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="object-toprimitive.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Conversión de objeto a valor primitivo"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Conversión de objeto a valor primitivo"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="symbol.html"><link rel="next" href="data-types.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Conversión de objeto a valor primitivo"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/object-toprimitive"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/object-toprimitive"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="object-toprimitive.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/object-toprimitive"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/object-toprimitive"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/object-toprimitive"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/object-toprimitive"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/object-toprimitive"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/object-toprimitive"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/object-toprimitive"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/object-toprimitive"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/object-toprimitive"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/object-toprimitive"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fobject-toprimitive" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fobject-toprimitive" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/object-toprimitive">عربي</option><option value="https://javascript.info/object-toprimitive">English</option><option value="https://es.javascript.info/object-toprimitive" selected>Español</option><option value="https://fa.javascript.info/object-toprimitive">فارسی</option><option value="https://fr.javascript.info/object-toprimitive">Français</option><option value="https://id.javascript.info/object-toprimitive">Indonesia</option><option value="https://it.javascript.info/object-toprimitive">Italiano</option><option value="https://ja.javascript.info/object-toprimitive">日本語</option><option value="https://ko.javascript.info/object-toprimitive">한국어</option><option value="https://learn.javascript.ru/object-toprimitive">Русский</option><option value="https://tr.javascript.info/object-toprimitive">Türkçe</option><option value="https://uk.javascript.info/object-toprimitive">Українська</option><option value="https://zh.javascript.info/object-toprimitive">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="36" max="93" data-tooltip="Lección 36 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="object-basics.html"><span>Objetos: lo básico</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Objetos: lo básico","item":"https://es.javascript.info/object-basics"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 25 de agosto de 2022"><div class="updated-at__content">25 de agosto de 2022</div></div></div><h1 class="main__header-title">Conversión de objeto a valor primitivo</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Conversión de objeto a valor primitivo"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>¿Qué sucede cuando los objetos se suman <code>obj1 + obj2</code>, se restan <code>obj1 - obj2</code> o se imprimen utilizando <code>alert(obj)</code>?</p>
+<p>JavaScript no permite personalizar cómo los operadores trabajan con los objetos. Al contrario de otros lenguajes de programación como Ruby o C++, no podemos implementar un método especial para manejar una suma (u otros operadores).</p>
+<p>En ese caso, los objetos se convierten automáticamente en valores primitivos, y luego se lleva a cabo la operación sobre esos primitivos, y resultan en un valor primitivo.</p>
+<p>Esto es una limitación importante: el resultado de <code>obj1 + obj2</code> (u otra operación) ¡no puede ser otro objeto!</p>
+<p>Por ejemplo no podemos hacer objetos que representen vectores o matrices (o conquistas o lo que sea), sumarlas y esperar un objeto “sumado” como resultado. Tal objetivo arquitectural cae automáticamente “fuera del tablero”.</p>
+<p>Como técnicamente no podemos hacer mucho aquí, no se hacen matemáticas con objetos en proyectos reales. Cuando ocurre, con alguna rara excepción es por un error de código.</p>
+<p>En este capítulo cubriremos cómo un objeto se convierte a primitivo y cómo podemos personalizarlo.</p>
+<p>Tenemos dos propósitos:</p>
+<ol>
+<li>Nos permitirá entender qué ocurre en caso de errores de código, cuando tal operación ocurre accidentalmente.</li>
+<li>Hay excepciones, donde tales operaciones son posibles y se ven bien. Por ejemplo al restar o comparar fechas (objetos <code>Date</code>). Las discutiremos más adelante.</li>
+</ol>
+<h2><a class="main__anchor" name="reglas-de-conversion" href="#reglas-de-conversion">Reglas de conversión</a></h2><p>En el capítulo <a href="type-conversions.html">Conversiones de Tipos</a>, hemos visto las reglas para las conversiones de valores primitivos numéricos, strings y booleanos. Pero dejamos un hueco en los objetos. Ahora, como sabemos sobre métodos y símbolos, es posible completarlo.</p>
+<ol>
+<li>No hay conversión a boolean. Todos los objetos son <code>true</code> en un contexto booleano, tan simple como eso. Solo hay conversiones numéricas y de strings.</li>
+<li>La conversión numérica ocurre cuando restamos objetos o aplicamos funciones matemáticas. Por ejemplo, los objetos de tipo <code>Date</code> (que se cubrirán en el capítulo <a href="date.html">Fecha y Hora</a>) se pueden restar, y el resultado de <code>date1 - date2</code> es la diferencia horaria entre dos fechas.</li>
+<li>En cuanto a la conversión de strings: generalmente ocurre cuando imprimimos un objeto como en <code>alert(obj)</code> y en contextos similares.</li>
+</ol>
+<p>Podemos implementar la conversión de tipo string y numérica por nuestra cuenta, utilizando métodos de objeto especiales.</p>
+<p>Ahora entremos en los detalles técnicos, porque es la única forma de cubrir el tópico en profundidad.</p>
+<h2><a class="main__anchor" name="hints-sugerencias" href="#hints-sugerencias">Hints (sugerencias)</a></h2><p>¿Cómo decide JavaScript cuál conversión aplicar?</p>
+<p>Hay tres variantes de conversión de tipos que ocurren en varias situaciones. Son llamadas “hints” y están descriptas en la <a href="https://tc39.github.io/ecma262/#sec-toprimitive">especificación</a>:</p>
+<dl>
+<dt><code>&quot;string&quot;</code></dt>
+<dd>
+<p>Para una conversión de objeto a string, cuando hacemos una operación que espera un string en un objeto, como <code>alert</code>:</p>
+<div id="tnvyzde70g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// salida
+alert(obj);
+
+// utilizando un objeto como clave
+anotherObj[obj] = 123;</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>&quot;number&quot;</code></dt>
+<dd>
+<p>Para una conversión de objeto a número, como cuando hacemos operaciones matemáticas:</p>
+<div id="b81ocgvgho" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// conversión explícita
+let num = Number(obj);
+
+// matemáticas (excepto + binario)
+let n = +obj; // + unario
+let delta = date1 - date2;
+
+// comparación menor que / mayor que
+let greater = user1 &gt; user2;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La mayoría de las funciones matemáticas nativas también incluyen tal conversión.</p>
+</dd>
+<dt><code>&quot;default&quot;</code></dt>
+<dd>
+<p>Ocurre en casos raros cuando el operador “no está seguro” de qué tipo esperar.</p>
+<p>Por ejemplo, el operador binario <code>+</code> puede funcionar con strings (los concatena) y números (los suma). Entonces, si el + binario obtiene un objeto como argumento, utiliza la sugerencia <code>&quot;default&quot;</code> para convertirlo.</p>
+<p>También, si un objeto es comparado utilizando <code>==</code> con un string, un número o un símbolo, tampoco está claro qué conversión se debe realizar, por lo que se utiliza la sugerencia <code>&quot;default&quot;</code>.</p>
+<div id="dst2sp8lly" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// + binario utiliza la sugerencia &quot;default&quot;
+let total = obj1 + obj2;
+
+// obj == número utiliza la sugerencia &quot;default&quot;
+if (user == 1) { ... };</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los operadores de comparación mayor que y menor que, como <code>&lt;</code> <code>&gt;</code>, también pueden funcionar con strings y números. Aún así, utilizan la sugerencia <code>&quot;number&quot;</code>, y no <code>&quot;default&quot;</code>. Eso es por razones históricas.</p>
+</dd>
+</dl>
+<p>Aunque en la práctica las cosas son más simples.</p>
+<p>Todos los objetos nativos&amp;#8209;excepto un caso (objeto <code>Date</code>, lo veremos más adelante)-  implementan la conversión <code>&quot;default&quot;</code> del mismo modo que <code>&quot;number&quot;</code>. Y probablemente debiéramos hacer lo mismo.</p>
+<p>Aún así, es importante conocer los 3 “hints”, pronto veremos el porqué.</p>
+<p><strong>Para realizar la conversión, JavaScript intenta buscar y llamar a tres métodos del objeto:</strong></p>
+<ol>
+<li>Busca y llama, si el método existe, a <code>obj[Symbol.toPrimitive](hint)</code>: el método con la clave simbólica <code>Symbol.toPrimitive</code> (símbolo del sistema);</li>
+<li>Si no lo encuentra y “hint” es <code>&quot;string&quot;</code>:
+<ul>
+<li>intenta llamar a <code>obj.toString()</code> y <code>obj.valueOf()</code>, lo que exista.</li>
+</ul>
+</li>
+<li>Si no lo encuentra y “hint” es <code>&quot;number&quot;</code> o <code>&quot;default&quot;</code>
+<ul>
+<li>intenta llamar a <code>obj.valueOf()</code> y <code>obj.toString()</code>, lo que exista.</li>
+</ul>
+</li>
+</ol>
+<h2><a class="main__anchor" name="symbol-toprimitive" href="#symbol-toprimitive">Symbol.toPrimitive</a></h2><p>Empecemos por el primer método. Hay un símbolo incorporado llamado <code>Symbol.toPrimitive</code> que debe utilizarse para nombrar el método de conversión, así:</p>
+<div id="6lb3vsesjl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>obj[Symbol.toPrimitive] = function(hint) {
+  // aquí va el código para convertir este objeto a un primitivo
+  // debe devolver un valor primitivo
+  // hint = &quot;sugerencia&quot;, uno de: &quot;string&quot;, &quot;number&quot;, &quot;default&quot;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si el método <code>Symbol.toPrimitive</code> existe, es usado para todos los hints y no serán necesarios más métodos.</p>
+<p>Por ejemplo, aquí el objeto <code>user</code> lo implementa:</p>
+<div id="ttp164szfo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John&quot;,
+  money: 1000,
+
+  [Symbol.toPrimitive](hint) {
+    alert(`sugerencia: ${hint}`);
+    return hint == &quot;string&quot; ? `{name: &quot;${this.name}&quot;}` : this.money;
+  }
+};
+
+// demostración de conversiones:
+alert(user); // sugerencia: string -&gt; {name: &quot;John&quot;}
+alert(+user); // sugerencia: number -&gt; 1000
+alert(user + 500); // sugerencia: default -&gt; 1500</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como podemos ver en el código, <code>user</code> se convierte en un string autodescriptivo o en una cantidad de dinero, depende de la conversión. Un único método <code>user[Symbol.toPrimitive]</code> maneja todos los casos de conversión.</p>
+<h2><a class="main__anchor" name="tostring-valueof" href="#tostring-valueof">toString/valueOf</a></h2><p>Si no existe <code>Symbol.toPrimitive</code> entonces JavaScript trata de encontrar los métodos <code>toString</code> y <code>valueOf</code>:</p>
+<ul>
+<li>Para una sugerencia “string”: trata de llamar a <code>toString</code> primero; pero si no existe, o si devuelve un objeto en lugar de un valor primitivo, llama  a <code>valueOf</code> (así, <code>toString</code> tiene prioridad en conversiones string).</li>
+<li>Para otras sugerencias: trata de llamar a <code>valueOf</code> primero; y si no existe, o si devuelve un objeto en lugar de un valor primitivo, llama a <code>toString</code> (así, <code>valueOf</code> tiene prioridad para matemáticas).</li>
+</ul>
+<p>Los métodos <code>toString</code> y <code>valueOf</code> provienen de tiempos remotos. No son símbolos (los símbolos no existían en aquel tiempo) sino métodos “normales” nombrados con strings. Proporcionan una forma alternativa “al viejo estilo” de implementar la conversión.</p>
+<p>Estos métodos deben devolver un valor primitivo. Si <code>toString</code> o <code>valueOf</code> devuelve un objeto, entonces se ignora (lo mismo que si no hubiera un método).</p>
+<p>De forma predeterminada, un objeto simple tiene los siguientes métodos <code>toString</code> y <code>valueOf</code>:</p>
+<ul>
+<li>El método <code>toString</code> devuelve un string <code>&quot;[object Object]&quot;</code>.</li>
+<li>El método <code>valueOf</code> devuelve el objeto en sí.</li>
+</ul>
+<p>Aquí está la demostración:</p>
+<div id="ryghm5h8az" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {name: &quot;John&quot;};
+
+alert(user); // [object Object]
+alert(user.valueOf() === user); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por lo tanto, si intentamos utilizar un objeto como un string, como en un <code>alert</code> o algo así, entonces por defecto vemos <code>[object Object]</code>.</p>
+<p>El <code>valueOf</code> predeterminado se menciona aquí solo en favor de la integridad, para evitar confusiones. Como puede ver, devuelve el objeto en sí, por lo que se ignora. No me pregunte por qué, es por razones históricas. Entonces podemos asumir que no existe.</p>
+<p>Implementemos estos métodos para personalizar la conversión.</p>
+<p>Por ejemplo, aquí <code>user</code> hace lo mismo que el ejemplo anterior utilizando una combinación de <code>toString</code> y <code>valueOf</code> en lugar de <code>Symbol.toPrimitive</code>:</p>
+<div id="apf3gajgkr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John&quot;,
+  money: 1000,
+
+  // para sugerencia=&quot;string&quot;
+  toString() {
+    return `{name: &quot;${this.name}&quot;}`;
+  },
+
+  // para sugerencia=&quot;number&quot; o &quot;default&quot;
+  valueOf() {
+    return this.money;
+  }
+
+};
+
+alert(user); // toString -&gt; {name: &quot;John&quot;}
+alert(+user); // valueOf -&gt; 1000
+alert(user + 500); // valueOf -&gt; 1500</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como podemos ver, el comportamiento es el mismo que en el ejemplo anterior con <code>Symbol.toPrimitive</code>.</p>
+<p>A menudo queremos un único lugar “general” para manejar todas las conversiones primitivas. En este caso, podemos implementar solo <code>toString</code>, así:</p>
+<div id="nzs5u97brl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John&quot;,
+
+  toString() {
+    return this.name;
+  }
+};
+
+alert(user); // toString -&gt; John
+alert(user + 500); // toString -&gt; John500</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En ausencia de <code>Symbol.toPrimitive</code> y <code>valueOf</code>, <code>toString</code> manejará todas las conversiones primitivas.</p>
+<h3><a class="main__anchor" name="una-conversion-puede-devolver-cualquier-tipo-primitivo" href="#una-conversion-puede-devolver-cualquier-tipo-primitivo">Una conversión puede devolver cualquier tipo primitivo</a></h3><p>Lo importante que debe saber acerca de todos los métodos de conversión primitiva es que no necesariamente devuelven la primitiva “sugerida”.</p>
+<p>No hay control para que <code>toString</code> devuelva exactamente un string, ni para que el método <code>Symbol.toPrimitive</code> con una sugerencia <code>&quot;number&quot;</code> devuelva un número.</p>
+<p>Lo único obligatorio: estos métodos deben devolver un valor primitivo, no un objeto.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Notas históricas</span></div>
+            <div class="important__content"><p>Por razones históricas, si <code>toString</code> o <code>valueOf</code> devuelve un objeto, no hay ningún error, pero dicho valor se ignora (como si el método no existiera). Esto se debe a que en la antigüedad no existía un buen concepto de “error” en JavaScript.</p>
+<p>Por el contrario, <code>Symbol.toPrimitive</code> es más estricto, <em>debe</em> devolver un valor primitivo, en caso contrario habrá un error.</p>
+</div></div>
+<h2><a class="main__anchor" name="mas-conversiones" href="#mas-conversiones">Más conversiones</a></h2><p>Como ya sabemos, muchos operadores y funciones realizan conversiones de tipo, por ejemplo la multiplicación <code>*</code> convierte operandos en números.</p>
+<p>Si pasamos un objeto como argumento, entonces hay dos etapas de cómputo:</p>
+<ol>
+<li>El objeto se convierte en un valor primitivo (utilizando las reglas descritas anteriormente).</li>
+<li>Si es necesario para más cómputo, el valor primitivo resultante también se convierte.</li>
+</ol>
+<p>Por ejemplo:</p>
+<div id="2uptxnpbcz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = {
+  // toString maneja todas las conversiones en ausencia de otros métodos
+  toString() {
+    return &quot;2&quot;;
+  }
+};
+
+alert(obj * 2); // 4, objeto convertido a valor primitivo &quot;2&quot;, luego la multiplicación lo convirtió en un número</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>La multiplicación <code>obj * 2</code> primero convierte el objeto en valor primitivo (que es un string <code>&quot;2&quot;</code>).</li>
+<li>Luego <code>&quot;2&quot; * 2</code> se convierte en <code>2 * 2</code> (el string se convierte en número).</li>
+</ol>
+<p>El <code>+</code> binario concatenará los strings en la misma situación, ya que acepta con gusto un string:</p>
+<div id="42new11a0f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = {
+  toString() {
+    return &quot;2&quot;;
+  }
+};
+
+alert(obj + 2); // 22 (&quot;2&quot; + 2), la conversión a valor primitivo devolvió un string =&gt; concatenación</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>La conversión de objeto a valor primitivo es llamada automáticamente por muchas funciones y operadores incorporados que esperan un valor primitivo.</p>
+<p>Hay 3 tipos (hints o sugerencias) de estas:</p>
+<ul>
+<li><code>&quot;string&quot;</code> (para <code>alert</code> y otras operaciones que necesitan un string)</li>
+<li><code>&quot;number&quot;</code> (para matemáticas)</li>
+<li><code>&quot;default&quot;</code> (pocos operadores, usualmente los objetos lo implementan del mismo modo que <code>&quot;number&quot;</code>)</li>
+</ul>
+<p>La especificación describe explícitamente qué operador utiliza qué sugerencia.</p>
+<p>El algoritmo de conversión es:</p>
+<ol>
+<li>Llamar a <code>obj[Symbol.toPrimitive](hint)</code> si el método existe,</li>
+<li>En caso contrario, si la sugerencia es <code>&quot;string&quot;</code>
+<ul>
+<li>intentar llamar a <code>obj.toString()</code> y <code>obj.valueOf()</code>, lo que exista.</li>
+</ul>
+</li>
+<li>En caso contrario, si la sugerencia es <code>&quot;number&quot;</code> o <code>&quot;default&quot;</code>
+<ul>
+<li>intentar llamar a <code>obj.valueOf()</code> y <code>obj.toString()</code>, lo que exista.</li>
+</ul>
+</li>
+</ol>
+<p>Todos estos métodos deben devolver un primitivo para funcionar (si está definido).</p>
+<p>En la práctica, a menudo es suficiente implementar solo <code>obj.toString()</code> como un método “atrapatodo” para todas las conversiones a string que deben devolver la representación “legible por humanos” de un objeto, con fines de registro o depuración.</p>
+<p>Como en las operaciones matemáticas, JavaScript no ofrece una forma de “sobrescribir” operadores usando métodos. Así que en proyectos de la vida real raramente se los usa en objetos.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="symbol.html" data-tooltip="Tipo Symbol"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="data-types.html" data-tooltip="Tipos de datos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fobject-toprimitive" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fobject-toprimitive" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/object-toprimitive","identifier":"\/object-toprimitive"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-basics.html">Objetos: lo básico</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#reglas-de-conversion">Reglas de conversión</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#hints-sugerencias">Hints (sugerencias)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#symbol-toprimitive">Symbol.toPrimitive</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tostring-valueof">toString/valueOf</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#mas-conversiones">Más conversiones</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fobject-toprimitive" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fobject-toprimitive" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/04-object-basics/09-object-toprimitive" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/object-toprimitive by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+</html>

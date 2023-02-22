@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+
+
+<!-- Mirrored from es.javascript.info/article/keyboard-events/keyboard-dump/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://es.javascript.info/article/keyboard-events/keyboard-dump/style.css">
+</head>
+
+<body>
+
+  <form id="form" onsubmit="return false">
+
+    Evitar el predeterminado (prevent default) para:
+    <label>
+      <input type="checkbox" name="keydownStop" value="1"> keydown</label>&nbsp;&nbsp;&nbsp;
+    <label>
+      <input type="checkbox" name="keyupStop" value="1"> keyup</label>
+
+    <p>
+      Ignore:
+      <label>
+        <input type="checkbox" name="keydownIgnore" value="1"> keydown</label>&nbsp;&nbsp;&nbsp;
+      <label>
+        <input type="checkbox" name="keyupIgnore" value="1"> keyup</label>
+    </p>
+
+    <p>Haz foco en el campo input y presiona una tecla.</p>
+
+    <input type="text" placeholder="Press keys here" id="kinput">
+
+    <textarea id="area" readonly></textarea>
+    <input type="button" value="Clear" onclick="area.value = ''" />
+  </form>
+  <script src="https://es.javascript.info/article/keyboard-events/keyboard-dump/script.js"></script>
+
+
+</body>
+
+<!-- Mirrored from es.javascript.info/article/keyboard-events/keyboard-dump/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:21 GMT -->
+</html>

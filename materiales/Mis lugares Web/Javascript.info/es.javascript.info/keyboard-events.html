@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/keyboard-events by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "mx";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Teclado: keydown y keyup</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="keyboard-events.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Teclado: keydown y keyup"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Teclado: keydown y keyup"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="pointer-events.html"><link rel="next" href="onscroll.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Teclado: keydown y keyup"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/keyboard-events"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="keyboard-events.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/keyboard-events"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/keyboard-events"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/keyboard-events"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/keyboard-events"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/keyboard-events"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/keyboard-events"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/keyboard-events"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fkeyboard-events" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fkeyboard-events" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/keyboard-events">English</option><option value="https://es.javascript.info/keyboard-events" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/keyboard-events">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/keyboard-events">Italiano</option><option value="https://ja.javascript.info/keyboard-events">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/keyboard-events">Русский</option><option value="https://tr.javascript.info/keyboard-events">Türkçe</option><option value="https://uk.javascript.info/keyboard-events">Українська</option><option value="https://zh.javascript.info/keyboard-events">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="21" max="32" data-tooltip="Lección 21 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="event-details.html"><span>Eventos en la UI</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Eventos en la UI","item":"https://es.javascript.info/event-details"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 31 de enero de 2022"><div class="updated-at__content">31 de enero de 2022</div></div></div><h1 class="main__header-title">Teclado: keydown y keyup</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Teclado: keydown y keyup"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Antes de llegar al teclado, por favor ten en cuenta que en los dispositivos modernos hay otras formas de “ingresar algo”.  Por ejemplo, el uso de reconocimiento de voz (especialmente en dispositivos móviles) o copiar/pegar con el mouse.</p>
+<p>Entonces, si queremos hacer el seguimiento de cualquier ingreso en un campo <code>&lt;input&gt;</code>, los eventos de teclado no son suficientes. Existe otro evento llamado <code>input</code> para detectar cambios en un campo <code>&lt;input&gt;</code> producidos por cualquier medio. Y puede ser una mejor opción para esa tarea. Lo estudiaremos más adelante, en el capítulo <a href="events-change-input.html">Eventos: change, input, cut, copy, paste</a>.</p>
+<p>Los eventos de teclado solo deberían ser usados cuando queremos manejar acciones de teclado (también cuentan los teclados virtuales). Por ejemplo, para reaccionar a las teclas de flecha <kbd class="shortcut">Up</kbd> y <kbd class="shortcut">Down</kbd> o a atajos de teclado “hotkeys” (incluyendo combinaciones de teclas).</p>
+<h2><a class="main__anchor" name="keyboard-test-stand" href="#keyboard-test-stand">Teststand</a></h2><p>Para entender mejor los eventos de teclado, puedes usar “teststand” aquí abajo.</p>
+<p>Prueba diferentes combinaciones de tecla en el campo de texto.</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">script.js</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/keyboard-events/keyboard-dump/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/rbCCCj4wX5fcuBh8?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:480px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/keyboard-events/keyboard-dump/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>kinput.onkeydown = kinput.onkeyup = kinput.onkeypress = handle;
+
+let lastTime = Date.now();
+
+function handle(e) {
+  if (form.elements[e.type + 'Ignore'].checked) return;
+
+  area.scrollTop = 1e6;
+
+  let text = e.type +
+    ' key=' + e.key +
+    ' code=' + e.code +
+    (e.shiftKey ? ' shiftKey' : '') +
+    (e.ctrlKey ? ' ctrlKey' : '') +
+    (e.altKey ? ' altKey' : '') +
+    (e.metaKey ? ' metaKey' : '') +
+    (e.repeat ? ' (repeat)' : '') +
+    &quot;\n&quot;;
+
+  if (area.value &amp;&amp; Date.now() - lastTime &gt; 250) {
+    area.value += new Array(81).join('-') + '\n';
+  }
+  lastTime = Date.now();
+
+  area.value += text;
+
+  if (form.elements[e.type + 'Stop'].checked) {
+    e.preventDefault();
+  }
+}</code></pre></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#kinput {
+  font-size: 150%;
+  box-sizing: border-box;
+  width: 95%;
+}
+
+#area {
+  width: 95%;
+  box-sizing: border-box;
+  height: 250px;
+  border: 1px solid black;
+  display: block;
+}
+
+form label {
+  display: inline;
+  white-space: nowrap;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;form id=&quot;form&quot; onsubmit=&quot;return false&quot;&gt;
+
+    Evitar el predeterminado (prevent default) para:
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;keydownStop&quot; value=&quot;1&quot;&gt; keydown&lt;/label&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    &lt;label&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;keyupStop&quot; value=&quot;1&quot;&gt; keyup&lt;/label&gt;
+
+    &lt;p&gt;
+      Ignore:
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;keydownIgnore&quot; value=&quot;1&quot;&gt; keydown&lt;/label&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      &lt;label&gt;
+        &lt;input type=&quot;checkbox&quot; name=&quot;keyupIgnore&quot; value=&quot;1&quot;&gt; keyup&lt;/label&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;Haz foco en el campo input y presiona una tecla.&lt;/p&gt;
+
+    &lt;input type=&quot;text&quot; placeholder=&quot;Press keys here&quot; id=&quot;kinput&quot;&gt;
+
+    &lt;textarea id=&quot;area&quot; readonly&gt;&lt;/textarea&gt;
+    &lt;input type=&quot;button&quot; value=&quot;Clear&quot; onclick=&quot;area.value = ''&quot; /&gt;
+  &lt;/form&gt;
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><h2><a class="main__anchor" name="keydown-y-keyup" href="#keydown-y-keyup">Keydown y keyup</a></h2><p>Los eventos <code>keydown</code> ocurren cuando se presiona una tecla, y <code>keyup</code> cuando se suelta.</p>
+<h3><a class="main__anchor" name="event-code-y-event-key" href="#event-code-y-event-key">event.code y event.key</a></h3><p>La propiedad <code>key</code> del objeto de evento permite obtener el carácter, mientras que la propiedad <code>code</code> del evento permite obtener el “código físico de la tecla”.</p>
+<p>Por ejemplo, la misma tecla <kbd class="shortcut">Z</kbd> puede ser presionada con o sin <kbd class="shortcut">Shift</kbd>. Esto nos da dos caracteres diferentes: <code>z</code> minúscula y <code>Z</code> mayúscula.</p>
+<p><code>event.key</code> es el carácter exacto, y será diferente. Pero <code>event.code</code> es el mismo:</p>
+<table>
+<thead>
+<tr>
+<th>Tecla</th>
+<th><code>event.key</code></th>
+<th><code>event.code</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd class="shortcut">Z</kbd></td>
+<td><code>z</code> (minúscula)</td>
+<td><code>KeyZ</code></td>
+</tr>
+<tr>
+<td><kbd class="shortcut">Shift<span class="shortcut__plus">+</span>Z</kbd></td>
+<td><code>Z</code> (mayúscula)</td>
+<td><code>KeyZ</code></td>
+</tr>
+</tbody>
+</table>
+<p>Si un usuario trabaja con diferentes lenguajes, el cambio a otro lenguaje podría producir un carácter totalmente diferente a <code>&quot;Z&quot;</code>. Este se volverá el valor de <code>event.key</code>, mientras que <code>event.code</code> es siempre el mismo: <code>&quot;KeyZ&quot;</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">“KeyZ” y otros códigos de tecla</span></div>
+            <div class="important__content"><p>Cada tecla tiene el código que depende de su ubicación en el teclado. Los códigos de tecla están descritos en la especificación <a href="https://www.w3.org/TR/uievents-code/">UI Events code</a>.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>Las letras tienen códigos como <code>&quot;Key&lt;letter&gt;&quot;</code>: <code>&quot;KeyA&quot;</code>, <code>&quot;KeyB&quot;</code> etc.</li>
+<li>Los dígitos tienen códigos como <code>&quot;Digit&lt;number&gt;&quot;</code>: <code>&quot;Digit0&quot;</code>, <code>&quot;Digit1&quot;</code> etc.</li>
+<li>Las teclas especiales están codificadas por sus nombres: <code>&quot;Enter&quot;</code>, <code>&quot;Backspace&quot;</code>, <code>&quot;Tab&quot;</code> etc.</li>
+</ul>
+<p>Hay varias distribuciones de teclado esparcidos, y la especificación nos da los códigos de tecla para cada una de ellas.</p>
+<p>Para más códigos, puedes leer la <a href="https://www.w3.org/TR/uievents-code/#key-alphanumeric-section">sección alfanumérica de la especificación</a>, o simplemente presionar una tecla en el <a href="#keyboard-test-stand">teststand</a> arriba.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">La mayúscula importa: es <code>&quot;KeyZ&quot;</code>, no <code>&quot;keyZ&quot;</code></span></div>
+            <div class="important__content"><p>Parece obvio, pero aún se cometen estos errores.</p>
+<p>Por favor evita errores de tipeo: es <code>KeyZ</code>, no <code>keyZ</code>. Una verificación como <code>event.code==&quot;keyZ&quot;</code> no funcionará: la primera letra de <code>&quot;Key&quot;</code> debe estar en mayúscula.</p>
+</div></div>
+<p>¿Qué pasa si una tecla no da ningún carácter? Por ejemplo, <kbd class="shortcut">Shift</kbd> o <kbd class="shortcut">F1</kbd> u otras. Para estas teclas, <code>event.key</code> es aproximadamente lo mismo que <code>event.code</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th><code>event.key</code></th>
+<th><code>event.code</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><kbd class="shortcut">F1</kbd></td>
+<td><code>F1</code></td>
+<td><code>F1</code></td>
+</tr>
+<tr>
+<td><kbd class="shortcut">Backspace</kbd></td>
+<td><code>Backspace</code></td>
+<td><code>Backspace</code></td>
+</tr>
+<tr>
+<td><kbd class="shortcut">Shift</kbd></td>
+<td><code>Shift</code></td>
+<td><code>ShiftRight</code> or <code>ShiftLeft</code></td>
+</tr>
+</tbody>
+</table>
+<p>Ten en cuenta que <code>event.code</code> especifica con exactitud la tecla que es presionada. Por ejemplo, la mayoría de los teclados tienen dos teclas <kbd class="shortcut">Shift</kbd>: una a la izquierda y otra a la derecha. <code>event.code</code> nos dice exactamente cuál fue presionada, en cambio <code>event.key</code> es responsable del “significado” de la tecla: lo que “es” (una “Mayúscula”).</p>
+<p>Digamos que queremos manejar un atajo de teclado: <kbd class="shortcut">Ctrl<span class="shortcut__plus">+</span>Z</kbd> (o <kbd class="shortcut">Cmd<span class="shortcut__plus">+</span>Z</kbd> en Mac). La mayoría de los editores de texto “cuelgan” la acción “Undo” en él. Podemos configurar un “listener” para escuchar el evento <code>keydown</code> y verificar qué tecla es presionada.</p>
+<p>Hay un dilema aquí: en ese “listener”, ¿debemos verificar el valor de <code>event.key</code> o el de <code>event.code</code>?</p>
+<p>Por un lado, el valor de <code>event.key</code> es un carácter que cambia dependiendo del lenguaje. Si el visitante tiene varios lenguajes en el sistema operativo y los cambia, la misma tecla dará diferentes caracteres. Entonces tiene sentido chequear <code>event.code</code> que es siempre el mismo.</p>
+<p>Como aquí:</p>
+<div id="8fqsjhlhr0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyZ' &amp;&amp; (event.ctrlKey || event.metaKey)) {
+    alert('Undo!')
+  }
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por otro lado, hay un problema con <code>event.code</code>. Para diferentes distribuciones de teclado, la misma tecla puede tener diferentes caracteres.</p>
+<p>Por ejemplo, aquí abajo mostramos la distribución de EE.UU. “QWERTY” y la alemana “QWERTZ” (de Wikipedia):</p>
+<figure><div class="image" style="width:602px">
+      <div class="image__ratio" style="padding-top:33.5548172757475%"></div>
+      <object type="image/svg+xml" data="article/keyboard-events/us-layout.svg" width="602" height="202" class="image__image" data-use-theme>
+        <img src="article/keyboard-events/us-layout.svg" alt="" width="602" height="202">
+      </object>
+      </div></figure><figure><div class="image" style="width:600px">
+      <div class="image__ratio" style="padding-top:33.33333333333333%"></div>
+      <object type="image/svg+xml" data="article/keyboard-events/german-layout.svg" width="600" height="200" class="image__image" data-use-theme>
+        <img src="article/keyboard-events/german-layout.svg" alt="" width="600" height="200">
+      </object>
+      </div></figure><p>Para la misma tecla, la distribución norteamericana tiene “Z”, mientras que la alemana tiene “Y” (las letras son intercambiadas).</p>
+<p>Efectivamente, <code>event.code</code> será igual a <code>KeyZ</code> para las personas con distribución de teclas alemana cuando presionen <kbd class="shortcut">Y</kbd>.</p>
+<p>Si chequeamos <code>event.code == 'KeyZ'</code> en nuestro código, las personas con distribución alemana pasarán el test cuando presionen <kbd class="shortcut">Y</kbd>.</p>
+<p>Esto suena realmente extraño, y lo es. La <a href="https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system">especificación</a> explícitamente menciona este comportamiento.</p>
+<p>Entonces, <code>event.code</code> puede coincidir con un carácter equivocado en una distribución inesperada. Las mismas letras en diferentes distribuciones pueden mapear a diferentes teclas físicas, llevando a diferentes códigos. Afortunadamente, ello solo ocurre en algunos códigos, por ejemplo <code>keyA</code>, <code>keyQ</code>, <code>keyZ</code> (que ya hemos visto), y no ocurre con teclas especiales como <code>Shift</code>. Puedes encontrar la lista en la <a href="https://www.w3.org/TR/uievents-code/#table-key-code-alphanumeric-writing-system">especificación</a>.</p>
+<p>Para un seguimiento confiable de caracteres que dependen de la distribución, <code>event.key</code> puede ser una mejor opción.</p>
+<p>Por otro lado, <code>event.code</code> tiene el beneficio de quedar siempre igual, ligado a la ubicación física de la tecla. Así los atajos de teclado que dependen de él funcionan bien aunque cambie el lenguaje.</p>
+<p>¿Queremos manejar teclas que dependen de la distribución? Entonces <code>event.key</code> es lo adecuado.</p>
+<p>¿O queremos que un atajo funcione en el mismo lugar incluso si cambia el lenguaje? Entonces <code>event.code</code> puede ser mejor.</p>
+<h2><a class="main__anchor" name="autorepeticion" href="#autorepeticion">Autorepetición</a></h2><p>Si una tecla es presionada durante suficiente tiempo, comienza a “autorepetirse”: <code>keydown</code> se dispara una y otra vez, y  cuando es soltada finalmente se obtiene <code>keyup</code>. Por ello es normal tener muchos <code>keydown</code> y un solo <code>keyup</code>.</p>
+<p>Para eventos disparados por autorepetición, el objeto de evento tiene la propiedad <code>event.repeat</code> establecida a <code>true</code>.</p>
+<h2><a class="main__anchor" name="acciones-predeterminadas" href="#acciones-predeterminadas">Acciones predeterminadas</a></h2><p>Las acciones predeterminadas varían, al haber muchas cosas posibles que pueden ser iniciadas por el teclado.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>Un carácter aparece en la pantalla (el resultado más obvio).</li>
+<li>Un carácter es borrado (tecla <kbd class="shortcut">Delete</kbd>).</li>
+<li>Un avance de página (tecla <kbd class="shortcut">PageDown</kbd>).</li>
+<li>El navegador abre el diálogo “guardar página” (<kbd class="shortcut">Ctrl<span class="shortcut__plus">+</span>S</kbd>)</li>
+<li>…y otras.</li>
+</ul>
+<p>Evitar la acción predeterminada en <code>keydown</code> puede cancelar la mayoría de ellos, con la excepción de las teclas especiales basadas en el sistema operativo. Por ejemplo, en Windows la tecla <kbd class="shortcut">Alt<span class="shortcut__plus">+</span>F4</kbd> cierra la ventana actual del navegador. Y no hay forma de detenerla por medio de “evitar la acción predeterminada” de JavaScript.</p>
+<p>Por ejemplo, el <code>&lt;input&gt;</code> debajo espera un número telefónico, entonces no acepta teclas excepto dígitos, <code>+</code>, <code>()</code> or <code>-</code>:</p>
+<div id="jfl0rp8ago" data-trusted="1" class="code-example" data-demo-height="60" data-highlight="[{&quot;start&quot;:5,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:50}]}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+function checkPhoneKey(key) {
+  return (key &gt;= '0' &amp;&amp; key &lt;= '9') || ['+','(',')','-'].includes(key);
+}
+&lt;/script&gt;
+&lt;input onkeydown=&quot;return checkPhoneKey(event.key)&quot; placeholder=&quot;Teléfono, por favor&quot; type=&quot;tel&quot;&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-jfl0rp8ago"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Aquí el manejador <code>onkeydown</code> usa <code>checkPhoneKey</code> para chequear la tecla presionada. Si es válida (de <code>0..9</code> o uno de <code>+-()</code>), entonces devuelve <code>true</code>, de otro modo, <code>false</code>.</p>
+<p>Como ya sabemos, el valor <code>false</code> devuelto por el manejador de eventos, asignado usando una propiedad DOM o un atributo tal como lo hicimos arriba, evita la acción predeterminada; entonces nada aparece en <code>&lt;input&gt;</code> para las teclas que no pasan el test. (El valor <code>true</code> no afecta en nada, solo importa el valor <code>false</code>)</p>
+<p>Ten en cuenta que las teclas especiales como <kbd class="shortcut">Backspace</kbd>, <kbd class="shortcut">Left</kbd>, <kbd class="shortcut">Right</kbd>, no funcionan en el input. Este es un efecto secundario del filtro estricto que hace <code>checkPhoneKey</code>. Estas teclas hacen que devuelva <code>false</code>.</p>
+<p>Aliviemos un poco el filtro permitiendo las tecla de flecha <kbd class="shortcut">Left</kbd>, <kbd class="shortcut">Right</kbd>, y <kbd class="shortcut">Delete</kbd>, <kbd class="shortcut">Backspace</kbd>:</p>
+<div id="3ipzyhljl3" data-trusted="1" class="code-example" data-demo-height="60" data-highlight="[{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:21,&quot;end&quot;:66}]}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+function checkPhoneKey(key) {
+  return (key &gt;= '0' &amp;&amp; key &lt;= '9') ||
+    ['+','(',')','-','ArrowLeft','ArrowRight','Delete','Backspace'].includes(key);
+}
+&lt;/script&gt;
+&lt;input onkeydown=&quot;return checkPhoneKey(event.key)&quot; placeholder=&quot;Teléfono, por favor&quot; type=&quot;tel&quot;&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-3ipzyhljl3"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Ahora las flechas y el borrado funcionan bien.</p>
+<p>Aunque tenemos el filtro de teclas, aún se puede ingresar cualquier cosa usando un mouse y “botón secundario + pegar”. Dispositivos móviles brindan otros medios para ingresar valores. Así que el filtro no es 100% confiable.</p>
+<p>Un enfoque alternativo sería vigilar el evento <code>oninput</code>, este se dispara <em>después</em> de cualquier modificación. Allí podemos chequear el nuevo <code>input.value</code> y modificar o resaltar <code>&lt;input&gt;</code> cuando es inválido. O podemos usar ambos manejadores de eventos juntos.</p>
+<h2><a class="main__anchor" name="codigo-heredado" href="#codigo-heredado">Código heredado</a></h2><p>En el pasado existía un evento <code>keypress</code>, y también las propiedades del objeto evento <code>keyCode</code>, <code>charCode</code>, <code>which</code>.</p>
+<p>Al trabajar con ellos había tantas incompatibilidades entre los navegadores que los desarrolladores de la especificación no tuvieron otra alternativa que declararlos obsoletos y crear nuevos y modernos eventos (los descritos arriba en este capítulo). El viejo código todavía funciona porque los navegadores aún lo soportan, pero no hay necesidad de usarlos más, en absoluto.</p>
+<h2><a class="main__anchor" name="teclados-en-dispositivos-moviles" href="#teclados-en-dispositivos-moviles">Teclados en dispositivos móviles</a></h2><p>Cuando se usan teclados virtuales o los de dispositivos móviles, formalmente conocidos como IME (Input-Method Editor), el estándar W3C establece que la propiedad de KeyboardEvent <a href="https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode"><code>e.keyCode</code> debe ser <code>229</code></a> y <a href="https://www.w3.org/TR/uievents-key/#key-attr-values"><code>e.key</code> debe ser <code>&quot;Unidentified&quot;</code></a>.</p>
+<p>Mientras algunos de estos teclados pueden aún usar los valores correctos para <code>e.key</code>, <code>e.code</code>, <code>e.keyCode</code>…, cuando se presionan ciertas teclas tales como flechas o retroceso no hay garantía, entonces nuestra lógica de teclado podría no siempre funcionar bien en dispositivos móviles.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Presionar una tecla siempre genera un evento de teclado, sean teclas de símbolos o teclas especiales como <kbd class="shortcut">Shift</kbd> o <kbd class="shortcut">Ctrl</kbd> y demás. La única excepción es la tecla <kbd class="shortcut">Fn</kbd> que a veces está presente en teclados de laptops. No hay un evento de teclado para ella porque suele estar implementado en un nivel más bajo que el del sistema operativo.</p>
+<p>Eventos de teclado:</p>
+<ul>
+<li><code>keydown</code> – al presionar la tecla (comienza a autorepetir si la tecla queda presionada por un tiempo),</li>
+<li><code>keyup</code> – al soltar la tecla.</li>
+</ul>
+<p>Principales propiedades de evento de teclado:</p>
+<ul>
+<li><code>code</code> – el código de tecla “key code” (<code>&quot;KeyA&quot;</code>, <code>&quot;ArrowLeft&quot;</code> y demás), especifica la ubicación física de la tecla en el teclado.</li>
+<li><code>key</code> – el carácter (<code>&quot;A&quot;</code>, <code>&quot;a&quot;</code> y demás). Para las teclas que no son de caracteres como <kbd class="shortcut">Esc</kbd>, suele tener el mismo valor que <code>code</code>.</li>
+</ul>
+<p>En el pasado, los eventos de teclado eran usados para detectar cambios en los campos de formulario. Esto no es confiable, porque el ingreso puede venir desde varias fuentes. Para manejar cualquier ingreso tenemos los eventos <code>input</code> y <code>change</code> (tratados en el capítulo <a href="events-change-input.html">Eventos: change, input, cut, copy, paste</a>). Ellos se disparan después de cualquier clase de ingreso, incluyendo copiar/pegar y el reconocimiento de voz.</p>
+<p>Deberíamos usar eventos de teclado solamente cuando realmente queremos el teclado. Por ejemplo, para reaccionar a atajos o a teclas especiales.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#extendiendo-atajos-de-teclado" name="extendiendo-atajos-de-teclado">Extendiendo atajos de teclado</a></h3><a class="task__open-link" href="task/check-sync-keydown.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>runOnKeys(func, code1, code2, ... code_n)</code> que ejecute <code>func</code> al presionar simultáneamente las teclas con códigos <code>code1</code>, <code>code2</code>, …, <code>code_n</code>.</p>
+<p>Por ejemplo, el siguiente código muestra un <code>alert</code> cuando <code>&quot;Q&quot;</code> y <code>&quot;W&quot;</code> se presionan juntas (en cualquier lenguaje, con o sin mayúscula)</p>
+<div id="w36c8qdz32" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>runOnKeys(
+  () =&gt; alert(&quot;¡Hola!&quot;),
+  &quot;KeyQ&quot;,
+  &quot;KeyW&quot;
+);</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://es.js.cx/task/check-sync-keydown/solution/" target="blank">Demo en nueva ventana</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Debemos manejar dos eventos: <code>document.onkeydown</code> y <code>document.onkeyup</code>.</p>
+<p>Creemos un set <code>pressed = new Set()</code> para registrar las teclas presionads actualmente.</p>
+<p>El primer manejador las agrega en él, mientras que el segundo las quita. Con cada <code>keydown</code> verificamos si tenemos suficientes teclas presionadas, y ejecutamos la función si es así.</p>
+<p><a href="https://plnkr.co/edit/4nYQ0TZV4IlvEdGf?p=preview" target="_blank" data-plunk-id="4nYQ0TZV4IlvEdGf">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="pointer-events.html" data-tooltip="Eventos de puntero"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="onscroll.html" data-tooltip="Desplazamiento"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fkeyboard-events" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fkeyboard-events" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/keyboard-events","identifier":"\/keyboard-events"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="event-details.html">Eventos en la UI</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#keyboard-test-stand">Teststand</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#keydown-y-keyup">Keydown y keyup</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#autorepeticion">Autorepetición</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#acciones-predeterminadas">Acciones predeterminadas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#codigo-heredado">Código heredado</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#teclados-en-dispositivos-moviles">Teclados en dispositivos móviles</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fkeyboard-events" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fkeyboard-events" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/3-event-details/7-keyboard-events" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/keyboard-events by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:35 GMT -->
+</html>

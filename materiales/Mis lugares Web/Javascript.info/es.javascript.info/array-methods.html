@@ -1,0 +1,1966 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/array-methods by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Métodos de arrays</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="array-methods.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Métodos de arrays"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Métodos de arrays"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="array.html"><link rel="next" href="iterable.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Métodos de arrays"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/array-methods"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/array-methods"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="array-methods.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/array-methods"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/array-methods"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/array-methods"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/array-methods"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/array-methods"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/array-methods"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/array-methods"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/array-methods"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/array-methods"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/array-methods"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Farray-methods" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Farray-methods" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/array-methods">عربي</option><option value="https://javascript.info/array-methods">English</option><option value="https://es.javascript.info/array-methods" selected>Español</option><option value="https://fa.javascript.info/array-methods">فارسی</option><option value="https://fr.javascript.info/array-methods">Français</option><option value="https://id.javascript.info/array-methods">Indonesia</option><option value="https://it.javascript.info/array-methods">Italiano</option><option value="https://ja.javascript.info/array-methods">日本語</option><option value="https://ko.javascript.info/array-methods">한국어</option><option value="https://learn.javascript.ru/array-methods">Русский</option><option value="https://tr.javascript.info/array-methods">Türkçe</option><option value="https://uk.javascript.info/array-methods">Українська</option><option value="https://zh.javascript.info/array-methods">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="41" max="93" data-tooltip="Lección 41 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="data-types.html"><span>Tipos de datos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Tipos de datos","item":"https://es.javascript.info/data-types"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 4 de febrero de 2023"><div class="updated-at__content">4 de febrero de 2023</div></div></div><h1 class="main__header-title">Métodos de arrays</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Métodos de arrays"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Los arrays (también llamados arreglos o matrices) cuentan con muchos métodos. Para hacer las cosas más sencillas, en este capítulo se encuentran divididos en dos partes.</p>
+<h2><a class="main__anchor" name="agregar-remover-items" href="#agregar-remover-items">Agregar/remover ítems</a></h2><p>Ya conocemos algunos métodos que agregan o extraen elementos del inicio o final de un array:</p>
+<ul>
+<li><code>arr.push(...items)</code> – agrega ítems al final,</li>
+<li><code>arr.pop()</code> – extrae un ítem del final,</li>
+<li><code>arr.shift()</code> – extrae un ítem del inicio,</li>
+<li><code>arr.unshift(...items)</code> – agrega ítems al principio.</li>
+</ul>
+<p>Veamos algunos métodos más.</p>
+<h3><a class="main__anchor" name="splice" href="#splice">splice</a></h3><p>¿Cómo podemos borrar un elemento de un array?</p>
+<p>Los arrays son objetos, por lo que podemos intentar con <code>delete</code>:</p>
+<div id="d8qwuwi477" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;voy&quot;, &quot;a&quot;, &quot;casa&quot;];
+
+delete arr[1]; // remueve &quot;a&quot;
+
+alert( arr[1] ); // undefined
+
+// ahora arr = [&quot;voy&quot;,  , &quot;casa&quot;];
+alert( arr.length ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El elemento fue borrado, pero el array todavía tiene 3 elementos; podemos ver que <code>arr.length == 3</code>.</p>
+<p>Es natural, porque <code>delete obj.key</code> borra el valor de <code>key</code>, pero es todo lo que hace. Esto está bien en los objetos, pero en general lo que buscamos en los arrays es que el resto de los elementos se desplace y se ocupe el lugar libre. Lo que esperamos es un array más corto.</p>
+<p>Por lo tanto, necesitamos utilizar métodos especiales.</p>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/splice">arr.splice</a> funciona como una navaja suiza para arrays. Puede hacer todo: insertar, remover y remplazar elementos.</p>
+<p>La sintaxis es:</p>
+<div id="crxfl1fj0j" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>arr.splice(start[, deleteCount, elem1, ..., elemN])</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto modifica <code>arr</code> comenzando en el índice <code>start</code>: remueve la cantidad <code>deleteCount</code> de elementos y luego inserta <code>elem1, ..., elemN</code> en su lugar. Lo que devuelve es un array de los elementos removidos.</p>
+<p>Este método es más fácil de entender con ejemplos.</p>
+<p>Empecemos removiendo elementos:</p>
+<div id="3n003xlwts" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;Yo&quot;, &quot;estudio&quot;, &quot;JavaScript&quot;];
+
+arr.splice(1, 1); // desde el índice 1, remover 1 elemento
+
+alert( arr ); // [&quot;Yo&quot;, &quot;JavaScript&quot;]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Fácil, no? Empezando desde el índice <code>1</code> removió <code>1</code> elemento.</p>
+<p>En el próximo ejemplo removemos 3 elementos y los reemplazamos con otros 2:</p>
+<div id="r92mkbm48d" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;cols&quot;:[{&quot;start&quot;:23,&quot;end&quot;:36}]},{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:11,&quot;end&quot;:41}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;Yo&quot;, &quot;estudio&quot;, &quot;JavaScript&quot;, &quot;ahora&quot;, &quot;mismo&quot;];
+
+// remueve los primeros 3 elementos y los reemplaza con otros
+arr.splice(0, 3, &quot;a&quot;, &quot;bailar&quot;);
+
+alert( arr ) // ahora [&quot;a&quot;, &quot;bailar&quot;, &quot;ahora&quot;, &quot;mismo&quot;]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí podemos ver que <code>splice</code> devuelve un array con los elementos removidos:</p>
+<div id="aumdhyownw" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:11,&quot;end&quot;:27}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;Yo&quot;, &quot;estudio&quot;, &quot;JavaScript&quot;, &quot;ahora&quot;, &quot;mismo&quot;];
+
+// remueve los 2 primeros elementos
+let removed = arr.splice(0, 2);
+
+alert( removed ); // &quot;Yo&quot;, &quot;estudio&quot; &lt;-- array de los elementos removidos</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El método <code>splice</code> también es capaz de insertar elementos sin remover ningún otro. Para eso necesitamos establecer <code>deleteCount</code> en <code>0</code>:</p>
+<div id="powot5mcrt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;Yo&quot;, &quot;estudio&quot;, &quot;JavaScript&quot;];
+
+// desde el index 2
+// remover 0
+// después insertar &quot;el&quot;, &quot;complejo&quot; y &quot;language&quot;
+arr.splice(2, 0,&quot;el&quot;, &quot;complejo&quot;, &quot;language&quot;);
+
+alert( arr ); // &quot;Yo&quot;, &quot;estudio&quot;,&quot;el&quot;, &quot;complejo&quot;, &quot;language&quot;, &quot;JavaScript&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Los índices negativos están permitidos</span></div>
+            <div class="important__content"><p>En este y en otros métodos de arrays, los índices negativos están permitidos. Estos índices indican la posición comenzando desde el final del array, de la siguiente manera:</p>
+<div id="wbckq2vj0c" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 5];
+
+// desde el index -1 (un lugar desde el final)
+// remover 0 elementos,
+// después insertar 3 y 4
+arr.splice(-1, 0, 3, 4);
+
+alert( arr ); // 1,2,3,4,5</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h3><a class="main__anchor" name="slice" href="#slice">slice</a></h3><p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/slice">arr.slice</a> es mucho más simple que <code>arr.splice</code>.</p>
+<p>La sintaxis es:</p>
+<div id="26oj3057k5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>arr.slice([principio], [final])</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Devuelve un nuevo array copiando en el mismo todos los elementos desde <code>principio</code> hasta <code>final</code> (sin incluir <code>final</code>). <code>principio</code> y <code>final</code> pueden ser negativos, en cuyo caso se asume la posición desde el final del array.</p>
+<p>Es similar al método para strings <code>str.slice</code>, pero en lugar de substrings genera subarrays.</p>
+<p>Por ejemplo:</p>
+<div id="4l84c5ekqy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;t&quot;, &quot;e&quot;, &quot;s&quot;, &quot;t&quot;];
+
+alert( arr.slice(1, 3) ); // e,s (copia desde 1 hasta 3)
+
+alert( arr.slice(-2) ); // s,t (copia desde -2 hasta el final)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos invocarlo sin argumentos: <code>arr.slice()</code> crea una copia de <code>arr</code>. Se utiliza a menudo para obtener una copia que se puede  transformar sin afectar el array original.</p>
+<h3><a class="main__anchor" name="concat" href="#concat">concat</a></h3><p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/concat">arr.concat</a> crea un nuevo array que incluye los valores de otros arrays y elementos adicionales.</p>
+<p>La sintaxis es:</p>
+<div id="s7gnwl6ire" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>arr.concat(arg1, arg2...)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este acepta cualquier número de argumentos, tanto arrays como valores.</p>
+<p>El resultado es un nuevo array conteniendo los elementos de <code>arr</code>, después <code>arg1</code>, <code>arg2</code> etc.</p>
+<p>Si un argumento <code>argN</code> es un array, entonces todos sus elementos son copiados. De otro modo el argumento en sí es copiado.</p>
+<p>Por ejemplo:</p>
+<div id="57ubc1dfal" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2];
+
+// crea un array a partir de: arr y [3,4]
+alert( arr.concat([3, 4]) ); // 1,2,3,4
+
+// crea un array a partir de: arr y [3,4] y [5,6]
+alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+
+// crea un array a partir de: arr y [3,4], luego agrega los valores 5 y 6
+alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normalmente, solo copia elementos desde arrays. Otros objetos, incluso si parecen arrays, son agregados como un todo:</p>
+<div id="30q2bi1kb1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2];
+
+let arrayLike = {
+  0: &quot;something&quot;,
+  length: 1
+};
+
+alert( arr.concat(arrayLike) ); // 1,2,[object Object]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero si un objeto similar a un array tiene la propiedad especial <code>Symbol.isConcatSpreadable</code>, entonces <code>concat</code> lo trata como un array y en lugar de añadirlo como un todo, solo añade sus elementos.</p>
+<div id="gycg7t0a0r" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2];
+
+let arrayLike = {
+  0: &quot;something&quot;,
+  1: &quot;else&quot;,
+  [Symbol.isConcatSpreadable]: true,
+  length: 2
+};
+
+alert( arr.concat(arrayLike) ); // 1,2,something,else</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="iteracion-foreach" href="#iteracion-foreach">Iteración: forEach</a></h2><p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/forEach">arr.forEach</a> permite ejecutar una función a cada elemento del array.</p>
+<p>La sintaxis:</p>
+<div id="f9n1miw8oe" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>arr.forEach(function(item, index, array) {
+  // ... hacer algo con el elemento
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo, el siguiente código muestra cada elemento del array:</p>
+<div id="a9p09km598" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// para cada elemento ejecuta alert
+[&quot;Bilbo&quot;, &quot;Gandalf&quot;, &quot;Nazgul&quot;].forEach(alert);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y este caso más detallado da la posición del elemento en el array:</p>
+<div id="8np5myin6k" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>[&quot;Bilbo&quot;, &quot;Gandalf&quot;, &quot;Nazgul&quot;].forEach((item, index, array) =&gt; {
+  alert(`${item} is at index ${index} in ${array}`);
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El resultado de la función (si lo hay) se descarta y se ignora.</p>
+<h2><a class="main__anchor" name="buscar-dentro-de-un-array" href="#buscar-dentro-de-un-array">Buscar dentro de un array</a></h2><p>Ahora vamos a ver métodos que buscan elementos dentro de un array.</p>
+<h3><a class="main__anchor" name="indexof-lastindexof-e-includes" href="#indexof-lastindexof-e-includes">indexOf/lastIndexOf e includes</a></h3><p>Los métodos <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/indexOf">arr.indexOf</a> y <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/includes">arr.includes</a> tienen una sintaxis similar y hacen básicamente lo mismo que sus contrapartes de strings, pero operan sobre elementos en lugar de caracteres:</p>
+<ul>
+<li><code>arr.indexOf(item, from)</code> – busca <code>item</code> comenzando desde el index <code>from</code>, y devuelve el index donde fue encontrado, de otro modo devuelve <code>-1</code>.</li>
+<li><code>arr.includes(item, from)</code> – busca <code>item</code> comenzando desde el índice <code>from</code>, devuelve <code>true</code> en caso de ser encontrado.</li>
+</ul>
+<p>Usualmente estos métodos se usan con un solo argumento: el <code>item</code> a buscar. De manera predeterminada, la búsqueda es desde el principio.</p>
+<p>Por ejemplo:</p>
+<div id="qfdl7tz2s6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 0, false];
+
+alert( arr.indexOf(0) ); // 1
+alert( arr.indexOf(false) ); // 2
+alert( arr.indexOf(null) ); // -1
+
+alert( arr.includes(1) ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tener en cuenta que el método usa la comparación estricta (<code>===</code>). Por lo tanto, si buscamos <code>false</code>, encontrará exactamente <code>false</code> y no cero.</p>
+<p>Si queremos comprobar si un elemento existe en el array, pero no necesitamos saber su ubicación exacta, es preferible usar <code>arr.includes</code></p>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf">arr.lastIndexOf</a> es lo mismo que <code>indexOf</code>, pero busca de derecha a izquierda.</p>
+<div id="1cejv6p6k5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let fruits = ['Apple', 'Orange', 'Apple']
+
+alert( fruits.indexOf('Apple') ); // 0 (primera &quot;Apple&quot;)
+alert( fruits.lastIndexOf('Apple') ); // 2 (última &quot;Apple&quot;)</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">El método <code>includes</code> maneja <code>NaN</code> correctamente</span></div>
+            <div class="important__content"><p>Una característica menor pero notable de <code>includes</code> es que, a diferencia de <code>indexOf</code>, maneja correctamente <code>NaN</code>:</p>
+<div id="djn9dc13xa" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>const arr = [NaN];
+alert( arr.indexOf(NaN) ); // -1 (debería ser 0, pero la igualdad === no funciona para NaN)
+alert( arr.includes(NaN) );// true (correcto)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto es porque <code>includes</code> fue agregado mucho después y usa un algoritmo interno de comparación actualizado.</p>
+</div></div>
+<h3><a class="main__anchor" name="find-y-findindex-findlastindex" href="#find-y-findindex-findlastindex">find y findIndex/findLastIndex</a></h3><p>Imaginemos que tenemos un array de objetos. ¿Cómo podríamos encontrar un objeto con una condición específica?</p>
+<p>Para este tipo de casos es útil el método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/find">arr.find(fn)</a></p>
+<p>La sintaxis es:</p>
+<div id="yqyvi0rdor" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let result = arr.find(function(item, index, array) {
+  // si true es devuelto aquí, find devuelve el ítem y la iteración se detiene
+  // para el caso en que sea false, devuelve undefined
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función es llamada para cada elemento del array, uno después del otro:</p>
+<ul>
+<li><code>item</code> es el elemento.</li>
+<li><code>index</code> es su índice.</li>
+<li><code>array</code> es el array mismo.</li>
+</ul>
+<p>Si devuelve <code>true</code>, la búsqueda se detiene y el <code>item</code> es devuelto. Si no encuentra nada, entonces devuelve <code>undefined</code>.</p>
+<p>Por ejemplo, si tenemos un array de usuarios, cada uno con los campos <code>id</code> y <code>name</code>. Encontremos el elemento con <code>id == 1</code>:</p>
+<div id="eou4exyiwa" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let users = [
+  {id: 1, name: &quot;Celina&quot;},
+  {id: 2, name: &quot;David&quot;},
+  {id: 3, name: &quot;Federico&quot;}
+];
+
+let user = users.find(item =&gt; item.id == 1);
+
+alert(user.name); // Celina</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En la vida real los arrays de objetos son bastante comunes por lo que el método <code>find</code> resulta muy útil.</p>
+<p>Ten en cuenta que en el ejemplo anterior le pasamos a <code>find</code> la función <code>item =&gt; item.id == 1</code> con un argumento. Esto es lo más común, otros argumentos son raramente usados en esta función.</p>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/findIndex">arr.findIndex</a> tiene la misma sintaxis, pero devuelve el índice donde el elemento fue encontrado en lugar del elemento en sí. Devuelve <code>-1</code> cuando no lo encuentra.</p>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/findLastIndex">arr.findLastIndex</a> es como <code>findIndex</code>, pero busca de derecha a izquierda, similar a <code>lastIndexOf</code>.</p>
+<p>Un ejemplo:</p>
+<div id="ivwo9cte2n" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let users = [
+  {id: 1, name: &quot;John&quot;},
+  {id: 2, name: &quot;Pete&quot;},
+  {id: 3, name: &quot;Mary&quot;},
+  {id: 4, name: &quot;John&quot;}
+];
+
+// Encontrar el índice del primer John
+alert(users.findIndex(user =&gt; user.name == 'John')); // 0
+
+// Encontrar el índice del último John
+alert(users.findLastIndex(user =&gt; user.name == 'John')); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="filter" href="#filter">filter</a></h3><p>El método <code>find</code> busca un único elemento (el primero) que haga a la función devolver <code>true</code>.</p>
+<p>Si existieran varios elementos que cumplen la condición, podemos usar <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter">arr.filter(fn)</a>.</p>
+<p>La sintaxis es similar a <code>find</code>, pero <code>filter</code> devuelve un array con todos los elementos encontrados:</p>
+<div id="as51a5kyxk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let results = arr.filter(function(item, index, array) {
+  // si devuelve true, el elemento es ingresado al array y la iteración continua
+  // si nada es encontrado, devuelve un array vacío
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo:</p>
+<div id="vl7sqgcp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let users = [
+  {id: 1, name: &quot;Celina&quot;},
+  {id: 2, name: &quot;David&quot;},
+  {id: 3, name: &quot;Federico&quot;}
+];
+
+// devuelve un array con los dos primeros usuarios
+let someUsers = users.filter(item =&gt; item.id &lt; 3);
+
+alert(someUsers.length); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="transformar-un-array" href="#transformar-un-array">Transformar un array</a></h2><p>Pasamos ahora a los métodos que transforman y reordenan un array.</p>
+<h3><a class="main__anchor" name="map" href="#map">map</a></h3><p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map">arr.map</a> es uno de los métodos más comunes y ampliamente usados.</p>
+<p>Este método llama a la función para cada elemento del array y devuelve un array con los resultados.</p>
+<p>La sintaxis es:</p>
+<div id="xgndpzkygo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let result = arr.map(function(item, index, array) {
+  // devuelve el nuevo valor en lugar de item
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo, acá transformamos cada elemento en el valor de su respectivo largo (length):</p>
+<div id="p5wvcjrr7x" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let lengths = [&quot;Bilbo&quot;, &quot;Gandalf&quot;, &quot;Nazgul&quot;].map(item =&gt; item.length);
+alert(lengths); // 5,7,6</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="sort-fn" href="#sort-fn">sort(fn)</a></h3><p>Cuando usamos <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/sort">arr.sort()</a>, este ordena el propio array cambiando el orden de los elementos.</p>
+<p>También devuelve un nuevo array ordenado, pero este usualmente se descarta ya que <code>arr</code> en sí mismo es modificado.</p>
+<p>Por ejemplo:</p>
+<div id="mpdmdtn2h7" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;cols&quot;:[{&quot;start&quot;:18,&quot;end&quot;:26}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [ 1, 2, 15 ];
+
+// el método reordena el contenido de arr
+arr.sort();
+
+alert( arr );  // 1, 15, 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Notas algo extraño en los valores de salida?</p>
+<p>Los elementos fueron reordenados a <code>1, 15, 2</code>. Pero ¿por qué pasa esto?</p>
+<p><strong>Los elementos son ordenados como strings (cadenas de caracteres) por defecto</strong></p>
+<p>Todos los elementos son literalmente convertidos a string para ser comparados. En el caso de strings se aplica el orden lexicográfico, por lo que efectivamente <code>&quot;2&quot; &gt; &quot;15&quot;</code>.</p>
+<p>Para usar nuestro propio criterio de reordenamiento, necesitamos proporcionar una función como argumento de <code>arr.sort()</code>.</p>
+<p>La función debe comparar dos valores arbitrarios, y devolver:</p>
+<div id="d3clnap93f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function compare(a, b) {
+  if (a &gt; b) return 1; // si el primer valor es mayor que el segundo
+  if (a == b) return 0; // si ambos valores son iguales
+  if (a &lt; b) return -1; // si el primer valor es menor que el segundo
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo, para ordenar como números:</p>
+<div id="ootthol6gf" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:10,&quot;cols&quot;:[{&quot;start&quot;:16,&quot;end&quot;:24}]},{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function compareNumeric(a, b) {
+  if (a &gt; b) return 1;
+  if (a == b) return 0;
+  if (a &lt; b) return -1;
+}
+
+let arr = [ 1, 2, 15 ];
+
+arr.sort(compareNumeric);
+
+alert(arr);  // 1, 2, 15</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora sí funciona como esperábamos.</p>
+<p>Detengámonos un momento y pensemos qué es lo que está pasando. El array <code>arr</code> puede ser un array de cualquier cosa, ¿no? Puede contener números, strings, objetos o lo que sea. Podemos decir que tenemos un conjunto de <em>ciertos items</em>. Para ordenarlos, necesitamos una <em>función de ordenamiento</em> que sepa cómo comparar los elementos. El orden por defecto es hacerlo como strings.</p>
+<p>El método <code>arr.sort(fn)</code> implementa un algoritmo genérico de orden. No necesitamos preocuparnos de cómo funciona internamente (la mayoría de las veces es una forma optimizada del algoritmo <a href="https://es.wikipedia.org/wiki/Quicksort">quicksort</a> o <a href="https://en.wikipedia.org/wiki/Timsort">Timsort</a>). Este método va a recorrer el array, comparar sus elementos usando la función dada y, finalmente, reordenarlos. Todo los que necesitamos hacer es proveer la <code>fn</code> que realiza la comparación.</p>
+<p>Por cierto, si queremos saber qué elementos son comparados, nada nos impide ejecutar alert() en ellos:</p>
+<div id="17vvcdkdb2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>[1, -2, 15, 2, 0, 8].sort(function(a, b) {
+  alert( a + &quot; &lt;&gt; &quot; + b );
+  return a - b;
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El algoritmo puede comparar un elemento con muchos otros en el proceso, pero trata de hacer la menor cantidad de comparaciones posible.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Una función de comparación puede devolver cualquier número</span></div>
+            <div class="important__content"><p>En realidad, una función de comparación solo es requerida para devolver un número positivo para “mayor” y uno negativo para “menor”.</p>
+<p>Esto nos permite escribir una función más corta:</p>
+<div id="89w8ys4g4f" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:16,&quot;end&quot;:24}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [ 1, 2, 15 ];
+
+arr.sort(function(a, b) { return a - b; });
+
+alert(arr);  // 1, 2, 15</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Mejor, con funciones de flecha</span></div>
+            <div class="important__content"><p>¿Recuerdas las <a href="arrow-functions-basics.html">arrow functions</a>? Podemos usarlas en este caso para un ordenamiento más prolijo:</p>
+<div id="zhqove072j" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>arr.sort( (a, b) =&gt; a - b );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto funciona exactamente igual que la versión más larga de arriba.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Usa <code>localeCompare</code> para strings</span></div>
+            <div class="important__content"><p>¿Recuerdas el algoritmo de comparación <a href="string.html#correct-comparisons">strings</a>? Este compara letras por su código por defecto.</p>
+<p>Para muchos alfabetos, es mejor usar el método <code>str.localeCompare</code> para ordenar correctamente letras como por ejemplo <code>Ö</code>.</p>
+<p>Por ejemplo, vamos a ordenar algunos países en alemán:</p>
+<div id="z504xw53ii" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let paises = ['Österreich', 'Andorra', 'Vietnam'];
+
+alert( paises.sort( (a, b) =&gt; a &gt; b ? 1 : -1) ); // Andorra, Vietnam, Österreich (incorrecto)
+
+alert( paises.sort( (a, b) =&gt; a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam (¡correcto!)</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h3><a class="main__anchor" name="reverse" href="#reverse">reverse</a></h3><p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reverse">arr.reverse</a> revierte el orden de los elementos en <code>arr</code>.</p>
+<p>Por ejemplo:</p>
+<div id="v1s6v532k1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 3, 4, 5];
+arr.reverse();
+
+alert( arr ); // 5,4,3,2,1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También devuelve el array <code>arr</code> después de revertir el orden.</p>
+<h3><a class="main__anchor" name="split-y-join" href="#split-y-join">split y join</a></h3><p>Analicemos una situación de la vida real. Estamos programando una app de mensajería y y el usuario ingresa una lista de receptores delimitada por comas: <code>Celina, David, Federico</code>. Pero para nosotros un array sería mucho más práctico que una simple string. ¿Cómo podemos hacer para obtener un array?</p>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/split">str.split(delim)</a> hace precisamente eso. Separa la string en elementos según el delimitante <code>delim</code> dado y los devuelve como un array.</p>
+<p>En el ejemplo de abajo, separamos por “coma seguida de espacio”:</p>
+<div id="u6gcw3jawu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let nombres = 'Bilbo, Gandalf, Nazgul';
+
+let arr = nombres.split(', ');
+
+for (let name of arr) {
+  alert( `Un mensaje para ${name}.` ); // Un mensaje para Bilbo  (y los otros nombres)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El método <code>split</code> tiene un segundo argumento numérico opcional: un límite en la extensión del array. Si se provee este argumento, entonces el resto de los elementos son ignorados. Sin embargo en la práctica rara vez se utiliza:</p>
+<div id="syjwa99dsx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = 'Bilbo, Gandalf, Nazgul, Saruman'.split(', ', 2);
+
+alert(arr); // Bilbo, Gandalf</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Separar en letras</span></div>
+            <div class="important__content"><p>El llamado a <code>split(s)</code> con un <code>s</code> vacío separará el string en un array de letras:</p>
+<div id="ufv80ggbss" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;test&quot;;
+
+alert( str.split('') ); // t,e,s,t</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/join">arr.join(glue)</a> hace lo opuesto a <code>split</code>. Crea una string de <code>arr</code> elementos unidos con <code>glue</code> (pegamento) entre ellos.</p>
+<p>Por ejemplo:</p>
+<div id="14z448v6a8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
+
+let str = arr.join(';'); // une el array en una string usando ;
+
+alert( str ); // Bilbo;Gandalf;Nazgul</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="reduce-reduceright" href="#reduce-reduceright">reduce/reduceRight</a></h3><p>Cuando necesitamos iterar sobre un array podemos usar <code>forEach</code>, <code>for</code> o <code>for..of</code>.</p>
+<p>Cuando necesitamos iterar y devolver un valor por cada elemento podemos usar <code>map</code>.</p>
+<p>Los métodos <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce">arr.reduce</a> y <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduceRight">arr.reduceRight</a> también pertenecen a ese grupo de acciones, pero son un poco más complejos. Se los utiliza para calcular un único valor a partir del array.</p>
+<p>La sintaxis es la siguiente:</p>
+<div id="znb633rtss" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let value = arr.reduce(function(accumulator, item, index, array) {
+  // ...
+}, [initial]);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función es aplicada a todos los elementos del array, uno tras de otro, y va arrastrando el resultado parcial al próximo llamado.</p>
+<p>Argumentos:</p>
+<ul>
+<li><code>accumulator</code> – es el resultado del llamado previo de la función, equivale a  <code>initial</code> la primera vez (si <code>initial</code> es dado como argumento).</li>
+<li><code>item</code> – es el elemento actual del array.</li>
+<li><code>index</code> – es la posición.</li>
+<li><code>array</code> – es el array.</li>
+</ul>
+<p>Mientras la función sea llamada, el resultado del llamado anterior se pasa al siguiente como primer argumento.</p>
+<p>Entonces, el primer argumento es el acumulador que almacena el resultado combinado de todas las veces anteriores en que se ejecutó, y al final se convierte en el resultado de <code>reduce</code>.</p>
+<p>¿Suena complicado?</p>
+<p>La forma más simple de entender algo es con un ejemplo.</p>
+<p>Acá tenemos la suma de un array en una línea:</p>
+<div id="a194e63bg0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 3, 4, 5];
+
+let result = arr.reduce((sum, current) =&gt; sum + current, 0);
+
+alert(result); // 15</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función pasada a <code>reduce</code> utiliza solo 2 argumentos, esto generalmente es suficiente.</p>
+<p>Veamos los detalles de lo que está pasando.</p>
+<ol>
+<li>En la primera pasada, <code>sum</code> es el valor <code>initial</code> (el último argumento de <code>reduce</code>), equivale a <code>0</code>, y <code>current</code> es el primer elemento de array, equivale a <code>1</code>. Entonces el resultado de la función es <code>1</code>.</li>
+<li>En la segunda pasada, <code>sum = 1</code>, agregamos el segundo elemento del array (<code>2</code>) y devolvemos el valor.</li>
+<li>En la tercera pasada, <code>sum = 3</code> y le agregamos un elemento más, y así sucesivamente…</li>
+</ol>
+<p>El flujo de cálculos:</p>
+<figure><div class="image" style="width:620px">
+      <div class="image__ratio" style="padding-top:20.806451612903228%"></div>
+      <object type="image/svg+xml" data="article/array-methods/reduce.svg" width="620" height="129" class="image__image" data-use-theme>
+        <img src="article/array-methods/reduce.svg" alt="" width="620" height="129">
+      </object>
+      </div></figure><p>O en la forma de una tabla, donde cada fila representa un llamado a una función en el próximo elemento del array:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>sum</code></th>
+<th><code>current</code></th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>primer llamado</td>
+<td><code>0</code></td>
+<td><code>1</code></td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td>segundo llamado</td>
+<td><code>1</code></td>
+<td><code>2</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td>tercer llamado</td>
+<td><code>3</code></td>
+<td><code>3</code></td>
+<td><code>6</code></td>
+</tr>
+<tr>
+<td>cuarto llamado</td>
+<td><code>6</code></td>
+<td><code>4</code></td>
+<td><code>10</code></td>
+</tr>
+<tr>
+<td>quinto llamado</td>
+<td><code>10</code></td>
+<td><code>5</code></td>
+<td><code>15</code></td>
+</tr>
+</tbody>
+</table>
+<p>Acá podemos ver claramente como el resultado del llamado anterior se convierte en el primer argumento del llamado siguiente.</p>
+<p>También podemos omitir el valor inicial:</p>
+<div id="2o55gt98pu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 3, 4, 5];
+
+// valor inicial removido (no 0)
+let result = arr.reduce((sum, current) =&gt; sum + current);
+
+alert( result ); // 15</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El resultado es el mismo. Esto es porque en el caso de no haber valor inicial, <code>reduce</code> toma el primer elemento del array como valor inicial y comienza la iteración a partir del segundo elemento.</p>
+<p>La tabla de cálculos es igual a la anterior menos la primer fila.</p>
+<p>Pero este tipo de uso requiere tener extremo cuidado. Si el array está vacío, entonces el llamado a <code>reduce</code> sin valor inicial devuelve error.</p>
+<p>Acá vemos un ejemplo:</p>
+<div id="2146jpukth" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [];
+
+// Error: Reduce en un array vacío sin valor inicial
+// si el valor inicial existe, reduce lo devuelve en el arr vacío.
+arr.reduce((sum, current) =&gt; sum + current);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por lo tanto siempre se recomienda especificar un valor inicial.</p>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduceRight">arr.reduceRight</a> realiza lo mismo, pero va de derecha a izquierda.</p>
+<h2><a class="main__anchor" name="array-isarray" href="#array-isarray">Array.isArray</a></h2><p>Los arrays no conforman un tipo diferente. Están basados en objetos.</p>
+<p>Por eso <code>typeof</code> no ayuda a distinguir un objeto común de un array:</p>
+<div id="dziwilwr6k" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(typeof {}); // object
+alert(typeof []); // object (lo mismo)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero los arrays son utilizados tan a menudo que tienen un método especial para eso: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/isArray">Array.isArray(value)</a>. Este devuelve <code>true</code> si el <code>valor</code> es un array y <code>false</code> si no lo es.</p>
+<div id="nxtuwzcxd9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(Array.isArray({})); // false
+
+alert(Array.isArray([])); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="la-mayoria-de-los-metodos-aceptan-thisarg" href="#la-mayoria-de-los-metodos-aceptan-thisarg">La mayoría de los métodos aceptan “thisArg”</a></h2><p>Casi todos los métodos para arrays que realizan llamados a funciones – como <code>find</code>, <code>filter</code>, <code>map</code>, con la notable excepción de <code>sort</code>– aceptan un parámetro opcional adicional <code>thisArg</code>.</p>
+<p>Ese parámetro no está explicado en la sección anterior porque es raramente usado. Pero para ser exhaustivos necesitamos verlo.</p>
+<p>Esta es la sintaxis completa de estos métodos:</p>
+<div id="iovfth0qqi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>arr.find(func, thisArg);
+arr.filter(func, thisArg);
+arr.map(func, thisArg);
+// ...
+// thisArg es el último argumento opcional</code></pre>
+        </div>
+      </div>
+      
+      </div><p>EL valor del parámetro <code>thisArg</code> se convierte en <code>this</code> para <code>func</code>.</p>
+<p>Por ejemplo, acá usamos un método del objeto <code>army</code> como un filtro y <code>thisArg</code> da el contexto:</p>
+<div id="egmzhkvg77" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:16}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let army = {
+  minAge: 18,
+  maxAge: 27,
+  canJoin(user) {
+    return user.age &gt;= this.minAge &amp;&amp; user.age &lt; this.maxAge;
+  }
+};
+
+let users = [
+  {age: 16},
+  {age: 20},
+  {age: 23},
+  {age: 30}
+];
+
+// encuentra usuarios para los cuales army.canJoin devuelve true
+let soldiers = users.filter(army.canJoin, army);
+
+alert(soldiers.length); // 2
+alert(soldiers[0].age); // 20
+alert(soldiers[1].age); // 23</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si en el ejemplo anterior usáramos <code>users.filter(army.canJoin)</code>, entonces <code>army.canJoin</code> sería llamada como una función independiente con <code>this=undefined</code>, lo que llevaría a un error inmediato.</p>
+<p>La llamada a <code>users.filter(army.canJoin, army)</code> puede ser reemplazada con <code>users.filter(user =&gt; army.canJoin(user))</code> que realiza lo mismo. Esta última se usa más a menudo ya que es un poco más fácil de entender.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Veamos el ayudamemoria de métodos para arrays:</p>
+<ul>
+<li>
+<p>Para agregar/remover elementos:</p>
+<ul>
+<li><code>push(...items)</code> – agrega ítems al final,</li>
+<li><code>pop()</code> – extrae un ítem del final,</li>
+<li><code>shift()</code> – extrae un ítem del inicio,</li>
+<li><code>unshift(...items)</code> – agrega ítems al inicio.</li>
+<li><code>splice(pos, deleteCount, ...items)</code> – desde el índice <code>pos</code> borra <code>deleteCount</code> elementos e inserta <code>items</code>.</li>
+<li><code>slice(start, end)</code> – crea un nuevo array y copia elementos desde la posición <code>start</code> hasta <code>end</code> (no incluido) en el nuevo array.</li>
+<li><code>concat(...items)</code> – devuelve un nuevo array: copia todos los elementos del array actual y le agrega <code>items</code>. Si alguno de los <code>items</code> es un array, se toman sus elementos.</li>
+</ul>
+</li>
+<li>
+<p>Para buscar entre elementos:</p>
+<ul>
+<li><code>indexOf/lastIndexOf(item, pos)</code> – busca por <code>item</code> comenzando desde la posición <code>pos</code>, devolviendo el índice o <code>-1</code> si no se encuentra.</li>
+<li><code>includes(value)</code> – devuelve <code>true</code> si el array tiene <code>value</code>, si no <code>false</code>.</li>
+<li><code>find/filter(func)</code> – filtra elementos a través de la función, devuelve el primer/todos los valores que devuelven <code>true</code>.</li>
+<li><code>findIndex</code> es similar a  <code>find</code>, pero devuelve el índice en lugar del valor.</li>
+</ul>
+</li>
+<li>
+<p>Para iterar sobre elementos:</p>
+<ul>
+<li><code>forEach(func)</code> – llama la <code>func</code> para cada elemento, no devuelve nada.</li>
+</ul>
+</li>
+<li>
+<p>Para transformar el array:</p>
+<ul>
+<li><code>map(func)</code> – crea un nuevo array a partir de los resultados de llamar a la <code>func</code> para cada elemento.</li>
+<li><code>sort(func)</code> – ordena el array y lo devuelve.</li>
+<li><code>reverse()</code> – ordena el array de forma inversa y lo devuelve.</li>
+<li><code>split/join</code> – convierte una cadena en un array y viceversa.</li>
+<li><code>reduce/reduceRight(func, initial)</code> – calcula un solo valor para todo el array, llamando a la <code>func</code> para cada elemento, obteniendo un resultado parcial en cada llamada y pasándolo a la siguiente.</li>
+</ul>
+</li>
+<li>
+<p>Adicional:</p>
+<ul>
+<li><code>Array.isArray(value)</code> comprueba si <code>value</code> es un array.</li>
+</ul>
+</li>
+</ul>
+<p>Por favor tener en cuenta que <code>sort</code>, <code>reverse</code> y <code>splice</code> modifican el propio array.</p>
+<p>Estos métodos son los más utilizados y cubren el 99% de los casos. Pero existen algunos más:</p>
+<ul>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/some">arr.some(fn)</a>/<a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/every">arr.every(fn)</a> comprueba el array.</p>
+<p>La función <code>fn</code> es llamada para cada elemento del array de manera similar a <code>map</code>. Si alguno/todos los resultados son <code>true</code>, devuelve <code>true</code>, si no, <code>false</code>.</p>
+<p>Estos métodos se comportan con similitud a los operadores <code>||</code> y <code>&amp;&amp;</code>: si <code>fn</code> devuelve un valor verdadero, <code>arr.some()</code> devuelve <code>true</code> y detiene la iteración de inmediato; si <code>fn</code>  devuelve un valor falso, <code>arr.every()</code> devuelve <code>false</code> y detiene la iteración también.</p>
+</li>
+</ul>
+<p>Podemos usar <code>every</code> para comparar arrays:</p>
+<div id="ip58fp451n" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function arraysEqual(arr1, arr2) {
+  return arr1.length === arr2.length &amp;&amp; arr1.every((value, index) =&gt; value === arr2[index]);
+}
+
+alert( arraysEqual([1, 2], [1, 2])); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/fill">arr.fill(value, start, end)</a> – llena el array repitiendo <code>value</code> desde el índice <code>start</code> hasta <code>end</code>.</p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/copyWithin">arr.copyWithin(target, start, end)</a> – copia sus elementos desde la posición <code>start</code> hasta la posición <code>end</code> en <em>si mismo</em>, a la posición <code>target</code> (reescribe lo existente).</p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/flat">arr.flat(depth)</a>/<a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/flatMap">arr.flatMap(fn)</a> crea un nuevo array plano desde un array multidimensional .</p>
+</li>
+</ul>
+<p>Para la lista completa, ver <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array">manual</a>.</p>
+<p>A primera vista puede parecer que hay demasiados métodos para aprender y un tanto difíciles de recordar. Pero con el tiempo se vuelve más fácil.</p>
+<p>Revisa el ayudamemoria para conocerlos. Después realiza las prácticas de este capítulo para ganar experiencia con los métodos para arrays.</p>
+<p>Finalmente si en algún momento necesitas hacer algo con un array y no sabes cómo, vuelve a esta página, mira el ayudamemoria y encuentra el método correcto. Los ejemplos te ayudarán a escribirlos correctamente y pronto los recordarás automáticamente y sin esfuerzo.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#transforma-border-left-width-en-borderleftwidth" name="transforma-border-left-width-en-borderleftwidth">Transforma border-left-width en borderLeftWidth</a></h3><a class="task__open-link" href="task/camelcase.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe la función <code>camelize(str)</code> que convierta palabras separadas por guión como “mi-cadena-corta” en palabras con mayúscula “miCadenaCorta”.</p>
+<p>Esto sería: remover todos los guiones y que cada palabra después de un guión comience con mayúscula.</p>
+<p>Ejemplos:</p>
+<div id="jthiera9vc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>camelize(&quot;background-color&quot;) == 'backgroundColor';
+camelize(&quot;list-style-image&quot;) == 'listStyleImage';
+camelize(&quot;-webkit-transition&quot;) == 'WebkitTransition';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D. Pista: usa <code>split</code> para dividir el string en un array, transfórmalo y vuelve a unirlo (<code>join</code>).</p>
+<p><a href="https://plnkr.co/edit/tOSeFWT8NnESlxHf?p=preview" target="_blank" data-plunk-id="tOSeFWT8NnESlxHf">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="w5nmd3gowt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function camelize(str) {
+  return str
+    .split('-') // separa 'my-long-word' en el array ['my', 'long', 'word']
+    .map(
+      // convierte en mayúscula todas las primeras letras de los elementos del array excepto por el primero
+      // convierte ['my', 'long', 'word'] en ['my', 'Long', 'Word']
+      (word, index) =&gt; index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+    )
+    .join(''); // une ['my', 'Long', 'Word'] en 'myLongWord'
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/ZaiT7ckM0hBlV4ht?p=preview" target="_blank" data-plunk-id="ZaiT7ckM0hBlV4ht">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#filtrar-un-rango" name="filtrar-un-rango">Filtrar un rango</a></h3><a class="task__open-link" href="task/filter-range.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>filterRange(arr, a, b)</code> que obtenga un array <code>arr</code>, busque los elementos con valor mayor o igual a <code>a</code> y menor o igual a <code>b</code> y devuelva un array con los resultados.</p>
+<p>La función no debe modificar el array. Debe devolver un nuevo array.</p>
+<p>Por ejemplo:</p>
+<div id="kpug7xdm6e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [5, 3, 8, 1];
+
+let filtered = filterRange(arr, 1, 4);
+
+alert( filtered ); // 3,1 (valores dentro del rango)
+
+alert( arr ); // 5,3,8,1 (array original no modificado)</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/8mmTA28C327Lnlqc?p=preview" target="_blank" data-plunk-id="8mmTA28C327Lnlqc">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="89olzqueti" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function filterRange(arr, a, b) {
+  // agregamos paréntesis en torno a la expresión para mayor legibilidad
+  return arr.filter(item =&gt; (a &lt;= item &amp;&amp; item &lt;= b));
+}
+
+let arr = [5, 3, 8, 1];
+
+let filtered = filterRange(arr, 1, 4);
+
+alert( filtered ); // 3,1 (valores dentro del rango)
+
+alert( arr ); // 5,3,8,1 (array original no modificado)</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/1zygp6y0DRGvqhcD?p=preview" target="_blank" data-plunk-id="1zygp6y0DRGvqhcD">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#filtrar-rango-en-el-lugar" name="filtrar-rango-en-el-lugar">Filtrar rango &quot;en el lugar&quot;</a></h3><a class="task__open-link" href="task/filter-range-in-place.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>filterRangeInPlace(arr, a, b)</code> que obtenga un array <code>arr</code> y remueva del mismo todos los valores excepto aquellos que se encuentran entre <code>a</code> y <code>b</code>. El test es: <code>a ≤ arr[i] ≤ b</code>.</p>
+<p>La función solo debe modificar el array. No debe devolver nada.</p>
+<p>Por ejemplo:</p>
+<div id="r579vvwwdk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [5, 3, 8, 1];
+
+filterRangeInPlace(arr, 1, 4); // remueve los números excepto aquellos entre 1 y 4
+
+alert( arr ); // [3, 1]</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/Fdi0vPOXd3uGQODw?p=preview" target="_blank" data-plunk-id="Fdi0vPOXd3uGQODw">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="369oeyedzl" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function filterRangeInPlace(arr, a, b) {
+
+  for (let i = 0; i &lt; arr.length; i++) {
+    let val = arr[i];
+
+    // remueve aquellos elementos que se encuentran fuera del intervalo
+    if (val &lt; a || val &gt; b) {
+      arr.splice(i, 1);
+      i--;
+    }
+  }
+
+}
+
+let arr = [5, 3, 8, 1];
+
+filterRangeInPlace(arr, 1, 4); // remueve los números excepto aquellos entre 1 y 4
+
+alert( arr ); // [3, 1]</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/4QygvAPYAKesiYtA?p=preview" target="_blank" data-plunk-id="4QygvAPYAKesiYtA">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ordenar-en-orden-decreciente" name="ordenar-en-orden-decreciente">Ordenar en orden decreciente</a></h3><a class="task__open-link" href="task/sort-back.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><div id="w07m9eeei3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [5, 2, 1, -10, 8];
+
+// ... tu código para ordenar en orden decreciente
+
+alert( arr ); // 8, 5, 2, 1, -10</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="5a0uxcbryu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [5, 2, 1, -10, 8];
+
+arr.sort((a, b) =&gt; b - a);
+
+alert( arr );</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#copia-y-ordena-un-array" name="copia-y-ordena-un-array">Copia y ordena un array</a></h3><a class="task__open-link" href="task/copy-sort-array.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Supongamos que tenemos un array <code>arr</code>. Nos gustaría tener una copia ordenada del mismo, pero mantener <code>arr</code> sin modificar.</p>
+<p>Crea una función <code>copySorted(arr)</code> que devuelva esa copia.</p>
+<div id="26yuscm1fo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;HTML&quot;, &quot;JavaScript&quot;, &quot;CSS&quot;];
+
+let sorted = copySorted(arr);
+
+alert( sorted ); // CSS, HTML, JavaScript
+alert( arr ); // HTML, JavaScript, CSS (sin cambios)</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Podemos usar <code>slice()</code> para crear una copia y realizar el ordenamiento en ella:</p>
+<div id="fqtvelxeoz" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function copySorted(arr) {
+  return arr.slice().sort();
+}
+
+let arr = [&quot;HTML&quot;, &quot;JavaScript&quot;, &quot;CSS&quot;];
+
+let sorted = copySorted(arr);
+
+alert( sorted );
+alert( arr );</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crea-una-calculadora-extensible" name="crea-una-calculadora-extensible">Crea una calculadora extensible</a></h3><a class="task__open-link" href="task/calculator-extendable.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>Calculator</code> que cree objetos calculadores “extensibles”.</p>
+<p>La actividad consiste de dos partes.</p>
+<ol>
+<li>
+<p>Primero, implementar el método <code>calculate(str)</code> que toma un string como <code>&quot;1 + 2&quot;</code> en el formato “NUMERO operador NUMERO” (delimitado por espacios) y devuelve el resultado. Debe entender más <code>+</code> y menos <code>-</code>.</p>
+<p>Ejemplo de uso:</p>
+<div id="9fhmvb12bm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let calc = new Calculator;
+
+alert( calc.calculate(&quot;3 + 7&quot;) ); // 10</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Luego agrega el método <code>addMethod(name, func)</code> que enseñe a la calculadora una nueva operación. Toma el operador <code>name</code> y la función con dos argumentos <code>func(a,b)</code> que lo implementa.</p>
+<p>Por ejemplo, vamos a agregar la multiplicación <code>*</code>, division <code>/</code> y potencia <code>**</code>:</p>
+<div id="ic7adfgttf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let powerCalc = new Calculator;
+powerCalc.addMethod(&quot;*&quot;, (a, b) =&gt; a * b);
+powerCalc.addMethod(&quot;/&quot;, (a, b) =&gt; a / b);
+powerCalc.addMethod(&quot;**&quot;, (a, b) =&gt; a ** b);
+
+let result = powerCalc.calculate(&quot;2 ** 3&quot;);
+alert( result ); // 8</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<ul>
+<li>Sin paréntesis ni expresiones complejas en esta tarea.</li>
+<li>Los números y el operador deben estar delimitados por exactamente un espacio.</li>
+<li>Puede haber manejo de errores si quisieras agregarlo.</li>
+</ul>
+<p><a href="https://plnkr.co/edit/IQC3sKgMFYa8nzsB?p=preview" target="_blank" data-plunk-id="IQC3sKgMFYa8nzsB">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><ul>
+<li>Por favor ten en cuenta cómo son almacenados los métodos. Simplemente son agregados a la propiedad <code>this.methods</code>.</li>
+<li>Todos los test y conversiones son hechas con el método <code>calculate</code>. En el futuro puede ser extendido para soportar expresiones más complejas.</li>
+</ul>
+<div id="lqxlwonqc7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function Calculator() {
+
+  this.methods = {
+    &quot;-&quot;: (a, b) =&gt; a - b,
+    &quot;+&quot;: (a, b) =&gt; a + b
+  };
+
+  this.calculate = function(str) {
+
+    let split = str.split(' '),
+      a = +split[0],
+      op = split[1],
+      b = +split[2];
+
+    if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+      return NaN;
+    }
+
+    return this.methods[op](a, b);
+  };
+
+  this.addMethod = function(name, func) {
+    this.methods[name] = func;
+  };
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/OiwGlN4lJk5ObjBG?p=preview" target="_blank" data-plunk-id="OiwGlN4lJk5ObjBG">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#mapa-a-nombres" name="mapa-a-nombres">Mapa a nombres</a></h3><a class="task__open-link" href="task/array-get-names.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Tienes un array de objetos <code>user</code>, cada uno tiene <code>user.name</code>. Escribe el código que lo convierta en un array de nombres.</p>
+<p>Por ejemplo:</p>
+<div id="4ukgtfo6ee" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot;, age: 25 };
+let pete = { name: &quot;Pete&quot;, age: 30 };
+let mary = { name: &quot;Mary&quot;, age: 28 };
+
+let users = [ john, pete, mary ];
+
+let names = /* ... tu código */
+
+alert( names ); // John, Pete, Mary</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="3vstvme7d1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot;, age: 25 };
+let pete = { name: &quot;Pete&quot;, age: 30 };
+let mary = { name: &quot;Mary&quot;, age: 28 };
+
+let users = [ john, pete, mary ];
+
+let names = users.map(item =&gt; item.name);
+
+alert( names ); // John, Pete, Mary</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#mapa-a-objetos" name="mapa-a-objetos">Mapa a objetos</a></h3><a class="task__open-link" href="task/map-objects.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Tienes un array de objetos <code>user</code>, cada uno tiene <code>name</code>, <code>surname</code> e <code>id</code>.</p>
+<p>Escribe el código para crear otro array a partir de este, de objetos con <code>id</code> y <code>fullName</code>, donde <code>fullName</code> es generado a partir de <code>name</code> y <code>surname</code>.</p>
+<p>Por ejemplo:</p>
+<div id="zvalodr2wa" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot;, surname: &quot;Smith&quot;, id: 1 };
+let pete = { name: &quot;Pete&quot;, surname: &quot;Hunt&quot;, id: 2 };
+let mary = { name: &quot;Mary&quot;, surname: &quot;Key&quot;, id: 3 };
+
+let users = [ john, pete, mary ];
+
+let usersMapped = /* ... tu código ... */
+
+/*
+usersMapped = [
+  { fullName: &quot;John Smith&quot;, id: 1 },
+  { fullName: &quot;Pete Hunt&quot;, id: 2 },
+  { fullName: &quot;Mary Key&quot;, id: 3 }
+]
+*/
+
+alert( usersMapped[0].id ) // 1
+alert( usersMapped[0].fullName ) // John Smith</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces, en realidad lo que necesitas es mapear un array de objetos a otro. Intenta usar <code>=&gt;</code> en este caso. Hay un pequeño truco.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="u10f6m8ijb" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot;, surname: &quot;Smith&quot;, id: 1 };
+let pete = { name: &quot;Pete&quot;, surname: &quot;Hunt&quot;, id: 2 };
+let mary = { name: &quot;Mary&quot;, surname: &quot;Key&quot;, id: 3 };
+
+let users = [ john, pete, mary ];
+
+let usersMapped = users.map(user =&gt; ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+}));
+
+/*
+usersMapped = [
+  { fullName: &quot;John Smith&quot;, id: 1 },
+  { fullName: &quot;Pete Hunt&quot;, id: 2 },
+  { fullName: &quot;Mary Key&quot;, id: 3 }
+]
+*/
+
+alert( usersMapped[0].id ); // 1
+alert( usersMapped[0].fullName ); // John Smith</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que para las funciones arrow necesitamos usar paréntesis adicionales.</p>
+<p>No podemos escribirlo de la siguiente manera:</p>
+<div id="8kl3hih5py" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:36,&quot;end&quot;:37}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let usersMapped = users.map(user =&gt; {
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como recordarás, existen dos funciones arrow: sin cuerpo <code>value =&gt; expr</code> y con cuerpo <code>value =&gt; {...}</code>.</p>
+<p>Acá JavaScript tratará <code>{</code> como el inicio de cuerpo de la función, no el inicio del objeto. La manera de resolver esto es encerrarlo dentro de paréntesis:</p>
+<div id="kxxhqme9o2" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:36,&quot;end&quot;:38}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let usersMapped = users.map(user =&gt; ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+}));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora funciona.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ordena-usuarios-por-edad" name="ordena-usuarios-por-edad">Ordena usuarios por edad</a></h3><a class="task__open-link" href="task/sort-objects.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe la función <code>sortByAge(users)</code> que cree un array de objetos con al propiedad <code>age</code> y los ordene según <code>age</code>.</p>
+<p>Por ejemplo:</p>
+<div id="lh964jt67s" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot;, age: 25 };
+let pete = { name: &quot;Pete&quot;, age: 30 };
+let mary = { name: &quot;Mary&quot;, age: 28 };
+
+let arr = [ pete, john, mary ];
+
+sortByAge(arr);
+
+// ahora: [john, mary, pete]
+alert(arr[0].name); // John
+alert(arr[1].name); // Mary
+alert(arr[2].name); // Pete</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="g30yof9dw6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sortByAge(arr) {
+  arr.sort((a, b) =&gt; a.age - b.age);
+}
+
+let john = { name: &quot;John&quot;, age: 25 };
+let pete = { name: &quot;Pete&quot;, age: 30 };
+let mary = { name: &quot;Mary&quot;, age: 28 };
+
+let arr = [ pete, john, mary ];
+
+sortByAge(arr);
+
+// ahora ordenado es: [john, mary, pete]
+alert(arr[0].name); // John
+alert(arr[1].name); // Mary
+alert(arr[2].name); // Pete</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#barajar-un-array" name="barajar-un-array">Barajar un array</a></h3><a class="task__open-link" href="task/shuffle.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 3</span></div><div class="task__content"><div class="task__formatted"><p>Escribe la función <code>shuffle(array)</code> que baraje (reordene de forma aleatoria) los elementos del array.</p>
+<p>Múltiples ejecuciones de <code>shuffle</code> puede conducir a diferentes órdenes de elementos. Por ejemplo:</p>
+<div id="5hu0qnb3i2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 3];
+
+shuffle(arr);
+// arr = [3, 2, 1]
+
+shuffle(arr);
+// arr = [2, 1, 3]
+
+shuffle(arr);
+// arr = [3, 1, 2]
+// ...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Todos los reordenamientos de elementos tienen que tener la misma probabilidad. Por ejemplo, <code>[1,2,3]</code> puede ser reordenado como <code>[1,2,3]</code> o <code>[1,3,2]</code> o <code>[3,1,2]</code> etc, con igual probabilidad en cada caso.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Una solución simple podría ser:</p>
+<div id="k2q9ltha55" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function shuffle(array) {
+  array.sort(() =&gt; Math.random() - 0.5);
+}
+
+let arr = [1, 2, 3];
+shuffle(arr);
+alert(arr);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso funciona de alguna manera, porque <code>Math.random() - 0.5</code> es un número aleatorio que puede ser positivo o negativo, por lo tanto, la función de ordenamiento reordena los elementos de forma aleatoria.</p>
+<p>Pero debido a que la función de ordenamiento no está hecha para ser usada de esta manera, no todas las permutaciones tienen la misma probabilidad.</p>
+<p>Por ejemplo, consideremos el código siguiente. Ejecuta <code>shuffle</code> 1000000 veces y cuenta las apariciones de todos los resultados posibles:</p>
+<div id="wwfwdr6zco" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function shuffle(array) {
+  array.sort(() =&gt; Math.random() - 0.5);
+}
+
+// cuenta las apariciones para todas las permutaciones posibles
+let count = {
+  '123': 0,
+  '132': 0,
+  '213': 0,
+  '231': 0,
+  '321': 0,
+  '312': 0
+};
+
+for (let i = 0; i &lt; 1000000; i++) {
+  let array = [1, 2, 3];
+  shuffle(array);
+  count[array.join('')]++;
+}
+
+// muestra conteo de todas las permutaciones posibles
+for (let key in count) {
+  alert(`${key}: ${count[key]}`);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Un resultado de ejemplo (depende del motor JS):</p>
+<div id="f2e71j8zva" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>123: 250706
+132: 124425
+213: 249618
+231: 124880
+312: 125148
+321: 125223</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos ver una clara tendencia: <code>123</code> y <code>213</code> aparecen mucho más seguido que otros.</p>
+<p>El resultado del código puede variar entre distintos motores JavaScript, pero ya podemos ver que esta forma de abordar el problema es poco confiable.</p>
+<p>¿Por qué no funciona? Generalmente hablando, <code>sort</code> es una “caja negra”: tiramos dentro un array y una función de ordenamiento y esperamos que el array se ordene. Pero debido a la total aleatoriedad de la comparación, la caja negra se vuelve loca y exactamente en que sentido se vuelve loca depende de la implementación específica, que difiere de un motor a otro.</p>
+<p>Existen otra formas mejores de realizar la tarea. Por ejemplo, hay un excelente algoritmo llamado <a href="https://es.wikipedia.org/wiki/Algoritmo_de_Fisher-Yates">Algoritmo de Fisher-Yates</a>. La idea es recorrer el array en sentido inverso e intercambiar cada elemento con un elemento aleatorio anterior:</p>
+<div id="yzmsdnu5q9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function shuffle(array) {
+  for (let i = array.length - 1; i &gt; 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1)); // índice aleatorio entre 0 e i
+
+    // intercambia elementos array[i] y array[j]
+    // usamos la sintaxis &quot;asignación de desestructuración&quot; para lograr eso
+    // encontrarás más información acerca de esa sintaxis en los capítulos siguientes
+    // lo mismo puede ser escrito como:
+    // let t = array[i]; array[i] = array[j]; array[j] = t
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Probémoslo de la misma manera:</p>
+<div id="67zd9j5htt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function shuffle(array) {
+  for (let i = array.length - 1; i &gt; 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// conteo de apariciones para todas las permutaciones posibles
+let count = {
+  '123': 0,
+  '132': 0,
+  '213': 0,
+  '231': 0,
+  '321': 0,
+  '312': 0
+};
+
+for (let i = 0; i &lt; 1000000; i++) {
+  let array = [1, 2, 3];
+  shuffle(array);
+  count[array.join('')]++;
+}
+
+// muestra el conteo para todas las permutaciones posibles
+for (let key in count) {
+  alert(`${key}: ${count[key]}`);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La salida del ejemplo:</p>
+<div id="6klsujvwtf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>123: 166693
+132: 166647
+213: 166628
+231: 167517
+312: 166199
+321: 166316</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora sí se ve bien: todas las permutaciones aparecen con la misma probabilidad.</p>
+<p>Además, en cuanto al rendimiento el algoritmo de Fisher-Yates es mucho mejor, no hay “ordenamiento” superpuesto.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#obtener-edad-promedio" name="obtener-edad-promedio">Obtener edad promedio</a></h3><a class="task__open-link" href="task/average-age.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Escribe la función <code>getAverageAge(users)</code> que obtenga un array de objetos con la propiedad <code>age</code> y devuelva el promedio de <code>age</code>.</p>
+<p>La fórmula de promedio es <code>(age1 + age2 + ... + ageN) / N</code>.</p>
+<p>Por ejemplo:</p>
+<div id="abhxw05e94" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot;, age: 25 };
+let pete = { name: &quot;Pete&quot;, age: 30 };
+let mary = { name: &quot;Mary&quot;, age: 29 };
+
+let arr = [ john, pete, mary ];
+
+alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="xyl9m2u4um" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getAverageAge(users) {
+  return users.reduce((prev, user) =&gt; prev + user.age, 0) / users.length;
+}
+
+let john = { name: &quot;John&quot;, age: 25 };
+let pete = { name: &quot;Pete&quot;, age: 30 };
+let mary = { name: &quot;Mary&quot;, age: 29 };
+
+let arr = [ john, pete, mary ];
+
+alert( getAverageAge(arr) ); // 28</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#filtrar-elementos-unicos-de-un-array" name="filtrar-elementos-unicos-de-un-array">Filtrar elementos únicos de un array</a></h3><a class="task__open-link" href="task/array-unique.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Partiendo del array <code>arr</code>.</p>
+<p>Crea una función <code>unique(arr)</code> que devuelva un array con los elementos que se encuentran una sola vez dentro de <code>arr</code>.</p>
+<p>Por ejemplo:</p>
+<div id="b3px9wlmji" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function unique(arr) {
+  /* tu código */
+}
+
+let strings = [&quot;Hare&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Krishna&quot;,
+  &quot;Krishna&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Hare&quot;, &quot;:-O&quot;
+];
+
+alert( unique(strings) ); // Hare, Krishna, :-O</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/LnLeQfsbMIPNQ3py?p=preview" target="_blank" data-plunk-id="LnLeQfsbMIPNQ3py">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Recorramos los elementos dentro del array:</p>
+<ul>
+<li>Para cada elemento vamos a comprobar si el array resultante ya tiene ese elemento.</li>
+<li>Si ya lo tiene, ignora. Si no, agrega el resultado.</li>
+</ul>
+<div id="1sbski38ao" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function unique(arr) {
+  let result = [];
+
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str);
+    }
+  }
+
+  return result;
+}
+
+let strings = [&quot;Hare&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Krishna&quot;,
+  &quot;Krishna&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Hare&quot;, &quot;:-O&quot;
+];
+
+alert( unique(strings) ); // Hare, Krishna, :-O</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código funciona, pero tiene un problema potencial de desempeño.</p>
+<p>El método <code>result.includes(str)</code> internamente recorre el array <code>result</code> y compara cada elemento con <code>str</code> para encontrar una coincidencia.</p>
+<p>Por lo tanto, si hay <code>100</code> elementos en <code>result</code> y ninguno coincide con <code>str</code>, entonces habrá recorrido todo el array <code>result</code> y ejecutado <code>100</code> comparaciones. Y si <code>result</code> es tan grande como <code>10000</code>, entonces habrá <code>10000</code> comparaciones.</p>
+<p>Esto no es un problema en sí mismo, porque los motores JavaScript son muy rápidos, por lo que recorrer <code>10000</code> elementos de un array solo le tomaría microsegundos.</p>
+<p>Pero ejecutamos dicha comprobación para cada elemento de <code>arr</code> en el loop <code>for</code>.</p>
+<p>Entonces si <code>arr.length</code> es <code>10000</code> vamos a tener algo como <code>10000*10000</code> = 100 millones de comparaciones. Esto es realmente mucho.</p>
+<p>Por lo que la solución solo es buena para arrays pequeños.</p>
+<p>Más adelante en el capítulo <a href="map-set.html">Map y Set</a> vamos a ver como optimizarlo.</p>
+<p><a href="https://plnkr.co/edit/WlIavpbhy0DW1kY6?p=preview" target="_blank" data-plunk-id="WlIavpbhy0DW1kY6">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crea-un-objeto-a-partir-de-un-array" name="crea-un-objeto-a-partir-de-un-array">Crea un objeto a partir de un array</a></h3><a class="task__open-link" href="task/reduce-object.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Supongamos que recibimos un array de usuarios con la forma <code>{id:..., name:..., age:... }</code>.</p>
+<p>Crea una función <code>groupById(arr)</code> que cree un objeto, con <code>id</code> como clave (key) y los elementos del array como valores.</p>
+<p>Por ejemplo:</p>
+<div id="0wtwucqwk6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let users = [
+  {id: 'john', name: &quot;John Smith&quot;, age: 20},
+  {id: 'ann', name: &quot;Ann Smith&quot;, age: 24},
+  {id: 'pete', name: &quot;Pete Peterson&quot;, age: 31},
+];
+
+let usersById = groupById(users);
+
+/*
+// después de llamar a la función deberíamos tener:
+
+usersById = {
+  john: {id: 'john', name: &quot;John Smith&quot;, age: 20},
+  ann: {id: 'ann', name: &quot;Ann Smith&quot;, age: 24},
+  pete: {id: 'pete', name: &quot;Pete Peterson&quot;, age: 31},
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Dicha función es realmente útil cuando trabajamos con información del servidor.</p>
+<p>Para esta actividad asumimos que cada <code>id</code> es único. No existen dos elementos del array con el mismo <code>id</code>.</p>
+<p>Usa el método de array <code>.reduce</code> en la solución.</p>
+<p><a href="https://plnkr.co/edit/SFKeN094LVdW2d8N?p=preview" target="_blank" data-plunk-id="SFKeN094LVdW2d8N">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="kgiu49odvg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function groupById(array) {
+  return array.reduce((obj, value) =&gt; {
+    obj[value.id] = value;
+    return obj;
+  }, {})
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/rNJvz0BozjHvIMc4?p=preview" target="_blank" data-plunk-id="rNJvz0BozjHvIMc4">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="array.html" data-tooltip="Arrays"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="iterable.html" data-tooltip="Iterables"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Farray-methods" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Farray-methods" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/array-methods","identifier":"\/array-methods"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.html">Tipos de datos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#agregar-remover-items">Agregar/remover ítems</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#iteracion-foreach">Iteración: forEach</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#buscar-dentro-de-un-array">Buscar dentro de un array</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transformar-un-array">Transformar un array</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#array-isarray">Array.isArray</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-mayoria-de-los-metodos-aceptan-thisarg">La mayoría de los métodos aceptan “thisArg”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (13)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Farray-methods" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Farray-methods" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/05-data-types/05-array-methods" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/array-methods by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:59 GMT -->
+</html>

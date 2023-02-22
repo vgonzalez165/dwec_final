@@ -1,0 +1,1148 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/recursion by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Recursión y pila</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="recursion.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Recursión y pila"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Recursión y pila"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="advanced-functions.html"><link rel="next" href="rest-parameters-spread.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><style>
+.function-execution-context-list {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+.function-execution-context {
+  border: 1px solid black;
+  font-family: 'DejaVu Sans Mono', 'Lucida Console', 'Menlo', 'Monaco', monospace;
+  padding: 4px 6px;
+  margin: 0 4px;
+}
+
+.function-execution-context-call {
+  color: gray;
+}
+
+.function-execution-context-call::before {
+  content: ' call: ';
+}
+
+.function-execution-context-list li:first-child {
+  font-weight: bold;
+}
+</style>
+<meta property="og:title" content="Recursión y pila"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/recursion"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/recursion"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="recursion.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/recursion"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/recursion"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/recursion"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/recursion"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/recursion"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/recursion"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/recursion"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/recursion"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/recursion"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/recursion"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Frecursion" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Frecursion" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/recursion">عربي</option><option value="https://javascript.info/recursion">English</option><option value="https://es.javascript.info/recursion" selected>Español</option><option value="https://fa.javascript.info/recursion">فارسی</option><option value="https://fr.javascript.info/recursion">Français</option><option value="https://id.javascript.info/recursion">Indonesia</option><option value="https://it.javascript.info/recursion">Italiano</option><option value="https://ja.javascript.info/recursion">日本語</option><option value="https://ko.javascript.info/recursion">한국어</option><option value="https://learn.javascript.ru/recursion">Русский</option><option value="https://tr.javascript.info/recursion">Türkçe</option><option value="https://uk.javascript.info/recursion">Українська</option><option value="https://zh.javascript.info/recursion">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="49" max="93" data-tooltip="Lección 49 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="advanced-functions.html"><span>Trabajo avanzado con funciones</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Trabajo avanzado con funciones","item":"https://es.javascript.info/advanced-functions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 1 de noviembre de 2022"><div class="updated-at__content">1 de noviembre de 2022</div></div></div><h1 class="main__header-title">Recursión y pila</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Recursión y pila"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Volvamos a las funciones y estudiémoslas más en profundidad.</p>
+<p>Nuestro primer tema será la <em>recursividad</em>.</p>
+<p>Si no eres nuevo en la programación, probablemente te resulte familiar y puedes saltarte este capítulo.</p>
+<p>La recursión es un patrón de programación que es útil en situaciones en las que una tarea puede dividirse naturalmente en varias tareas del mismo tipo, pero más simples. O cuando una tarea se puede simplificar en una acción fácil más una variante más simple de la misma tarea. O, como veremos pronto, tratar con ciertas estructuras de datos.</p>
+<p>Sabemos que cuando una función resuelve una tarea, en el proceso puede llamar a muchas otras funciones. Un caso particular de esto se da cuando una función <em>se llama a sí misma</em>. Esto es lo que se llama <em>recursividad</em>.</p>
+<h2><a class="main__anchor" name="dos-formas-de-pensar" href="#dos-formas-de-pensar">Dos formas de pensar</a></h2><p>Para comenzar con algo simple, escribamos una función <code>pow(x, n)</code> que eleve <code>x</code> a una potencia natural de<code>n</code>. En otras palabras, multiplica <code>x</code> por sí mismo <code>n</code> veces.</p>
+<div id="3s38o57yrc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>pow(2, 2) = 4
+pow(2, 3) = 8
+pow(2, 4) = 16</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Hay dos formas de implementarlo.</p>
+<ol>
+<li>
+<p>Pensamiento iterativo: el bucle <code>for</code>:</p>
+<div id="cnd8eu62lf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function pow(x, n) {
+  let result = 1;
+
+  // multiplicar el resultado por x n veces en el ciclo
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}
+
+alert( pow(2, 3) ); // 8</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Pensamiento recursivo: simplifica la tarea y se llama a sí mismo:</p>
+<div id="a3itrx906l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function pow(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
+  }
+}
+
+alert( pow(2, 3) ); // 8</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>Note cómo la variante recursiva es fundamentalmente diferente.</p>
+<p>Cuando se llama a <code>pow(x, n)</code>, la ejecución se divide en dos ramas:</p>
+<div id="k7nx5tax77" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>              if n==1  = x
+             /
+pow(x, n) =
+             \
+              else     = x * pow(x, n - 1)</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>Si <code>n == 1</code>, entonces todo es trivial. Esto se llama <em>base</em> de la recursividad, porque produce inmediatamente el resultado obvio: <code>pow (x, 1)</code> es igual a <code>x</code>.</li>
+<li>De lo contrario, podemos representar <code>pow (x, n)</code> como <code>x * pow (x, n - 1)</code>. En matemáticas, uno escribiría <code>x<sup>n</sup> = x * x <sup>n-1</sup></code>. Esto se llama <em>paso recursivo</em>: transformamos la tarea en una acción más simple (multiplicación por <code>x</code>) y una llamada más simple de la misma tarea (<code>pow</code> con menor <code>n</code>). Los siguientes pasos lo simplifican más y más hasta que <code>n</code> llegue a<code>1</code>.</li>
+</ol>
+<p>También podemos decir que <code>pow</code> <em>se llama a sí mismo recursivamente</em> hasta que<code>n == 1</code>.</p>
+<figure><div class="image" style="width:502px">
+      <div class="image__ratio" style="padding-top:44.820717131474105%"></div>
+      <object type="image/svg+xml" data="article/recursion/recursion-pow.svg" width="502" height="225" class="image__image" data-use-theme>
+        <img src="article/recursion/recursion-pow.svg" alt="" width="502" height="225">
+      </object>
+      </div></figure><p>Por ejemplo, para calcular <code>pow (2, 4)</code> la variante recursiva realiza estos pasos:</p>
+<ol>
+<li><code>pow(2, 4) = 2 * pow(2, 3)</code></li>
+<li><code>pow(2, 3) = 2 * pow(2, 2)</code></li>
+<li><code>pow(2, 2) = 2 * pow(2, 1)</code></li>
+<li><code>pow(2, 1) = 2</code></li>
+</ol>
+<p>Por lo tanto, la recursión reduce una llamada de función a una más simple y luego… a una más simple, y así sucesivamente, hasta que el resultado se vuelve obvio.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">La recursión suele ser más corta</span></div>
+            <div class="important__content"><p>Una solución recursiva suele ser más corta que una iterativa.</p>
+<p>Aquí podemos reescribir lo mismo usando el operador condicional <code>?</code> En lugar de <code>if</code> para hacer que <code>pow (x, n)</code> sea más conciso y aún bastante legible:</p>
+<div id="97q2ljnjg5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function pow (x, n) {
+   return (n == 1)? x: (x * pow (x, n - 1));
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p>El número máximo de llamadas anidadas (incluida la primera) se llama <em>profundidad de recursión</em>. En nuestro caso, será exactamente <code>n</code>.</p>
+<p>La profundidad máxima de recursión está limitada por el motor de JavaScript. Podemos confiar en que sea 10 000; algunos motores permiten más, pero 100 000 probablemente esté fuera del límite para la mayoría de ellos. Hay optimizaciones automáticas que ayudan a aliviar esto (“optimizaciones de llamadas de cola”), pero aún no tienen soporte en todas partes y funcionan solo en casos simples.</p>
+<p>Eso limita la aplicación de la recursividad, pero sigue siendo muy amplia. Hay muchas tareas donde la forma recursiva de pensar proporciona un código más simple y fácil de mantener.</p>
+<h2><a class="main__anchor" name="el-contexto-de-ejecucion-y-pila" href="#el-contexto-de-ejecucion-y-pila">El contexto de ejecución y pila</a></h2><p>Ahora examinemos cómo funcionan las llamadas recursivas. Para eso espiemos lo que sucede bajo la capa en las funciones.</p>
+<p>La información sobre el proceso de ejecución de una función en ejecución se almacena en su <em>contexto de ejecución</em>.</p>
+<p>El <a href="https://tc39.github.io/ecma262/#sec-execution-contexts">contexto de ejecución</a> es una estructura de datos interna que contiene detalles sobre la ejecución de una función: dónde está el flujo de control ahora, las variables actuales, el valor de <code>this</code> (que no usamos aquí) y algunos otros detalles internos.</p>
+<p>Una llamada de función tiene exactamente un contexto de ejecución asociado.</p>
+<p>Cuando una función realiza una llamada anidada, sucede lo siguiente:</p>
+<ul>
+<li>La función actual se pausa.</li>
+<li>El contexto de ejecución asociado con él se recuerda en una estructura de datos especial llamada <em>pila de contexto de ejecución</em>.</li>
+<li>La llamada anidada se ejecuta.</li>
+<li>Una vez que finaliza, el antiguo contexto de ejecución se recupera de la pila y la función externa se reanuda desde donde se pausó.</li>
+</ul>
+<p>Veamos qué sucede durante la llamada de <code>pow (2, 3)</code>.</p>
+<h3><a class="main__anchor" name="pow-2-3" href="#pow-2-3">pow (2, 3)</a></h3><p>Al comienzo de la llamada <code>pow (2, 3)</code> el contexto de ejecución almacenará variables: <code>x = 2, n = 3</code>, el flujo de ejecución está en la línea <code>1</code> de la función.</p>
+<p>Podemos esbozarlo como:</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 1 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>Ahí es cuando la función comienza a ejecutarse. La condición <code>n == 1</code> es falsa, por lo que el flujo continúa en la segunda rama de <code>if</code>:</p>
+<div id="jfk7tlm4rc" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function pow(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
+  }
+}
+
+alert( pow(2, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las variables son las mismas, pero la línea cambia, por lo que el contexto es ahora:</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>Para calcular <code>x * pow (x, n - 1)</code>, necesitamos hacer una sub-llamada de <code>pow</code> con nuevos argumentos<code>pow (2, 2)</code>.</p>
+<h3><a class="main__anchor" name="pow-2-2" href="#pow-2-2">pow (2, 2)</a></h3><p>Para hacer una llamada anidada, JavaScript recuerda el contexto de ejecución actual en la <em>pila de contexto de ejecución</em>.</p>
+<p>Aquí llamamos a la misma función <code>pow</code>, pero no importa en absoluto. El proceso es el mismo para todas las funciones:</p>
+<ol>
+<li>El contexto actual se “recuerda” en la parte superior de la pila.</li>
+<li>El nuevo contexto se crea para la subllamada.</li>
+<li>Cuando finaliza la subllamada, el contexto anterior se extrae de la pila y su ejecución continúa.</li>
+</ol>
+<p>Aquí está la pila de contexto cuando ingresamos la subllamada <code>pow (2, 2)</code>:</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 2, at line 1 }</span>
+    <span class="function-execution-context-call">pow(2, 2)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>El nuevo contexto de ejecución actual está en la parte superior (y en negrita), y los contextos recordados anteriores están debajo.</p>
+<p>Cuando terminamos la subllamada: es fácil reanudar el contexto anterior, ya que mantiene ambas variables y el lugar exacto del código donde se detuvo.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Por favor tome nota:</span></div>
+            <div class="important__content"><p>En la figura usamos la palabra línea “line” porque en nuestro ejemplo hay solo una subllamada en línea, pero generalmente una simple línea de código puede contener múltiples subllamadas, como <code>pow(…) + pow(…) + otraCosa(…)</code>.</p>
+<p>Entonces sería más preciso decir que la ejecución se reanuda “inmediatamente después de la subllamada”.</p>
+</div></div>
+<h3><a class="main__anchor" name="pow-2-1" href="#pow-2-1">pow(2, 1)</a></h3><p>El proceso se repite: se realiza una nueva subllamada en la línea <code>5</code>, ahora con argumentos<code>x = 2</code>, <code>n = 1</code>.</p>
+<p>Se crea un nuevo contexto de ejecución, el anterior se coloca en la parte superior de la pila:</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 1, at line 1 }</span>
+    <span class="function-execution-context-call">pow(2, 1)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 2, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 2)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>Hay 2 contextos antiguos ahora y 1 actualmente en ejecución para <code>pow (2, 1)</code>.</p>
+<h3><a class="main__anchor" name="la-salida" href="#la-salida">La salida</a></h3><p>Durante la ejecución de <code>pow (2, 1)</code>, a diferencia de antes, la condición <code>n == 1</code> es verdadera, por lo que funciona la primera rama de <code>if</code> :</p>
+<div id="ayciqfmp4y" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function pow(x, n) {
+  if (n == 1) {
+    return x;
+  } else {
+    return x * pow(x, n - 1);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No hay más llamadas anidadas, por lo que la función finaliza y devuelve <code>2</code>.</p>
+<p>Cuando finaliza la función, su contexto de ejecución ya no es necesario y se elimina de la memoria. El anterior se restaura desde la parte superior de la pila:</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 2, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 2)</span>
+  </li>
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>Se reanuda la ejecución de <code>pow (2, 2)</code>. Tiene el resultado de la subllamada <code>pow (2, 1)</code>, por lo que también puede finalizar la evaluación de <code>x * pow (x, n - 1)</code>, devolviendo <code>4</code>.</p>
+<p>Luego se restaura el contexto anterior:</p>
+<ul class="function-execution-context-list">
+  <li>
+    <span class="function-execution-context">Context: { x: 2, n: 3, at line 5 }</span>
+    <span class="function-execution-context-call">pow(2, 3)</span>
+  </li>
+</ul>
+<p>Cuando termina, tenemos un resultado de <code>pow (2, 3) = 8</code>.</p>
+<p>La profundidad de recursión en este caso fue: <strong>3</strong>.</p>
+<p>Como podemos ver en las ilustraciones anteriores, la profundidad de recursión es igual al número máximo de contexto en la pila.</p>
+<p>Tenga en cuenta los requisitos de memoria. Los contextos toman memoria. En nuestro caso, elevar a la potencia de <code>n</code> realmente requiere la memoria para <code>n</code> contextos, para todos los valores más bajos de <code>n</code>.</p>
+<p>Un algoritmo basado en bucles ahorra más memoria:</p>
+<div id="qfc1hmitp6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function pow(x, n) {
+  let result = 1;
+
+  for (let i = 0; i &lt; n; i++) {
+    result *= x;
+  }
+
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El <code>pow</code> iterativo utiliza un solo contexto, cambiando <code>i</code> y <code>result</code> en el proceso. Sus requisitos de memoria son pequeños, fijos y no dependen de <code>n</code>.</p>
+<p><strong>Cualquier recursión puede reescribirse como un bucle. La variante de bucle generalmente se puede hacer más eficaz.</strong></p>
+<p>… Pero a veces la reescritura no es trivial, especialmente cuando la función utiliza sub-llamadas recursivas diferentes según las condiciones y combina sus resultados, o cuando la ramificación es más intrincada. Y la optimización podría ser innecesaria y no merecer la pena el esfuerzo en absoluto.</p>
+<p>La recursión puede dar un código más corto y fácil de entender y mantener. No se requiere optimización en todo lugar, principalmente lo que nos interesa es un buen código y por eso se usa.</p>
+<h2><a class="main__anchor" name="recorridos-recursivos" href="#recorridos-recursivos">Recorridos recursivos</a></h2><p>Otra gran aplicación de la recursión es un recorrido recursivo.</p>
+<p>Imagina que tenemos una empresa. La estructura del personal se puede presentar como un objeto:</p>
+<div id="3xicu24ca7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let company = {
+  sales: [{
+    name: 'John',
+    salary: 1000
+  }, {
+    name: 'Alice',
+    salary: 1600
+  }],
+
+  development: {
+    sites: [{
+      name: 'Peter',
+      salary: 2000
+    }, {
+      name: 'Alex',
+      salary: 1800
+    }],
+
+    internals: [{
+      name: 'Jack',
+      salary: 1300
+    }]
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Vemos que esta empresa tiene departamentos.</p>
+<ul>
+<li>
+<p>Un departamento puede tener una gran variedad de personal. Por ejemplo, el departamento de ventas <code>sales</code> tiene 2 empleados: John y Alice.</p>
+</li>
+<li>
+<p>O un departamento puede dividirse en subdepartamentos, como <code>development</code> que tiene dos ramas: <code>sites</code> e <code>internals</code>: cada uno de ellos tiene su propio personal.</p>
+</li>
+<li>
+<p>También es posible que cuando un subdepartamento crece, se divida en subdepartamentos (o equipos).</p>
+<p>Por ejemplo, el departamento <code>sites</code> en el futuro puede dividirse en equipos para <code>siteA</code> y <code>siteB</code>. Y ellos, potencialmente, pueden dividirse aún más. Eso no está en la imagen, es solo algo a tener en cuenta.</p>
+</li>
+</ul>
+<p>Ahora digamos que queremos una función para obtener la suma de todos los salarios. ¿Cómo podemos hacer eso?</p>
+<p>Un enfoque iterativo no es fácil, porque la estructura no es simple. La primera idea puede ser hacer un bucle <code>for</code> sobre <code>company</code> con un sub-bucle anidado sobre departamentos de primer nivel. Pero luego necesitamos más sub-bucles anidados para iterar sobre el personal en los departamentos de segundo nivel como <code>sites</code>. …¿Y luego otro sub-bucle dentro de los de los departamentos de tercer nivel que podrían aparecer en el futuro? ¿Deberíamos parar en el nivel 3 o hacer 4 niveles de bucles? Si ponemos 3-4 bucles anidados en el código para atravesar un solo objeto, se vuelve bastante feo.</p>
+<p>Probemos la recursividad.</p>
+<p>Como podemos ver, cuando nuestra función hace que un departamento sume, hay dos casos posibles:</p>
+<ol>
+<li>O bien es un departamento “simple” con una <em>array</em> de personas: entonces podemos sumar los salarios en un bucle simple.</li>
+<li>O es <em>un objeto</em> con <code>N</code> subdepartamentos: entonces podemos hacer <code>N</code> llamadas recursivas para obtener la suma de cada uno de los subdepartamentos y combinar los resultados.</li>
+</ol>
+<p>El primer caso es la <em>base</em> de la recursividad, el caso trivial, cuando obtenemos un array.</p>
+<p>El segundo caso, cuando obtenemos un objeto, es el paso recursivo. Una tarea compleja se divide en subtareas para departamentos más pequeños. A su vez, pueden dividirse nuevamente, pero tarde o temprano la división terminará en (1).</p>
+<p>El algoritmo es probablemente aún más fácil de leer desde el código:</p>
+<div id="fv76aukt1a" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:19}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let company = { // el mismo objeto, comprimido por brevedad
+  sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 1600 }],
+  development: {
+    sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
+    internals: [{name: 'Jack', salary: 1300}]
+  }
+};
+
+// La función para hacer el trabajo
+function sumSalaries(department) {
+  if (Array.isArray(department)) { // caso (1)
+    return department.reduce((prev, current) =&gt; prev + current.salary, 0); // suma del Array
+  } else { // caso (2)
+    let sum = 0;
+    for (let subdep of Object.values(department)) {
+      sum += sumSalaries(subdep); // llama recursivamente a subdepartamentos, suma los resultados
+    }
+    return sum;
+  }
+}
+
+alert(sumSalaries(company)); // 7700</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código es corto y fácil de entender (¿Quizás?). Ese es el poder de la recursividad. También funciona para cualquier nivel de anidamiento de subdepartamentos.</p>
+<p>Aquí está el diagrama de llamadas:</p>
+<figure><div class="image" style="width:293px">
+      <div class="image__ratio" style="padding-top:149.1467576791809%"></div>
+      <object type="image/svg+xml" data="article/recursion/recursive-salaries.svg" width="293" height="437" class="image__image" data-use-theme>
+        <img src="article/recursion/recursive-salaries.svg" alt="" width="293" height="437">
+      </object>
+      </div></figure><p>Podemos ver fácilmente el principio: para un objeto <code>{...}</code> se realizan subllamadas, mientras que los Arrays <code>[...]</code> son las “hojas” del árbol recursivo y dan un resultado inmediato.</p>
+<p>Tenga en cuenta que el código utiliza funciones inteligentes que hemos cubierto antes:</p>
+<ul>
+<li>Método <code>arr.reduce</code> explicado en el capítulo <a href="array-methods.html">Métodos de arrays</a> para obtener la suma del Array.</li>
+<li>Bucle <code>for (val of Object.values (obj))</code> para iterar sobre los valores del objeto: <code>Object.values</code> devuelve una matriz de ellos.</li>
+</ul>
+<h2><a class="main__anchor" name="estructuras-recursivas" href="#estructuras-recursivas">Estructuras recursivas</a></h2><p>Una estructura de datos recursiva (definida recursivamente) es una estructura que se replica en partes.</p>
+<p>Lo acabamos de ver en el ejemplo de la estructura de la empresa anterior.</p>
+<p>Un <em>departamento</em> de la empresa es:</p>
+<ul>
+<li>O un array de personas.</li>
+<li>O un objeto con <em>departamentos</em>.</li>
+</ul>
+<p>Para los desarrolladores web hay ejemplos mucho más conocidos: documentos HTML y XML.</p>
+<p>En el documento HTML, una <em>etiqueta HTML</em> puede contener una lista de:</p>
+<ul>
+<li>Piezas de texto.</li>
+<li>Comentarios HTML.</li>
+<li>Otras <em>etiquetas HTML</em> (que a su vez pueden contener textos/comentarios, otras etiquetas, etc…).</li>
+</ul>
+<p>Esa es, una vez más, una definición recursiva.</p>
+<p>Para una mejor comprensión, cubriremos una estructura recursiva más llamada “Lista enlazada” que podría ser una mejor alternativa para las matrices en algunos casos.</p>
+<h3><a class="main__anchor" name="lista-enlazada" href="#lista-enlazada">Lista enlazada</a></h3><p>Imagina que queremos almacenar una lista ordenada de objetos.</p>
+<p>La elección natural sería un array:</p>
+<div id="hm8936imnz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [obj1, obj2, obj3];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero hay un problema con los Arrays. Las operaciones “eliminar elemento” e “insertar elemento” son costosas. Por ejemplo, la operación <code>arr.unshift(obj)</code> debe renumerar todos los elementos para dejar espacio para un nuevo <code>obj</code>, y si la matriz es grande, lleva tiempo. Lo mismo con <code>arr.shift ()</code>.</p>
+<p>Las únicas modificaciones estructurales que no requieren renumeración masiva son aquellas que operan con el final del array: <code>arr.push/pop</code>. Por lo tanto, un array puede ser bastante lento para grandes colas si tenemos que trabajar con el principio del mismo.</p>
+<p>Como alternativa, si realmente necesitamos una inserción/eliminación rápida, podemos elegir otra estructura de datos llamada <a href="https://es.wikipedia.org/wiki/Lista_enlazada">lista enlazada</a>.</p>
+<p>El <em>elemento de lista enlazada</em> se define de forma recursiva como un objeto con:</p>
+<ul>
+<li><code>value</code>.</li>
+<li>propiedad <code>next</code> que hace referencia al siguiente <em>elemento de lista enlazado</em> o <code>null</code> si ese es el final.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="7g54e98wlc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Representación gráfica de la lista:</p>
+<figure><div class="image" style="width:652px">
+      <div class="image__ratio" style="padding-top:11.809815950920246%"></div>
+      <object type="image/svg+xml" data="article/recursion/linked-list.svg" width="652" height="77" class="image__image" data-use-theme>
+        <img src="article/recursion/linked-list.svg" alt="" width="652" height="77">
+      </object>
+      </div></figure><p>Un código alternativo para la creación:</p>
+<div id="cwxdt85i7h" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = { value: 1 };
+list.next = { value: 2 };
+list.next.next = { value: 3 };
+list.next.next.next = { value: 4 };
+list.next.next.next.next = null;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí podemos ver aún más claramente que hay varios objetos, cada uno tiene su <code>value</code> y un <code>next</code> apuntando al vecino. La variable <code>list</code> es el primer objeto en la cadena, por lo que siguiendo los punteros<code>next</code> de ella podemos alcanzar cualquier elemento.</p>
+<p>La lista se puede dividir fácilmente en varias partes y luego volver a unir:</p>
+<div id="63t5csm7fm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let secondList = list.next.next;
+list.next.next = null;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:410px">
+      <div class="image__ratio" style="padding-top:36.58536585365854%"></div>
+      <object type="image/svg+xml" data="article/recursion/linked-list-split.svg" width="410" height="150" class="image__image" data-use-theme>
+        <img src="article/recursion/linked-list-split.svg" alt="" width="410" height="150">
+      </object>
+      </div></figure><p>Para unir:</p>
+<div id="zuy9xm0hop" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>list.next.next = secondList;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y seguro, podemos insertar o eliminar elementos en cualquier lugar.</p>
+<p>Por ejemplo, para anteponer un nuevo valor, necesitamos actualizar el encabezado de la lista:</p>
+<div id="5s9smv3sv2" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = { value: 1 };
+list.next = { value: 2 };
+list.next.next = { value: 3 };
+list.next.next.next = { value: 4 };
+
+// anteponer el nuevo valor a la lista
+list = { value: &quot;new item&quot;, next: list };</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:816px">
+      <div class="image__ratio" style="padding-top:13.23529411764706%"></div>
+      <object type="image/svg+xml" data="article/recursion/linked-list-0.svg" width="816" height="108" class="image__image" data-use-theme>
+        <img src="article/recursion/linked-list-0.svg" alt="" width="816" height="108">
+      </object>
+      </div></figure><p>Para eliminar un valor del medio, cambie el <code>next</code> del anterior:</p>
+<div id="6ymw54sp7v" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>list.next = list.next.next;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:670px">
+      <div class="image__ratio" style="padding-top:21.343283582089555%"></div>
+      <object type="image/svg+xml" data="article/recursion/linked-list-remove-1.svg" width="670" height="143" class="image__image" data-use-theme>
+        <img src="article/recursion/linked-list-remove-1.svg" alt="" width="670" height="143">
+      </object>
+      </div></figure><p>Hicimos que <code>list.next</code> salte sobre <code>1</code> al valor <code>2</code>. El valor <code>1</code> ahora está excluido de la cadena. Si no se almacena en ningún otro lugar, se eliminará automáticamente de la memoria.</p>
+<p>A diferencia de los arrays, no hay renumeración en masa, podemos reorganizar fácilmente los elementos.</p>
+<p>Naturalmente, las listas no siempre son mejores que los Arrays. De lo contrario, todos usarían solo listas.</p>
+<p>El principal inconveniente es que no podemos acceder fácilmente a un elemento por su número. En un Array eso es fácil: <code>arr[n]</code> es una referencia directa. Pero en la lista tenemos que comenzar desde el primer elemento e ir <code>siguiente</code> <code>N</code> veces para obtener el enésimo elemento.</p>
+<p>… Pero no siempre necesitamos tales operaciones. Por ejemplo, cuando necesitamos una cola o incluso un <a href="https://es.wikipedia.org/wiki/Cola_doblemente_terminada">deque</a>: la estructura ordenada que debe permitir agregar/eliminar elementos muy rápidamente desde ambos extremos.</p>
+<p>Las “listas” pueden ser mejoradas:</p>
+<ul>
+<li>Podemos agregar la propiedad <code>prev</code> (previo) junto a <code>next</code> (siguiente) para referenciar el elemento previo para mover hacia atrás fácilmente.</li>
+<li>Podemos también agregar una variable llamada <code>tail</code> (cola) referenciando el último elemento de la lista (y actualizarla cuando se agregan/remueven elementos del final).</li>
+<li>…La estructura de datos puede variar de acuerdo a nuestras necesidades.</li>
+</ul>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Glosario:</p>
+<ul>
+<li>
+<p><em>Recursion</em> es concepto de programación que significa que una función se llama a sí misma. Las funciones recursivas se pueden utilizar para resolver ciertas tareas de manera elegante.</p>
+<p>Cada vez que una función se llama a sí misma ocurre un <em>paso de recursión</em>. La <em>base</em> de la recursividad se da cuando los argumentos de la función hacen que la tarea sea tan básica que la función no realiza más llamadas.</p>
+</li>
+<li>
+<p>Una estructura de datos <a href="https://en.wikipedia.org/wiki/Recursive_data_type">definida recursivamente</a> es una estructura de datos que se puede definir utilizándose a sí misma.</p>
+<p>Por ejemplo, la lista enlazada se puede definir como una estructura de datos que consiste en un objeto que hace referencia a una lista (o nulo).</p>
+<div id="6yf8olzkh9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>list = { value, next -&gt; list }</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los árboles como el árbol de elementos HTML o el árbol de departamentos de este capítulo también son naturalmente recursivos: se ramifican y cada rama puede tener otras ramas.</p>
+<p>Las funciones recursivas se pueden usar para recorrerlas como hemos visto en el ejemplo <code>sumSalary</code>.</p>
+</li>
+</ul>
+<p>Cualquier función recursiva puede reescribirse en una iterativa. Y eso a veces es necesario para optimizar las cosas. Pero para muchas tareas, una solución recursiva es lo suficientemente rápida y fácil de escribir y mantener.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#suma-todos-los-numeros-hasta-el-elegido" name="suma-todos-los-numeros-hasta-el-elegido">Suma todos los números hasta el elegido</a></h3><a class="task__open-link" href="task/sum-to.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>sumTo(n)</code> que calcule la suma de los números <code>1 + 2 + ... + n</code>.</p>
+<p>Por ejemplo:</p>
+<div id="lakxup0rf6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>sumTo(1) = 1
+sumTo(2) = 2 + 1 = 3
+sumTo(3) = 3 + 2 + 1 = 6
+sumTo(4) = 4 + 3 + 2 + 1 = 10
+...
+sumTo(100) = 100 + 99 + ... + 2 + 1 = 5050</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Escribe 3 soluciones diferentes:</p>
+<ol>
+<li>Utilizando un bucle <code>for</code>.</li>
+<li>Usando la recursividad, pues <code>sumTo(n) = n + sumTo(n-1)</code> para <code>n &gt; 1</code>.</li>
+<li>Utilizando la fórmula de <a href="https://es.wikipedia.org/wiki/Progresión_aritmética">progresión aritmética</a>.</li>
+</ol>
+<p>Un ejemplo del resultado:</p>
+<div id="qgucf1pu9l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sumTo(n) { /*... tu código ... */ }
+
+alert( sumTo(100) ); // 5050</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D. ¿Qué variante de la solución es la más rápida? ¿Y la más lenta? ¿Por qué?</p>
+<p>P.P.D. ¿Podemos usar la recursión para contar <code>sumTo(100000)</code>?</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La solución usando un bucle:</p>
+<div id="a9zqwm8st5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sumTo(n) {
+  let sum = 0;
+  for (let i = 1; i &lt;= n; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+alert( sumTo(100) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La solución usando recursividad:</p>
+<div id="vr6bmmpve7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sumTo(n) {
+  if (n == 1) return 1;
+  return n + sumTo(n - 1);
+}
+
+alert( sumTo(100) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La solución usando la fórmula: <code>sumTo(n) = n*(n+1)/2</code>:</p>
+<div id="313gm7glw3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sumTo(n) {
+  return n * (n + 1) / 2;
+}
+
+alert( sumTo(100) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D. Naturalmente, la fórmula es la solución más rápida. Utiliza solo 3 operaciones para cualquier número <code>n</code> ¡Las matemáticas ayudan!</p>
+<p>La variación con el bucle es la segunda en términos de velocidad. Tanto en la variante recursiva como en el bucle sumamos los mismos números. Pero la recursión implica llamadas anidadas y gestión de la pila de ejecución. Eso también requiere recursos, por lo que es más lento.</p>
+<p>P.P.D. Algunos motores admiten la optimización de “tail call”: si una llamada recursiva es la última en la función, sin cálculo extra, entonces la función externa no necesitará reanudar la ejecución, por lo que el motor no necesita recordar su contexto de ejecución. Eso elimina la carga en la memoria. Pero si el motor de JavaScript no soporta la optimización “tail call” (la mayoría no lo hace), entonces habrá  un error: tamaño máximo de la pila excedido, porque generalmente hay una limitación en el tamaño total de la pila.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#calcula-el-factorial" name="calcula-el-factorial">Calcula el factorial</a></h3><a class="task__open-link" href="task/factorial.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>El <a href="https://es.wikipedia.org/wiki/Factorial">factorial</a> de un número natural es un número multiplicado por <code>&quot;número menos uno&quot;</code>, luego por <code>&quot;número menos dos&quot;</code>, y así sucesivamente hasta <code>1</code>. El factorial de <code>n</code> se denota como <code>n!</code></p>
+<p>Podemos escribir la definición de factorial así:</p>
+<div id="9cxcu5zq2b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>n! = n * (n - 1) * (n - 2) * ...*1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Valores de factoriales para diferentes <code>n</code>:</p>
+<div id="5nwfjp3v8u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>1! = 1
+2! = 2 * 1 = 2
+3! = 3 * 2 * 1 = 6
+4! = 4 * 3 * 2 * 1 = 24
+5! = 5 * 4 * 3 * 2 * 1 = 120</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La tarea es escribir una función <code>factorial(n)</code> que calcule <code>n!</code> usando llamadas recursivas.</p>
+<div id="d9peptiob9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( factorial(5) ); // 120</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D. Pista: <code>n!</code> puede ser escrito como <code>n * (n-1)!</code> Por ejemplo: <code>3! = 3*2! = 3*2*1! = 6</code></p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Por definición, un factorial de <code>n!</code> puede ser escrito como <code>n * (n-1)!</code>.</p>
+<p>En otras palabras, el resultado de <code>factorial(n)</code> se puede calcular como <code>n</code> multiplicado por el resultado de <code>factorial(n-1)</code>. Y la llamada de <code>n-1</code> puede descender recursivamente más y más hasta <code>1</code>.</p>
+<div id="mpgxhk6r0x" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function factorial(n) {
+  return (n != 1) ? n * factorial(n - 1) : 1;
+}
+
+alert( factorial(5) ); // 120</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La base de la recursividad es el valor <code>1</code>. También podemos hacer <code>0</code> la base aquí, no tiene mucha importancia, pero da un paso recursivo más:</p>
+<div id="52g8gqnhp9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function factorial(n) {
+  return n ? n * factorial(n - 1) : 1;
+}
+
+alert( factorial(5) ); // 120</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#sucesion-de-fibonacci" name="sucesion-de-fibonacci">Sucesión de Fibonacci</a></h3><a class="task__open-link" href="task/fibonacci-numbers.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>La secuencia de <a href="https://es.wikipedia.org/wiki/Sucesión_de_Fibonacci">sucesión de Fibonacci</a> tiene la fórmula <code>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub></code>. En otras palabras, el siguiente número es una suma de los dos anteriores.</p>
+<p>Los dos primeros números son <code>1</code>, luego <code>2(1+1)</code>, luego <code>3(1+2)</code>, <code>5(2+3)</code> y así sucesivamente: <code>1, 1, 2, 3, 5, 8, 13, 21...</code>.</p>
+<p>La sucesión de Fibonacci está relacionada la <a href="https://es.wikipedia.org/wiki/Número_áureo">proporción áurea</a> y muchos fenómenos naturales alrededor nuestro.</p>
+<p>Escribe una función <code>fib(n)</code> que devuelve la secuencia <code>n-th</code> de Fibonacci.</p>
+<p>Un ejemplo de trabajo:</p>
+<div id="pu6apatmid" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function fib(n) { /* your code */ }
+
+alert(fib(3)); // 2
+alert(fib(7)); // 13
+alert(fib(77)); // 5527939700884757</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D. La función debería ser rápida. La llamada a <code>fib(77)</code> no debería tardar más de una fracción de segundo.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La primera solución que podemos probar aquí es la recursiva.</p>
+<p>La secuencia de Fibonacci es recursiva por definición:</p>
+<div id="a508pn5xgj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function fib(n) {
+  return n &lt;= 1 ? n : fib(n - 1) + fib(n - 2);
+}
+
+alert( fib(3) ); // 2
+alert( fib(7) ); // 13
+// fib(77); // ¡Será extremadamente lento!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero para valores grandes de <code>n</code> es muy lenta. Por ejemplo, <code>fib(77)</code> puede colgar el motor durante un tiempo consumiendo todos los recursos de la CPU.</p>
+<p>Eso es porque la función realiza demasiadas sub llamadas. Los mismos valores son evaluados una y otra vez.</p>
+<p>Por ejemplo, veamos algunos cálculos para <code>fib(5)</code>:</p>
+<div id="x2vgclnzxu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>...
+fib(5) = fib(4) + fib(3)
+fib(4) = fib(3) + fib(2)
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí podemos ver que el valor de <code>fib(3)</code> es necesario tanto para <code>fib(5)</code> y <code>fib(4)</code>. Entonces <code>fib(3)</code> será calculado y evaluado dos veces de forma completamente independiente.</p>
+<p>Aquí está el árbol de recursividad completo:</p>
+<figure><div class="image" style="width:640px">
+      <div class="image__ratio" style="padding-top:35.15625%"></div>
+      <object type="image/svg+xml" data="task/fibonacci-numbers/fibonacci-recursion-tree.svg" width="640" height="225" class="image__image" data-use-theme>
+        <img src="task/fibonacci-numbers/fibonacci-recursion-tree.svg" alt="" width="640" height="225">
+      </object>
+      </div></figure><p>Podemos ver claramente que <code>fib(3)</code> es evaluado dos veces y <code>fib(2)</code> es evaluado tres veces. La cantidad total de cálculos crece mucho más rápido que <code>n</code>, lo que lo hace enorme incluso para <code>n=77</code>.</p>
+<p>Podemos optimizarlo recordando los valores ya evaluados: si un valor de por ejemplo <code>fib(3)</code> es calculado una vez, entonces podemos reutilizarlo en cálculos futuros.</p>
+<p>Otra variante sería renunciar a la recursión y utilizar un algoritmo basado en bucles totalmente diferente.</p>
+<p>En lugar de ir de <code>n</code> a valores más bajos, podemos hacer un bucle que empiece desde <code>1</code> y <code>2</code>, que obtenga <code>fib(3)</code> como su suma, luego <code>fib(4)</code> como la suma de los dos valores anteriores, luego <code>fib(5)</code> y va subiendo hasta llegar al valor necesario. En cada paso solo necesitamos recordar los dos valores anteriores.</p>
+<p>Estos son los pasos del nuevo algoritmo en detalle.</p>
+<p>El inicio:</p>
+<div id="3k1kb6901u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// a = fib(1), b = fib(2), estos valores son por definición 1
+let a = 1, b = 1;
+
+// obtener c = fib(3) como su suma
+let c = a + b;
+
+/* ahora tenemos fib(1), fib(2), fib(3)
+a  b  c
+1, 1, 2
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora queremos obtener <code>fib(4) = fib(2) + fib(3)</code>.</p>
+<p>Cambiemos las variables: <code>a, b</code> obtendrán <code>fib(2),fib(3)</code>, y <code>c</code> obtendrá su suma:</p>
+<div id="5mt30qvxpm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>a = b; // now a = fib(2)
+b = c; // now b = fib(3)
+c = a + b; // c = fib(4)
+
+/* ahora tenemos la secuencia:
+   a  b  c
+1, 1, 2, 3
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El siguiente paso obtiene otro número de la secuencia:</p>
+<div id="9w8vmn0ag8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>a = b; // now a = fib(3)
+b = c; // now b = fib(4)
+c = a + b; // c = fib(5)
+
+/* ahora la secuencia es (otro número más):
+      a  b  c
+1, 1, 2, 3, 5
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Y así sucesivamente hasta obtener el valor necesario. Eso es mucho más rápido que la recursión y no implica cálculos duplicados.</p>
+<p>El código completo:</p>
+<div id="rcc7kk4rs4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function fib(n) {
+  let a = 1;
+  let b = 1;
+  for (let i = 3; i &lt;= n; i++) {
+    let c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
+}
+
+alert( fib(3) ); // 2
+alert( fib(7) ); // 13
+alert( fib(77) ); // 5527939700884757</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El bucle comienza con <code>i=3</code>, porque el primer y segundo valor de la secuencia están codificados en las variables <code>a=1</code> y <code>b=1</code>.</p>
+<p>Este enfoque se llama <a href="https://es.wikipedia.org/wiki/Programación_dinámica">programación dinámica</a>.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#generar-una-lista-de-un-solo-enlace" name="generar-una-lista-de-un-solo-enlace">Generar una lista de un solo enlace</a></h3><a class="task__open-link" href="task/output-single-linked-list.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Digamos que tenemos una lista de un solo enlace (como se describe en el capítulo <a href="recursion.html">Recursión y pila</a>):</p>
+<div id="62qg2f9vxv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Escribe una función <code>printList(list)</code> que genere los elementos de la lista uno por uno.</p>
+<p>Haz dos variantes de la solución: utilizando un bucle y utilizando recursividad.</p>
+<p>¿Qué es mejor: con recursividad o sin ella?</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Solución basada en el bucle</button><div class="task__answer-content"><h4 class="task__step-title">Solución basada en el bucle</h4><div class="formatted"><p>La solución basada en el bucle:</p>
+<div id="bhgkiee026" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printList(list) {
+  let tmp = list;
+
+  while (tmp) {
+    alert(tmp.value);
+    tmp = tmp.next;
+  }
+
+}
+
+printList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que utilizamos una variable temporal <code>tmp</code> para recorrer la lista. Técnicamente, podríamos usar una función con una <code>list</code> de parámetros en su lugar:</p>
+<div id="v8ns9z83ir" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:8,&quot;end&quot;:12}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function printList(list) {
+
+  while(list) {
+    alert(list.value);
+    list = list.next;
+  }
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero eso no sería prudente. En el futuro, es posible que necesitemos extender la función, hacer algo distinto con la lista. Si cambiamos <code>list</code>, entonces perdemos la habilidad.</p>
+<p>Hablando sobre buenos nombres de variables, <code>list</code> aquí es la lista en sí. El primer elemento de la misma. Y debería permanecer así. Eso queda claro y fiable.</p>
+<p>Desde el otro lado, el papel de <code>tmp</code> es exclusivamente para recorrer la lista, como <code>i</code> en el bucle <code>for</code>.</p>
+</div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Solución recursiva</button><div class="task__answer-content"><h4 class="task__step-title">Solución recursiva</h4><div class="formatted"><p>La solución recursiva de <code>printList(list)</code> sigue una lógica simple: para generar una lista debemos generar el elemento actual <code>list</code>, luego hacer lo mismo con <code>list.next</code>:</p>
+<div id="181doecmyv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printList(list) {
+
+  alert(list.value); // genera el elemento actual
+
+  if (list.next) {
+    printList(list.next); // hace lo mismo para el resto de la lista
+  }
+
+}
+
+printList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora, ¿Qué es mejor?</p>
+<p>Técnicamente, el bucle es más efectivo. Estas dos variantes hacen lo mismo, pero el bucle no gasta recursos en llamadas a funciones anidadas.</p>
+<p>Por otro lado, la variante recursiva es más corta y a veces más sencilla de entender.</p>
+</div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#genere-una-lista-de-un-solo-enlace-en-orden-inverso" name="genere-una-lista-de-un-solo-enlace-en-orden-inverso">Genere una lista de un solo enlace en orden inverso</a></h3><a class="task__open-link" href="task/output-single-linked-list-reverse.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Genere una lista de un solo enlace a partir de la tarea anterior <a href="task/output-single-linked-list.html">Generar una lista de un solo enlace</a> en orden inverso.</p>
+<p>Escribe dos soluciones: utilizando un bucle y utilizando recursividad.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Usando recursividad</button><div class="task__answer-content"><h4 class="task__step-title">Usando recursividad</h4><div class="formatted"><p>La lógica recursiva es un poco complicada aquí.</p>
+<p>Primero necesitamos generar el resto de la lista y <em>entonces</em> generar la lista actual:</p>
+<div id="1m02ctoytj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printReverseList(list) {
+
+  if (list.next) {
+    printReverseList(list.next);
+  }
+
+  alert(list.value);
+}
+
+printReverseList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Usando un bucle</button><div class="task__answer-content"><h4 class="task__step-title">Usando un bucle</h4><div class="formatted"><p>La variante con bucle también es un poco más complicada que la salida directa.</p>
+<p>No hay manera de obtener el último valor en nuestra <code>list</code>. Tampoco podemos ir “hacia atrás”.</p>
+<p>Entonces, lo que podemos hacer primero es recorrer los elementos en el orden directo guardándolos en un array, y entonces generar los elementos guardados en el orden inverso:</p>
+<div id="h0yy3c5f5t" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printReverseList(list) {
+  let arr = [];
+  let tmp = list;
+
+  while (tmp) {
+    arr.push(tmp.value);
+    tmp = tmp.next;
+  }
+
+  for (let i = arr.length - 1; i &gt;= 0; i--) {
+    alert( arr[i] );
+  }
+}
+
+printReverseList(list);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que la solución recursiva en realidad hace exactamente lo mismo: recorre la lista, guarda los elementos en la cadena de llamadas anidadas (en la pila de contexto de ejecución), y luego los genera.</p>
+</div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="advanced-functions.html" data-tooltip="Trabajo avanzado con funciones"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="rest-parameters-spread.html" data-tooltip="Parámetros Rest y operador Spread"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Frecursion" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Frecursion" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/recursion","identifier":"\/recursion"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.html">Trabajo avanzado con funciones</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dos-formas-de-pensar">Dos formas de pensar</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#el-contexto-de-ejecucion-y-pila">El contexto de ejecución y pila</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#recorridos-recursivos">Recorridos recursivos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#estructuras-recursivas">Estructuras recursivas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (5)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Frecursion" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Frecursion" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/06-advanced-functions/01-recursion" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/recursion by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:02 GMT -->
+</html>

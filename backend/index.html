@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de la Segunda Evaluación de DWEC</title>
+</head>
+<body>
+    <h1>DOCUMENTACIÓN DE LA API PARA EL EXAMEN</h1>
+
+    <h2>POST /api/user</h2>
+
+    <p>Registra un usuario en la aplicación.</p>
+
+    <h4>Query String</h4>
+    <p>Ninguno</p>
+
+    <h4>Headers</h4>
+    <p>Ninguno</p>
+
+    <h4>Cuerpo del mensaje</h4>
+    <p>JSON con los siguientes campos:</p>
+    <ul>
+        <li><b>username</b>: cadena con el nombre del usuario</li>
+        <li><b>pass</b>: contraseña del usuario</li>
+    </ul>
+
+    <h4>Devuelve</h4>
+    <p><b>Status 400</b>: hay un error</p>
+    <p><b>Status 409</b>: el nombre de usuario ya existe</p>
+    <p><b>Status 200</b> 200 y JSON con los siguientes datos</p>
+    <ul>
+        <li><b>id</b>: identificador del usuario</li>
+        <li><b>token</b>: webtoken para el usuario</li>
+    </ul>
+
+    <hr>
+
+    <h2>POST /api/login</h2>
+
+    <h4>Query String</h4>
+    <p>Ninguno</p>
+
+    <h4>Headers</h4>
+    <p>Ninguno</p>
+
+    <h4>Cuerpo del mensaje</h4>
+    <p>JSON con los siguientes campos:</p>
+    <ul>
+        <li><b>username</b>: cadena con el nombre del usuario</li>
+        <li><b>pass</b>: contraseña del usuario</li>
+    </ul>
+
+    <h4>Devuelve</h4>
+    <p><b>Status 400</b>: hay un error</p>
+    <p><b>Status 401</b>: credenciales no válidas</p>
+    <p>Status 200 y JSON con los siguientes datos</p>
+    <ul>
+        <li><b>id</b>: identificador del usuario</li>
+        <li><b>token</b>: webtoken para el usuario</li>
+    </ul>
+
+
+    <hr>
+
+    <h2>GET /api/user</h2>
+
+    <p>Únicamente para la realización de pruebas</p>
+
+    <h4>Query String</h4>
+    <p>Ninguno</p>
+
+    <h4>Headers</h4>
+    <p>Ninguno</p>
+
+    <h4>Cuerpo del mensaje</h4>
+    <p>Ninguno</p>
+
+    <h4>Devuelve</h4>
+    <p><b>Status 200</b> y JSON con todos los usuarios del sistema</p>
+    
+
+    <hr>
+
+    <h2>GET /api/group</h2>
+
+    <h4>Query String</h4>
+
+    <p>Es obligatorio el nombre de usuario y además admite dos filtros en la query string:</p>
+    <ul>
+        <li>username: nombre de usuario</li>
+        <li>name: nombre o subcadena del nombre del grupo</li>
+        <li>category: categoría musical del grupo. Solo admite las categorías <i>rap</i> y <i>rock</i></li>
+    </ul>
+
+    <h4>Headers</h4>
+    <p>Se debe adjuntar el JWT en los headers</p>
+
+    <h4>Cuerpo del mensaje</h4>
+    <p>Ninguno</p>
+
+    <h4>Devuelve</h4>
+    <p><b>Status 200</b> y JSON con todos los grupos que se ajustan al filtro.</p>
+
+
+</body>
+</html>

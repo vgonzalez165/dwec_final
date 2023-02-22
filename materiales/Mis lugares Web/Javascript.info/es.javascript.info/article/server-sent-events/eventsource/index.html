@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<script>
+let eventSource;
+
+function start() { // cuando se presiona el botón "Inicio"
+  if (!window.EventSource) {
+    // IE o un navegador antiguo
+    alert("El navegador no es compatible con EventSource.");
+    return;
+  }
+
+  eventSource = new EventSource('digits');
+
+  eventSource.onopen = function(e) {
+    log("Evento: open");
+  };
+
+  eventSource.onerror = function(e) {
+    log("Evento: error");
+    if (this.readyState == EventSource.CONNECTING) {
+      log(`Reconectando (readyState=${this.readyState})...`);
+    } else {
+      log("Un error ha ocurrido.");
+    }
+  };
+
+  eventSource.addEventListener('bye', function(e) {
+    log("Evento: bye, datos: " + e.data);
+  });
+
+  eventSource.onmessage = function(e) {
+    log("Evento: message, datos: " + e.data);
+  };
+}
+
+function stop() { // cuando se presiona el botón "Detener"
+  eventSource.close();
+  log("eventSource.close()");
+}
+
+function log(msg) {
+  logElem.innerHTML += msg + "<br>";
+  document.documentElement.scrollTop = 99999999;
+}
+</script>
+
+<button onclick="start()">Inicio</button> Presiona "Inicio" para comenzar.
+<div id="logElem" style="margin: 6px 0"></div>
+
+<button onclick="stop()">Detener</button> "Detener" para terminar.

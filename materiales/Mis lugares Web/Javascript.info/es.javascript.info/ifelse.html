@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/ifelse by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "pe";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Ejecución condicional: if, '?'</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="ifelse.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Ejecución condicional: if, '?'"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ejecución condicional: if, '?'"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="comparison.html"><link rel="next" href="logical-operators.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Ejecución condicional: if, '?'"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/ifelse"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/ifelse"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="ifelse.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/ifelse"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/ifelse"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/ifelse"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/ifelse"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/ifelse"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/ifelse"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/ifelse"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/ifelse"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/ifelse"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/ifelse"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fifelse" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fifelse" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/ifelse">عربي</option><option value="https://javascript.info/ifelse">English</option><option value="https://es.javascript.info/ifelse" selected>Español</option><option value="https://fa.javascript.info/ifelse">فارسی</option><option value="https://fr.javascript.info/ifelse">Français</option><option value="https://id.javascript.info/ifelse">Indonesia</option><option value="https://it.javascript.info/ifelse">Italiano</option><option value="https://ja.javascript.info/ifelse">日本語</option><option value="https://ko.javascript.info/ifelse">한국어</option><option value="https://learn.javascript.ru/ifelse">Русский</option><option value="https://tr.javascript.info/ifelse">Türkçe</option><option value="https://uk.javascript.info/ifelse">Українська</option><option value="https://zh.javascript.info/ifelse">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="14" max="93" data-tooltip="Lección 14 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="first-steps.html"><span>Fundamentos de JavaScript</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Fundamentos de JavaScript","item":"https://es.javascript.info/first-steps"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 4 de febrero de 2023"><div class="updated-at__content">4 de febrero de 2023</div></div></div><h1 class="main__header-title">Ejecución condicional: if, '?'</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Ejecución condicional: if, '?'"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>A veces necesitamos que, bajo condiciones diferentes, se ejecuten acciones diferentes.</p>
+<p>Para esto podemos usar la sentencia <code>if</code> y el “operador condicional” <code>?</code>.</p>
+<h2><a class="main__anchor" name="la-sentencia-if" href="#la-sentencia-if">La sentencia “if”</a></h2><p>La sentencia <code>if(...)</code> evalúa la condición en los paréntesis, y si el resultado es verdadero (<code>true</code>), ejecuta un bloque de código.</p>
+<p>Por ejemplo:</p>
+<div id="0vrj5zlw38" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let year = prompt('¿En que año fué publicada la especificación ECMAScript-2015?', '');
+
+if (year == 2015) alert( '¡Estás en lo cierto!' );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí la condición es una simple igualdad (<code>year == 2015</code>), pero podría ser mucho más compleja.</p>
+<p>Si queremos ejecutar más de una sentencia, debemos encerrar nuestro bloque de código entre llaves:</p>
+<div id="1g28w5jbkm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (year == 2015) {
+  alert( &quot;¡Es Correcto!&quot; );
+  alert( &quot;¡Eres muy inteligente!&quot; );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Recomendamos encerrar nuestro bloque de código entre llaves <code>{}</code> siempre que se utilice la sentencia <code>if</code>, incluso si solo se va a ejecutar una sola sentencia. Al hacerlo mejoramos la legibilidad.</p>
+<h2><a class="main__anchor" name="conversion-booleana" href="#conversion-booleana">Conversión Booleana</a></h2><p>La sentencia <code>if (…)</code> evalúa la expresión dentro de sus paréntesis y convierte el resultado en booleano.</p>
+<p>Recordemos las reglas de conversión del capítulo <a href="type-conversions.html">Conversiones de Tipos</a>:</p>
+<ul>
+<li>El número <code>0</code>, un string vacío <code>&quot;&quot;</code>, <code>null</code>, <code>undefined</code>, y <code>NaN</code>, se convierten en <code>false</code>. Por esto son llamados valores “falsos”.</li>
+<li>El resto de los valores se convierten en <code>true</code>, entonces los llamaremos valores “verdaderos”.</li>
+</ul>
+<p>Entonces, el código bajo esta condición nunca se ejecutaría:</p>
+<div id="dir6zlbrzv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (0) { // 0 es falso
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…y dentro de esta condición siempre se ejecutará:</p>
+<div id="1cgqpy904w" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (1) { // 1 es verdadero
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos pasar un valor booleano pre-evaluado al <code>if</code>, así:</p>
+<div id="scwn0h9nvu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let cond = (year == 2015); // la igualdad evalúa y devuelve un true o false
+
+if (cond) {
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="la-clausula-else" href="#la-clausula-else">La cláusula “else”</a></h2><p>La sentencia <code>if</code> puede contener un bloque <code>else</code> (“si no”, “en caso contrario”) opcional. Este bloque se ejecutará cuando la condición sea falsa.</p>
+<p>Por ejemplo:</p>
+<div id="0338o0st5o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let year = prompt('¿En qué año fue publicada la especificación ECMAScript-2015?', '');
+
+if (year == 2015) {
+  alert( '¡Lo adivinaste, correcto!' );
+} else {
+  alert( '¿Cómo puedes estar tan equivocado?' ); // cualquier valor excepto 2015
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="muchas-condiciones-else-if" href="#muchas-condiciones-else-if">Muchas condiciones: “else if”</a></h2><p>A veces queremos probar más de una condición. La clausula <code>else if</code> nos permite hacer esto.</p>
+<p>Por ejemplo:</p>
+<div id="bjq8ej6721" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let year = prompt('¿En qué año fue publicada la especificación ECMAScript-2015?', '');
+
+if (year &lt; 2015) {
+  alert( 'Muy poco...' );
+} else if (year &gt; 2015) {
+  alert( 'Muy Tarde' );
+} else {
+  alert( '¡Exactamente!' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el código de arriba, JavaScript primero revisa si <code>year &lt; 2015</code>. Si esto es falso, continúa a la siguiente condición <code>year &gt; 2015</code>. Si esta también es falsa, mostrará la última <code>alert</code>.</p>
+<p>Podría haber más bloques <code>else if</code>. Y el último <code>else</code> es opcional.</p>
+<h2><a class="main__anchor" name="operador-ternario" href="#operador-ternario">Operador ternario ‘?’</a></h2><p>A veces necesitamos que el valor que asignemos a una variable dependa de alguna condición.</p>
+<p>Por ejemplo:</p>
+<div id="6q88rr4hfw" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let accessAllowed;
+let age = prompt('¿Qué edad tienes?', '');
+
+if (age &gt; 18) {
+  accessAllowed = true;
+} else {
+  accessAllowed = false;
+}
+
+alert(accessAllowed);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El “operador condicional” nos permite ejecutar esto en una forma más corta y simple.</p>
+<p>El operador está representado por el signo de cierre de interrogación <code>?</code>. A veces es llamado “ternario” porque el operador tiene tres operandos, es el único operador de JavaScript que tiene esa cantidad.</p>
+<p>La Sintaxis es:</p>
+<div id="dzsqn1elku" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let result = condition ? value1 : value2;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Se evalúa <code>condition</code>: si es verdadera entonces devuelve <code>value1</code> , de lo contrario <code>value2</code>.</p>
+<p>Por ejemplo:</p>
+<div id="dg919bo3d2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let accessAllowed = (age &gt; 18) ? true : false;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Técnicamente, podemos omitir el paréntesis alrededor de  <code>age &gt; 18</code>. El operador de signo de interrogación tiene una precedencia baja, por lo que se ejecuta después de la comparación <code>&gt;</code>.</p>
+<p>En este ejemplo realizaremos lo mismo que en el anterior:</p>
+<div id="m35ufqt9sx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// el operador de comparación  &quot;age &gt; 18&quot; se ejecuta primero de cualquier forma
+// (no necesitamos agregar los paréntesis)
+let accessAllowed = age &gt; 18 ? true : false;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pero los paréntesis hacen el código mas legible, asi que recomendamos utilizarlos.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Por favor tome nota:</span></div>
+            <div class="important__content"><p>En el ejemplo de arriba, podrías evitar utilizar el operador de signo de interrogación porque esta comparación devuelve directamente <code>true/false</code>:</p>
+<div id="4p10g8rgcq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// es lo mismo que
+let accessAllowed = age &gt; 18;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="multiples" href="#multiples">Múltiples ‘?’</a></h2><p>Una secuencia de operadores de signos de interrogación  <code>?</code> puede devolver un valor que depende de más de una condición.</p>
+<p>Por ejemplo:</p>
+<div id="dl9cqjtebo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = prompt('¿edad?', 18);
+
+let message = (age &lt; 3) ? '¡Hola, bebé!' :
+  (age &lt; 18) ? '¡Hola!' :
+  (age &lt; 100) ? '¡Felicidades!' :
+  '¡Qué edad tan inusual!';
+
+alert( message );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puede ser difícil al principio comprender lo que está sucediendo. Pero después de una mirada más cercana, podemos ver que es solo una secuencia ordinaria de condiciones:</p>
+<ol>
+<li>El primer signo de pregunta revisa si <code>age &lt; 3</code>.</li>
+<li>Si es cierto, devuelve <code>'¡Hola, bebé!'</code>. De lo contrario, continúa a la expresión que está después de los dos puntos “:”, la cual revisa si <code>age &lt; 18</code>.</li>
+<li>Si es cierto, devuelve <code>'¡Hola!'</code>. De lo contrario, continúa con la expresión que está después de los dos puntos siguientes “:”, la cual revisa si <code>age &lt; 100</code>.</li>
+<li>Si es cierto, devuelve <code>'¡Felicidades!'</code>. De lo contrario, continúa a la expresión que está después de los dos puntos “:”, la cual devuelve <code>'¡Qué edad tan inusual!'</code>.</li>
+</ol>
+<p>Aquí lo podemos ver utilizando <code>if..else</code>:</p>
+<div id="ogj9hk05g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (age &lt; 3) {
+  message = '¡Hola, bebé!';
+} else if (age &lt; 18) {
+  message = '¡Hola!';
+} else if (age &lt; 100) {
+  message = '¡Felicidades!';
+} else {
+  message = '¡Qué edad tan inusual!';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="uso-no-tradicional-de" href="#uso-no-tradicional-de">Uso no tradicional de ‘?’</a></h2><p>A veces, el signo de interrogación de cierre <code>?</code> se utiliza para reemplazar un <code>if</code>:</p>
+<div id="lefjffe9b5" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let company = prompt('¿Qué compañía creó JavaScript?', '');
+
+(company == 'Netscape') ?
+   alert('¡Correcto!') : alert('Equivocado.');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Dependiendo de la condición <code>company == 'Netscape'</code>, se ejecutará la primera o la segunda expresión del operador <code>?</code> y se mostrará una alerta.</p>
+<p>Aquí no asignamos el resultado a una variable. En vez de esto, ejecutamos diferentes códigos dependiendo de la condición.</p>
+<p><strong>No recomendamos el uso del operador de signo de interrogación de esta forma.</strong></p>
+<p>La notación es más corta que la sentencia equivalente con <code>if</code>, lo cual seduce a algunos programadores. Pero es menos legible.</p>
+<p>Aquí está el mismo código utilizando la sentencia <code>if</code> para comparar:</p>
+<div id="5lq1a167jy" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let company = prompt('¿Cuál compañía creó JavaScript?', '');
+
+if (company == 'Netscape') {
+  alert('¡Correcto!');
+} else {
+  alert('Equivocado.');
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nuestros ojos leen el código verticalmente. Los bloques de código que se expanden múltiples lineas son mas fáciles de entender que los las instrucciones largas horizontales.</p>
+<p>El propósito del operador de signo de interrogación <code>?</code> es para devolver un valor u otro dependiendo de su condición. Por favor utilízala para exactamente esto. Utiliza la sentencia <code>if</code> cuando necesites ejecutar código en ramas distintas.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#if-un-string-con-cero" name="if-un-string-con-cero">if (un string con cero)</a></h3><a class="task__open-link" href="task/if-zero-string.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Se mostrará el <code>alert</code>?</p>
+<div id="yr3c0is0rp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (&quot;0&quot;) {
+  alert( 'Hello' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p><strong>Sí lo hará.</strong></p>
+<p>Cualquier string excepto uno vacío (y <code>&quot;0&quot;</code> que no es vacío) se convierte en <code>true</code> en un contexto lógico.</p>
+<p>Podemos ejecutar y verificar:</p>
+<div id="18q052gjcj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (&quot;0&quot;) {
+  alert( 'Hola' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#el-nombre-de-javascript" name="el-nombre-de-javascript">El nombre de JavaScript</a></h3><a class="task__open-link" href="task/check-standard.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 2</span></div><div class="task__content"><div class="task__formatted"><p>Usando el constructor <code>if..else</code>, escribe el código que pregunta: ‘¿Cuál es el nombre “oficial” de JavaScript?’</p>
+<p>Si el visitante escribe “ECMAScript”, entonces muestra: “¡Correcto!”, de lo contrario muestra: “¿No lo sabes? ¡ECMAScript!”</p>
+<figure><div class="image" style="width:500px">
+      <div class="image__ratio" style="padding-top:52.800000000000004%"></div>
+      <object type="image/svg+xml" data="task/check-standard/ifelse_task2.svg" width="500" height="264" class="image__image" data-use-theme>
+        <img src="task/check-standard/ifelse_task2.svg" alt="" width="500" height="264">
+      </object>
+      </div></figure><p><a href="https://es.js.cx/task/check-standard/ifelse_task2/" target="blank">Demo en nueva ventana</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="saoyw9fj9f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;body&gt;
+  &lt;script&gt;
+    'use strict';
+
+    let value = prompt('¿Cuál es el nombre &quot;oficial&quot; de JavaScript?', '');
+
+    if (value == 'ECMAScript') {
+      alert('¡Correcto!');
+    } else {
+      alert(&quot;¿No lo sabes? ¡ECMAScript!&quot;);
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#muestra-el-signo" name="muestra-el-signo">Muestra el signo</a></h3><a class="task__open-link" href="task/sign.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 2</span></div><div class="task__content"><div class="task__formatted"><p>Usando el constructor <code>if..else</code>, escribe un código que obtenga a través de un <code>prompt</code> un número y entonces muestre en un <code>alert</code>:</p>
+<ul>
+<li><code>1</code>, si el valor es mayor que cero,</li>
+<li><code>-1</code>, si es menor que cero,</li>
+<li><code>0</code>, si es igual a cero.</li>
+</ul>
+<p>En la tarea asumimos que siempre el usuario introduce un número.</p>
+<p><a href="https://es.js.cx/task/sign/if_sign/" target="blank">Demo en nueva ventana</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="omg7fp64dl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let value = prompt('Escribe un número', 0);
+
+if (value &gt; 0) {
+  alert( 1 );
+} else if (value &lt; 0) {
+  alert( -1 );
+} else {
+  alert( 0 );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#reescribe-el-if-como" name="reescribe-el-if-como">Reescribe el 'if' como '?'</a></h3><a class="task__open-link" href="task/rewrite-if-question.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Reescriba esta condición <code>if</code> usando el operador ternario <code>'?'</code>:</p>
+<div id="ohiwpfwpg9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let result;
+
+if (a + b &lt; 4) {
+  result = 'Debajo';
+} else {
+  result = 'Encima';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="c4hzifdq1f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let result = (a + b &lt; 4) ? 'Debajo' : 'Encima';</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#reescriba-el-if-else-con" name="reescriba-el-if-else-con">Reescriba el 'if..else' con '?'</a></h3><a class="task__open-link" href="task/rewrite-if-else-question.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Reescriba el <code>if..else</code> utilizando operadores ternarios múltiples<code>'?'</code>.</p>
+<p>Para legibilidad, es recomendad dividirlo en múltiples lineas de código.</p>
+<div id="tpexfe28f2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message;
+
+if (login == 'Empleado') {
+  message = 'Hola';
+} else if (login == 'Director') {
+  message = 'Felicidades';
+} else if (login == '') {
+  message = 'Sin sesión';
+} else {
+  message = '';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="o7tpeja78" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let message = (login == 'Empleado') ? 'Hola' :
+  (login == 'Director') ? 'Felicidades' :
+  (login == '') ? 'Sin sesión' :
+  '';</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="comparison.html" data-tooltip="Comparaciones"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="logical-operators.html" data-tooltip="Operadores Lógicos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fifelse" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fifelse" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/ifelse","identifier":"\/ifelse"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.html">Fundamentos de JavaScript</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-sentencia-if">La sentencia “if”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#conversion-booleana">Conversión Booleana</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-clausula-else">La cláusula “else”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#muchas-condiciones-else-if">Muchas condiciones: “else if”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#operador-ternario">Operador ternario ‘?’</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#multiples">Múltiples ‘?’</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#uso-no-tradicional-de">Uso no tradicional de ‘?’</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (5)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fifelse" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fifelse" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/02-first-steps/10-ifelse" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/ifelse by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:47 GMT -->
+</html>

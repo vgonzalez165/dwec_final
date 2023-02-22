@@ -1,0 +1,895 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/css-animations by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:51 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Animaciones CSS</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="css-animations.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Animaciones CSS"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Animaciones CSS"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="bezier-curve.html"><link rel="next" href="js-animation.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Animaciones CSS"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/css-animations"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="css-animations.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/css-animations"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/css-animations"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/css-animations"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/css-animations"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/css-animations"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/css-animations"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/css-animations"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcss-animations" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcss-animations" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/css-animations">English</option><option value="https://es.javascript.info/css-animations" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/css-animations">Italiano</option><option value="https://ja.javascript.info/css-animations">日本語</option><option value="https://ko.javascript.info/css-animations">한국어</option><option value="https://learn.javascript.ru/css-animations">Русский</option><option value="https://tr.javascript.info/css-animations">Türkçe</option><option value="https://uk.javascript.info/css-animations">Українська</option><option value="https://zh.javascript.info/css-animations">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="2" max="3" data-tooltip="Lección 2 de 3"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="animation.html"><span>Animaciones</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Animaciones","item":"https://es.javascript.info/animation"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 15 de noviembre de 2022"><div class="updated-at__content">15 de noviembre de 2022</div></div></div><h1 class="main__header-title">Animaciones CSS</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Animaciones CSS"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Las animaciones CSS permiten hacer animaciones simples sin JavaScript en absoluto.</p>
+<p>Se puede utilizar JavaScript para controlar la animación CSS y mejorarla con un poco de código.</p>
+<h2><a class="main__anchor" name="css-transition" href="#css-transition">Transiciones CSS</a></h2><p>La idea de las transiciones CSS es simple. Describimos una propiedad y cómo se deberían animar sus cambios. Cuando la propiedad cambia, el navegador pinta la animación.</p>
+<p>Es decir: todo lo que necesitamos es cambiar la propiedad, y la transición fluida la hará el navegador.</p>
+<p>Por ejemplo, el CSS a continuación anima los cambios de <code>background-color</code> durante 3 segundos:</p>
+<div id="u4txenttcx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>.animated {
+  transition-property: background-color;
+  transition-duration: 3s;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora, si un elemento tiene la clase <code>.animated</code>, cualquier cambio de <code>background-color</code> es animado durante 3 segundos.</p>
+<p>Haz clic en el botón de abajo para animar el fondo:</p>
+<div id="89he2ngf6o" data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;button id=&quot;color&quot;&gt;Haz clic en mi&lt;/button&gt;
+
+&lt;style&gt;
+  #color {
+    transition-property: background-color;
+    transition-duration: 3s;
+  }
+&lt;/style&gt;
+
+&lt;script&gt;
+  color.onclick = function() {
+    this.style.backgroundColor = 'red';
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-89he2ngf6o"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Hay 4 propiedades para describir las transiciones CSS:</p>
+<ul>
+<li><code>transition-property</code></li>
+<li><code>transition-duration</code></li>
+<li><code>transition-timing-function</code></li>
+<li><code>transition-delay</code></li>
+</ul>
+<p>Las cubriremos en un momento, por ahora tengamos en cuenta que la propiedad común <code>transition</code> permite declararlas juntas en el orden: <code>property duration timing-function delay</code>, y también animar múltiples propiedades a la vez.</p>
+<p>Por ejemplo, este botón anima tanto <code>color</code> como <code>font-size</code>:</p>
+<div id="xvkqwtd5kf" data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;button id=&quot;growing&quot;&gt;Haz clic en mi&lt;/button&gt;
+
+&lt;style&gt;
+#growing {
+  transition: font-size 3s, color 2s;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+growing.onclick = function() {
+  this.style.fontSize = '36px';
+  this.style.color = 'red';
+};
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-xvkqwtd5kf"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Ahora cubramos las propiedades de animación una por una.</p>
+<h2><a class="main__anchor" name="transition-property" href="#transition-property">transition-property</a></h2><p>En <code>transition-property</code> escribimos una lista de propiedades para animar, por ejemplo: <code>left</code>, <code>margin-left</code>, <code>height</code>, <code>color</code>. O podemos escribir <code>all</code>, que significa “animar todas las propiedades”.</p>
+<p>No todas las propiedades pueden ser animadas, pero sí <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties">la mayoría de las generalmente usadas</a>.</p>
+<h2><a class="main__anchor" name="transition-duration" href="#transition-duration">transition-duration</a></h2><p>En <code>transition-duration</code> podemos especificar cuánto tiempo debe durar la animación. El tiempo debe estar en <a href="https://www.w3.org/TR/css3-values/#time">formato de tiempo CSS</a>: en segundos <code>s</code> o milisegundos <code>ms</code>.</p>
+<h2><a class="main__anchor" name="transition-delay" href="#transition-delay">transition-delay</a></h2><p>En <code>transition-delay</code> podemos especificar el retraso <em>antes</em> de la animación. Por ejemplo, si <code>transition-delay</code> es <code>1s</code> y <code>transition-duration</code> es <code>2s</code>, la animación comienza después de 1 segundo tras el cambio de la propiedad y la duración total será de 2 segundos.</p>
+<p>Los valores negativos también son posibles. De esta manera la animación comienza inmediatamente, pero el punto de inicio de la animación será el del valor dado (tiempo). Por ejemplo, si <code>transition-delay</code> es <code>-1s</code> y <code>transition-duration</code> es <code>2s</code>, entonces la animación comienza desde la mitad y la duración total será de 1 segundo.</p>
+<p>Aquí la animación cambia los números de <code>0</code> a <code>9</code> usando la propiedad CSS <code>translate</code>:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">script.js</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/digits/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/3OpQT3blzipKDAdP?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/digits/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>stripe.onclick = function() {
+  stripe.classList.add('animate');
+};</code></pre></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: linear;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Haz clic a continuación para animar:
+
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>La propiedad <code>transform</code> se anima así:</p>
+<div id="ub1pfrtyz6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el ejemplo anterior, JavaScript agrega la clase <code>.animate</code> al elemento, y comienza la animación:</p>
+<div id="1lcya1ih9o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>stripe.classList.add('animate');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos comenzar “desde el medio”, desde el número exacto, p. ej. correspondiente al segundo actual, usando el negativo <code>transition-delay</code>.</p>
+<p>Aquí, si haces clic en el dígito, comienza la animación desde el segundo actual:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">script.js</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/digits-negative-delay/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/Crob6aqjuQzNVyvd?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/digits-negative-delay/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>stripe.onclick = function() {
+  let sec = new Date().getSeconds() % 10;
+  stripe.style.transitionDelay = '-' + sec + 's';
+  stripe.classList.add('animate');
+};</code></pre></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: linear;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Haz clic a continuación para animar:
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><p>JavaScript lo hace con una línea extra:</p>
+<div id="r1ixni5fxs" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>stripe.onclick = function() {
+  let sec = new Date().getSeconds() % 10;
+  // por ejemplo, -3s aquí comienza la animación desde el 3er segundo
+  stripe.style.transitionDelay = '-' + sec + 's';
+  stripe.classList.add('animate');
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="transition-timing-function" href="#transition-timing-function">transition-timing-function</a></h2><p>La función de temporización describe cómo se distribuye el proceso de animación a lo largo del tiempo. Comenzará lentamente y luego irá rápido o viceversa.</p>
+<p>Es la propiedad más complicada a primera vista. Pero se vuelve muy simple si le dedicamos un poco de tiempo.</p>
+<p>Esa propiedad acepta dos tipos de valores: una curva de Bézier o pasos. Comencemos por la curva, ya que se usa con más frecuencia.</p>
+<h3><a class="main__anchor" name="curva-de-bezier" href="#curva-de-bezier">Curva de Bézier</a></h3><p>La función de temporización se puede establecer como una <a href="bezier-curve.html">curva de Bézier</a> con 4 puntos de control que satisfacen las condiciones:</p>
+<ol>
+<li>Primer punto de control: <code>(0,0)</code>.</li>
+<li>Último punto de control: <code>(1,1)</code>.</li>
+<li>Para los puntos intermedios, los valores de <code>x</code> deben estar en el intervalo <code>0..1</code>, <code>y</code> puede ser cualquier cosa.</li>
+</ol>
+<p>La sintaxis de una curva de Bézier en CSS: <code>cubic-bezier(x2, y2, x3, y3)</code>. Aquí necesitamos especificar solo los puntos de control segundo y tercero, porque el primero está fijado a <code>(0,0)</code> y el cuarto es <code>(1,1)</code>.</p>
+<p>La función de temporización determina qué tan rápido ocurre el proceso de animación.</p>
+<ul>
+<li>El eje <code>x</code> es el tiempo: <code>0</code> – el momento inicial, <code>1</code> – el último momento de <code>transition-duration</code>.</li>
+<li>El eje <code>y</code> especifica la finalización del proceso: <code>0</code> – el valor inicial de la propiedad, <code>1</code> – el valor final.</li>
+</ul>
+<p>La variante más simple es cuando la animación es uniforme, con la misma velocidad lineal. Eso puede especificarse mediante la curva <code>cubic-bezier(0, 0, 1, 1)</code>.</p>
+<p>Así es como se ve esa curva:</p>
+<figure><div class="image" style="width:144px">
+      <div class="image__ratio" style="padding-top:104.16666666666667%"></div>
+      <object type="image/svg+xml" data="article/css-animations/bezier-linear.svg" width="144" height="150" class="image__image" data-use-theme>
+        <img src="article/css-animations/bezier-linear.svg" alt="" width="144" height="150">
+      </object>
+      </div></figure><p>… Como podemos ver, es solo una línea recta. A medida que pasa el tiempo (<code>x</code>), la finalización (<code>y</code>) de la animación pasa constantemente de <code>0</code> a<code>1</code>.</p>
+<p>El tren, en el ejemplo a continuación, va de izquierda a derecha con velocidad constante (haz clic en él):</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/train-linear/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/RIjV9tj7atIBrDE2?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/train-linear/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>.train {
+  position: relative;
+  cursor: pointer;
+  width: 177px;
+  height: 160px;
+  left: 0;
+  transition: left 5s cubic-bezier(0, 0, 1, 1);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img class=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot; onclick=&quot;this.style.left='450px'&quot;&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>La <code>transition</code> de CSS se basa en esa curva:</p>
+<div id="ro8l1iy4io" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>.train {
+  left: 0;
+  transition: left 5s cubic-bezier(0, 0, 1, 1);
+  /* el clic en un tren establece left a 450px, disparando la animación */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>… ¿Y cómo podemos mostrar un tren desacelerando?</p>
+<p>Podemos usar otra curva de Bézier: <code>cubic-bezier(0.0, 0.5, 0.5, 1.0)</code>.</p>
+<p>La gráfica:</p>
+<figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/css-animations/train-curve.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/css-animations/train-curve.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure><p>Como podemos ver, el proceso comienza rápido: la curva se eleva mucho, y luego más y más despacio.</p>
+<p>Aquí está la función de temporización en acción (haz clic en el tren):</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/train/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/9rIVfsxLkBooVvZI?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/train/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>.train {
+  position: relative;
+  cursor: pointer;
+  width: 177px;
+  height: 160px;
+  left: 0px;
+  transition: left 5s cubic-bezier(0.0, 0.5, 0.5, 1.0);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img class=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot; onclick=&quot;this.style.left='450px'&quot;&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>CSS:</p>
+<div id="eyv3yjtn7a" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>.train {
+  left: 0;
+  transition: left 5s cubic-bezier(0, .5, .5, 1);
+  /* el clic en un tren establece left a 450px, disparando la animación */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Hay varias curvas incorporadas: <code>linear</code>,<code>ease</code>, <code>ease-in</code>,<code>ease-out</code> y <code>ease-in-out</code>.</p>
+<p>La <code>linear</code> es una abreviatura de <code>cubic-bezier(0, 0, 1, 1)</code> – una línea recta, como ya vimos.</p>
+<p>Otros nombres son abreviaturas para la siguiente <code>cubic-bezier</code>:</p>
+<table>
+<thead>
+<tr>
+<th><code>ease</code><sup>*</sup></th>
+<th><code>ease-in</code></th>
+<th><code>ease-out</code></th>
+<th><code>ease-in-out</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>(0.25, 0.1, 0.25, 1.0)</code></td>
+<td><code>(0.42, 0, 1.0, 1.0)</code></td>
+<td><code>(0, 0, 0.58, 1.0)</code></td>
+<td><code>(0.42, 0, 0.58, 1.0)</code></td>
+</tr>
+<tr>
+<td><figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/css-animations/ease.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/css-animations/ease.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure></td>
+<td><figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/css-animations/ease-in.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/css-animations/ease-in.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure></td>
+<td><figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/css-animations/ease-out.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/css-animations/ease-out.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure></td>
+<td><figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/css-animations/ease-in-out.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/css-animations/ease-in-out.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure></td>
+</tr>
+</tbody>
+</table>
+<p><code>*</code> – por defecto, si no hay una función de temporización, se utiliza <code>ease</code>.</p>
+<p>Por lo tanto, podríamos usar <code>ease-out</code> para nuestro tren desacelerando:</p>
+<div id="y6ra3uduj7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>.train {
+  left: 0;
+  transition: left 5s ease-out;
+  /* igual que transition: left 5s cubic-bezier(0, .5, .5, 1); */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pero se ve un poco diferente.</p>
+<p><strong>Una curva de Bézier puede hacer que la animación exceda su rango.</strong></p>
+<p>Los puntos de control en la curva pueden tener cualquier coordenada <code>y</code>: incluso negativa o enorme. Entonces la curva de Bézier también saltaría muy bajo o alto, haciendo que la animación vaya más allá de su rango normal.</p>
+<p>En el siguiente ejemplo, el código de animación es:</p>
+<div id="seht2lv1fd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>.train {
+  left: 100px;
+  transition: left 5s cubic-bezier(.5, -1, .5, 2);
+  /* clic en un tren establece left a 400px */
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La propiedad <code>left</code> debería animarse de <code>100px</code> a <code>400px</code>.</p>
+<p>Pero si haces clic en el tren, verás que:</p>
+<ul>
+<li>Primero, el tren va <em>atrás</em>: <code>left</code> llega a ser menor que <code>100px</code>.</li>
+<li>Luego avanza, un poco más allá de <code>400px</code>.</li>
+<li>Y luego de vuelve a <code>400px</code>.</li>
+</ul>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/train-over/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/OmerUCXgNrO8u3va?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/train-over/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>.train {
+  position: relative;
+  cursor: pointer;
+  width: 177px;
+  height: 160px;
+  left: 100px;
+  transition: left 5s cubic-bezier(.5, -1, .5, 2);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;img class=&quot;train&quot; src=&quot;https://js.cx/clipart/train.gif&quot; onclick=&quot;this.style.left='400px'&quot;&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>¿Por qué sucede? es bastante obvio si miramos la gráfica de la curva de Bézier dada:</p>
+<figure><div class="image" style="width:225px">
+      <div class="image__ratio" style="padding-top:147.11111111111111%"></div>
+      <object type="image/svg+xml" data="article/css-animations/bezier-train-over.svg" width="225" height="331" class="image__image" data-use-theme>
+        <img src="article/css-animations/bezier-train-over.svg" alt="" width="225" height="331">
+      </object>
+      </div></figure><p>Movimos la coordenada <code>y</code> del segundo punto por debajo de cero, y para el tercer punto lo colocamos sobre <code>1</code>, de modo que la curva sale del cuadrante “regular”. La <code>y</code> está fuera del rango “estándar” <code>0..1</code>.</p>
+<p>Como sabemos, <code>y</code> mide “la finalización del proceso de animación”. El valor <code>y = 0</code> corresponde al valor inicial de la propiedad e <code>y = 1</code> al valor final. Por lo tanto, los valores <code>y&lt;0</code> mueven la propiedad por debajo del <code>left</code> inicial e <code>y&gt;1</code> por encima del <code>left</code> final.</p>
+<p>Esa es una variante “suave” sin duda. Si ponemos valores <code>y</code> como <code>-99</code> y <code>99</code>, entonces el tren saltaría mucho más fuera del rango.</p>
+<p>Pero, ¿cómo hacer la curva de Bézier para una tarea específica? Hay muchas herramientas.</p>
+<ul>
+<li>Por ejemplo, podemos hacerlo en el sitio <a href="http://cubic-bezier.com/">http://cubic-bezier.com/</a>.</li>
+<li>El navegador también tiene soporte especial para curvas Bezier en CSS:
+<ol>
+<li>Abre las herramientas de desarrollador con <kbd class="shortcut">F12</kbd> (Mac: <kbd class="shortcut">Cmd<span class="shortcut__plus">+</span>Opt<span class="shortcut__plus">+</span>I</kbd>).</li>
+<li>Selecciona la pestaña <code>Elementos</code> y presta atención al subpanel <code>Estilos</code>.</li>
+<li>Las propiedades CSS que contengan la palabra <code>cubic-bezier</code> tendrán un icono antes de esta palabra.</li>
+<li>Haz clic en este icono para editar la curva.</li>
+</ol>
+</li>
+</ul>
+<h3><a class="main__anchor" name="pasos" href="#pasos">Pasos</a></h3><p>La función de temporización <code>steps(number of steps[, start/end])</code> permite dividir la animación en múltiples pasos.</p>
+<p>Veamos eso en un ejemplo con dígitos.</p>
+<p>Aquí tenemos una lista de dígitos, sin animaciones, solo como fuente:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/step-list/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/SHMPwMBWcOj5e7VG?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/step-list/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  border: 1px solid red;
+  width: 1.2em;
+}
+
+#stripe {
+  display: inline-block;
+  font: 32px monospace;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><p>En el HTML, una línea de dígitos está encerrada en un div de largo fijo<code>&lt;div id=&quot;digits&quot;&gt;</code>:</p>
+<div id="glckj7xz7h" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div id=&quot;digit&quot;&gt;
+  &lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El div <code>#digit</code>tiene ancho fijo y un borde, entonces se ve como una ventana roja.</p>
+<p>Haremos un temporizador: los dígitos aparecerán uno por uno, de una manera discreta.</p>
+<p>Para lograr esto, ocultaremos el <code>#stripe</code> fuera de <code>#digit</code> usando <code>overflow: hidden</code>, y luego desplazamos el <code>#stripe</code> a la izquierda paso a paso.</p>
+<p>Habrá 9 pasos, un paso para cada dígito:</p>
+<div id="aquxd6ojsv" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:27,&quot;end&quot;:42}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>#stripe.animate  {
+  transform: translate(-90%);
+  transition: transform 9s steps(9, start);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El primer argumento de <code>steps(9, start)</code> es el número de pasos. La transformación se dividirá en 9 partes (10% cada una). El intervalo de tiempo también se divide automáticamente en 9 partes, por lo que <code>transition: 9s</code> nos da 9 segundos para toda la animación: 1 segundo por dígito.</p>
+<p>El segundo argumento es una de dos palabras: <code>start</code> o <code>end</code>.</p>
+<p>El <code>start</code> significa que al comienzo de la animación debemos hacer el primer paso de inmediato.</p>
+<p>En acción:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/step/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/8YXVGHc6jf0G3Fsj?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/step/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: steps(9, start);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Haz clic a continuación para animar:
+
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    digit.onclick = function() {
+      stripe.classList.add('animate');
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>Un clic en el dígito lo cambia a <code>1</code> (el primer paso) inmediatamente, y luego cambia al comienzo del siguiente segundo.</p>
+<p>El proceso está progresando así:</p>
+<ul>
+<li><code>0s</code> – <code>-10%</code> (primer cambio al comienzo del primer segundo, inmediatamente)</li>
+<li><code>1s</code> – <code>-20%</code></li>
+<li>…</li>
+<li><code>8s</code> – <code>-90%</code></li>
+<li>(el último segundo muestra el valor final).</li>
+</ul>
+<p>Aquí el primer cambio fue inmediato por el<code>start</code> en el <code>steps</code></p>
+<p>El valor alternativo ‘end’ haría que el cambio se aplicara no al principio sino al final de cada segundo.</p>
+<p>Entonces el proceso para <code>steps(9, end)</code> sería así:</p>
+<ul>
+<li><code>0s</code> – <code>0</code> (durante el primer segundo nada cambia)</li>
+<li><code>1s</code> – <code>-10%</code> (primer cambio al final del primer segundo)</li>
+<li><code>2s</code> – <code>-20%</code></li>
+<li>…</li>
+<li><code>9s</code> – <code>-90%</code></li>
+</ul>
+<p>Aquí está el <code>step(9, end)</code> en acción (observa la pausa antes del primer cambio de dígitos):</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">style.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/css-animations/step-end/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/A9eNaFJ1OXrOmmkd?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/css-animations/step-end/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>#digit {
+  width: .5em;
+  overflow: hidden;
+  font: 32px monospace;
+  cursor: pointer;
+}
+
+#stripe {
+  display: inline-block
+}
+
+#stripe.animate {
+  transform: translate(-90%);
+  transition-property: transform;
+  transition-duration: 9s;
+  transition-timing-function: steps(9, end);
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Haz clic a continuación para animar:
+
+  &lt;div id=&quot;digit&quot;&gt;&lt;div id=&quot;stripe&quot;&gt;0123456789&lt;/div&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    digit.onclick = function() {
+      stripe.classList.add('animate');
+    }
+  &lt;/script&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre></div></div></div><p>También hay algunas formas abreviadas predefinidas para <code>steps(...)</code>:</p>
+<ul>
+<li><code>step-start</code> – es lo mismo que<code>steps(1, start)</code>. Es decir, la animación comienza de inmediato y toma 1 paso. Entonces comienza y termina inmediatamente, como si no hubiera animación.</li>
+<li><code>step-end</code> – lo mismo que <code>steps(1, end)</code>: realiza la animación en un solo paso al final de <code>transition-duration</code>.</li>
+</ul>
+<p>Estos valores rara vez se usan porque no representan una verdadera animación sino un cambio de un solo paso.</p>
+<h2><a class="main__anchor" name="evento-transitionend" href="#evento-transitionend">Evento transitionend</a></h2><p>Cuando finaliza la animación CSS, se dispara el evento <code>transitionend</code>.</p>
+<p>Es ampliamente utilizado para hacer una acción después de que se realiza la animación. También podemos unir animaciones.</p>
+<p>Por ejemplo, el barco a continuación comienza a navegar ida y vuelta al hacer clic, cada vez más y más a la derecha:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/css-animations/boat/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/fcCdLc0Bx7yaQmw3?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="fcCdLc0Bx7yaQmw3" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="https://es.js.cx/article/css-animations/boat/"></iframe>
+  </div><p>La animación se inicia mediante la función <code>go</code> que se vuelve a ejecutar cada vez que finaliza la transición y cambia la dirección:</p>
+<div id="eds8xob156" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>boat.onclick = function() {
+  //...
+  let times = 1;
+
+  function go() {
+    if (times % 2) {
+      // navegar a la derecha
+      boat.classList.remove('back');
+      boat.style.marginLeft = 100 * times + 200 + 'px';
+    } else {
+      // navegar a la izquierda
+      boat.classList.add('back');
+      boat.style.marginLeft = 100 * times - 200 + 'px';
+    }
+
+  }
+
+  go();
+
+  boat.addEventListener('transitionend', function() {
+    times++;
+    go();
+  });
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El objeto de evento para <code>transitionend</code> tiene pocas propiedades específicas:</p>
+<dl>
+<dt><code>event.propertyName</code></dt>
+<dd>La propiedad que ha terminado de animarse. Puede ser bueno si animamos múltiples propiedades simultáneamente.</dd>
+<dt><code>event.elapsedTime</code></dt>
+<dd>El tiempo (en segundos) que duró la animación, sin <code>transition-delay</code>.</dd>
+</dl>
+<h2><a class="main__anchor" name="fotogramas-clave-keyframes" href="#fotogramas-clave-keyframes">Fotogramas clave  (Keyframes)</a></h2><p>Podemos unir múltiples animaciones simples juntas usando la regla CSS <code>@keyframes</code>.</p>
+<p>Especifica el “nombre” de la animación y las reglas: qué, cuándo y dónde animar. Luego, usando la propiedad <code>animation</code>, adjuntamos la animación al elemento y especificamos parámetros adicionales para él.</p>
+<p>Aquí tenemos un ejemplo con explicaciones:</p>
+<div id="ahthy0fhpj" data-trusted="1" class="code-example" data-demo-height="60" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:14},{&quot;start&quot;:3,&quot;end&quot;:6}]" data-autorun="no-epub">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div class=&quot;progress&quot;&gt;&lt;/div&gt;
+
+&lt;style&gt;
+  @keyframes go-left-right {        /* dale un nombre: &quot;go-left-right&quot; */
+    from { left: 0px; }             /* animar desde la izquierda: 0px */
+    to { left: calc(100% - 50px); } /* animar a la izquierda: 100%-50px */
+  }
+
+  .progress {
+    animation: go-left-right 3s infinite alternate;
+    /* aplicar la animación &quot;go-left-right&quot; al elemento
+       duración 3 segundos
+       número de veces: infinitas
+       alternar la dirección cada vez
+    */
+
+    position: relative;
+    border: 2px solid green;
+    width: 50px;
+    height: 20px;
+    background: lime;
+  }
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-ahthy0fhpj"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Hay muchos artículos sobre <code>@keyframes</code> y una <a href="https://drafts.csswg.org/css-animations/">especificación detallada</a>.</p>
+<p>Probablemente no necesitarás <code>@keyframes</code> a menudo, a menos que todo esté en constante movimiento en tus sitios.</p>
+<h2><a class="main__anchor" name="performance" href="#performance">Performance</a></h2><p>La mayoría de las propiedades CSS pueden ser animadas, porque la mayoría son valores numéricos. Por ejemplo <code>width</code>, <code>color</code>, <code>font-size</code> son todas números. Cuando las animamos, el navegador cambia estos valores gradualmente grama por grama, creando un efecto suave.</p>
+<p>Sin embargo, no todas las animaciones se verán tan suaves como quisieras, porque diferentes propiedades CSS tienen diferente costo para cambiar.</p>
+<p>En detalles más técnicos, cuando hay un cambio de estilo, el navegador atraviesa 3 pasos para renderizar la nueva vista:</p>
+<ol>
+<li><strong>Layout</strong>: (diagrama) recalcula la geometría y posición de cada elemento, luego</li>
+<li><strong>Paint</strong>: (dibuja) recalcula cómo debe verse todo en sus lugares, incluyendo background, colores,</li>
+<li><strong>Composite</strong>: (render) despliega el resultado final en pixels de la pantalla, aplicando transformaciones CSS si existen.</li>
+</ol>
+<p>Durante una animación CSS , este proceso se repite para cada frame. Sin embargo las propiedades CSS que nunca afectan geometría o posición, como <code>color</code>, pueden saltar el paso “Layout”. Si un <code>color</code> cambia, el navegador no recalcula geometría, va a Paint → Composite. Y hay unas pocas propiedades que saltan directo a “Composite”. Puedes encontrar la lista de propiedades CSS y cuáles estados disparan en <a href="https://csstriggers.com/">https://csstriggers.com</a>.</p>
+<p>Los cálculos pueden tomar un tiempo, especialmente en páginas con muchos elementos y diagramación compleja. Y los retrasos pueden ser notorios en muchos dispositivos, provocando “jitter”: animaciones irregulares, menos fluidas.</p>
+<p>La animación de propiedades que salten el paso “Layout” son más rápidas. Mucho mejor si el paso “Paint” se salta también.</p>
+<p>La propiedad <code>transform</code> es una excelente opción porque:</p>
+<ul>
+<li>CSS transform afecta el elemento objetivo como un todo (rotar, tornar, estirar, desplazar).</li>
+<li>CSS transform nunca afecta a los elementos vecinos.</li>
+</ul>
+<p>…entonces los navegadores aplican <code>transform</code> “por encima” de “Layout” y “Paint” ya calculados, en el paso “Composite”.</p>
+<p>En otras palabras, el navegador calcula la diagramación en la etapa Layout (tamaños, posiciones); lo dibuja con colores, backgrounds, etc., en la etapa “Paint”; y luego aplica <code>transform</code> a los elementos que lo necesitan.</p>
+<p>Cambios (animaciones) de la propiedad <code>transform</code> nunca disparan los pasos Layout y Paint. Aún más, el navegador delega las transformaciones CSS en el acelerador gráfico (un chip especial en la CPU o placa gráfica), haciéndolas muy eficientes.</p>
+<p>Afortunadamente la propiedad  <code>transform</code> es muy poderosa. Usando <code>transform</code> en un elemento, puedes rotarlo, darlo vuelta, estirarlo o comprimirlo, desplazarlo y <a href="https://developer.mozilla.org/docs/Web/CSS/transform#syntax">mucho más</a>. Así que en lugar de las propiedades <code>left/margin-left</code> podemos usar <code>transform: translateX(…)</code>, o usar <code>transform: scale</code> para incrementar su tamaño, etc.</p>
+<p>La propiedad <code>opacity</code> tampoco dispara “Layout” (también se salta “Paint” en Gecko de Mozilla). Podemos usarlo para efectos de mostrar/ocultar o desvanecer/aparecer.</p>
+<p>Aparear <code>transform</code> con <code>opacity</code> puede usualmente resolver la mayoría de nuestras necesidades brindando animaciones vistosas y fluidas.</p>
+<p>Aquí por ejemplo, clic en el elemento <code>#boat</code> le agrega la clase con <code>transform: translateX(300)</code> y <code>opacity: 0</code>, haciendo que se mueva <code>300px</code> a la derecha y desaparezca:</p>
+<div id="2dmzmkyqga" data-trusted="1" class="code-example" data-demo-height="260" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;img src=&quot;https://js.cx/clipart/boat.png&quot; id=&quot;boat&quot;&gt;
+
+&lt;style&gt;
+#boat {
+  cursor: pointer;
+  transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+}
+
+.move {
+  transform: translateX(300px);
+  opacity: 0;
+}
+&lt;/style&gt;
+&lt;script&gt;
+  boat.onclick = () =&gt; boat.classList.add('move');
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-2dmzmkyqga"
+            style="height:260px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Un ejemplo más complejo con <code>@keyframes</code>:</p>
+<div id="e4k30sorux" data-trusted="1" class="code-example" data-demo-height="80" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;h2 onclick=&quot;this.classList.toggle('animated')&quot;&gt;click me to start / stop&lt;/h2&gt;
+&lt;style&gt;
+  .animated {
+    animation: hello-goodbye 1.8s infinite;
+    width: fit-content;
+  }
+  @keyframes hello-goodbye {
+    0% {
+      transform: translateY(-60px) rotateX(0.7turn);
+      opacity: 0;
+    }
+    50% {
+      transform: none;
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(230px) rotateZ(90deg) scale(0.5);
+      opacity: 0;
+    }
+  }
+&lt;/style&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-e4k30sorux"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Las animaciones CSS permiten animar, suavemente o por pasos, los cambios de una o varias propiedades CSS.</p>
+<p>Son buenas para la mayoría de las tareas de animación. También podemos usar JavaScript para animaciones, el siguiente capítulo está dedicado a eso.</p>
+<p>Limitaciones de las animaciones CSS en comparación con las animaciones JavaScript:</p>
+<pre><code class="language-comparar">+ Cosas simples hechas simplemente.
++ Rápido y ligero para la CPU.
+- Las animaciones de JavaScript son flexibles. Pueden implementar cualquier lógica de animación, como una &quot;explosión&quot; de un elemento.
+- No solo cambios de propiedad. Podemos crear nuevos elementos en JavaScript para fines de animación.
+</code></pre>
+<p>En los ejemplos de este artículo animamos <code>font-size</code>, <code>left</code>, <code>width</code>, <code>height</code>, etc. En proyectos de la vida real es preferible usar <code>transform: scale()</code> y <code>transform: translate()</code> para obtener mejor performance.</p>
+<p>La mayoría de las animaciones se pueden implementar usando CSS como se describe en este capítulo. Y el evento <code>transitionend</code> permite ejecutar JavaScript después de la animación, por lo que se integra bien con el código.</p>
+<p>Pero en el próximo capítulo haremos algunas animaciones en JavaScript para cubrir casos más complejos.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#animar-un-avion-css" name="animar-un-avion-css">Animar un avión (CSS)</a></h3><a class="task__open-link" href="task/animate-logo-css.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Muestra la animación como en la imagen a continuación (haz clic en el avión):</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="https://es.js.cx/task/animate-logo-css/solution/"></iframe>
+  </div><ul>
+<li>La imagen crece al hacer clic de <code>40x24px</code> a <code>400x240px</code> (10 veces más grande).</li>
+<li>La animación dura 3 segundos.</li>
+<li>Al final muestra: “¡Listo!”.</li>
+<li>Durante el proceso de animación, puede haber más clics en el avión. No deberían “romper” nada.</li>
+</ul>
+<p><a href="https://plnkr.co/edit/7cScJDYdzDXgD6WM?p=preview" target="_blank" data-plunk-id="7cScJDYdzDXgD6WM">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>CSS para animar tanto <code>width</code> como <code>height</code>:</p>
+<div id="kym07nzi5z" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-css"><code>/* clase original */
+
+#flyjet {
+  transition: all 3s;
+}
+
+/* JS añade .growing */
+#flyjet.growing {
+  width: 400px;
+  height: 240px;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que <code>transitionend</code> se dispara dos veces, una para cada propiedad. Entonces, si no realizamos una verificación adicional, el mensaje aparecería 2 veces.</p>
+<p><a href="https://plnkr.co/edit/e8zGJL3t25Y0afE0?p=preview" target="_blank" data-plunk-id="e8zGJL3t25Y0afE0">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#animar-el-avion-volando-css" name="animar-el-avion-volando-css">Animar el avión volando (CSS)</a></h3><a class="task__open-link" href="task/animate-logo-bezier-css.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Modifica la solución de la tarea anterior <a href="task/animate-logo-css.html">Animar un avión (CSS)</a> para hacer que el avión crezca más que su tamaño original 400x240px (saltar fuera), y luego vuelva a ese tamaño.</p>
+<p>Así es como debería verse (haz clic en el avión):</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:350px" src="https://es.js.cx/task/animate-logo-bezier-css/solution/"></iframe>
+  </div><p>Toma la solución de la tarea anterior como punto de partida.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Necesitamos elegir la curva de Bézier correcta para esa animación. Debe tener <code>y&gt;1</code> en algún punto para que el avión “salte”.</p>
+<p>Por ejemplo, podemos tomar ambos puntos de control con <code>y&gt;1</code>, como: <code>cubic-bezier(0.25, 1.5, 0.75, 1.5)</code>.</p>
+<p>La gráfica:</p>
+<figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="task/animate-logo-bezier-css/bezier-up.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="task/animate-logo-bezier-css/bezier-up.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure><p><a href="https://plnkr.co/edit/0YeFE2h9udwo9xf1?p=preview" target="_blank" data-plunk-id="0YeFE2h9udwo9xf1">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#circulo-animado" name="circulo-animado">Círculo animado</a></h3><a class="task__open-link" href="task/animate-circle.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>showCircle(cx, cy, radius)</code> que muestre un círculo animado creciendo.</p>
+<ul>
+<li><code>cx,cy</code> son coordenadas relativas a la ventana del centro del círculo,</li>
+<li><code>radius</code> es el radio del círculo.</li>
+</ul>
+<p>Haz clic en el botón de abajo para ver cómo debería verse:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:260px" src="https://es.js.cx/task/animate-circle/solution/"></iframe>
+  </div><p>El documento fuente tiene un ejemplo de un círculo con estilos correctos, por lo que la tarea es precisamente hacer la animación correctamente.</p>
+<p><a href="https://plnkr.co/edit/L1oKw3op0ksBozcq?p=preview" target="_blank" data-plunk-id="L1oKw3op0ksBozcq">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p><a href="https://plnkr.co/edit/m52pcFZlQ3xqUU5b?p=preview" target="_blank" data-plunk-id="m52pcFZlQ3xqUU5b">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#circulo-animado-con-funcion-de-callback" name="circulo-animado-con-funcion-de-callback">Círculo animado con función de callback</a></h3><a class="task__open-link" href="task/animate-circle-callback.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>En la tarea <a href="task/animate-circle.html">Círculo animado</a> se muestra un círculo creciente animado.</p>
+<p>Ahora digamos que necesitamos no solo un círculo, sino mostrar un mensaje dentro de él. El mensaje debería aparecer <em>después</em> de que la animación esté completa (el círculo es desarrollado completamente), de lo contrario se vería feo.</p>
+<p>En la solución de la tarea, la función <code>showCircle(cx, cy, radius)</code> dibuja el círculo, pero no hay forma de saber cuando lo termina.</p>
+<p>Agrega un argumento callback: <code>showCircle(cx, cy, radius, callback)</code> que se llamará cuando se complete la animación. El <code>callback</code> debería recibir el círculo <code>&lt;div&gt;</code> como argumento.</p>
+<p>Aqui el ejemplo:</p>
+<div id="3rzmypy13v" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>showCircle(150, 150, 100, div =&gt; {
+  div.classList.add('message-ball');
+  div.append(&quot;Hola, mundo!&quot;);
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Demostración:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:260px" src="https://es.js.cx/task/animate-circle-callback/solution/"></iframe>
+  </div><p>Toma la solución de la tarea <a href="task/animate-circle.html">Círculo animado</a> como base.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p><a href="https://plnkr.co/edit/TniCOkLUpGFcqLDY?p=preview" target="_blank" data-plunk-id="TniCOkLUpGFcqLDY">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="bezier-curve.html" data-tooltip="Curva de Bézier"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="js-animation.html" data-tooltip="Animaciones JavaScript"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcss-animations" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcss-animations" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/css-animations","identifier":"\/css-animations"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="animation.html">Animaciones</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#css-transition">Transiciones CSS</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transition-property">transition-property</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transition-duration">transition-duration</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transition-delay">transition-delay</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#transition-timing-function">transition-timing-function</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#evento-transitionend">Evento transitionend</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#fotogramas-clave-keyframes">Fotogramas clave  (Keyframes)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#performance">Performance</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (4)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcss-animations" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fcss-animations" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/7-animation/2-css-animations" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/css-animations by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:52 GMT -->
+</html>

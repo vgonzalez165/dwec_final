@@ -1,0 +1,201 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/onscroll by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Desplazamiento</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="onscroll.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Desplazamiento"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Desplazamiento"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="keyboard-events.html"><link rel="next" href="forms-controls.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Desplazamiento"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/onscroll"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="onscroll.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/onscroll"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/onscroll"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/onscroll"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/onscroll"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/onscroll"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/onscroll"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/onscroll"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonscroll" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fonscroll" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/onscroll">English</option><option value="https://es.javascript.info/onscroll" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/onscroll">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/onscroll">Italiano</option><option value="https://ja.javascript.info/onscroll">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/onscroll">Русский</option><option value="https://tr.javascript.info/onscroll">Türkçe</option><option value="https://uk.javascript.info/onscroll">Українська</option><option value="https://zh.javascript.info/onscroll">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="22" max="32" data-tooltip="Lección 22 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="event-details.html"><span>Eventos en la UI</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Eventos en la UI","item":"https://es.javascript.info/event-details"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Desplazamiento</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Desplazamiento"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>El evento <code>scroll</code> permite reaccionar al desplazamiento de una página o elemento. Hay bastantes cosas buenas que podemos hacer aquí.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>Mostrar/ocultar controles o información adicional según el lugar del documento en el que se encuentre el/la usuario/a.</li>
+<li>Cargar más datos cuando el/la usuario/a se desplaza hacia abajo hasta el final del documento.</li>
+</ul>
+<p>Aquí hay una pequeña función para mostrar el desplazamiento actual:</p>
+<div id="c5naznkzd5" data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.addEventListener('scroll', function() {
+  document.getElementById('showScroll').innerHTML = window.pageYOffset + 'px';
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>In action:</p>
+<p>Desplazamiento actual = <b id="showScroll">Desplazamiento de la ventana</b></p>
+<p>El evento <code>scroll</code> funciona tanto en <code>window</code> como en los elementos desplazables.</p>
+<h2><a class="main__anchor" name="evitar-el-desplazamiento" href="#evitar-el-desplazamiento">Evitar el desplazamiento</a></h2><p>¿Qué hacemos para que algo no se pueda desplazar?</p>
+<p>No podemos evitar el desplazamiento utilizando <code>event.preventDefault()</code> oyendo al evento <code>onscroll</code>, porque este se activa <em>después</em> de que el desplazamiento haya ocurrido.</p>
+<p>Pero podemos prevenir el desplazamiento con <code>event.preventDefault()</code> en un evento que cause el desplazamiento, por ejemplo en el evento <code>keydown</code> para <kbd class="shortcut">pageUp</kbd> y <kbd class="shortcut">pageDown</kbd>.</p>
+<p>Si añadimos un manejador de eventos a estos eventos y un <code>event.preventDefault()</code> en el manejador, entonces el desplazamiento no se iniciará.</p>
+<p>Hay muchas maneras de iniciar un desplazamiento, la más fiable es usar CSS, la propiedad <code>overflow</code>.</p>
+<p>Aquí hay algunas tareas que puede resolver o revisar para ver aplicaciones de <code>onscroll</code>.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#pagina-sin-fin" name="pagina-sin-fin">Página sin fin</a></h3><a class="task__open-link" href="task/endless-page.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crear una página interminable. Cuando un visitante la desplace hasta el final, se auto-añadirá la fecha y hora actual al texto (así el visitante podrá seguir desplazándose)</p>
+<p>Así:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:200px" src="https://es.js.cx/task/endless-page/solution/"></iframe>
+  </div><p>Por favor tenga en cuenta dos características importantes del desplazamiento:</p>
+<ol>
+<li><strong>El scroll es “elástico”.</strong> En algunos navegadores/dispositivos podemos desplazarnos un poco más allá del inicio o final del documento (se muestra un espacio vacío abajo, y luego el documento “rebota” automáticamente a la normalidad).</li>
+<li><strong>El scroll es impreciso.</strong> Cuando nos desplazamos hasta el final de la página, podemos estar de hecho como a 0-50px del fondo del documento real.</li>
+</ol>
+<p>Así que, “desplazarse hasta el final” debería significar que el visitante no está a más de 100px del final del documento.</p>
+<p>P.D. En la vida real podemos querer mostrar “más mensajes” o “más bienes”.</p>
+<p><a href="https://plnkr.co/edit/S527Q4jBwpnBsnLX?p=preview" target="_blank" data-plunk-id="S527Q4jBwpnBsnLX">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El núcleo de la solución es una función que añade más fechas a la página (o carga más cosas en la vida real) mientras estamos en el final de la página.</p>
+<p>Podemos llamarlo inmediatamente o agregarlo como un manejador de <code>window.onscroll</code>.</p>
+<p>La pregunta más importante es: “¿Cómo detectamos que la página se desplaza hasta el fondo?”</p>
+<p>Usaremos las coordenadas de la ventana.</p>
+<p>El documento está representado (y contenido) dentro de la etiqueta <code>&lt;html&gt;</code>, que es <code>document.documentElement</code>.</p>
+<p>Podemos obtener las coordenadas relativas a la ventana de todo el documento como  <code>document.documentElement.getBoundingClientRect()</code>, la propiedad <code>bottom</code> será la coordenada relativa a la ventana del fondo del documento.</p>
+<p>Por ejemplo, si la altura de todo el documento es <code>2000px</code>, entonces:</p>
+<div id="8xa63h6nof" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// cuando estamos en la parte superior de la página
+//  window-relative top = 0    (relativo a la ventana,  límite superior = 0 )
+document.documentElement.getBoundingClientRect().top = 0
+
+// window-relative bottom = 2000    (relativo a la ventana, límite inferior = 2000)
+// el documento es largo, así que probablemente esté más allá del fondo de la ventana
+document.documentElement.getBoundingClientRect().bottom = 2000</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si nos desplazamos <code>500px</code> abajo, entonces:</p>
+<div id="9ue6upwokb" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// la parte superior del documento está 500px por encima de la ventana
+document.documentElement.getBoundingClientRect().top = -500
+// la parte inferior del documento está 500px más cerca
+document.documentElement.getBoundingClientRect().bottom = 1500</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando nos desplazamos hasta el final, asumiendo que la altura de la venta es <code>600px</code>:</p>
+<div id="jl15craauu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// La parte superior del documento está 1400px sobre la ventana
+document.documentElement.getBoundingClientRect().top = -1400
+// la parte inferior del documento está a 600px debajo de la ventana
+document.documentElement.getBoundingClientRect().bottom = 600</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tened en cuenta que el fondo del documento <code>bottom</code> nunca puede ser <code>0</code>, porque nunca llega a la parte superior de la ventana. El límite más bajo de la coordenada <code>bottom</code> es la altura de la ventana (asumimos que es <code>600</code>), no podemos desplazarla más hacia arriba.</p>
+<p>Podemos obtener la altura de la ventana con <code>document.documentElement.clientHeight</code>.</p>
+<p>Para nuestra tarea, necesitamos saber cuando tenemos el final del documento a unos <code>100px</code> (esto es: <code>600-700px</code>, si la altura es de <code>600</code>).</p>
+<p>Así que aquí está la función:</p>
+<div id="2b44goxupb" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function populate() {
+  while(true)
+  {
+    // final del documento
+    let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+
+    // si el usuario no se ha desplazado lo suficiente (&gt; 100px hasta el final)
+    if (windowRelativeBottom &gt; document.documentElement.clientHeight + 100) break;
+      // vamos añadir más datos
+      document.body.insertAdjacentHTML(&quot;beforeend&quot;, `&lt;p&gt;Date: ${new Date()}&lt;/p&gt;`);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/5b6tHq9ZxTSzgCbQ?p=preview" target="_blank" data-plunk-id="5b6tHq9ZxTSzgCbQ">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#boton-para-subir-bajar" name="boton-para-subir-bajar">Botón para subir/bajar</a></h3><a class="task__open-link" href="task/updown-button.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea un botón “ir arriba” para ayudar con el desplazamiento de la página.</p>
+<p>Debería funcionar así:</p>
+<ul>
+<li>Mientras que la página no se desplace hacia abajo al menos la altura de la ventana… es invisible.</li>
+<li>Cuando la página se desplaza hacia abajo más que la altura de la ventana – aparece una flecha “hacia arriba” en la esquina superior izquierda. Si la página se desplaza hacia atrás desaparece.</li>
+<li>Cuando se hace click en la flecha, la página se desplaza hacia arriba hasta el tope.</li>
+</ul>
+<p>Así (esquina superior izquierda, desplácese para ver):</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/task/updown-button/solution/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:200px" src="https://es.js.cx/task/updown-button/solution/"></iframe>
+  </div><p><a href="https://plnkr.co/edit/2EI4xRw2yzy6uCpy?p=preview" target="_blank" data-plunk-id="2EI4xRw2yzy6uCpy">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p><a href="https://plnkr.co/edit/GxVMPcXNNKf0z3D6?p=preview" target="_blank" data-plunk-id="GxVMPcXNNKf0z3D6">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cargar-imagenes-visibles" name="cargar-imagenes-visibles">Cargar imágenes visibles</a></h3><a class="task__open-link" href="task/load-visible-img.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Digamos que tenemos un cliente con baja velocidad de conexión y queremos cuidar su tarifa de datos.</p>
+<p>Para ello decidimos no mostrar las imágenes inmediatamente, sino sustituirlas por marcadores de posición, como este:</p>
+<div id="wl9xb361ku" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:5,&quot;end&quot;:26},{&quot;start&quot;:52,&quot;end&quot;:71}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;img src=&quot;placeholder.svg&quot; width=&quot;128&quot; height=&quot;128&quot; data-src=&quot;real.jpg&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Así que, inicialmente todas las imágenes son <code>placeholder.svg</code>. Cuando la página se desplaza a la posición donde el usuario puede ver la imagen – cambiamos <code>src</code> a <code>data-src</code>, y así la imagen se carga.</p>
+<p>Aquí hay un ejemplo en <code>iframe</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="https://es.js.cx/task/load-visible-img/solution/"></iframe>
+  </div><p>Desplázate para ver las imágenes cargadas “bajo demanda”.</p>
+<p>Requerimientos:</p>
+<ul>
+<li>Cuando la página se carga, las imágenes que están en pantalla deben cargarse inmediatamente, antes de cualquier desplazamiento.</li>
+<li>Algunas imágenes pueden ser regulares, sin <code>data-src</code>. El código no debe tocarlas.</li>
+<li>Una vez que una imagen se carga, no debe recargarse más cuando haya desplazamiento arriba/abajo.</li>
+</ul>
+<p>P.D. Si puedes, haz una solución más avanzada para “precargar” las imágenes que están más abajo/después de la posición actual.</p>
+<p>Post P.D. Sólo se debe manejar el desplazamiento vertical, no el horizontal.</p>
+<p><a href="https://plnkr.co/edit/MiEOCe4SSXvQiL8O?p=preview" target="_blank" data-plunk-id="MiEOCe4SSXvQiL8O">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El manejador <code>onscroll</code> debería comprobar qué imágenes son visibles y mostrarlas.</p>
+<p>También queremos que se ejecute cuando se cargue la página, para detectar las imágenes visibles inmediatamente y cargarlas.</p>
+<p>El código debería ejecutarse cuando se cargue el documento, para que tenga acceso a su contenido.</p>
+<p>O ponerlo en la parte inferior del <code>&lt;body&gt;</code>:</p>
+<div id="v22hy49rhd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// ...el contenido de la página está arriba...
+
+function isVisible(elem) {
+
+  let coords = elem.getBoundingClientRect();
+
+  let windowHeight = document.documentElement.clientHeight;
+
+  // ¿El borde superior del elemento es visible?
+  let topVisible = coords.top &gt; 0 &amp;&amp; coords.top &lt; windowHeight;
+
+  // ¿El borde inferior del elemento es visible?
+  let bottomVisible = coords.bottom &lt; windowHeight &amp;&amp; coords.bottom &gt; 0;
+
+  return topVisible || bottomVisible;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función <code>showVisible()</code> utiliza el control de visibilidad, implementado por <code>isVisible()</code>, para cargar imágenes visibles:</p>
+<div id="30aax61t8k" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function showVisible() {
+  for (let img of document.querySelectorAll('img')) {
+    let realSrc = img.dataset.src;
+    if (!realSrc) continue;
+
+    if (isVisible(img)) {
+      img.src = realSrc;
+      img.dataset.src = '';
+    }
+  }
+}
+
+showVisible();
+window.onscroll = showVisible;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D. La solución tiene una variante de <code>isVisible</code> que “precarga” imágenes que están dentro de 1 página por encima/debajo del desplazamiento del documento actual.</p>
+<p><a href="https://plnkr.co/edit/0VpPdWGqsm9Dl2XG?p=preview" target="_blank" data-plunk-id="0VpPdWGqsm9Dl2XG">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="keyboard-events.html" data-tooltip="Teclado: keydown y keyup"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="forms-controls.html" data-tooltip="Formularios y controles"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonscroll" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fonscroll" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/onscroll","identifier":"\/onscroll"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="event-details.html">Eventos en la UI</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#evitar-el-desplazamiento">Evitar el desplazamiento</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonscroll" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fonscroll" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/3-event-details/8-onscroll" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/onscroll by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:35 GMT -->
+</html>

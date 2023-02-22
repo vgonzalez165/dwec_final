@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cliente Examen DWEC</title>
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <script src="leaflet/leaflet-src.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.js"></script> -->
+</head>
+<body>
+    <div id="navbar">
+        <span class="title">Examen DWEC 2ª Evaluación</span>
+        <div id="logged" class="hidden">
+            <img src="assets/user.png" alt="user">
+            <div id="username"></div>
+            <div id="logout" class="btn">Logout</div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="modal" class="modal">
+            <div class="title">Registro de usuario</div>
+            <div class="content">
+                <div>
+                    <label for="user">Nombre de usuario</label>
+                    <input type="text" name="user" id="user" value="">
+                </div>
+                <div>
+                    <label for="pass">Contraseña</label>
+                    <input type="password" name="pass" id="pass">
+                </div>
+                <div id="error-msg"></div>
+                <div id="buttons">
+                    <span class="btn" id="btn-reg">Registrarse</span>
+                    <span class="btn" id="btn-login">Iniciar sesión</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-page" class="hidden">
+            <div id="search-section">
+                <div id="search">
+                    <div id="btnbar-search">
+                        <input type="text" name="search" id="input-search">
+                        <div id="btn-search" class="btn">Buscar</div>
+                    </div>
+                    <div class="btnbar-category">
+                        <div id="category-all" class="btn-category selected">Todos</div>
+                        <div id="category-rap" class="btn-category">Rap</div>
+                        <div id="category-rock" class="btn-category">Rock</div>
+                    </div>
+                </div>
+                <div id="results"></div>
+                <!-- Estructura de los elementos que hay que insertar
+                    <div class="group">
+                        <div class="buy">+</div>
+                        <div class="image"">
+                            <img src="assets/imagen.jpg" alt="nombre del grupo">
+                        </div>
+                        <div class="name">Nombre del grupo</div>
+                    </div>
+                -->
+            </div>
+
+            <div id="map-section">
+               
+            </div>
+        </div>            <!-- FIN DE MAIN PAGE -->
+
+        <div id="tickets-page" class="hidden">
+            <div id="tickets-modal">
+                <select name="select-concert" id="select-concert">
+                    <option value="primero">primero</option>
+                </select>
+                <!-- <h1>NOMBRE DEL GRUPO</h1>
+                <div>
+                    <img src="./assets/extremoduro.jpg" alt="Extremoduro">
+                    <div id="right-panel">
+                        <div id="num-tickets">
+                            <div id="add-ticket" class="ticket-btn">+</div>
+                            <div id="tickets">0</div>
+                            <div id="substract-ticket" class="ticket-btn">-</div>
+                        </div>
+                        <div id="buy-ticket">Comprar</div>
+                        <div id="cancel-ticket">Cancelar</div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+<script src="login.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

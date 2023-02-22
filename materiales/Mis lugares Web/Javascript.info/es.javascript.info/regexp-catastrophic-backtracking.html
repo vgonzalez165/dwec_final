@@ -1,0 +1,379 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/regexp-catastrophic-backtracking by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "tm";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Backtracking catastrófico</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-catastrophic-backtracking.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Backtracking catastrófico"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Backtracking catastrófico"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="regexp-lookahead-lookbehind.html"><link rel="next" href="regexp-sticky.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Backtracking catastrófico"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/regexp-catastrophic-backtracking"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/regexp-catastrophic-backtracking"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-catastrophic-backtracking.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/regexp-catastrophic-backtracking"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/regexp-catastrophic-backtracking"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/regexp-catastrophic-backtracking"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/regexp-catastrophic-backtracking"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/regexp-catastrophic-backtracking"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/regexp-catastrophic-backtracking"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-catastrophic-backtracking" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-catastrophic-backtracking" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/regexp-catastrophic-backtracking">عربي</option><option value="https://javascript.info/regexp-catastrophic-backtracking">English</option><option value="https://es.javascript.info/regexp-catastrophic-backtracking" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/regexp-catastrophic-backtracking">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/">Italiano</option><option value="https://ja.javascript.info/regexp-catastrophic-backtracking">日本語</option><option value="https://ko.javascript.info/regexp-catastrophic-backtracking">한국어</option><option value="https://learn.javascript.ru/regexp-catastrophic-backtracking">Русский</option><option value="https://tr.javascript.info/regexp-catastrophic-backtracking">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/regexp-catastrophic-backtracking">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="15" max="17" data-tooltip="Lección 15 de 17"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="regular-expressions.html"><span>Expresiones Regulares</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Expresiones Regulares","item":"https://es.javascript.info/regular-expressions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 12 de julio de 2022"><div class="updated-at__content">12 de julio de 2022</div></div></div><h1 class="main__header-title">Backtracking catastrófico</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Backtracking catastrófico"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Algunas expresiones regulares parecen simples, pero pueden ejecutarse durante demasiado tiempo e incluso “colgar” el motor de JavaScript.</p>
+<p>Tarde o temprano la mayoría de los desarrolladores se enfrentan ocasionalmente a este comportamiento. El síntoma típico: una expresión regular funciona bien a veces, pero para ciertas cadenas se “cuelga” consumiendo el 100% de la CPU.</p>
+<p>En este caso el navegador sugiere matar el script y recargar la página. No es algo bueno, sin duda.</p>
+<p>Para el lado del servidor de JavaScript tal regexp puede colgar el proceso del servidor, que es aún peor. Así que definitivamente deberíamos echarle un vistazo.</p>
+<h2><a class="main__anchor" name="ejemplo" href="#ejemplo">Ejemplo</a></h2><p>Supongamos que tenemos una cadena y queremos comprobar si está formada por palabras <code class="pattern">\w+</code> con un espacio opcional <code class="pattern">\s?</code> después de cada una.</p>
+<p>Una forma obvia de construir una regexp sería tomar una palabra seguida de un espacio opcional <code class="pattern">\w+\s?</code> y luego repetirla con <code>*</code>.</p>
+<p>Esto nos lleva a la regexp <code class="pattern">^(\w+\s?)*$</code> que especifica cero o más palabras de este tipo, que comienzan al principio <code class="pattern">^</code> y terminan al final <code class="pattern">$</code> de la línea.</p>
+<p>En la práctica:</p>
+<div id="lw16zzvnko" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /^(\w+\s?)*$/;
+
+alert( regexp.test(&quot;A good string&quot;) ); // true
+alert( regexp.test(&quot;Bad characters: $@#&quot;) ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La regexp parece funcionar. El resultado es correcto. Aunque en ciertas cadenas tarda mucho tiempo. Tanto tiempo que el motor de JavaScript se “cuelga” con un consumo del 100% de la CPU.</p>
+<p>Si ejecuta el ejemplo de abajo probablemente no se verá nada ya que JavaScript simplemente se “colgará”. El navegador dejará de reaccionar a los eventos, la interfaz de usuario dejará de funcionar (la mayoría de los navegadores sólo permiten el desplazamiento). Después de algún tiempo se sugerirá recargar la página. Así que ten cuidado con esto:</p>
+<div id="lyp2vlzuan" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /^(\w+\s?)*$/;
+let str = &quot;An input string that takes a long time or even makes this regexp hang!&quot;;
+
+// tardará mucho tiempo
+alert( regexp.test(str) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para ser justos observemos que algunos motores de expresión regular pueden manejar este tipo de búsqueda con eficacia, por ejemplo, la versión del motor V8 a partir de la 8.8 puede hacerlo (por lo que Google Chrome 88 no se cuelga aquí) mientras que el navegador Firefox sí se cuelga.</p>
+<h2><a class="main__anchor" name="ejemplo-simplificado" href="#ejemplo-simplificado">Ejemplo simplificado</a></h2><p>¿Qué ocurre? ¿Por qué se cuelga la expresión regular?</p>
+<p>Para entenderlo simplifiquemos el ejemplo: elimine los espacios <code class="pattern">\s?</code>. Entonces se convierte en <code class="pattern">^(\w+)*$</code>.</p>
+<p>Y, para hacer las cosas más obvias sustituyamos <code class="pattern">\w</code> por <code class="pattern">\d</code>. La expresión regular resultante sigue colgando, por ejemplo:</p>
+<div id="umg3925amy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /^(\d+)*$/;
+
+let str = &quot;012345678901234567890123456789z&quot;;
+
+// tardará mucho tiempo (¡cuidado!)
+alert( regexp.test(str) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Qué ocurre con la regexp?</p>
+<p>En primer lugar uno puede notar que la regexp <code class="pattern">(\d+)*</code> es un poco extraña. El cuantificador <code class="pattern">*</code> parece extraño. Si queremos un número podemos utilizar <code class="pattern">\d+</code>.</p>
+<p>Efectivamente la regexp es artificial; la hemos obtenido simplificando el ejemplo anterior. Pero la razón por la que es lenta es la misma. Así que vamos a entenderlo y entonces el ejemplo anterior se hará evidente.</p>
+<p>¿Qué sucede durante la búsqueda de <code class="pattern">^(\d+)*$</code> en la línea <code class="subject">123456789z</code> (acortada un poco para mayor claridad, por favor tenga en cuenta un carácter no numérico <code class="subject">z</code> al final, es importante) que tarda tanto?</p>
+<p>Esto es lo que hace el motor regexp:</p>
+<ol>
+<li>
+<p>En primer lugar el motor regexp intenta encontrar el contenido de los paréntesis: el número <code class="pattern">d+</code>. El <code class="pattern">+</code> es codicioso por defecto, por lo que consume todos los dígitos:</p>
+<div id="th0hfgmm2b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>\d+.......
+(123456789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Una vez consumidos todos los dígitos se considera que se ha encontrado el <code class="pattern">d+</code> (como <code class="match">123456789</code>).</p>
+<p>Entonces se aplica el cuantificador de asterisco <code class="pattern">(\d+)*</code>. Pero no hay más dígitos en el texto, así que el asterisco no da nada.</p>
+<p>El siguiente carácter del patrón es el final de la cadena <code class="pattern">$</code>. Pero en el texto tenemos <code class="subject">z</code> en su lugar, por lo que no hay coincidencia:</p>
+<div id="9idn4h6el7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>           X
+\d+........$
+(123456789)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Como no hay ninguna coincidencia, el cuantificador codicioso <code class="pattern">+</code> disminuye el recuento de repeticiones, retrocede un carácter.</p>
+<p>Ahora <code class="pattern">\d+</code> toma todos los dígitos excepto el último (<code class="match">12345678</code>):</p>
+<div id="0dygij9nks" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>\d+.......
+(12345678)9z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Entonces el motor intenta continuar la búsqueda desde la siguiente posición (justo después de <code class="match">12345678</code>).</p>
+<p>Se puede aplicar el asterisco <code>patrón:(\d+)*</code> : da una coincidencia más de <code>patrón:\d+</code>, el número <code class="match">9</code>:</p>
+<div id="aglri2tmj8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>\d+.......\d+
+(12345678)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El motor intenta coincidir con <code class="pattern">$</code> de nuevo, pero falla, porque encuentra <code class="subject">z</code> en su lugar:</p>
+<div id="vk7tz1iifh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>             X
+\d+.......\d+
+(12345678)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>No hay coincidencia así que el motor continuará con el retroceso disminuyendo el número de repeticiones. El retroceso generalmente funciona así: el último cuantificador codicioso disminuye el número de repeticiones hasta llegar al mínimo. Entonces el cuantificador codicioso anterior disminuye, y así sucesivamente.</p>
+<p>Se intentan todas las combinaciones posibles. Estos son sus ejemplos.</p>
+<p>El primer número <code class="pattern">\d+</code> tiene 7 dígitos y luego un número de 2 dígitos:</p>
+<div id="k7humph69g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>             X
+\d+......\d+
+(1234567)(89)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El primer número tiene 7 dígitos y luego dos números de 1 dígito cada uno:</p>
+<div id="2uftfob4dy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>               X
+\d+......\d+\d+
+(1234567)(8)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El primer número tiene 6 dígitos y luego un número de 3 dígitos:</p>
+<div id="od9ayfh46o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>             X
+\d+.......\d+
+(123456)(789)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El primer número tiene 6 dígitos, y luego 2 números:</p>
+<div id="pn9udxaf17" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>               X
+\d+.....\d+ \d+
+(123456)(78)(9)z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Y así sucesivamente.</p>
+</li>
+</ol>
+<p>Hay muchas formas de dividir una secuencia de dígitos <code>123456789</code> en números. Para ser precisos, hay <code>2<sup>n</sup>-1</code>, donde <code>n</code> es la longitud de la secuencia.</p>
+<ul>
+<li>Para <code>123456789</code> tenemos <code>n=9</code>, lo que da 511 combinaciones.</li>
+<li>Para una secuencia más larga con “n=20” hay alrededor de un millón (1048575) de combinaciones.</li>
+<li>Para <code>n=30</code> – mil veces más (1073741823 combinaciones).</li>
+</ul>
+<p>Probar cada una de ellas es precisamente la razón por la que la búsqueda lleva tanto tiempo.</p>
+<h2><a class="main__anchor" name="volver-a-las-palabras-y-cadenas" href="#volver-a-las-palabras-y-cadenas">Volver a las palabras y cadenas</a></h2><p>Lo mismo ocurre en nuestro primer ejemplo, cuando buscamos palabras por el patrón <code class="pattern">^(\w+\s?)*$</code> en la cadena <code class="subject">An input that hangs!</code>.</p>
+<p>La razón es que una palabra puede representarse como un <code class="pattern">\w+</code> o muchos:</p>
+<div id="5yzr3ls0rf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>(input)
+(inpu)(t)
+(inp)(u)(t)
+(in)(p)(ut)
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para un humano es obvio que puede no haber coincidencia porque la cadena termina con un signo de exclamación <code>!</code> pero la expresión regular espera un carácter denominativo <code class="pattern">\w</code> o un espacio <code class="pattern">\s</code> al final. Pero el motor no lo sabe.</p>
+<p>El motor prueba todas las combinaciones de cómo la regexp <code class="pattern">(\w+\s?)*</code> puede “consumir” la cadena, incluyendo las variantes con espacios <code class="pattern">(\w+\s)*</code> y sin ellos <code class="pattern">(\w+)*</code> (porque los espacios <code class="pattern">\s?</code> son opcionales). Como hay muchas combinaciones de este tipo (lo hemos visto con dígitos), la búsqueda lleva muchísimo tiempo.</p>
+<p>¿Qué hacer?</p>
+<p>¿Debemos activar el lazy mode?</p>
+<p>Desgraciadamente eso no ayudará: si sustituimos <code class="pattern">\w+</code> por <code class="pattern">\w+?</code> la regexp seguirá colgada. El orden de las combinaciones cambiará, pero no su número total.</p>
+<p>Algunos motores de expresiones regulares hacen análisis complicados y automatizaciones finitas que permiten evitar pasar por todas las combinaciones o hacerlo mucho más rápido, pero la mayoría de los motores no lo hacen. Además, eso no siempre ayuda.</p>
+<h2><a class="main__anchor" name="como-solucionarlo" href="#como-solucionarlo">¿Cómo solucionarlo?</a></h2><p>Hay dos enfoques principales para solucionar el problema.</p>
+<p>El primero es reducir el número de combinaciones posibles.</p>
+<p>Hagamos que el espacio no sea opcional reescribiendo la expresión regular como <code class="pattern">^(\w+\s)*\w*$</code> buscaremos cualquier número de palabras seguidas de un espacio <code class="pattern">(\w+\s)*</code>, y luego (opcionalmente) una palabra final <code class="pattern">\w*</code>.</p>
+<p>Esta regexp es equivalente a la anterior (coincide con lo mismo) y funciona bien:</p>
+<div id="ritadi17e6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /^(\w+\s)*\w*$/;
+let str = &quot;An input string that takes a long time or even makes this regex hang!&quot;;
+
+alert( regexp.test(str) ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Por qué ha desaparecido el problema?</p>
+<p>Porque ahora el espacio es obligatorio.</p>
+<p>La regexp anterior, si omitimos el espacio, se convierte en <code class="pattern">(\w+)*</code>, dando lugar a muchas combinaciones de <code>\w+</code> dentro de una misma palabra</p>
+<p>Así, <code class="subject">input</code> podría coincidir con dos repeticiones de <code class="pattern">\w+</code> así:</p>
+<div id="8nc0uo4a9e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>\w+  \w+
+(inp)(ut)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El nuevo patrón es diferente: <code class="pattern">(\w+\s)*</code> especifica repeticiones de palabras seguidas de un espacio. La cadena <code class="subject">input</code> no puede coincidir con dos repeticiones de <code class="pattern">\w+\s</code>, porque el espacio es obligatorio.</p>
+<p>Ahora se ahorra el tiempo necesario para probar un montón de combinaciones (en realidad la mayoría).</p>
+<h2><a class="main__anchor" name="previniendo-el-backtracking" href="#previniendo-el-backtracking">Previniendo el backtracking</a></h2><p>Sin embargo no siempre es conveniente reescribir una regexp. En el ejemplo anterior era fácil, pero no siempre es obvio cómo hacerlo.</p>
+<p>Además una regexp reescrita suele ser más compleja y eso no es bueno. Las regexps son suficientemente complejas sin necesidad de esfuerzos adicionales.</p>
+<p>Por suerte hay un enfoque alternativo. Podemos prohibir el retroceso para el cuantificador.</p>
+<p>La raíz del problema es que el motor de regexp intenta muchas combinaciones que son obviamente erróneas para un humano.</p>
+<p>Por ejemplo, en la regexp <code class="pattern">(\d+)*$</code> es obvio para un humano que <code>patrón:+</code> no debería retroceder. Si sustituimos un <code>patrón:\d+</code> por dos <code class="pattern">\d+\d+</code> separados nada cambia:</p>
+<div id="t7llsizdy5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>\d+........
+(123456789)!
+
+\d+...\d+....
+(1234)(56789)!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y en el ejemplo original <code class="pattern">^(\w+\s?)*$</code> podemos querer prohibir el backtracking en <code class="pattern">\w+</code>. Es decir: <code class="pattern">\w+</code> debe coincidir con una palabra entera, con la máxima longitud posible. No es necesario reducir el número de repeticiones en <code class="pattern">\w+</code> o dividirlo en dos palabras <code class="pattern">\w+\w+</code> y así sucesivamente.</p>
+<p>Los motores de expresiones regulares modernos admiten cuantificadores posesivos para ello. Los cuantificadores regulares se convierten en posesivos si añadimos <code class="pattern">+</code> después de ellos. Es decir, usamos <code class="pattern">\d++</code> en lugar de <code class="pattern">\d+</code> para evitar que <code class="pattern">+</code> retroceda.</p>
+<p>Los cuantificadores posesivos son de hecho más simples que los “regulares”. Simplemente coinciden con todos los que pueden sin ningún tipo de retroceso. El proceso de búsqueda sin retroceso es más sencillo.</p>
+<p>También existen los llamados “grupos de captura atómicos”, una forma de desactivar el retroceso dentro de los paréntesis.</p>
+<p>…Pero la mala noticia es que, por desgracia, en JavaScript no están soportados.</p>
+<p>Sin embargo, podemos emularlos utilizando “lookahead transform”.</p>
+<h3><a class="main__anchor" name="lookahead-al-rescate" href="#lookahead-al-rescate">Lookahead al rescate!</a></h3><p>Así que hemos llegado a temas realmente avanzados. Nos gustaría que un cuantificador como <code class="pattern">+</code> no retrocediera porque a veces retroceder no tiene sentido.</p>
+<p>El patrón para tomar tantas repeticiones de <code class="pattern">\w</code> como sea posible sin retroceder es: <code class="pattern">(?=(\w+))\1</code>. Por supuesto, podríamos tomar otro patrón en lugar de <code class="pattern">\w</code>.</p>
+<p>Puede parecer extraño, pero en realidad es una transformación muy sencilla.</p>
+<p>Vamos a descifrarla:</p>
+<ul>
+<li>Lookahead <code class="pattern">?=</code> busca la palabra más larga <code class="pattern">\w+</code> a partir de la posición actual.</li>
+<li>El contenido de los paréntesis con <code class="pattern">?=...</code> no es memorizado por el motor así que envuelva <code class="pattern">\w+</code> en paréntesis. Entonces el motor memorizará su contenido</li>
+<li>…y nos permitirá hacer referencia a él en el patrón como <code class="pattern">\1</code>.</li>
+</ul>
+<p>Es decir: miramos hacia adelante y si hay una palabra <code class="pattern">\w+</code>, entonces la emparejamos como <code class="pattern">\1</code>.</p>
+<p>¿Por qué? Porque el lookahead encuentra una palabra <code class="pattern">\w+</code> como un todo y la capturamos en el patrón con <code class="pattern">\1</code>. Así que esencialmente implementamos un cuantificador posesivo más <code class="pattern">+</code>. Captura sólo la palabra entera <code>patrón:\w+</code>, no una parte de ella.</p>
+<p>Por ejemplo, en la palabra <code class="subject">JavaScript</code> no sólo puede coincidir con <code class="match">Java</code> sino que deja fuera <code class="match">Script</code> para que coincida con el resto del patrón.</p>
+<p>He aquí la comparación de dos patrones:</p>
+<div id="ecvfuesa0a" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( &quot;JavaScript&quot;.match(/\w+Script/)); // JavaScript
+alert( &quot;JavaScript&quot;.match(/(?=(\w+))\1Script/)); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>En la primera variante, <code class="pattern">\w+</code> captura primero la palabra completa <code class="subject">JavaScript</code>, pero luego <code class="pattern">+</code> retrocede carácter por carácter, para intentar coincidir con el resto del patrón, hasta que finalmente tiene éxito (cuando <code class="pattern">\w+</code> coincide con <code class="match">Java</code>).</li>
+<li>En la segunda variante <code class="pattern">(?=(\w+))</code> mira hacia adelante y encuentra la palabra <code class="subject">JavaScript</code>, que está incluida en el patrón como un todo por <code class="pattern">\1</code>, por lo que no hay manera de encontrar <code class="subject">Script</code> después de ella.</li>
+</ol>
+<p>Podemos poner una expresión regular más compleja en <code class="pattern">(?=(\w+))\1</code> en lugar de <code class="pattern">\w</code>, cuando necesitemos prohibir el retroceso para <code class="pattern">+</code> después de ella.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Por favor tome nota:</span></div>
+            <div class="important__content"><p>Hay más (en inglés) acerca de la relación entre los cuantificadores posesivos y lookahead en los artículos <a href="https://instanceof.me/post/52245507631/regex-emulate-atomic-grouping-with-lookahead">Regex: Emulate Atomic Grouping (and Possessive Quantifiers) with LookAhead</a> y <a href="https://blog.stevenlevithan.com/archives/mimic-atomic-groups">Mimicking Atomic Groups</a>.</p>
+</div></div>
+<p>Reescribamos el primer ejemplo utilizando lookahead para evitar el backtracking:</p>
+<div id="tmpvy6vqnf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /^((?=(\w+))\2\s?)*$/;
+
+alert( regexp.test(&quot;A good string&quot;) ); // true
+
+let str = &quot;An input string that takes a long time or even makes this regex hang!&quot;;
+
+alert( regexp.test(str) ); // false, funciona, ¡y rápido!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí se utiliza <code class="pattern">\2</code> en lugar de <code class="pattern">\1</code> porque hay paréntesis exteriores adicionales. Para evitar enredarnos con los números, podríamos dar a los paréntesis un nombre, por ejemplo <code class="pattern">(?&lt;word&gt;\w+)</code>.</p>
+<div id="ap05rkym65" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// nombramos a los parentesis ?&lt;word&gt;, y los referenciamos como \k&lt;word&gt;
+let regexp = /^((?=(?&lt;word&gt;\w+))\k&lt;word&gt;\s?)*$/;
+
+let str = &quot;An input string that takes a long time or even makes this regex hang!&quot;;
+
+alert( regexp.test(str) ); // false
+
+alert( regexp.test(&quot;A correct string&quot;) ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El problema descrito en este artículo se llama “backtracking catastrófico”.</p>
+<p>Cubrimos dos formas de resolverlo:</p>
+<ul>
+<li>Reescribir la regexp para reducir el número de combinaciones posibles.</li>
+<li>Evitar el retroceso.</li>
+</ul>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-lookahead-lookbehind.html" data-tooltip="Lookahead y lookbehind (revisar delante/detrás)"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="regexp-sticky.html" data-tooltip="Indicador adhesivo “y”, buscando en una posición."><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-catastrophic-backtracking" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-catastrophic-backtracking" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/regexp-catastrophic-backtracking","identifier":"\/regexp-catastrophic-backtracking"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.html">Expresiones Regulares</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ejemplo">Ejemplo</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ejemplo-simplificado">Ejemplo simplificado</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#volver-a-las-palabras-y-cadenas">Volver a las palabras y cadenas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#como-solucionarlo">¿Cómo solucionarlo?</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#previniendo-el-backtracking">Previniendo el backtracking</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-catastrophic-backtracking" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fregexp-catastrophic-backtracking" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/9-regular-expressions/15-regexp-catastrophic-backtracking" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/regexp-catastrophic-backtracking by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:03 GMT -->
+</html>

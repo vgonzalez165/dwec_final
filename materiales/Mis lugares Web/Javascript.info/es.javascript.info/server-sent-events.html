@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/server-sent-events by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:45 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Eventos enviados por el servidor</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="server-sent-events.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Eventos enviados por el servidor"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Eventos enviados por el servidor"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="websocket.html"><link rel="next" href="data-storage.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Eventos enviados por el servidor"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/server-sent-events"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="server-sent-events.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/server-sent-events"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/server-sent-events"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/server-sent-events"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/server-sent-events"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/server-sent-events"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/server-sent-events"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/server-sent-events"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fserver-sent-events" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fserver-sent-events" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/server-sent-events">English</option><option value="https://es.javascript.info/server-sent-events" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/server-sent-events">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/server-sent-events">Italiano</option><option value="https://ja.javascript.info/server-sent-events">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/server-sent-events">Русский</option><option value="https://tr.javascript.info/server-sent-events">Türkçe</option><option value="https://uk.javascript.info/server-sent-events">Українська</option><option value="https://zh.javascript.info/server-sent-events">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="12" max="12" data-tooltip="Lección 12 de 12"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="network.html"><span>Solicitudes de red</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Solicitudes de red","item":"https://es.javascript.info/network"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Eventos enviados por el servidor</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Eventos enviados por el servidor"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>La especificación de los <a href="https://html.spec.whatwg.org/multipage/comms.html#the-eventsource-interface">Eventos enviados por el servidor</a> describe una clase incorporada <code>EventSource</code>, que mantiene la conexión con el servidor y permite recibir eventos de él.</p>
+<p>Similar a <code>WebSocket</code>, la conexión es persistente.</p>
+<p>Pero existen varias diferencias importantes:</p>
+<table>
+<thead>
+<tr>
+<th><code>WebSocket</code></th>
+<th><code>EventSource</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bidireccional: tanto el cliente como el servidor pueden intercambiar mensajes</td>
+<td>Unidireccional: solo el servidor envía datos</td>
+</tr>
+<tr>
+<td>Datos binarios y de texto</td>
+<td>Solo texto</td>
+</tr>
+<tr>
+<td>Protocolo WebSocket</td>
+<td>HTTP regular</td>
+</tr>
+</tbody>
+</table>
+<p><code>EventSource</code> es una forma menos poderosa de comunicarse con el servidor que <code>WebSocket</code>.</p>
+<p>¿Por qué debería uno usarlo?</p>
+<p>El motivo principal: es más sencillo. En muchas aplicaciones, el poder de <code>WebSocket</code> es demasiado.</p>
+<p>Necesitamos recibir un flujo de datos del servidor: tal vez mensajes de chat o precios de mercado, o lo que sea. Para eso es bueno <code>EventSource</code>. También admite la reconexión automática, algo que debemos implementar manualmente con <code>WebSocket</code>. Además, es HTTP común, no un protocolo nuevo.</p>
+<h2><a class="main__anchor" name="recibir-mensajes" href="#recibir-mensajes">Recibir mensajes</a></h2><p>Para comenzar a recibir mensajes, solo necesitamos crear un <code>new EventSource(url)</code>.</p>
+<p>El navegador se conectará a la <code>url</code> y mantendrá la conexión abierta, esperando eventos.</p>
+<p>El servidor debe responder con el estado 200 y el encabezado <code>Content-Type:text/event-stream</code>, entonces mantener la conexión y escribir mensajes en el formato especial, así:</p>
+<div id="pk7p0qchw3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>data: Mensaje 1
+
+data: Mensaje 2
+
+data: Mensaje 3
+data: de dos líneas</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li>Un mensaje de texto va después de <code>data:</code>, el espacio después de los dos puntos es opcional.</li>
+<li>Los mensajes están delimitados con saltos de línea dobles <code>\n\n</code>.</li>
+<li>Para enviar un salto de línea <code>\n</code>, podemos enviar inmediatamente un <code>data:</code> (tercer mensaje arriba) más.</li>
+</ul>
+<p>En la práctica, los mensajes complejos generalmente se envían codificados en JSON. Los saltos de línea están codificados así <code>\n</code> dentro de los mensajes, por lo que los mensajes <code>data:</code> multilínea no son necesarios.</p>
+<p>Por ejemplo:</p>
+<div id="7027axu13o" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:45,&quot;end&quot;:47}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>data: {&quot;user&quot;:&quot;John&quot;,&quot;message&quot;:&quot;Primera línea\n Segunda línea&quot;}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>… Entonces podemos asumir que un <code>data:</code> contiene exactamente un mensaje.</p>
+<p>Para cada uno de estos mensajes, se genera el evento <code>message</code>:</p>
+<div id="j30amei8ga" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let eventSource = new EventSource(&quot;/events/subscribe&quot;);
+
+eventSource.onmessage = function(event) {
+  console.log(&quot;Nuevo mensaje&quot;, event.data);
+  // registrará apuntes 3 veces para el flujo de datos anterior
+};
+
+// o eventSource.addEventListener('message', ...)</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="solicitudes-cross-origin" href="#solicitudes-cross-origin">Solicitudes Cross-origin</a></h3><p><code>EventSource</code> admite solicitudes cross-origin, como <code>fetch</code> o cualquier otro método de red. Podemos utilizar cualquier URL:</p>
+<div id="les6wtjnhs" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let source = new EventSource(&quot;https://another-site.com/events&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El servidor remoto obtendrá el encabezado <code>Origin</code> y debe responder con <code>Access-Control-Allow-Origin</code> para continuar.</p>
+<p>Para pasar las credenciales, debemos configurar la opción adicional <code>withCredentials</code>, así:</p>
+<div id="6mvk0e0720" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let source = new EventSource(&quot;https://another-site.com/events&quot;, {
+  withCredentials: true
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Consulte el capítulo <a href="fetch-crossorigin.html">Fetch: Cross-Origin Requests</a> para obtener más detalles sobre los encabezados cross-origin.</p>
+<h2><a class="main__anchor" name="reconexion" href="#reconexion">Reconexión</a></h2><p>Tras la creación con <code>new EventSource</code>, el cliente se conecta al servidor y, si la conexión se interrumpe, se vuelve a conectar.</p>
+<p>Eso es muy conveniente, ya que no tenemos que preocuparnos por eso.</p>
+<p>Hay un pequeño retraso entre las reconexiones, unos segundos por defecto.</p>
+<p>El servidor puede establecer la demora recomendada usando <code>retry:</code> dentro de la respuesta (en milisegundos):</p>
+<div id="l9mcjz68li" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>retry: 15000
+data: Hola, configuré el retraso de reconexión en 15 segundos</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El <code>retry:</code> puede venir junto con algunos datos, o como un mensaje independiente.</p>
+<p>El navegador debe esperar esa cantidad de milisegundos antes de volver a conectarse. O más, por ejemplo: si el navegador sabe (desde el sistema operativo) que no hay conexión de red en este momento, puede esperar hasta que aparezca la conexión y luego volver a intentarlo.</p>
+<ul>
+<li>Si el servidor desea que el navegador deje de volver a conectarse, debería responder con el estado HTTP 204.</li>
+<li>Si el navegador quiere cerrar la conexión, debe llamar a <code>eventSource.close()</code>:</li>
+</ul>
+<div id="476nx5rdqu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let eventSource = new EventSource(...);
+
+eventSource.close();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Además, no habrá reconexión si la respuesta tiene un <code>Content-Type</code> incorrecto o su estado HTTP difiere de 301, 307, 200 y 204. En tales casos, se emitirá el evento <code>&quot;error&quot;</code> y el navegador no se volverá a conectar.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Por favor tome nota:</span></div>
+            <div class="important__content"><p>Cuando una conexión finalmente se cierra, no hay forma de “reabrirla”. Si queremos conectarnos de nuevo, simplemente crea un nuevo <code>EventSource</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="id-del-mensaje" href="#id-del-mensaje">ID del mensaje</a></h2><p>Cuando una conexión se interrumpe debido a problemas de red, ninguna de las partes puede estar segura de qué mensajes se recibieron y cuáles no.</p>
+<p>Para reanudar correctamente la conexión, cada mensaje debe tener un campo <code>id</code>, así:</p>
+<div id="rd103lbt0g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>data: Mensaje 1
+id: 1
+
+data: Mensaje 2
+id: 2
+
+data: Mensaje 3
+data: de dos líneas
+id: 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando se recibe un mensaje con <code>id:</code>, el navegador:</p>
+<ul>
+<li>Establece la propiedad <code>eventSource.lastEventId</code> a su valor.</li>
+<li>Tras la reconexión, el navegador envía el encabezado <code>Last-Event-ID</code> con ese <code>id</code>, para que el servidor pueda volver a enviar los siguientes mensajes.</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Pon <code>id:</code> después de <code>data:</code></span></div>
+            <div class="important__content"><p>Ten en cuenta: el <code>id</code> es adjuntado debajo del mensaje <code>data</code> por el servidor, para garantizar que <code>lastEventId</code> se actualice después de recibir el mensaje.</p>
+</div></div>
+<h2><a class="main__anchor" name="estado-de-conexion-readystate" href="#estado-de-conexion-readystate">Estado de conexión: readyState</a></h2><p>El objeto <code>EventSource</code> tiene la propiedad <code>readyState</code>, que tiene uno de tres valores:</p>
+<div id="0qz4sv8blc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>EventSource.CONNECTING = 0; // conectando o reconectando
+EventSource.OPEN = 1;       // conectado
+EventSource.CLOSED = 2;     // conexión cerrada</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando se crea un objeto, o la conexión no funciona, siempre es <code>EventSource.CONNECTING</code> (es igual a <code>0</code>).</p>
+<p>Podemos consultar esta propiedad para conocer el estado de <code>EventSource</code>.</p>
+<h2><a class="main__anchor" name="tipos-de-eventos" href="#tipos-de-eventos">Tipos de eventos</a></h2><p>Por defecto, el objeto <code>EventSource</code> genera tres eventos:</p>
+<ul>
+<li><code>message</code> – un mensaje recibido, disponible como <code>event.data</code>.</li>
+<li><code>open</code> – la conexión está abierta.</li>
+<li><code>error</code> – no se pudo establecer la conexión, por ejemplo, el servidor devolvió el estado HTTP 500.</li>
+</ul>
+<p>El servidor puede especificar otro tipo de evento con <code>event: ...</code> al inicio del evento.</p>
+<p>Por ejemplo:</p>
+<div id="6h8s4e1a93" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>event: join
+data: Bob
+
+data: Hola
+
+event: leave
+data: Bob</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para manejar eventos personalizados, debemos usar <code>addEventListener</code>, no <code>onmessage</code>:</p>
+<div id="6lsel5d1lp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>eventSource.addEventListener('join', event =&gt; {
+  alert(`Se unió ${event.data}`);
+});
+
+eventSource.addEventListener('message', event =&gt; {
+  alert(`Dijo: ${event.data}`);
+});
+
+eventSource.addEventListener('leave', event =&gt; {
+  alert(`Salió ${event.data}`);
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="ejemplo-completo" href="#ejemplo-completo">Ejemplo completo</a></h2><p>Aquí está el servidor que envía mensajes con <code>1</code>, <code>2</code>, <code>3</code>, luego <code>bye</code> y cierra la conexión.</p>
+<p>Luego, el navegador se vuelve a conectar automáticamente.</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">server.js</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/server-sent-events/eventsource/index.html"></a><a class="code-tabs__button code-tabs__button_download" target="_blank" href="tutorial/zipview/eventsource9959.zip?plunkId=5hQ7AiSlf3HVWW2F"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:200px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/server-sent-events/eventsource/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>let http = require('http');
+let url = require('url');
+let querystring = require('querystring');
+let static = require('node-static');
+let fileServer = new static.Server('.');
+
+function onDigits(req, res) {
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream; charset=utf-8',
+    'Cache-Control': 'no-cache'
+  });
+
+  let i = 0;
+
+  let timer = setInterval(write, 1000);
+  write();
+
+  function write() {
+    i++;
+
+    if (i == 4) {
+      res.write('event: bye\ndata: bye-bye\n\n');
+      clearInterval(timer);
+      res.end();
+      return;
+    }
+
+    res.write('data: ' + i + '\n\n');
+
+  }
+}
+
+function accept(req, res) {
+
+  if (req.url == '/digits') {
+    onDigits(req, res);
+    return;
+  }
+
+  fileServer.serve(req, res);
+}
+
+
+if (!module.parent) {
+  http.createServer(accept).listen(8080);
+} else {
+  exports.accept = accept;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE html&gt;
+&lt;script&gt;
+let eventSource;
+
+function start() { // cuando se presiona el botón &quot;Inicio&quot;
+  if (!window.EventSource) {
+    // IE o un navegador antiguo
+    alert(&quot;El navegador no es compatible con EventSource.&quot;);
+    return;
+  }
+
+  eventSource = new EventSource('digits');
+
+  eventSource.onopen = function(e) {
+    log(&quot;Evento: open&quot;);
+  };
+
+  eventSource.onerror = function(e) {
+    log(&quot;Evento: error&quot;);
+    if (this.readyState == EventSource.CONNECTING) {
+      log(`Reconectando (readyState=${this.readyState})...`);
+    } else {
+      log(&quot;Un error ha ocurrido.&quot;);
+    }
+  };
+
+  eventSource.addEventListener('bye', function(e) {
+    log(&quot;Evento: bye, datos: &quot; + e.data);
+  });
+
+  eventSource.onmessage = function(e) {
+    log(&quot;Evento: message, datos: &quot; + e.data);
+  };
+}
+
+function stop() { // cuando se presiona el botón &quot;Detener&quot;
+  eventSource.close();
+  log(&quot;eventSource.close()&quot;);
+}
+
+function log(msg) {
+  logElem.innerHTML += msg + &quot;&lt;br&gt;&quot;;
+  document.documentElement.scrollTop = 99999999;
+}
+&lt;/script&gt;
+
+&lt;button onclick=&quot;start()&quot;&gt;Inicio&lt;/button&gt; Presiona &quot;Inicio&quot; para comenzar.
+&lt;div id=&quot;logElem&quot; style=&quot;margin: 6px 0&quot;&gt;&lt;/div&gt;
+
+&lt;button onclick=&quot;stop()&quot;&gt;Detener&lt;/button&gt; &quot;Detener&quot; para terminar.</code></pre></div></div></div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>El objeto <code>EventSource</code> establece automáticamente una conexión persistente y permite al servidor enviar mensajes a través de él.</p>
+<p>Ofrece:</p>
+<ul>
+<li>Reconexión automática, con tiempo de espera de <code>reintento</code> ajustable.</li>
+<li>IDs en cada mensaje para reanudar los eventos, el último identificador recibido se envía en el encabezado <code>Last-Event-ID</code> al volver a conectarse.</li>
+<li>El estado actual está en la propiedad <code>readyState</code>.</li>
+</ul>
+<p>Eso hace que <code>EventSource</code> sea una alternativa viable a <code>WebSocket</code>, ya que es de un nivel más bajo y carece de esas características integradas (aunque se pueden implementar).</p>
+<p>En muchas aplicaciones de la vida real, el poder de <code>EventSource</code> es suficiente.</p>
+<p>Compatible con todos los navegadores modernos (no IE).</p>
+<p>La sintaxis es:</p>
+<div id="lt2g2t2l8h" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let source = new EventSource(url, [credentials]);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El segundo argumento tiene solo una opción posible: <code>{withCredentials: true}</code>, permite enviar credenciales de cross-origin.</p>
+<p>La seguridad general de cross-origin es la misma que para <code>fetch</code> y otros métodos de red.</p>
+<h3><a class="main__anchor" name="propiedades-de-un-objeto-eventsource" href="#propiedades-de-un-objeto-eventsource">Propiedades de un objeto <code>EventSource</code></a></h3><dl>
+<dt><code>readyState</code></dt>
+<dd>El estado de conexión actual: <code>EventSource.CONNECTING (=0)</code>, <code>EventSource.OPEN (=1)</code> o <code>EventSource.CLOSED (=2)</code>.</dd>
+<dt><code>lastEventId</code></dt>
+<dd>El último <code>id</code> recibido. Tras la reconexión, el navegador lo envía en el encabezado <code>Last-Event-ID</code>.</dd>
+</dl>
+<h3><a class="main__anchor" name="metodos" href="#metodos">Métodos</a></h3><dl>
+<dt><code>close()</code></dt>
+<dd>Cierra la conexión.</dd>
+</dl>
+<h3><a class="main__anchor" name="eventos" href="#eventos">Eventos</a></h3><dl>
+<dt><code>message</code></dt>
+<dd>Mensaje recibido, los datos están en <code>event.data</code>.</dd>
+<dt><code>open</code></dt>
+<dd>Se establece la conexión.</dd>
+<dt><code>error</code></dt>
+<dd>En caso de error, se incluyen tanto la pérdida de conexión (se reconectará automáticamente) como los errores fatales. Podemos comprobar <code>readyState</code> para ver si se está intentando la reconexión.</dd>
+</dl>
+<p>El servidor puede establecer un nombre de evento personalizado en <code>event:</code>. Tales eventos deben manejarse usando <code>addEventListener</code>, no <code>on&lt;evento&gt;</code>.</p>
+<h3><a class="main__anchor" name="formato-de-respuesta-del-servidor" href="#formato-de-respuesta-del-servidor">Formato de respuesta del servidor</a></h3><p>El servidor envía mensajes, delimitados por <code>\n\n</code>.</p>
+<p>Un mensaje puede tener los siguientes campos:</p>
+<ul>
+<li><code>data:</code> – cuerpo del mensaje, una secuencia de múltiples <code>datos</code> se interpreta como un solo mensaje, con <code>\n</code> entre las partes.</li>
+<li><code>id:</code> – renueva <code>lastEventId</code>, enviado en el encabezado <code>Last-Event-ID</code> al volver a conectarse.</li>
+<li><code>retry:</code> – recomienda una demora de reintento para las reconexiones en milisegundos. No hay forma de configurarlo desde JavaScript.</li>
+<li><code>event:</code> – nombre del evento, debe preceder a <code>data:</code>.</li>
+</ul>
+<p>Un mensaje puede incluir uno o más campos en cualquier orden, pero <code>id:</code> suele ser el último.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="websocket.html" data-tooltip="WebSocket"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="data-storage.html" data-tooltip="Almacenando datos en el navegador"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fserver-sent-events" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fserver-sent-events" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/server-sent-events","identifier":"\/server-sent-events"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="network.html">Solicitudes de red</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#recibir-mensajes">Recibir mensajes</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#reconexion">Reconexión</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#id-del-mensaje">ID del mensaje</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#estado-de-conexion-readystate">Estado de conexión: readyState</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tipos-de-eventos">Tipos de eventos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ejemplo-completo">Ejemplo completo</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fserver-sent-events" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fserver-sent-events" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/5-network/12-server-sent-events" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/server-sent-events by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:46 GMT -->
+</html>

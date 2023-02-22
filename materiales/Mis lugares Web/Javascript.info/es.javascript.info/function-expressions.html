@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/function-expressions by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Expresiones de función</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="function-expressions.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Expresiones de función"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Expresiones de función"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="function-basics.html"><link rel="next" href="arrow-functions-basics.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Expresiones de función"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/function-expressions"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/function-expressions"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="function-expressions.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/function-expressions"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/function-expressions"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/function-expressions"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/function-expressions"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/function-expressions"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/function-expressions"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/function-expressions"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/function-expressions"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/function-expressions"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/function-expressions"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ffunction-expressions" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Ffunction-expressions" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/function-expressions">عربي</option><option value="https://javascript.info/function-expressions">English</option><option value="https://es.javascript.info/function-expressions" selected>Español</option><option value="https://fa.javascript.info/function-expressions">فارسی</option><option value="https://fr.javascript.info/function-expressions">Français</option><option value="https://id.javascript.info/function-expressions">Indonesia</option><option value="https://it.javascript.info/function-expressions">Italiano</option><option value="https://ja.javascript.info/function-expressions">日本語</option><option value="https://ko.javascript.info/function-expressions">한국어</option><option value="https://learn.javascript.ru/function-expressions">Русский</option><option value="https://tr.javascript.info/function-expressions">Türkçe</option><option value="https://uk.javascript.info/function-expressions">Українська</option><option value="https://zh.javascript.info/function-expressions">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="20" max="93" data-tooltip="Lección 20 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="first-steps.html"><span>Fundamentos de JavaScript</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Fundamentos de JavaScript","item":"https://es.javascript.info/first-steps"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 3 de julio de 2022"><div class="updated-at__content">3 de julio de 2022</div></div></div><h1 class="main__header-title">Expresiones de función</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Expresiones de función"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>En JavaScript, una función no es una “estructura mágica del lenguaje”, sino un tipo de valor especial.</p>
+<p>La sintaxis que usamos antes se llama <em>Declaración de Función</em>:</p>
+<div id="ikyr6ctvu0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHi() {
+  alert( &quot;Hola&quot; );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Existe otra sintaxis para crear una función que se llama una <em>Expresión de Función</em>.</p>
+<p>Esto nos permite crear una nueva función en el medio de cualquier expresión</p>
+<p>Por ejemplo:</p>
+<div id="0p5317ec78" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let sayHi = function() {
+  alert( &quot;Hola&quot; );
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí podemos ver una variable <code>sayHi</code> obteniendo un valor —la nueva función— creada como <code>function() { alert(&quot;Hello&quot;); }</code>.</p>
+<p>Como la creación de una función ocurre en el contexto de una expresión de asignación, (el lado derecho de <code>=</code>), esto es una <em>Expresión de función</em>.</p>
+<p>Note que no hay un nombre después de la palabra clave <code>function</code>. Omitir el nombre está permitido en las expresiones de función.</p>
+<p>Aquí la asignamos directamente a la variable, así que el significado de estos ejemplos de código es el mismo: &quot;crear una función y ponerla en la variable <code>sayHi</code>&quot;.</p>
+<p>En situaciones más avanzadas, que cubriremos más adelante, una función puede ser creada e inmediatamente llamada o agendada para uso posterior, sin almacenarla en ningún lugar, permaneciendo así anónima.</p>
+<h2><a class="main__anchor" name="la-funcion-es-un-valor" href="#la-funcion-es-un-valor">La función es un valor</a></h2><p>Reiteremos: no importa cómo es creada la función, una función es un valor. Ambos ejemplos arriba almacenan una función en la variable <code>sayHi</code>.</p>
+<p>Incluso podemos mostrar aquel valor usando <code>alert</code>:</p>
+<div id="d1lueqqbsy" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHi() {
+  alert( &quot;Hola&quot; );
+}
+
+alert( sayHi ); // muestra el código de la función</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta que la última línea no ejecuta la función, porque no hay paréntesis después de <code>sayHi</code>. Existen lenguajes de programación en los que cualquier mención del nombre de una función causa su ejecución, pero JavaScript no funciona así.</p>
+<p>En JavaScript, una función es un valor, por lo tanto podemos tratarlo como un valor. El código de arriba muestra su representación de cadena, que es el código fuente.</p>
+<p>Por supuesto que es un valor especial, en el sentido que podemos invocarlo de esta forma <code>sayHi()</code>.</p>
+<p>Pero sigue siendo un valor. Entonces podemos trabajar con ello como trabajamos con otro tipo de valores.</p>
+<p>Podemos copiar una función a otra variable:</p>
+<div id="c1txcqw14t" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHi() {   // (1) crear
+  alert( &quot;Hola&quot; );
+}
+
+let func = sayHi;    // (2) copiar
+
+func(); // Hola          // (3) ejecuta la copia (funciona)!
+sayHi(); // Hola         // esto también funciona (por qué no lo haría)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto es lo que sucede arriba en detalle:</p>
+<ol>
+<li>La Declaración de la Función <code>(1)</code> crea la función y la coloca dentro de la variable llamada <code>sayHi</code>.</li>
+<li>Línea<code>(2)</code> copia la función en la variable <code>func</code>.</li>
+<li>Ahora la función puede ser llamada de ambas maneras, <code>sayHi()</code> y <code>func()</code>.</li>
+</ol>
+<p>También podríamos haber usado una expresión de función para declarar <code>sayHi</code> en la primera línea:</p>
+<div id="xubygrsu8i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let sayHi = function() { // (1) crea
+  alert( &quot;Hola&quot; );
+};
+
+let func = sayHi;
+// ...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Todo funcionaría igual.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Por qué hay un punto y coma al final?</span></div>
+            <div class="important__content"><p>Tal vez te preguntes por qué la Expresión de Función tiene un punto y coma <code>;</code> al final, pero la Declaración de Función no lo tiene:</p>
+<div id="8calvf98hw" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;cols&quot;:[{&quot;start&quot;:1,&quot;end&quot;:2}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHi() {
+  // ...
+}
+
+let sayHi = function() {
+  // ...
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La respuesta es simple: una expresión de función se crea aquí como <code>function(…) {…}</code> dentro de la sentencia de asignación <code>let sayHi = …;</code>. El punto y coma se recomienda para finalizar la sentencia, no es parte de la sintaxis de función.</p>
+<p>El punto y coma estaría allí para una asignación más simple tal como <code>let sayHi = 5;</code>, y también está allí para la asignación de función.</p>
+</div></div>
+<h2><a class="main__anchor" name="funciones-callback" href="#funciones-callback">Funciones Callback</a></h2><p>Veamos más ejemplos del pasaje de funciones como valores y el uso de expresiones de función.</p>
+<p>Escribimos una función <code>ask(question, yes, no)</code> con tres argumentos:</p>
+<dl>
+<dt><code>question</code></dt>
+<dd>Texto de la pregunta</dd>
+<dt><code>yes</code></dt>
+<dd>Función a ejecutar si la respuesta es “Yes”</dd>
+<dt><code>no</code></dt>
+<dd>Función a ejecutar si la respuesta es “No”</dd>
+</dl>
+<p>La función deberá preguntar la <code>question</code> y, dependiendo de la respuesta del usuario, llamar <code>yes()</code> o <code>no()</code>:</p>
+<div id="vopn1m1eg6" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+function showOk() {
+  alert( &quot;Estás de acuerdo.&quot; );
+}
+
+function showCancel() {
+  alert( &quot;Cancelaste la ejecución.&quot; );
+}
+
+// uso: las funciones showOk, showCancel son pasadas como argumentos de ask
+ask(&quot;Estás de acuerdo?&quot;, showOk, showCancel);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En la práctica, tales funciones son bastante útiles. La mayor diferencia entre la función <code>ask</code> en la vida real y el ejemplo anterior es que las funciones de la vida real utilizan formas para interactuar con el usuario más complejas que un simple <code>confirme</code>. En el navegador, una función como tal normalmente dibuja una ventana de pregunta atractiva. Pero esa es otra historia.</p>
+<p><strong>Los argumentos de <code>ask</code> se llaman <em>funciones callback</em> o simplemente <em>callbacks</em>.</strong></p>
+<p>La idea es que pasamos una función y esperamos que se “devuelva la llamada” más tarde si es necesario. En nuestro caso, <code>showOk</code> se convierte en la callback para la respuesta “Yes”, y <code>showCancel</code> para la respuesta “No”.</p>
+<p>Podemos usar Expresión de Función para redactar una función equivalente y más corta:</p>
+<div id="nhn3zvjpgy" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+ask(
+  &quot;Estás de acuerdo?&quot;,
+  function() { alert(&quot;Estás de acuerdo&quot;); },
+  function() { alert(&quot;Cancelaste la ejecución.&quot;); }
+);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí, las funciones son declaradas justo dentro del llamado <code>ask(...)</code>. No tienen nombre, y por lo tanto se denominan <em>anónimas</em>. Tales funciones no se pueden acceder fuera de <code>ask</code> (porque no están asignadas a variables), pero eso es justo lo que queremos aquí.</p>
+<p>Éste código aparece en nuestros scripts de manera muy natural, está en el archivo de comandos de JavaScript.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Una función es un valor representando una “acción”</span></div>
+            <div class="important__content"><p>Valores regulares tales como cadena de caracteres o números representan los <em>datos</em>.</p>
+<p>Una función puede ser percibida como una <em>acción</em>.</p>
+<p>La podemos pasar entre variables y ejecutarla cuando nosotros queramos.</p>
+</div></div>
+<h2><a class="main__anchor" name="expresion-de-funcion-vs-declaracion-de-funcion" href="#expresion-de-funcion-vs-declaracion-de-funcion">Expresión de Función vs Declaración de Función</a></h2><p>Formulemos las principales diferencias entre Declaración y Expresión de Funciones.</p>
+<p>Primero, la sintaxis: cómo diferenciarlas en el código.</p>
+<ul>
+<li>
+<p><em>Declaración de Función:</em> una función, declarada como una instrucción separada, en el flujo de código principal.</p>
+<div id="d2d4d6ajjd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Declaración de Función
+function sum(a, b) {
+  return a + b;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><em>Expresión de Función:</em> una función, creada dentro de una expresión o dentro de otra construcción sintáctica. Aquí, la función es creada en el lado derecho de la “expresión de asignación” <code>=</code>:</p>
+<div id="a8e2ml59h2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Expresión de Función
+let sum = function(a, b) {
+  return a + b;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<p>La diferencia más sutil es <em>cuándo</em> la función es creada por el motor de JavaScript.</p>
+<p><strong>Una Expresión de Función es creada cuando la ejecución la alcance y es utilizable desde ahí en adelante.</strong></p>
+<p>Una vez que el flujo de ejecución pase al lado derecho de la asignación <code>let sum = function…</code> – aquí vamos, la función es creada y puede ser usada (asignada, llamada, etc.) de ahora en adelante.</p>
+<p>Las Declaraciones de Función son diferente.</p>
+<p><strong>Una Declaración de Función puede ser llamada antes de ser definida.</strong></p>
+<p>Por ejemplo, una Declaración de Función global es visible en todo el script, sin importar dónde se esté.</p>
+<p>Esto se debe a los algoritmos internos. Cuando JavaScript se prepara para ejecutar el script, primero busca Declaraciones de Funciones globales en él y crea las funciones. Podemos pensar en esto como una “etapa de inicialización”.</p>
+<p>Y después de que se procesen todas las Declaraciones de Funciones, el código se ejecuta. Entonces tiene acceso a éstas funciones.</p>
+<p>Por ejemplo, esto funciona:</p>
+<div id="qbfxfunbpy" data-trusted="0" class="code-example" data-refresh="1" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>sayHi(&quot;John&quot;); // Hola, John
+
+function sayHi(name) {
+  alert( `Hola, ${name}` );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La Declaración de Función <code>sayHi</code> es creada cuando JavaScript está preparándose para iniciar el script y es visible en todas partes.</p>
+<p>…Si fuera una Expresión de Función, entonces no funcionaría:</p>
+<div id="1xjdg083pr" data-trusted="0" class="code-example" data-refresh="1" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>sayHi(&quot;John&quot;); // error!
+
+let sayHi = function(name) {  // (*) ya no hay magia
+  alert( `Hola, ${name}` );
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las Expresiones de Función son creadas cuando la ejecución las alcance. Esto podría pasar solamente en la línea <code>(*)</code>. Demasiado tarde.</p>
+<p>Otra característica especial de las Declaraciones de Funciones es su alcance de bloque.</p>
+<p><strong>En modo estricto, cuando una Declaración de Función se encuentra dentro de un bloque de código, es visible en todas partes dentro de ese bloque. Pero no fuera de él.</strong></p>
+<p>Por ejemplo, imaginemos que necesitamos declarar una función <code>welcome()</code> dependiendo de la variable <code>age</code> que obtengamos durante el tiempo de ejecución. Y luego planeamos usarlo algún tiempo después.</p>
+<p>Si utilizamos la Declaración de Funciones, no funcionará como se esperaba:</p>
+<div id="k8kzmvhr0a" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:18,&quot;end&quot;:18}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = prompt(&quot;Cuál es tu edad?&quot;, 18);
+
+// declarar condicionalmente una función
+if (age &lt; 18) {
+
+  function welcome() {
+    alert(&quot;Hola!&quot;);
+  }
+
+} else {
+
+  function welcome() {
+    alert(&quot;Saludos!&quot;);
+  }
+
+}
+
+// ...usarla más tarde
+welcome(); // Error: welcome no está definida</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto se debe a que una Declaración de Función sólo es visible dentro del bloque de código en el que reside.</p>
+<p>Aquí hay otro ejemplo:</p>
+<div id="hiatq6wbuj" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:21,&quot;end&quot;:21},{&quot;start&quot;:9,&quot;end&quot;:9},{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = 16; // tomemos 16 como ejemplo
+
+if (age &lt; 18) {
+  welcome();               // \   (corre)
+                           //  |
+  function welcome() {     //  |
+    alert(&quot;¡Hola!&quot;);       //  |  La declaración de Función está disponible
+  }                        //  |  en todas partes del bloque donde está declarada
+                           //  |
+  welcome();               // /   (corre)
+
+} else {
+
+  function welcome() {
+    alert(&quot;¡Saludos!&quot;);
+  }
+}
+
+// Aquí estamos fuera de las llaves,
+// por lo tanto no podemos ver la Declaración de Función realizada dentro de ellas.
+
+welcome(); // Error: welcome no está definida</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Qué podemos hacer para que <code>welcome</code> sea visible fuera de ‘if’?</p>
+<p>El enfoque correcto sería utilizar una Expresión de Función y asignar <code>welcome</code> a la variable que se declara fuera de ‘if’ y tiene la visibilidad adecuada.</p>
+<p>Este código funciona según lo previsto:</p>
+<div id="j26o3vpl3c" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:18,&quot;end&quot;:18}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = prompt(&quot;Cuál es tu edad?&quot;, 18);
+
+let welcome;
+
+if (age &lt; 18) {
+
+  welcome = function() {
+    alert(&quot;Hola!&quot;);
+  };
+
+} else {
+
+  welcome = function() {
+    alert(&quot;Saludos!&quot;);
+  };
+
+}
+
+welcome(); // ahora ok</code></pre>
+        </div>
+      </div>
+      
+      </div><p>O lo podemos simplificar aun más usando un operador de signo de pregunta <code>?</code>:</p>
+<div id="92k4oqs7rh" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let age = prompt(&quot;¿Cuál es tu edad?&quot;, 18);
+
+let welcome = (age &lt; 18) ?
+  function() { alert(&quot;¡Hola!&quot;); } :
+  function() { alert(&quot;¡Saludos!&quot;); };
+
+welcome(); // ahora ok</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Cuándo debo elegir la Declaración de Función frente a la Expresión de Función?</span></div>
+            <div class="important__content"><p>Como regla general, cuando necesitamos declarar una función, la primera que debemos considerar es la sintaxis de la Declaración de Función. Da más libertad en cómo organizar nuestro código, porque podemos llamar a tales funciones antes de que sean declaradas.</p>
+<p>También es un poco más fácil de buscar <code>function f(…) {…}</code> en el código comparado con <code>let f = function(…) {…}</code>. La Declaración de Función es más llamativa.</p>
+<p>…Pero si una Declaración de Función no nos conviene por alguna razón, o necesitamos declaración condicional (hemos visto un ejemplo), entonces se debe usar la Expresión de función.</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>Las funciones son valores. Se pueden asignar, copiar o declarar en cualquier lugar del código.</li>
+<li>Si la función se declara como una declaración separada en el flujo del código principal, eso se llama “Declaración de función”.</li>
+<li>Si la función se crea como parte de una expresión, se llama “Expresión de función”.</li>
+<li>Las Declaraciones de Funciones se procesan antes de ejecutar el bloque de código. Son visibles en todas partes del bloque.</li>
+<li>Las Expresiones de Función se crean cuando el flujo de ejecución las alcanza.</li>
+</ul>
+<p>En la mayoría de los casos, cuando necesitamos declarar una función, es preferible una Declaración de Función, ya que es visible antes de la declaración misma. Eso nos da más flexibilidad en la organización del código, y generalmente es más legible.</p>
+<p>Por lo tanto, deberíamos usar una Expresión de Función solo cuando una Declaración de Función no sea adecuada para la tarea. Hemos visto un par de ejemplos de eso en este capítulo, y veremos más en el futuro.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="function-basics.html" data-tooltip="Funciones"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="arrow-functions-basics.html" data-tooltip="Funciones Flecha, lo básico"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ffunction-expressions" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Ffunction-expressions" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/function-expressions","identifier":"\/function-expressions"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="first-steps.html">Fundamentos de JavaScript</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-funcion-es-un-valor">La función es un valor</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#funciones-callback">Funciones Callback</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#expresion-de-funcion-vs-declaracion-de-funcion">Expresión de Función vs Declaración de Función</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ffunction-expressions" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Ffunction-expressions" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/02-first-steps/16-function-expressions" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/function-expressions by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:48 GMT -->
+</html>

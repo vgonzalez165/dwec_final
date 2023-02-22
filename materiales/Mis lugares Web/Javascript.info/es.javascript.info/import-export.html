@@ -1,0 +1,522 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/import-export by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:19 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Export e Import</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="import-export.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Export e Import"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Export e Import"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="modules-intro.html"><link rel="next" href="modules-dynamic-imports.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Export e Import"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/import-export"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/import-export"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="import-export.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/import-export"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/import-export"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/import-export"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/import-export"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/import-export"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/import-export"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/import-export"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/import-export"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/import-export"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fimport-export" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fimport-export" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/import-export">عربي</option><option value="https://javascript.info/import-export">English</option><option value="https://es.javascript.info/import-export" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/import-export">Français</option><option value="https://id.javascript.info/import-export">Indonesia</option><option value="https://it.javascript.info/import-export">Italiano</option><option value="https://ja.javascript.info/import-export">日本語</option><option value="https://ko.javascript.info/import-export">한국어</option><option value="https://learn.javascript.ru/import-export">Русский</option><option value="https://tr.javascript.info/import-export">Türkçe</option><option value="https://uk.javascript.info/import-export">Українська</option><option value="https://zh.javascript.info/import-export">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="86" max="93" data-tooltip="Lección 86 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="modules.html"><span>Módulos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Módulos","item":"https://es.javascript.info/modules"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 4 de octubre de 2022"><div class="updated-at__content">4 de octubre de 2022</div></div></div><h1 class="main__header-title">Export e Import</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Export e Import"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Las directivas export e import tienen varias variantes de sintaxis.</p>
+<p>En el artículo anterior vimos un uso simple, ahora exploremos más ejemplos.</p>
+<h2><a class="main__anchor" name="export-antes-de-las-sentencias" href="#export-antes-de-las-sentencias">Export antes de las sentencias</a></h2><p>Podemos etiquetar cualquier sentencia como exportada colocando ‘export’ antes, ya sea una variable, función o clase.</p>
+<p>Por ejemplo, aquí todas las exportaciones son válidas:</p>
+<div id="kkwmnewoci" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:6}]},{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:6}]},{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:6}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// exportar un array
+export let months = ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// exportar una constante
+export const MODULES_BECAME_STANDARD_YEAR = 2015;
+
+// exportar una clase
+export clase User {
+  constructor(name) {
+    this.name = name;
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Sin punto y coma después de export clase/función</span></div>
+            <div class="important__content"><p>Tenga en cuenta que <code>export</code> antes de una clase o una función no la hace una <a href="function-expressions.html">expresión de función</a>. Sigue siendo una declaración de función, aunque exportada.</p>
+<p>La mayoría de las guías de estilos JavaScript no recomiendan los punto y comas después de declarar funciones y clases.</p>
+<p>Es por esto que no hay necesidad de un punto y coma al final de <code>export class</code> y <code>export function</code>:</p>
+<div id="ey1xsiufu2" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:2,&quot;end&quot;:22}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>export function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}  // no ; at the end</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="export-separado-de-la-declaracion" href="#export-separado-de-la-declaracion">Export separado de la declaración</a></h2><p>También podemos colocar <code>export</code> por separado.</p>
+<p>Aquí primero declaramos y luego exportamos:</p>
+<div id="t09yow4bbb" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 say.js
+function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}
+
+function sayBye(user) {
+  alert(`Bye, ${user}!`);
+}
+
+export {sayHi, sayBye}; // una lista de variables exportadas</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…O, técnicamente podemos colocar <code>export</code> arriba de las funciones también.</p>
+<h2><a class="main__anchor" name="import" href="#import">Import *</a></h2><p>Generalmente, colocamos una lista de lo que queremos importar en llaves <code>import {...}</code>, de esta manera:</p>
+<div id="o6a4izc8kr" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 main.js
+import {sayHi, sayBye} from './say.js';
+
+sayHi('John'); // Hello, John!
+sayBye('John'); // Bye, John!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pero si hay mucho para importar, podemos importar todo como un objeto utilizando <code>import * as &lt;obj&gt;</code>, por ejemplo:</p>
+<div id="4criud8j83" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 main.js
+import * as say from './say.js';
+
+say.sayHi('John');
+say.sayBye('John');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A primera vista, “importar todo” parece algo tan genial, corto de escribir, por qué deberíamos listar explícitamente lo que necesitamos importar?</p>
+<p>Pues hay algunas razones.</p>
+<ol>
+<li>Listar explícitamente qué importar da nombres más cortos: <code>sayHi()</code> en lugar de <code>say.sayHi()</code>.</li>
+<li>La lista explícita de importaciones ofrece una mejor visión general de la estructura del código: qué se usa y dónde. Facilita el soporte de código y la refactorización.</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">No temas importar demasiado</span></div>
+            <div class="important__content"><p>Las herramientas de empaquetado modernas, como <a href="https://webpack.js.org/">webpack</a> y otras, construyen los módulos juntos y optimizan la velocidad de carga. También eliminan las importaciones no usadas.</p>
+<p>Por ejemplo, si importas <code>import * as library</code> desde una librería de código enorme, y usas solo unos pocos métodos, los que no se usen <a href="https://github.com/webpack/webpack/tree/main/examples/harmony-unused#examplejs">no son incluidos</a> en el paquete optimizado.</p>
+</div></div>
+<h2><a class="main__anchor" name="importar-as" href="#importar-as">Importar “as”</a></h2><p>También podemos utilizar <code>as</code> para importar bajo nombres diferentes.</p>
+<p>Por ejemplo, importemos <code>sayHi</code> en la variable local <code>hi</code> para brevedad, e importar <code>sayBye</code> como <code>bye</code>:</p>
+<div id="8kne9q033n" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 main.js
+import {sayHi as hi, sayBye as bye} from './say.js';
+
+hi('John'); // Hello, John!
+bye('John'); // Bye, John!</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="exportar-as" href="#exportar-as">Exportar “as”</a></h2><p>Existe un sintaxis similar para <code>export</code>.</p>
+<p>Exportemos funciones como <code>hi</code> y <code>bye</code>:</p>
+<div id="vrczforgz7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 say.js
+...
+export {sayHi as hi, sayBye as bye};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora <code>hi</code> y <code>bye</code> son los nombres oficiales para desconocidos, a ser utilizados en importaciones:</p>
+<div id="8aetdlm500" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:4,&quot;end&quot;:7}]},{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:4,&quot;end&quot;:6}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 main.js
+import * as say from './say.js';
+
+say.hi('John'); // Hello, John!
+say.bye('John'); // Bye, John!</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="export-default" href="#export-default">Export default</a></h2><p>En la práctica, existen principalmente dos tipos de módulos.</p>
+<ol>
+<li>Módulos que contienen una librería, paquete de funciones, como <code>say.js</code> de arriba.</li>
+<li>Módulos que declaran una entidad simple, por ejemplo un módulo <code>user.js</code> exporta únicamente <code>class User</code>.</li>
+</ol>
+<p>Principalmente, se prefiere el segundo enfoque, de modo que cada “cosa” reside en su propio módulo.</p>
+<p>Naturalmente, eso requiere muchos archivos, ya que todo quiere su propio módulo, pero eso no es un problema en absoluto. En realidad, la navegación de código se vuelve más fácil si los archivos están bien nombrados y estructurados en carpetas.</p>
+<p>Los módulos proporcionan una sintaxis especial ‘export default’ (“la exportación predeterminada”) para que la forma de “una cosa por módulo” se vea mejor.</p>
+<p>Poner <code>export default</code> antes de la entidad a exportar:</p>
+<div id="nlt9ajr1np" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:14}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 user.js
+export default class User { // sólo agregar &quot;default&quot;
+  constructor(name) {
+    this.name = name;
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Sólo puede existir un sólo <code>export default</code> por archivo.</p>
+<p>…Y luego importarlo sin llaves:</p>
+<div id="upeenfa7in" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:11}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 main.js
+import User from './user.js'; // no {User}, sólo User
+
+new User('John');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las importaciones sin llaves se ven mejor. Un error común al comenzar a usar módulos es olvidarse de las llaves. Entonces, recuerde, <code>import</code> necesita llaves para las exportaciones con nombre y no las necesita para la predeterminada.</p>
+<table>
+<thead>
+<tr>
+<th>Export con nombre</th>
+<th>Export predeterminada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>export class User {...}</code></td>
+<td><code>export default class User {...}</code></td>
+</tr>
+<tr>
+<td><code>import {User} from ...</code></td>
+<td><code>import User from ...</code></td>
+</tr>
+</tbody>
+</table>
+<p>Técnicamente, podemos tener exportaciones predeterminadas y con nombre en un solo módulo, pero en la práctica la gente generalmente no las mezcla. Un módulo tiene exportaciones con nombre o la predeterminada.</p>
+<p>Como puede haber como máximo una exportación predeterminada por archivo, la entidad exportada puede no tener nombre.</p>
+<p>Por ejemplo, todas estas son exportaciones predeterminadas perfectamente válidas:</p>
+<div id="3yfnoe0i57" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>export default class { // sin nombre de clase
+  constructor() { ... }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div id="3b7at0ps25" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>export default function(user) { // sin nombre de función
+  alert(`Hello, ${user}!`);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div id="hnm7siaqph" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// exportar un único valor, sin crear una variable
+export default ['Jan', 'Feb', 'Mar','Apr', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No dar un nombre está bien, porque solo hay un “export default” por archivo, por lo que “import” sin llaves sabe qué importar.</p>
+<p>Sin <code>default</code>, dicha exportación daría un error:</p>
+<div id="bs46sda9yh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>export class { // Error! (exportación no predeterminada necesita un nombre)
+  constructor() {}
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="el-nombre-default" href="#el-nombre-default">El nombre “default”</a></h3><p>En algunas situaciones, la palabra clave <code>default</code> se usa para hacer referencia a la exportación predeterminada.</p>
+<p>Por ejemplo, para exportar una función por separado de su definición:</p>
+<div id="tg1doqz6kf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}
+
+// lo mismo que si agregamos &quot;export default&quot; antes de la función
+export {sayHi as default};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Otra situación, supongamos un módulo <code>user.js</code> exporta una cosa principal “default”, y algunas cosas con nombre (raro el caso, pero sucede):</p>
+<div id="709shrc53t" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 user.js
+export default class User {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+export function sayHi(user) {
+  alert(`Hello, ${user}!`);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí la manera de importar la exportación predeterminada junto con la exportación con nombre:</p>
+<div id="bppw6gtjcy" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:8,&quot;end&quot;:23}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 main.js
+import {default as User, sayHi} from './user.js';
+
+new User('John');</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y por último, si importamos todo <code>*</code> como un objeto, entonce la propiedad <code>default</code> es exactamente la exportación predeterminada:</p>
+<div id="o60bvh4up5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 main.js
+import * as user from './user.js';
+
+let User = user.default; // la exportación predeterminada
+new User('John');</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="unas-palabras-contra-exportaciones-predeterminadas" href="#unas-palabras-contra-exportaciones-predeterminadas">Unas palabras contra exportaciones predeterminadas</a></h3><p>Las exportaciones con nombre son explícitas. Nombran exactamente lo que importan, así que tenemos esa información de ellos; Eso es bueno.</p>
+<p>Las exportaciones con nombre nos obligan a usar exactamente el nombre correcto para importar:</p>
+<div id="2lso35meop" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>import {User} from './user.js';
+// import {MyUser} no funcionará, el nombre debe ser {User}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Mientras que para una exportación predeterminada siempre elegimos el nombre al importar:</p>
+<div id="sl8jcr65p3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>import User from './user.js'; // funciona
+import MyUser from './user.js'; // también funciona
+// puede ser import Cualquiera... y aun funcionaría</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por lo tanto, los miembros del equipo pueden usar diferentes nombres para importar lo mismo, y eso no es bueno.</p>
+<p>Por lo general, para evitar eso y mantener el código consistente, existe una regla que establece que las variables importadas deben corresponder a los nombres de los archivos, por ejemplo:</p>
+<div id="j4wbn8md3h" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>import User from './user.js';
+import LoginForm from './loginForm.js';
+import func from '/path/to/func.js';
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aún así, algunos equipos lo consideran un serio inconveniente de las exportaciones predeterminadas. Por lo tanto, prefieren usar siempre exportaciones con nombre. Incluso si solo se exporta una sola cosa, todavía se exporta con un nombre, sin <code>default</code>.</p>
+<p>Eso también hace que la reexportación (ver más abajo) sea un poco más fácil.</p>
+<h2><a class="main__anchor" name="reexportacion" href="#reexportacion">Reexportación</a></h2><p>La sintaxis “Reexportar” <code>export ... from ...</code> permite importar cosas e inmediatamente exportarlas (posiblemente bajo otro nombre), de esta manera:</p>
+<div id="zt0nxyc6li" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>export {sayHi} from './say.js'; // reexportar sayHi
+
+export {default as User} from './user.js'; // reexportar default</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Por qué se necesitaría eso? Veamos un caso de uso práctico.</p>
+<p>Imagine que estamos escribiendo un “paquete”: una carpeta con muchos módulos, con algunas de las funciones exportadas al exterior (herramientas como NPM nos permiten publicar y distribuir dichos paquetes pero no estamos obligados a usarlas), y muchos módulos son solo “ayudantes”, para uso interno en otros módulos de paquete.</p>
+<p>La estructura de archivos podría ser algo así:</p>
+<div id="twt6bx67j8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>auth/
+    index.js
+    user.js
+    helpers.js
+    tests/
+        login.js
+    providers/
+        github.js
+        facebook.js
+        ...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nos gustaría exponer la funcionalidad del paquete a través de un único punto de entrada.</p>
+<p>En otras palabras, una persona que quiera usar nuestro paquete, debería importar solamente el archivo principal <code>auth/index.js</code>.</p>
+<p>Como esto:</p>
+<div id="b3hgtfl217" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>import {login, logout} from 'auth/index.js'</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El “archivo principal”, <code>auth/index.js</code>, exporta toda la funcionalidad que queremos brindar en nuestro paquete.</p>
+<p>La idea es que los extraños, los desarrolladores que usan nuestro paquete, no deben entrometerse con su estructura interna, buscar archivos dentro de nuestra carpeta de paquetes. Exportamos solo lo que es necesario en <code>auth/index.js</code> y mantenemos el resto oculto a miradas indiscretas.</p>
+<p>Como la funcionalidad real exportada se encuentra dispersa entre el paquete, podemos importarla en <code>auth/index.js</code> y exportar desde ella:</p>
+<div id="s7cifdgk2e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 auth/index.js
+
+// importar login/logout e inmediatamente exportarlas
+import {login, logout} from './helpers.js';
+export {login, logout};
+
+// importar default como User y exportarlo
+import User from './user.js';
+export {User};
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora los usuarios de nuestro paquete pueden hacer esto <code>import {login} from &quot;auth/index.js&quot;</code>.</p>
+<p>La sintaxis <code>export ... from ...</code> es solo una notación más corta para tal importación-exportación:</p>
+<div id="knee2bvgyv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 auth/index.js
+// re-exportar login/logout
+export {login, logout} from './helpers.js';
+
+// re-exportar export default como User
+export {default as User} from './user.js';
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La diferencia notable de <code>export ... from</code> comparado a <code>import/export</code> es que los módulos re-exportados no están disponibles en el archivo actual. Entonces en el ejemplo anterior de <code>auth/index.js</code> no podemos usar las funciones re-exportadas <code>login/logout</code>.</p>
+<h3><a class="main__anchor" name="reexportando-la-exportacion-predeterminada" href="#reexportando-la-exportacion-predeterminada">Reexportando la exportación predeterminada</a></h3><p>La exportación predeterminada necesita un manejo separado cuando se reexporta.</p>
+<p>Digamos que tenemos <code>user.js</code> con <code>export default class User</code>, y nos gustaría volver a exportar la clase <code>User</code> de él:</p>
+<div id="w1t4i0orsz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 user.js
+export default class User {
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos tener dos problemas:</p>
+<ol>
+<li>
+<p><code>export User from './user.js'</code> no funcionará. Nos dará un error de sintaxis.</p>
+<p>Para reexportar la exportación predeterminada, tenemos que escribir <code>export {default as User}</code>, tal como en el ejemplo de arriba.</p>
+</li>
+<li>
+<p><code>export * from './user.js'</code> reexporta únicamente las exportaciones con nombre, pero ignora la exportación predeterminada.</p>
+<p>Si queremos reexportar tanto la exportación con nombre como la predeterminada, se necesitan dos declaraciones:</p>
+<div id="52kzcpikgo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>export * from './user.js'; // para reexportar exportaciones con nombre
+export {default} from './user.js'; // para reexportar la exportación predeterminada</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>Tales rarezas de reexportar la exportación predeterminada son una de las razones por las que a algunos desarrolladores no les gustan las exportaciones predeterminadas y prefieren exportaciones con nombre.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Aquí están todos los tipos de ‘exportación’ que cubrimos en este y en artículos anteriores.</p>
+<p>Puede comprobarlo al leerlos y recordar lo que significan:</p>
+<ul>
+<li>Antes de la declaración de clase/función/…:
+<ul>
+<li><code>export [default] clase/función/variable ...</code></li>
+</ul>
+</li>
+<li>Export independiente:
+<ul>
+<li><code>export {x [as y], ...}</code>.</li>
+</ul>
+</li>
+<li>Reexportar:
+<ul>
+<li><code>export {x [as y], ...} from &quot;module&quot;</code></li>
+<li><code>export * from &quot;module&quot;</code> (no reexporta la predeterminada).</li>
+<li><code>export {default [as y]} from &quot;module&quot;</code> (reexporta la predeterminada).</li>
+</ul>
+</li>
+</ul>
+<p>Importación:</p>
+<ul>
+<li>Importa las exportaciones con nombre:
+<ul>
+<li><code>import {x [as y], ...} from &quot;module&quot;</code></li>
+</ul>
+</li>
+<li>Importa la exportación predeterminada:
+<ul>
+<li><code>import x from &quot;module&quot;</code></li>
+<li><code>import {default as x} from &quot;module&quot;</code></li>
+</ul>
+</li>
+<li>Importa todo:
+<ul>
+<li><code>import * as obj from &quot;module&quot;</code></li>
+</ul>
+</li>
+<li>Importa el módulo (su código se ejecuta), pero no asigna ninguna de las exportaciones a variables:
+<ul>
+<li><code>import &quot;module&quot;</code></li>
+</ul>
+</li>
+</ul>
+<p>Podemos poner las declaraciones <code>import/export</code> en la parte superior o inferior de un script, eso no importa.</p>
+<p>Entonces, técnicamente este código está bien:</p>
+<div id="uz79jkqook" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>sayHi();
+
+// ...
+
+import {sayHi} from './say.js'; // import al final del archivo</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En la práctica, las importaciones generalmente se encuentran al comienzo del archivo, pero eso es solo para mayor comodidad.</p>
+<p><strong>Tenga en cuenta que las declaraciones de import/export no funcionan si están dentro <code>{...}</code>.</strong></p>
+<p>Una importación condicional, como esta, no funcionará:</p>
+<div id="el483qmfnj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (something) {
+  import {sayHi} from &quot;./say.js&quot;; // Error: import debe estar en nivel superior
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero, ¿qué pasa si realmente necesitamos importar algo condicionalmente? O en el momento adecuado? Por ejemplo, ¿cargar un módulo a pedido, cuando realmente se necesita?</p>
+<p>Veremos importaciones dinámicas en el próximo artículo.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="modules-intro.html" data-tooltip="Módulos, introducción"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="modules-dynamic-imports.html" data-tooltip="Importaciones dinámicas"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fimport-export" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fimport-export" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/import-export","identifier":"\/import-export"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="modules.html">Módulos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#export-antes-de-las-sentencias">Export antes de las sentencias</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#export-separado-de-la-declaracion">Export separado de la declaración</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#import">Import *</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#importar-as">Importar “as”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#exportar-as">Exportar “as”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#export-default">Export default</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#reexportacion">Reexportación</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fimport-export" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fimport-export" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/13-modules/02-import-export" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/import-export by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:19 GMT -->
+</html>

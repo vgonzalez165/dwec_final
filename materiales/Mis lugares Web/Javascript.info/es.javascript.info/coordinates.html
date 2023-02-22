@@ -1,0 +1,404 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/coordinates by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Coordenadas</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="coordinates.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Coordenadas"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Coordenadas"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="size-and-scroll-window.html"><link rel="next" href="events.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+
+  let elem = document.getElementById('coords-show-mark');
+
+  // no hay elem en la versión ebook (pdf/epub)
+  if (elem) {
+    elem.onclick = function() {
+
+      function createMessageUnder(elem, text) {
+        let coords = elem.getBoundingClientRect();
+        let message = document.createElement('div');
+        message.style.cssText = "position:fixed; color: red";
+
+        message.style.left = coords.left + "px";
+        message.style.top = coords.bottom + "px";
+
+        message.innerHTML = text;
+
+        return message;
+      }
+
+      let message = createMessageUnder(elem, 'Hola, mundo!');
+      document.body.append(message);
+      setTimeout(() => message.remove(), 5000);
+    }
+  }
+
+});
+
+</script>
+<meta property="og:title" content="Coordenadas"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/coordinates"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/coordinates"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="coordinates.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/coordinates"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/coordinates"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/coordinates"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/coordinates"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/coordinates"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/coordinates"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/coordinates"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/coordinates"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcoordinates" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcoordinates" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/coordinates">عربي</option><option value="https://javascript.info/coordinates">English</option><option value="https://es.javascript.info/coordinates" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/coordinates">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/coordinates">Italiano</option><option value="https://ja.javascript.info/coordinates">日本語</option><option value="https://ko.javascript.info/coordinates">한국어</option><option value="https://learn.javascript.ru/coordinates">Русский</option><option value="https://tr.javascript.info/coordinates">Türkçe</option><option value="https://uk.javascript.info/coordinates">Українська</option><option value="https://zh.javascript.info/coordinates">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="11" max="32" data-tooltip="Lección 11 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="document.html"><span>Documento</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Documento","item":"https://es.javascript.info/document"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 6 de febrero de 2023"><div class="updated-at__content">6 de febrero de 2023</div></div></div><h1 class="main__header-title">Coordenadas</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Coordenadas"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Para mover elementos debemos estar familiarizados con las coordenadas.</p>
+<p>La mayoría de los métodos de JavaScript tratan con uno de dos sistemas de coordenadas:</p>
+<ol>
+<li><strong>Relativo a la ventana</strong>: similar a <code>position:fixed</code>, calculado desde el borde superior/izquierdo de la ventana.
+<ul>
+<li>Designaremos estas coordenadas como <code>clientX/clientY</code>, el razonamiento para tal nombre se aclarará más adelante, cuando estudiemos las propiedades de los eventos.</li>
+</ul>
+</li>
+<li><strong>Relative al documento</strong> – similar a <code>position:absolute</code> en la raíz del documento, calculado a partir del borde superior/izquierdo del documento.
+<ul>
+<li>Las designaremos como <code>pageX/pageY</code>.</li>
+</ul>
+</li>
+</ol>
+<p>Cuando la página se desplaza hasta el comienzo, de modo que la esquina superior/izquierda de la ventana es exactamente la esquina superior/izquierda del documento, estas coordenadas son iguales entre sí. Pero después de que el documento cambia, las coordenadas relativas a la ventana de los elementos cambian, a medida que los elementos se mueven a través de la ventana, mientras que las coordenadas relativas al documento permanecen iguales.</p>
+<p>En esta imagen tomamos un punto en el documento y demostramos sus coordenadas antes del desplazamiento (primera imagen) y después (segunda imagen):</p>
+<figure><div class="image" style="width:728px">
+      <div class="image__ratio" style="padding-top:49.175824175824175%"></div>
+      <object type="image/svg+xml" data="article/coordinates/document-and-window-coordinates-scrolled.svg" width="728" height="358" class="image__image" data-use-theme>
+        <img src="article/coordinates/document-and-window-coordinates-scrolled.svg" alt="" width="728" height="358">
+      </object>
+      </div></figure><p>Cuando el documento se desplazó:</p>
+<ul>
+<li>La coordenada <code>pageY</code> relativa al documento se mantuvo igual, se cuenta desde la parte superior del documento (ahora desplazada).</li>
+<li>La coordenada <code>clientY</code> relativa a la ventana cambió (la flecha se acortó), ya que el mismo punto se acercó a la parte superior de la ventana.</li>
+</ul>
+<h2><a class="main__anchor" name="coordenadas-de-elemento-getboundingclientrect" href="#coordenadas-de-elemento-getboundingclientrect">Coordenadas de elemento: getBoundingClientRect</a></h2><p>El método <code>elem.getBoundingClientRect()</code> devuelve las coordenadas de la ventana para un rectángulo mínimo que encasilla a <code>elem</code> como un objeto de la clase interna <a href="https://www.w3.org/TR/geometry-1/#domrect">DOMRect</a>.</p>
+<p>Propiedades principales de <code>DOMRect</code>:</p>
+<ul>
+<li><code>x/y</code>: coordenadas X/Y del origen del rectángulo con relación a la ventana.</li>
+<li><code>width/height</code>: ancho/alto del rectángulo (pueden ser negativos).</li>
+</ul>
+<p>Adicionalmente existen estas propiedades derivadas:</p>
+<ul>
+<li><code>top/bottom</code>: coordenada Y para el borde superior/inferior del rectángulo.</li>
+<li><code>left/right</code>: coordenada X para el borde izquierdo/derecho del rectángulo.</li>
+</ul>
+<p>Por ejemplo, haz click en este botón para ver las coordenadas en relación a la ventana:</p>
+<p><input id="brTest" type="button" style="max-width: 90vw;" value="Recibe las coordenadas para este botón con button.getBoundingClientRect()" onclick='showRect(this)'/></p>
+<script>
+function showRect(elem) {
+  let r = elem.getBoundingClientRect();
+  alert(`x:${r.x}
+y:${r.y}
+width:${r.width}
+height:${r.height}
+top:${r.top}
+bottom:${r.bottom}
+left:${r.left}
+right:${r.right}
+`);
+}
+</script>
+<p>Si desplazas la página y repites te darás cuenta que así como cambia la posición del botón relativa a la ventada también cambian sus coordenadas en la ventana (<code>y/top/bottom</code> si es que haces scroll vertical).</p>
+<p>Aquí hay la imagen con el output de <code>elem.getBoundingClientRect()</code>:</p>
+<figure><div class="image" style="width:521px">
+      <div class="image__ratio" style="padding-top:78.88675623800384%"></div>
+      <object type="image/svg+xml" data="article/coordinates/coordinates.svg" width="521" height="411" class="image__image" data-use-theme>
+        <img src="article/coordinates/coordinates.svg" alt="" width="521" height="411">
+      </object>
+      </div></figure><p>Como puedes ver <code>x/y</code> y <code>width/height</code> describen completamente el rectángulo. Las propiedades derivadas pueden ser calculadas a partir de ellas:</p>
+<ul>
+<li><code>left = x</code></li>
+<li><code>top = y</code></li>
+<li><code>right = x + width</code></li>
+<li><code>bottom = y + height</code></li>
+</ul>
+<p>Toma en cuenta:</p>
+<ul>
+<li>Las coordenadas pueden ser fracciones decimales, tales como <code>10.5</code>. Esto es normal ya que internamente el navegador usa fracciones en los cálculos. No tenemos que redondearlos para poder asignarlos a <code>style.left/top</code>.</li>
+<li>Las coordenadas pueden ser negativas. Por ejemplo, si la página se desplaza hasta que <code>elem</code> rebase el borde superior de la ventana, entonces <code>elem.getBoundingClientRect().top</code> será negativo.</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Por qué se necesitan propiedades derivadas? ¿Por qué <code>top/left</code> si existe <code>x/y</code>?</span></div>
+            <div class="important__content"><p>Matemáticamente un rectángulo se define de únicamente con su punto de partida <code>(x,y)</code>  y el vector de dirección <code>(width,height)</code>. Por lo tanto, las propiedades derivadas adicionales son por conveniencia.</p>
+<p>Técnicamente es posible que <code>width/height</code> sean negativos, lo que permite un rectángulo “dirigido”. Por ejemplo, para representar la selección del mouse con su inicio y final debidamente marcados.</p>
+<p>Los valores negativos para <code>width/height</code> indican que el rectángulo comienza en su esquina inferior derecha y luego se extiende hacia la izquierda y arriba.</p>
+<p>Aquí hay un rectángulo con valores <code>width</code> y <code>height</code> negativos(ejemplo: <code>width=-200</code>, <code>height=-100</code>):</p>
+<figure><div class="image" style="width:521px">
+      <div class="image__ratio" style="padding-top:68.13819577735126%"></div>
+      <object type="image/svg+xml" data="article/coordinates/coordinates-negative.svg" width="521" height="355" class="image__image" data-use-theme>
+        <img src="article/coordinates/coordinates-negative.svg" alt="" width="521" height="355">
+      </object>
+      </div></figure><p>Como puedes ver: <code>left/top</code> no es igual a <code>x/y</code> en tal caso.</p>
+<p>Pero en la práctica <code>elem.getBoundingClientRect()</code> siempre devuelve el ancho y alto  positivos. Aquí hemos mencionado los valores negativos para <code>width/height</code> solo para que comprendas por qué estas propiedades aparentemente duplicadas en realidad no lo son.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">En Internet Explorer no hay soporte para <code>x/y</code></span></div>
+            <div class="important__content"><p>Internet Explorer no tiene soporte para las propiedades <code>x/y</code> por razones históricas.</p>
+<p>De manera que podemos crear un polyfill y (obtenerlo con <code>DomRect.prototype</code>) o solo usar <code>top/left</code>, ya que son siempre las mismas que <code>x/y</code> para <code>width/height</code> positivos, en particular en el resultado de <code>elem.getBoundingClientRect()</code>.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Las coordenadas right/bottom son diferentes a las propiedades de posición en CSS</span></div>
+            <div class="important__content"><p>Existen muchas similitudes obvias entre las coordenadas relativas a la ventana y <code>position:fixed</code> en CSS.</p>
+<p>Pero en el posicionamiento con CSS, la propiedad <code>right</code> define la distancia entre el borde derecho y el elemento y la propiedad <code>bottom</code> supone la distancia entre el borde inferior y el elemento.</p>
+<p>Si echamos un vistazo a la imagen anterior veremos que en JavaScript esto no es así. Todas las coordenadas de la ventana se cuentan a partir de la esquina superior izquierda, incluyendo estas.</p>
+</div></div>
+<h2><a class="main__anchor" name="elementFromPoint" href="#elementFromPoint">elementFromPoint(x, y)</a></h2><p>La llamada a <code>document.elementFromPoint(x, y)</code> devuelve el elemento más anidado dentro de las coordenadas de la ventana <code>(x, y)</code>.</p>
+<p>La sintaxis es:</p>
+<div id="fuytz30kpl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let elem = document.elementFromPoint(x, y);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por ejemplo, el siguiente código resalta y muestra la etiqueta del elemento que ahora se encuentra en medio de la ventana:</p>
+<div id="eatz5e30o4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let centerX = document.documentElement.clientWidth / 2;
+let centerY = document.documentElement.clientHeight / 2;
+
+let elem = document.elementFromPoint(centerX, centerY);
+
+elem.style.background = &quot;red&quot;;
+alert(elem.tagName);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Debido a que utiliza las coordenadas de la ventana, el elemento puede ser diferente dependiendo de la posición actual del scroll.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Para coordenadas fuera de la ventana, el <code>elementFromPoint</code> devuelve <code>null</code></span></div>
+            <div class="important__content"><p>El método <code>document.elementFromPoint(x,y)</code> solo funciona si <code>(x,y)</code> se encuentra dentro del área visible.</p>
+<p>Si alguna de las coordenadas es negativa o excede el ancho o alto de la ventana entonces devolverá <code>null</code>.</p>
+<p>Aquí hay un error típico que podría ocurrir si no nos aseguramos de ello:</p>
+<div id="wdu9xl0jtm" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let elem = document.elementFromPoint(x, y);
+// si las coordenadas sobrepasan la ventana entonces elem = null
+elem.style.background = ''; // ¡Error!</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="usandolas-para-posicionamiento-fijo" href="#usandolas-para-posicionamiento-fijo">Usándolas para posicionamiento “fijo”</a></h2><p>La mayoría del tiempo necesitamos coordenadas para posicionar algo.</p>
+<p>Para mostrar algo cercano a un elemento podemos usar <code>getBoundingClientRect</code> para obtener sus coordenadas y entonces CSS <code>position</code> junto con <code>left/top</code> (o <code>right/bottom</code>).</p>
+<p>Por ejemplo, la función <code>createMessageUnder(elem, html)</code> a continuación nos muestra un mensaje debajo de <code>elem</code>:</p>
+<div id="5cs0pw2i2b" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let elem = document.getElementById(&quot;coords-show-mark&quot;);
+
+function createMessageUnder(elem, html) {
+  // Crea un elemento de mensaje
+  let message = document.createElement('div');
+  // Lo mejor es usar una clase css para el estilo aquí
+  message.style.cssText = &quot;position:fixed; color: red&quot;;
+
+  // Asignando las coordenadas, no olvides &quot;px&quot;!
+  let coords = elem.getBoundingClientRect();
+
+  message.style.left = coords.left + &quot;px&quot;;
+  message.style.top = coords.bottom + &quot;px&quot;;
+
+  message.innerHTML = html;
+
+  return message;
+}
+
+// Uso:
+// agregarlo por 5 segundos en el documento
+let message = createMessageUnder(elem, '¡Hola, mundo!');
+document.body.append(message);
+setTimeout(() =&gt; message.remove(), 5000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pulsa el botón para ejecutarlo:</p>
+<p><button id="coords-show-mark">Botón con el id=“coords-show-mark”, el mensaje aparecerá aquí debajo</button></p>
+<p>El código puede ser modificado para mostrar el mensaje a la izquierda, derecha, abajo, aplicando animaciones con CSS para “desvanecerlo” y así. Es fácil una vez que tenemos todas las coordenadas y medidas del elemento.</p>
+<p>Pero nota un detalle importante: cuando la página se desplaza, el mensaje se aleja del botón.</p>
+<p>La razón es obvia: el elemento del mensaje se basa en <code>position:fixed</code>, esto lo reubica al mismo lugar en la ventana mientras se desplaza.</p>
+<p>Para cambiar esto necesitamos usar las coordenadas basadas en el documento y <code>position:absolute</code>.</p>
+<h2><a class="main__anchor" name="getCoords" href="#getCoords">Coordenadas del documento</a></h2><p>Las coordenadas relativas al documento comienzan en la esquina superior izquierda del documento, no de la ventana.</p>
+<p>En CSS las coordenadas de la ventana corresponden a <code>position:fixed</code> mientras que las del documento son similares a <code>position:absolute</code> en la parte superior.</p>
+<p>Podemos usar <code>position:absolute</code> y <code>top/left</code> para colocar algo en un lugar determinado del documento, esto lo reubicará ahí mismo durante un desplazamiento de página. Pero primero necesitamos las coordenadas correctas.</p>
+<p>No existe un estándar para obtener las coordenadas de un elemento en un documento. Pero es fácil de codificarlo.</p>
+<p>Los dos sistemas de coordenadas están relacionados mediante la siguiente fórmula:</p>
+<ul>
+<li><code>pageY</code> = <code>clientY</code> + el alto de la parte vertical desplazada del documento.</li>
+<li><code>pageX</code> = <code>clientX</code> + el ancho de la parte horizontal desplazada del documento.</li>
+</ul>
+<p>La función <code>getCoords(elem)</code> toma las coordenadas de la ventana de <code>elem.getBoundingClientRect()</code> y agrega el desplazamiento actual a ellas:</p>
+<div id="981enhg203" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// obteniendo las coordenadas en el documento del elemento
+function getCoords(elem) {
+  let box = elem.getBoundingClientRect();
+
+  return {
+    top: box.top + window.pageYOffset,
+    right: box.right + window.pageXOffset,
+    bottom: box.bottom + window.pageYOffset,
+    left: box.left + window.pageXOffset
+  };
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si el ejemplo anterior se usara con <code>position:absolute</code> entonces el mensaje podría permanecer cerca del elemento durante el desplazamiento.</p>
+<p>La función modificada <code>createMessageUnder</code>:</p>
+<div id="nf4grouofc" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:15,&quot;end&quot;:31}]},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:27,&quot;end&quot;:44}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function createMessageUnder(elem, html) {
+  let message = document.createElement('div');
+  message.style.cssText = &quot;position:absolute; color: red&quot;;
+
+  let coords = getCoords(elem);
+
+  message.style.left = coords.left + &quot;px&quot;;
+  message.style.top = coords.bottom + &quot;px&quot;;
+
+  message.innerHTML = html;
+
+  return message;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Cualquier punto en la página tiene coordenadas:</p>
+<ol>
+<li>Relativas a la ventana: <code>elem.getBoundingClientRect()</code>.</li>
+<li>Relativas al documento: <code>elem.getBoundingClientRect()</code> mas el desplazamiento actual de la página.</li>
+</ol>
+<p>Las coordenadas de la ventana son ideales para usarse con <code>position:fixed</code>, y las coordenadas del documento funcionan bien con <code>position:absolute</code>.</p>
+<p>Ambos sistemas de coordenadas tienen pros y contras; habrá ocasiones en que ocuparemos una u otra, justamente como con los valores <code>absolute</code> y <code>fixed</code> para <code>position</code> en CSS.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#encuentra-las-coordenadas-del-campo-en-la-ventana" name="encuentra-las-coordenadas-del-campo-en-la-ventana">Encuentra las coordenadas del campo en la ventana</a></h3><a class="task__open-link" href="task/find-point-coordinates.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>En el siguiente iframe puedes ver un documento con el “campo” verde.</p>
+<p>Usa JavaScript para encontrar las coordenadas de las esquinas de la ventana señaladas con las flechas.</p>
+<p>Hay una pequeña característica implementada en el documento para conveniencia. Un click en cualquier lugar mostrará las coordenadas ahí.</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/task/find-point-coordinates/source/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/Tf5n5uRJwqexgA6F?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="Tf5n5uRJwqexgA6F" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:360px" src="https://es.js.cx/task/find-point-coordinates/source/"></iframe>
+  </div><p>Tu código debe usar el DOM para obtener las coordenadas en la ventana de:</p>
+<ol>
+<li>La esquina superior izquierda externa (eso es simple).</li>
+<li>La esquina inferior derecha externa (simple también).</li>
+<li>La esquina superior izquierda interna (un poco más difícil).</li>
+<li>La esquina inferior derecha interna (existen muchas maneras, elige una).</li>
+</ol>
+<p>Las coordenadas que tú calcules deben ser iguales a las devueltas por el click del mouse.</p>
+<p>P.D. El código también debe funcionar si el elemento tiene otro tamaño o borde, no está ligado a ningún valor fijo.</p>
+<p><a href="https://plnkr.co/edit/Tf5n5uRJwqexgA6F?p=preview" target="_blank" data-plunk-id="Tf5n5uRJwqexgA6F">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Esquinas externas</button><div class="task__answer-content"><h4 class="task__step-title">Esquinas externas</h4><div class="formatted"><p>Las esquinas externas son básicamente las que obtenemos de <a href="https://developer.mozilla.org/es/docs/Web/API/Element/element.getBoundingClientRect">elem.getBoundingClientRect()</a>.</p>
+<p>Las coordenadas de la esquina superior izquierda <code>answer1</code> y la esquina inferior derecha <code>answer2</code>:</p>
+<div id="dcoss59dwb" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let coords = elem.getBoundingClientRect();
+
+let answer1 = [coords.left, coords.top];
+let answer2 = [coords.right, coords.bottom];</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Esquina interna y superior izquierda</button><div class="task__answer-content"><h4 class="task__step-title">Esquina interna y superior izquierda</h4><div class="formatted"><p>Esta es diferente a la esquina externa por el ancho del borde. Una manera confiable de obtener la distancia es usando <code>clientLeft/clientTop</code>:</p>
+<div id="5xniv8ezjg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let answer3 = [coords.left + field.clientLeft, coords.top + field.clientTop];</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Esquina interna e inferior derecha</button><div class="task__answer-content"><h4 class="task__step-title">Esquina interna e inferior derecha</h4><div class="formatted"><p>En nuestro caso necesitamos sustraer la medida del borde de las coordenadas externas.</p>
+<p>Podemos usar la forma de CSS:</p>
+<div id="en7ro2uknv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let answer4 = [
+  coords.right - parseInt(getComputedStyle(field).borderRightWidth),
+  coords.bottom - parseInt(getComputedStyle(field).borderBottomWidth)
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Una forma alternativa puede ser agregando <code>clientWidth/clientHeight</code> a las coordenadas de la esquina superior izquierda. Probablemente sea incluso mejor:</p>
+<div id="6xql51dzb1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let answer4 = [
+  coords.left + elem.clientLeft + elem.clientWidth,
+  coords.top + elem.clientTop + elem.clientHeight
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/gRI6XaKmg0ITOZ20?p=preview" target="_blank" data-plunk-id="gRI6XaKmg0ITOZ20">Abrir la solución en un entorno controlado.</a></p></div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#muestra-una-nota-cercana-al-elemento" name="muestra-una-nota-cercana-al-elemento">Muestra una nota cercana al elemento</a></h3><a class="task__open-link" href="task/position-at.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>positionAt(anchor, position, elem)</code> que posicione <code>elem</code>, dependiendo de la proximidad de <code>position</code> al elemento <code>anchor</code>.</p>
+<p><code>position</code> debe ser un string con alguno de estos 3 valores:</p>
+<ul>
+<li><code>&quot;top&quot;</code> – posiciona <code>elem</code> encima de <code>anchor</code></li>
+<li><code>&quot;right&quot;</code> – posiciona <code>elem</code> inmediatamente a la derecha de <code>anchor</code></li>
+<li><code>&quot;bottom&quot;</code> – posiciona <code>elem</code> debajo de <code>anchor</code></li>
+</ul>
+<p>Esto será usado dentro de la función <code>showNote(anchor, position, html)</code>, proveída en el código fuente de la tarea, que crea un elemento “note” con el <code>html</code> y lo muestra en el lugar proporcionado por <code>position</code> cercano a <code>anchor</code>.</p>
+<p>Aquí está el demo de las notas:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/task/position-at/solution/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:350px" src="https://es.js.cx/task/position-at/solution/"></iframe>
+  </div><p><a href="https://plnkr.co/edit/27HVAsAP7NAg9xRu?p=preview" target="_blank" data-plunk-id="27HVAsAP7NAg9xRu">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>En esta tarea sólo necesitamos calcular exactamente las coordenadas. Mira el código para más detalles.</p>
+<p>Ten en cuenta: los elementos deben estar en el documento para leer <code>offsetHeight</code> y otras propiedades.
+Un elemento oculto (<code>display:none</code>) o fuera del documento no tiene medidas.</p>
+<p><a href="https://plnkr.co/edit/LqJXUO4fAIA92JNp?p=preview" target="_blank" data-plunk-id="LqJXUO4fAIA92JNp">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#muestra-una-nota-cercana-al-elemento-absolute" name="muestra-una-nota-cercana-al-elemento-absolute">Muestra una nota cercana al elemento (absolute)</a></h3><a class="task__open-link" href="task/position-at-absolute.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Modifica la solución de la <a href="task/position-at.html">tarea previa</a> de manera que la nota use <code>position:absolute</code> en lugar de <code>position:fixed</code>.</p>
+<p>Esto evitará que se “aleje” del elemento cuando se desplace la página.</p>
+<p>Toma la solución de la tarea anterior como punto de partida. Para testear el scroll, agrega el estilo <code>&lt;body style=&quot;height: 2000px&quot;&gt;</code>.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La solución realmente es muy simple:</p>
+<ul>
+<li>Usa <code>position:absolute</code> con CSS en lugar de <code>position:fixed</code> para <code>.note</code>.</li>
+<li>Usa la función <a href="coordinates.html#getCoords">getCoords()</a> del capítulo <a href="coordinates.html">Coordenadas</a> para obtener las coordenadas relativas al documento.</li>
+</ul>
+<p><a href="https://plnkr.co/edit/rPjAq97cTrqTq9kR?p=preview" target="_blank" data-plunk-id="rPjAq97cTrqTq9kR">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#posiciona-la-nota-adentro-absolute" name="posiciona-la-nota-adentro-absolute">Posiciona la nota adentro (absolute)</a></h3><a class="task__open-link" href="task/position-inside-absolute.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Ampliando a la tarea anterior <a href="task/position-at-absolute.html">Muestra una nota cercana al elemento (absolute)</a>: enséñale a la función <code>positionAt(anchor, position, elem)</code> a insertar <code>elem</code> dentro de <code>anchor</code>.</p>
+<p>Los nuevos valores para posición son <code>position</code>:</p>
+<ul>
+<li><code>top-out</code>, <code>right-out</code>, <code>bottom-out</code> – funciona ingual que antes, inserta el <code>elem</code> encima, a la derecha o debajo de <code>anchor</code>.</li>
+<li><code>top-in</code>, <code>right-in</code>, <code>bottom-in</code> – inserta el <code>elem</code> dentro del <code>anchor</code>: lo fija en la parte superior, derecha o inferior del borde.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="hbro08ztvn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Muestra la nota encima de la cita textual
+positionAt(blockquote, &quot;top-out&quot;, note);
+
+// Muestra la nota dentro de la cita textual en la parte superior
+positionAt(blockquote, &quot;top-in&quot;, note);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El resultado:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/task/position-inside-absolute/solution/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:310px" src="https://es.js.cx/task/position-inside-absolute/solution/"></iframe>
+  </div><p>Para el código fuente toma la solución de la tarea <a href="task/position-at-absolute.html">Muestra una nota cercana al elemento (absolute)</a>.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p><a href="https://plnkr.co/edit/d43SzGszPjjyN5x7?p=preview" target="_blank" data-plunk-id="d43SzGszPjjyN5x7">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="size-and-scroll-window.html" data-tooltip="Tamaño de ventana y desplazamiento"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="events.html" data-tooltip="Introducción a los eventos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcoordinates" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcoordinates" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/coordinates","identifier":"\/coordinates"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.html">Documento</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#coordenadas-de-elemento-getboundingclientrect">Coordenadas de elemento: getBoundingClientRect</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#elementFromPoint">elementFromPoint(x, y)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#usandolas-para-posicionamiento-fijo">Usándolas para posicionamiento “fijo”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#getCoords">Coordenadas del documento</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (4)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcoordinates" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fcoordinates" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/1-document/11-coordinates" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/coordinates by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:30 GMT -->
+</html>

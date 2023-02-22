@@ -1,0 +1,613 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/regexp-methods by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "es";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Métodos de RegExp y String</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-methods.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Métodos de RegExp y String"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Métodos de RegExp y String"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="regexp-sticky.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Métodos de RegExp y String"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/regexp-methods"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/regexp-methods"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-methods.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/regexp-methods"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/regexp-methods"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/regexp-methods"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/regexp-methods"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/regexp-methods"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-methods" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-methods" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/regexp-methods">عربي</option><option value="https://javascript.info/regexp-methods">English</option><option value="https://es.javascript.info/regexp-methods" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/regexp-methods">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/regexp-methods">Italiano</option><option value="https://ja.javascript.info/regexp-methods">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/regexp-methods">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/regexp-methods">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="17" max="17" data-tooltip="Lección 17 de 17"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="regular-expressions.html"><span>Expresiones Regulares</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Expresiones Regulares","item":"https://es.javascript.info/regular-expressions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 26 de agosto de 2022"><div class="updated-at__content">26 de agosto de 2022</div></div></div><h1 class="main__header-title">Métodos de RegExp y String</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Métodos de RegExp y String"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>En este artículo vamos a abordar varios métodos que funcionan con expresiones regulares a fondo.</p>
+<h2><a class="main__anchor" name="str-match-regexp" href="#str-match-regexp">str.match(regexp)</a></h2><p>El método <code>str.match(regexp)</code> encuentra coincidencias para las expresiones regulares (<code>regexp</code>) en la cadena (<code>str</code>).</p>
+<p>Tiene 3 modos:</p>
+<ol>
+<li>
+<p>Si la expresión regular (<code>regexp</code>) no tiene la bandera <code class="pattern">g</code>, retorna un array con los grupos capturados y las propiedades <code>index</code> (posición de la coincidencia), <code>input</code> (cadena de entrada, igual a <code>str</code>):</p>
+<div id="8a5myrcy1a" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;I love JavaScript&quot;;
+
+let result = str.match(/Java(Script)/);
+
+alert( result[0] );     // JavaScript (toda la coincidencia)
+alert( result[1] );     // Script (primer grupo capturado)
+alert( result.length ); // 2
+
+// Additional information:
+alert( result.index );  // 7 (match position)
+alert( result.input );  // I love JavaScript (cadena de entrada)</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Si la expresión regular (<code>regexp</code>) tiene la bandera <code class="pattern">g</code>, retorna un array de todas las coincidencias como cadenas, sin capturar grupos y otros detalles.</p>
+<div id="upnlkaj6ap" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;I love JavaScript&quot;;
+
+let result = str.match(/Java(Script)/g);
+
+alert( result[0] ); // JavaScript
+alert( result.length ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Si no hay coincidencias, no importa si tiene la bandera <code class="pattern">g</code> o no,  retorna <code>null</code> .</p>
+<p>Esto es algo muy importante. Si no hay coincidencias, no vamos a obtener un array vacío, pero sí un <code>null</code>. Es fácil cometer un error olvidándolo, ej.:</p>
+<div id="lgqq17238v" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;I love JavaScript&quot;;
+
+let result = str.match(/HTML/);
+
+alert(result); // null
+alert(result.length); // Error: Cannot read property 'length' of null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si queremos que el resultado sea un array, podemos escribirlo así:</p>
+<div id="i8itlzjn4d" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let result = str.match(regexp) || [];</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<h2><a class="main__anchor" name="str-matchall-regexp" href="#str-matchall-regexp">str.matchAll(regexp)</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Una adición reciente</span></div>
+            <div class="important__content">
+            Esta es una adición reciente al lenguaje.
+            Los navegadores antiguos pueden necesitar polyfills.
+            </div></div>
+<p>El método <code>str.matchAll(regexp)</code> es una variante (“nueva y mejorada”) de <code>str.match</code>.</p>
+<p>Es usado principalmente para buscar por todas las coincidencias con todos los grupos.</p>
+<p>Hay 3 diferencias con <code>match</code>:</p>
+<ol>
+<li>Retorna un objeto iterable con las coincidencias en lugar de un array. Podemos convertirlo en un array usando el método <code>Array.from</code>.</li>
+<li>Cada coincidencia es retornada como un array con los grupos capturados (el mismo formato de <code>str.match</code> sin la bandera <code class="pattern">g</code>).</li>
+<li>Si no hay resultados devuelve un objeto iterable vacío en lugar de <code>null</code>.</li>
+</ol>
+<p>Ejemplo de uso:</p>
+<div id="nt6qb8rre0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '&lt;h1&gt;Hello, world!&lt;/h1&gt;';
+let regexp = /&lt;(.*?)&gt;/g;
+
+let matchAll = str.matchAll(regexp);
+
+alert(matchAll); // [object RegExp String Iterator], no es un array, pero sí un objeto iterable
+
+matchAll = Array.from(matchAll); // ahora es un array
+
+let firstMatch = matchAll[0];
+alert( firstMatch[0] );  // &lt;h1&gt;
+alert( firstMatch[1] );  // h1
+alert( firstMatch.index );  // 0
+alert( firstMatch.input );  // &lt;h1&gt;Hello, world!&lt;/h1&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si usamos <code>for..of</code> para iterar todas las coincidencias de <code>matchAll</code>, no necesitamos <code>Array.from</code>.</p>
+<h2><a class="main__anchor" name="str-split-regexp-substr-limit" href="#str-split-regexp-substr-limit">str.split(regexp|substr, limit)</a></h2><p>Divide la cadena usando la expresión regular (o una sub-cadena) como delimitador.</p>
+<p>Podemos usar <code>split</code> con cadenas, así:</p>
+<div id="udbsjp7evn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('12-34-56'.split('-')) // array de ['12', '34', '56']</code></pre>
+        </div>
+      </div>
+      
+      </div><p>O también dividir una cadena usando una expresión regular de la misma forma:</p>
+<div id="8j8dxxv9e5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('12, 34, 56'.split(/,\s*/)) // array de ['12', '34', '56']</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="str-search-regexp" href="#str-search-regexp">str.search(regexp)</a></h2><p>El método <code>str.search(regexp)</code> retorna la posición de la primera coincidencia o <code>-1</code> si no encuentra nada:</p>
+<div id="9i5l9pxfma" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;A drop of ink may make a million think&quot;;
+
+alert( str.search( /ink/i ) ); // 10 (posición de la primera coincidencia)</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>Limitación importante: <code>search</code> solamente encuentra la primera coincidencia.</strong></p>
+<p>Si necesitamos las posiciones de las demás coincidencias, deberíamos usar otros medios, como encontrar todos con <code>str.matchAll(regexp)</code>.</p>
+<h2><a class="main__anchor" name="str-replace-str-regexp-str-func" href="#str-replace-str-regexp-str-func">str.replace(str|regexp, str|func)</a></h2><p>Este es un método genérico para buscar y reemplazar, uno de los más útiles. La navaja suiza para buscar y reemplazar.</p>
+<p>Podemos usarlo sin expresiones regulares, para buscar y reemplazar una sub-cadena:</p>
+<div id="tei76m2eyx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// reemplazar guion por dos puntos
+alert('12-34-56'.replace(&quot;-&quot;, &quot;:&quot;)) // 12:34-56</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Sin embargo hay una trampa:</p>
+<p><strong>Cuando el primer argumento de <code>replace</code> es una cadena, solo reemplaza la primera coincidencia.</strong></p>
+<p>Puedes ver eso en el ejemplo anterior: solo el primer <code>&quot;-&quot;</code> es reemplazado por <code>&quot;:&quot;</code>.</p>
+<p>Para encontrar todos los guiones, no necesitamos usar un cadena <code>&quot;-&quot;</code> sino una expresión regular <code class="pattern">/-/g</code> con la bandera <code class="pattern">g</code> obligatoria:</p>
+<div id="6hr0mkqygd" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:27,&quot;end&quot;:31}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// reemplazar todos los guiones por dos puntos
+alert( '12-34-56'.replace( /-/g, &quot;:&quot; ) )  // 12:34:56</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El segundo argumento es la cadena de reemplazo. Podemos usar caracteres especiales:</p>
+<table>
+<thead>
+<tr>
+<th>Símbolos</th>
+<th>Acción en la cadena de reemplazo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$&amp;</code></td>
+<td>inserta toda la coincidencia</td>
+</tr>
+<tr>
+<td><code>$`</code></td>
+<td>inserta una parte de la cadena antes de la coincidencia</td>
+</tr>
+<tr>
+<td><code>$'</code></td>
+<td>inserta una parte de la cadena después de la coincidencia</td>
+</tr>
+<tr>
+<td><code>$n</code></td>
+<td>si <code>n</code> es un número, inserta el contenido del enésimo grupo capturado, para más detalles ver <a href="regexp-groups.html">Grupos de captura</a></td>
+</tr>
+<tr>
+<td><code>$&lt;nombre&gt;</code></td>
+<td>inserta el contenido de los paréntesis con el <code>nombre</code> dado, para más detalles ver <a href="regexp-groups.html">Grupos de captura</a></td>
+</tr>
+<tr>
+<td><code>$$</code></td>
+<td>inserta el carácter <code>$</code></td>
+</tr>
+</tbody>
+</table>
+<p>Por ejemplo:</p>
+<div id="aesprkcaiw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;John Smith&quot;;
+
+// intercambiar el nombre con el apellido
+alert(str.replace(/(john) (smith)/i, '$2, $1')) // Smith, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p><strong>Para situaciones que requieran reemplazos “inteligentes”, el segundo argumento puede ser una función.</strong></p>
+<p>Puede ser llamado por cada coincidencia y el valor retornado puede ser insertado como un reemplazo.</p>
+<p>La función es llamada con los siguientes argumentos <code>func(match, p1, p2, ..., pn, offset, input, groups)</code>:</p>
+<ol>
+<li><code>match</code> – la coincidencia,</li>
+<li><code>p1, p2, ..., pn</code> – contenido de los grupos capturados (si hay alguno),</li>
+<li><code>offset</code> – posición de la coincidencia,</li>
+<li><code>input</code> – la cadena de entrada,</li>
+<li><code>groups</code> – un objeto con los grupos nombrados.</li>
+</ol>
+<p>Si hay paréntesis en la expresión regular, entonces solo son 3 argumentos: <code>func(str, offset, input)</code>.</p>
+<p>Por ejemplo, hacer mayúsculas todas las coincidencias:</p>
+<div id="q9xvvnye25" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;html and css&quot;;
+
+let result = str.replace(/html|css/gi, str =&gt; str.toUpperCase());
+
+alert(result); // HTML and CSS</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Reemplazar cada coincidencia por su posición en la cadena:</p>
+<div id="zm0hrloaob" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(&quot;Ho-Ho-ho&quot;.replace(/ho/gi, (match, offset) =&gt; offset)); // 0-3-6</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el ejemplo anterior hay dos paréntesis, entonces la función de reemplazo es llamada con 5 argumentos: el primero es toda la coincidencia, luego dos paréntesis, y después (no usado en el ejemplo) la posición de la coincidencia y la cadena de entrada:</p>
+<div id="rpudog3061" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;John Smith&quot;;
+
+let result = str.replace(/(\w+) (\w+)/, (match, name, surname) =&gt; `${surname}, ${name}`);
+
+alert(result); // Smith, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si hay muchos grupos, es conveniente usar parámetros rest para acceder a ellos:</p>
+<div id="1nie11uwv1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;John Smith&quot;;
+
+let result = str.replace(/(\w+) (\w+)/, (...match) =&gt; `${match[2]}, ${match[1]}`);
+
+alert(result); // Smith, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>O, si estamos usando grupos nombrados, entonces el objeto <code>groups</code> con ellos es siempre el último, por lo que podemos obtenerlos así:</p>
+<div id="37fe3bx99h" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;John Smith&quot;;
+
+let result = str.replace(/(?&lt;name&gt;\w+) (?&lt;surname&gt;\w+)/, (...match) =&gt; {
+  let groups = match.pop();
+
+  return `${groups.surname}, ${groups.name}`;
+});
+
+alert(result); // Smith, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Usando una función nos da todo el poder del reemplazo, porque obtiene toda la información de la coincidencia, ya que tiene acceso a las variables externas y se puede hacer de todo.</p>
+<h2><a class="main__anchor" name="str-replaceall-str-regexp-str-func" href="#str-replaceall-str-regexp-str-func">str.replaceAll(str|regexp, str|func)</a></h2><p>Este método es esencialmente el mismo que <code>str.replace</code>, con dos diferencias principales:</p>
+<ol>
+<li>Si el primer argumento es un string, reemplaza <em>todas las ocurrencias</em> del string, mientras que <code>replace</code> solamente reemplaza la <em>primera ocurrencia</em>.</li>
+<li>Si el primer argumento es una expresión regular sin la bandera <code>g</code>, habrá un error. Con la bandera <code>g</code>, funciona igual que <code>replace</code>.</li>
+</ol>
+<p>El caso de uso principal para <code>replaceAll</code> es el reemplazo de todas las ocurrencias de un string.</p>
+<p>Como esto:</p>
+<div id="jzxag6gvv8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// reemplaza todos los guiones por dos puntos
+alert('12-34-56'.replaceAll(&quot;-&quot;, &quot;:&quot;)) // 12:34:56</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="regexp-exec-str" href="#regexp-exec-str">regexp.exec(str)</a></h2><p>El método <code>regexp.exec(str)</code> retorna una coincidencia por expresión regular <code>regexp</code> en la cadena <code>str</code>. A diferencia de los métodos anteriores, se llama en una expresión regular en lugar de en una cadena.</p>
+<p>Se comporta de manera diferente dependiendo de si la expresión regular tiene la bandera <code class="pattern">g</code> o no.</p>
+<p>Si no está la bandera <code class="pattern">g</code>, entonces <code>regexp.exec(str)</code> retorna la primera coincidencia igual que <code>str.match(regexp)</code>. Este comportamiento no trae nada nuevo.</p>
+<p>Pero si está la bandera <code class="pattern">g</code>, entonces:</p>
+<ul>
+<li>Una llamada a <code>regexp.exec(str)</code> retorna la primera coincidencia y guarda la posición inmediatamente después en <code>regexp.lastIndex</code>.</li>
+<li>La siguiente llamada de la búsqueda comienza desde la posición de <code>regexp.lastIndex</code>, retorna la siguiente coincidencia y guarda la posición inmediatamente después en <code>regexp.lastIndex</code>.</li>
+<li>…y así sucesivamente.</li>
+<li>Si no hay coincidencias, <code>regexp.exec</code> retorna <code>null</code> y resetea <code>regexp.lastIndex</code> a <code>0</code>.</li>
+</ul>
+<p>Entonces, repetidas llamadas retornan todas las coincidencias una tras otra, usando la propiedad <code>regexp.lastIndex</code> para realizar el rastreo de la posición actual de la búsqueda.</p>
+<p>En el pasado, antes de que el método <code>str.matchAll</code> fuera agregado a JavaScript, se utilizaban llamadas de <code>regexp.exec</code> en el ciclo para obtener todas las coincidencias con sus grupos:</p>
+<div id="er1emephc0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'More about JavaScript at https://javascript.info';
+let regexp = /javascript/ig;
+
+let result;
+
+while (result = regexp.exec(str)) {
+  alert( `Se encontró ${result[0]} en la posición ${result.index}` );
+  // Se encontró JavaScript en la posición 11, luego
+  // Se encontró javascript en la posición 33
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto también funciona, aunque para navegadores modernos <code>str.matchAll</code> usualmente es lo más conveniente.</p>
+<p><strong>Podemos usar <code>regexp.exec</code> para buscar desde una posición dada configurando manualmente el <code>lastIndex</code>.</strong></p>
+<p>Por ejemplo:</p>
+<div id="fmo1kppp7q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Hello, world!';
+
+let regexp = /\w+/g; // sin la bandera &quot;g&quot;, la propiedad `lastIndex` es ignorada
+regexp.lastIndex = 5; // buscar desde la 5ta posición (desde la coma)
+
+alert( regexp.exec(str) ); // world</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si la expresión regular tiene la bandera <code class="pattern">y</code>, entonces la búsqueda se realizará exactamente en la posición del <code>regexp.lastIndex</code>, no más adelante.</p>
+<p>Vamos a reemplazar la bandera <code class="pattern">g</code> con <code class="pattern">y</code> en el ejemplo anterior. No habrá coincidencias, ya que no hay palabra en la posición <code>5</code>:</p>
+<div id="mjuetsg1by" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Hello, world!';
+
+let regexp = /\w+/y;
+regexp.lastIndex = 5; // buscar exactamente en la posición 5
+
+alert( regexp.exec(str) ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto es conveniente cuando con una expresión regular necesitamos “leer” algo de la cadena en una posición exacta, no en otro lugar.</p>
+<h2><a class="main__anchor" name="regexp-test-str" href="#regexp-test-str">regexp.test(str)</a></h2><p>El método <code>regexp.test(str)</code> busca por una coincidencia y retorna <code>true/false</code> si existe.</p>
+<p>Por ejemplo:</p>
+<div id="slh5f1vzz4" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:18,&quot;end&quot;:25}]},{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:14}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;I love JavaScript&quot;;
+
+// estas dos pruebas hacen lo mismo
+alert( /love/i.test(str) ); // true
+alert( str.search(/love/i) != -1 ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Un ejemplo con respuesta negativa:</p>
+<div id="gq93yc3ihp" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:18,&quot;end&quot;:25}]},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:14}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;Bla-bla-bla&quot;;
+
+alert( /love/i.test(str) ); // false
+alert( str.search(/love/i) != -1 ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si la expresión regular tiene la bandera <code class="pattern">g</code>, el método <code>regexp.test</code> busca la propiedad <code>regexp.lastIndex</code> y la actualiza, igual que <code>regexp.exec</code>.</p>
+<p>Entonces podemos usarlo para buscar desde un posición dada:</p>
+<div id="k6wvzmbuqa" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /love/gi;
+
+let str = &quot;I love JavaScript&quot;;
+
+// comienza la búsqueda desde la posición 10:
+regexp.lastIndex = 10;
+alert( regexp.test(str) ); // false (sin coincidencia)</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">La misma expresión regular probada (de manera global) repetidamente en diferentes lugares puede fallar</span></div>
+            <div class="important__content"><p>Si nosotros aplicamos la misma expresión regular (de manera global) a diferentes entradas, puede causar resultados incorrectos, porque <code>regexp.test</code> anticipa las llamadas usando la propiedad <code>regexp.lastIndex</code>, por lo que la búsqueda en otra cadena puede comenzar desde una posición distinta a cero.</p>
+<p>Por ejemplo, aquí llamamos <code>regexp.test</code> dos veces en el mismo texto y en la segunda vez falla:</p>
+<div id="tzu3v11ioq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /javascript/g;  // (expresión regular creada: regexp.lastIndex=0)
+
+alert( regexp.test(&quot;javascript&quot;) ); // true (ahora regexp.lastIndex es 10)
+alert( regexp.test(&quot;javascript&quot;) ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso es porque <code>regexp.lastIndex</code> no es cero en la segunda prueba.</p>
+<p>Para solucionarlo, podemos establecer <code>regexp.lastIndex = 0</code> antes de cada búsqueda. O en lugar de llamar a los métodos en la expresión regular usar los métodos de cadena <code>str.match/search/...</code>, ellos no usan el <code>lastIndex</code>.</p>
+</div></div>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-sticky.html" data-tooltip="Indicador adhesivo “y”, buscando en una posición."><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-methods" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-methods" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/regexp-methods","identifier":"\/regexp-methods"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.html">Expresiones Regulares</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#str-match-regexp">str.match(regexp)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#str-matchall-regexp">str.matchAll(regexp)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#str-split-regexp-substr-limit">str.split(regexp|substr, limit)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#str-search-regexp">str.search(regexp)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#str-replace-str-regexp-str-func">str.replace(str|regexp, str|func)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#str-replaceall-str-regexp-str-func">str.replaceAll(str|regexp, str|func)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#regexp-exec-str">regexp.exec(str)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#regexp-test-str">regexp.test(str)</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-methods" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fregexp-methods" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/9-regular-expressions/17-regexp-methods" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/regexp-methods by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:03 GMT -->
+</html>

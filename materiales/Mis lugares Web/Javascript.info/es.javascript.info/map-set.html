@@ -1,0 +1,621 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/map-set by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:59 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Map y Set</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="map-set.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Map y Set"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Map y Set"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="iterable.html"><link rel="next" href="weakmap-weakset.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Map y Set"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/map-set"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/map-set"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="map-set.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/map-set"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/map-set"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/map-set"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/map-set"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/map-set"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/map-set"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/map-set"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/map-set"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/map-set"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fmap-set" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fmap-set" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/map-set">عربي</option><option value="https://javascript.info/map-set">English</option><option value="https://es.javascript.info/map-set" selected>Español</option><option value="https://fa.javascript.info/map-set">فارسی</option><option value="https://fr.javascript.info/map-set">Français</option><option value="https://id.javascript.info/map-set">Indonesia</option><option value="https://it.javascript.info/map-set">Italiano</option><option value="https://ja.javascript.info/map-set">日本語</option><option value="https://ko.javascript.info/map-set">한국어</option><option value="https://learn.javascript.ru/map-set">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/map-set">Українська</option><option value="https://zh.javascript.info/map-set">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="43" max="93" data-tooltip="Lección 43 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="data-types.html"><span>Tipos de datos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Tipos de datos","item":"https://es.javascript.info/data-types"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 17 de noviembre de 2022"><div class="updated-at__content">17 de noviembre de 2022</div></div></div><h1 class="main__header-title">Map y Set</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Map y Set"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Hasta este momento, hemos aprendido sobre las siguientes estructuras de datos:</p>
+<ul>
+<li>Objetos para almacenar colecciones de datos ordenadas mediante una clave.</li>
+<li>Arrays para almacenar colecciones ordenadas de datos.</li>
+</ul>
+<p>Pero eso no es suficiente para la vida real. Por eso también existen <code>Map</code> y <code>Set</code>.</p>
+<h2><a class="main__anchor" name="map" href="#map">Map</a></h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">Map</a> es, al igual que <code>Objet</code>, una colección de datos identificados por claves. La principal diferencia es que <code>Map</code> permite claves de cualquier tipo.</p>
+<p>Los métodos y propiedades son:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/Map"><code>new Map()</code></a> – crea el mapa.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set"><code>map.set(clave, valor)</code></a>) – almacena el valor asociado a la clave.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get"><code>map.get(clave)</code></a> – devuelve el valor de la clave. Será <code>undefined</code> si la <code>clave</code> no existe en map.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/has"><code>map.has(clave)</code></a> – devuelve <code>true</code> si la <code>clave</code> existe en map, <code>false</code> si no existe.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/delete"><code>map.delete(clave)</code></a> – elimina el elemento con esa clave.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/clear"><code>map.clear()</code></a> – elimina todo de map.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/size"><code>map.size</code></a> – tamaño, devuelve la cantidad actual de elementos.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="9evv389lql" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let map = new Map();
+
+map.set('1', 'str1');   // un string como clave
+map.set(1, 'num1');     // un número como clave
+map.set(true, 'bool1'); // un booleano como clave
+
+// ¿recuerda el objeto regular? convertiría las claves a string.
+// Map mantiene el tipo de dato en las claves, por lo que estas dos son diferentes:
+alert( map.get(1)   ); // 'num1'
+alert( map.get('1') ); // 'str1'
+
+alert( map.size ); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos ver que, a diferencia de los objetos, las claves no se convierten en strings. Cualquier tipo de clave es posible en un Map.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">map[clave] no es la forma correcta de usar Map</span></div>
+            <div class="important__content"><p>Aunque <code>map[clave]</code> también funciona (por ejemplo podemos establecer <code>map[clave]</code> = 2), esto es tratar a <code>map</code> como un objeto JavaScript simple, lo que implica tener todas las limitaciones correspondientes (que solo se permita string/symbol como clave, etc.).</p>
+<p>Por lo tanto, debemos usar los métodos de <code>Map</code>: <code>set</code>, <code>get</code> y demás.</p>
+</div></div>
+<p><strong>También podemos usar objetos como claves.</strong></p>
+<p>Por ejemplo:</p>
+<div id="yqgco940e8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot; };
+
+// para cada usuario, almacenemos el recuento de visitas
+let visitsCountMap = new Map();
+
+// john es la clave para el Map
+visitsCountMap.set(john, 123);
+
+alert( visitsCountMap.get(john) ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El uso de objetos como claves es una de las características de <code>Map</code> más notables e importantes. Esto no se aplica a los objetos: una clave de tipo <code>string</code> está bien en un <code>Object</code>, pero no podemos usar otro <code>Object</code> como clave.</p>
+<p>Intentémoslo:</p>
+<div id="0xwaad8xxv" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let john = { name: &quot;John&quot; };
+let ben = { name: &quot;Ben&quot; };
+
+let visitsCountObj = {}; // intenta usar un objeto
+
+visitsCountObj[ben] = 234; // intenta usar el objeto ben como clave
+visitsCountObj[john] = 123; // intenta usar el objeto john como clave, el objeto ben es reemplazado
+
+// Esto es lo que se escribió!
+alert( visitsCountObj[&quot;[object Object]&quot;] ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como <code>visitsCountObj</code> es un objeto, convierte todas los objetos como <code>john</code> y <code>ben</code> en el mismo string <code>&quot;[objeto Objeto]&quot;</code>. Definitivamente no es lo que queremos.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Cómo <code>Map</code> compara las claves</span></div>
+            <div class="important__content"><p>Para probar la equivalencia de claves, <code>Map</code> utiliza el algoritmo <a href="https://tc39.github.io/ecma262/#sec-samevaluezero">SameValueZero</a>. Es aproximadamente lo mismo que la igualdad estricta <code>===</code>, pero la diferencia es que <code>NaN</code> se considera igual a <code>NaN</code>. Por lo tanto, <code>NaN</code> también se puede usar como clave.</p>
+<p>Este algoritmo no se puede cambiar ni personalizar.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Encadenamiento</span></div>
+            <div class="important__content"><p>Cada llamada a <code>map.set</code> devuelve map en sí, así que podamos “encadenar” las llamadas:</p>
+<div id="5ms3zawd09" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>map.set('1', 'str1')
+   .set(1, 'num1')
+   .set(true, 'bool1');</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="iteracion-sobre-map" href="#iteracion-sobre-map">Iteración sobre Map</a></h2><p>Para recorrer un <code>map</code>, hay 3 métodos:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/keys"><code>map.keys()</code></a> –- devuelve un iterable con las claves.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/values"><code>map.values()</code></a> -– devuelve un iterable con los valores.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/entries"><code>map.entries()</code></a> -– devuelve un iterable para las entradas <code>[clave, valor]</code>. Es el que usa por defecto en <code>for..of</code>.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="l3qmodwy3l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let recipeMap = new Map([
+  ['pepino', 500],
+  ['tomates', 350],
+  ['cebollas',    50]
+]);
+
+// iterando sobre las claves (verduras)
+for (let vegetable of recipeMap.keys()) {
+  alert(vegetable); // pepino, tomates, cebollas
+}
+
+// iterando sobre los valores (precios)
+for (let amount of recipeMap.values()) {
+  alert(amount); // 500, 350, 50
+}
+
+// iterando sobre las entradas [clave, valor]
+for (let entry of recipeMap) { // lo mismo que recipeMap.entries()
+  alert(entry); // pepino,500 (etc)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Se utiliza el orden de inserción.</span></div>
+            <div class="important__content"><p>La iteración va en el mismo orden en que se insertaron los valores. <code>Map</code> conserva este orden, a diferencia de un <code>Objeto</code> normal.</p>
+</div></div>
+<p>Además, <code>Map</code> tiene un método <code>forEach</code> incorporado, similar al de <code>Array</code>:</p>
+<div id="5wblh4uyqu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// recorre la función para cada par (clave, valor)
+recipeMap.forEach( (value, key, map) =&gt; {
+  alert(`${key}: ${value}`); // pepino: 500 etc
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="object-entries-map-desde-objeto" href="#object-entries-map-desde-objeto">Object.entries: Map desde Objeto</a></h2><p>Al crear un <code>Map</code>, podemos pasarle un array (u otro iterable) con pares clave/valor para la inicialización:</p>
+<div id="78u6l1n0gi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// array de [clave, valor]
+let map = new Map([
+  ['1',  'str1'],
+  [1,    'num1'],
+  [true, 'bool1']
+]);
+
+alert( map.get('1') ); // str1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si tenemos un objeto plano, y queremos crear un <code>Map</code> a partir de él, podemos usar el método incorporado <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/entries">Object.entries(obj)</a> que devuelve un array de pares clave/valor para un objeto en ese preciso formato.</p>
+<p>Entonces podemos inicializar un map desde un objeto:</p>
+<div id="dwnxj306zh" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = {
+  name: &quot;John&quot;,
+  age: 30
+};
+
+let map = new Map(Object.entries(obj));
+
+alert( map.get('name') ); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí, <code>Object.entries</code> devuelve el array de pares clave/valor: <code>[ [&quot;name&quot;,&quot;John&quot;], [&quot;age&quot;, 30] ]</code>. Es lo que necesita <code>Map</code>.</p>
+<h2><a class="main__anchor" name="object-fromentries-objeto-desde-map" href="#object-fromentries-objeto-desde-map">Object.fromEntries: Objeto desde Map</a></h2><p>Acabamos de ver cómo crear un <code>Map</code> a partir de un objeto simple con <code>Object.entries (obj)</code>.</p>
+<p>Existe el método <code>Object.fromEntries</code> que hace lo contrario: dado un array de pares [clave, valor], crea un objeto a partir de ellos:</p>
+<div id="adwskpwr3b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let prices = Object.fromEntries([
+  ['banana', 1],
+  ['orange', 2],
+  ['meat', 4]
+]);
+
+// ahora prices = { banana: 1, orange: 2, meat: 4 }
+
+alert(prices.orange); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos usar <code>Object.fromEntries</code> para obtener un objeto desde <code>Map</code>.</p>
+<p>Ejemplo: almacenamos los datos en un <code>Map</code>, pero necesitamos pasarlos a un código de terceros que espera un objeto simple.</p>
+<p>Aquí vamos:</p>
+<div id="69l2jtdrgj" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let map = new Map();
+map.set('banana', 1);
+map.set('orange', 2);
+map.set('meat', 4);
+
+let obj = Object.fromEntries(map.entries()); // hace un objeto simple (*)
+
+// Hecho!
+// obj = { banana: 1, orange: 2, meat: 4 }
+
+alert(obj.orange); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Una llamada a <code>map.entries()</code> devuelve un array de pares clave/valor, exactamente en el formato correcto para <code>Object.fromEntries.</code></p>
+<p>También podríamos acortar la línea <code>(*)</code>:</p>
+<div id="vauevyjaal" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = Object.fromEntries(map); // omitimos .entries()</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Es lo mismo, porque <code>Object.fromEntries</code> espera un objeto iterable como argumento. No necesariamente un array. Y la iteración estándar para el <code>Map</code> devuelve los mismos pares clave/valor que <code>map.entries()</code>. Entonces obtenemos un objeto simple con las mismas claves/valores que <code>Map</code>.</p>
+<h2><a class="main__anchor" name="set" href="#set">Set</a></h2><p>Un <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a> es una colección de tipo especial: “conjunto de valores” (sin claves), donde cada valor puede aparecer solo una vez.</p>
+<p>Sus principales métodos son:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set"><code>new Set([iterable])</code></a> – crea el set. El argumento opcional es un objeto iterable (generalmente un array) con los valores para inicializarlo.</li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Set/add"><code>set.add(valor)</code></a> – agrega un valor, y devuelve el set en sí.</li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Set/delete"><code>set.delete(valor)</code></a> – elimina el valor, y devuelve <code>true</code> si el <code>valor</code> existía al momento de la llamada; si no, devuelve <code>false</code>.</li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Set/has"><code>set.has(valor)</code></a> – devuelve <code>true</code> si el valor existe en el set, si no, devuelve <code>false</code>.</li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Set/clear"><code>set.clear()</code></a> – elimina todo el continido del set.</li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Set/size"><code>set.size</code></a> – es la cantidad de elementos.</li>
+</ul>
+<p>La característica principal es que llamadas repetidas de <code>set.add(valor)</code> con el mismo valor no hacen nada. Esa es la razón por la cual cada valor aparece en <code>Set</code> solo una vez.</p>
+<p>Por ejemplo, vienen visitantes y queremos recordarlos a todos. Pero las visitas repetidas no deberían llevar a duplicados. Un visitante debe ser “contado” solo una vez.</p>
+<p><code>Set</code> es lo correcto para eso:</p>
+<div id="60qqse13qd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let set = new Set();
+
+let john = { name: &quot;John&quot; };
+let pete = { name: &quot;Pete&quot; };
+let mary = { name: &quot;Mary&quot; };
+
+// visitas, algunos usuarios lo hacen varias veces
+set.add(john);
+set.add(pete);
+set.add(mary);
+set.add(john);
+set.add(mary);
+
+// set solo guarda valores únicos
+alert( set.size ); // 3
+
+for (let user of set) {
+  alert(user.name); // John (luego Pete y Mary)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La alternativa a <code>Set</code> podría ser un array de usuarios, y código para verificar si hay duplicados en cada inserción usando <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/find">arr.find</a>. Pero el rendimiento sería mucho peor, porque este método recorre el array completo comprobando cada elemento. <code>Set</code> está optimizado internamente para verificar unicidad.</p>
+<h2><a class="main__anchor" name="iteracion-sobre-set" href="#iteracion-sobre-set">Iteración sobre Set</a></h2><p>Podemos recorrer <code>Set</code> con <code>for..of</code> o usando <code>forEach</code>:</p>
+<div id="s1lczonyj7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let set = new Set([&quot;oranges&quot;, &quot;apples&quot;, &quot;bananas&quot;]);
+
+for (let value of set) alert(value);
+
+// lo mismo que forEach:
+set.forEach((value, valueAgain, set) =&gt; {
+  alert(value);
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta algo peculiar: la función callback pasada en forEach tiene 3 argumentos:  un valor, luego el mismo valor “valueAgain” y luego el objeto de destino que es set. El mismo valor aparece en los argumentos dos veces.</p>
+<p>Eso es por compatibilidad con <code>Map</code> donde la función callback tiene tres argumentos. Parece un poco extraño, seguro. Pero en ciertos casos puede ayudar a reemplazar <code>Map</code> con <code>Set</code> y viceversa con facilidad.</p>
+<p>También soporta los mismos métodos que <code>Map</code> tiene para los iteradores:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/keys"><code>set.keys()</code></a> – devuelve un iterable para las claves.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/values"><code>set.values()</code></a> – lo mismo que <code>set.keys()</code>, por su compatibilidad con <code>Map</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/entries"><code>set.entries()</code></a> – devuelve un iterable para las entradas <code>[clave, valor]</code>, por su compatibilidad con <code>Map</code>.</li>
+</ul>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a> – es una colección de valores con clave.</p>
+<p>Métodos y propiedades:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/Map"><code>new Map([iterable])</code></a> – crea el mapa, con un <code>iterable</code> (p.ej. array) de pares <code>[clave,valor]</code> para su inicialización.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/set"><code>map.set(clave, valor)</code></a> – almacena el valor para la clave.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/get"><code>map.get(clave)</code></a> – devuelve el valor de la clave: será <code>undefined</code> si la <code>clave</code> no existe en Map.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/has"><code>map.has(clave)</code></a> – devuelve<code>true</code> si la <code>clave</code> existe, y <code>false</code> si no existe.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/delete"><code>map.delete(clave)</code></a> – elimina del map el elemento con esa clave.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/clear"><code>map.clear()</code></a> – vacía el Map.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map/size"><code>map.size</code></a> – devuelve la cantidad de elementos del Map.</li>
+</ul>
+<p>La diferencia con un <code>Objeto</code> regular:</p>
+<ul>
+<li>Cualquier clave. Los objetos también pueden ser claves.</li>
+<li>Métodos adicionales convenientes, y la propiedad <code>size</code>.</li>
+</ul>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"><code>Set</code></a> – es una colección de valores únicos (sin duplicados).</p>
+<p>Métodos y propiedades:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/Set"><code>new Set([iterable])</code></a> – crea el set. El argumento opcional es un objeto iterable (por ejemplo un array) de valores para inicializarlo.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/add"><code>set.add(valor)</code></a> – agrega un valor, devuelve el set en sí.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/delete"><code>set.delete(valor)</code></a> – elimina el valor, devuelve <code>true</code> si <code>valor</code> existe al momento de la llamada; si no, devuelve <code>false</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has"><code>set.has(valor)</code></a> – devuelve <code>true</code> si el valor existe en el set, si no, devuelve <code>false</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/clear"><code>set.clear()</code></a> – elimina todo del set.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/size"><code>set.size</code></a> – es la cantidad de elementos.</li>
+</ul>
+<p>La iteración sobre <code>Map</code> y <code>Set</code> siempre está en el orden de inserción, por lo que no podemos decir que estas colecciones están desordenadas, pero no podemos reordenar elementos u obtener un elemento directamente por su número.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#filtrar-miembros-unicos-del-array" name="filtrar-miembros-unicos-del-array">Filtrar miembros únicos del array</a></h3><a class="task__open-link" href="task/array-unique-map.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Digamos que <code>arr</code> es un array.</p>
+<p>Cree una función <code>unique(arr)</code> que debería devolver un array con elementos únicos de <code>arr</code>.</p>
+<p>Por ejemplo:</p>
+<div id="m3ici93ukz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function unique(arr) {
+  /* tu código */
+}
+
+let values = [&quot;Hare&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Krishna&quot;,
+  &quot;Krishna&quot;, &quot;Krishna&quot;, &quot;Hare&quot;, &quot;Hare&quot;, &quot;:-O&quot;
+];
+
+alert( unique(values) ); // Hare, Krishna, :-O</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D. Aquí se usan strings, pero pueden ser valores de cualquier tipo.</p>
+<p>P.D.S. Use <code>Set</code> para almacenar valores únicos.</p>
+<p><a href="https://plnkr.co/edit/ZbuoZGTiM6Ez2Qzz?p=preview" target="_blank" data-plunk-id="ZbuoZGTiM6Ez2Qzz">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="v3qculmqtf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function unique(arr) {
+  return Array.from(new Set(arr));
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/ja59SkMr4Qa7FIqr?p=preview" target="_blank" data-plunk-id="ja59SkMr4Qa7FIqr">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#filtrar-anagramas" name="filtrar-anagramas">Filtrar anagramas</a></h3><a class="task__open-link" href="task/filter-anagrams.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p><a href="https://es.wikipedia.org/wiki/Anagrama">Anagramas</a> son palabras que tienen el mismo número de letras, pero en diferente orden.</p>
+<p>Por ejemplo:</p>
+<div id="ve3v18fn4i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>nap - pan
+ear - are - era
+cheaters - hectares - teachers</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Escriba una función <code>aclean(arr)</code> que devuelva un array limpio de anagramas.</p>
+<p>Por ejemplo:</p>
+<div id="gl7kupth8b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) ); // &quot;nap,teachers,ear&quot; o &quot;PAN,cheaters,era&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Es decir, de cada grupo de anagramas debe quedar solo una palabra, sin importar cual.</p>
+<p><a href="https://plnkr.co/edit/n6iu2xUo84ipcJo4?p=preview" target="_blank" data-plunk-id="n6iu2xUo84ipcJo4">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para encontrar todos los anagramas, dividamos cada palabra en letras y las ordenamos. Cuando se clasifican las letras, todos los anagramas son iguales.</p>
+<p>Por ejemplo:</p>
+<div id="rzkevi5f1e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>nap, pan -&gt; anp
+ear, era, are -&gt; aer
+cheaters, hectares, teachers -&gt; aceehrst
+...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Utilizaremos las variantes ordenadas por letras como claves de Map para almacenar solo un valor por cada clave:</p>
+<div id="9gagqx4g98" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function aclean(arr) {
+  let map = new Map();
+
+  for (let word of arr) {
+    // dividir la palabra por letras, ordenarlas y volver a unir
+    let sorted = word.toLowerCase().split('').sort().join(''); // (*)
+    map.set(sorted, word);
+  }
+
+  return Array.from(map.values());
+}
+
+let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La clasificación de letras se realiza mediante la cadena de llamadas en la línea <code>(*)</code>.</p>
+<p>Por conveniencia la dividimos en múltiples líneas:</p>
+<div id="14dby4u65d" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let sorted = word // PAN
+  .toLowerCase() // pan
+  .split('') // ['p','a','n']
+  .sort() // ['a','n','p']
+  .join(''); // anp</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Dos palabras diferentes<code>'PAN'</code> y <code>'nap'</code> reciben la misma forma ordenada por letras <code>'anp'</code>.</p>
+<p>La siguiente línea pone la palabra en el Map:</p>
+<div id="7uoa2zt36m" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>map.set(sorted, word);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si alguna vez volvemos a encontrar una palabra con la misma forma ordenada por letras, sobrescribiría el valor anterior con la misma clave en Map. Por lo tanto, siempre tendremos como máximo una palabra ordenada por letras.</p>
+<p>Al final, <code>Array.from (map.values())</code> toma un valor iterativo sobre los valores de Map (no necesitamos claves en el resultado) y devuelve un array de ellos.</p>
+<p>Aquí también podríamos usar un objeto plano en lugar del <code>Map</code>, porque las claves son strings.</p>
+<p>Así es como puede verse la solución:</p>
+<div id="mgujurel5" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function aclean(arr) {
+  let obj = {};
+
+  for (let i = 0; i &lt; arr.length; i++) {
+    let sorted = arr[i].toLowerCase().split(&quot;&quot;).sort().join(&quot;&quot;);
+    obj[sorted] = arr[i];
+  }
+
+  return Object.values(obj);
+}
+
+let arr = [&quot;nap&quot;, &quot;teachers&quot;, &quot;cheaters&quot;, &quot;PAN&quot;, &quot;ear&quot;, &quot;era&quot;, &quot;hectares&quot;];
+
+alert( aclean(arr) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/7s5s6rVdqvlI0eZN?p=preview" target="_blank" data-plunk-id="7s5s6rVdqvlI0eZN">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#claves-iterables" name="claves-iterables">Claves iterables</a></h3><a class="task__open-link" href="task/iterable-keys.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Nos gustaría obtener un array de <code>map.keys()</code> en una variable y luego aplicarle métodos específicos de array, ej. <code>.push</code>.</p>
+<p>Pero eso no funciona:</p>
+<div id="tygxj0t25a" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let map = new Map();
+
+map.set(&quot;name&quot;, &quot;John&quot;);
+
+let keys = map.keys();
+
+// Error: keys.push no es una función
+keys.push(&quot;more&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Por qué? ¿Cómo podemos arreglar el código para que funcione <code>keys.push</code>?</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Eso es porque <code>map.keys()</code> devuelve un iterable, pero no un array.</p>
+<p>Podemos convertirlo en un array usando <code>Array.from</code>:</p>
+<div id="hjzs8umdpi" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let map = new Map();
+
+map.set(&quot;name&quot;, &quot;John&quot;);
+
+let keys = Array.from(map.keys());
+
+keys.push(&quot;more&quot;);
+
+alert(keys); // name, more</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="iterable.html" data-tooltip="Iterables"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="weakmap-weakset.html" data-tooltip="WeakMap y WeakSet"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fmap-set" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fmap-set" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/map-set","identifier":"\/map-set"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.html">Tipos de datos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#map">Map</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#iteracion-sobre-map">Iteración sobre Map</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#object-entries-map-desde-objeto">Object.entries: Map desde Objeto</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#object-fromentries-objeto-desde-map">Object.fromEntries: Objeto desde Map</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#set">Set</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#iteracion-sobre-set">Iteración sobre Set</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fmap-set" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fmap-set" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/05-data-types/07-map-set" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/map-set by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:59 GMT -->
+</html>

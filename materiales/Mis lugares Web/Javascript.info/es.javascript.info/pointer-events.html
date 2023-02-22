@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/pointer-events by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:34 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "co";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Eventos de puntero</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="pointer-events.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Eventos de puntero"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Eventos de puntero"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="mouse-drag-and-drop.html"><link rel="next" href="keyboard-events.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Eventos de puntero"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/pointer-events"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/pointer-events"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="pointer-events.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/pointer-events"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/pointer-events"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/pointer-events"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/pointer-events"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/pointer-events"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/pointer-events"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/pointer-events"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fpointer-events" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fpointer-events" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/pointer-events">عربي</option><option value="https://javascript.info/pointer-events">English</option><option value="https://es.javascript.info/pointer-events" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/pointer-events">Français</option><option value="https://id.javascript.info/pointer-events">Indonesia</option><option value="https://it.javascript.info/pointer-events">Italiano</option><option value="https://ja.javascript.info/">日本語</option><option value="https://ko.javascript.info/pointer-events">한국어</option><option value="https://learn.javascript.ru/pointer-events">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/pointer-events">Українська</option><option value="https://zh.javascript.info/pointer-events">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="20" max="32" data-tooltip="Lección 20 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="event-details.html"><span>Eventos en la UI</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Eventos en la UI","item":"https://es.javascript.info/event-details"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 6 de febrero de 2023"><div class="updated-at__content">6 de febrero de 2023</div></div></div><h1 class="main__header-title">Eventos de puntero</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Eventos de puntero"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Los eventos de puntero son una forma moderna de manejar la entrada de una variedad de dispositivos señaladores, como un mouse, un lápiz, una pantalla táctil, etc.</p>
+<h2><a class="main__anchor" name="una-breve-historia" href="#una-breve-historia">Una breve historia</a></h2><p>Hagamos una pequeña descripción general para que comprenda la imagen general y el lugar de los Eventos de Puntero entre otros tipos de eventos.</p>
+<ul>
+<li>
+<p>Hace mucho tiempo, en el pasado, solo existían eventos de mouse.</p>
+<p>Luego aparecieron los dispositivos táctiles, teléfonos y tablets en particular. Para que el código antiguo funcionara, generanban (y aún lo hacen) eventos de mouse. Por ejemplo, tocar la pantalla táctil genera <code>mousedown</code>. Así los dispositivos táctiles funcionaban bien con las páginas web.</p>
+<p>Pero los dispositivos táctiles tienen más capacidades que un mouse. Por ejemplo, es posible tocar múltiples puntos al mismo (“multi-touch”). Los eventos del mouse no tienen las propiedades necesarias para manejar tal multi-touch.</p>
+</li>
+<li>
+<p>Por lo tanto, se introdujeron eventos táctiles, como <code>touchstart</code>,<code>touchend</code>, <code>touchmove</code>, que tienen propiedades específicas de toque (no los cubrimos en detalle aquí, porque los eventos de puntero son aún mejores).</p>
+<p>Aún así no fue suficiente, ya que hay muchos otros dispositivos, como los lápices, que tienen sus propias funciones. Y escribir código que escuchara ambos eventos, los táctiles y los del mouse, era engorroso.</p>
+</li>
+<li>
+<p>Para resolver estos problemas, se introdujo el nuevo estándar: <em>Pointer Events</em>. Este proporciona un conjunto único de eventos para todo tipo de dispositivos señaladores.</p>
+</li>
+</ul>
+<p>Al momento la especificación <a href="https://www.w3.org/TR/pointerevents2/">Pointer Events Level 2</a> es soportada en todos los principales navegadores, mientras que <a href="https://w3c.github.io/pointerevents/">Pointer Events Level 3</a> está en proceso y es mayormente compatible con Pointer Events level 2.</p>
+<p>A menos que codifique para navegadores viejos tales como Internet Explorer 10 o Safari 12 y versiones anteriores, ya no tiene sentido usar el mouse o los eventos táctiles: podemos cambiar a eventos de puntero.</p>
+<p>Así tu código funcionará tanto con mouse como con dispositivos táctiles.</p>
+<p>Dicho esto, hay peculiaridades importantes, uno debe saber usarlas correctamente y evitar sorpresas adicionales. Les prestaremos atención en este artículo.</p>
+<h2><a class="main__anchor" name="tipos-de-eventos-de-puntero" href="#tipos-de-eventos-de-puntero">Tipos de eventos de puntero</a></h2><p>Los eventos de puntero se llaman de forma similar a los eventos del mouse:</p>
+<table>
+<thead>
+<tr>
+<th>Evento de puntero</th>
+<th>Evento de mouse similar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pointerdown</code></td>
+<td><code>mousedown</code></td>
+</tr>
+<tr>
+<td><code>pointerup</code></td>
+<td><code>mouseup</code></td>
+</tr>
+<tr>
+<td><code>pointermove</code></td>
+<td><code>mousemove</code></td>
+</tr>
+<tr>
+<td><code>pointerover</code></td>
+<td><code>mouseover</code></td>
+</tr>
+<tr>
+<td><code>pointerout</code></td>
+<td><code>mouseout</code></td>
+</tr>
+<tr>
+<td><code>pointerenter</code></td>
+<td><code>mouseenter</code></td>
+</tr>
+<tr>
+<td><code>pointerleave</code></td>
+<td><code>mouseleave</code></td>
+</tr>
+<tr>
+<td><code>pointercancel</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>gotpointercapture</code></td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>lostpointercapture</code></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>Como podemos ver, para cada <code>mouse&lt;event&gt;</code>, hay un <code>pointer&lt;event&gt;</code> que juega un papel similar. También hay 3 eventos de puntero adicionales que no tienen una contraparte correspondiente de <code>mouse ...</code>, pronto hablaremos sobre ellos.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Remplazando <em>mouse<event></em> con <em>pointer<event></em> en nuestro código</span></div>
+            <div class="important__content"><p>Podemos reemplazar los eventos <code>mouse&lt;event&gt;</code> con <code>pointer&lt;event&gt;</code> en nuestro código y esperar que las cosas sigan funcionando bien con el mouse.</p>
+<p>El soporte para dispositivos táctiles mejorará “mágicamente”. Pero probablemente necesitemos agregar la regla <code>touch-action: none</code> en CSS. Cubriremos esto en la sección sobre <code>pointercancel</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="propiedades-de-los-eventos-de-puntero" href="#propiedades-de-los-eventos-de-puntero">Propiedades de los eventos de puntero</a></h2><p>Los eventos de puntero tienen las mismas propiedades que los eventos del mouse, como <code>clientX/Y</code>, <code>target</code>, etc., más algunos adicionales:</p>
+<ul>
+<li>
+<p><code>pointerId</code> – el identificador único del puntero que causa el evento.</p>
+<p>Generado por el navegador. Permite manejar múltiples punteros, como una pantalla táctil con lápiz y multitáctil (explicado a continuación).</p>
+</li>
+<li>
+<p><code>pointerType</code> – el tipo de dispositivo señalador. Debe ser una cadena, uno de los siguientes: “mouse”, “pen” o “touch”.</p>
+<p>Podemos usar esta propiedad para reaccionar de manera diferente en varios tipos de punteros.</p>
+</li>
+<li>
+<p><code>isPrimary</code> – <code>true</code> para el puntero principal (el primer dedo en multitáctil).</p>
+</li>
+</ul>
+<p>Para punteros que miden un área de contacto y presión, p. Ej. un dedo en la pantalla táctil, las propiedades adicionales pueden ser útiles:</p>
+<ul>
+<li><code>width</code> – el ancho del área donde el puntero (p.ej. el dedo) toca el dispositivo. Si el dispositivo no lo soporta (como el mouse), es siempre <code>1</code>.</li>
+<li><code>height</code> – el alto del área donde el puntero toca el dispositivo. Donde no lo soporte es siempre <code>1</code>.</li>
+<li><code>pressure</code> – la presión de la punta del puntero, en el rango de 0 a 1. En dispositivos que no soportan presión, debe ser <code>0.5</code> (presionada) o <code>0</code>.</li>
+<li><code>tangentialPressure</code> – la presión tangencial normalizada.</li>
+<li><code>tiltX</code>, <code>tiltY</code>, <code>twist</code> – propiedades específicas para un lápiz digital, describen cómo se lo coloca en relación con la superficie.</li>
+</ul>
+<p>En la mayoría de los dispositivos estas propiedades no están soportadas, por lo que rara vez se utilizan. Si lo necesita puede encontrar los detalles en la <a href="https://w3c.github.io/pointerevents/#pointerevent-interface">especificación</a>.</p>
+<h2><a class="main__anchor" name="multi-touch-multitactil" href="#multi-touch-multitactil">Multi-touch (Multitáctil)</a></h2><p>Una de las cosas que los eventos del mouse no soportan es la propiedad multitáctil: un usuario puede tocar en varios lugares a la vez en su teléfono o tableta, realizar gestos especiales.</p>
+<p>Los eventos de puntero permiten manejar multitáctiles con la ayuda de las propiedades <code>pointerId</code> e <code>isPrimary</code>.</p>
+<p>Esto es lo que sucede cuando un usuario toca una pantalla en un lugar y luego coloca otro dedo en otro lugar:</p>
+<ol>
+<li>En el primer toque:
+<ul>
+<li><code>pointerdown</code> with <code>isPrimary=true</code> y algún <code>pointerId</code>.</li>
+</ul>
+</li>
+<li>Para el segundo dedo y toques posteriores (asumiendo que el primero sigue tocando):
+<ul>
+<li><code>pointerdown</code> con <code>isPrimary=false</code> y un diferente <code>pointerId</code> por cada dedo.</li>
+</ul>
+</li>
+</ol>
+<p>Tenga en cuenta: el <code>pointerId</code> no se asigna a todo el dispositivo, sino a cada dedo que se toca. Si usamos 5 dedos para tocar simultáneamente la pantalla, tenemos 5 eventos <code>pointerdown</code> con coordenadas respectivas y diferentes <code>pointerId</code>.</p>
+<p>Los eventos asociados con el primer dedo siempre tienen <code>isPrimary = true</code>.</p>
+<p>Podemos rastrear el toque de varios dedos usando sus respectivos <code>pointerId</code>. Cuando el usuario mueve un dedo y luego lo quita, obtenemos los eventos <code>pointermove</code> y <code>pointerup</code> con el mismo <code>pointerId</code> que teníamos en <code>pointerdown</code></p>
+<p>Aquí está la demostración que registra los eventos <code>pointerdown</code> y <code>pointerup</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/nKq7eqRKyTm3MLCl?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="nKq7eqRKyTm3MLCl" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:200px" src="https://es.js.cx/article/pointer-events/multitouch/"></iframe>
+  </div><p>Tenga en cuenta que debe utilizar un dispositivo con pantalla táctil, como un teléfono o una tableta, para ver realmente la diferencia en <code>pointerId/isPrimary</code>. Para dispositivos de un solo toque, como el de un mouse, siempre será el mismo <code>pointerId</code> con <code>isPrimary=true</code> para todos los eventos de puntero.</p>
+<h2><a class="main__anchor" name="evento-pointercancel" href="#evento-pointercancel">Evento: pointercancel</a></h2><p>El evento <code>pointercancel</code> se dispara cuando, mientras hay una interacción de puntero en curso, sucede algo que hace que esta se anule de modo que no se generan más eventos de puntero.</p>
+<p>Las causas son:</p>
+<ul>
+<li>Se deshabilitó el hardware del dispositivo de puntero.</li>
+<li>La orientación del dispositivo cambió (tableta rotada).</li>
+<li>El navegador decidió manejar la interacción por su cuenta: porque lo consideró un gesto de mouse, una acción de zoom, o alguna otra cosa.</li>
+</ul>
+<p>Demostraremos <code>pointercancel</code> en un ejemplo práctico para ver cómo nos afecta.</p>
+<p>Digamos que queremos una implementación de “arrastrar y soltar” en una pelota, como la que está al principio del artículo <a href="mouse-drag-and-drop.html">Arrastrar y Soltar con eventos del ratón</a>.</p>
+<p>A continuación, se muestra el flujo de acciones del usuario y los eventos correspondientes:</p>
+<ol>
+<li>El usuario presiona sobre una imagen para comenzar a arrastrar
+<ul>
+<li><code>pointerdown</code> el evento se dispara</li>
+</ul>
+</li>
+<li>Luego comienzan a mover el puntero (arrastrando la imagen)
+<ul>
+<li><code>pointermove</code> se dispara, tal vez varias veces</li>
+</ul>
+</li>
+<li>¡Sorpresa! El navegador tiene soporte nativo de arrastrar y soltar para imágenes, este bloquea el nuestro y se hace cargo del proceso de arrastrar y soltar, generando el evento <code>pointercancel</code>.
+<ul>
+<li>El navegador ahora maneja arrastrar y soltar la imagen por sí solo. El usuario puede incluso arrastrar la imagen de la bola fuera del navegador, a su programa de correo o al administrador de archivos.</li>
+<li>No más eventos <code>pointermove</code> para nosotros.</li>
+</ul>
+</li>
+</ol>
+<p>Así que el problema es que el navegador “secuestra” la interacción: <code>pointercancel</code> se dispara y no se generan más eventos de <code>pointermove</code>.</p>
+<p>Aquí la demo con eventos de puntero (solamente <code>arriba/abajo</code>, <code>mover</code> y <code>cancelar</code>) registrados en <code>textarea</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/KB6FVIDGqFzM0QjO?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="KB6FVIDGqFzM0QjO" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:240px" src="https://es.js.cx/article/pointer-events/ball/"></iframe>
+  </div><p>Queremos implementar nuestro propio arrastrar y soltar, así que digámosle al navegador que no se haga cargo.</p>
+<p><strong>Evitar las acciones predeterminadas del navegador para evitar <code>pointercancel</code>.</strong></p>
+<p>Necesitaremos dos cosas:</p>
+<ol>
+<li>Evitar que suceda la función nativa de arrastrar y soltar:
+<ul>
+<li>Puede hacerlo configurando <code>ball.ondragstart = () =&gt; false</code>, tal como se describe en el artículo <a href="mouse-drag-and-drop.html">Arrastrar y Soltar con eventos del ratón</a>.</li>
+<li>Eso funciona bien para eventos de mouse.</li>
+</ul>
+</li>
+<li>Para los dispositivos táctiles, también existen acciones del navegador relacionadas con el tacto (además de arrastrar y soltar). Para evitar problemas con ellos también:
+<ul>
+<li>Configurar <code>#ball{touch-action: none}</code> en CSS.</li>
+<li>Entonces nuestro código comenzará a funcionar en dispositivos táctiles.</li>
+</ul>
+</li>
+</ol>
+<p>Después de hacer eso, los eventos funcionarán según lo previsto, el navegador no secuestrará el proceso y no emitirá ningún <code>pointercancel</code>.</p>
+<p>Esta demostración agrega estas líneas:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/XpQpqg7XqGwTKPnR?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="XpQpqg7XqGwTKPnR" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:240px" src="https://es.js.cx/article/pointer-events/ball-2/"></iframe>
+  </div><p>Como puede ver, ya no hay <code>pointercancel</code>.</p>
+<p>Ahora podemos agregar el código para mover realmente la bola, y nuestro método de arrastrar y soltar funcionará en dispositivos de mouse y dispositivos táctiles.</p>
+<h2><a class="main__anchor" name="captura-del-puntero" href="#captura-del-puntero">Captura del puntero</a></h2><p>La captura de puntero es una característica especial de los eventos de puntero.</p>
+<p>La idea es muy simple, pero puede verse extraña al principio, porque no existe algo así para ningún otro tipo de evento.</p>
+<p>El método principal es:</p>
+<ul>
+<li><code>elem.setPointerCapture(pointerId)</code> – vincula el <code>pointerId</code> dado a <code>elem</code>. Después del llamado todos los eventos de puntero con el mismo <code>pointerId</code> tendrán <code>elem</code> como objetivo (como si ocurrieran sobre <code>elem</code>), no importa dónde hayan ocurrido en realidad.</li>
+</ul>
+<p>En otras palabras: <code>elem.setPointerCapture(pointerId)</code> redirige hacia <code>elem</code> todos los eventos subsecuentes que tengan el <code>pointerId</code> dado.</p>
+<p>El vínculo se deshace::</p>
+<ul>
+<li>automáticamente cuando ocurren los eventos <code>pointerup</code> o <code>pointercancel</code>,</li>
+<li>automáticamente cuando <code>elem</code> es quitado del documento,</li>
+<li>cuando <code>elem.releasePointerCapture(pointerId)</code> es llamado.</li>
+</ul>
+<p>Ahora, ¿para qué es bueno esto? Momento de ver un ejemplo de la vida real.</p>
+<p><strong>La captura de puntero puede utilizarse para simplificar interacciones del tipo “arrastrar y soltar”.</strong></p>
+<p>Recordemos cómo uno puede implementar un control deslizante personalizado,  descrito en el artículo <a href="mouse-drag-and-drop.html">Arrastrar y Soltar con eventos del ratón</a>.</p>
+<p>Podemos hacer un elemento <code>slider</code> que representa la corredera con una perilla <code>thumb</code> dentro.</p>
+<div id="1cjb93n162" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div class=&quot;slider&quot;&gt;
+  &lt;div class=&quot;thumb&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Con estilos, se ve así:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/FTumJjOGLnz5eyZJ?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="FTumJjOGLnz5eyZJ" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:40px" src="https://es.js.cx/article/pointer-events/slider-html/"></iframe>
+  </div><p></p>
+<p>Esta es la lógica de funcionamientodespués de reemplazar eventos de mouse con sus equivalentes de puntero:</p>
+<ol>
+<li>El usuario presiona en el deslizante <code>thumb</code>: se dispara <code>pointerdown</code></li>
+<li>Entonces mueve el puntero: se dispara <code>pointermove</code> y nuestro código mueve el botón <code>thumb</code> a lo largo.
+<ul>
+<li>…Mientras el puntero se mueve, puede salirse del control deslizante: que vaya por debajo o por encima de él. El botón debe moverse de forma estrictamente horizontal, permaneciendo alineado con el puntero.</li>
+</ul>
+</li>
+</ol>
+<p>En la solución basada en eventos de mouse, para rastrear todos los movimientos del puntero incluyendo aquellos por arriba o por debajo de <code>thumb</code>, asignamos el controlador de evento <code>mousemove</code> al <code>document</code> entero.</p>
+<p>No es la solución más limpia. Uno de los problemas es que cuando el usuario mueve el puntero por el documento puede disparar manejadores de eventos (como <code>mouseover</code>) en otros elementos invocando funcionalidad de interfaz completamente sin relación al deslizante.</p>
+<p>Aquí es donde entra en juego <code>setPointerCapture</code>.</p>
+<ul>
+<li>Podemos llamar <code>thumb.setPointerCapture(event.pointerId)</code> en el controlador <code>pointerdown</code>,</li>
+<li>Entonces futuros eventos de puntero hasta <code>pointerup/cancel</code> serán redirigidos a <code>thumb</code>.</li>
+<li>Cuando ocurre <code>pointerup</code> (arrastre finalizado), el vínculo se deshace automáticamente, no necesitamos atender eso.</li>
+</ul>
+<p>Entonces, incluso si el usuario mueve el puntero alrededor de todo el documento, los controladores de eventos serán llamados sobre <code>thumb</code>. A pesar de ello las propiedades de coordenadas de los eventos, tales como <code>clientX/clientY</code> aún serán correctas, la captura solo afecta a <code>target/currentTarget</code>.</p>
+<p>Aquí está el código esencial:</p>
+<div id="oqizu5drnp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>thumb.onpointerdown = function(event) {
+  // reorienta todos los eventos de puntero (hasta pointerup) a thumb
+  thumb.setPointerCapture(event.pointerId);
+
+  // comienza a rastrear movimientos de puntero
+  thumb.onpointermove = function(event) {
+    // se mueve el control deslizante: escucha a thumb, ya que todos los eventos se redirigen a él
+    let newLeft = event.clientX - slider.getBoundingClientRect().left;
+    thumb.style.left = newLeft + 'px';
+  };
+
+  // on pointer up finaliza el seguimiento
+  thumb.onpointerup = function(event) {
+    thumb.onpointermove = null;
+    thumb.onpointerup = null;
+    // ...también procesa &quot;fin de arrastre&quot; si es necesario
+  };
+};
+
+// nota: no es necesario llamar a thumb.releasePointerCapture,
+// esto sucede con el pointerup automáticamente</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La demostración completa:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/7s8aLLCrC1IDoRA4?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="7s8aLLCrC1IDoRA4" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:100px" src="https://es.js.cx/article/pointer-events/slider/"></iframe>
+  </div><p></p>
+<p>En el demo, hay un elemento adicional con un controlador <code>onmouseover</code> que muestra la fecha actual.</p>
+<p>Nota que mientras arrastras el dial, puedes pasar sobre ese elemento y su controlador <em>no</em> se dispara.</p>
+<p>Entonces el arrastre esta ahora libre de efectos secundarios gracias a <code>setPointerCapture</code>.</p>
+<p>Finalizando, la captura de puntero nos brinda dos beneficios:</p>
+<ol>
+<li>El código se vuelve más claro, ya no necesitamos agregar o quitar controladores para el <code>document</code> entero. El vínculo se deshace automáticamente.</li>
+<li>Si hay cualquier otro controlador de evento en el documento, no serán disparados accidentalmente mientras el usuario está arrastrando el deslizante.</li>
+</ol>
+<h3><a class="main__anchor" name="eventos-de-captura-de-puntero" href="#eventos-de-captura-de-puntero">Eventos de captura de puntero</a></h3><p>Una cosa más por mencionar en bien de la exhaustividad.</p>
+<p>Hay dos eventos de puntero asociados con la captura de puntero:</p>
+<ul>
+<li><code>gotpointercapture</code> se dispara cuando un elemento usa <code>setPointerCapture</code> para permitir la captura.</li>
+<li><code>lostpointercapture</code> se dispara cuando se libera la captura: ya sea explícitamente con la llamada a <code>releasePointerCapture</code>, o automáticamente con <code>pointerup</code>/<code>pointercancel</code>.</li>
+</ul>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Los eventos de puntero permiten manejar eventos de mouse, toque y lápiz simultáneamente con una simple pieza de código.</p>
+<p>Los eventos de puntero extienden los eventos del mouse. Podemos reemplazar <code>mouse</code> con <code>pointer</code> en los nombres de los eventos y esperar que nuestro código continúe funcionando para el mouse, con mejor soporte para otros tipos de dispositivos.</p>
+<p>Para arrastrar y soltar, y complejas interacciones que el navegador pudiera decidir secuestrar y manejar por su cuenta, recuerde cancelar la acción predeterminada sobre eventos y establecer <code>touch-action: none</code> en CSS para los elementos que involucramos.</p>
+<p>Las habilidades adicionales de los eventos Pointer son:</p>
+<ul>
+<li>Soporte multitáctil usando <code>pointerId</code> y <code>isPrimary</code>.</li>
+<li>Propiedades específicas del dispositivo, como <code>pressure</code>, <code>width/height</code> y otras.</li>
+<li>Captura de puntero: podemos redirigir todos los eventos de puntero a un elemento específico hasta <code>pointerup</code>/<code>pointercancel</code>.</li>
+</ul>
+<p>Al momento los eventos de puntero son compatibles con todos los navegadores principales, por lo que podemos cambiarlos de forma segura si no se necesitan IE10 y Safari 12. E incluso con esos navegadores, existen polyfills que permiten la compatibilidad con eventos de puntero.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="mouse-drag-and-drop.html" data-tooltip="Arrastrar y Soltar con eventos del ratón"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="keyboard-events.html" data-tooltip="Teclado: keydown y keyup"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fpointer-events" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fpointer-events" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/pointer-events","identifier":"\/pointer-events"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="event-details.html">Eventos en la UI</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#una-breve-historia">Una breve historia</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tipos-de-eventos-de-puntero">Tipos de eventos de puntero</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#propiedades-de-los-eventos-de-puntero">Propiedades de los eventos de puntero</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#multi-touch-multitactil">Multi-touch (Multitáctil)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#evento-pointercancel">Evento: pointercancel</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#captura-del-puntero">Captura del puntero</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fpointer-events" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fpointer-events" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/3-event-details/6-pointer-events" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/pointer-events by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:34 GMT -->
+</html>

@@ -1,0 +1,13 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 08 Feb 2023 07:36:31 at https://leafletjs.com/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwr3C2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "es, en, *" https://leafletjs.com/ -O1 "C:\Mis lugares Web\Leaflet" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+07:36:39	Error: 	"Bad Request" (400) at link https://tile.openstreetmap.org/{z}/{x}/{y}.png (from https://leafletjs.com/)
+07:36:58	Error: 	"Not Found" (404) at link https://leafletjs.com/javascript/3/jssamples/widget_home.html (from https://leafletjs.com/plugins.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 28 seconds : 105 links scanned, 102 files written (4595226 bytes overall) [2297163 bytes received at 82041 bytes/sec], 3030849 bytes transferred using HTTP compression in 79 files, ratio 21%, 10.5 requests per connection
+(2 errors, 0 warnings, 0 messages)

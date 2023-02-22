@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/symbol by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Tipo Symbol</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="symbol.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Tipo Symbol"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Tipo Symbol"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="optional-chaining.html"><link rel="next" href="object-toprimitive.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Tipo Symbol"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/symbol"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/symbol"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="symbol.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/symbol"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/symbol"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/symbol"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/symbol"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/symbol"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/symbol"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/symbol"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/symbol"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/symbol"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/symbol"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fsymbol" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fsymbol" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/symbol">عربي</option><option value="https://javascript.info/symbol">English</option><option value="https://es.javascript.info/symbol" selected>Español</option><option value="https://fa.javascript.info/symbol">فارسی</option><option value="https://fr.javascript.info/symbol">Français</option><option value="https://id.javascript.info/symbol">Indonesia</option><option value="https://it.javascript.info/symbol">Italiano</option><option value="https://ja.javascript.info/symbol">日本語</option><option value="https://ko.javascript.info/symbol">한국어</option><option value="https://learn.javascript.ru/symbol">Русский</option><option value="https://tr.javascript.info/symbol">Türkçe</option><option value="https://uk.javascript.info/symbol">Українська</option><option value="https://zh.javascript.info/symbol">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="35" max="93" data-tooltip="Lección 35 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="object-basics.html"><span>Objetos: lo básico</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Objetos: lo básico","item":"https://es.javascript.info/object-basics"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 12 de julio de 2022"><div class="updated-at__content">12 de julio de 2022</div></div></div><h1 class="main__header-title">Tipo Symbol</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Tipo Symbol"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Según la especificación, solo dos de los tipos primitivos pueden servir como clave de propiedad de objetos:</p>
+<ul>
+<li>string, o</li>
+<li>symbol.</li>
+</ul>
+<p>Si se usa otro tipo, como un número, este se autoconvertirá a string. Así, <code>obj[1]</code> es lo mismo que <code>obj[&quot;1&quot;]</code>, y <code>obj[true]</code> es lo mismo que <code>obj[&quot;true&quot;]</code>.</p>
+<p>Hasta ahora solo estuvimos usando strings.</p>
+<p>Ahora exploremos symbols y ver lo que pueden hacer por nosotros.</p>
+<h2><a class="main__anchor" name="symbols" href="#symbols">Symbols</a></h2><p>El valor de “Symbol” representa un identificador único.</p>
+<p>Un valor de este tipo puede ser creado usando <code>Symbol()</code>:</p>
+<div id="1q7tnj36xo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id = Symbol();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Al crearlo, podemos agregarle una descripción (también llamada symbol name), que será útil en la depuración de código:</p>
+<div id="j7bto88gd6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// id es un symbol con la descripción &quot;id&quot;
+let id = Symbol(&quot;id&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Se garantiza que los símbolos son únicos. Aunque declaremos varios Symbols con la misma descripción, éstos tendrán valores distintos. La descripción es solamente una etiqueta que no afecta nada más.</p>
+<p>Por ejemplo, aquí hay dos Symbols con la misma descripción… pero no son iguales:</p>
+<div id="nb3rywnccu" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id1 = Symbol(&quot;id&quot;);
+let id2 = Symbol(&quot;id&quot;);
+
+alert(id1 == id2); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si estás familiarizado con Ruby u otro lenguaje que también tiene symbols, por favor no te confundas. Los Symbols de Javascript son diferentes.</p>
+<p>Para resumir: un symbol es un “valor primitivo único” con una descripción opcional. Veamos dónde podemos usarlos.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Symbols no se autoconvierten a String</span></div>
+            <div class="important__content"><p>La mayoría de los valores en JavaScript soportan la conversión implícita a string. Por ejemplo, podemos hacer un ´alert´ con casi cualquier valor y funcionará. Los Symbols son especiales, éstos no se autoconvierten.</p>
+<p>Por ejemplo, este <code>alert</code> mostrará un error:</p>
+<div id="qlm5vwzmfa" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id = Symbol(&quot;id&quot;);
+alert(id); // TypeError: No puedes convertir un valor Symbol en string</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esta es una “protección del lenguaje” para evitar errores, ya que String y Symbol son fundamentalmente diferentes y no deben convertirse accidentalmente uno en otro.</p>
+<p>Si realmente queremos mostrar un Symbol, necesitamos llamar el método <code>.toString()</code> explícitamente:</p>
+<div id="pnpv0inwgz" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id = Symbol(&quot;id&quot;);
+alert(id.toString()); // Symbol(id), ahora sí funciona</code></pre>
+        </div>
+      </div>
+      
+      </div><p>U obtener <code>symbol.description</code> para mostrar solamente la descripción:</p>
+<div id="avzru63yb5" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id = Symbol(&quot;id&quot;);
+alert(id.description); // id</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="claves-ocultas" href="#claves-ocultas">Claves “Ocultas”</a></h2><p>Los Symbols nos permiten crear propiedades “ocultas” en un objeto, a las cuales ninguna otra parte del código puede accesar ni sobrescribir accidentalmente.</p>
+<p>Por ejemplo, si estamos trabajando con objetos <code>user</code> que pertenecen a código de terceros y queremos agregarles identificadores:</p>
+<p>Utilicemos una clave symbol para ello:</p>
+<div id="33tygbmnbi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = { // pertenece a otro código
+  name: &quot;John&quot;
+};
+
+let id = Symbol(&quot;id&quot;);
+
+user[id] = 1;
+
+alert( user[id] ); // podemos accesar a la información utilizando el symbol como nombre de clave</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Cuál es la ventaja de usar <code>Symbol(&quot;id&quot;)</code> y no un string <code>&quot;id&quot;</code>?</p>
+<p>Como los objetos <code>user</code> pertenecen a otro código, es inseguro agregarles campos pues podría afectar su comportamiento predefinido en ese otro código. Sin embargo, los símbolos no pueden ser accedidos accidentalmente. El código de terceros no se percataría de los símbolos nuevos, por lo que se considera seguro agregar símbolos a los objetos <code>user</code>.</p>
+<p>Además, imagina que otro script quiere tener su propio identificador “id” dentro de <code>user</code> para sus propios fines.</p>
+<p>Entonces ese script puede crear su propio <code>Symbol(&quot;id&quot;)</code>, como aquí:</p>
+<div id="3h7k2qb4x4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// ...
+let id = Symbol(&quot;id&quot;);
+
+user[id] = &quot;Su valor de id&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No habrá conflicto porque los Symbols siempre son diferentes, incluso si tienen el mismo nombre.</p>
+<p>… pero si utilizamos un string <code>&quot;id&quot;</code> en lugar de un Symbol para el mismo propósito, ciertamente <em>habrá</em> un conflicto:</p>
+<div id="qxq57qcfoq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = { name: &quot;John&quot; };
+
+// Nuestro script usa la propiedad &quot;id&quot;
+user.id = &quot;Nuestro valor id&quot;;
+
+// ...Otro script también quiere usar &quot;id&quot;  ...
+
+user.id = &quot;Su valor de id&quot;
+// Boom! sobreescrito por otro script!</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="symbols-en-objetos-literales" href="#symbols-en-objetos-literales">Symbols en objetos literales</a></h3><p>Si queremos usar un Symbol en un objeto literal, debemos usar llaves.</p>
+<p>Como se muestra a continuación:</p>
+<div id="1oaiv6fe9o" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id = Symbol(&quot;id&quot;);
+
+let user = {
+  name: &quot;John&quot;,
+  [id]: 123 // no &quot;id&quot;: 123
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Se hace así porque necesitamos que el valor de la variable <code>id</code> sea la clave, no el string “id”.</p>
+<h3><a class="main__anchor" name="los-symbols-son-omitidos-en-for-in" href="#los-symbols-son-omitidos-en-for-in">Los Symbols son omitidos en for…in</a></h3><p>Las claves de Symbol no participan dentro de los ciclos <code>for..in</code>.</p>
+<p>Por ejemplo:</p>
+<div id="b5qxn5c5ju" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id = Symbol(&quot;id&quot;);
+let user = {
+  name: &quot;John&quot;,
+  age: 30,
+  [id]: 123
+};
+
+for (let key in user) alert(key); // nombre, edad (no aparecen symbols)
+
+// el acceso directo por medio de symbol funciona
+alert( &quot;Direct: &quot; + user[id] ); // Direct: 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">Object.keys(user)</a> también los ignora. Esto forma parte del principio general de “ocultamiento de propiedades simbólicas”. Si otro script o si otra librería itera sobre nuestro objeto, este no accesará inesperadamente a la clave de Symbol.</p>
+<p>En contraste, <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/assign">Object.assign</a> copia tanto las claves string como symbol:</p>
+<div id="0usjnv8w5k" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let id = Symbol(&quot;id&quot;);
+let user = {
+  [id]: 123
+};
+
+let clone = Object.assign({}, user);
+
+alert( clone[id] ); // 123</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No hay paradoja aquí. Es así por diseño. La idea es que cuando clonamos un objeto o cuando fusionamos objetos, generalmente queremos que se copien <em>todas</em> las claves (incluidos los Symbol como <code>id</code>).</p>
+<h2><a class="main__anchor" name="symbols-globales" href="#symbols-globales">Symbols Globales</a></h2><p>Como hemos visto, normalmente todos los Symbols son diferentes aunque tengan el mismo nombre. Pero algunas veces necesitamos que symbols con el mismo nombre sean la misma entidad.</p>
+<p>Para lograr esto, existe un <em>global symbol registry</em>. Ahí podemos crear symbols y accesarlos después, lo cual nos garantiza que cada vez que se acceda a la clave con el mismo nombre, esta te devuelva exactamente el mismo symbol.</p>
+<p>Para crear u accesar a un symbol en el registro global, usa <code>Symbol.for(key)</code>.</p>
+<p>Esta llamada revisa el registro global, y si existe un symbol descrito como <code>key</code>, lo retornará; de lo contrario creará un nuevo symbol <code>Symbol(key)</code> y lo almacenará en el registro con el <code>key</code> dado.</p>
+<p>Por ejemplo:</p>
+<div id="zctu2hk5q7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// leer desde el registro global
+let id = Symbol.for(&quot;id&quot;); // si el símbolo no existe, se crea
+
+// léelo nuevamente (tal vez de otra parte del código)
+let idAgain = Symbol.for(&quot;id&quot;);
+
+// el mismo symbol
+alert( id === idAgain ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los Symbols dentro de este registro son llamados <em>global symbols</em> y están disponibles y al alcance de todo el código en la aplicación.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Eso suena a Ruby</span></div>
+            <div class="important__content"><p>En algunos lenguajes de programación, como Ruby, hay un solo Symbol por cada nombre.</p>
+<p>En Javascript, como podemos ver, eso es verdad para los global symbols.</p>
+</div></div>
+<h3><a class="main__anchor" name="symbol-keyfor" href="#symbol-keyfor">Symbol.keyFor</a></h3><p>Para los global symbols, no solo <code>Symbol.for(key)</code> devuelve un symbol por su nombre. Para hacer lo opuesto, – devolver el nombre de  un global symbol – podemos usar: <code>Symbol.keyFor(sym)</code>.</p>
+<p>Por ejemplo:</p>
+<div id="84kn0l8z1d" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// tomar symbol por nombre
+let sym = Symbol.for(&quot;nombre&quot;);
+let sym2 = Symbol.for(&quot;id&quot;);
+
+// tomar name por symbol
+alert( Symbol.keyFor(sym) ); // nombre
+alert( Symbol.keyFor(sym2) ); // id</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El <code>Symbol.keyFor</code> utiliza internamente el registro “global symbol registry” para buscar la clave del symbol, por lo tanto, no funciona para los symbol que no están dentro del registro. Si el symbol no es global, no será capaz de encontrarlo y por lo tanto devolverá <code>undefined</code>.</p>
+<p>Dicho esto, todo symbol tiene la propiedad <code>description</code>.</p>
+<p>Por ejemplo:</p>
+<div id="5zguqjjqbf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let globalSymbol = Symbol.for(&quot;nombre&quot;);
+let localSymbol = Symbol(&quot;nombre&quot;);
+
+alert( Symbol.keyFor(globalSymbol) ); // nombre, global symbol
+alert( Symbol.keyFor(localSymbol) ); // undefined, no global
+
+alert( localSymbol.description ); // nombre</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="system-symbols" href="#system-symbols">System symbols</a></h2><p>Existen varios symbols del sistema que JavaScript utiliza internamente, y que podemos usar para ajustar varios aspectos de nuestros objetos.</p>
+<p>Se encuentran listados en <a href="https://tc39.github.io/ecma262/#sec-well-known-symbols">Well-known symbols</a> :</p>
+<ul>
+<li><code>Symbol.hasInstance</code></li>
+<li><code>Symbol.isConcatSpreadable</code></li>
+<li><code>Symbol.iterator</code></li>
+<li><code>Symbol.toPrimitive</code></li>
+<li>…y así.</li>
+</ul>
+<p>Por ejemplo, <code>Symbol.toPrimitive</code> nos permite describir el objeto para su conversión primitiva. Más adelante veremos su uso.</p>
+<p>Otros symbols también te serán más familiares cuando estudiemos las características correspondientes.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p><code>Symbol</code> es un tipo de dato primitivo para identificadores únicos.</p>
+<p>Symbols son creados al llamar <code>Symbol()</code> con una descripción opcional.</p>
+<p>Symbols son siempre valores distintos aunque tengan el mismo nombre. Si queremos que symbols con el mismo nombre tengan el mismo valor, entonces debemos guardarlos en el registro global: <code>Symbol.for(key)</code> retornará un symbol (en caso de no existir, lo creará) con el <code>key</code> como su nombre. Todas las llamadas de <code>Symbol.for</code> con ese nombre retornarán siempre el mismo symbol.</p>
+<p>Symbols se utilizan principalmente en dos casos:</p>
+<ol>
+<li>
+<p>Propiedades de objeto “Ocultas”</p>
+<p>Si queremos agregar una propiedad a un objeto que “pertenece” a otro script u otra librería, podemos crear un symbol y usarlo como clave. Una clave symbol no aparecerá en los ciclos <code>for..in</code>, por lo que no podrá ser procesada accidentalmente junto con las demás propiedades. Tampoco puede ser accesada directamente, porque un script ajeno no tiene nuestro symbol. Por lo tanto la propiedad estará protegida contra uso y escritura accidentales.</p>
+<p>Podemos “ocultar” ciertos valores dentro de un objeto que solo estarán disponibles dentro de ese script usando las claves de symbol.</p>
+</li>
+<li>
+<p>Existen diversos symbols del sistema que utiliza Javascript, a los cuales podemos accesar por medio de <code>Symbol.*</code>. Podemos usarlos para alterar algunos comportamientos. Por ejemplo, más adelante en el tutorial, usaremos <code>Symbol.iterator</code> para <a href="iterable.html">iterables</a>, <code>Symbol.toPrimitive</code> para configurar <a href="object-toprimitive.html">object-to-primitive conversion</a>.</p>
+</li>
+</ol>
+<p>Técnicamente, los symbols no están 100% ocultos. Existe un método incorporado <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Object/getOwnPropertySymbols">Object.getOwnPropertySymbols(obj)</a> que nos permite obtener todos los symbols. También existe un método llamado <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys">Reflect.ownKeys(obj)</a> que devuelve <em>todas</em> las claves de un objeto, incluyendo las que son de tipo symbol. Pero la mayoría de las librerías, los métodos incorporados y las construcciones de sintaxis no usan estos métodos.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="optional-chaining.html" data-tooltip="Encadenamiento opcional '?.'"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="object-toprimitive.html" data-tooltip="Conversión de objeto a valor primitivo"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fsymbol" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fsymbol" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/symbol","identifier":"\/symbol"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-basics.html">Objetos: lo básico</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#symbols">Symbols</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#claves-ocultas">Claves “Ocultas”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#symbols-globales">Symbols Globales</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#system-symbols">System symbols</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fsymbol" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fsymbol" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/04-object-basics/08-symbol" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/symbol by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+</html>

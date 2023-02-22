@@ -1,0 +1,286 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/onload-onerror by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Carga de recursos: onload y onerror</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="onload-onerror.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Carga de recursos: onload y onerror"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Carga de recursos: onload y onerror"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="script-async-defer.html"><link rel="next" href="ui-misc.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Carga de recursos: onload y onerror"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/onload-onerror"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="onload-onerror.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/onload-onerror"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/onload-onerror"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/onload-onerror"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/onload-onerror"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/onload-onerror"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/onload-onerror"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonload-onerror" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fonload-onerror" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/onload-onerror">English</option><option value="https://es.javascript.info/onload-onerror" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/onload-onerror">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/onload-onerror">Italiano</option><option value="https://ja.javascript.info/onload-onerror">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/onload-onerror">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/onload-onerror">Українська</option><option value="https://zh.javascript.info/onload-onerror">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="29" max="32" data-tooltip="Lección 29 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="loading.html"><span>El documento y carga de recursos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"El documento y carga de recursos","item":"https://es.javascript.info/loading"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 25 de octubre de 2022"><div class="updated-at__content">25 de octubre de 2022</div></div></div><h1 class="main__header-title">Carga de recursos: onload y onerror</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Carga de recursos: onload y onerror"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>El navegador nos permite hacer seguimiento de la carga de recursos externos: scripts, iframes, imágenes y más.</p>
+<p>Hay dos eventos para eso:</p>
+<ul>
+<li><code>onload</code> – cuando cargó exitosamente,</li>
+<li><code>onerror</code> – cuando un error ha ocurrido.</li>
+</ul>
+<h2><a class="main__anchor" name="cargando-un-script" href="#cargando-un-script">Cargando un script</a></h2><p>Digamos que tenemos que cargar un script de terceros y llamar una función que se encuentra dentro.</p>
+<p>Podemos cargarlo dinámicamente de esta manera:</p>
+<div id="3npt5v7832" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let script = document.createElement(&quot;script&quot;);
+script.src = &quot;my.js&quot;;
+
+document.head.append(script);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…pero ¿cómo podemos ejecutar la función que esta dentro del script? Necesitamos esperar hasta que el script haya cargado, y solo después podemos llamarlo.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Por favor tome nota:</span></div>
+            <div class="important__content"><p>Para nuestros scripts podemos usar <a href="modules.html">JavaScript modules</a> aquí, pero no está adoptado ampliamente por bibliotecas de terceros.</p>
+</div></div>
+<h3><a class="main__anchor" name="script-onload" href="#script-onload">script.onload</a></h3><p>El evento <code>load</code> se dispara después de que script sea cargado y ejecutado.</p>
+<p>Por ejemplo:</p>
+<div id="stpd8z6vhj" data-trusted="0" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let script = document.createElement('script');
+
+// podemos cargar cualquier script desde cualquier dominio
+script.src = &quot;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.3.0/lodash.js&quot;
+document.head.append(script);
+
+script.onload = function() {
+  // el script crea una variable &quot;_&quot;
+  alert( _.VERSION ); // muestra la versión de la librería
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces en <code>onload</code> podemos usar variables, ejecutar funciones, etc.</p>
+<p>…¿y si la carga falla? Por ejemplo: no hay tal script (error 404) en el servidor o el servidor está caído (no disponible).</p>
+<h3><a class="main__anchor" name="script-onerror" href="#script-onerror">script.onerror</a></h3><p>Los errores que ocurren durante la carga de un script pueden ser rastreados en el evento <code>error</code>.</p>
+<p>Por ejemplo, hagamos una petición a un script que no existe:</p>
+<div id="4yo5cyqx4j" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let script = document.createElement('script');
+script.src = &quot;https://example.com/404.js&quot;; // no hay tal script
+document.head.append(script);
+
+script.onerror = function() {
+  alert(&quot;Error al cargar &quot; + this.src); // Error al cargar https://example.com/404.js
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por favor nota que como no podemos obtener detalles del error HTTP aquí, no podemos saber if fue un error 404 o algo diferente. Solo el error de carga.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Importante:</span></div>
+            <div class="important__content"><p>Los eventos <code>onload/onerror</code> rastrean solamente la carga de ellos mismos.</p>
+<p>Los errores que pueden ocurrir durante el procesamiento y ejecución están fuera del alcance para esos eventos. Eso es: si un script es cargado de manera exitosa, incluso si tiene errores de programación adentro, el evento <code>onload</code> se dispara. Para rastrear los errores del script un puede usar el manejador global <code>window.onerror</code>;</p>
+</div></div>
+<h2><a class="main__anchor" name="otros-recursos" href="#otros-recursos">Otros recursos</a></h2><p>Los eventos <code>load</code> y <code>error</code> también funcionan para otros recursos, básicamente para cualquiera que tenga una <code>src</code> externa.</p>
+<p>Por ejemplo:</p>
+<div id="l43oyi92cr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let img = document.createElement(&quot;img&quot;);
+img.src = &quot;https://js.cx/clipart/train.gif&quot;; // (*)
+
+img.onload = function () {
+  alert(`Image loaded, size ${img.width}x${img.height}`);
+};
+
+img.onerror = function () {
+  alert(&quot;Error occurred while loading image&quot;);
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Sin embargo, hay algunas notas:</p>
+<ul>
+<li>La mayoría de recursos empiezan a cargarse cuando son agregados al documento. Pero <code>&lt;img&gt;</code> es una excepción, comienza la carga cuando obtiene una fuente “.src” <code>(*)</code>.</li>
+<li>Para <code>&lt;iframe&gt;</code>, el evento <code>iframe.onload</code> se dispara cuando el iframe ha terminado de cargar, tanto para una carga exitosa como en caso de un error.</li>
+</ul>
+<p>Esto es por razones históricas.</p>
+<h2><a class="main__anchor" name="politica-de-origen-cruzado" href="#politica-de-origen-cruzado">Política de origen cruzado</a></h2><p>Hay una regla: los scripts de un sitio no pueden acceder al contenido de otro sitio. Por ejemplo: un script de <code>https://facebook.com</code> no puede leer la bandeja de correos del usuario en <code>https://gmail.com</code>.</p>
+<p>O para ser más precisos, un origen (el trío dominio/puerto/protocolo) no puede acceder al contenido de otro. Entonces, incluso si tenemos un sub-dominio o solo un puerto distinto, son considerados orígenes diferentes sin acceso al otro.</p>
+<p>Esta regla también afecta a recursos de otros dominios.</p>
+<p>Si usamos un script de otro dominio y tiene un error, no podemos obtener detalles del error.</p>
+<p>Por ejemplo, tomemos un script <code>error.js</code> que consta de una sola llamada a una función (con errores).</p>
+<div id="jr8lhdd43j" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 📁 error.js
+noSuchFunction();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora cargalo desde el mismo sitio donde esta alojado:</p>
+<div id="80u183fgfo" data-trusted="1" class="code-example" data-demo-height="0">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  window.onerror = function (message, url, line, col, errorObj) {
+    alert(`${message}\n${url}, ${line}:${col}`);
+  };
+&lt;/script&gt;
+&lt;script src=&quot;/article/onload-onerror/crossorigin/error.js&quot;&gt;&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos ver un buen reporte de error, como este:</p>
+<div id="bkh3cqdi3x" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>Uncaught ReferenceError: noSuchFunction is not defined
+https://javascript.info/article/onload-onerror/crossorigin/error.js, 1:1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora carguemos el mismo script desde otro dominio:</p>
+<div id="8v0zzx6aro" data-trusted="1" class="code-example" data-demo-height="0">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  window.onerror = function (message, url, line, col, errorObj) {
+    alert(`${message}\n${url}, ${line}:${col}`);
+  };
+&lt;/script&gt;
+&lt;script src=&quot;https://cors.javascript.info/article/onload-onerror/crossorigin/error.js&quot;&gt;&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El reporte es diferente, como este:</p>
+<div id="9qbtx0bxyh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>Script error.
+, 0:0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los detalles pueden variar dependiendo del navegador, pero la idea es la misma: cualquier información sobre las partes internas de un script, incluyendo el rastreo de la pila de errores, se oculta. Exactamente porque es de otro dominio.</p>
+<p>¿Por qué necesitamos detalles de error?</p>
+<p>Hay muchos servicios (y podemos construir uno nuestro) que escuchan los errores globales usando <code>window.onerror</code>, guardan los errores y proveen una interfaz para acceder a ellos y analizarlos. Eso es grandioso ya que podemos ver los errores originales ocasionados por nuestros usuarios. Pero si el script viene desde otro origen no hay mucha información sobre los errores como acabamos de ver.</p>
+<p>También se aplican políticas similares de origen cruzado (CORS) a otros tipos de recursos.</p>
+<p><strong>Para permitir el acceso de origen cruzado, la etiqueta <code>&lt;script&gt;</code> necesita tener el atributo <code>crossorigin</code>, además el servidor remoto debe proporcionar cabeceras especiales.</strong></p>
+<p>Hay 3 niveles de acceso de origen cruzado:</p>
+<ol>
+<li><strong>Sin el atributo <code>crossorigin</code></strong> – acceso prohibido.</li>
+<li><strong><code>crossorigin=&quot;anonymous&quot;</code></strong> – acceso permitido si el servidor responde con la cabecera <code>Access-Control-Allow-Origin</code> con <code>*</code> o nuestro origen. El navegador no envía la información de la autorización y cookies al servidor remoto.</li>
+<li><strong><code>crossorigin=&quot;use-credentials&quot;</code></strong> – acceso permitido si el servidor envia de vuelta la cabecera <code>Access-Control-Allow-Origin</code> con nuestro origen y <code>Access-Control-Allow-Credentials: true</code>. El navegador envía la información de la autorización y las cookies al servidor remoto.</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Por favor tome nota:</span></div>
+            <div class="important__content"><p>Puedes leer más sobre accesos de origen cruzado  en el capítulo <a href="fetch-crossorigin.html">Fetch: Cross-Origin Requests</a>. Este describe el método <code>fetch</code> para requerimientos de red, pero la política es exactamente la misma.</p>
+<p>Cosas como las “cookies” están fuera de nuestro alcance, pero podemos leer sobre ellas en <a href="cookie.html">Cookies, document.cookie</a>.</p>
+</div></div>
+<p>En nuestro caso no teníamos ningún atributo de origen cruzado (<code>cross-origin</code>). Por lo que se prohibió el acceso de origen cruzado. Vamos a agregarlo.</p>
+<p>Podemos elegir entre <code>&quot;anonymous&quot;</code> (no se envían las cookies, una sola cabecera esa necesaria en el lado del servidor) y <code>&quot;use-credentials&quot;</code> (envía las cookies, dos cabeceras son necesarias en el lado del servidor).</p>
+<p>Si no nos importan las <code>cookies</code>, entonces <code>&quot;anonymous&quot;</code> es el camino a seguir:</p>
+<div id="gwvasxk4hw" data-trusted="1" class="code-example" data-demo-height="0" data-highlight="[{&quot;start&quot;:5,&quot;cols&quot;:[{&quot;start&quot;:8,&quot;end&quot;:31}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+window.onerror = function(message, url, line, col, errorObj) {
+  alert(`${message}\n${url}, ${line}:${col}`);
+};
+&lt;/script&gt;
+&lt;script crossorigin=&quot;anonymous&quot; src=&quot;https://cors.javascript.info/article/onload-onerror/crossorigin/error.js&quot;&gt;&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora, asumiendo que el servidor brinda una cabecera <code>Access-Control-Allow-Origin</code>, todo está bien. Podemos tener el reporte completo del error.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Las imágenes <code>&lt;img&gt;</code>, estilos externos, scripts y otros recursos proveen los eventos <code>load</code> y <code>error</code> para rastrear sus cargas:</p>
+<ul>
+<li><code>load</code> se ejecuta cuando la carga ha sido exitosa,</li>
+<li><code>error</code> se ejecuta cuando una carga ha fallado.</li>
+</ul>
+<p>La única excepción es el <code>&lt;iframe&gt;</code>: por razones históricas siempre dispara el evento <code>load</code>, incluso si no encontró la página.</p>
+<p>El evento <code>readystatechange</code> también funciona para recursos, pero es muy poco usado debido a que los eventos <code>load/error</code> son mas simples.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cargando-imagenes-con-una-un-funcion-de-retorno-callback" name="cargando-imagenes-con-una-un-funcion-de-retorno-callback">Cargando imágenes con una un función de retorno (`callback`)</a></h3><a class="task__open-link" href="task/load-img-callback.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Normalmente, las imágenes son cargadas cuando son creadas. Entonces, cuando nosotros agregamos <code>&lt;img&gt;</code> a la página el usuario no ve la imágen inmediatamente. El navegador necesita cargarlo primero.</p>
+<p>Para mostrar una imágen inmediatamente, podemos crearlo “en avance”, como esto:</p>
+<div id="bsd8lhhfgn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let img = document.createElement('img');
+img.src = 'my.jpg';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El navegador comienza a cargar la imágen y lo guarda en el cache. Después cuando la misma imágen aparece en el documento (no importa cómo) la muestra inmediatamente.</p>
+<p><strong>Crear una función <code>preloadImages(sources, callback)</code> que cargue todas las imágenes desde una lista de fuentes (<code>sources</code>) y, cuando estén listas, ejecutar la función de retorno (<code>callback</code>).</strong></p>
+<p>Por ejemplo: esto puede mostrar una alerta (<code>alert</code>) después de que la imágen sea cargada:</p>
+<div id="mjf3zfxblb" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function loaded() {
+  alert(&quot;Imágenes cargadas&quot;)
+}
+
+preloadImages([&quot;1.jpg&quot;, &quot;2.jpg&quot;, &quot;3.jpg&quot;], loaded);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En caso de un error, la función debería seguir asumiendo que la imágen ha sido “cargada”.</p>
+<p>En otras palabras, la función de retorno (<code>callback</code>) es ejecutada cuando todas las imágenes han sido cargadas o no.</p>
+<p>La función es útil, por ejemplo, cuando planeamos mostrar una galería con muchas imágenes desplazables y estar seguros de que todas las imágenes están cargadas.</p>
+<p>En el documento fuente puedes encontrar enlaces para probar imágenes y también el código para verificar si han sido cargadas o no. Debería devolver <code>300</code>.</p>
+<p><a href="https://plnkr.co/edit/1d3OL4PaPfP3E6O7?p=preview" target="_blank" data-plunk-id="1d3OL4PaPfP3E6O7">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El algoritmo:</p>
+<ol>
+<li>Crear una <code>img</code> para cada fuente.</li>
+<li>Agregar los eventos <code>onload/onerror</code> para cada imágen.</li>
+<li>Incrementar el contador cuando el evento <code>onload</code> o el evento <code>onerror</code> se dispare.</li>
+<li>Cuando el valor del contador es igual a la cantidad de fuentes, hemos terminado: <code>callback()</code>.</li>
+</ol>
+<p><a href="https://plnkr.co/edit/b7ZkXyfoj6KXJ0IN?p=preview" target="_blank" data-plunk-id="b7ZkXyfoj6KXJ0IN">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="script-async-defer.html" data-tooltip="Scripts: async, defer"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="ui-misc.html" data-tooltip="Temas diversos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonload-onerror" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fonload-onerror" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/onload-onerror","identifier":"\/onload-onerror"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="loading.html">El documento y carga de recursos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#cargando-un-script">Cargando un script</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#otros-recursos">Otros recursos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#politica-de-origen-cruzado">Política de origen cruzado</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fonload-onerror" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fonload-onerror" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/5-loading/03-onload-onerror" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/onload-onerror by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+</html>

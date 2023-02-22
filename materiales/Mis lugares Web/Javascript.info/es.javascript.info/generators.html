@@ -1,0 +1,694 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/generators by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Generadores</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="generators.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Generadores"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Generadores"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="generators-iterators.html"><link rel="next" href="async-iterators-generators.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Generadores"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/generators"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/generators"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="generators.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/generators"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/generators"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/generators"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/generators"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/generators"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/generators"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/generators"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/generators"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fgenerators" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fgenerators" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/generators">عربي</option><option value="https://javascript.info/generators">English</option><option value="https://es.javascript.info/generators" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/generators">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/generators">Italiano</option><option value="https://ja.javascript.info/generators">日本語</option><option value="https://ko.javascript.info/generators">한국어</option><option value="https://learn.javascript.ru/generators">Русский</option><option value="https://tr.javascript.info/generators">Türkçe</option><option value="https://uk.javascript.info/generators">Українська</option><option value="https://zh.javascript.info/generators">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="83" max="93" data-tooltip="Lección 83 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="generators-iterators.html"><span>Generadores e iteración avanzada</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Generadores e iteración avanzada","item":"https://es.javascript.info/generators-iterators"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 28 de septiembre de 2022"><div class="updated-at__content">28 de septiembre de 2022</div></div></div><h1 class="main__header-title">Generadores</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Generadores"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Las funciones regulares devuelven solo un valor único (o nada).</p>
+<p>Los generadores pueden producir (“yield”) múltiples valores, uno tras otro, a pedido. Funcionan muy bien con los <a href="iterable.html">iterables</a>, permitiendo crear flujos de datos con facilidad.</p>
+<h2><a class="main__anchor" name="funciones-generadoras" href="#funciones-generadoras">Funciones Generadoras</a></h2><p>Para crear un generador, necesitamos una construcción de sintaxis especial: <code>function*</code>, la llamada “función generadora”.</p>
+<p>Se parece a esto:</p>
+<div id="l7mpu9e8zv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las funciones generadoras se comportan de manera diferente a las normales. Cuando se llama a dicha función, no ejecuta su código. En su lugar, devuelve un objeto especial, llamado “objeto generador”, para gestionar la ejecución.</p>
+<p>Echa un vistazo aquí:</p>
+<div id="au2vlqg93d" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+// &quot;función generadora&quot; crea &quot;objeto generador&quot;
+let generator = generateSequence();
+alert(generator); // [object Generator]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La ejecución del código de la función aún no ha comenzado:</p>
+<figure><div class="image" style="width:353px">
+      <div class="image__ratio" style="padding-top:42.492917847025495%"></div>
+      <object type="image/svg+xml" data="article/generators/generateSequence-1.svg" width="353" height="150" class="image__image" data-use-theme>
+        <img src="article/generators/generateSequence-1.svg" alt="" width="353" height="150">
+      </object>
+      </div></figure><p>El método principal de un generador es <code>next()</code>. Cuando se llama, se ejecuta hasta la declaración <code>yield &lt;value&gt;</code> más cercana (se puede omitir <code>value</code>, entonces será <code>undefined</code>). Luego, la ejecución de la función se detiene y el <code>value</code> obtenido se devuelve al código externo.</p>
+<p>El resultado de <code>next()</code> es siempre un objeto con dos propiedades:</p>
+<ul>
+<li><code>value</code>: el valor de yield.</li>
+<li><code>done</code>: <code>true</code> si el código de la función ha terminado, de lo contrario <code>false</code>.</li>
+</ul>
+<p>Por ejemplo, aquí creamos el generador y obtenemos su primer valor yield:</p>
+<div id="t3tx26yl78" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+let generator = generateSequence();
+
+let one = generator.next();
+
+alert(JSON.stringify(one)); // {value: 1, done: false}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A partir de ahora, obtuvimos solo el primer valor y la ejecución de la función está en la segunda línea:</p>
+<figure><div class="image" style="width:519px">
+      <div class="image__ratio" style="padding-top:28.901734104046245%"></div>
+      <object type="image/svg+xml" data="article/generators/generateSequence-2.svg" width="519" height="150" class="image__image" data-use-theme>
+        <img src="article/generators/generateSequence-2.svg" alt="" width="519" height="150">
+      </object>
+      </div></figure><p>Llamemos a <code>generator.next()</code> nuevamente. Reanuda la ejecución del código y devuelve el siguiente <code>yield</code>:</p>
+<div id="88ngywgq3n" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let two = generator.next();
+
+alert(JSON.stringify(two)); // {value: 2, done: false}</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:519px">
+      <div class="image__ratio" style="padding-top:28.901734104046245%"></div>
+      <object type="image/svg+xml" data="article/generators/generateSequence-3.svg" width="519" height="150" class="image__image" data-use-theme>
+        <img src="article/generators/generateSequence-3.svg" alt="" width="519" height="150">
+      </object>
+      </div></figure><p>Y, si lo llamamos por tercera vez, la ejecución llega a la declaración <code>return</code> que finaliza la función:</p>
+<div id="2jgggrcrgj" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:44,&quot;end&quot;:54}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let three = generator.next();
+
+alert(JSON.stringify(three)); // {value: 3, done: true}</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:519px">
+      <div class="image__ratio" style="padding-top:28.901734104046245%"></div>
+      <object type="image/svg+xml" data="article/generators/generateSequence-4.svg" width="519" height="150" class="image__image" data-use-theme>
+        <img src="article/generators/generateSequence-4.svg" alt="" width="519" height="150">
+      </object>
+      </div></figure><p>Ahora el generador está listo. Deberíamos verlo desde <code>done: true</code> y procesar <code>value: 3</code> como el resultado final.</p>
+<p>Las nuevas llamadas a <code>generator.next()</code> ya no tienen sentido. Si las hacemos, devuelven el mismo objeto: <code>{done: true}</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿<code>function* f(…)</code> o <code>function *f(…)</code>?</span></div>
+            <div class="important__content"><p>Ambas sintaxis son correctas.</p>
+<p>Pero generalmente se prefiere la primera sintaxis, ya que la estrella <code>*</code> denota que es una función generadora, describe el tipo, no el nombre, por lo que debería seguir a la palabra clave <code>function</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="los-generadores-son-iterables" href="#los-generadores-son-iterables">Los Generadores son iterables</a></h2><p>Como probablemente ya adivinó mirando el método <code>next()</code>, los generadores son <a href="iterable.html">iterables</a>.</p>
+<p>Podemos recorrer sus valores usando <code>for..of</code>:</p>
+<div id="6ghvnfwlej" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence() {
+  yield 1;
+  yield 2;
+  return 3;
+}
+
+let generator = generateSequence();
+
+for(let value of generator) {
+  alert(value); // 1, then 2
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Parece mucho mejor que llamar a <code>.next().value</code>, ¿verdad?</p>
+<p>… Pero tenga en cuenta: el ejemplo anterior muestra <code>1</code>, luego<code>2</code>, y eso es todo. ¡No muestra <code>3</code>!</p>
+<p>Es porque la iteración <code>for..of</code> ignora el último <code>value</code>, cuando <code>done: true</code>. Entonces, si queremos que todos los resultados se muestren con <code>for..of</code>, debemos devolverlos con <code>yield</code>:</p>
+<div id="ihco401alw" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+let generator = generateSequence();
+
+for(let value of generator) {
+  alert(value); // 1, luego 2, luego 3
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como los generadores son iterables, podemos llamar a todas las funciones relacionadas, p. Ej. la sintaxis de propagación <code>...</code>:</p>
+<div id="7n2pekbfjd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+let sequence = [0, ...generateSequence()];
+
+alert(sequence); // 0, 1, 2, 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el código anterior, <code>... generateSequence ()</code> convierte el objeto generador iterable en un array de elementos (lea más sobre la sintaxis de propagación en el capítulo <a href="rest-parameters-spread.html#spread-syntax">Parámetros Rest y operador Spread</a>)</p>
+<h2><a class="main__anchor" name="usando-generadores-para-iterables" href="#usando-generadores-para-iterables">Usando generadores para iterables</a></h2><p>Hace algún tiempo, en el capítulo <a href="iterable.html">Iterables</a> creamos un objeto iterable <code>range</code> que devuelve valores <code>from..to</code>.</p>
+<p>Recordemos el código aquí:</p>
+<div id="bb6l64hew1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let range = {
+  from: 1,
+  to: 5,
+
+  // for..of range llama a este método una vez al principio
+  [Symbol.iterator]() {
+    // ...devuelve el objeto iterador:
+    // en adelante, for..of funciona solo con ese objeto, solicitándole los siguientes valores
+    return {
+      current: this.from,
+      last: this.to,
+
+      // next() es llamado en cada iteración por el bucle for..of
+      next() {
+        // debería devolver el valor como un objeto {done:.., value :...}
+        if (this.current &lt;= this.last) {
+          return { done: false, value: this.current++ };
+        } else {
+          return { done: true };
+        }
+      }
+    };
+  }
+};
+
+// iteración sobre range devuelve números desde range.from  a range.to
+alert([...range]); // 1,2,3,4,5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos utilizar una función generadora para la iteración proporcionándola como <code>Symbol.iterator</code>.</p>
+<p>Este es el mismo <code>range</code>, pero mucho más compacto:</p>
+<div id="vu896gd9wu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let range = {
+  from: 1,
+  to: 5,
+
+  *[Symbol.iterator]() { // una taquigrafía para [Symbol.iterator]: function*()
+    for(let value = this.from; value &lt;= this.to; value++) {
+      yield value;
+    }
+  }
+};
+
+alert( [...range] ); // 1,2,3,4,5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso funciona, porque <code>range[Symbol.iterator]()</code> ahora devuelve un generador, y los métodos de generador son exactamente lo que espera <code>for..of</code>:</p>
+<ul>
+<li>tiene un método <code>.next()</code></li>
+<li>que devuelve valores en la forma <code>{value: ..., done: true/false}</code></li>
+</ul>
+<p>Eso no es una coincidencia, por supuesto. Los generadores se agregaron al lenguaje JavaScript con iteradores en mente, para implementarlos fácilmente.</p>
+<p>La variante con un generador es mucho más concisa que el código iterable original de <code>range</code> y mantiene la misma funcionalidad.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Los generadores pueden generar valores para siempre</span></div>
+            <div class="important__content"><p>En los ejemplos anteriores, generamos secuencias finitas, pero también podemos hacer un generador que produzca valores para siempre. Por ejemplo, una secuencia interminable de números pseudoaleatorios.</p>
+<p>Eso seguramente requeriría un <code>break</code> (o <code>return</code>) en <code>for..of</code> sobre dicho generador. De lo contrario, el bucle se repetiría para siempre y se colgaría.</p>
+</div></div>
+<h2><a class="main__anchor" name="composicion-del-generador" href="#composicion-del-generador">Composición del generador</a></h2><p>La composición del generador es una característica especial de los generadores que permite “incrustar” generadores entre sí de forma transparente.</p>
+<p>Por ejemplo, tenemos una función que genera una secuencia de números:</p>
+<div id="8oh09fp37s" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence(start, end) {
+  for (let i = start; i &lt;= end; i++) yield i;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora nos gustaría reutilizarlo para generar una secuencia más compleja:</p>
+<ul>
+<li>primero, dígitos <code>0..9</code> (con códigos de caracteres 48…57),</li>
+<li>seguido de letras mayúsculas del alfabeto <code>A..Z</code> (códigos de caracteres 65…90)</li>
+<li>seguido de letras del alfabeto en minúscula <code>a..z</code> (códigos de carácter 97…122)</li>
+</ul>
+<p>Podemos usar esta secuencia, p. Ej. para crear contraseñas seleccionando caracteres de él (también podría agregar caracteres de sintaxis), pero vamos a generarlo primero.</p>
+<p>En una función regular, para combinar los resultados de muchas otras funciones, las llamamos, almacenamos los resultados y luego nos unimos al final.</p>
+<p>Para los generadores, hay una sintaxis especial <code>yield*</code> para “incrustar” (componer) un generador en otro.</p>
+<p>El generador compuesto:</p>
+<div id="8z9c3bpp36" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence(start, end) {
+  for (let i = start; i &lt;= end; i++) yield i;
+}
+
+function* generatePasswordCodes() {
+
+  // 0..9
+  yield* generateSequence(48, 57);
+
+  // A..Z
+  yield* generateSequence(65, 90);
+
+  // a..z
+  yield* generateSequence(97, 122);
+
+}
+
+let str = '';
+
+for(let code of generatePasswordCodes()) {
+  str += String.fromCharCode(code);
+}
+
+alert(str); // 0..9A..Za..z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La directiva <code>yield*</code> <em>delega</em> la ejecución a otro generador. Este término significa que <code>yield* gen</code> itera sobre el generador <code>gen</code> y reenvía de forma transparente sus yields al exterior. Como si los valores fueran proporcionados por el generador externo.</p>
+<p>El resultado es el mismo que si insertamos el código de los generadores anidados:</p>
+<div id="27s6141gy0" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generateSequence(start, end) {
+  for (let i = start; i &lt;= end; i++) yield i;
+}
+
+function* generateAlphaNum() {
+
+  // yield* generateSequence(48, 57);
+  for (let i = 48; i &lt;= 57; i++) yield i;
+
+  // yield* generateSequence(65, 90);
+  for (let i = 65; i &lt;= 90; i++) yield i;
+
+  // yield* generateSequence(97, 122);
+  for (let i = 97; i &lt;= 122; i++) yield i;
+
+}
+
+let str = '';
+
+for(let code of generateAlphaNum()) {
+  str += String.fromCharCode(code);
+}
+
+alert(str); // 0..9A..Za..z</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La composición de un generador es una forma natural de insertar un flujo de un generador en otro. No usa memoria adicional para almacenar resultados intermedios.</p>
+<h2><a class="main__anchor" name="yield-es-una-calle-de-doble-sentido" href="#yield-es-una-calle-de-doble-sentido">“yield” es una calle de doble sentido</a></h2><p>Hasta este momento, los generadores eran similares a los objetos iterables, con una sintaxis especial para generar valores. Pero de hecho son mucho más potentes y flexibles.</p>
+<p>Eso es porque <code>yield</code> es una calle de doble sentido: no solo devuelve el resultado al exterior, sino que también puede pasar el valor dentro del generador.</p>
+<p>Para hacerlo, deberíamos llamar a <code>generator.next (arg)</code>, con un argumento. Ese argumento se convierte en el resultado de <code>yield</code>.</p>
+<p>Veamos un ejemplo:</p>
+<div id="9s0juc1d01" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* gen() {
+  // Pasar una pregunta al código externo y esperar una respuesta
+  let result = yield &quot;2 + 2 = ?&quot;; // (*)
+
+  alert(result);
+}
+
+let generator = gen();
+
+let question = generator.next().value; // &lt;-- yield devuelve el valor
+
+generator.next(4); // --&gt; pasar el resultado al generador</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:559px">
+      <div class="image__ratio" style="padding-top:38.64042933810376%"></div>
+      <object type="image/svg+xml" data="article/generators/genYield2.svg" width="559" height="216" class="image__image" data-use-theme>
+        <img src="article/generators/genYield2.svg" alt="" width="559" height="216">
+      </object>
+      </div></figure><ol>
+<li>La primera llamada a <code>generator.next ()</code> debe hacerse siempre sin un argumento (el argumento se ignora si se pasa). Inicia la ejecución y devuelve el resultado del primer <code>yield &quot;2 + 2 = ?&quot;</code>. En este punto, el generador detiene la ejecución, mientras permanece en la línea <code>(*)</code>.</li>
+<li>Luego, como se muestra en la imagen de arriba, el resultado de <code>yield</code> entra en la variable <code>question</code> en el código de llamada.</li>
+<li>En <code>generator.next(4)</code>, el generador se reanuda y <code>4</code> entra como resultado: <code>let result = 4</code>.</li>
+</ol>
+<p>Tenga en cuenta que el código externo no tiene que llamar inmediatamente a <code>next(4)</code>. Puede que lleve algún tiempo. Eso no es un problema: el generador esperará.</p>
+<p>Por ejemplo:</p>
+<div id="jgn7wi1fpc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// reanudar el generador después de algún tiempo
+setTimeout(() =&gt; generator.next(4), 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como podemos ver, a diferencia de las funciones regulares, un generador y el código de llamada pueden intercambiar resultados pasando valores en <code>next/yield</code>.</p>
+<p>Para hacer las cosas más obvias, aquí hay otro ejemplo, con más llamadas:</p>
+<div id="nkzyhjg5at" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* gen() {
+  let ask1 = yield &quot;2 + 2 = ?&quot;;
+
+  alert(ask1); // 4
+
+  let ask2 = yield &quot;3 * 3 = ?&quot;
+
+  alert(ask2); // 9
+}
+
+let generator = gen();
+
+alert( generator.next().value ); // &quot;2 + 2 = ?&quot;
+
+alert( generator.next(4).value ); // &quot;3 * 3 = ?&quot;
+
+alert( generator.next(9).done ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Imagen de la ejecución:</p>
+<figure><div class="image" style="width:461px">
+      <div class="image__ratio" style="padding-top:55.9652928416486%"></div>
+      <object type="image/svg+xml" data="article/generators/genYield2-2.svg" width="461" height="258" class="image__image" data-use-theme>
+        <img src="article/generators/genYield2-2.svg" alt="" width="461" height="258">
+      </object>
+      </div></figure><ol>
+<li>El primer <code>.next()</code> inicia la ejecución … Llega al primer <code>yield</code>.</li>
+<li>El resultado se devuelve al código externo.</li>
+<li>El segundo <code>.next(4)</code> pasa <code>4</code> de nuevo al generador como resultado del primer <code>yield</code> y reanuda la ejecución.</li>
+<li>…Alcanza el segundo <code>yield</code>, que se convierte en el resultado de la llamada del generador.</li>
+<li>El tercer <code>next(9)</code> pasa <code>9</code> al generador como resultado del segundo <code>yield</code> y reanuda la ejecución que llega al final de la función, así que <code>done: true</code>.</li>
+</ol>
+<p>Es como un juego de “ping-pong”. Cada <code>next(value)</code> (excluyendo el primero) pasa un valor al generador, que se convierte en el resultado del <code>yield</code> actual, y luego recupera el resultado del siguiente <code>yield</code>.</p>
+<h2><a class="main__anchor" name="generator-throw" href="#generator-throw">generator.throw</a></h2><p>Como observamos en los ejemplos anteriores, el código externo puede pasar un valor al generador, como resultado de <code>yield</code>.</p>
+<p>…Pero también puede iniciar (lanzar) un error allí. Eso es natural, ya que un error es una especie de resultado.</p>
+<p>Para pasar un error a un <code>yield</code>, deberíamos llamar a <code>generator.throw(err)</code>. En ese caso, el <code>err</code> se coloca en la línea con ese <code>yield</code>.</p>
+<p>Por ejemplo, aquí el yield de <code>&quot;2 + 2 = ?&quot;</code> conduce a un error:</p>
+<div id="mg5y99ux05" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:14,&quot;end&quot;:14}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* gen() {
+  try {
+    let result = yield &quot;2 + 2 = ?&quot;; // (1)
+
+    alert(&quot;La ejecución no llega aquí, porque la excepción se lanza arriba&quot;);
+  } catch(e) {
+    alert(e); // muestra el error
+  }
+}
+
+let generator = gen();
+
+let question = generator.next().value;
+
+generator.throw(new Error(&quot;The answer is not found in my database&quot;)); // (2)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El error, arrojado al generador en la línea <code>(2)</code> conduce a una excepción en la línea <code>(1)</code> con <code>yield</code>. En el ejemplo anterior, <code>try..catch</code> lo captura y lo muestra.</p>
+<p>Si no lo detectamos, al igual que cualquier excepción, “cae” del generador en el código de llamada.</p>
+<p>La línea actual del código de llamada es la línea con <code>generator.throw</code>, etiquetada como <code>(2)</code>. Entonces podemos atraparlo aquí, así:</p>
+<div id="66nbnzjj2o" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* generate() {
+  let result = yield &quot;2 + 2 = ?&quot;; // Error en esta linea
+}
+
+let generator = generate();
+
+let question = generator.next().value;
+
+try {
+  generator.throw(new Error(&quot;La respuesta no se encuentra en mi base de datos&quot;));
+} catch(e) {
+  alert(e); // mostrar el error
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si no detectamos el error allí, entonces, como de costumbre, pasa al código de llamada externo (si lo hay) y, si no se detecta, mata el script.</p>
+<h2><a class="main__anchor" name="generator-return" href="#generator-return">generator.return</a></h2><p><code>generator.return(value)</code> detiene la ejecución de generator y devuelve el valor <code>value</code> dado.</p>
+<div id="dv0he1asvu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* gen() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const g = gen();
+
+g.next();        // { value: 1, done: false }
+g.return('foo'); // { value: &quot;foo&quot;, done: true }
+g.next();        // { value: undefined, done: true }</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si volvemos a usar <code>generator.return()</code> en un generator finalizado, devolverá ese valor nuevamente (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator/return">MDN</a>).</p>
+<p>No lo usamos a menudo, ya que la mayor parte del tiempo queremos todos los valores, pero puede ser útil cuando queremos detener el generador en una condición específica.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>Los generadores son creados por funciones generadoras <code>function* f(…) {…}</code>.</li>
+<li>Dentro de los generadores (solo) existe un operador <code>yield</code>.</li>
+<li>El código externo y el generador pueden intercambiar resultados a través de llamadas <code>next/yield</code>.</li>
+</ul>
+<p>En JavaScript moderno, los generadores rara vez se utilizan. Pero a veces son útiles, porque la capacidad de una función para intercambiar datos con el código de llamada durante la ejecución es bastante única. Y, seguramente, son geniales para hacer objetos iterables.</p>
+<p>Además, en el próximo capítulo aprenderemos los generadores asíncronos, que se utilizan para leer flujos de datos generados asincrónicamente (por ejemplo, recuperaciones paginadas a través de una red) en bucles <code>for await ... of</code>.</p>
+<p>En la programación web, a menudo trabajamos con datos transmitidos, por lo que ese es otro caso de uso muy importante.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#generador-pseudoaleatorio" name="generador-pseudoaleatorio">Generador pseudoaleatorio</a></h3><a class="task__open-link" href="task/pseudo-random-generator.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>Hay muchas áreas en las que necesitamos datos aleatorios.</p>
+<p>Uno de ellos es para testeo. Es posible que necesitemos datos aleatorios: texto, números, etc. para probar bien las cosas.</p>
+<p>En JavaScript, podríamos usar <code>Math.random()</code>. Pero si algo sale mal, nos gustaría poder repetir la prueba utilizando exactamente los mismos datos.</p>
+<p>Para eso, se utilizan los denominados “generadores pseudoaleatorios con semilla”. Toman una “semilla” como primer valor, y luego generan los siguientes utilizando una fórmula; a partir de la misma semilla se produce la misma secuencia y así todo el flujo es fácilmente reproducible. Solo necesitamos recordar la semilla para repetirla.</p>
+<p>Un ejemplo de dicha fórmula, que genera valores distribuidos de manera algo uniforme:</p>
+<div id="aci9i6w316" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-none"><code>next = previous * 16807 % 2147483647</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si nosotros usamos <code>1</code> como semilla, los valores serán:</p>
+<ol>
+<li><code>16807</code></li>
+<li><code>282475249</code></li>
+<li><code>1622650073</code></li>
+<li>…y así…</li>
+</ol>
+<p>La tarea es crear una función generadora <code>pseudoRandom (seed)</code> que toma <code>seed</code> y crea el generador con esta fórmula.</p>
+<p>Ejemplo de uso</p>
+<div id="spc1mv1wmy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let generator = pseudoRandom(1);
+
+alert(generator.next().value); // 16807
+alert(generator.next().value); // 282475249
+alert(generator.next().value); // 1622650073</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/UYX3CoXTYOjR6EUf?p=preview" target="_blank" data-plunk-id="UYX3CoXTYOjR6EUf">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="ikpv33fn6s" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function* pseudoRandom(seed) {
+  let value = seed;
+
+  while(true) {
+    value = value * 16807 % 2147483647;
+    yield value;
+  }
+
+};
+
+let generator = pseudoRandom(1);
+
+alert(generator.next().value); // 16807
+alert(generator.next().value); // 282475249
+alert(generator.next().value); // 1622650073</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta que se puede hacer lo mismo con una función regular, como esta:</p>
+<div id="365j1peq6v" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function pseudoRandom(seed) {
+  let value = seed;
+
+  return function() {
+    value = value * 16807 % 2147483647;
+    return value;
+  }
+}
+
+let generator = pseudoRandom(1);
+
+alert(generator()); // 16807
+alert(generator()); // 282475249
+alert(generator()); // 1622650073</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso también funciona. Pero entonces perdemos la capacidad de iterar con <code>for..of</code> y usar la composición del generador, que puede ser útil en otros lugares.</p>
+<p><a href="https://plnkr.co/edit/eJInyaPTY1R0Hi1A?p=preview" target="_blank" data-plunk-id="eJInyaPTY1R0Hi1A">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="generators-iterators.html" data-tooltip="Generadores e iteración avanzada"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="async-iterators-generators.html" data-tooltip="Iteradores y generadores asíncronos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fgenerators" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fgenerators" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/generators","identifier":"\/generators"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="generators-iterators.html">Generadores e iteración avanzada</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#funciones-generadoras">Funciones Generadoras</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#los-generadores-son-iterables">Los Generadores son iterables</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#usando-generadores-para-iterables">Usando generadores para iterables</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#composicion-del-generador">Composición del generador</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#yield-es-una-calle-de-doble-sentido">“yield” es una calle de doble sentido</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#generator-throw">generator.throw</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#generator-return">generator.return</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fgenerators" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fgenerators" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/12-generators-iterators/1-generators" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/generators by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:19 GMT -->
+</html>

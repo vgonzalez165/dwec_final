@@ -1,0 +1,230 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/garbage-collection by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "es";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Recolección de basura</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="garbage-collection.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Recolección de basura"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Recolección de basura"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="object-copy.html"><link rel="next" href="object-methods.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Recolección de basura"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/garbage-collection"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/garbage-collection"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="garbage-collection.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/garbage-collection"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/garbage-collection"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/garbage-collection"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/garbage-collection"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/garbage-collection"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/garbage-collection"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/garbage-collection"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/garbage-collection"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/garbage-collection"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/garbage-collection"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fgarbage-collection" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fgarbage-collection" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/garbage-collection">عربي</option><option value="https://javascript.info/garbage-collection">English</option><option value="https://es.javascript.info/garbage-collection" selected>Español</option><option value="https://fa.javascript.info/garbage-collection">فارسی</option><option value="https://fr.javascript.info/garbage-collection">Français</option><option value="https://id.javascript.info/garbage-collection">Indonesia</option><option value="https://it.javascript.info/garbage-collection">Italiano</option><option value="https://ja.javascript.info/garbage-collection">日本語</option><option value="https://ko.javascript.info/garbage-collection">한국어</option><option value="https://learn.javascript.ru/garbage-collection">Русский</option><option value="https://tr.javascript.info/garbage-collection">Türkçe</option><option value="https://uk.javascript.info/garbage-collection">Українська</option><option value="https://zh.javascript.info/garbage-collection">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="31" max="93" data-tooltip="Lección 31 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="object-basics.html"><span>Objetos: lo básico</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Objetos: lo básico","item":"https://es.javascript.info/object-basics"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Recolección de basura</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Recolección de basura"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>La gestión de la memoria en JavaScript se realiza de forma automática e invisible para nosotros. Creamos datos primitivos, objetos, funciones… Todo ello requiere memoria.</p>
+<p>¿Qué sucede cuando algo no se necesita más? ¿Cómo hace el motor de JavaScript para encontrarlo y limpiarlo?</p>
+<h2><a class="main__anchor" name="alcance" href="#alcance">Alcance</a></h2><p>El concepto principal del manejo de memoria en JavaScript es <em>alcance</em>.</p>
+<p>Puesto simple, los valores “alcanzables” son aquellos que se pueden acceder o utilizar de alguna manera: Se garantiza que serán conservados en la memoria.</p>
+<ol>
+<li>
+<p>Hay un conjunto base de valores inherentemente accesibles, que no se pueden eliminar por razones obvias.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>La función ejecutándose actualmente, sus variables locales y parámetros.</li>
+<li>Otras funciones en la cadena actual de llamadas anidadas, sus variables y parámetros.</li>
+<li>Variables Globales</li>
+<li>(Hay algunos otros internos también)</li>
+</ul>
+<p>Estos valores se llaman <em>raíces</em>.</p>
+</li>
+<li>
+<p>Cualquier otro valor se considera accesible si se lo puede alcanzar desde una raíz por una referencia o por una cadena de referencias.</p>
+<p>Por ejemplo, si hay un objeto en una variable global, y ese objeto tiene una propiedad que hace referencia a otro objeto, este objeto también se considera accesible. Y aquellos a los que este objeto hace referencia también son accesibles. Ejemplos detallados a continuación.</p>
+</li>
+</ol>
+<p>Hay un proceso en segundo plano en el motor de JavaScript que se llama <a href="https://es.wikipedia.org/wiki/Recolector_de_basura">recolector de basura</a>. Este proceso monitorea todos los objetos y elimina aquellos que se han vuelto inalcanzables.</p>
+<h2><a class="main__anchor" name="un-ejemplo-sencillo" href="#un-ejemplo-sencillo">Un ejemplo sencillo</a></h2><p>Aquí va el ejemplo más simple:</p>
+<div id="r06eegvljw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// `user` tiene una referencia al objeto
+let user = {
+  name: &quot;John&quot;
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:144px">
+      <div class="image__ratio" style="padding-top:104.16666666666667%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/memory-user-john.svg" width="144" height="150" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/memory-user-john.svg" alt="" width="144" height="150">
+      </object>
+      </div></figure><p>Aquí la flecha representa una referencia de objeto. La variable global <code>&quot;user&quot;</code> hace referencia al objeto <code>{name: &quot;John&quot;}</code> (lo llamaremos John por brevedad). La propiedad <code>&quot;name&quot;</code>’ de John almacena un dato primitivo, por lo que está pintada dentro del objeto.</p>
+<p>Si se sobrescribe el valor de <code>user</code>, se pierde la referencia:</p>
+<div id="k4ydjm7rfz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>user = null;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:225px">
+      <div class="image__ratio" style="padding-top:70.66666666666667%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/memory-user-john-lost.svg" width="225" height="159" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/memory-user-john-lost.svg" alt="" width="225" height="159">
+      </object>
+      </div></figure><p>Ahora John se vuelve inalcanzable. No hay forma de acceder a él, no hay referencias a él. El recolector de basura desechará los datos y liberará la memoria.</p>
+<h2><a class="main__anchor" name="dos-referencias" href="#dos-referencias">Dos referencias</a></h2><p>Ahora imaginemos que copiamos la referencia de <code>user</code> a <code>admin</code>:</p>
+<div id="gtyel4iviu" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// `user` tiene una referencia al objeto
+let user = {
+  name: &quot;John&quot;
+};
+
+let admin = user;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:144px">
+      <div class="image__ratio" style="padding-top:110.41666666666667%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/memory-user-john-admin.svg" width="144" height="159" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/memory-user-john-admin.svg" alt="" width="144" height="159">
+      </object>
+      </div></figure><p>Ahora si hacemos lo mismo</p>
+<div id="zobj4qh4ns" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>user = null;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>… el objeto todavía es accesible a través de la variable global <code>admin</code>, por lo que debe quedar en la memoria. Si también sobrescribimos <code>admin</code>, entonces se puede eliminar.</p>
+<h2><a class="main__anchor" name="objetos-entrelazados" href="#objetos-entrelazados">Objetos entrelazados</a></h2><p>Ahora un ejemplo más complejo. La familia:</p>
+<div id="rvfk7dmogs" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function marry(man, woman) {
+  woman.husband = man;
+  man.wife = woman;
+
+  return {
+    father: man,
+    mother: woman
+  }
+}
+
+let family = marry({
+  name: &quot;John&quot;
+}, {
+  name: &quot;Ann&quot;
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función <code>marry</code> “casa” dos objetos dándoles referencias entre sí y devuelve un nuevo objeto que los contiene a ambos.</p>
+<p>La estructura de memoria resultante:</p>
+<figure><div class="image" style="width:337px">
+      <div class="image__ratio" style="padding-top:60.534124629080125%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/family.svg" width="337" height="204" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/family.svg" alt="" width="337" height="204">
+      </object>
+      </div></figure><p>Por ahora, todos los objetos son accesibles.</p>
+<p>Ahora borremos estas dos referencias:</p>
+<div id="eebmpybwgt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>delete family.father;
+delete family.mother.husband;</code></pre>
+        </div>
+      </div>
+      
+      </div><figure><div class="image" style="width:337px">
+      <div class="image__ratio" style="padding-top:60.534124629080125%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/family-delete-refs.svg" width="337" height="204" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/family-delete-refs.svg" alt="" width="337" height="204">
+      </object>
+      </div></figure><p>No es suficiente eliminar solo una de estas dos referencias, porque todos los objetos aún serían accesibles.</p>
+<p>Pero si eliminamos ambos, entonces podemos ver que John ya no tiene referencias entrantes:</p>
+<figure><div class="image" style="width:399px">
+      <div class="image__ratio" style="padding-top:56.390977443609025%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/family-no-father.svg" width="399" height="225" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/family-no-father.svg" alt="" width="399" height="225">
+      </object>
+      </div></figure><p>Las referencias salientes no importan. Solo los entrantes pueden hacer que un objeto sea accesible. Entonces, John ahora es inalcanzable y será eliminado de la memoria con todos sus datos que también se volvieron inaccesibles.</p>
+<p>Después de la recolección de basura:</p>
+<figure><div class="image" style="width:144px">
+      <div class="image__ratio" style="padding-top:156.25%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/family-no-father-2.svg" width="144" height="225" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/family-no-father-2.svg" alt="" width="144" height="225">
+      </object>
+      </div></figure><h2><a class="main__anchor" name="isla-inalcanzable" href="#isla-inalcanzable">Isla inalcanzable</a></h2><p>Es posible que toda la isla de objetos interconectados se vuelva inalcanzable y se elimine de la memoria.</p>
+<p>El objeto fuente es el mismo que el anterior. Entonces:</p>
+<div id="qo5qwz84k3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>family = null;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La imagen en memoria se convierte en:</p>
+<figure><div class="image" style="width:420px">
+      <div class="image__ratio" style="padding-top:66.42857142857143%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/family-no-family.svg" width="420" height="279" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/family-no-family.svg" alt="" width="420" height="279">
+      </object>
+      </div></figure><p>Este ejemplo demuestra cuán importante es el concepto de alcance.</p>
+<p>Es obvio que John y Ann todavía están vinculados, ambos tienen referencias entrantes. Pero eso no es suficiente.</p>
+<p>El antiguo objeto <code>&quot;family&quot;</code> se ha desvinculado de la raíz, ya no se hace referencia a él, por lo que toda la isla se vuelve inalcanzable y se eliminará.</p>
+<h2><a class="main__anchor" name="algoritmos-internos" href="#algoritmos-internos">Algoritmos internos</a></h2><p>El algoritmo básico de recolección de basura se llama “marcar y barrer”.</p>
+<p>Los siguientes pasos de “recolección de basura” se realizan regularmente:</p>
+<ul>
+<li>El recolector de basura busca las raíces y las “marca” (recuerda).</li>
+<li>Luego visita y “marca” todos los objetos referenciados por ellas.</li>
+<li>Luego visita los objetos marcados y marca <em>sus</em> referencias. Todos los objetos visitados son recordados, para no visitar el mismo objeto dos veces en el futuro.</li>
+<li>…Y así sucesivamente hasta que cada referencia alcanzable (desde las raíces) sean visitadas.</li>
+<li>Todos los objetos que no fueron marcados se eliminan.</li>
+</ul>
+<p>Por ejemplo, si nuestra estructura de objeto se ve así:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:44.06047516198704%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/garbage-collection-1.svg" width="463" height="204" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/garbage-collection-1.svg" alt="" width="463" height="204">
+      </object>
+      </div></figure><p>Podemos ver claramente una “isla inalcanzable” al lado derecho. Ahora veamos cómo el recolector de basura maneja “marcar y barrer”.</p>
+<p>El primer paso marca las raíces:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:44.06047516198704%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/garbage-collection-2.svg" width="463" height="204" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/garbage-collection-2.svg" alt="" width="463" height="204">
+      </object>
+      </div></figure><p>Luego se buscan sus referencias salientes y se marcan los objetos referenciados:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:44.06047516198704%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/garbage-collection-3.svg" width="463" height="204" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/garbage-collection-3.svg" alt="" width="463" height="204">
+      </object>
+      </div></figure><p>… luego se continúa con las referencias salientes de estos objetos, y se continúa marcando mientras sea posible:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:44.06047516198704%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/garbage-collection-4.svg" width="463" height="204" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/garbage-collection-4.svg" alt="" width="463" height="204">
+      </object>
+      </div></figure><p>Ahora los objetos que no se pudieron visitar en el proceso se consideran inalcanzables y se eliminarán:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:44.06047516198704%"></div>
+      <object type="image/svg+xml" data="article/garbage-collection/garbage-collection-5.svg" width="463" height="204" class="image__image" data-use-theme>
+        <img src="article/garbage-collection/garbage-collection-5.svg" alt="" width="463" height="204">
+      </object>
+      </div></figure><p>Podemos imaginar el proceso como derramar un enorme cubo de pintura desde las raíces, que fluye a través de todas las referencias y marca todos los objetos alcanzables. Los elementos que no queden marcados son entonces eliminados.</p>
+<p>Ese es el concepto de cómo funciona la recolección de basura. El motor de JavaScript aplica muchas optimizaciones para que se ejecute más rápido y no introduzca retrasos en la ejecución de código.</p>
+<p>Algunas de las optimizaciones:</p>
+<ul>
+<li><strong>Recolección generacional</strong> – los objetos se dividen en dos conjuntos: “nuevos” y “antiguos”. En un código típico, muchos objetos tienen corta vida: aparecen, hacen su trabajo y mueren rápido, entonces tiene sentido rastrear los objetos nuevos y eliminarlos de la memoria si corresponde. Aquellos que sobreviven el tiempo suficiente, se vuelven “viejos” y son examinados con menos frecuencia.</li>
+<li><strong>Recolección incremental</strong> – Si hay muchos objetos, y tratamos de recorrer y marcar todo el conjunto de objetos a la vez, puede llevar algún tiempo e introducir retrasos notables en la ejecución. Entonces el motor divide la recolección de basura en partes. Luego limpia esas partes, una tras otra. Hay muchas tareas de recolección pequeñas en lugar de una grande. Eso requiere un registro adicional entre ellas para rastrear los cambios, pero tenemos muchos pequeños retrasos en lugar de uno grande.</li>
+<li><strong>Recolección de tiempo inactivo</strong> – el recolector de basura trata de ejecutarse solo mientras la CPU está inactiva, para reducir el posible efecto en la ejecución.</li>
+</ul>
+<p>Hay otras optimizaciones y tipos de algoritmos de recolección de basura. Por mucho que quiera describirlos aquí, tengo que evitarlo porque diferentes motores implementan diferentes ajustes y técnicas. Y, lo que es aún más importante, las cosas cambian a medida que se desarrollan los motores, por lo que probablemente no vale la pena profundizar sin una necesidad real. Por supuesto, si tienes verdadero interés, a continuación hay algunos enlaces para ti.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Los principales puntos a saber:</p>
+<ul>
+<li>La recolección de basura se ejecuta automáticamente. No la podemos forzar o evitar.</li>
+<li>Los objetos se retienen en la memoria mientras son accesibles.</li>
+<li>Ser referenciado no es lo mismo que ser accesible (desde una raíz): un conjunto de objetos interconectados pueden volverse inalcanzables como un todo, como vimos en el ejemplo de arriba.</li>
+</ul>
+<p>Los motores modernos implementan algoritmos avanzados de recolección de basura.</p>
+<p>Un libro general “The Garbage Collection Handbook: The Art of Automatic Memory Management” (R. Jones et al) cubre algunos de ellos.</p>
+<p>Si estás familiarizado con la programación de bajo nivel, la información más detallada sobre el recolector de basura V8 se encuentra en el artículo <a href="https://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection">A tour of V8: Garbage Collection</a>.</p>
+<p><a href="https://v8project.blogspot.com/">V8 blog</a> también publica artículos sobre cambios en la administración de memoria de vez en cuando. Naturalmente, para aprender la recolección de basura, es mejor que se prepare aprendiendo sobre los componentes internos de V8 en general y lea el blog de <a href="https://mrale.ph/">Vyacheslav Egorov</a> que trabajó como uno de los ingenieros de V8. Estoy diciendo: “V8”, porque se cubre mejor con artículos en Internet. Para otros motores, muchos enfoques son similares, pero la recolección de basura difiere en muchos aspectos.</p>
+<p>Es bueno tener un conocimiento profundo de los motores cuando se necesitan optimizaciones de bajo nivel. Sería prudente planificar eso como el siguiente paso después de que esté familiarizado con el lenguaje.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="object-copy.html" data-tooltip="Referencias de objetos y copia"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="object-methods.html" data-tooltip="Métodos del objeto, &quot;this&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fgarbage-collection" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fgarbage-collection" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/garbage-collection","identifier":"\/garbage-collection"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-basics.html">Objetos: lo básico</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#alcance">Alcance</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#un-ejemplo-sencillo">Un ejemplo sencillo</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dos-referencias">Dos referencias</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#objetos-entrelazados">Objetos entrelazados</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#isla-inalcanzable">Isla inalcanzable</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#algoritmos-internos">Algoritmos internos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fgarbage-collection" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fgarbage-collection" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/04-object-basics/03-garbage-collection" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/garbage-collection by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+</html>

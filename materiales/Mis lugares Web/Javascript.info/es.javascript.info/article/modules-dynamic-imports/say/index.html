@@ -1,0 +1,10 @@
+<!doctype html>
+<script>
+  async function load() {
+    let say = await import('https://es.javascript.info/article/modules-dynamic-imports/say/say.js');
+    say.hi(); // ¡Hola!
+    say.bye(); // ¡Adiós!
+    say.default(); // Módulo cargado (export default)!
+  }
+</script>
+<button onclick="load()">Click me</button>

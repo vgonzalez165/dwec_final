@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/bubbling-and-capturing by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "es";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Propagación y captura</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="bubbling-and-capturing.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Propagación y captura"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Propagación y captura"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="introduction-browser-events.html"><link rel="next" href="event-delegation.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Propagación y captura"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="bubbling-and-capturing.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/bubbling-and-capturing"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/bubbling-and-capturing"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fbubbling-and-capturing" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fbubbling-and-capturing" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/bubbling-and-capturing">عربي</option><option value="https://javascript.info/bubbling-and-capturing">English</option><option value="https://es.javascript.info/bubbling-and-capturing" selected>Español</option><option value="https://fa.javascript.info/bubbling-and-capturing">فارسی</option><option value="https://fr.javascript.info/">Français</option><option value="https://id.javascript.info/bubbling-and-capturing">Indonesia</option><option value="https://it.javascript.info/bubbling-and-capturing">Italiano</option><option value="https://ja.javascript.info/bubbling-and-capturing">日本語</option><option value="https://ko.javascript.info/bubbling-and-capturing">한국어</option><option value="https://learn.javascript.ru/bubbling-and-capturing">Русский</option><option value="https://tr.javascript.info/bubbling-and-capturing">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/bubbling-and-capturing">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="13" max="32" data-tooltip="Lección 13 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="events.html"><span>Introducción a los eventos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Introducción a los eventos","item":"https://es.javascript.info/events"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Propagación y captura</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Propagación y captura"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Vamos a empezar con un ejemplo.</p>
+<p>Este manejador está asignado a <code>&lt;div&gt;</code>, pero también se ejecuta si haces clic a cualquier elemento anidado como <code>&lt;em&gt;</code> ó <code>&lt;code&gt;</code>:</p>
+<div id="xn6re9it0k" data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div onclick=&quot;alert('¡El manejador!')&quot;&gt;
+  &lt;em&gt;Si haces clic en&lt;code&gt;EM&lt;/code&gt;, el manejador en &lt;code&gt;DIV&lt;/code&gt; es ejecutado.&lt;/em&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-xn6re9it0k"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>¿No es un poco extraño? ¿Por qué el manejador en <code>&lt;div&gt;</code> es ejecutado, si el clic fue hecho en <code>&lt;em&gt;</code>?</p>
+<h1><a class="main__anchor" name="propagacion" href="#propagacion">Propagación</a></h1><p>El principio de propagación es simple.</p>
+<p><strong>Cuando un evento ocurre en un elemento, este primero ejecuta los manejadores que tiene asignados, luego los manejadores de su padre, y así hasta otros ancestros.</strong></p>
+<p>Digamos que tenemos 3 elementos anidados <code>FORM &gt; DIV &gt; P</code> con un manejador en cada uno de ellos:</p>
+<div id="hw6yy9c66f" data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;style&gt;
+  body * {
+    margin: 10px;
+    border: 1px solid blue;
+  }
+&lt;/style&gt;
+
+&lt;form onclick=&quot;alert('form')&quot;&gt;FORM
+  &lt;div onclick=&quot;alert('div')&quot;&gt;DIV
+    &lt;p onclick=&quot;alert('p')&quot;&gt;P&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-hw6yy9c66f"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Un clic en el elemento del interior <code>&lt;p&gt;</code> primero ejecuta <code>onclick</code>:</p>
+<ol>
+<li>En ese <code>&lt;p&gt;</code>.</li>
+<li>Luego en el <code>&lt;div&gt;</code> de arriba.</li>
+<li>Luego en el <code>&lt;form&gt;</code> de más arriba.</li>
+<li>Y así sucesivamente hasta el objeto <code>document</code>.</li>
+</ol>
+<figure><div class="image" style="width:353px">
+      <div class="image__ratio" style="padding-top:61.18980169971672%"></div>
+      <object type="image/svg+xml" data="article/bubbling-and-capturing/event-order-bubbling.svg" width="353" height="216" class="image__image" data-use-theme>
+        <img src="article/bubbling-and-capturing/event-order-bubbling.svg" alt="" width="353" height="216">
+      </object>
+      </div></figure><p>Así si hacemos clic en <code>&lt;p&gt;</code>, entonces veremos 3 alertas: <code>p</code> → <code>div</code> → <code>form</code>.</p>
+<p>Este proceso se conoce como “propagación” porque los eventos “se propagan” desde el elemento más al interior, a través de los padres, como una burbuja en el agua.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type"><em>Casi</em> todos los elementos se propagan.</span></div>
+            <div class="important__content"><p>La palabra clave en esta frase es “casi”.</p>
+<p>Por ejemplo, un evento <code>focus</code> no se propaga. Hay otros ejemplos también, los veremos. Pero aún así, esta es la excepción a la regla, la mayoría de eventos sí se propagan.</p>
+</div></div>
+<h2><a class="main__anchor" name="event-target" href="#event-target">event.target</a></h2><p>Un manejador en un elemento padre siempre puede obtener los detalles sobre dónde realmente ocurrió el evento.</p>
+<p><strong>El elemento anidado más profundo que causó el evento es llamado elemento <em>objetivo</em>, accesible como <code>event.target</code></strong></p>
+<p>Nota la diferencia de <code>this</code> (=<code>event.currentTarget</code>):</p>
+<ul>
+<li><code>event.target</code> – es el elemento “objetivo” que inició el evento, no cambia a través de todo el proceso de propagación.</li>
+<li><code>this</code> – es el elemento “actual”, el que tiene un manejador ejecutándose en el momento.</li>
+</ul>
+<p>Por ejemplo, si tenemos un solo manejador <code>form.onclick</code>, este puede <code>atrapar</code> todos los clicks dentro del formulario. No importa dónde el clic se hizo, se propaga hasta el <code>&lt;form&gt;</code> y ejecuta el manejador.</p>
+<p>En el manejador <code>form.onclick</code>:</p>
+<ul>
+<li><code>this</code> (=<code>event.currentTarget</code>) es el elemento <code>&lt;form&gt;</code>, porque el manejador se ejecutó en él.</li>
+<li><code>event.target</code> es el elemento actual dentro de el formulario al que se le hizo clic.</li>
+</ul>
+<p>Mira esto:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">script.js</div><div class="code-tabs__switch">example.css</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/bubbling-and-capturing/bubble-target/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/Ffx43GvPqLxJxTfH?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:220px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/bubbling-and-capturing/bubble-target/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-javascript line-numbers"><code>form.onclick = function(event) {
+  event.target.style.backgroundColor = 'yellow';
+
+  // chrome needs some time to paint yellow
+  setTimeout(() =&gt; {
+    alert(&quot;target = &quot; + event.target.tagName + &quot;, this=&quot; + this.tagName);
+    event.target.style.backgroundColor = ''
+  }, 0);
+};</code></pre></div><div class="code-tabs__section"><pre class="language-css line-numbers"><code>form {
+  background-color: green;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+div {
+  background-color: blue;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;
+  height: 100px;
+}
+
+p {
+  background-color: red;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  margin: 0;
+}
+
+body {
+  line-height: 25px;
+  font-size: 16px;
+}</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!DOCTYPE HTML&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;example.css&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  Un clic muestra ambos, el &lt;code&gt;event.target&lt;/code&gt; y &lt;code&gt;this&lt;/code&gt; para comparar:
+
+  &lt;form id=&quot;form&quot;&gt;FORM
+    &lt;div&gt;DIV
+      &lt;p&gt;P&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+
+  &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><p>Es posible que <code>event.target</code> sea igual a <code>this</code>: ocurre cuando el clic se hace directamente en el elemento <code>&lt;form&gt;</code>.</p>
+<h2><a class="main__anchor" name="detener-la-propagacion" href="#detener-la-propagacion">Detener la propagación</a></h2><p>Una propagación de evento empieza desde el elemento objetivo hacia arriba. Normalmente este continúa hasta <code>&lt;html&gt;</code> y luego hacia el objeto <code>document</code>, algunos eventos incluso alcanzan <code>window</code>, llamando a todos los manejadores en el camino.</p>
+<p>Pero cualquier manejador podría decidir que el evento se ha procesado por completo y detener su propagación.</p>
+<p>El método para esto es <code>event.stopPropagation()</code>.</p>
+<p>Por ejemplo, aquí <code>body.onclick</code> no funciona si haces clic en <code>&lt;button&gt;</code>:</p>
+<div id="e4dg3f39ry" data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body onclick=&quot;alert(`No se propagó hasta aquí`)&quot;&gt;
+  &lt;button onclick=&quot;event.stopPropagation()&quot;&gt;Haz clic&lt;/button&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-e4dg3f39ry"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">event.stopImmediatePropagation()</span></div>
+            <div class="important__content"><p>Si un elemento tiene múltiples manejadores para un solo evento, aunque uno de ellos detenga la propagación, los demás aún se ejecutarán.</p>
+<p>En otras palabras, <code>event.stopPropagation()</code> detiene la propagación hacia arriba, pero todos los manejadores en el elemento actual se ejecutarán.</p>
+<p>Para detener la propagación y prevenir que los manejadores del elemento actual se ejecuten, hay un método <code>event.stopImmediatePropagation()</code>. Después de él, ningún otro manejador será ejecutado.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">¡No detengas la propagación si no es necesario!</span></div>
+            <div class="important__content"><p>La propagación es conveniente. No la detengas sin una necesidad real, obvia y arquitectónicamente bien pensada.</p>
+<p>A veces <code>event.stopPropagation()</code> crea trampas ocultas que luego se convierten en problemas.</p>
+<p>Por ejemplo:</p>
+<ol>
+<li>Creamos un menú anidado. Cada submenú maneja los clics en sus elementos y ejecuta <code>stopPropagation</code> para que el menu de arriba no se desencadene.</li>
+<li>Luego decidimos atrapar los clic en toda la ventana, para seguir el rastro del comportamiento del usuario (donde hacen clic). Algunos sistemas de análisis hacen eso. Usualmente el código usa <code>document.addEventListener('click'…)</code> para atrapar todos los clics.</li>
+<li>Nuestro análisis no funcionará sobre el área dónde los clics son detenidos por <code>stopPropagation</code>. Tristemente, tenemos una “zona muerta”.</li>
+</ol>
+<p>Usualmente no hay una necesidad real para prevenir la propagación, pero una tarea que aparentemente lo requiera puede ser resuelta por otros medios. Uno de ellos es usar eventos personalizados, cubriremos eso más tarde. También podemos escribir nuestros datos en el objeto <code>event</code> en un manejador y leerlo en otro, para así poder pasar información sobre el proceso de abajo a los manejadores en los padres.</p>
+</div></div>
+<h2><a class="main__anchor" name="captura" href="#captura">Captura</a></h2><p>Hay otra fase en el procesamiento de eventos llamada “captura”. Es raro usarla en código real, pero a veces puede ser útil.</p>
+<p>El estándar de <a href="https://www.w3.org/TR/DOM-Level-3-Events/">eventos del DOM</a> describe 3 fases de la propagación de eventos:</p>
+<ol>
+<li>Fase de captura – el evento desciende al elemento.</li>
+<li>Fase de objetivo – el evento alcanza al elemento.</li>
+<li>Fase de propagación – el evento se propaga hacia arriba del elemento.</li>
+</ol>
+<p>Aquí (tomada de la especificación), tenemos la imagen de las fases de captura <code>(1)</code>, objetivo <code>(2)</code>, y propagación <code>(3)</code>, de un evento click en un <code>&lt;td&gt;</code> dentro de una tabla:</p>
+<figure><div class="image" style="width:641px">
+      <div class="image__ratio" style="padding-top:98.75195007800312%"></div>
+      <object type="image/svg+xml" data="article/bubbling-and-capturing/eventflow.svg" width="641" height="633" class="image__image" data-use-theme>
+        <img src="article/bubbling-and-capturing/eventflow.svg" alt="" width="641" height="633">
+      </object>
+      </div></figure><p>Se explica así: por un clic en <code>&lt;td&gt;</code> el evento va primero a través de la cadena de ancestros hacia el elemento (fase de captura), luego alcanza el objetivo y se desencadena ahí (fase de objetivo), y por último va hacia arriba (fase de propagación), ejecutando los manejadores en su camino.</p>
+<p>Hasta ahora solo hablamos de la propagación, porque la fase de captura es raramente usada.</p>
+<p>De hecho, la fase de captura es invisible para nosotros, porque los manejadores agregados que usan la propiedad <code>on&lt;event&gt;</code>, ó usan atributos HTML, ó <code>addEventListener(event, handler)</code> de dos argumentos, no ven la fase de captura, únicamente se ejecutan en la 2da y 3ra fase.</p>
+<p>Para atrapar un evento en la fase de captura, necesitamos preparar la opción <code>capture</code> como <code>true</code> en el manejador:</p>
+<div id="rih5z6z46y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>elem.addEventListener(..., {capture: true})
+
+// o solamente &quot;true&quot;. Es una forma más corta de {capture: true}
+elem.addEventListener(..., true)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Hay dos posibles valores para la opción <code>capture</code>:</p>
+<ul>
+<li>Si es <code>false</code> (por defecto), entonces el manejador es preparado para la fase de propagación.</li>
+<li>Si es <code>true</code>, entonces el manejador es preparado para la fase de captura.</li>
+</ul>
+<p>Es de notar que mientras formalmente hay 3 fases, la 2da fase (“la fase de objetivo”: el evento alcanzó el elemento) no es manejada de forma separada; los manejadores en ambas fases, la de captura y propagación, se disparan en esa fase.</p>
+<p>Veamos ambas fases, captura y propagación, en acción:</p>
+<div id="24kn27lbnf" data-trusted="1" class="code-example" data-demo-height="140" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;style&gt;
+  body * {
+    margin: 10px;
+    border: 1px solid blue;
+  }
+&lt;/style&gt;
+
+&lt;form&gt;FORM
+  &lt;div&gt;DIV
+    &lt;p&gt;P&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  for(let elem of document.querySelectorAll('*')) {
+    elem.addEventListener(&quot;click&quot;, e =&gt; alert(`Captura: ${elem.tagName}`), true);
+    elem.addEventListener(&quot;click&quot;, e =&gt; alert(`Propagación: ${elem.tagName}`));
+  }
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-24kn27lbnf"
+            style="height:140px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>El código prepara manejadores de clic en <em>cada</em> elemento en el documento para ver cuáles están funcionando.</p>
+<p>Si haces clic en <code>&lt;p&gt;</code>, verás que la secuencia es:</p>
+<ol>
+<li><code>HTML</code> → <code>BODY</code> → <code>FORM</code> → <code>DIV</code> (fase de captura, el primer detector o “listener”):</li>
+<li><code>P</code> → <code>DIV</code> → <code>FORM</code> → <code>BODY</code> → <code>HTML</code> (fase de propagación, el segundo detector).</li>
+</ol>
+<p>Nota que <code>P</code> aparece dos veces, porque establecimos dos listeners: captura y propagación. Se disparan en el objetivo al final de la primera fase y al principio de la segunda fase.</p>
+<p>Hay un propiedad <code>event.eventPhase</code> que nos dice el número de fase en la que el evento fue capturado. Pero es raramente usada, ya que usualmente lo sabemos en el manejador.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Para quitar el manejador, <code>removeEventListener</code> necesita la misma fase</span></div>
+            <div class="important__content"><p>Si agregamos <code>addEventListener(..., true)</code>, entonces debemos mencionar la misma fase en <code>removeEventListener(..., true)</code> para remover el manejador correctamente.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Detectores de eventos en el mismo elemento y en la misma fase se ejecutan en el orden de asignación</span></div>
+            <div class="important__content"><p>Si tenemos múltiples manejadores de eventos en la misma fase, asignados al mismo elemento con <code>addEventListener</code>, se ejecutarán en el orden que fueron creados:</p>
+<div id="zzwzin5w5t" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>elem.addEventListener(&quot;click&quot;, e =&gt; alert(1)); // garantizado que se ejecutará primero
+elem.addEventListener(&quot;click&quot;, e =&gt; alert(2));</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>event.stopPropagation()</code> durante la captura también evita la propagación</span></div>
+            <div class="important__content"><p>El método <code>event.stopPropagation()</code> y su hermano <code>event.stopImmediatePropagation()</code> también pueden ser llamados en la fase de captura. En este caso no solo se detienen las capturas sino también la propagación.</p>
+<p>En otras palabras, normalmente el evento primero va hacia abajo (“captura”) y luego hacia arriba (“propagación”). Pero si se llama a <code>event.stopPropagation()</code> durante la fase de captura, se detiene la travesía del evento, y la propagación no volverá a ocurrir.</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Cuando ocurre un evento, el elemento más anidado dónde ocurrió se reconoce como el “elemento objetivo” (<code>event.target</code>).</p>
+<ul>
+<li>Luego el evento se mueve hacia abajo desde el documento raíz hacia <code>event.target</code>, llamando a los manejadores en el camino asignados con <code>addEventListener(..., true)</code> (<code>true</code> es una abreviación para <code>{capture: true}</code>).</li>
+<li>Luego los manejadores son llamados en el elemento objetivo mismo.</li>
+<li>Luego el evento se propaga desde <code>event.target</code> hacia la raíz, llamando a los manejadores que se asignaron usando <code>on&lt;event&gt;</code>, atributos HTML y <code>addEventListener</code> sin el 3er argumento o con el 3er argumento <code>false/{capture:false}</code>.</li>
+</ul>
+<p>Cada manejador puede acceder a las propiedades del objeto <code>event</code>:</p>
+<ul>
+<li><code>event.target</code> – el elemento más profundo que originó el evento.</li>
+<li><code>event.currentTarget</code> (=<code>this</code>) – el elemento actual que maneja el evento (el que tiene al manejador en él)</li>
+<li><code>event.eventPhase</code> – la fase actual (captura=1, objetivo=2, propagación=3).</li>
+</ul>
+<p>Cualquier manejador de evento puede detener el evento al llamar <code>event.stopPropagation()</code>, pero no es recomendado porque no podemos realmente asegurar que no lo necesitaremos más adelante, quizá para completar diferentes cosas.</p>
+<p>La fase de captura raramente es usada, usualmente manejamos los eventos en la propagación. Y hay una explicación lógica para ello.</p>
+<p>En el mundo real, cuando un accidente ocurre, las autoridades locales reaccionan primero. Ellos conocen mejor el área dónde ocurrió. Luego, si es necesario, las autoridades de alto nivel.</p>
+<p>Lo mismo para los manejadores de eventos. El código que se prepara en el manejador de un elemento en particular conoce el máximo de detalles sobre el elemento y qué hace. Un manejador en un <code>&lt;td&gt;</code> particular puede ser adecuado para ese exacto <code>&lt;td&gt;</code>, conocer todo sobre él, entonces debe tener su oportunidad primero. Luego su padre inmediato también conoce sobre el contexto, pero un poco menos, y así sucesivamente hasta el elemento de arriba que maneja conceptos generales y se ejecuta al final.</p>
+<p>La propagación y captura ponen los cimientos para “delegación de eventos”: un extremadamente poderoso patrón de manejo de eventos que se estudia en el siguiente capítulo.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="introduction-browser-events.html" data-tooltip="Introducción a los eventos en el navegador"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="event-delegation.html" data-tooltip="Delegación de eventos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fbubbling-and-capturing" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fbubbling-and-capturing" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/bubbling-and-capturing","identifier":"\/bubbling-and-capturing"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="events.html">Introducción a los eventos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#event-target">event.target</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#detener-la-propagacion">Detener la propagación</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#captura">Captura</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fbubbling-and-capturing" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fbubbling-and-capturing" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/2-events/02-bubbling-and-capturing" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/bubbling-and-capturing by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:31 GMT -->
+</html>

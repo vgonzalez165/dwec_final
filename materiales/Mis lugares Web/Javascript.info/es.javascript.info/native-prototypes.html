@@ -1,0 +1,389 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/native-prototypes by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "tm";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Prototipos nativos</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="native-prototypes.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Prototipos nativos"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Prototipos nativos"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="function-prototype.html"><link rel="next" href="prototype-methods.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Prototipos nativos"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/native-prototypes"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/native-prototypes"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="native-prototypes.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/native-prototypes"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/native-prototypes"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/native-prototypes"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/native-prototypes"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/native-prototypes"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/native-prototypes"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/native-prototypes"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/native-prototypes"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/native-prototypes"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/native-prototypes"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fnative-prototypes" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fnative-prototypes" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/native-prototypes">عربي</option><option value="https://javascript.info/native-prototypes">English</option><option value="https://es.javascript.info/native-prototypes" selected>Español</option><option value="https://fa.javascript.info/native-prototypes">فارسی</option><option value="https://fr.javascript.info/native-prototypes">Français</option><option value="https://id.javascript.info/native-prototypes">Indonesia</option><option value="https://it.javascript.info/native-prototypes">Italiano</option><option value="https://ja.javascript.info/native-prototypes">日本語</option><option value="https://ko.javascript.info/native-prototypes">한국어</option><option value="https://learn.javascript.ru/native-prototypes">Русский</option><option value="https://tr.javascript.info/native-prototypes">Türkçe</option><option value="https://uk.javascript.info/native-prototypes">Українська</option><option value="https://zh.javascript.info/native-prototypes">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="64" max="93" data-tooltip="Lección 64 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="prototypes.html"><span>Prototipos y herencia</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Prototipos y herencia","item":"https://es.javascript.info/prototypes"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 1 de septiembre de 2022"><div class="updated-at__content">1 de septiembre de 2022</div></div></div><h1 class="main__header-title">Prototipos nativos</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Prototipos nativos"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>La propiedad <code>&quot;prototype&quot;</code> es ampliamente utilizada por el núcleo de JavaScript mismo. Todas las funciones de constructor integradas lo usan.</p>
+<p>Primero veremos los detalles, y luego cómo usarlo para agregar nuevas capacidades a los objetos integrados.</p>
+<h2><a class="main__anchor" name="object-prototype" href="#object-prototype">Object.prototype</a></h2><p>Digamos que tenemos un objeto vacío y lo mostramos:</p>
+<div id="6hhtbu4v8o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = {};
+alert( obj ); // &quot;[object Object]&quot; ?</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Dónde está el código que genera la cadena <code>&quot;[objetc Objetc]&quot;</code>? Ese es un método integrado <code>toString</code>, pero ¿dónde está? ¡El <code>obj</code> está vacío!</p>
+<p>…Pero la notación corta <code>obj = {}</code> es la misma que <code>obj = new Object()</code>, donde <code>Object</code> es una función de constructor de objeto integrado, con su propio <code>prototype</code> que hace referencia a un objeto enorme con <code>toString</code> y otros métodos</p>
+<p>Esto es lo que está pasando:</p>
+<figure><div class="image" style="width:453px">
+      <div class="image__ratio" style="padding-top:20.750551876379692%"></div>
+      <object type="image/svg+xml" data="article/native-prototypes/object-prototype.svg" width="453" height="94" class="image__image" data-use-theme>
+        <img src="article/native-prototypes/object-prototype.svg" alt="" width="453" height="94">
+      </object>
+      </div></figure><p>Cuando se llama a <code>new Object()</code> (o se crea un objeto literal <code>{...}</code>), el <code>[[Prototype]]</code> se establece en <code>Object.prototype</code> de acuerdo con la regla que discutimos en el capitulo anterior:</p>
+<figure><div class="image" style="width:453px">
+      <div class="image__ratio" style="padding-top:43.92935982339956%"></div>
+      <object type="image/svg+xml" data="article/native-prototypes/object-prototype-1.svg" width="453" height="199" class="image__image" data-use-theme>
+        <img src="article/native-prototypes/object-prototype-1.svg" alt="" width="453" height="199">
+      </object>
+      </div></figure><p>Entonces, cuando se llama a <code>obj.toString()</code>, el método se toma de <code>Object.prototype</code>.</p>
+<p>Lo podemos comprobar así:</p>
+<div id="9p4n6ruk4y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = {};
+
+alert(obj.__proto__ === Object.prototype); // true
+
+alert(obj.toString === obj.__proto__.toString); //true
+alert(obj.toString === Object.prototype.toString); //true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta que no hay más <code>[[Prototype]]</code> en la cadena sobre <code>Object.prototype</code>:</p>
+<div id="ph5dsqn36m" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(Object.prototype.__proto__); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="otros-prototipos-integrados" href="#otros-prototipos-integrados">Otros prototipos integrados</a></h2><p>Otros objetos integrados como <code>Array</code>, <code>Date</code> , <code>Function</code> y otros también mantienen métodos en prototipos.</p>
+<p>Por ejemplo, cuando creamos una matriz <code>[1, 2, 3]</code>, el constructor predeterminado <code>new Array()</code> se usa internamente. Entonces <code>Array.prototype</code> se convierte en su prototipo y proporciona sus métodos. Eso es muy eficiente en memoria.</p>
+<p>Por especificación, todos los prototipos integrados tienen <code>Object.prototype</code> en la parte superior. Es por eso que algunos dicen “todo hereda de los objetos”.</p>
+<p>Aquí está la imagen general de 3 objetos integrados (3 para que quepan):</p>
+<figure><div class="image" style="width:692px">
+      <div class="image__ratio" style="padding-top:59.39306358381503%"></div>
+      <object type="image/svg+xml" data="article/native-prototypes/native-prototypes-classes.svg" width="692" height="411" class="image__image" data-use-theme>
+        <img src="article/native-prototypes/native-prototypes-classes.svg" alt="" width="692" height="411">
+      </object>
+      </div></figure><p>Verifiquemos los prototipos manualmente:</p>
+<div id="zvihgbnio2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 3];
+
+// se hereda de Array.prototype?
+alert( arr.__proto__ === Array.prototype ); // verdadero
+
+// y despues desde Object.prototype?
+alert( arr.__proto__.__proto__ === Object.prototype ); // verdadero
+
+// Y null en la parte superior.
+alert( arr.__proto__.__proto__.__proto__ ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Algunos métodos en prototipos pueden superponerse; por ejemplo, <code>Array.prototype</code> tiene su propio <code>toString</code> que enumera elementos delimitados por comas:</p>
+<div id="0ra6xxhrv5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = [1, 2, 3]
+alert(arr); // 1,2,3 &lt;-- el resultado de Array.prototype.toString</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como hemos visto antes, <code>Object.prototype</code> también tiene <code>toString</code>, pero <code>Array.prototype</code> está más cerca de la cadena, por lo que se utiliza la variante de array.</p>
+<figure><div class="image" style="width:209px">
+      <div class="image__ratio" style="padding-top:151.1961722488038%"></div>
+      <object type="image/svg+xml" data="article/native-prototypes/native-prototypes-array-tostring.svg" width="209" height="316" class="image__image" data-use-theme>
+        <img src="article/native-prototypes/native-prototypes-array-tostring.svg" alt="" width="209" height="316">
+      </object>
+      </div></figure><p>Las herramientas en el navegador, como la consola de desarrollador de Chrome, también muestran herencia (es posible que deba utilizarse <code>console.dir</code> para los objetos integrados):</p>
+<figure><div class="image" style="width:567px">
+      <div class="image__ratio" style="padding-top:51.49911816578483%"></div>
+      <img src="article/native-prototypes/console_dir_array.png" alt="" width="567" height="292" class="image__image">
+      </div></figure><p>Otros objetos integrados también funcionan de la misma manera. Incluso las funciones: son objetos de un constructor <code>Function</code> integrado, y sus métodos (<code>call</code>/<code>apply</code> y otros) se toman de <code>Function.prototype</code>. Las funciones también tienen su propio <code>toString</code>.</p>
+<div id="3efk50pxoq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {}
+
+alert(f.__proto__ == Function.prototype); // verdadero
+alert(f.__proto__.__proto__ == Object.prototype); // verdadero, hereda de objetos</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="primitivos" href="#primitivos">Primitivos</a></h2><p>Lo más intrincado sucede con cadenas, números y booleanos.</p>
+<p>Como recordamos, no son objetos. Pero si tratamos de acceder a sus propiedades, se crean los objetos contenedores temporales utilizando los constructores integrados <code>String</code>, <code>Number</code> y <code>Boolean</code>, estos proporcionan los métodos y luego desaparecen.</p>
+<p>Estos objetos se crean de manera invisible para nosotros y la mayoría de los motores los optimizan, pero la especificación lo describe exactamente de esta manera. Los métodos de estos objetos también residen en prototipos, disponibles como <code>String.prototype</code>, <code>Number.prototype</code> y <code>Boolean.prototype</code>.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Los valores <code>null</code> y <code>undefined</code> no tienen objetos contenedores</span></div>
+            <div class="important__content"><p>Los valores especiales <code>null</code> y <code>undefined</code> se distinguen. No tienen objetos contenedores, por lo que los métodos y propiedades no están disponibles para ellos. Y tampoco tienen los prototipos correspondientes.</p>
+</div></div>
+<h2><a class="main__anchor" name="native-prototype-change" href="#native-prototype-change">Cambiando prototipos nativos</a></h2><p>Los prototipos nativos pueden ser modificados. Por ejemplo, si agregamos un método a <code>String.prototype</code>, estará disponible para todas las cadenas:</p>
+<div id="n2v1u8tf5u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>String.prototype.show = function() {
+  alert(this);
+};
+
+&quot;BOOM!&quot;.show(); // BOOM!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Durante el proceso de desarrollo, podemos tener ideas para nuevos métodos integrados que nos gustaría tener, y podemos sentir la tentación de agregarlos a los prototipos nativos. Pero eso es generalmente una mala idea.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Importante:</span></div>
+            <div class="important__content"><p>Los prototipos son globales, por lo que es fácil generar un conflicto. Si dos bibliotecas agregan un método <code>String.prototype.show</code>, entonces una de ellas sobrescribirá el método de la otra.</p>
+<p>Por lo tanto, en general, modificar un prototipo nativo se considera una mala idea.</p>
+</div></div>
+<p><strong>En la programación moderna, solo hay un caso en el que se aprueba la modificación de prototipos nativos: haciendo un polyfill.</strong></p>
+<p>Cuando un método existe en la especificación de JavaScript, pero aún no está soportado por un motor de JavaScript en particular, podemos hacer “polyfill” (polirrelleno); esto es, crear un método sustituto.</p>
+<p>Luego podemos implementarlo manualmente y completar el prototipo integrado con él.</p>
+<p>Por ejemplo:</p>
+<div id="wmozjs644l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (!String.prototype.repeat) { // si no hay tal método
+  // agregarlo al prototipo
+
+  String.prototype.repeat = function(n) {
+    // repite la cadena n veces
+
+    // en realidad, el código debería ser un poco más complejo que eso
+    // (el algoritmo completo está en la especificación)
+    // pero incluso un polyfill (polirelleno) imperfecto a menudo se considera lo suficientemente bueno
+    return new Array(n + 1).join(this);
+  };
+}
+
+alert( &quot;La&quot;.repeat(3) ); // LaLaLa</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="prestamo-de-prototipos" href="#prestamo-de-prototipos">Préstamo de prototipos</a></h2><p>En el capítulo <a href="call-apply-decorators.html#method-borrowing">Decoradores y redirecciones, call/apply</a> hablamos sobre el préstamo de método .</p>
+<p>Es cuando tomamos un método de un objeto y lo copiamos en otro.</p>
+<p>A menudo se toman prestados algunos métodos de prototipos nativos.</p>
+<p>Por ejemplo, si estamos haciendo un objeto tipo array, es posible que queramos copiar algunos métodos de ‘Array’.</p>
+<p>P. ej…</p>
+<div id="jhy7tdt80x" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = {
+  0: &quot;Hola&quot;,
+  1: &quot;mundo!&quot;,
+  length: 2,
+};
+
+obj.join = Array.prototype.join;
+
+alert( obj.join(',') ); // Hola,mundo!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Funciona porque el algoritmo interno del método integrado <code>join</code> solo se preocupa por los índices correctos y la propiedad <code>length</code>. No comprueba si el objeto es realmente un arreglo. Muchos métodos integrados son así.</p>
+<p>Otra posibilidad es heredar estableciendo <code>obj.__proto__</code> en <code>Array.prototype</code>, de modo que todos los métodos <code>Array</code> estén disponibles automáticamente en <code>obj</code>.</p>
+<p>Pero eso es imposible si <code>obj</code> ya hereda de otro objeto. Recuerde, solo podemos heredar de un objeto a la vez.</p>
+<p>Los métodos de préstamo son flexibles, permiten mezclar funcionalidades de diferentes objetos si es necesario.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>Todos los objetos integrados siguen el mismo patrón:
+<ul>
+<li>Los métodos se almacenan en el prototipo (<code>Array.prototype</code>, <code>Object.prototype</code>, <code>Date.prototype</code>, etc.)</li>
+<li>El objeto en sí solo almacena los datos (elementos de arreglo, propiedades de objeto, la fecha)</li>
+</ul>
+</li>
+<li>Los primitivos también almacenan métodos en prototipos de objetos contenedores: <code>Number.prototype</code>, <code>String.prototype</code> y <code>Boolean.prototype</code>. Solo <code>undefined</code> y <code>null</code> no tienen objetos contenedores.</li>
+<li>Los prototipos integrados se pueden modificar o completar con nuevos métodos. Pero no se recomienda cambiarlos. El único caso permitido es probablemente cuando agregamos un nuevo estándar que aún no es soportado por el motor de JavaScript.</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#agregue-el-metodo-f-defer-ms-a-las-funciones" name="agregue-el-metodo-f-defer-ms-a-las-funciones">Agregue el método &quot;f.defer(ms)&quot; a las funciones</a></h3><a class="task__open-link" href="task/defer-to-prototype.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Agregue al prototipo de todas las funciones el método <code>defer(ms)</code>, que ejecuta la función después de <code>ms</code> milisegundos.</p>
+<p>Después de hacerlo, dicho código debería funcionar:</p>
+<div id="42tdaypwyn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  alert(&quot;Hola!&quot;);
+}
+
+f.defer(1000); // muestra &quot;Hola!&quot; después de 1 segundo</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="56m2in2hla" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>Function.prototype.defer = function(ms) {
+  setTimeout(this, ms);
+};
+
+function f() {
+  alert(&quot;Hola!&quot;);
+}
+
+f.defer(1000); // muestra &quot;Hola!&quot; después de 1 seg</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#agregue-el-decorado-defer-a-las-funciones" name="agregue-el-decorado-defer-a-las-funciones">Agregue el decorado &quot;defer()&quot; a las funciones</a></h3><a class="task__open-link" href="task/defer-to-prototype-extended.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Agregue el método <code>defer(ms)</code> al prototipo de todas las funciones, que devuelve un contenedor, retrasando la llamada en <code>ms</code> milisegundos.</p>
+<p>Aquí hay un ejemplo de cómo debería funcionar:</p>
+<div id="zoxxe1fsto" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f(a, b) {
+  alert( a + b );
+}
+
+f.defer(1000)(1, 2); // muestra 3 después de 1 segundo</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta que los argumentos deben pasarse a la función original.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="9f5hoxin9r" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>Function.prototype.defer = function(ms) {
+  let f = this;
+  return function(...args) {
+    setTimeout(() =&gt; f.apply(this, args), ms);
+  }
+};
+
+// revísalo
+function f(a, b) {
+  alert( a + b );
+}
+
+f.defer(1000)(1, 2); // muestra 3 después de 1 seg</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta: utilizamos <code>this</code> en <code>f.apply</code> para que nuestro decorado funcione para los métodos de objetos.</p>
+<p>Entonces, si la función contenedora es llamada como método de objeto, <code>this</code> se pasa al método original <code>f</code>.</p>
+<div id="jwq0jplf6c" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>Function.prototype.defer = function(ms) {
+  let f = this;
+  return function(...args) {
+    setTimeout(() =&gt; f.apply(this, args), ms);
+  }
+};
+
+let user = {
+  name: &quot;John&quot;,
+  sayHi() {
+    alert(this.name);
+  }
+}
+
+user.sayHi = user.sayHi.defer(1000);
+
+user.sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="function-prototype.html" data-tooltip="F.prototype"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="prototype-methods.html" data-tooltip="Métodos prototipo, objetos sin __proto__"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fnative-prototypes" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fnative-prototypes" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/native-prototypes","identifier":"\/native-prototypes"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="prototypes.html">Prototipos y herencia</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#object-prototype">Object.prototype</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#otros-prototipos-integrados">Otros prototipos integrados</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#primitivos">Primitivos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#native-prototype-change">Cambiando prototipos nativos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#prestamo-de-prototipos">Préstamo de prototipos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (2)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fnative-prototypes" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fnative-prototypes" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/08-prototypes/03-native-prototypes" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/native-prototypes by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:10 GMT -->
+</html>

@@ -1,0 +1,1072 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/date by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Fecha y Hora</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="date.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Fecha y Hora"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Fecha y Hora"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="destructuring-assignment.html"><link rel="next" href="json.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Fecha y Hora"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/date"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/date"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="date.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/date"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/date"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/date"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/date"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/date"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/date"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/date"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/date"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/date"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/date"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdate" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fdate" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/date">عربي</option><option value="https://javascript.info/date">English</option><option value="https://es.javascript.info/date" selected>Español</option><option value="https://fa.javascript.info/date">فارسی</option><option value="https://fr.javascript.info/date">Français</option><option value="https://id.javascript.info/date">Indonesia</option><option value="https://it.javascript.info/date">Italiano</option><option value="https://ja.javascript.info/date">日本語</option><option value="https://ko.javascript.info/date">한국어</option><option value="https://learn.javascript.ru/date">Русский</option><option value="https://tr.javascript.info/date">Türkçe</option><option value="https://uk.javascript.info/date">Українська</option><option value="https://zh.javascript.info/date">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="47" max="93" data-tooltip="Lección 47 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="data-types.html"><span>Tipos de datos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Tipos de datos","item":"https://es.javascript.info/data-types"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 1 de noviembre de 2022"><div class="updated-at__content">1 de noviembre de 2022</div></div></div><h1 class="main__header-title">Fecha y Hora</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Fecha y Hora"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Aprendamos un nuevo objeto incorporado de JS: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date">Date</a>. Este objeto almacena la fecha, la hora, y brinda métodos para administrarlas.</p>
+<p>Por ejemplo, podemos usarlo para almacenar horas de creación o modificación, medir tiempo, o simplemente mostrar en pantalla la fecha actual.</p>
+<h2><a class="main__anchor" name="creacion" href="#creacion">Creación</a></h2><p>Para crear un nuevo objeto <code>Date</code> se lo instancia con <code>new Date()</code> junto con uno de los siguientes argumentos:</p>
+<dl>
+<dt><code>new Date()</code></dt>
+<dd>
+<p>Sin argumentos – crea un objeto <code>Date</code> para la fecha y la hora actuales:</p>
+<div id="lonsp1wa7w" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let now = new Date();
+alert( now ); // muestra en pantalla la fecha y la hora actuales</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>new Date(milliseconds)</code></dt>
+<dd>
+<p>Crea un objeto <code>Date</code> con la cantidad de tiempo igual al número de milisegundos (1/1000 de un segundo) transcurrido a partir del 1° de enero de 1970 UTC+0.</p>
+<div id="w2siebn0eh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 0 significa 01.01.1970 UTC+0
+let Jan01_1970 = new Date(0);
+alert( Jan01_1970 );
+
+// ahora se le agregan 24 horas, se obtiene 02.01.1970 UTC+0
+let Jan02_1970 = new Date(24 * 3600 * 1000);
+alert( Jan02_1970 );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Un <em>timestamp</em> es un número entero que representa la cantidad de milisegundos transcurridos desde el inicio de 1970.</p>
+<p>Este <em>timestamp</em> es una representación numérica liviana de una fecha. Es posible crear una fecha a partir de un <em>timestamp</em> usando <code>new Date(timestamp)</code>, y convertir el objeto <code>Date</code> actual a un <em>timestamp</em> utilizando el método <code>date.getTime()</code> (ver abajo).</p>
+<p>Las fechas anteriores a 01.01.1970 tienen <em>timestamps</em> negativos, por ejemplo:</p>
+<div id="3diwbdw9pk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 31 Dec 1969
+let Dec31_1969 = new Date(-24 * 3600 * 1000);
+alert( Dec31_1969 );</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>new Date(datestring)</code></dt>
+<dd>
+<p>Si se pasa un único argumento, y es de tipo string, entonces es analizado y convertido a fecha automáticamente. El algoritmo es el mismo que el que utiliza <code>Date.parse</code>, lo veremos mas en detalle luego.</p>
+<div id="0zqga0md4t" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(&quot;2017-01-26&quot;);
+alert(date);
+// La hora no está definida, por lo que se asume que es la medianoche GMT (0 hs. de la fecha) y
+// se ajusta de acuerdo al huso horario de la zona geográfica en la que está ejecutándose el código.
+// Por consiguiente, el resultado podría ser
+// Thu Jan 26 2017 11:00:00 GMT+1100 (Hora Estándar del Este de Australia)
+// o
+// Wed Jan 25 2017 16:00:00 GMT-0800 (Hora Estándar del Pacífico)</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>new Date(año, mes, fecha, horas, minutos, segundos, ms)</code></dt>
+<dd>
+<p>Crea una fecha con los componentes pasados como argumentos en la zona horaria local. Sólo los primeros dos parámetros son obligatorios.</p>
+<ul>
+<li>El <code>año</code> debería tener 4 dígitos. Por compatibilidad, aquí 2 dígitos serán considerados ‘19xx’, pero 4 dígitos es lo firmemente sugerido.</li>
+<li>La cuenta del <code>mes</code> comienza desde el <code>0</code> (enero), y termina en el <code>11</code> (diciembre).</li>
+<li>El parámetro <code>fecha</code> efectivamente es el día del mes, si está ausente se asume su valor en <code>1</code>.</li>
+<li>Si los parámetros <code>horas/minutos/segundos/ms</code> están ausentes, se asumen sus valores iguales a <code>0</code>.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="sulr0yqvrc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>new Date(2011, 0, 1, 0, 0, 0, 0); // 1 Jan 2011, 00:00:00
+new Date(2011, 0, 1); // Igual que la línea de arriba, sólo que a los últimos 4 parámetros se les asigna '0' por defecto.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La precisión máxima es de 1 ms (1/1000 de segundo):</p>
+<div id="2d5l1lyvcx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(2011, 0, 1, 2, 3, 4, 567);
+alert( date ); // 1.01.2011, 02:03:04.567</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<h2><a class="main__anchor" name="acceso-a-los-componentes-de-la-fecha" href="#acceso-a-los-componentes-de-la-fecha">Acceso a los componentes de la fecha</a></h2><p>Existen métodos que sirven para obtener el año, el mes, y los demás componentes a partir de un objeto de tipo <code>Date</code>:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getFullYear">getFullYear()</a></dt>
+<dd>Devuelve el año (4 dígitos)</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getMonth">getMonth()</a></dt>
+<dd>Devuelve el mes, <strong>de 0 a 11</strong>.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getDate">getDate()</a></dt>
+<dd>Devuelve el día del mes desde 1 a 31. Nótese que el nombre del método no es muy intuitivo.</dd>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getHours">getHours()</a>, <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getMinutes">getMinutes()</a>, <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getSeconds">getSeconds()</a>, <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getMilliseconds">getMilliseconds()</a></dt>
+<dd>Devuelve los componentes del horario correspondientes.</dd>
+</dl>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">No <code>getYear()</code>, sino <code>getFullYear()</code></span></div>
+            <div class="important__content"><p>Algunos motores de JavaScript poseen implementado un método no estándar llamado <code>getYear()</code>. Este método actualmente está obsoleto. A veces devuelve un año de 2 dígitos. Por favor, nunca lo uses. Usa <code>getFullYear()</code> para obtener el año.</p>
+</div></div>
+<p>Además, podemos obtener un día de la semana:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getDay">getDay()</a></dt>
+<dd>Devuelve el día de la semana, partiendo de <code>0</code> (Domingo) hasta <code>6</code> (Sábado). El primer día siempre es el Domingo. Por más que en algunos países no sea así, no se puede modificar.</dd>
+</dl>
+<p><strong>Todos los métodos mencionados anteriormente devuelven los componentes correspondientes a la zona horaria local.</strong></p>
+<p>También existen sus contrapartes UTC, que devuelven el día, mes, año, y demás componentes, para la zona horaria UTC+0: <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getUTCFullYear">getUTCFullYear()</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCMonth">getUTCMonth()</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getUTCDay">getUTCDay()</a>. Solo debemos agregarle el <code>&quot;UTC&quot;</code> justo después de <code>&quot;get&quot;</code>.</p>
+<p>Si tu zona horaria está desplazada respecto de UTC el código de abajo va a mostrar horas diferentes:</p>
+<div id="ze8tmonl2f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// fecha actual
+let date = new Date();
+
+// la hora en tu zona horaria actual
+alert( date.getHours() );
+
+// la hora respecto de la zona horaria UTC+0 (Hora de Londres sin horario de verano)
+alert( date.getUTCHours() );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Además de los anteriormente mencionados, hay dos métodos especiales que no poseen una variante de UTC:</p>
+<dl>
+<dt><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/getTime">getTime()</a></dt>
+<dd>
+<p>Devuelve el <em>timestamp</em> para una fecha determinada – cantidad de milisegundos transcurridos a partir del 1° de Enero de 1970 UTC+0.</p>
+</dd>
+<dt><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTimezoneOffset">getTimezoneOffset()</a></dt>
+<dd>
+<p>Devuelve la diferencia entre UTC y el huso horario de la zona actual, en minutos:</p>
+<div id="mx8qjc9drx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Si estás en la zona horaria UTC-1, devuelve 60
+// Si estás en la zona horaria UTC+3, devuelve -180
+alert( new Date().getTimezoneOffset() );</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<h2><a class="main__anchor" name="estableciendo-los-componentes-de-la-fecha" href="#estableciendo-los-componentes-de-la-fecha">Estableciendo los componentes de la fecha</a></h2><p>Los siguientes métodos permiten establecer los componentes de fecha y hora:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/setFullYear"><code>setFullYear(year, [month], [date])</code></a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/setMonth"><code>setMonth(month, [date])</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setDate"><code>setDate(date)</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setHours"><code>setHours(hour, [min], [sec], [ms])</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setMinutes"><code>setMinutes(min, [sec], [ms])</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setSeconds"><code>setSeconds(sec, [ms])</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setMilliseconds"><code>setMilliseconds(ms)</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/setTime"><code>setTime(milliseconds)</code></a> (Establece la cantidad de segundos transcurridos desde 01.01.1970 GMT+0)</li>
+</ul>
+<p>A excepción de <code>setTime()</code>, todos los demás métodos poseen una variante UTC, por ejemplo: <code>setUTCHours()</code>.</p>
+<p>Como podemos ver, algunos métodos nos permiten fijar varios componentes al mismo tiempo, por ej. <code>setHours</code>. Los componentes que no son mencionados no se modifican.</p>
+<p>Por ejemplo:</p>
+<div id="k8dp294tt3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let today = new Date();
+
+today.setHours(0);
+alert(today); // Sigue siendo el día de hoy, pero con la hora cambiada a 0.
+
+today.setHours(0, 0, 0, 0);
+alert(today); // Sigue siendo la fecha de hoy, pero ahora en formato 00:00:00 en punto.</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="autocorreccion" href="#autocorreccion">Autocorrección</a></h2><p>La <em>autocorrección</em> es una característica muy útil de los objetos <code>Date</code>. Podemos fijar valores fuera de rango, y se ajustarán automáticamente.</p>
+<p>Por ejemplo:</p>
+<div id="9uf5y8n68n" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:29,&quot;end&quot;:31}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(2013, 0, 32); // ¿32 de Enero 2013?
+alert(date); // ¡Se autocorrigió al 1° de Febrero de 2013!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los componentes de la fecha que están fuera de rango se distribuyen automáticamente.</p>
+<p>Por ejemplo, supongamos que necesitamos incrementar la fecha “28 Feb 2016” en 2 días. El resultado puede ser “2 Mar” o “1 Mar” dependiendo de si es año bisiesto. Afortunadamente, no tenemos de qué preocuparnos. Sólo debemos agregarle los 2 días y el objeto <code>Date</code> se encargará del resto:</p>
+<div id="974tj8pfvm" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(2016, 1, 28);
+date.setDate(date.getDate() + 2);
+
+alert( date ); // 1 Mar 2016</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esta característica se usa frecuentemente para obtener la fecha, a partir de un período de tiempo específico. Por ejemplo, supongamos que queremos obtener “la fecha de hoy pero transcurridos 70 segundos a partir de este preciso instante.”</p>
+<div id="di7kl6bgfj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date();
+date.setSeconds(date.getSeconds() + 70);
+
+alert( date ); // Se muestra la fecha correcta.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos fijar valores en 0 o incluso valores negativos. Por ejemplo:</p>
+<div id="hr504e8y1z" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(2016, 0, 2); // 2 Jan 2016
+
+date.setDate(1); // Fija '1' día del mes
+alert( date );
+
+date.setDate(0); // el día mínimo es 1, entonces asume el último día del mes anterior
+alert( date ); // 31 Dec 2015</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="conversion-de-fechas-a-numeros-y-diferencia-entre-fechas" href="#conversion-de-fechas-a-numeros-y-diferencia-entre-fechas">Conversión de fechas a números y diferencia entre fechas.</a></h2><p>Cuando convertimos un objeto <code>Date</code> a número toma el valor del <em>timestamp</em> actual, al igual que el método <code>date.getTime()</code>:</p>
+<div id="34m70rapk0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date();
+alert(+date); // devuelve el número de milisegundos, al igual que date.getTime()</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El efecto secundario importante: las fechas pueden ser restadas, el resultado es su diferencia en ms.</p>
+<p>Esto puede ser usado para medición de tiempo:</p>
+<div id="mecc1p1h6b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let start = new Date(); // comienza a medir el tiempo (valor inicial)
+
+// la función hace su trabajo
+for (let i = 0; i &lt; 100000; i++) {
+  let doSomething = i * i * i;
+}
+
+let end = new Date(); // termina de medir el tiempo (valor final)
+
+alert(`El tiempo transcurrido es de ${end - start} ms`);</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="date-now" href="#date-now">Date.now()</a></h2><p>Si lo único que queremos es medir el tiempo transcurrido, no es necesario utilizar el objeto <code>Date</code>.</p>
+<p>Podemos utilizar el método especial <code>Date.now()</code> que nos devuelve el <em>timestamp</em> actual.</p>
+<p>Es el equivalente semántico a <code>new Date().getTime()</code>, pero no crea una instancia intermediaria del objeto <code>Date</code>. De esta manera, el proceso es mas rápido y, por consiguiente, no afecta a la recolección de basura.</p>
+<p>Mayormente se utiliza por conveniencia o cuando la performance del código es fundamental, como por ejemplo en juegos de JavaScript u otras aplicaciones específicas.</p>
+<p>Por lo tanto, es mejor hacerlo de esta manera:</p>
+<div id="9l5c9ujsys" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7},{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let start = Date.now(); // milisegundos transcurridos a partir del 1° de Enero de 1970
+
+// la función realiza su trabajo
+for (let i = 0; i &lt; 100000; i++) {
+  let doSomething = i * i * i;
+}
+
+let end = Date.now(); // listo
+
+alert( `El bucle tardó ${end - start} ms` ); // restamos números en lugar de fechas</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="benchmarking" href="#benchmarking">Benchmarking</a></h2><p>Si queremos realizar una medición de performance confiable de una función que vaya a consumir muchos recursos de CPU, debemos hacerlo con precaución.</p>
+<p>En este caso, vamos a medir dos funciones que calculen la diferencia entre dos fechas determinadas: ¿Cuál es la más rápida?</p>
+<p>Estas evaluaciones de performance son comúnmente denominadas <em>“benchmarks”</em>.</p>
+<div id="75hr61bpxf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Tenemos date1 y date2. ¿Cuál de las siguientes funciones nos devuelve su diferencia, expresada en ms, más rápido?
+function diffSubtract(date1, date2) {
+  return date2 - date1;
+}
+
+// o
+function diffGetTime(date1, date2) {
+  return date2.getTime() - date1.getTime();
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ambas funciones hacen exactamente lo mismo, pero una de ellas utiliza explícitamente <code>date.getTime()</code> para obtener la fecha expresada en ms, y la otra se basa en la autoconversión de fecha a número. Sin embargo, su resultado es el mismo.</p>
+<p>Pero entonces, ¿Cuál de las dos es más rápida?</p>
+<p>La primera idea sería ejecutar las funciones varias veces seguidas y medir la diferencia de tiempo de ejecución. En nuestro caso, las funciones son bastante simples, por lo que debemos hacerlo al menos unas 100000 veces.</p>
+<p>Midamos:</p>
+<div id="48adhhqpk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function diffSubtract(date1, date2) {
+  return date2 - date1;
+}
+
+function diffGetTime(date1, date2) {
+  return date2.getTime() - date1.getTime();
+}
+
+function bench(f) {
+  let date1 = new Date(0);
+  let date2 = new Date();
+
+  let start = Date.now();
+  for (let i = 0; i &lt; 100000; i++) f(date1, date2);
+  return Date.now() - start;
+}
+
+alert(&quot;Tiempo de ejecución de diffSubtract: &quot; + bench(diffSubtract) + &quot;ms&quot;);
+alert(&quot;Tiempo de ejecución de diffGetTime: &quot; + bench(diffGetTime) + &quot;ms&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¡Guau! ¡Utilizando el método <code>getTime()</code> es mucho más rápido! Esto es debido a que no se produce ninguna conversión de tipo de dato, por lo que se le hace mucho mas fácil de optimizar a los motores.</p>
+<p>Bueno, ya tenemos algo. Pero todavía no es un <em>benchmark</em> completo.</p>
+<p>Imaginemos que en el momento en el que <code>bench(diffSubtract)</code> estaba corriendo, la CPU estaba ejecutando otra tarea en paralelo que consumía recursos y al momento de correr <code>bench(diffGetTime)</code> esa tarea ya había concluido.</p>
+<p>Es un escenario bastante posible para los sistemas operativos multi-procesos de hoy en día.</p>
+<p>Como consecuencia, el primer <em>benchmark</em> dispondrá de una menor cantidad de recursos de CPU que el segundo, lo que podría generar resultados engañosos.</p>
+<p><strong>Para realizar un <em>benchmarking</em> más confiable, todas las <em>benchmarks</em> deberían ser ejecutadas múltiples veces.</strong></p>
+<p>Como por ejemplo:</p>
+<div id="0hypp1rvda" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:20,&quot;end&quot;:24}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function diffSubtract(date1, date2) {
+  return date2 - date1;
+}
+
+function diffGetTime(date1, date2) {
+  return date2.getTime() - date1.getTime();
+}
+
+function bench(f) {
+  let date1 = new Date(0);
+  let date2 = new Date();
+
+  let start = Date.now();
+  for (let i = 0; i &lt; 100000; i++) f(date1, date2);
+  return Date.now() - start;
+}
+
+let time1 = 0;
+let time2 = 0;
+
+// ejecuta bench(diffSubtract) y bench(diffGetTime) cada 10 iteraciones alternándolas
+for (let i = 0; i &lt; 10; i++) {
+  time1 += bench(diffSubtract);
+  time2 += bench(diffGetTime);
+}
+
+alert( 'Tiempo total de diffSubtract: ' + time1 );
+alert( 'Tiempo total de diffGetTime: ' + time2 );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los motores modernos de JavaScript realizan una optimización avanzada únicamente a los bloques de código que se ejecutan varias veces (no es necesario optimizar código que raramente se ejecuta). En el ejemplo de abajo, las primeras ejecuciones no están bien optimizadas, por lo que quizás querríamos agregar ejecuciones antes de realizar el <em>benchmark</em>, a modo de “precalentamiento”:</p>
+<div id="jqai618gpx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Agregamos las funciones, antes de realizar el *benchmark*, a modo de &quot;precalentamiento&quot;
+bench(diffSubtract);
+bench(diffGetTime);
+
+// Ahora sí realizamos el benchmark
+for (let i = 0; i &lt; 10; i++) {
+  time1 += bench(diffSubtract);
+  time2 += bench(diffGetTime);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Cuidado con los micro-benchmarks</span></div>
+            <div class="important__content"><p>Los motores Modernos de JavaScript realizan varias optimizaciones al ejecutar código. Esto podría alterar los resultados de las “pruebas artificiales” respecto del “uso normal”, especialmente cuando hacemos un <em>benchmark</em> tan pequeño, como por ejemplo: el funcionamiento de un operador o una función incorporada de JavaScript. Por esta razón, si se quiere entender más en profundidad cómo funciona la performance, se recomienda estudiar el funcionamiento del motor de JavaScript. Probablemente no necesites realizar <em>microbenchmarks</em> en absoluto.</p>
+<p>Existe un excelente conjunto de artículos acerca del motor V8 en <a href="https://mrale.ph/">https://mrale.ph</a>.</p>
+</div></div>
+<h2><a class="main__anchor" name="date-parse-a-partir-de-un-string" href="#date-parse-a-partir-de-un-string">Date.parse a partir de un string</a></h2><p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date/parse">Date.parse(str)</a> permite leer una fecha desde un string.</p>
+<p>El formato del string debe ser: <code>YYYY-MM-DDTHH:mm:ss.sssZ</code>, donde:</p>
+<ul>
+<li><code>YYYY-MM-DD</code> – es la fecha: año-mes-día.</li>
+<li>El carácter <code>&quot;T&quot;</code> se usa como delimitador.</li>
+<li><code>HH:mm:ss.sss</code> – es la hora: horas, minutos, segundos y milisegundos.</li>
+<li>El carácter <code>'Z'</code> es opcional y especifica la zona horaria, con el formato <code>+-hh:mm</code>. Si se incluye únicamente la letra <code>Z</code> equivale a UTC+0.</li>
+</ul>
+<p>También es posible pasar como string variantes abreviadas, tales como <code>YYYY-MM-DD</code> o <code>YYYY-MM</code> o incluso <code>YYYY</code>.</p>
+<p>La llamada del método <code>Date.parse(str)</code> convierte el string en el formato especificado y nos devuelve un <em>timestamp</em> (cantidad de milisegundos transcurridos desde el 1° de Enero de 1970 UTC+0). Si el formato del string no es válido, devuelve es <code>NaN</code>.</p>
+<p>Por ejemplo:</p>
+<div id="c7xsn29jwq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let ms = Date.parse(&quot;2012-01-26T13:51:50.417-07:00&quot;);
+
+alert(ms); // 1327611110417  (timestamp)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos crear un objeto  <code>new Date</code> instantáneamente desde el timestamp:</p>
+<div id="976i0myuxx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(Date.parse(&quot;2012-01-26T13:51:50.417-07:00&quot;));
+
+alert(date);</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>En JavaScript, la fecha y la hora se representan con el objeto <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Date">Date</a>. No es posible obtener sólo la fecha o sólo la hora: los objetos <code>Date</code> incluyen ambas.</li>
+<li>Los meses se cuentan desde el cero (sí: enero es el mes cero).</li>
+<li>Los días de la semana en <code>getDay()</code> también se cuentan desde el cero (que corresponde al día Domingo).</li>
+<li>El objeto <code>Date</code> se autocorrige cuando recibe un componente fuera de rango. Es útil para sumar o restar días/meses/horas.</li>
+<li>Las fechas se pueden restar entre sí, dando el resultado expresado en milisegundos: esto se debe a que el objeto <code>Date</code> toma el valor del <em>timestamp</em> cuando es convertido a número.</li>
+<li>Para obtener el <em>timestamp</em> actual de manera inmediata se utiliza <code>Date.now()</code>.</li>
+</ul>
+<p>Nótese que, a diferencia de otros sistemas, los <em>timestamps</em> en JavaScript están representados en milisegundos (ms), no en segundos.</p>
+<p>Suele suceder que necesitemos tomar medidas de tiempo más precisas. En sí, JavaScript no tiene incorporada una manera de medir el tiempo en microsegundos (1 millonésima parte de segundo), pero la mayoría de los entornos de ejecución sí lo permiten. Por ejemplo, el navegador posee <a href="https://developer.mozilla.org/es/docs/Web/API/Performance/now">performance.now()</a> que nos permite saber la cantidad de milisegundos que tarda una página en cargar, con una precisión de microsegundos (3 dígitos después del punto):</p>
+<div id="lc9o3lxhnf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(`La carga de la página comenzó hace ${performance.now()}ms`);
+// Devuelve algo así como: &quot;La carga de la página comenzó hace 34731.26000000001ms&quot;
+// los dígitos .26 son microsegundos (260 microsegundos)
+// Sólo los 3 primeros dígitos después del punto decimal son correctos, los demás son errores de precisión.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Node.js posee el módulo <code>microtime</code>, entre otros. Prácticamente casi cualquier dispositivo y entorno de ejecución permite mayor precisión, sólo que no es posible almacenarla en <code>Date</code>.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crea-una-fecha" name="crea-una-fecha">Crea una fecha</a></h3><a class="task__open-link" href="task/new-date.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea un objeto <code>Date</code> para la fecha: Feb 20, 2012, 3:12am. La zona horaria es local.</p>
+<p>Muéstralo en pantalla utilizando <code>alert</code>.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El constructor <code>new Date</code> utiliza la zona horaria local. Lo único importante por recordar es que los meses se cuentan desde el 0.</p>
+<p>Por ejemplo, febrero es el mes 1.</p>
+<p>Aquí hay un ejemplo con números como componentes de fecha:</p>
+<div id="fhft62zox9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>//new Date(año, mes, día, hora, minuto, segundo, milisegundo)
+let d1 = new Date(2012, 1, 20, 3, 12);
+alert( d1 );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podríamos crear una fecha a partir de un string, así:</p>
+<div id="e3mciyrhos" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>//new Date(datastring)
+let d2 = new Date(&quot;2012-02-20T03:12&quot;);
+alert( d2 );</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#muestra-en-pantalla-un-dia-de-la-semana" name="muestra-en-pantalla-un-dia-de-la-semana">Muestra en pantalla un día de la semana</a></h3><a class="task__open-link" href="task/get-week-day.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>getWeekDay(date)</code> para mostrar el día de la semana en formato corto: ‘MO’, ‘TU’, ‘WE’, ‘TH’, ‘FR’, ‘SA’, ‘SU’.</p>
+<p>Por ejemplo:</p>
+<div id="l4ei83bjkj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(2012, 0, 3);  // 3 Jan 2012
+alert( getWeekDay(date) );        // debería mostrar &quot;TU&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/tCRbyt5PvBc1mTKy?p=preview" target="_blank" data-plunk-id="tCRbyt5PvBc1mTKy">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El método <code>date.getDay()</code> devuelve el número del día de la semana, empezando por el domingo.</p>
+<p>Hagamos un array de días de la semana, así podemos obtener el nombre del día a través de su número correspondiente.</p>
+<div id="kok5f4kpmw" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getWeekDay(date) {
+  let days = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
+
+  return days[date.getDay()];
+}
+
+let date = new Date(2014, 0, 3); // 3 Jan 2014
+alert( getWeekDay(date) ); // FR</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/D7sNgkVOUe85TqoT?p=preview" target="_blank" data-plunk-id="D7sNgkVOUe85TqoT">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dia-de-la-semana-europeo" name="dia-de-la-semana-europeo">Día de la semana europeo</a></h3><a class="task__open-link" href="task/weekday.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>En los países europeos se cuentan los días de la semana a partir del lunes (número 1), seguido del martes (número 2), hasta el domingo (número 7). Escribe una función <code>getLocalDay(date)</code> que devuelva el día de la semana “europeo” para la variable <code>date</code>.</p>
+<div id="jo3w68vlgv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(2012, 0, 3);  // 3 Jan 2012
+alert( getLocalDay(date) );       // tuesday, should show 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/sAMEO8bcrdccpDZq?p=preview" target="_blank" data-plunk-id="sAMEO8bcrdccpDZq">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="t6xpcnmygv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getLocalDay(date) {
+
+  let day = date.getDay();
+
+  if (day == 0) { // weekday 0 (sunday) is 7 in european
+    day = 7;
+  }
+
+  return day;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/qV5wQkVV8VGCB9WI?p=preview" target="_blank" data-plunk-id="qV5wQkVV8VGCB9WI">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#que-dia-del-mes-era-hace-algunos-dias-atras" name="que-dia-del-mes-era-hace-algunos-dias-atras">¿Qué día del mes era hace algunos días atrás?</a></h3><a class="task__open-link" href="task/get-date-ago.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>getDateAgo(date, days)</code> que devuelva el día del mes que corresponde, contando la cantidad de días <code>days</code> respecto de la fecha <code>date</code>.</p>
+<p>Por ejemplo, si hoy es 20, entonces <code>getDateAgo(new Date(), 1)</code> debería ser 19 y <code>getDateAgo(new Date(), 2)</code> debería ser 18.</p>
+<p>Debe poder funcionar para <code>days=365</code> o más:</p>
+<div id="jihi7ebcgx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let date = new Date(2015, 0, 2);
+
+alert( getDateAgo(date, 1) ); // 1, (1 Jan 2015)
+alert( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
+alert( getDateAgo(date, 365) ); // 2, (2 Jan 2014)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D.: La función no debería modificar la fecha <code>date</code> pasada como argumento.</p>
+<p><a href="https://plnkr.co/edit/bZdAS9T1F4UGjiLZ?p=preview" target="_blank" data-plunk-id="bZdAS9T1F4UGjiLZ">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La idea es simple: restarle a la fecha <code>date</code> la cantidad de días especificada.</p>
+<div id="wtua9jza5k" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getDateAgo(date, days) {
+  date.setDate(date.getDate() - days);
+  return date.getDate();
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero la función no debería modificar la fecha <code>date</code>. Esto es importante, ya que no se espera que cambie la variable externa que contiene la fecha.</p>
+<p>Para hacerlo, clonemos la fecha de esta manera:</p>
+<div id="st84ogj30q" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getDateAgo(date, days) {
+  let dateCopy = new Date(date);
+
+  dateCopy.setDate(date.getDate() - days);
+  return dateCopy.getDate();
+}
+
+let date = new Date(2015, 0, 2);
+
+alert( getDateAgo(date, 1) ); // 1, (1 Jan 2015)
+alert( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
+alert( getDateAgo(date, 365) ); // 2, (2 Jan 2014)</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/x9BhlKCtg0KfLJDG?p=preview" target="_blank" data-plunk-id="x9BhlKCtg0KfLJDG">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cual-es-el-ultimo-dia-del-mes" name="cual-es-el-ultimo-dia-del-mes">¿Cuál es el último día del mes?</a></h3><a class="task__open-link" href="task/last-day-of-month.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>getLastDayOfMonth(year, month)</code> que devuelva el último día del mes dado. A veces es 30, 31 o incluso 28/29 para febrero.</p>
+<p>Parámetros:</p>
+<ul>
+<li><code>year</code> – el año en formato de cuatro dígitos, por ejemplo 2012.</li>
+<li><code>month</code> – el mes, de 0 a 11.</li>
+</ul>
+<p>Por ejemplo, <code>getLastDayOfMonth(2012, 1) = 29</code> (febrero, año bisiesto).</p>
+<p><a href="https://plnkr.co/edit/mTgySuXfSNhBTBsp?p=preview" target="_blank" data-plunk-id="mTgySuXfSNhBTBsp">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Creemos una fecha utilizando el mes próximo, pero pasando 0 como número de día:</p>
+<div id="fhxplzcwjv" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getLastDayOfMonth(year, month) {
+  let date = new Date(year, month + 1, 0);
+  return date.getDate();
+}
+
+alert( getLastDayOfMonth(2012, 0) ); // 31
+alert( getLastDayOfMonth(2012, 1) ); // 29
+alert( getLastDayOfMonth(2013, 1) ); // 28</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normalmente, las fechas comienzan a partir del 1, sin embargo podemos pasar como argumento cualquier número, ya que se corregirá automáticamente. De esta manera, si pasamos el número 0 como día, se interpreta como “el día anterior al primer día del mes”, o en otras palabras: “el último día del mes anterior”.</p>
+<p><a href="https://plnkr.co/edit/degWV9miOudIfdT2?p=preview" target="_blank" data-plunk-id="degWV9miOudIfdT2">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cuantos-segundos-transcurrieron-el-dia-de-hoy" name="cuantos-segundos-transcurrieron-el-dia-de-hoy">¿Cuántos segundos transcurrieron el día de hoy?</a></h3><a class="task__open-link" href="task/get-seconds-today.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>getSecondsToday()</code> que devuelva la cantidad de segundos transcurridos desde el comienzo del día.</p>
+<p>Por ejemplo, si en este momento fueran las <code>10:00 am</code>, sin horario de verano, entonces:</p>
+<div id="15p2a5jrkp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>getSecondsToday() == 36000 // (3600 * 10)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función debe poder funcionar correctamente cualquier día. Es decir, no debe poseer valores fijos en el código, como por ej. “today”.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para obtener la cantidad de segundos, podemos generar una fecha en la variable “today” utilizando el día de hoy con la hora en 00:00:00, y luego restárselo a la variable “now”.</p>
+<p>El resultado será la cantidad de milisegundos transcurridos desde el comienzo del día, el cual debemos dividir por 1000 para pasarlo a segundos:</p>
+<div id="m9bwbkn7jd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getSecondsToday() {
+  let now = new Date();
+
+  // creamos un objeto que contenga el día/mes/año actual
+  let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  let diff = now - today; // diferencia entre fechas, representado en ms
+  return Math.round(diff / 1000); // pasaje a segundos
+}
+
+alert( getSecondsToday() );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Una solución alternativa sería obtener las horas/minutos/segundos actuales y pasar todo a segundos:</p>
+<div id="qcs43fhejh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getSecondsToday() {
+  let d = new Date();
+  return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds();
+}
+
+alert( getSecondsToday() );</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cuantos-segundos-faltan-para-el-dia-de-manana" name="cuantos-segundos-faltan-para-el-dia-de-manana">¿Cuantos segundos faltan para el día de mañana?</a></h3><a class="task__open-link" href="task/get-seconds-to-tomorrow.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>getSecondsToTomorrow()</code> que devuelva la cantidad de segundos que faltan para el día de mañana.</p>
+<p>Por ejemplo, si ahora son las <code>23:00</code>, entonces:</p>
+<div id="j9k5xkd2sq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>getSecondsToTomorrow() == 3600</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D.: La función debe poder funcionar para cualquier día, sin valores fijos en el código como “today”.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para obtener la cantidad de milisegundos que faltan para mañana, podemos restarle la fecha actual a “mañana 00:00:00”.</p>
+<p>Primero generamos ese “mañana” y luego restamos:</p>
+<div id="kiavx9ys3t" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:61,&quot;end&quot;:76}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getSecondsToTomorrow() {
+  let now = new Date();
+
+  // el día de mañana
+  let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+
+  let diff = tomorrow - now; // diferencia en ms
+  return Math.round(diff / 1000); // conversión a segundos
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Solución alternativa:</p>
+<div id="891df074bv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function getSecondsToTomorrow() {
+  let now = new Date();
+  let hour = now.getHours();
+  let minutes = now.getMinutes();
+  let seconds = now.getSeconds();
+  let totalSecondsToday = (hour * 60 + minutes) * 60 + seconds;
+  let totalSecondsInADay = 86400;
+
+  return totalSecondsInADay - totalSecondsToday;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que algunos países tienen horarios de verano (DST), así que es posible que existan días con 23 o 25 horas. Podríamos querer tratar estos días por separado.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#cambia-el-formato-a-fecha-relativa" name="cambia-el-formato-a-fecha-relativa">Cambia el formato a fecha relativa</a></h3><a class="task__open-link" href="task/format-date-relative.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>formatDate(date)</code> que muestre la fecha en el siguiente formato:</p>
+<ul>
+<li>Si a partir de la fecha <code>date</code> pasó menos de 1 segundo, debe devolver <code>&quot;ahora mismo&quot;</code>.</li>
+<li>De no ser así, si a partir de la fecha <code>date</code> pasó menos de 1 minuto, debe retornar <code>&quot;hace n seg,&quot;</code>.</li>
+<li>De no ser así, si pasó menos de una hora, debe retornar <code>&quot;hace n min.&quot;</code>.</li>
+<li>De no ser así, debe retornar la fecha completa en el formato <code>&quot;DD.MM.AA HH:mm&quot;</code>. Es decir: <code>&quot;día.mes.año horas:minutos&quot;</code>, cada uno de ellos en formato de 2 dígitos, por ej. <code>31.12.16 10:00</code>.</li>
+</ul>
+<p>For instance:</p>
+<div id="uxo5z0sohj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( formatDate(new Date(new Date - 1)) ); // &quot;ahora mismo&quot;
+
+alert( formatDate(new Date(new Date - 30 * 1000)) ); // &quot;hace 30 seg.&quot;
+
+alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // &quot;hace 5 min.&quot;
+
+// la fecha de ayer en formato 31.12.16 20:00
+alert( formatDate(new Date(new Date - 86400 * 1000)) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/9oysyHyxOSWDQDzw?p=preview" target="_blank" data-plunk-id="9oysyHyxOSWDQDzw">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para obtener el tiempo que transcurrió desde la fecha <code>date</code> hasta ahora, restemos ambas fechas entre sí.</p>
+<div id="zqxukxtmsf" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function formatDate(date) {
+  let diff = new Date() - date; // la diferencia entre ambas, representada en milisegundos
+
+  if (diff &lt; 1000) { // menos de 1 segundo
+    return 'ahora mismo';
+  }
+
+  let sec = Math.floor(diff / 1000); // convierte el resultado en segundos
+
+  if (sec &lt; 60) {
+    return 'hace ' sec + ' seg.';
+  }
+
+  let min = Math.floor(diff / 60000); // convierte el resultado en minutos
+  if (min &lt; 60) {
+    return 'hace ' + min + ' min.';
+  }
+
+  // cambia le formato de la fecha
+  // se le agrega un dígito 0 al día/mes/horas/minutos que contenga un único digito.
+  let d = date;
+  d = [
+    '0' + d.getDate(),
+    '0' + (d.getMonth() + 1),
+    '' + d.getFullYear(),
+    '0' + d.getHours(),
+    '0' + d.getMinutes()
+  ].map(component =&gt; component.slice(-2)); // toma los últimos 2 dígitos de cada componente
+
+  // une los componentes para formar una única fecha
+  return d.slice(0, 3).join('.') + ' ' + d.slice(3).join(':');
+}
+
+alert( formatDate(new Date(new Date - 1)) ); // &quot;ahora mismo&quot;
+
+alert( formatDate(new Date(new Date - 30 * 1000)) ); // &quot;hace 30 seg.&quot;
+
+alert( formatDate(new Date(new Date - 5 * 60 * 1000)) ); // &quot;hace 5 min.&quot;
+
+// la fecha de ayer en formato 31.12.2016 20:00
+alert( formatDate(new Date(new Date - 86400 * 1000)) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Solución alternativa:</p>
+<div id="h6cyy6vm43" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function formatDate(date) {
+  let dayOfMonth = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let hour = date.getHours();
+  let minutes = date.getMinutes();
+  let diffMs = new Date() - date;
+  let diffSec = Math.round(diffMs / 1000);
+  let diffMin = diffSec / 60;
+  let diffHour = diffMin / 60;
+
+  // dándole formato
+  year = year.toString().slice(-2);
+  month = month &lt; 10 ? '0' + month : month;
+  dayOfMonth = dayOfMonth &lt; 10 ? '0' + dayOfMonth : dayOfMonth;
+  hour = hour &lt; 10 ? '0' + hour : hour;
+  minutes = minutes &lt; 10 ? '0' + minutes : minutes;
+
+  if (diffSec &lt; 1) {
+    return 'ahora mismo';
+  } else if (diffMin &lt; 1) {
+    return `hace ${diffSec} seg.`
+  } else if (diffHour &lt; 1) {
+    return `hace ${diffMin} min.`
+  } else {
+    return `${dayOfMonth}.${month}.${year} ${hour}:${minutes}`
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/NNFPWvi7nhht8BUH?p=preview" target="_blank" data-plunk-id="NNFPWvi7nhht8BUH">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="destructuring-assignment.html" data-tooltip="Asignación desestructurante"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="json.html" data-tooltip="Métodos JSON, toJSON"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdate" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fdate" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/date","identifier":"\/date"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.html">Tipos de datos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#creacion">Creación</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#acceso-a-los-componentes-de-la-fecha">Acceso a los componentes de la fecha</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#estableciendo-los-componentes-de-la-fecha">Estableciendo los componentes de la fecha</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#autocorreccion">Autocorrección</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#conversion-de-fechas-a-numeros-y-diferencia-entre-fechas">Conversión de fechas a números y diferencia entre fechas.</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#date-now">Date.now()</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#benchmarking">Benchmarking</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#date-parse-a-partir-de-un-string">Date.parse a partir de un string</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (8)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdate" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fdate" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/05-data-types/11-date" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/date by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:00 GMT -->
+</html>

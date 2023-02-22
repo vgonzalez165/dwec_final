@@ -1,0 +1,1194 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/number by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Números</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="number.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Números"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Números"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="primitives-methods.html"><link rel="next" href="string.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Números"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/number"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/number"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="number.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/number"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/number"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/number"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/number"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/number"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/number"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/number"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/number"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/number"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/number"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fnumber" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fnumber" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/number">عربي</option><option value="https://javascript.info/number">English</option><option value="https://es.javascript.info/number" selected>Español</option><option value="https://fa.javascript.info/number">فارسی</option><option value="https://fr.javascript.info/number">Français</option><option value="https://id.javascript.info/number">Indonesia</option><option value="https://it.javascript.info/number">Italiano</option><option value="https://ja.javascript.info/number">日本語</option><option value="https://ko.javascript.info/number">한국어</option><option value="https://learn.javascript.ru/number">Русский</option><option value="https://tr.javascript.info/number">Türkçe</option><option value="https://uk.javascript.info/number">Українська</option><option value="https://zh.javascript.info/number">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="38" max="93" data-tooltip="Lección 38 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="data-types.html"><span>Tipos de datos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Tipos de datos","item":"https://es.javascript.info/data-types"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 4 de octubre de 2022"><div class="updated-at__content">4 de octubre de 2022</div></div></div><h1 class="main__header-title">Números</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Números"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>En JavaScript moderno, hay dos tipos de números:</p>
+<ol>
+<li>
+<p>Los números regulares en JavaScript son almacenados con el formato de 64-bit <a href="https://es.wikipedia.org/wiki/IEEE_754">IEEE-754</a>, conocido como “números de doble precisión de coma flotante”. Estos números son los que estaremos usando la mayor parte del tiempo, y hablaremos de ellos en este capítulo.</p>
+</li>
+<li>
+<p>Los números BigInt representan enteros de longitud arbitraria. A veces son necesarios porque un número regular no puede exceder <code>2<sup>53</sup></code> ni ser menor a <code>-2<sup>53</sup></code> manteniendo la precisión, algo que mencionamos antes en el capítulo <a href="types.html">Tipos de datos</a>. Como los bigints son usados en algunas áreas especiales, les dedicamos un capítulo especial <a href="bigint.html">BigInt</a>.</p>
+</li>
+</ol>
+<p>Aquí hablaremos de números regulares. Ampliemos lo que ya sabemos de ellos.</p>
+<h2><a class="main__anchor" name="mas-formas-de-escribir-un-numero" href="#mas-formas-de-escribir-un-numero">Más formas de escribir un número</a></h2><p>Imagina que necesitamos escribir mil millones (En inglés “1 billion”). La forma obvia es:</p>
+<div id="z30ak4spcm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let billion = 1000000000;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos usar guion bajo <code>_</code> como separador:</p>
+<div id="atbla1duxd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let billion = 1_000_000_000;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí <code>_</code> es “azúcar sintáctica”, hace el número más legible. El motor JavaScript simplemente ignora <code>_</code> entre dígitos, así que es exactamente igual al “billion” de más arriba.</p>
+<p>Pero en la vida real tratamos de evitar escribir una larga cadena de ceros porque es fácil tipear mal.</p>
+<p>En JavaScript, acortamos un número agregando la letra <code>&quot;e&quot;</code> y especificando la cantidad de ceros:</p>
+<div id="78bpfhfzdt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let billion = 1e9;  // 1 billion, literalmente: 1 y 9 ceros
+
+alert( 7.3e9 );  // 7.3 billions (tanto 7300000000 como 7_300_000_000)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En otras palabras, <code>&quot;e&quot;</code> multiplica el número por el <code>1</code> seguido de la cantidad de ceros dada.</p>
+<div id="oybw9ysc2d" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>1e3 === 1 * 1000; // e3 significa *1000
+1.23e6 === 1.23 * 1000000; // e6 significa *1000000</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora escribamos algo muy pequeño. Digamos 1 microsegundo (un millonésimo de segundo):</p>
+<div id="f74nqntjyr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let mсs = 0.000001;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Igual que antes, el uso de <code>&quot;e&quot;</code> puede ayudar. Si queremos evitar la escritura de ceros explícitamente, podríamos expresar lo mismo como:</p>
+<div id="gruvlx59z1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let mcs = 1e-6; // cinco ceros a la izquierda de 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si contamos los ceros en <code>0.000001</code>, hay 6 de ellos en total. Entonces naturalmente es <code>1e-6</code>.</p>
+<p>En otras palabras, un número negativo detrás de <code>&quot;e&quot;</code> significa una división por el 1 seguido de la cantidad dada de ceros:</p>
+<div id="ixp0kqpz89" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// -3 divide por 1 con 3 ceros
+1e-3 === 1 / 1000; // 0.001
+
+// -6 divide por 1 con 6 ceros
+1.23e-6 === 1.23 / 1000000; // 0.00000123
+
+// un ejemplo con un número mayor
+1234e-2 === 1234 / 100; // 12.34, el punto decimal se mueve 2 veces</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="numeros-hexadecimales-binarios-y-octales" href="#numeros-hexadecimales-binarios-y-octales">Números hexadecimales, binarios y octales</a></h3><p>Los números <a href="https://es.wikipedia.org/wiki/Sistema_hexadecimal">Hexadecimales</a> son ampliamente usados en JavaScript para representar colores, codificar caracteres y muchas otras cosas. Es natural que exista una forma breve de escribirlos: <code>0x</code> y luego el número.</p>
+<p>Por ejemplo:</p>
+<div id="n5786h8mkn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 0xff ); // 255
+alert( 0xFF ); // 255 (lo mismo en mayúsculas o minúsculas )</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los sistemas binario y octal son raramente usados, pero también soportados mediante el uso de los prefijos <code>0b</code> y <code>0o</code>:</p>
+<div id="80sprjg3hk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let a = 0b11111111; // binario de 255
+let b = 0o377; // octal de 255
+
+alert( a == b ); // true, el mismo número 255 en ambos lados</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Solo 3 sistemas numéricos tienen tal soporte. Para otros sistemas numéricos, debemos usar la función <code>parseInt</code> (que veremos luego en este capítulo).</p>
+<h2><a class="main__anchor" name="tostring-base" href="#tostring-base">toString(base)</a></h2><p>El método <code>num.toString(base)</code> devuelve la representación <code>num</code> en una cadena, en el sistema numérico con la <code>base</code> especificada.</p>
+<p>Ejemplo:</p>
+<div id="0gjmwq5anr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let num = 255;
+
+alert( num.toString(16) );  // ff
+alert( num.toString(2) );   // 11111111</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La <code>base</code> puede variar entre <code>2</code> y <code>36</code>. La predeterminada es <code>10</code>.</p>
+<p>Casos de uso común son:</p>
+<ul>
+<li>
+<p><strong>base=16</strong> usada para colores hex, codificación de caracteres, etc; los dígitos pueden ser <code>0..9</code> o <code>A..F</code>.</p>
+</li>
+<li>
+<p><strong>base=2</strong> mayormente usada para el debug de operaciones de bit, los dígitos pueden ser <code>0</code> o <code>1</code>.</p>
+</li>
+<li>
+<p><strong>base=36</strong> Es el máximo, los dígitos pueden ser <code>0..9</code> o <code>A..Z</code>.  Aquí el alfabeto inglés completo es usado para representar un número.  Un uso peculiar pero práctico para la base <code>36</code> es cuando necesitamos convertir un largo identificador numérico en algo más corto, por ejemplo para abreviar una url. Podemos simplemente representarlo en el sistema numeral de base <code>36</code>:</p>
+<div id="y8tv0pau9q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 123456..toString(36) ); // 2n9c</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Dos puntos para llamar un método</span></div>
+            <div class="important__content"><p>Por favor observa que los dos puntos en <code>123456..toString(36)</code> no son un error tipográfico. Si queremos llamar un método directamente sobre el número, como <code>toString</code> del ejemplo anterior, necesitamos ubicar los dos puntos <code>..</code> tras él.</p>
+<p>Si pusiéramos un único punto: <code>123456.toString(36)</code>, habría un error, porque la sintaxis de JavaScript implica una parte decimal después del primer punto. Al poner un punto más, JavaScript reconoce que la parte decimal está vacía y luego va el método.</p>
+<p>También podríamos escribir <code>(123456).toString(36)</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="redondeo" href="#redondeo">Redondeo</a></h2><p>Una de las operaciones más usadas cuando se trabaja con números es el redondeo.</p>
+<p>Hay varias funciones incorporadas para el redondeo:</p>
+<dl>
+<dt><code>Math.floor</code></dt>
+<dd>Redondea hacia abajo: <code>3.1</code> se convierte en <code>3</code>, y <code>-1.1</code> se hace <code>-2</code>.</dd>
+<dt><code>Math.ceil</code></dt>
+<dd>Redondea hacia arriba: <code>3.1</code> torna en <code>4</code>, y <code>-1.1</code> torna en <code>-1</code>.</dd>
+<dt><code>Math.round</code></dt>
+<dd>Redondea hacia el entero más cercano: <code>3.1</code> redondea a <code>3</code>, <code>3.6</code> redondea a <code>4</code>, el caso medio <code>3.5</code> redondea a <code>4</code> también.</dd>
+<dt><code>Math.trunc</code> (no soportado en Internet Explorer)</dt>
+<dd>Remueve lo que haya tras el punto decimal sin redondear: <code>3.1</code> torna en <code>3</code>, <code>-1.1</code> torna en <code>-1</code>.</dd>
+</dl>
+<p>Aquí, la tabla que resume las diferencias entre ellos:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>Math.floor</code></th>
+<th><code>Math.ceil</code></th>
+<th><code>Math.round</code></th>
+<th><code>Math.trunc</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>3.1</code></td>
+<td><code>3</code></td>
+<td><code>4</code></td>
+<td><code>3</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>3.6</code></td>
+<td><code>3</code></td>
+<td><code>4</code></td>
+<td><code>4</code></td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td><code>-1.1</code></td>
+<td><code>-2</code></td>
+<td><code>-1</code></td>
+<td><code>-1</code></td>
+<td><code>-1</code></td>
+</tr>
+<tr>
+<td><code>-1.6</code></td>
+<td><code>-2</code></td>
+<td><code>-1</code></td>
+<td><code>-2</code></td>
+<td><code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Estas funciones cubren todas las posibles formas de lidiar con la parte decimal de un número. Pero ¿si quisiéramos redondear al enésimo <code>n-th</code> dígito tras el decimal?</p>
+<p>Por ejemplo, tenemos <code>1.2345</code> y queremos redondearlo a 2 dígitos obteniendo solo <code>1.23</code>.</p>
+<p>Hay dos formas de hacerlo:</p>
+<ol>
+<li>
+<p>Multiplicar y dividir.</p>
+<p>Por ejemplo, para redondear el número a dos dígitos tras el decimal, podemos multiplicarlo por <code>100</code>, llamar la función de redondeo y entonces volverlo a dividir.</p>
+<div id="7b0fsz522i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let num = 1.23456;
+
+alert( Math.round(num * 100) / 100 ); // 1.23456 -&gt; 123.456 -&gt; 123 -&gt; 1.23</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>El método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Number/toFixed">toFixed(n)</a> redondea el número a <code>n</code> dígitos después del punto decimal y devuelve una cadena que representa el resultado.</p>
+<div id="fbtajc9ybh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let num = 12.34;
+alert( num.toFixed(1) ); // &quot;12.3&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Redondea hacia arriba o abajo al valor más cercano, similar a <code>Math.round</code>:</p>
+<div id="po4hlmslox" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let num = 12.36;
+alert( num.toFixed(1) ); // &quot;12.4&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que el resultado de <code>toFixed</code> es una cadena. Si la parte decimal es más corta que lo requerido, se agregan ceros hasta el final:</p>
+<div id="47ajaxqdx5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let num = 12.34;
+alert( num.toFixed(5) ); // &quot;12.34000&quot;, con ceros agregados para dar exactamente 5 dígitos</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos convertirlo a “number” usando el operador unario más o llamando a <code>Number()</code>; por ejemplo, escribir <code>+num.toFixed(5)</code>.</p>
+</li>
+</ol>
+<h2><a class="main__anchor" name="calculo-impreciso" href="#calculo-impreciso">Cálculo impreciso</a></h2><p>Internamente, un número es representado en formato de 64-bit <a href="https://es.wikipedia.org/wiki/IEEE_754">IEEE-754</a>, donde hay exactamente 64 bits para almacenar un número: 52 de ellos son usados para almacenar los dígitos, 11 para almacenar la posición del punto decimal, y 1 bit es para el signo.</p>
+<p>Si un número es verdaderamente grande, puede rebasar el almacén de 64 bit y obtenerse el valor numérico <code>Infinity</code>:</p>
+<div id="71onjdimmy" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 1e500 ); // Infinity</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Lo que puede ser algo menos obvio, pero ocurre a menudo, es la pérdida de precisión.</p>
+<p>Considera este (¡falso!) test de igualdad:</p>
+<div id="uk6ykr8dji" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:30,&quot;end&quot;:35}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 0.1 + 0.2 == 0.3 ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Es así, al comprobar si la suma de <code>0.1</code> y <code>0.2</code> es <code>0.3</code>, obtenemos <code>false</code>.</p>
+<p>¡Qué extraño! ¿Qué es si no <code>0.3</code>?</p>
+<div id="ttqxdl3l25" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 0.1 + 0.2 ); // 0.30000000000000004</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¡Ay! Imagina que estás haciendo un sitio de compras electrónicas y el visitante pone <code>$0.10</code> y <code>$0.20</code> en productos en su carrito. El total de la orden será <code>$0.30000000000000004</code>. Eso sorprendería a cualquiera…</p>
+<p>¿Pero por qué pasa esto?</p>
+<p>Un número es almacenado en memoria en su forma binaria, una secuencia de bits, unos y ceros. Pero decimales como <code>0.1</code>, <code>0.2</code> que se ven simples en el sistema decimal son realmente fracciones sin fin en su forma binaria.</p>
+<p>¿Qué es <code>0.1</code>? Es un uno dividido por 10 <code>1/10</code>, un décimo. En sistema decimal es fácilmente representable. Compáralo con un tercio: <code>1/3</code>, se vuelve una fracción sin fin <code>0.33333(3)</code>.</p>
+<p>Así, la división en potencias de diez garantizan un buen funcionamiento en el sistema decimal, pero divisiones por <code>3</code> no.  Por la misma razón, en el sistema binario la división en potencias de <code>2</code> garantizan su funcionamiento, pero <code>1/10</code> se vuelve una fracción binaria sin fin.</p>
+<p>Simplemente no hay manera de guardar <em>exactamente 0.1</em> o <em>exactamente 0.2</em> usando el sistema binario, así como no hay manera de guardar un tercio en fracción decimal.</p>
+<p>El formato numérico IEEE-754 resuelve esto redondeando al número posible más cercano. Estas reglas de redondeo normalmente no nos permiten percibir aquella “pequeña pérdida de precisión”, pero existe.</p>
+<p>Podemos verlo en acción:</p>
+<div id="s849n6ngcm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 0.1.toFixed(20) ); // 0.10000000000000000555</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y cuando sumamos dos números, se apilan sus “pérdidas de precisión”.</p>
+<p>Y es por ello que <code>0.1 + 0.2</code> no es exactamente <code>0.3</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">No solo JavaScript</span></div>
+            <div class="important__content"><p>El mismo problema existe en muchos otros lenguajes de programación.</p>
+<p>PHP, Java, C, Perl, Ruby dan exactamente el mismo resultado, porque ellos están basados en el mismo formato numérico.</p>
+</div></div>
+<p>¿Podemos resolver el problema? Seguro, la forma más confiable es redondear el resultado con la ayuda de un método. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed">toFixed(n)</a>:</p>
+<div id="munwuywodw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let sum = 0.1 + 0.2;
+alert( sum.toFixed(2) ); // &quot;0.30&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que <code>toFixed</code> siempre devuelve un string. Esto asegura que tiene 2 dígitos después del punto decimal. Esto es en verdad conveniente si tenemos un sitio de compras y necesitamos mostrar <code>$0.30</code>. Para otros casos, podemos usar el + unario para forzar un número:</p>
+<div id="a4ak4t6pmq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let sum = 0.1 + 0.2;
+alert( +sum.toFixed(2) ); // 0.3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos multiplicar temporalmente por 100 (o un número mayor) para transformarlos a enteros, hacer las cuentas, y volverlos a dividir. Como hacemos las cuentas con enteros el error se reduce, pero aún lo tenemos en la división:</p>
+<div id="rav2icd40j" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( (0.1 * 10 + 0.2 * 10) / 10 ); // 0.3
+alert( (0.28 * 100 + 0.14 * 100) / 100); // 0.4200000000000001</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces el enfoque de multiplicar/dividir reduce el error, pero no lo elimina por completo.</p>
+<p>A veces podemos tratar de evitar los decimales del todo. Si estamos tratando con una tienda, podemos almacenar precios en centavos en lugar de dólares. Pero ¿y si aplicamos un descuento de 30%? En la práctica, evitar la parte decimal por completo es raramente posible. Simplemente se redondea y se corta el “rabo” decimal cuando es necesario.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Algo peculiar</span></div>
+            <div class="important__content"><p>Prueba ejecutando esto:</p>
+<div id="byszolrvwq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// ¡Hola! ¡Soy un número que se autoincrementa!
+alert( 9999999999999999 ); // muestra 10000000000000000</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto sufre del mismo problema: Una pérdida de precisión. Hay 64 bits para el número, 52 de ellos pueden ser usados para almacenar dígitos, pero no es suficiente. Entonces los dígitos menos significativos desaparecen.</p>
+<p>JavaScript no dispara error en tales eventos. Hace lo mejor que puede para ajustar el número al formato deseado, pero desafortunadamente este formato no es suficientemente grande.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Dos ceros</span></div>
+            <div class="important__content"><p>Otra consecuencia peculiar de la representación interna de los números es la existencia de dos ceros: <code>0</code> y <code>-0</code>.</p>
+<p>Esto es porque el signo es representado por un bit, así cada número puede ser positivo o negativo, incluyendo al cero.</p>
+<p>En la mayoría de los casos la distinción es imperceptible, porque los operadores están adaptados para tratarlos como iguales.</p>
+</div></div>
+<h2><a class="main__anchor" name="tests-isfinite-e-isnan" href="#tests-isfinite-e-isnan">Tests: isFinite e isNaN</a></h2><p>¿Recuerdas estos dos valores numéricos especiales?</p>
+<ul>
+<li><code>Infinity</code> (y <code>-Infinity</code>) es un valor numérico especial que es mayor (menor) que cualquier otra cosa.</li>
+<li><code>NaN</code> (“No un Número”) representa un error.</li>
+</ul>
+<p>Ambos pertenecen al tipo <code>number</code>, pero no son números “normales”, así que hay funciones especiales para chequearlos:</p>
+<ul>
+<li>
+<p><code>isNaN(value)</code> convierte su argumento a número entonces testea si es <code>NaN</code>:</p>
+<div id="um2gsawv34" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( isNaN(NaN) ); // true
+alert( isNaN(&quot;str&quot;) ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pero ¿necesitamos esta función? ¿No podemos simplemente usar la comparación <code>=== NaN</code>? Desafortunadamente no. El valor <code>NaN</code> es único en que no es igual a nada, incluyendo a sí mismo:</p>
+<div id="ibn0tpst11" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( NaN === NaN ); // false</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><code>isFinite(value)</code> convierte su argumento a un número y devuelve  <code>true</code> si es un número regular, no <code>NaN/Infinity/-Infinity</code>:</p>
+<div id="mer27ebxpz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( isFinite(&quot;15&quot;) ); // true
+alert( isFinite(&quot;str&quot;) ); // false, porque es un valor especial: NaN
+alert( isFinite(Infinity) ); // false, porque es un valor especial: Infinity</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<p>A veces <code>isFinite</code> es usado para validar si un valor string es un número regular:</p>
+<div id="jnbnmsat3u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let num = +prompt(&quot;Enter a number&quot;, '');
+
+// siempre true salvo que ingreses  Infinity, -Infinity o  un valor no numérico
+alert( isFinite(num) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ten en cuenta que un valor vacío o un string de solo espacios es tratado como <code>0</code> en todas las funciones numéricas incluyendo <code>isFinite</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>Number.isNaN</code> y <code>Number.isFinite</code></span></div>
+            <div class="important__content"><p>Los métodos <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN">Number.isNaN</a> y <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite">Number.isFinite</a> son versiones más estrictas de las funciones <code>isNaN</code> e <code>isFinite</code>. No autoconvierten sus argumentos a <code>number</code>, en cambio verifican que pertenezcan al tipo de dato <code>number</code>.</p>
+<ul>
+<li>
+<p><code>Number.isNaN(value)</code> devuelve <code>true</code> si el argumento pertenece al tipo de dato <code>number</code> y si es <code>NaN</code>. En cualquier otro caso devuelve <code>false</code>.</p>
+<div id="0urtlgv9z4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Number.isNaN(NaN) ); // true
+alert( Number.isNaN(&quot;str&quot; / 2) ); // true
+
+// Note la diferencia:
+alert( Number.isNaN(&quot;str&quot;) ); // false, porque &quot;str&quot; pertenece a al tipo string, no al tipo number
+alert( isNaN(&quot;str&quot;) ); // true, porque isNaN convierte el string &quot;str&quot; a number y obtiene NaN como resultado de su conversión</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p><code>Number.isFinite(value)</code> devuelve <code>true</code> si el argumento pertenece al tipo de dato <code>number</code> y no es  <code>NaN/Infinity/-Infinity</code>. En cualquier otro caso devuelve <code>false</code>.</p>
+<div id="ztvucmwpdx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Number.isFinite(123) ); // true
+alert( Number.isFinite(Infinity) ); // false
+alert( Number.isFinite(2 / 0) ); // false
+
+// Note la diferencia:
+alert( Number.isFinite(&quot;123&quot;) ); // false, porque &quot;123&quot; pertenece a &quot;string&quot;, no a &quot;number&quot;
+alert( isFinite(&quot;123&quot;) ); // true, porque isFinite convierte el string &quot;123&quot; al number 123</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<p>En un sentido, <code>Number.isNaN</code> y <code>Number.isFinite</code> son más simples y directas que las funciones <code>isNaN</code> e <code>isFinite</code>. Pero en la práctica <code>isNaN</code> e <code>isFinite</code> son las más usadas, porque son más cortas.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Comparación con <code>Object.is</code></span></div>
+            <div class="important__content"><p>Existe un método nativo especial, <code>Object.is</code>, que compara valores al igual que <code>===</code>, pero es más confiable para dos casos extremos:</p>
+<ol>
+<li>Funciona con <code>NaN</code>: <code>Object.is(NaN, NaN) === true</code>, lo que es una buena cosa.</li>
+<li>Los valores <code>0</code> y <code>-0</code> son diferentes: <code>Object.is(0, -0) === false</code>. <code>false</code> es técnicamente correcto, porque internamente el número puede tener el bit de signo diferente incluso aunque todos los demás bits sean ceros.</li>
+</ol>
+<p>En todos los demás casos, <code>Object.is(a, b)</code> equivale a <code>a === b</code>.</p>
+<p>Mencionamos <code>Object.is</code> aquí porque se usa a menudo en la especificación JavaScript. Cuando un algoritmo interno necesita comparar que dos valores sean exactamente iguales, usa <code>Object.is</code> (internamente llamado <a href="https://tc39.github.io/ecma262/#sec-samevalue">SameValue</a>).</p>
+</div></div>
+<h2><a class="main__anchor" name="parseint-y-parsefloat" href="#parseint-y-parsefloat">parseInt y parseFloat</a></h2><p>La conversión numérica usando un más <code>+</code> o <code>Number()</code> es estricta. Si un valor no es exactamente un número, falla:</p>
+<div id="75kggav4am" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( +&quot;100px&quot; ); // NaN</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Siendo la única excepción los espacios al principio y al final del string, pues son ignorados.</p>
+<p>Pero en la vida real a menudo tenemos valores en unidades como <code>&quot;100px&quot;</code> o <code>&quot;12pt&quot;</code> en CSS.  También el símbolo de moneda que en varios países va después del monto, tenemos <code>&quot;19€&quot;</code> y queremos extraerle la parte numérica.</p>
+<p>Para eso sirven <code>parseInt</code> y <code>parseFloat</code>.</p>
+<p>Estas “leen” el número desde un string hasta que dejan de poder hacerlo. Cuando se topa con un error devuelve el número que haya registrado hasta ese momento. La función <code>parseInt</code> devuelve un entero, mientras que <code>parseFloat</code> devolverá un punto flotante:</p>
+<div id="zryxav4ldj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( parseInt('100px') ); // 100
+alert( parseFloat('12.5em') ); // 12.5
+
+alert( parseInt('12.3') ); // 12, devuelve solo la parte entera
+alert( parseFloat('12.3.4') ); // 12.3, el segundo punto detiene la lectura</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Hay situaciones en que <code>parseInt/parseFloat</code> devolverán <code>NaN</code>. Ocurre cuando no puedo encontrar dígitos:</p>
+<div id="bwg772jbe7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( parseInt('a123') ); // NaN, el primer símbolo detiene la lectura</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">El segundo argumento de <code>parseInt(str, radix)</code></span></div>
+            <div class="important__content"><p>La función <code>parseInt()</code> tiene un segundo parámetro opcional. Este especifica la base de sistema numérico, entonces <code>parseInt</code> puede también analizar cadenas de números hexa, binarios y otros:</p>
+<div id="scmtyu25fl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( parseInt('0xff', 16) ); // 255
+alert( parseInt('ff', 16) ); // 255, sin 0x también funciona
+
+alert( parseInt('2n9c', 36) ); // 123456</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="otras-funciones-matematicas" href="#otras-funciones-matematicas">Otras funciones matemáticas</a></h2><p>JavaScript tiene un objeto incorporado <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Math">Math</a> que contiene una pequeña biblioteca de funciones matemáticas y constantes.</p>
+<p>Unos ejemplos:</p>
+<dl>
+<dt><code>Math.random()</code></dt>
+<dd>
+<p>Devuelve un número aleatorio entre 0 y 1 (no incluyendo 1)</p>
+<div id="fnj8iuizhq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Math.random() ); // 0.1234567894322
+alert( Math.random() ); // 0.5435252343232
+alert( Math.random() ); // ... (cualquier número aleatorio)</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>Math.max(a, b, c...)</code> y <code>Math.min(a, b, c...)</code></dt>
+<dd>
+<p>Devuelven el mayor y el menor de entre una cantidad arbitraria de argumentos.</p>
+<div id="u7hcovceib" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Math.max(3, 5, -10, 0, 1) ); // 5
+alert( Math.min(1, 2) ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>Math.pow(n, power)</code></dt>
+<dd>
+<p>Devuelve <code>n</code> elevado a la potencia <code>power</code> dada</p>
+<div id="fy4kkoua15" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Math.pow(2, 10) ); // 2 elevado a la potencia de 10 = 1024</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<p>Hay más funciones y constantes en el objeto <code>Math</code>, incluyendo trigonometría, que puedes encontrar en la <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Math">documentación del objeto Math</a>.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Para escribir números con muchos ceros:</p>
+<ul>
+<li>Agregar <code>&quot;e&quot;</code> con la cantidad de ceros al número. Como: <code>123e6</code> es <code>123</code> con 6 ceros <code>123000000</code>.</li>
+<li>un número negativo después de <code>&quot;e&quot;</code> causa que el número sea dividido por 1 con los ceros dados:. <code>123e-6</code> significa <code>0.000123</code> (<code>123</code> millonésimos).</li>
+</ul>
+<p>Para sistemas numéricos diferentes:</p>
+<ul>
+<li>Se pueden escribir números directamente en sistemas hexa (<code>0x</code>), octal (<code>0o</code>) y binario (<code>0b</code>).</li>
+<li><code>parseInt(str, base)</code> convierte un string a un entero en el sistema numérico de la <code>base</code> dada <code>base</code>, <code>2 ≤ base ≤ 36</code>.</li>
+<li><code>num.toString(base)</code> convierte un número a string en el sistema de la <code>base</code> dada.</li>
+</ul>
+<p>Para tests de números regulares:</p>
+<ul>
+<li><code>isNaN(value)</code> convierte su argumento a number y luego verifica si es <code>NaN</code></li>
+<li>
+<ul>
+<li><code>Number.isNaN(value)</code> verifica que el tipo de dato sea <code>number</code>, y si lo es, verifica si es <code>NaN</code></li>
+</ul>
+</li>
+<li><code>isFinite(value)</code> convierte su argumento a number y devuelve <code>true</code> si es un número regular, no <code>NaN/Infinity/-Infinity</code></li>
+<li><code>Number.isFinite(value)</code> verifica que el tipo de dato sea <code>number</code>, y si lo es, verifica que no sea <code>NaN/Infinity/-Infinity</code></li>
+</ul>
+<p>Para convertir valores como <code>12pt</code> y <code>100px</code> a un número:</p>
+<ul>
+<li>Usa <code>parseInt/parseFloat</code> para una conversión “suave”, que lee un número desde un string y devuelve el valor del número que pudiera leer antes de encontrar error.</li>
+</ul>
+<p>Para números con decimales:</p>
+<ul>
+<li>Redondea usando <code>Math.floor</code>, <code>Math.ceil</code>, <code>Math.trunc</code>, <code>Math.round</code> o <code>num.toFixed(precision)</code>.</li>
+<li>Asegúrate de recordar que hay pérdida de precisión cuando se trabaja con decimales.</li>
+</ul>
+<p>Más funciones matemáticas:</p>
+<ul>
+<li>Revisa el documento del objeto <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Math">Math</a> cuando las necesites. La biblioteca es pequeña, pero puede cubrir las necesidades básicas.</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#suma-numeros-del-visitante" name="suma-numeros-del-visitante">Suma números del visitante</a></h3><a class="task__open-link" href="task/sum-interface.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea un script que pida al visitante que ingrese dos números y muestre su suma.</p>
+<p><a href="#" onclick="event.preventDefault(); runDemo(this)">Ejecutar el demo</a></p><p>P.D. Hay una trampa con los tipos de valores.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="0v970h0i5i" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let a = +prompt(&quot;¿El primer número?&quot;, &quot;&quot;);
+let b = +prompt(&quot;¿El segundo número?&quot;, &quot;&quot;);
+
+alert( a + b );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Toma nota del más unario <code>+</code> antes del <code>prompt</code>. Este convierte inmediatamente el valor a <code>number</code>.</p>
+<p>De otra manera <code>a</code> and <code>b</code> serían <code>string</code>, y la suma, su concatenación: <code>&quot;1&quot; + &quot;2&quot; = &quot;12&quot;</code>.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#por-que-6-35-tofixed-1-6-3" name="por-que-6-35-tofixed-1-6-3">¿Por qué 6.35.toFixed(1) == 6.3?</a></h3><a class="task__open-link" href="task/why-rounded-down.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Según la documentación <code>Math.round</code> y <code>toFixed</code> redondean al número más cercano: <code>0..4</code> hacia abajo mientras <code>5..9</code> hacia arriba.</p>
+<p>Por ejemplo:</p>
+<div id="fw5dbxq94" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 1.35.toFixed(1) ); // 1.4</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el ejemplo  similar que sigue, ¿por qué <code>6.35</code> es redondeado a <code>6.3</code>, y no a <code>6.4</code>?</p>
+<div id="igks0sw54w" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 6.35.toFixed(1) ); // 6.3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Cómo redondear <code>6.35</code> de manera correcta?</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Internamente, la fracción decimal <code>6.35</code> resulta en binario sin fin. Como siempre en estos casos, es almacenado con pérdida de precisión.</p>
+<p>Veamos:</p>
+<div id="1gppp032oz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 6.35.toFixed(20) ); // 6.34999999999999964473</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La pérdida de precisión puede causar que el número incremente o decremente. En este caso particular el número se vuelve ligeramente menor, por ello es redondeado hacia abajo.</p>
+<p>¿Y qué pasa con <code>1.35</code>?</p>
+<div id="uxphvdeon7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( 1.35.toFixed(20) ); // 1.35000000000000008882</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí la pérdida de precisión hace el número algo mayor, por ello redondea hacia arriba.</p>
+<p><strong>¿Cómo podemos arreglar el problema con <code>6.35</code> si queremos redondearlo de manera correcta?</strong></p>
+<p>Debemos llevarlo más cerca de un entero antes del redondeo:</p>
+<div id="bity9sjga" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( (6.35 * 10).toFixed(20) ); // 63.50000000000000000000</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Observa que <code>63.5</code> no tiene pérdida de precisión en absoluto. Esto es porque la parte decimal <code>0.5</code> es realmente <code>1/2</code>. Fracciones divididas por potencias de <code>2</code> son representadas exactamente en el sistema binario, ahora podemos redondearlo:</p>
+<div id="vicp75cabo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Math.round(6.35 * 10) / 10 ); // 6.35 -&gt; 63.5 -&gt; 64(redondeado) -&gt; 6.4</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#repetir-hasta-que-lo-ingresado-sea-un-numero" name="repetir-hasta-que-lo-ingresado-sea-un-numero">Repetir hasta que lo ingresado sea un número</a></h3><a class="task__open-link" href="task/repeat-until-number.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>readNumber</code> que pida un número hasta que el visitante ingrese un valor numérico válido.</p>
+<p>El valor resultante debe ser devuelto como number.</p>
+<p>El visitante puede también detener el proceso ingresando una linea vacía o presionando “CANCEL”. En tal caso la función debe devolver <code>null</code>.</p>
+<p><a href="#" onclick="event.preventDefault(); runDemo(this)">Ejecutar el demo</a></p><p><a href="https://plnkr.co/edit/CCdNXcVV5RjzqnZa?p=preview" target="_blank" data-plunk-id="CCdNXcVV5RjzqnZa">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="eqy09l9bly" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function readNumber() {
+  let num;
+
+  do {
+    num = prompt(&quot;Ingrese un número por favor:&quot;, 0);
+  } while ( !isFinite(num) );
+
+  if (num === null || num === '') return null;
+
+  return +num;
+}
+
+alert(`Read: ${readNumber()}`);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La solución es un poco más intrincada de lo que podría ser porque necesitamos manejar <code>null</code> y líneas vacías.</p>
+<p>Entonces aceptamos entrada de datos hasta que sea un “número regular”.  También <code>null</code> (cancel) y las líneas vacías encajan en esa condición porque un su forma numérica estos son <code>0</code>.</p>
+<p>Una vez detenido el ingreso, necesitamos tratar especialmente los casos <code>null</code> y línea vacía (return <code>null</code>), porque al convertirlos devolverían <code>0</code>.</p>
+<p><a href="https://plnkr.co/edit/EnlvEv1WolgSKkKP?p=preview" target="_blank" data-plunk-id="EnlvEv1WolgSKkKP">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#un-bucle-infinito-ocasional" name="un-bucle-infinito-ocasional">Un bucle infinito ocasional</a></h3><a class="task__open-link" href="task/endless-loop-error.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Este bucle es infinito. Nunca termina, ¿por qué?</p>
+<div id="3k5pg2ykc9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let i = 0;
+while (i != 10) {
+  i += 0.2;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Es porque <code>i</code> nunca sería igual a <code>10</code>.</p>
+<p>Ejecuta esto para ver los valores <em>reales</em> de <code>i</code>:</p>
+<div id="nffcttxsyu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let i = 0;
+while (i &lt; 11) {
+  i += 0.2;
+  if (i &gt; 9.8 &amp;&amp; i &lt; 10.2) alert( i );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ninguno de ellos es exactamente <code>10</code>.</p>
+<p>Tales cosas suceden por las pérdidas de precisión cuando sumamos decimales como <code>0.2</code>.</p>
+<p>Conclusión: evita chequeos de igualdad al trabajar con números decimales.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#un-numero-aleatorio-entre-min-y-max" name="un-numero-aleatorio-entre-min-y-max">Un número aleatorio entre min y max</a></h3><a class="task__open-link" href="task/random-min-max.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 2</span></div><div class="task__content"><div class="task__formatted"><p>La función incorporada <code>Math.random()</code> crea un valor aleatorio entre <code>0</code> y <code>1</code> (no incluyendo <code>1</code>).</p>
+<p>Escribe una función <code>random(min, max)</code> para generar un número de punto flotante entre <code>min</code> y <code>max</code> (no incluyendo <code>max</code>).</p>
+<p>Ejemplos de su funcionamiento:</p>
+<div id="8a7dljvhdu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( random(1, 5) ); // 1.2345623452
+alert( random(1, 5) ); // 3.7894332423
+alert( random(1, 5) ); // 4.3435234525</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Necesitamos hacer un “mapeo” de todos los valores del intervalo 0…1 a valores desde <code>min</code> a <code>max</code>.</p>
+<p>Esto puede hacerse en dos pasos:</p>
+<ol>
+<li>Si multiplicamos el número aleatorio 0…1 por <code>max-min</code>, entonces el intervalo de valores posibles va de <code>0..1</code> a <code>0..max-min</code>.</li>
+<li>Ahora si sumamos <code>min</code>, el intervalo posible se vuelve desde <code>min</code> a <code>max</code>.</li>
+</ol>
+<p>La función:</p>
+<div id="42j8ozhhq6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function random(min, max) {
+  return min + Math.random() * (max - min);
+}
+
+alert( random(1, 5) );
+alert( random(1, 5) );
+alert( random(1, 5) );</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#un-entero-aleatorio-entre-min-y-max" name="un-entero-aleatorio-entre-min-y-max">Un entero aleatorio entre min y max</a></h3><a class="task__open-link" href="task/random-int-min-max.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 2</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>randomInteger(min, max)</code> que genere un número <em>entero</em> aleatorio entre <code>min</code> y <code>max</code> incluyendo ambos, <code>min</code> y <code>max</code>, como valores posibles.</p>
+<p>Todo número del intervalo <code>min..max</code> debe aparecer con la misma probabilidad.</p>
+<p>Ejemplos de funcionamiento:</p>
+<div id="p4bisba67y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( randomInteger(1, 5) ); // 1
+alert( randomInteger(1, 5) ); // 3
+alert( randomInteger(1, 5) ); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puedes usar la solución de la <a href="task/random-min-max.html">tarea previa</a> como base.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">La solución simple, pero equivocada</button><div class="task__answer-content"><h4 class="task__step-title">La solución simple, pero equivocada</h4><div class="formatted"><p>La solución más simple, pero equivocada, sería generar un valor entre <code>min</code> y <code>max</code> y redondearlo:</p>
+<div id="fp23b9iics" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function randomInteger(min, max) {
+  let rand = min + Math.random() * (max - min);
+  return Math.round(rand);
+}
+
+alert( randomInteger(1, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La función funciona, pero es incorrecta. La probabilidad de obtener los valores extremos <code>min</code> y <code>max</code> es la mitad de la de los demás.</p>
+<p>Si ejecutas el ejemplo que sigue muchas veces, fácilmente verás que <code>2</code> aparece más a menudo.</p>
+<p>Esto ocurre porque <code>Math.round()</code> obtiene los números del intervalo <code>1..3</code> y los redondea como sigue:</p>
+<div id="p8frz53yh5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>valores desde 1    ... hasta 1.4999999999  se vuelven 1
+valores desde 1.5  ... hasta 2.4999999999  se vuelven 2
+valores desde 2.5  ... hasta 2.9999999999  se vuelven 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora podemos ver claramente que <code>1</code> obtiene la mitad de valores que <code>2</code>. Y lo mismo con <code>3</code>.</p>
+</div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">La solución correcta</button><div class="task__answer-content"><h4 class="task__step-title">La solución correcta</h4><div class="formatted"><p>Hay muchas soluciones correctas para la tarea. una es ajustar los bordes del intervalo. Para asegurarse los mismos intervalos, podemos generar valores entre <code>0.5 a 3.5</code>, así sumando las probabilidades requeridas a los extremos:</p>
+<div id="r58cgy9vvt" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function randomInteger(min, max) {
+  // ahora rand es desde  (min-0.5) hasta (max+0.5)
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+}
+
+alert( randomInteger(1, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Una alternativa es el uso de <code>Math.floor</code> para un número aleatorio entre <code>min</code> y <code>max+1</code>:</p>
+<div id="3a5qe8xv2j" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function randomInteger(min, max) {
+  // aquí rand es desde min a (max+1)
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+}
+
+alert( randomInteger(1, 3) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora todos los intervalos son mapeados de esta forma:</p>
+<div id="b0yecynve1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>valores desde 1  ... hasta 1.9999999999  se vuelven 1
+valores desde 2  ... hasta 2.9999999999  se vuelven 2
+valores desde 3  ... hasta 3.9999999999  se vuelven 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Todos los intervalos tienen el mismo largo, haciendo la distribución final uniforme.</p>
+</div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="primitives-methods.html" data-tooltip="Métodos en tipos primitivos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="string.html" data-tooltip="Strings"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fnumber" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fnumber" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/number","identifier":"\/number"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.html">Tipos de datos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#mas-formas-de-escribir-un-numero">Más formas de escribir un número</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tostring-base">toString(base)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#redondeo">Redondeo</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#calculo-impreciso">Cálculo impreciso</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tests-isfinite-e-isnan">Tests: isFinite e isNaN</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#parseint-y-parsefloat">parseInt y parseFloat</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#otras-funciones-matematicas">Otras funciones matemáticas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (6)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fnumber" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fnumber" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/05-data-types/02-number" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/number by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+</html>

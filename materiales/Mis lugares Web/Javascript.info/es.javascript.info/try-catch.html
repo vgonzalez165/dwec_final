@@ -1,0 +1,929 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/try-catch by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Manejo de errores, &quot;try...catch&quot;</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="try-catch.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Manejo de errores, &quot;try...catch&quot;"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Manejo de errores, &quot;try...catch&quot;"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="error-handling.html"><link rel="next" href="custom-errors.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Manejo de errores, &quot;try...catch&quot;"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/try-catch"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/try-catch"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="try-catch.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/try-catch"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/try-catch"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/try-catch"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/try-catch"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/try-catch"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/try-catch"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/try-catch"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/try-catch"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/try-catch"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/try-catch"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ftry-catch" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Ftry-catch" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/try-catch">عربي</option><option value="https://javascript.info/try-catch">English</option><option value="https://es.javascript.info/try-catch" selected>Español</option><option value="https://fa.javascript.info/try-catch">فارسی</option><option value="https://fr.javascript.info/try-catch">Français</option><option value="https://id.javascript.info/try-catch">Indonesia</option><option value="https://it.javascript.info/try-catch">Italiano</option><option value="https://ja.javascript.info/try-catch">日本語</option><option value="https://ko.javascript.info/try-catch">한국어</option><option value="https://learn.javascript.ru/try-catch">Русский</option><option value="https://tr.javascript.info/try-catch">Türkçe</option><option value="https://uk.javascript.info/try-catch">Українська</option><option value="https://zh.javascript.info/try-catch">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="73" max="93" data-tooltip="Lección 73 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="error-handling.html"><span>Manejo de errores</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Manejo de errores","item":"https://es.javascript.info/error-handling"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Manejo de errores, &quot;try...catch&quot;</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Manejo de errores, &quot;try...catch&quot;"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>No importa lo buenos que seamos en la programación, a veces nuestros scripts tienen errores. Pueden ocurrir debido a nuestros descuidos, una entrada inesperada del usuario, una respuesta errónea del servidor y por otras razones más.</p>
+<p>Por lo general, un script “muere” (se detiene inmediatamente) en caso de error, imprimiéndolo en la consola.</p>
+<p>Pero hay una construcción sintáctica <code>try...catch</code> que nos permite “atrapar” errores para que el script pueda, en lugar de morir, hacer algo más razonable.</p>
+<h2><a class="main__anchor" name="la-sintaxis-try-catch" href="#la-sintaxis-try-catch">La sintaxis “try…catch”</a></h2><p>La construcción <code>try...catch</code> tiene dos bloques principales: <code>try</code>, y luego <code>catch</code>:</p>
+<div id="ne14jzzav6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+
+  // código...
+
+} catch (err) {
+
+  // manipulación de error
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Funciona así:</p>
+<ol>
+<li>Primero, se ejecuta el código en <code>try {...}</code>.</li>
+<li>Si no hubo errores, se ignora <code>catch (err)</code>: la ejecución llega al final de <code>try</code> y continúa, omitiendo <code>catch</code>.</li>
+<li>Si se produce un error, la ejecución de <code>try</code> se detiene y el control fluye al comienzo de <code>catch (err)</code>. La variable <code>err</code> (podemos usar cualquier nombre para ella) contendrá un objeto de error con detalles sobre lo que sucedió.</li>
+</ol>
+<figure><div class="image" style="width:514px">
+      <div class="image__ratio" style="padding-top:79.96108949416343%"></div>
+      <object type="image/svg+xml" data="article/try-catch/try-catch-flow.svg" width="514" height="411" class="image__image" data-use-theme>
+        <img src="article/try-catch/try-catch-flow.svg" alt="" width="514" height="411">
+      </object>
+      </div></figure><p>Entonces, un error dentro del bloque <code>try {...}</code> no mata el script; tenemos la oportunidad de manejarlo en <code>catch</code>.</p>
+<p>Veamos algunos ejemplos.</p>
+<ul>
+<li>
+<p>Un ejemplo sin errores: muestra <code>alert</code> <code>(1)</code> y <code>(2)</code>:</p>
+<div id="0ljosfjbae" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;cols&quot;:[{&quot;start&quot;:47,&quot;end&quot;:54}]},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:45,&quot;end&quot;:52}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+
+  alert('Inicio de intentos de prueba');  // (1) &lt;--
+
+  // ...no hay errores aquí
+
+  alert('Fin de las ejecuciones de try');   // (2) &lt;--
+
+} catch (err) {
+
+  alert('Se ignora catch porque no hay errores'); // (3)
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Un ejemplo con un error: muestra <code>(1)</code> y <code>(3)</code>:</p>
+<div id="g26qbc5ls6" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:10,&quot;cols&quot;:[{&quot;start&quot;:38,&quot;end&quot;:45}]},{&quot;start&quot;:4,&quot;end&quot;:4},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:42,&quot;end&quot;:49}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+
+  alert('Inicio de ejecuciones try');  // (1) &lt;--
+
+  lalala; // error, variable no está definida!
+
+  alert('Fin de try (nunca alcanzado)');  // (2)
+
+} catch (err) {
+
+  alert(`¡Un error ha ocurrido!`); // (3) &lt;--
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ul>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type"><code>try...catch</code> solo funciona para errores de tiempo de ejecución</span></div>
+            <div class="important__content"><p>Para que <code>try..catch</code> funcione, el código debe ser ejecutable. En otras palabras, debería ser JavaScript válido.</p>
+<p>No funcionará si el código es sintácticamente incorrecto, por ejemplo, si hay llaves sin cerrar:</p>
+<div id="4znbnv1zah" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  {{{{{{{{{{{{
+} catch(err) {
+  alert(&quot;El motor no puede entender este código, no es válido.&quot;);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El motor de JavaScript primero lee el código y luego lo ejecuta. Los errores que ocurren en la fase de lectura se denominan errores de “tiempo de análisis” y son irrecuperables (desde dentro de ese código). Eso es porque el motor no puede entender el código.</p>
+<p>Entonces, <code>try...catch</code> solo puede manejar errores que ocurren en un código válido. Dichos errores se denominan “errores de tiempo de ejecución” o, a veces, “excepciones”.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type"><code>try...catch</code> trabaja sincrónicamente</span></div>
+            <div class="important__content"><p>Si ocurre una excepción en el código “programado”, como en <code>setTimeout</code>, entonces <code>try..catch</code> no lo detectará:</p>
+<div id="1d7nls44ar" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  setTimeout(function() {
+    noSuchVariable; // el script morirá aquí
+  }, 1000);
+} catch (err) {
+  alert( &quot;no funcionará&quot; );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto se debe a que la función en sí misma se ejecuta más tarde, cuando el motor ya ha abandonado la construcción <code>try...catch</code>.</p>
+<p>Para detectar una excepción dentro de una función programada, <code>try...catch</code> debe estar dentro de esa función:</p>
+<div id="9oscpvirz8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>setTimeout(function() {
+  try {
+    noSuchVariable; // try...catch maneja el error!
+  } catch {
+    alert( &quot;El error se detecta aquí!&quot; );
+  }
+}, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="objeto-error" href="#objeto-error">Objeto Error</a></h2><p>Cuando se produce un error, JavaScript genera un objeto que contiene los detalles al respecto. El objeto se pasa como argumento para <code>catch</code>:</p>
+<div id="htr53ywz1q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  // ...
+} catch(err) { // &lt;-- el &quot;objeto error&quot;, podría usar otra palabra en lugar de err
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para todos los errores integrados, el objeto error tiene dos propiedades principales:</p>
+<dl>
+<dt><code>name</code></dt>
+<dd>Nombre de error. Por ejemplo, para una variable indefinida que es <code>&quot;ReferenceError&quot;</code>.</dd>
+<dt><code>message</code></dt>
+<dd>Mensaje de texto sobre detalles del error.</dd>
+</dl>
+<p>Hay otras propiedades no estándar disponibles en la mayoría de los entornos. Uno de los más utilizados y compatibles es:</p>
+<dl>
+<dt><code>stack</code></dt>
+<dd>Pila de llamadas actual: una cadena con información sobre la secuencia de llamadas anidadas que condujeron al error. Utilizado para fines de depuración.</dd>
+</dl>
+<p>Por ejemplo:</p>
+<div id="ijetbi8z3z" data-trusted="0" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  lalala; // error, la variable no está definida!
+} catch (err) {
+  alert(err.name); // ReferenceError
+  alert(err.message); // lalala no está definida!
+  alert(err.stack); // ReferenceError: lalala no está definida en (...call stack)
+
+  // También puede mostrar un error como un todo
+  // El error se convierte en cadena como &quot;nombre: mensaje&quot;
+alert(err); // ReferenceError: lalala no está definido
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="omitiendo-el-catch-asociado" href="#omitiendo-el-catch-asociado">Omitiendo el “catch” asociado</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Una adición reciente</span></div>
+            <div class="important__content">
+            Esta es una adición reciente al lenguaje.
+            Los navegadores antiguos pueden necesitar polyfills.
+            </div></div>
+<p>Si no necesitamos detalles del error, <code>catch</code> puede omitirlo:</p>
+<div id="2xeg1tn8cr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  // ...
+} catch { // &lt;-- sin (err)
+  // ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="usando-try-catch" href="#usando-try-catch">Usando “try…catch”</a></h2><p>Exploremos un caso de uso de la vida real de <code>try...catch</code>.</p>
+<p>Como ya sabemos, JavaScript admite el método <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/JSON/parse">JSON.parse(str)</a> para leer valores codificados con JSON.</p>
+<p>Por lo general, se utiliza para decodificar datos recibidos a través de la red, desde el servidor u otra fuente.</p>
+<p>Lo recibimos y llamamos a <code>JSON.parse</code> así:</p>
+<div id="0tpsco35mb" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = '{&quot;name&quot;:&quot;John&quot;, &quot;age&quot;: 30}'; // datos del servidor
+
+let user = JSON.parse(json); // convierte la representación de texto a objeto JS
+
+// ahora user es un objeto con propiedades de la cadena
+alert( user.name ); // John
+alert( user.age );  // 30</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puede encontrar información más detallada sobre JSON en el capítulo <a href="json.html">Métodos JSON, toJSON</a>.</p>
+<p><strong>Si <code>json</code> está mal formado, <code>JSON.parse</code> genera un error, por lo que el script “muere”.</strong></p>
+<p>¿Deberíamos estar satisfechos con eso? ¡Por supuesto no!</p>
+<p>De esta manera, si algo anda mal con los datos, el visitante nunca lo sabrá (a menos que abra la consola del desarrollador). Y a la gente realmente no le gusta cuando algo “simplemente muere” sin ningún mensaje de error.</p>
+<p>Usemos <code>try...catch</code> para manejar el error:</p>
+<div id="2bnk2x7xiy" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:11},{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = &quot;{ json malo }&quot;;
+
+try {
+
+  let user = JSON.parse(json); // &lt;-- cuando ocurre un error ...
+  alert( user.name ); // no funciona
+
+} catch (err) {
+  // ...la ejecución salta aquí
+  alert( &quot;Nuestras disculpas, los datos tienen errores, intentaremos solicitarlos una vez más.&quot; );
+  alert( err.name );
+  alert( err.message );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí usamos el bloque <code>catch</code> solo para mostrar el mensaje, pero podemos hacer mucho más: enviar una nueva solicitud de red, sugerir una alternativa al visitante, enviar información sobre el error a una instalación de registro, …. Todo mucho mejor que solo morir.</p>
+<h2><a class="main__anchor" name="lanzando-nuestros-propios-errores" href="#lanzando-nuestros-propios-errores">Lanzando nuestros propios errores</a></h2><p>¿Qué sucede si <code>json</code> es sintácticamente correcto, pero no tiene una propiedad requerida de <code>name</code>?</p>
+<p>Como este:</p>
+<div id="kkywegfevy" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = '{ &quot;age&quot;: 30 }'; // dato incompleto
+
+try {
+
+  let user = JSON.parse(json); // &lt;-- sin errores
+  alert( user.name ); // sin nombre!
+
+} catch (err) {
+  alert( &quot;no se ejecuta&quot; );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí <code>JSON.parse</code> se ejecuta normalmente, pero la ausencia de <code>name</code> es en realidad un error nuestro.</p>
+<p>Para unificar el manejo de errores, usaremos el operador <code>throw</code>.</p>
+<h3><a class="main__anchor" name="el-operador-throw" href="#el-operador-throw">El operador “throw”</a></h3><p>El operador <code>throw</code> genera un error.</p>
+<p>La sintaxis es:</p>
+<div id="1mgprl2rgj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>throw &lt;error object&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Técnicamente, podemos usar cualquier cosa como un objeto error. Eso puede ser incluso un primitivo, como un número o una cadena, pero es mejor usar objetos, preferiblemente con propiedades <code>name</code> y <code>message</code> (para mantenerse algo compatible con los errores incorporados).</p>
+<p>JavaScript tiene muchos constructores integrados para manejar errores estándar: <code>Error</code>, <code>SyntaxError</code>, <code>ReferenceError</code>, <code>TypeError</code> y otros. Podemos usarlos para crear objetos de error también.</p>
+<p>Su sintaxis es:</p>
+<div id="edz6cajj4b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let error = new Error(message);
+// or
+let error = new SyntaxError(message);
+let error = new ReferenceError(message);
+// ...</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para errores incorporados (no para cualquier objeto, solo para errores), la propiedad <code>name</code> es exactamente el nombre del constructor. Y <code>mensaje</code> se toma del argumento.</p>
+<p>Por ejemplo:</p>
+<div id="4u61g4z1zp" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let error = new Error(&quot;Estas cosas pasan... o_O&quot;);
+
+alert(error.name); // Error
+alert(error.message); // Estas cosas pasan... o_O</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Veamos qué tipo de error genera <code>JSON.parse</code>:</p>
+<div id="jb9lg8wdgi" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  JSON.parse(&quot;{ json malo o_O }&quot;);
+} catch (err) {
+  alert(err.name); // SyntaxError
+  alert(err.message); // Token b inesperado en JSON en la posición 2
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como podemos ver, ese es un <code>SyntaxError</code>.</p>
+<p>Y en nuestro caso, la ausencia de <code>name</code> es un error, ya que los usuarios deben tener un <code>name</code>.</p>
+<p>Así que vamos a lanzarlo:</p>
+<div id="kuwh9ixb7j" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = '{ &quot;age&quot;: 30 }'; // dato incompleto
+
+try {
+
+  let user = JSON.parse(json); // &lt;-- sin errores
+
+  if (!user.name) {
+    throw new SyntaxError(&quot;dato incompleto: sin nombre&quot;); // (*)
+  }
+
+  alert( user.name );
+
+} catch (err) {
+  alert( &quot;Error en JSON: &quot; + e.message ); // Error en JSON: dato incompleto: sin nombre
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En la línea <code>(*)</code>, el operador <code>throw</code> genera un <code>SyntaxError</code> con el <code>message</code> dado, de la misma manera que JavaScript lo generaría él mismo. La ejecución de <code>try</code> se detiene inmediatamente y el flujo de control salta a <code>catch</code>.</p>
+<p>Ahora <code>catch</code> se convirtió en un lugar único para todo el manejo de errores: tanto para <code>JSON.parse</code> como para otros casos.</p>
+<h2><a class="main__anchor" name="relanzando-rethrowing" href="#relanzando-rethrowing">Relanzando (rethrowing)</a></h2><p>En el ejemplo anterior usamos <code>try...catch</code> para manejar datos incorrectos. Pero, ¿es posible que <em>ocurra otro error inesperado</em> dentro del bloque <code>try{...}</code>? Como un error de programación (la variable no está definida) o algo más, no solo “datos incorrectos”.</p>
+<p>Por ejemplo:</p>
+<div id="3d5hwfj9j1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = '{ &quot;age&quot;: 30 }'; // dato incompleto
+
+try {
+  user = JSON.parse(json); // &lt;-- olvidé poner &quot;let&quot; antes del usuario
+
+  // ...
+} catch (err) {
+  alert(&quot;Error en JSON: &quot; + err); // Error en JSON: ReferenceError: user no está definido
+  // (no es error JSON)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¡Por supuesto, todo es posible! Los programadores cometen errores. Incluso en las utilidades de código abierto utilizadas por millones durante décadas, de repente se puede descubrir un error que conduce a hacks terribles.</p>
+<p>En nuestro caso, <code>try...catch</code> está destinado a detectar errores de “datos incorrectos”. Pero por su naturaleza, <code>catch</code> obtiene <em>todos</em> los errores de <code>try</code>. Aquí recibe un error inesperado, pero aún muestra el mismo mensaje de “Error en JSON”. Eso está mal y también hace que el código sea más difícil de depurar.</p>
+<p>Para evitar tales problemas, podemos emplear la técnica de “rethrowing”. La regla es simple:</p>
+<p><strong>Catch solo debe procesar los errores que conoce y “volver a lanzar” (rethrow) a todos los demás.</strong></p>
+<p>La técnica de “rethrowing” puede explicarse con más detalle:</p>
+<ol>
+<li>Catch captura todos los errores.</li>
+<li>En el bloque <code>catch (err) {...}</code> analizamos el objeto error <code>err</code>.</li>
+<li>Si no sabemos cómo manejarlo, hacemos 'throw err`.</li>
+</ol>
+<p>Por lo general, podemos verificar el tipo de error usando el operador <code>instanceof</code>:</p>
+<div id="lctrtyk3ml" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  user = { /*...*/ };
+} catch (err) {
+  if (err instanceof ReferenceError) {
+    alert('ReferenceError'); // &quot;ReferenceError&quot; para acceder a una variable indefinida
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos obtener el nombre de la clase error con la propiedad <code>err.name</code>. Todos los errores nativos lo tienen. Otra opción es leer <code>err.constructor.name</code>.</p>
+<p>En el siguiente código, usamos el rethrowing para que <code>catch</code> solo maneje <code>SyntaxError</code>:</p>
+<div id="9t9ebqyxju" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:19},{&quot;start&quot;:9,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = '{ &quot;age&quot;: 30 }'; // dato incompleto
+try {
+
+  let user = JSON.parse(json);
+
+  if (!user.name) {
+    throw new SyntaxError(&quot;dato incompleto: sin nombre&quot;);
+  }
+
+  blabla(); // error inesperado
+
+  alert( user.name );
+
+} catch (err) {
+
+  if (err instanceof SyntaxError) {
+    alert( &quot;Error en JSON: &quot; + err.message );
+  } else {
+    throw err; // rethrow (*)
+  }
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El error lanzado en la línea <code>(*)</code> desde el interior del bloque <code>catch</code> cae desde <code>try...catch</code> y puede ser atrapado por una construcción externa <code>try...catch</code> (si existe), o mata al script.</p>
+<p>Por lo tanto, el bloque <code>catch</code> en realidad maneja solo los errores con los que sabe cómo lidiar y “omite” todos los demás.</p>
+<p>El siguiente ejemplo demuestra cómo dichos errores pueden ser detectados por un nivel más de <code>try...catch</code>:</p>
+<div id="tw6domdfig" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:17,&quot;end&quot;:17},{&quot;start&quot;:9,&quot;end&quot;:9},{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function readData() {
+  let json = '{ &quot;age&quot;: 30 }';
+
+  try {
+    // ...
+    blabla(); // error!
+  } catch (err) {
+    // ...
+    if (!(err instanceof SyntaxError)) {
+      throw err; // rethrow (no sé cómo lidiar con eso)
+    }
+  }
+}
+
+try {
+  readData();
+} catch (err) {
+  alert( &quot;La captura externa tiene: &quot; + err ); // capturado!
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí <code>readData</code> solo sabe cómo manejar <code>SyntaxError</code>, mientras que el <code>try...catch</code> externo sabe cómo manejar todo.</p>
+<h2><a class="main__anchor" name="try-catch-finally" href="#try-catch-finally">try…catch…finally</a></h2><p>Espera, eso no es todo.</p>
+<p>La construcción <code>try...catch</code> puede tener una cláusula de código más: <code>finally</code>.</p>
+<p>Si existe, se ejecuta en todos los casos:</p>
+<ul>
+<li>después de <code>try</code>, si no hubo errores,</li>
+<li>después de <code>catch</code>, si hubo errores.</li>
+</ul>
+<p>La sintaxis extendida se ve así:</p>
+<div id="n5qabuqhs0" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:2,&quot;end&quot;:9}]},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:2,&quot;end&quot;:7}]},{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:0,&quot;end&quot;:3}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+   ... intenta ejecutar el código ...
+} catch (err) {
+   ... manejar errores ...
+} finally {
+   ... ejecutar siempre ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Intenta ejecutar este código:</p>
+<div id="8d8ssojnr7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  alert( 'intenta (try)' );
+  if (confirm('¿Cometer un error?')) BAD_CODE();
+} catch (err) {
+  alert( 'atrapa (catch)' );
+} finally {
+  alert( 'finalmente (finally)' );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código tiene dos formas de ejecución:</p>
+<ol>
+<li>Si responde “Sí” a “¿Cometer un error?”, Entonces <code>try -&gt; catch -&gt; finally</code>.</li>
+<li>Si dice “No”, entonces <code>try -&gt; finally</code>.</li>
+</ol>
+<p>La cláusula <code>finally</code> a menudo se usa cuando comenzamos a hacer algo y queremos finalizarlo en cualquier resultado.</p>
+<p>Por ejemplo, queremos medir el tiempo que tarda una función de números de Fibonacci <code>fib(n)</code>. Naturalmente, podemos comenzar a medir antes de que se ejecute y terminar después. ¿Pero qué pasa si hay un error durante la llamada a la función? En particular, la implementación de <code>fib(n)</code> en el código siguiente devuelve un error para números negativos o no enteros.</p>
+<p>La cláusula <code>finally</code> es un excelente lugar para terminar las mediciones, pase lo que pase.</p>
+<p>Aquí <code>finally</code> garantiza que el tiempo se medirá correctamente en ambas situaciones, en caso de una ejecución exitosa de <code>fib</code> y en caso de error:</p>
+<div id="9pgv0a9iso" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:17,&quot;end&quot;:19}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let num = +prompt(&quot;Ingrese un número entero positivo?&quot;, 35)
+
+let diff, result;
+
+function fib(n) {
+  if (n &lt; 0 || Math.trunc(n) != n) {
+    throw new Error(&quot;Debe ser un número positivo y entero.&quot;);
+  }
+  return n &lt;= 1 ? n : fib(n - 1) + fib(n - 2);
+}
+
+let start = Date.now();
+
+try {
+  result = fib(num);
+} catch (err) {
+  result = 0;
+} finally {
+  diff = Date.now() - start;
+}
+
+alert(result || &quot;error ocurrido&quot;);
+
+alert( `la ejecución tomó ${diff}ms` );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puede verificar ejecutando el código e ingresando <code>35</code> en <code>prompt</code>; se ejecuta normalmente, <code>finally</code> después de <code>try</code>. Y luego ingrese <code>-1</code> – habrá un error inmediato, y la ejecución tomará <code>0ms</code>. Ambas mediciones se realizan correctamente.</p>
+<p>En otras palabras, la función puede terminar con <code>return</code> o <code>throw</code>, eso no importa. La cláusula <code>finally</code> se ejecuta en ambos casos.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Las variables son locales dentro de <code>try...catch...finally</code></span></div>
+            <div class="important__content"><p>Tenga en cuenta que las variables <code>result</code> y <code>diff</code> en el código anterior se declaran <em>antes de</em> <code>try..catch</code>.</p>
+<p>De lo contrario, si declaramos <code>let</code> en el bloque <code>try</code>, solo sería visible dentro de él.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>finally</code> y <code>return</code></span></div>
+            <div class="important__content"><p>La cláusula <code>finally</code> funciona para <em>cualquier</em> salida de <code>try...catch</code>. Eso incluye un <code>return</code> explícito.</p>
+<p>En el ejemplo a continuación, hay un <code>return</code> en <code>try</code>. En este caso, <code>finally</code> se ejecuta justo antes de que el control regrese al código externo.</p>
+<div id="31xi8drg75" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8},{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function func() {
+
+  try {
+    return 1;
+
+  } catch (err) {
+    /* ... */
+  } finally {
+    alert( 'finally' );
+  }
+}
+
+alert( func() ); // primero funciona la alerta de &quot;finally&quot;, y luego este</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>try...finally</code></span></div>
+            <div class="important__content"><p>La construcción <code>try...finally</code>, sin la cláusula <code>catch</code>, también es útil. Lo aplicamos cuando no queremos manejar los errores (se permite que se pierdan), pero queremos asegurarnos de que los procesos que comenzamos estén finalizados.</p>
+<div id="2vgeoeqp7t" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function func() {
+  // comenzar a hacer algo que necesita ser completado (como mediciones)
+  try {
+    // ...
+  } finally {
+    // completar esto si todo muere
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el código anterior, siempre se produce un error dentro de <code>try</code>, porque no hay <code>catch</code>. Pero <code>finally</code> funciona antes de que el flujo de ejecución abandone la función.</p>
+</div></div>
+<h2><a class="main__anchor" name="captura-global" href="#captura-global">Captura global</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Específico del entorno</span></div>
+            <div class="important__content"><p>La información de esta sección no es parte del núcleo de JavaScript.</p>
+</div></div>
+<p>Imaginemos que tenemos un error fatal fuera de <code>try...catch</code>, y el script murió. Como un error de programación o alguna otra cosa terrible.</p>
+<p>¿Hay alguna manera de reaccionar ante tales ocurrencias? Es posible que queramos registrar el error, mostrarle algo al usuario (normalmente no ve mensajes de error), etc.</p>
+<p>No hay ninguna en la especificación, pero los entornos generalmente lo proporcionan, porque es realmente útil. Por ejemplo, Node.js tiene <a href="https://nodejs.org/api/process.html#process_event_uncaughtexception"><code>process.on(&quot;uncaughtException&quot;)</code></a> para eso. Y en el navegador podemos asignar una función a la propiedad especial <a href="https://developer.mozilla.org/es/docs/Web/API/GlobalEventHandlers/onerror">window.onerror</a>, que se ejecutará en caso de un error no detectado.</p>
+<p>La sintaxis:</p>
+<div id="g22voppyyh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.onerror = function(message, url, line, col, error) {
+  // ...
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt><code>message</code></dt>
+<dd>Mensaje de error.</dd>
+<dt><code>url</code></dt>
+<dd>URL del script donde ocurrió el error.</dd>
+<dt><code>line</code>, <code>col</code></dt>
+<dd>Números de línea y columna donde ocurrió el error.</dd>
+<dt><code>error</code></dt>
+<dd>El objeto error.</dd>
+</dl>
+<p>Por ejemplo:</p>
+<div id="1ibehbvasx" data-trusted="0" class="code-example" data-demo-height="1" data-refresh="1" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  window.onerror = function(message, url, line, col, error) {
+    alert(`${message}\n At ${line}:${col} of ${url}`);
+  };
+
+  function readData() {
+    badFunc(); // ¡Vaya, algo salió mal!
+  }
+
+  readData();
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El rol del controlador global <code>window.onerror</code> generalmente no es recuperar la ejecución del script, probablemente sea imposible en caso de errores de programación, pero sí enviar el mensaje de error a los desarrolladores.</p>
+<p>También hay servicios web que proporcionan registro de errores para tales casos, como <a href="https://errorception.com/">https://errorception.com</a> o <a href="https://www.muscula.com/">https://www.muscula.com</a>.</p>
+<p>Estos servicios funcionan así:</p>
+<ol>
+<li>Nos registramos en el servicio y obtenemos un fragmento de JS (o la URL de un script) para insertar en las páginas.</li>
+<li>Ese script JS establece una función personalizada <code>window.onerror</code>.</li>
+<li>Cuando se produce un error, se envía una solicitud de red al servicio.</li>
+<li>Podemos iniciar sesión en la interfaz web del servicio y ver los errores registrados.</li>
+</ol>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>La construcción <code>try...catch</code> permite manejar errores de tiempo de ejecución. Literalmente permite “intentar (try)” ejecutar el código y “atrapar (catch)” errores que pueden ocurrir en él.</p>
+<p>La sintaxis es:</p>
+<div id="o42c8o4vf2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  // ejecuta este código
+} catch (err) {
+  // si ocurrió un error, entonces salta aquí
+  // err es el objeto error
+} finally {
+  // hacer en cualquier caso después de try/catch
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puede que no haya una sección <code>catch</code> o <code>finally</code>, por lo que las construcciones más cortas <code>try...catch</code> y <code>try...finally</code> también son válidas.</p>
+<p>Los objetos Error tienen las siguientes propiedades:</p>
+<ul>
+<li><code>message</code> – el mensaje de error legible por humanos.</li>
+<li><code>name</code> – la cadena con el nombre del error (nombre del constructor de error).</li>
+<li><code>stack</code> (No estándar, pero bien soportado) – la pila en el momento de la creación del error.</li>
+</ul>
+<p>Si no se necesita un objeto error, podemos omitirlo usando <code>catch {</code> en lugar de <code>catch (err) {</code>.</p>
+<p>También podemos generar nuestros propios errores utilizando el operador <code>throw</code>. Técnicamente, el argumento de <code>throw</code> puede ser cualquier cosa, pero generalmente es un objeto error heredado de la clase incorporada <code>Error</code>. Más sobre la extensión de errores en el próximo capítulo.</p>
+<p><em>Relanzado (rethrowing)</em> es un patrón muy importante de manejo de errores: un bloque <code>catch</code> generalmente espera y sabe cómo manejar el tipo de error en particular, por lo que debería relanzar errores que no conoce.</p>
+<p>Incluso si no tenemos <code>try...catch</code>, la mayoría de los entornos nos permiten configurar un controlador de errores “global” para detectar los errores que caigan. En el navegador, eso es <code>window.onerror</code>.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#finally-o-solo-el-codigo" name="finally-o-solo-el-codigo">Finally o solo el código?</a></h3><a class="task__open-link" href="task/finally-or-code-after.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Compara los dos fragmentos de código.</p>
+<ol>
+<li>
+<p>El primero usa <code>finally</code> para ejecutar el código después de <code>try..catch</code>:</p>
+<div id="hrlub0jkwi" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  trabajo trabajo
+} catch (err) {
+  maneja errores
+} finally {
+  limpiar el espacio de trabajo
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>El segundo fragmento coloca la limpieza justo después de <code>try..catch</code>:</p>
+<div id="hedz590y8p" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>try {
+  trabajo trabajo
+} catch (err) {
+  manejo de errores
+}
+
+limpiar el espacio de trabajo</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+</ol>
+<p>Definitivamente necesitamos la limpieza después del trabajo, no importa si hubo un error o no.</p>
+<p>¿Hay alguna ventaja aquí en usar <code>finally</code> o ambos fragmentos de código son iguales? Si existe tal ventaja, entonces da un ejemplo cuando sea importante.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La diferencia se hace evidente cuando miramos el código dentro de una función.</p>
+<p>El comportamiento es diferente si hay un “salto fuera” de <code>try..catch</code>.</p>
+<p>Por ejemplo, cuando hay un <code>return</code> en el interior de <code>try..catch</code>. La cláusula <code>finally</code> funciona en el caso de <em>cualquier</em> salida de  <code>try..catch</code>, incluso a través de la declaración <code>return</code>: justo después de que <code>try..catch</code> haya terminado, pero antes de que el código de llamada obtenga el control.</p>
+<div id="i1dkim7kv2" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  try {
+    alert('inicio');
+    return &quot;resultado&quot;;
+  } catch (err) {
+    /// ...
+  } finally {
+    alert('limpieza!');
+  }
+}
+
+f(); // limpieza!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>… O cuando hay un <code>throw</code> (lanzamiento de excepción), como aquí:</p>
+<div id="f3b733opia" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  try {
+    alert('inicio');
+    throw new Error(&quot;un error&quot;);
+  } catch (err) {
+    // ...
+    if(&quot;no puede manejar el error&quot;) {
+      throw err;
+    }
+
+  } finally {
+    alert('limpieza!')
+  }
+}
+
+f(); // limpieza!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Es “finally” el que garantiza la limpieza aquí. Si acabamos de poner el código al final de <code>f</code>, no se ejecutará en estas situaciones.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="error-handling.html" data-tooltip="Manejo de errores"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="custom-errors.html" data-tooltip="Errores personalizados, extendiendo Error"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ftry-catch" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Ftry-catch" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/try-catch","identifier":"\/try-catch"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="error-handling.html">Manejo de errores</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-sintaxis-try-catch">La sintaxis “try…catch”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#objeto-error">Objeto Error</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#omitiendo-el-catch-asociado">Omitiendo el “catch” asociado</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#usando-try-catch">Usando “try…catch”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#lanzando-nuestros-propios-errores">Lanzando nuestros propios errores</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#relanzando-rethrowing">Relanzando (rethrowing)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#try-catch-finally">try…catch…finally</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#captura-global">Captura global</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Ftry-catch" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Ftry-catch" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/10-error-handling/1-try-catch" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/try-catch by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:15 GMT -->
+</html>

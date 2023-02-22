@@ -1,0 +1,770 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/json by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Métodos JSON, toJSON</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="json.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Métodos JSON, toJSON"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Métodos JSON, toJSON"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="date.html"><link rel="next" href="advanced-functions.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Métodos JSON, toJSON"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/json"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/json"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="json.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/json"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/json"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/json"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/json"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/json"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/json"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/json"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/json"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/json"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/json"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjson" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fjson" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/json">عربي</option><option value="https://javascript.info/json">English</option><option value="https://es.javascript.info/json" selected>Español</option><option value="https://fa.javascript.info/json">فارسی</option><option value="https://fr.javascript.info/json">Français</option><option value="https://id.javascript.info/json">Indonesia</option><option value="https://it.javascript.info/json">Italiano</option><option value="https://ja.javascript.info/json">日本語</option><option value="https://ko.javascript.info/json">한국어</option><option value="https://learn.javascript.ru/json">Русский</option><option value="https://tr.javascript.info/json">Türkçe</option><option value="https://uk.javascript.info/json">Українська</option><option value="https://zh.javascript.info/json">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="48" max="93" data-tooltip="Lección 48 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="data-types.html"><span>Tipos de datos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Tipos de datos","item":"https://es.javascript.info/data-types"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 1 de noviembre de 2022"><div class="updated-at__content">1 de noviembre de 2022</div></div></div><h1 class="main__header-title">Métodos JSON, toJSON</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Métodos JSON, toJSON"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Digamos que tenemos un objeto complejo y nos gustaría convertirlo en un string (cadena de caracteres), para enviarlos por la red, o simplemente mostrarlo para fines de registro.</p>
+<p>Naturalmente, tal string debe incluir todas las propiedades importantes.</p>
+<p>Podríamos implementar la conversión de esta manera:</p>
+<div id="ays0idzlwj" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John&quot;,
+  age: 30,
+
+  toString() {
+    return `{name: &quot;${this.name}&quot;, age: ${this.age}}`;
+  }
+};
+
+alert(user); // {name: &quot;John&quot;, age: 30}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero en el proceso de desarrollo se agregan nuevas propiedades, y otras son renombradas y eliminadas. Actualizar el <code>toString</code> cada vez se vuelve penoso. Podemos intentar recorrer las propiedades, pero ¿qué pasa si el objeto es complejo y tiene objetos anidados en las propiedades? Vamos a necesitar implementar su conversión también.</p>
+<p>Por suerte no hay necesidad de escribir el código para manejar todo esto. La tarea ya ha sido resuelta.</p>
+<h2><a class="main__anchor" name="json-stringify" href="#json-stringify">JSON.stringify</a></h2><p><a href="https://es.wikipedia.org/wiki/JSON">JSON</a> (Notación de objeto JavaScript) es un formato general para representar valores y objetos. Se lo describe como el estándar <a href="http://tools.ietf.org/html/rfc4627">RFC 4627</a>. En un principio fue creado para Javascript, pero varios lenguajes tienen librerías para manejarlo también. Por lo tanto es fácil utilizar JSON para intercambio de información cuando el cliente utiliza JavaScript y el servidor está escrito en Ruby, PHP, Java, lo que sea.</p>
+<p>JavaScript proporciona métodos:</p>
+<ul>
+<li><code>JSON.stringify</code> para convertir objetos a JSON.</li>
+<li><code>JSON.parse</code> para convertir JSON de vuelta a un objeto.</li>
+</ul>
+<p>Por ejemplo, aquí hacemos <code>JSON.stringify</code> a student:</p>
+<div id="ugm3epnthp" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:13,&quot;end&quot;:21},{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let student = {
+  name: 'John',
+  age: 30,
+  isAdmin: false,
+  courses: ['html', 'css', 'js'],
+  spouse: null
+};
+
+let json = JSON.stringify(student);
+
+alert(typeof json); // ¡obtenemos un string!
+
+alert(json);
+/* Objeto JSON-codificado:
+{
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;age&quot;: 30,
+  &quot;isAdmin&quot;: false,
+  &quot;courses&quot;: [&quot;html&quot;, &quot;css&quot;, &quot;js&quot;],
+  &quot;spouse&quot;: null
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El método <code>JSON.stringify(student)</code> toma al objeto y lo convierte a un string.</p>
+<p>La cadena de caracteres <code>json</code> resultante se llama objeto <em>JSON-codificado</em> o <em>serializado</em> o <em>convertido a String</em> o <em>reunido</em>. Estamos listos para enviarlo por la red o colocarlo en el almacenamiento de información simple.</p>
+<p>Por favor tomar nota que el objeto JSON-codificado tiene varias diferencias importantes con el objeto literal:</p>
+<ul>
+<li>Los strings utilizan comillas dobles. No hay comillas simples o acentos abiertos en JSON. Por lo tanto <code>'John'</code> pasa a ser <code>&quot;John&quot;</code>.</li>
+<li>Los nombres de propiedades de objeto también llevan comillas dobles. Eso es obligatorio. Por lo tanto <code>age:30</code> pasa a ser <code>&quot;age&quot;:30</code>.</li>
+</ul>
+<p><code>JSON.stringify</code> puede ser aplicado a los tipos de datos primitivos también.</p>
+<p>JSON admite los siguientes tipos de datos:</p>
+<ul>
+<li>Objects <code>{ ... }</code></li>
+<li>Arrays <code>[ ... ]</code></li>
+<li>Primitives:
+<ul>
+<li>strings,</li>
+<li>numbers,</li>
+<li>boolean values <code>true/false</code>,</li>
+<li><code>null</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="a247oj8eko" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// un número en JSON es sólo un número
+alert( JSON.stringify(1) ) // 1
+
+// un string en JSON sigue siendo una cadena de caracteres, pero con comillas dobles
+alert( JSON.stringify('test') ) // &quot;test&quot;
+
+alert( JSON.stringify(true) ); // true
+
+alert( JSON.stringify([1, 2, 3]) ); // [1,2,3]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>JSON es una especificación de sólo datos independiente del lenguaje, por lo tanto algunas propiedades de objeto específicas de Javascript son omitidas por <code>JSON.stringify</code>.</p>
+<p>A saber:</p>
+<ul>
+<li>Propiedades de funciones (métodos).</li>
+<li>Propiedades simbólicas.</li>
+<li>Propiedades que almacenan <code>undefined</code>.</li>
+</ul>
+<div id="a4au2tu4jm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  sayHi() { // ignorado
+    alert(&quot;Hello&quot;);
+  },
+  [Symbol(&quot;id&quot;)]: 123, // ignorado
+  something: undefined // ignorado
+};
+
+alert( JSON.stringify(user) ); // {} (objeto vacío)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normalmente esto está bien. Si esto no es lo que queremos, pronto veremos cómo personalizar el proceso.</p>
+<p>Lo mejor es que se permiten objetos anidados y se convierten automáticamente.</p>
+<p>Por ejemplo:</p>
+<div id="eg9mdb3e4z" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let meetup = {
+  title: &quot;Conference&quot;,
+  room: {
+    number: 23,
+    participants: [&quot;john&quot;, &quot;ann&quot;]
+  }
+};
+
+alert( JSON.stringify(meetup) );
+/* La estructura completa es convertida a String:
+{
+  &quot;title&quot;:&quot;Conference&quot;,
+  &quot;room&quot;:{&quot;number&quot;:23,&quot;participants&quot;:[&quot;john&quot;,&quot;ann&quot;]},
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La limitación importante: no deben existir referencias circulares.</p>
+<p>Por ejemplo:</p>
+<div id="pd9j27uzln" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  participants: [&quot;john&quot;, &quot;ann&quot;]
+};
+
+meetup.place = room;       // meetup tiene referencia a room
+room.occupiedBy = meetup; // room hace referencia a meetup
+
+JSON.stringify(meetup); // Error: Convirtiendo estructura circular a JSON</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí, la conversión falla debido a una referencia circular: <code>room.occupiedBy</code> hace referencia a <code>meetup</code>, y <code>meetup.place</code> hace referencia a <code>room</code>:</p>
+<figure><div class="image" style="width:212px">
+      <div class="image__ratio" style="padding-top:90.56603773584906%"></div>
+      <object type="image/svg+xml" data="article/json/json-meetup.svg" width="212" height="192" class="image__image" data-use-theme>
+        <img src="article/json/json-meetup.svg" alt="" width="212" height="192">
+      </object>
+      </div></figure><h2><a class="main__anchor" name="excluyendo-y-transformando-sustituto" href="#excluyendo-y-transformando-sustituto">Excluyendo y transformando: sustituto</a></h2><p>La sintaxis completa de <code>JSON.stringify</code> es:</p>
+<div id="tb3uvrftdz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = JSON.stringify(value[, replacer, space])</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt>value</dt>
+<dd>Un valor para codificar.</dd>
+<dt>replacer</dt>
+<dd>Array de propiedades para codificar o una función de mapeo <code>function(propiedad, valor)</code>.</dd>
+<dt>space</dt>
+<dd>Cantidad de espacio para usar para el formateo</dd>
+</dl>
+<p>La mayor parte del tiempo, <code>JSON.stringify</code> es utilizado con el primer argumento unicamente. Pero si necesitamos ajustar el proceso de sustitución, como para filtrar las referencias circulares, podemos utilizar el segundo argumento de <code>JSON.stringify</code>.</p>
+<p>Si pasamos un array de propiedades a él, solamente éstas propiedades serán codificadas.</p>
+<p>Por ejemplo:</p>
+<div id="qw58c4fm0e" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;cols&quot;:[{&quot;start&quot;:30,&quot;end&quot;:55}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  participants: [{name: &quot;John&quot;}, {name: &quot;Alice&quot;}],
+  place: room // meetup hace referencia a room
+};
+
+room.occupiedBy = meetup; // room hace referencia a meetup
+
+alert( JSON.stringify(meetup, ['title', 'participants']) );
+// {&quot;title&quot;:&quot;Conference&quot;,&quot;participants&quot;:[{},{}]}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí probablemente seamos demasiado estrictos. La lista de propiedades se aplica a toda la estructura de objeto. Por lo tanto los objetos en <code>participants</code> están vacíos, porque <code>name</code> no está en la lista.</p>
+<p>Incluyamos en la lista todas las propiedades excepto <code>room.occupiedBy</code> esto causaría la referencia circular:</p>
+<div id="nomz2x3aoa" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;cols&quot;:[{&quot;start&quot;:30,&quot;end&quot;:82}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  participants: [{name: &quot;John&quot;}, {name: &quot;Alice&quot;}],
+  place: room // meetup hace referencia a room
+};
+
+room.occupiedBy = meetup; // room hace referencia a meetup
+
+alert( JSON.stringify(meetup, ['title', 'participants', 'place', 'name', 'number']) );
+/*
+{
+  &quot;title&quot;:&quot;Conference&quot;,
+  &quot;participants&quot;:[{&quot;name&quot;:&quot;John&quot;},{&quot;name&quot;:&quot;Alice&quot;}],
+  &quot;place&quot;:{&quot;number&quot;:23}
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora todo con excepción de <code>occupiedBy</code> está serializado. Pero la lista de propiedades es bastante larga.</p>
+<p>Por suerte podemos utilizar una función en lugar de un array como el <code>sustituto</code>.</p>
+<p>La función se llamará para cada par de <code>(propiedad, valor)</code> y debe devolver el valor “sustituido”, el cual será utilizado en lugar del original. O <code>undefined</code> si el valor va a ser omitido.</p>
+<p>En nuestro caso, podemos devolver <code>value</code> “tal cual” para todo excepto <code>occupiedBy</code>. Para ignorar <code>occupiedBy</code>, el código de abajo devuelve <code>undefined</code>:</p>
+<div id="wxjaq9rroi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  participants: [{name: &quot;John&quot;}, {name: &quot;Alice&quot;}],
+  place: room // meetup hace referencia a room
+};
+
+room.occupiedBy = meetup; // room hace referencia a meetup
+
+alert( JSON.stringify(meetup, function replacer(key, value) {
+  alert(`${key}: ${value}`);
+  return (key == 'occupiedBy') ? undefined : value;
+}));
+
+/* pares de propiedad:valor que llegan a replacer:
+:             [object Object]
+title:        Conference
+participants: [object Object],[object Object]
+0:            [object Object]
+name:         John
+1:            [object Object]
+name:         Alice
+place:        [object Object]
+number:       23
+occupiedBy: [object Object]
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por favor tenga en cuenta que la función <code>replacer</code> recibe todos los pares de propiedad/valor incluyendo objetos anidados y elementos de array. Se aplica recursivamente. El valor de <code>this</code> dentro de <code>replacer</code> es el objeto que contiene la propiedad actual.</p>
+<p>El primer llamado es especial. Se realiza utilizando un “Objeto contenedor” especial: <code>{&quot;&quot;: meetup}</code>. En otras palabras, el primer par  <code>(propiedad, valor)</code> tiene una propiedad vacía, y el valor es el objeto objetivo como un todo. Es por esto que la primer línea es <code>&quot;:[object Object]&quot;</code> en el ejemplo de arriba.</p>
+<p>La idea es proporcionar tanta capacidad para <code>replacer</code> como sea posible: tiene una oportunidad de analizar y reemplazar/omitir incluso el objeto entero si es necesario.</p>
+<h2><a class="main__anchor" name="formato-espacio" href="#formato-espacio">Formato: espacio</a></h2><p>El tercer argumento de <code>JSON.stringify(value, replacer, space)</code> es el número de espacios a utilizar para un formato agradable.</p>
+<p>Anteriormente todos los objetos convertidos a String no tenían sangría ni espacios adicionales. Eso está bien si queremos enviar un objeto por la red. El argumento <code>space</code> es utilizado exclusivamente para una salida agradable.</p>
+<p>Aquí <code>space = 2</code> le dice a JavaScript que muestre objetos anidados en varias líneas, con sangría de 2 espacios dentro de un objeto:</p>
+<div id="ycfyabfcey" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John&quot;,
+  age: 25,
+  roles: {
+    isAdmin: false,
+    isEditor: true
+  }
+};
+
+alert(JSON.stringify(user, null, 2));
+/* sangría de dos espacios:
+{
+  &quot;name&quot;: &quot;John&quot;,
+  &quot;age&quot;: 25,
+  &quot;roles&quot;: {
+    &quot;isAdmin&quot;: false,
+    &quot;isEditor&quot;: true
+  }
+}
+*/
+
+/* para JSON.stringify(user, null, 4) el resultado sería más indentado:
+{
+    &quot;name&quot;: &quot;John&quot;,
+    &quot;age&quot;: 25,
+    &quot;roles&quot;: {
+        &quot;isAdmin&quot;: false,
+        &quot;isEditor&quot;: true
+    }
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El tercer argumento puede ser también string. En ese caso el string será usado como indentación en lugar de un número de espacios.</p>
+<p>El argumento <code>space</code> es utilizado únicamente para propósitos de registro y agradable impresión.</p>
+<h2><a class="main__anchor" name="tojson-personalizado" href="#tojson-personalizado">“toJSON” Personalizado</a></h2><p>Tal como <code>toString</code> para conversión de String, un objeto puede proporcionar el método <code>toJSON</code> para conversión a JSON. <code>JSON.stringify</code> automáticamente la llama si está disponible.</p>
+<p>Por ejemplo:</p>
+<div id="zkwai16o6r" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:14,&quot;end&quot;:14}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  date: new Date(Date.UTC(2017, 0, 1)),
+  room
+};
+
+alert( JSON.stringify(meetup) );
+/*
+  {
+    &quot;title&quot;:&quot;Conference&quot;,
+    &quot;date&quot;:&quot;2017-01-01T00:00:00.000Z&quot;,  // (1)
+    &quot;room&quot;: {&quot;number&quot;:23}               // (2)
+  }
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí podemos ver que <code>date</code> <code>(1)</code> se convirtió en un string. Esto es debido a que todas las fechas tienen un método <code>toJSON</code> incorporado que devuelve este tipo de string.</p>
+<p>Ahora incluyamos un <code>toJSON</code> personalizado para nuestro objeto <code>room</code> <code>(2)</code>:</p>
+<div id="benwjqc8fv" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:18,&quot;end&quot;:18},{&quot;start&quot;:12,&quot;end&quot;:12},{&quot;start&quot;:2,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23,
+  toJSON() {
+    return this.number;
+  }
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  room
+};
+
+alert( JSON.stringify(room) ); // 23
+
+alert( JSON.stringify(meetup) );
+/*
+  {
+    &quot;title&quot;:&quot;Conference&quot;,
+    &quot;room&quot;: 23
+  }
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como podemos ver, <code>toJSON</code> es utilizado para ambos el llamado directo  <code>JSON.stringify(room)</code> y cuando <code>room</code> está anidado en otro objeto codificado.</p>
+<h2><a class="main__anchor" name="json-parse" href="#json-parse">JSON.parse</a></h2><p>Para decodificar un string JSON, necesitamos otro método llamado <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/JSON/parse">JSON.parse</a>.</p>
+<p>La sintaxis:</p>
+<div id="8kvnesf5rk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let value = JSON.parse(str, [reviver]);</code></pre>
+        </div>
+      </div>
+      
+      </div><dl>
+<dt>str</dt>
+<dd>string JSON para analizar.</dd>
+<dt>reviver</dt>
+<dd>function(key,value) opcional que será llamado para cada par <code>(propiedad, valor)</code> y puede transformar el valor.</dd>
+</dl>
+<p>Por ejemplo:</p>
+<div id="cpqwqtl2fd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// array convertido en String
+let numbers = &quot;[0, 1, 2, 3]&quot;;
+
+numbers = JSON.parse(numbers);
+
+alert( numbers[1] ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>O para objetos anidados:</p>
+<div id="0t3neykkw8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let userData = '{ &quot;name&quot;: &quot;John&quot;, &quot;age&quot;: 35, &quot;isAdmin&quot;: false, &quot;friends&quot;: [0,1,2,3] }';
+
+let user = JSON.parse(userData);
+
+alert( user.friends[1] ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El JSON puede ser tan complejo como sea necesario, los objetos y arrays pueden incluir otros objetos y arrays. Pero deben cumplir el mismo formato JSON.</p>
+<p>Aquí algunos de los errores más comunes al escribir JSON a mano (a veces tenemos que escribirlo por debugging):</p>
+<div id="tkjqe2jjbp" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:14,&quot;end&quot;:34}]},{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:2,&quot;end&quot;:11}]},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:13,&quot;end&quot;:20}]},{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:2,&quot;end&quot;:6}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let json = `{
+  name: &quot;John&quot;,                     // error: nombre de propiedad sin comillas
+  &quot;surname&quot;: 'Smith',               // error: comillas simples en valor (debe ser doble)
+  'isAdmin': false                  // error: comillas simples en propiedad (debe ser doble)
+  &quot;birthday&quot;: new Date(2000, 2, 3), // error: no se permite &quot;new&quot;, únicamente valores simples
+  &quot;friends&quot;: [0,1,2,3]              // aquí todo bien
+}`;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Además, JSON no admite comentarios. Agregar un comentario a JSON lo hace inválido.</p>
+<p>Existe otro formato llamado <a href="https://json5.org/">JSON5</a>, que permite claves sin comillas, comentarios, etcétera. Pero es una librería independiente, no una especificación del lenguaje.</p>
+<p>El JSON normal es tan estricto no porque sus desarrolladores sean flojos, sino para permitir la implementación fácil, confiable y muy rápida del algoritmo analizador.</p>
+<h2><a class="main__anchor" name="utilizando-reactivador" href="#utilizando-reactivador">Utilizando reactivador</a></h2><p>Imagina esto, obtenemos un objeto <code>meetup</code> convertido en String desde el servidor.</p>
+<p>Se ve así:</p>
+<div id="c509hjjz7j" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// title: (meetup title), date: (meetup date)
+let str = '{&quot;title&quot;:&quot;Conference&quot;,&quot;date&quot;:&quot;2017-11-30T12:00:00.000Z&quot;}';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Y ahora necesitamos <em>deserializarlo</em>, para convertirlo de vuelta a un objeto JavaScript.</p>
+<p>Hagámoslo llamando a <code>JSON.parse</code>:</p>
+<div id="hstjp9a4fj" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '{&quot;title&quot;:&quot;Conference&quot;,&quot;date&quot;:&quot;2017-11-30T12:00:00.000Z&quot;}';
+
+let meetup = JSON.parse(str);
+
+alert( meetup.date.getDate() ); // Error!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¡Upss! ¡Un error!</p>
+<p>El valor de <code>meetup.date</code> es un string, no un objeto <code>Date</code>. Cómo puede saber <code>JSON.parse</code> que debe transformar ese string a una <code>Date</code>?</p>
+<p>Le pasemos a <code>JSON.parse</code> la función reactivadora como el segundo argumento, esto devuelve todos los valores “tal cual”, pero <code>date</code> se convertirá en una <code>Date</code>:</p>
+<div id="3m2hkbei0p" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '{&quot;title&quot;:&quot;Conference&quot;,&quot;date&quot;:&quot;2017-11-30T12:00:00.000Z&quot;}';
+
+let meetup = JSON.parse(str, function(key, value) {
+  if (key == 'date') return new Date(value);
+  return value;
+});
+
+alert( meetup.date.getDate() ); // ¡Ahora funciona!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por cierto, esto funciona también para objetos anidados:</p>
+<div id="n70lx5iqxx" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:12,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let schedule = `{
+  &quot;meetups&quot;: [
+    {&quot;title&quot;:&quot;Conference&quot;,&quot;date&quot;:&quot;2017-11-30T12:00:00.000Z&quot;},
+    {&quot;title&quot;:&quot;Birthday&quot;,&quot;date&quot;:&quot;2017-04-18T12:00:00.000Z&quot;}
+  ]
+}`;
+
+schedule = JSON.parse(schedule, function(key, value) {
+  if (key == 'date') return new Date(value);
+  return value;
+});
+
+alert( schedule.meetups[1].date.getDate() ); // ¡Funciona!</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>JSON es un formato de datos que tiene su propio estándar independiente y librerías para la mayoría de los lenguajes de programación.</li>
+<li>JSON admite objetos simples, arrays, strings, números, booleanos y <code>null</code>.</li>
+<li>JavaScript proporciona los métodos <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/JSON/stringify">JSON.stringify</a> para serializar en JSON y <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse</a> para leer desde JSON.</li>
+<li>Ambos métodos admiten funciones transformadoras para lectura/escritura inteligente.</li>
+<li>Si un objeto tiene <code>toJSON</code>, entonces es llamado por<code>JSON.stringify</code>.</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#convierte-el-objeto-en-json-y-de-vuelta" name="convierte-el-objeto-en-json-y-de-vuelta">Convierte el objeto en JSON y de vuelta</a></h3><a class="task__open-link" href="task/serialize-object.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Convierte el <code>user</code> a JSON y luego léalo de vuelta en otra variable.</p>
+<div id="wx162aphkw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John Smith&quot;,
+  age: 35
+};</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="uyawx8s0do" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;John Smith&quot;,
+  age: 35
+};
+
+let user2 = JSON.parse(JSON.stringify(user));</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#excluir-referencias-circulares" name="excluir-referencias-circulares">Excluir referencias circulares</a></h3><a class="task__open-link" href="task/serialize-event-circular.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>En casos simples de referencias circulares, podemos excluir una propiedad infractora de la serialización por su nombre.</p>
+<p>Pero a veces no podemos usar el nombre, ya que puede usarse tanto en referencias circulares como en propiedades normales. Entonces podemos verificar la propiedad por su valor.</p>
+<p>Escriba la función <code>replacer</code> para convertir todo a string, pero elimine las propiedades que hacen referencia a <code>meetup</code>:</p>
+<div id="s1xsn7nw6z" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:12}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  occupiedBy: [{name: &quot;John&quot;}, {name: &quot;Alice&quot;}],
+  place: room
+};
+
+// referencias circulares
+room.occupiedBy = meetup;
+meetup.self = meetup;
+
+alert( JSON.stringify(meetup, function replacer(key, value) {
+  /* tu código */
+}));
+
+/* el resultado debería ser:
+{
+  &quot;title&quot;:&quot;Conference&quot;,
+  &quot;occupiedBy&quot;:[{&quot;name&quot;:&quot;John&quot;},{&quot;name&quot;:&quot;Alice&quot;}],
+  &quot;place&quot;:{&quot;number&quot;:23}
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="jb22p6sq33" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let room = {
+  number: 23
+};
+
+let meetup = {
+  title: &quot;Conference&quot;,
+  occupiedBy: [{name: &quot;John&quot;}, {name: &quot;Alice&quot;}],
+  place: room
+};
+
+room.occupiedBy = meetup;
+meetup.self = meetup;
+
+alert( JSON.stringify(meetup, function replacer(key, value) {
+  return (key != &quot;&quot; &amp;&amp; value == meetup) ? undefined : value;
+}));
+
+/*
+{
+  &quot;title&quot;:&quot;Conference&quot;,
+  &quot;occupiedBy&quot;:[{&quot;name&quot;:&quot;John&quot;},{&quot;name&quot;:&quot;Alice&quot;}],
+  &quot;place&quot;:{&quot;number&quot;:23}
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí también necesitamos verificar <code>key==&quot;&quot;</code> para excluir el primer llamado donde es normal que <code>valor</code> sea <code>meetup</code>.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="date.html" data-tooltip="Fecha y Hora"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="advanced-functions.html" data-tooltip="Trabajo avanzado con funciones"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjson" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fjson" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/json","identifier":"\/json"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.html">Tipos de datos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#json-stringify">JSON.stringify</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#excluyendo-y-transformando-sustituto">Excluyendo y transformando: sustituto</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#formato-espacio">Formato: espacio</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tojson-personalizado">“toJSON” Personalizado</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#json-parse">JSON.parse</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#utilizando-reactivador">Utilizando reactivador</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (2)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fjson" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fjson" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/05-data-types/12-json" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/json by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:00 GMT -->
+</html>

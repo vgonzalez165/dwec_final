@@ -1,0 +1,399 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/form-elements by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Propiedades y Métodos de Formularios</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="form-elements.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Propiedades y Métodos de Formularios"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Propiedades y Métodos de Formularios"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="forms-controls.html"><link rel="next" href="focus-blur.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Propiedades y Métodos de Formularios"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/form-elements"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="form-elements.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/form-elements"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/form-elements"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/form-elements"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/form-elements"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/form-elements"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/form-elements"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/form-elements"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/form-elements"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fform-elements" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fform-elements" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/form-elements">English</option><option value="https://es.javascript.info/form-elements" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/">Français</option><option value="https://id.javascript.info/form-elements">Indonesia</option><option value="https://it.javascript.info/form-elements">Italiano</option><option value="https://ja.javascript.info/form-elements">日本語</option><option value="https://ko.javascript.info/form-elements">한국어</option><option value="https://learn.javascript.ru/form-elements">Русский</option><option value="https://tr.javascript.info/form-elements">Türkçe</option><option value="https://uk.javascript.info/form-elements">Українська</option><option value="https://zh.javascript.info/form-elements">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="23" max="32" data-tooltip="Lección 23 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="forms-controls.html"><span>Formularios y controles</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Formularios y controles","item":"https://es.javascript.info/forms-controls"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 21 de febrero de 2022"><div class="updated-at__content">21 de febrero de 2022</div></div></div><h1 class="main__header-title">Propiedades y Métodos de Formularios</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Propiedades y Métodos de Formularios"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Los formularios y controles, como <code>&lt;input&gt;</code>, tienen muchos eventos y propiedades especiales.</p>
+<p>Trabajar con formularios será mucho más conveniente cuando los aprendamos.</p>
+<h2><a class="main__anchor" name="navegacion-formularios-y-elementos" href="#navegacion-formularios-y-elementos">Navegación: Formularios y elementos</a></h2><p>Los formularios del documento son miembros de la colección especial <code>document.forms</code>.</p>
+<p>Esa es la llamada “Colección nombrada”: es ambas cosas, nombrada y ordenada. Podemos usar el nombre o el número  en el documento para conseguir el formulario.</p>
+<div id="hd2hv6rhib" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.forms.my; // el formulario con name=&quot;my&quot;
+document.forms[0]; // el primer formulario en el documento</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando tenemos un formulario, cualquier elemento se encuentra disponible en la colección nombrada <code>form.elements</code>.</p>
+<p>Por ejemplo:</p>
+<div id="91k9wsqw2f" data-trusted="1" class="code-example" data-demo-height="40">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;form name=&quot;my&quot;&gt;
+  &lt;input name=&quot;one&quot; value=&quot;1&quot;&gt;
+  &lt;input name=&quot;two&quot; value=&quot;2&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // obtención del formulario
+  let form = document.forms.my; // elemento &lt;form name=&quot;my&quot;&gt;
+
+  // get the element
+  let elem = form.elements.one; // elemento &lt;input name=&quot;one&quot;&gt;
+
+  alert(elem.value); // 1
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puede haber múltiples elementos con el mismo nombre. Esto es típico en el caso de los botones de radio y checkboxes.</p>
+<p>En ese caso <code>form.elements[name]</code> es una <em>colección</em>. Por ejemplo:</p>
+<div id="qqoja6pgwt" data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10},{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:22,&quot;end&quot;:32}]},{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:22,&quot;end&quot;:32}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;form&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;10&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;age&quot; value=&quot;20&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+let form = document.forms[0];
+
+let ageElems = form.elements.age;
+
+alert(ageElems[0]); // [object HTMLInputElement]
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Estas propiedades de navegación no dependen de la estructura de las etiquetas. Todos los controles, sin importar qué tan profundos se encuentren en el formulario, están disponibles en <code>form.elements</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Fieldsets como “sub-formularios”</span></div>
+            <div class="important__content"><p>Un formulario puede tener uno o varios elementos <code>&lt;fieldset&gt;</code> dentro. Estos también tienen la propiedad <code>elements</code> que lista los controles del formulario dentro de ellos.</p>
+<p>Por ejemplo:</p>
+<div id="xe3ics0i7z" data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body&gt;
+  &lt;form id=&quot;form&quot;&gt;
+    &lt;fieldset name=&quot;userFields&quot;&gt;
+      &lt;legend&gt;info&lt;/legend&gt;
+      &lt;input name=&quot;login&quot; type=&quot;text&quot;&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    alert(form.elements.login); // &lt;input name=&quot;login&quot;&gt;
+
+    let fieldset = form.elements.userFields;
+    alert(fieldset); // HTMLFieldSetElement
+
+    // podemos obtener el input por su nombre tanto desde el formulario como desde el fieldset
+    alert(fieldset.elements.login == form.elements.login); // true
+  &lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Notación corta: <code>form.name</code></span></div>
+            <div class="important__content"><p>Hay una notación corta: podemos acceder el elemento como <code>form[index/name]</code>.</p>
+<p>En otras palabras, en lugar de <code>form.elements.login</code> podemos escribir <code>form.login</code>.</p>
+<p>Esto también funciona, pero tiene un error menor: si accedemos un elemento, y cambiamos su <code>name</code>, se mantendrá disponible mediante el nombre anterior (así como mediante el nuevo).</p>
+<p>Esto es fácil de ver en un ejemplo:</p>
+<div id="5jkl0dlivs" data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:13,&quot;end&quot;:14}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;form id=&quot;form&quot;&gt;
+  &lt;input name=&quot;login&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  alert(form.elements.login == form.login); // true, el mismo &lt;input&gt;
+
+  form.login.name = &quot;username&quot;; // cambiamos el nombre el &lt;input&gt;
+
+  // form.elements actualiza el nombre:
+  alert(form.elements.login); // undefined
+  alert(form.elements.username); // input
+
+  // form permite ambos nombres: el nuevo y el viejo
+  alert(form.username == form.login); // true
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto usualmente no es un problema, porque raramente se cambian los nombres de los elementos de un formulario.</p>
+</div></div>
+<h2><a class="main__anchor" name="referencia-inversa-element-form" href="#referencia-inversa-element-form">Referencia inversa: element.form</a></h2><p>Para cualquier elemento, el formulario está disponible como <code>element.form</code>. Así que un formulario referencia todos los elementos, y los elementos referencian el formulario.</p>
+<p>Aquí la imagen:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:32.39740820734342%"></div>
+      <object type="image/svg+xml" data="article/form-elements/form-navigation.svg" width="463" height="150" class="image__image" data-use-theme>
+        <img src="article/form-elements/form-navigation.svg" alt="" width="463" height="150">
+      </object>
+      </div></figure><p>Por ejemplo:</p>
+<div id="ihgysn5kr8" data-trusted="1" class="code-example" data-demo-height="40" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;form id=&quot;form&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;login&quot;&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  // form -&gt; element
+  let login = form.login;
+
+  // element -&gt; form
+  alert(login.form); // HTMLFormElement
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="elementos-del-formulario" href="#elementos-del-formulario">Elementos del formulario</a></h2><p>Hablemos de los controles de los formularios.</p>
+<h3><a class="main__anchor" name="input-y-textarea" href="#input-y-textarea">input y textarea</a></h3><p>Podemos acceder sus valores como <code>input.value</code> (cadena) o <code>input.checked</code> (booleano) para casillas de verificación (checkboxes) y botones de opción (radio buttons).</p>
+<p>De esta manera:</p>
+<div id="0d8t38wfgu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>input.value = &quot;New value&quot;;
+textarea.value = &quot;New text&quot;;
+
+input.checked = true; // para checkboxes o radios</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Usa <code>textarea.value</code>, no <code>textarea.innerHTML</code></span></div>
+            <div class="important__content"><p>Observa que incluso aunque <code>&lt;textarea&gt;...&lt;/textarea&gt;</code> contenga su valor como HTML anidado, nunca deberíamos usar <code>textarea.innerHTML</code> para acceder a él.</p>
+<p>Esto solo guarda el HTML que había inicialmente en la página, no su valor actual.</p>
+</div></div>
+<h3><a class="main__anchor" name="select-y-option" href="#select-y-option">select y option</a></h3><p>Un elemento <code>&lt;select&gt;</code> tiene 3 propiedades importantes:</p>
+<ol>
+<li><code>select.options</code> – la colección de subelementos <code>&lt;option&gt;</code>,</li>
+<li><code>select.value</code> – el valor del <code>&lt;option&gt;</code> seleccionado actualmente, y</li>
+<li><code>select.selectedIndex</code> – el número del <code>&lt;option&gt;</code> seleccionado actualmente.</li>
+</ol>
+<p>Ellas proveen tres formas diferentes de asignar un valor para un elemento <code>&lt;select&gt;</code>:</p>
+<ol>
+<li>Encontrar el elemento <code>&lt;option&gt;</code> correspondiente (por ejemplo entre <code>select.options</code>) y asignar a su <code>option.selected</code> un <code>true</code>.</li>
+<li>Si conocemos un nuevo valor: Asignar tal valor a <code>select.value</code>.</li>
+<li>Si conocemos el nuevo número de opción: Asignar tal número a <code>select.selectedIndex</code>.</li>
+</ol>
+<p>Aquí hay un ejemplo de los tres métodos:</p>
+<div id="4lqp715ew0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;select id=&quot;select&quot;&gt;
+  &lt;option value=&quot;apple&quot;&gt;Apple&lt;/option&gt;
+  &lt;option value=&quot;pear&quot;&gt;Pear&lt;/option&gt;
+  &lt;option value=&quot;banana&quot;&gt;Banana&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // las tres líneas hacen lo mismo
+  select.options[2].selected = true;
+  select.selectedIndex = 2;
+  select.value = 'banana';
+  // Recuerda que las opciones comienzan en cero, así que index 2 significa la tercera opción.
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A diferencia de la mayoría de controles, <code>&lt;select&gt;</code> permite seleccionar múltiples opciones a la vez si tiene el atributo <code>multiple</code>. Esta característica es raramente utilizada.</p>
+<p>En ese caso, necesitamos usar la primera forma: Añade/elimina la propiedad <code>selected</code> de los subelementos <code>&lt;option&gt;</code>.</p>
+<p>Podemos obtener su colección como <code>select.options</code>, por ejemplo:</p>
+<div id="qbiibsxt2x" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:20,&quot;end&quot;:28}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;select id=&quot;select&quot; multiple&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+  &lt;option value=&quot;rock&quot; selected&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;classic&quot;&gt;Classic&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // obtener todos los valores seleccionados del multi-select
+  let selected = Array.from(select.options)
+    .filter(option =&gt; option.selected)
+    .map(option =&gt; option.value);
+
+  alert(selected); // blues,rock
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La especificación completa del elemento <code>&lt;select&gt;</code> está disponible en la especificación <a href="https://html.spec.whatwg.org/multipage/forms.html#the-select-element">https://html.spec.whatwg.org/multipage/forms.html#the-select-element</a>.</p>
+<h3><a class="main__anchor" name="new-option" href="#new-option">new Option</a></h3><p>En la <a href="https://html.spec.whatwg.org/multipage/forms.html#the-option-element">especificación</a> hay una sintaxis muy corta para crear elementos <code>&lt;option&gt;</code>:</p>
+<div id="4qe20d0k19" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>option = new Option(text, value, defaultSelected, selected);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esta sintaxis es opcional. Podemos usar <code>document.createElement('option')</code> y asignar atributos manualmente. Aún puede ser más corta, aquí los parámetros:</p>
+<ul>
+<li><code>text</code> – el texto dentro del option,</li>
+<li><code>value</code> – el valor del option,</li>
+<li><code>defaultSelected</code> – si es <code>true</code>, entonces se le crea el atributo HTML <code>selected</code>,</li>
+<li><code>selected</code> – si es <code>true</code>, el option se selecciona.</li>
+</ul>
+<p>La diferencia entre <code>defaultSelected</code> y <code>selected</code> es que <code>defaultSelected</code> asigna el atributo HTML, el que podemos obtener usando <code>option.getAttribute('selected')</code>,  mientras que <code>selected</code> hace que el option esté o no seleccionado.</p>
+<p>En la práctica, uno debería usualmente establecer <em>ambos</em> valores en <code>true</code> o <code>false</code>. O simplemente omitirlos, quedarán con el predeterminado <code>false</code>.</p>
+<p>Por ejemplo, aquí creamos un nuevo Option “unselected”:</p>
+<div id="7faamvuns7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let option = new Option(&quot;Text&quot;, &quot;value&quot;);
+// crea &lt;option value=&quot;value&quot;&gt;Text&lt;/option&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El mismo elemento, pero seleccionado:</p>
+<div id="jug2ugaa0o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let option = new Option(&quot;Text&quot;, &quot;value&quot;, true, true);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los elementos Option tienen propiedades:</p>
+<dl>
+<dt><code>option.selected</code></dt>
+<dd>Es el option seleccionado.</dd>
+<dt><code>option.index</code></dt>
+<dd>El número del option respecto a los demás en su <code>&lt;select&gt;</code>.</dd>
+<dt><code>option.text</code></dt>
+<dd>El contenido del option (visto por el visitante).</dd>
+</dl>
+<h2><a class="main__anchor" name="referencias" href="#referencias">Referencias</a></h2><ul>
+<li>Especificación: <a href="https://html.spec.whatwg.org/multipage/forms.html">https://html.spec.whatwg.org/multipage/forms.html</a>.</li>
+</ul>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Navegación de formularios:</p>
+<dl>
+<dt><code>document.forms</code></dt>
+<dd>Un formulario está disponible como <code>document.forms[name/index]</code>.</dd>
+<dt><code>form.elements</code></dt>
+<dd>Los elementos del formulario están disponibles como <code>form.elements[name/index]</code>, o puedes usar solo <code>form[name/index]</code>. La propiedad <code>elements</code> también funciona para los <code>&lt;fieldset&gt;</code>.</dd>
+<dt><code>element.form</code></dt>
+<dd>Los elementos referencian a su formulario en la propiedad <code>form</code>.</dd>
+</dl>
+<p>El valor está disponible con <code>input.value</code>, <code>textarea.value</code>, <code>select.value</code> etc.  Para checkboxes y radios, usa <code>input.checked</code> para determinar si el valor está seleccionado.</p>
+<p>Para <code>&lt;select&gt;</code> también podemos obtener el valor con el índice <code>select.selectedIndex</code> o a través de la colección de opciones <code>select.options</code>.</p>
+<p>Esto es lo básico para empezar a trabajar con formularios. Conoceremos muchos ejemplos más adelante en el tutorial.</p>
+<p>En el siguiente capítulo vamos a hablar sobre los eventos <code>focus</code> y <code>blur</code> que pueden ocurrir en cualquier elemento, pero son manejados mayormente en formularios.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#anade-una-opcion-al-select" name="anade-una-opcion-al-select">Añade una opción al select</a></h3><a class="task__open-link" href="task/add-select-option.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Tenemos un <code>&lt;select&gt;</code>:</p>
+<div id="4sj7x3pxx6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;select id=&quot;genres&quot;&gt;
+  &lt;option value=&quot;rock&quot;&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Utiliza JavaScript para:</p>
+<ol>
+<li>Mostrar el valor y el texto del option seleccionado.</li>
+<li>Añadir un option: <code>&lt;option value=&quot;classic&quot;&gt;Classic&lt;/option&gt;</code>.</li>
+<li>Seleccionarlo.</li>
+</ol>
+<p>Nota, si haz hecho todo bien, tu alert debería mostrar <code>blues</code>.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La solución, paso a paso:</p>
+<div id="2pkcczpl0o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;select id=&quot;genres&quot;&gt;
+  &lt;option value=&quot;rock&quot;&gt;Rock&lt;/option&gt;
+  &lt;option value=&quot;blues&quot; selected&gt;Blues&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;script&gt;
+  // 1)
+  let selectedOption = genres.options[genres.selectedIndex];
+  alert( selectedOption.value );
+
+  // 2)
+  let newOption = new Option(&quot;Classic&quot;, &quot;classic&quot;);
+  genres.append(newOption);
+
+  // 3)
+  newOption.selected = true;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="forms-controls.html" data-tooltip="Formularios y controles"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="focus-blur.html" data-tooltip="Enfocado: enfoque/desenfoque"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fform-elements" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fform-elements" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/form-elements","identifier":"\/form-elements"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="forms-controls.html">Formularios y controles</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#navegacion-formularios-y-elementos">Navegación: Formularios y elementos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#referencia-inversa-element-form">Referencia inversa: element.form</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#elementos-del-formulario">Elementos del formulario</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#referencias">Referencias</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fform-elements" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fform-elements" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/4-forms-controls/1-form-elements" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/form-elements by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+</html>

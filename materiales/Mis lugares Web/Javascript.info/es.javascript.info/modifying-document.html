@@ -1,0 +1,1093 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/modifying-document by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:26 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "co";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Modificando el documento</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="modifying-document.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Modificando el documento"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Modificando el documento"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="dom-attributes-and-properties.html"><link rel="next" href="styles-and-classes.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Modificando el documento"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/modifying-document"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/modifying-document"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="modifying-document.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/modifying-document"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/modifying-document"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/modifying-document"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/modifying-document"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/modifying-document"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/modifying-document"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/modifying-document"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/modifying-document"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fmodifying-document" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fmodifying-document" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/modifying-document">عربي</option><option value="https://javascript.info/modifying-document">English</option><option value="https://es.javascript.info/modifying-document" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/modifying-document">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/modifying-document">Italiano</option><option value="https://ja.javascript.info/modifying-document">日本語</option><option value="https://ko.javascript.info/modifying-document">한국어</option><option value="https://learn.javascript.ru/modifying-document">Русский</option><option value="https://tr.javascript.info/modifying-document">Türkçe</option><option value="https://uk.javascript.info/modifying-document">Українська</option><option value="https://zh.javascript.info/modifying-document">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="7" max="32" data-tooltip="Lección 7 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="document.html"><span>Documento</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Documento","item":"https://es.javascript.info/document"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 3 de julio de 2022"><div class="updated-at__content">3 de julio de 2022</div></div></div><h1 class="main__header-title">Modificando el documento</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Modificando el documento"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>La modificación del DOM es la clave para crear páginas “vivas”, dinámicas.</p>
+<p>Aquí veremos cómo crear nuevos elementos “al vuelo” y modificar el contenido existente de la página.</p>
+<h2><a class="main__anchor" name="ejemplo-mostrar-un-mensaje" href="#ejemplo-mostrar-un-mensaje">Ejemplo: mostrar un mensaje</a></h2><p>Hagamos una demostración usando un ejemplo. Añadiremos un mensaje que se vea más agradable que un <code>alert</code>.</p>
+<p>Así es como se verá:</p>
+<div id="nbueb92y72" data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:12}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;alert&quot;&gt;
+  &lt;strong&gt;¡Hola!&lt;/strong&gt; Usted ha leído un importante mensaje.
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-nbueb92y72"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Eso fue el ejemplo HTML. Ahora creemos el mismo <code>div</code> con JavaScript (asumiendo que los estilos ya están en HTML/CSS).</p>
+<h2><a class="main__anchor" name="creando-un-elemento" href="#creando-un-elemento">Creando un elemento</a></h2><p>Para crear nodos DOM, hay dos métodos:</p>
+<dl>
+<dt><code>document.createElement(tag)</code></dt>
+<dd>
+<p>Crea un nuevo <em>nodo elemento</em> con la etiqueta HTML dada:</p>
+<div id="fvjg8o1jhr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let div = document.createElement('div');</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>document.createTextNode(text)</code></dt>
+<dd>
+<p>Crea un nuevo <em>nodo texto</em> con el texto dado:</p>
+<div id="zw7koyzflt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let textNode = document.createTextNode('Aquí estoy');</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<p>La mayor parte del tiempo necesitamos crear nodos de elemento, como el <code>div</code> para el mensaje.</p>
+<h3><a class="main__anchor" name="creando-el-mensaje" href="#creando-el-mensaje">Creando el mensaje</a></h3><p>Crear el div de mensaje toma 3 pasos:</p>
+<div id="k2v188xbn6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// 1. Crear elemento &lt;div&gt;
+let div = document.createElement('div');
+
+// 2. Establecer su clase a &quot;alert&quot;
+div.className = &quot;alert&quot;;
+
+// 3. Agregar el contenido
+div.innerHTML = &quot;&lt;strong&gt;¡Hola!&lt;/strong&gt; Usted ha leído un importante mensaje.&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Hemos creado el elemento. Pero hasta ahora solamente está en una variable llamada <code>div</code>, no aún en la página, y no la podemos ver.</p>
+<h2><a class="main__anchor" name="metodos-de-insercion" href="#metodos-de-insercion">Métodos de inserción</a></h2><p>Para hacer que el <code>div</code> aparezca, necesitamos insertarlo en algún lado dentro de <code>document</code>. Por ejemplo, en el elemento <code>&lt;body&gt;</code>, referenciado por <code>document.body</code>.</p>
+<p>Hay un método especial <code>append</code> para ello: <code>document.body.append(div)</code>.</p>
+<p>El código completo:</p>
+<div id="4wlx7whiaw" data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+  let div = document.createElement('div');
+  div.className = &quot;alert&quot;;
+  div.innerHTML = &quot;&lt;strong&gt;¡Hola!&lt;/strong&gt; Usted ha leído un importante mensaje.&quot;;
+
+  document.body.append(div);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí usamos el método <code>append</code> sobre <code>document.body</code>, pero podemos llamar <code>append</code> sobre cualquier elemento para poner otro elemento dentro de él. Por ejemplo, podemos añadir algo a <code>&lt;div&gt;</code> llamando <code>div.append(anotherElement)</code>.</p>
+<p>Aquí hay más métodos de inserción, ellos especifican diferentes lugares donde insertar:</p>
+<ul>
+<li><code>node.append(...nodos o strings)</code> – agrega nodos o strings <em>al final</em> de <code>node</code>,</li>
+<li><code>node.prepend(...nodos o strings)</code> – insert nodos o strings <em>al principio</em> de <code>node</code>,</li>
+<li><code>node.before(...nodos o strings)</code> –- inserta nodos o strings <em>antes</em> de  <code>node</code>,</li>
+<li><code>node.after(...nodos o strings)</code> –- inserta nodos o strings <em>después</em> de <code>node</code>,</li>
+<li><code>node.replaceWith(...nodos o strings)</code> –- reemplaza <code>node</code> con los nodos o strings dados.</li>
+</ul>
+<p>Los argumentos de estos métodos son una lista arbitraria de lo que se va a insertar: nodos DOM o strings de texto (estos se vuelven nodos de texto automáticamente).</p>
+<p>Veámoslo en acción.</p>
+<p>Aquí tenemos un ejemplo del uso de estos métodos para agregar items a una lista y el texto antes/después de él:</p>
+<div id="wn1n1trc8y" data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ol id=&quot;ol&quot;&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  ol.before('before'); // inserta el string &quot;before&quot; antes de &lt;ol&gt;
+  ol.after('after'); // inserta el string &quot;after&quot; después de &lt;ol&gt;
+
+  let liFirst = document.createElement('li');
+  liFirst.innerHTML = 'prepend';
+  ol.prepend(liFirst); // inserta liFirst al principio de &lt;ol&gt;
+
+  let liLast = document.createElement('li');
+  liLast.innerHTML = 'append';
+  ol.append(liLast); // inserta liLast al final de &lt;ol&gt;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-wn1n1trc8y"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Aquí la representación visual de lo que hacen los métodos:</p>
+<figure><div class="image" style="width:409px">
+      <div class="image__ratio" style="padding-top:49.63325183374083%"></div>
+      <object type="image/svg+xml" data="article/modifying-document/before-prepend-append-after.svg" width="409" height="203" class="image__image" data-use-theme>
+        <img src="article/modifying-document/before-prepend-append-after.svg" alt="" width="409" height="203">
+      </object>
+      </div></figure><p>Entonces la lista final será:</p>
+<div id="139oylvf8e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>before
+&lt;ol id=&quot;ol&quot;&gt;
+  &lt;li&gt;prepend&lt;/li&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+  &lt;li&gt;append&lt;/li&gt;
+&lt;/ol&gt;
+after</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como dijimos antes, estos métodos pueden insertar múltiples nodos y piezas de texto en un simple llamado.</p>
+<p>Por ejemplo, aquí se insertan un string y un elemento:</p>
+<div id="372he75zbr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  div.before('&lt;p&gt;Hola&lt;/p&gt;', document.createElement('hr'));
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nota que el texto es insertado “como texto” y no “como HTML”, escapando apropiadamente los caracteres como <code>&lt;</code>, <code>&gt;</code>.</p>
+<p>Entonces el HTML final es:</p>
+<div id="61egffes6y" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&amp;lt;p&amp;gt;Hola&amp;lt;/p&amp;gt;
+&lt;hr&gt;
+&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En otras palabras, los strings son insertados en una manera segura, tal como lo hace <code>elem.textContent</code>.</p>
+<p>Entonces, estos métodos solo pueden usarse para insertar nodos DOM como piezas de texto.</p>
+<p>Pero ¿y si queremos insertar un string HTML “como html”, con todas las etiquetas y demás funcionando, de la misma manera que lo hace <code>elem.innerHTML</code>?</p>
+<h2><a class="main__anchor" name="insertadjacenthtml-text-element" href="#insertadjacenthtml-text-element">insertAdjacentHTML/Text/Element</a></h2><p>Para ello podemos usar otro métodos, muy versátil: <code>elem.insertAdjacentHTML(where, html)</code>.</p>
+<p>El primer parámetro es un palabra código que especifica dónde insertar relativo a <code>elem</code>. Debe ser uno de los siguientes:</p>
+<ul>
+<li><code>&quot;beforebegin&quot;</code> – inserta <code>html</code> inmediatamente antes de <code>elem</code></li>
+<li><code>&quot;afterbegin&quot;</code> – inserta <code>html</code> en <code>elem</code>, al principio</li>
+<li><code>&quot;beforeend&quot;</code> – inserta <code>html</code> en <code>elem</code>, al final</li>
+<li><code>&quot;afterend&quot;</code> – inserta <code>html</code> inmediatamente después de <code>elem</code></li>
+</ul>
+<p>El segundo parámetro es un string HTML, que es insertado “como HTML”.</p>
+<p>Por ejemplo:</p>
+<div id="rhabo1li87" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  div.insertAdjacentHTML('beforebegin', '&lt;p&gt;Hola&lt;/p&gt;');
+  div.insertAdjacentHTML('afterend', '&lt;p&gt;Adiós&lt;/p&gt;');
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…resulta en:</p>
+<div id="und11x1mvj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;Hola&lt;/p&gt;
+&lt;div id=&quot;div&quot;&gt;&lt;/div&gt;
+&lt;p&gt;Adiós&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Así es como podemos añadir HTML arbitrario a la página.</p>
+<p>Aquí abajo, la imagen de las variantes de inserción:</p>
+<figure><div class="image" style="width:409px">
+      <div class="image__ratio" style="padding-top:49.63325183374083%"></div>
+      <object type="image/svg+xml" data="article/modifying-document/insert-adjacent.svg" width="409" height="203" class="image__image" data-use-theme>
+        <img src="article/modifying-document/insert-adjacent.svg" alt="" width="409" height="203">
+      </object>
+      </div></figure><p>Fácilmente podemos notar similitudes entre esta imagen y la anterior. Los puntos de inserción son los mismos, pero este método inserta HTML.</p>
+<p>El método tiene dos hermanos:</p>
+<ul>
+<li><code>elem.insertAdjacentText(where, text)</code> – la misma sintaxis, pero un string de <code>texto</code> es insertado “como texto” en vez de HTML,</li>
+<li><code>elem.insertAdjacentElement(where, elem)</code> – la misma sintaxis, pero inserta un elemento.</li>
+</ul>
+<p>Ellos existen principalmente para hacer la sintaxis “uniforme”. En la práctica, solo <code>insertAdjacentHTML</code> es usado la mayor parte del tiempo. Porque para elementos y texto, tenemos los métodos <code>append/prepend/before/after</code>: son más cortos para escribir y pueden insertar piezas de texto y nodos.</p>
+<p>Entonces tenemos una alternativa para mostrar un mensaje:</p>
+<div id="h9gcvf4hzu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+  document.body.insertAdjacentHTML(&quot;afterbegin&quot;, `&lt;div class=&quot;alert&quot;&gt;
+    &lt;strong&gt;¡Hola!&lt;/strong&gt; Usted ha leído un importante mensaje.
+  &lt;/div&gt;`);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="eliminacion-de-nodos" href="#eliminacion-de-nodos">Eliminación de nodos</a></h2><p>Para quitar un nodo, tenemos el método <code>node.remove()</code>.</p>
+<p>Hagamos que nuestro mensaje desaparezca después de un segundo:</p>
+<div id="1ic3ygwlgt" data-trusted="0" class="code-example" data-highlight="[{&quot;start&quot;:16,&quot;end&quot;:16}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;script&gt;
+  let div = document.createElement('div');
+  div.className = &quot;alert&quot;;
+  div.innerHTML = &quot;&lt;strong&gt;¡Hola!&lt;/strong&gt; Usted ha leído un importante mensaje.&quot;;
+
+  document.body.append(div);
+  setTimeout(() =&gt; div.remove(), 1000);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nota que si queremos <em>mover</em> un elemento a un nuevo lugar, no hay necesidad de quitarlo del viejo.</p>
+<p><strong>Todos los métodos de inserción automáticamente quitan el nodo del lugar viejo.</strong></p>
+<p>Por ejemplo, intercambiemos elementos:</p>
+<div id="umlgmmsehj" data-trusted="1" class="code-example" data-demo-height="50">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div id=&quot;first&quot;&gt;Primero&lt;/div&gt;
+&lt;div id=&quot;second&quot;&gt;Segundo&lt;/div&gt;
+&lt;script&gt;
+  // no hay necesidad de llamar &quot;remove&quot;
+  second.after(first); // toma #second y después inserta #first
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="clonando-nodos-clonenode" href="#clonando-nodos-clonenode">Clonando nodos: cloneNode</a></h2><p>¿Cómo insertar un mensaje similar más?</p>
+<p>Podríamos hacer una función y poner el código allí. Pero la alternativa es <em>clonar</em> el <code>div</code> existente, y modificar el texto dentro si es necesario.</p>
+<p>A veces, cuando tenemos un elemento grande, esto es más simple y rápido.</p>
+<ul>
+<li>La llamada <code>elem.cloneNode(true)</code> crea una clonación “profunda” del elemento, con todos los atributos y subelementos. Si llamamos <code>elem.cloneNode(false)</code>, la clonación se hace sin sus elementos hijos.</li>
+</ul>
+<p>Un ejemplo de copia del mensaje:</p>
+<div id="0zou4uxd6i" data-trusted="1" class="code-example" data-demo-height="120" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:18}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;style&gt;
+.alert {
+  padding: 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  color: #3c763d;
+  background-color: #dff0d8;
+}
+&lt;/style&gt;
+
+&lt;div class=&quot;alert&quot; id=&quot;div&quot;&gt;
+  &lt;strong&gt;¡Hola!&lt;/strong&gt; Usted ha leído un importante mensaje.
+&lt;/div&gt;
+
+&lt;script&gt;
+  let div2 = div.cloneNode(true); // clona el mensaje
+  div2.querySelector('strong').innerHTML = '¡Adiós!'; // altera el clon
+
+  div.after(div2); // muestra el clon después del div existente
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="document-fragment" href="#document-fragment">DocumentFragment</a></h2><p><code>DocumentFragment</code> es un nodo DOM especial que sirve como contenedor para trasladar listas de nodos.</p>
+<p>Podemos agregarle nodos, pero cuando lo insertamos en algún lugar, lo que se inserta es su contenido.</p>
+<p>Por ejemplo, <code>getListContent</code> de abajo genera un fragmento con items <code>&lt;li&gt;</code>, que luego son insertados en <code>&lt;ul&gt;</code>:</p>
+<div id="h5uy2kxg8h" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ul id=&quot;ul&quot;&gt;&lt;/ul&gt;
+
+&lt;script&gt;
+function getListContent() {
+  let fragment = new DocumentFragment();
+
+  for(let i=1; i&lt;=3; i++) {
+    let li = document.createElement('li');
+    li.append(i);
+    fragment.append(li);
+  }
+
+  return fragment;
+}
+
+ul.append(getListContent()); // (*)
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nota que a la última línea <code>(*)</code> añadimos <code>DocumentFragment</code>, pero este despliega su contenido. Entonces la estructura resultante será:</p>
+<div id="dvegm486km" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ul&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+  &lt;li&gt;3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Es raro que <code>DocumentFragment</code> se use explícitamente. ¿Por qué añadir un tipo especial de nodo si en su lugar  podemos devolver un array de nodos? El ejemplo reescrito:</p>
+<div id="ryg5q8a9xp" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:15,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ul id=&quot;ul&quot;&gt;&lt;/ul&gt;
+
+&lt;script&gt;
+function getListContent() {
+  let result = [];
+
+  for(let i=1; i&lt;=3; i++) {
+    let li = document.createElement('li');
+    li.append(i);
+    result.push(li);
+  }
+
+  return result;
+}
+
+ul.append(...getListContent()); // append +  el operador &quot;...&quot; = ¡amigos!
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Mencionamos <code>DocumentFragment</code> principalmente porque hay algunos conceptos asociados a él, como el elemento <a href="template-element.html">template</a>, que cubriremos mucho después.</p>
+<h2><a class="main__anchor" name="metodos-de-la-vieja-escuela-para-insertar-quitar" href="#metodos-de-la-vieja-escuela-para-insertar-quitar">Métodos de la vieja escuela para insertar/quitar</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Vieja escuela</span></div>
+            <div class="important__content">
+            Esta información ayuda a entender los viejos scripts, pero no es necesaria para nuevos desarrollos.
+            </div></div>
+<p>Hay también métodos de manipulación de DOM de “vieja escuela”, existentes por razones históricas.</p>
+<p>Estos métodos vienen de realmente viejos tiempos. No hay razón para usarlos estos días, ya que los métodos modernos como <code>append</code>, <code>prepend</code>, <code>before</code>, <code>after</code>, <code>remove</code>, <code>replaceWith</code>, son más flexibles.</p>
+<p>La única razón por la que los listamos aquí es porque podrías encontrarlos en viejos scripts:</p>
+<dl>
+<dt><code>parentElem.appendChild(node)</code></dt>
+<dd>
+<p>Añade <code>node</code> como último hijo de <code>parentElem</code>.</p>
+<p>El siguiente ejemplo agrega un nuevo <code>&lt;li&gt;</code> al final de <code>&lt;ol&gt;</code>:</p>
+<div id="wlf5obpkbw" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ol id=&quot;list&quot;&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  let newLi = document.createElement('li');
+  newLi.innerHTML = '¡Hola, mundo!';
+
+  list.appendChild(newLi);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>parentElem.insertBefore(node, nextSibling)</code></dt>
+<dd>
+<p>Inserta <code>node</code> antes de <code>nextSibling</code> dentro de <code>parentElem</code>.</p>
+<p>El siguiente código inserta un nuevo ítem de lista antes del segundo <code>&lt;li&gt;</code>:</p>
+<div id="2t68bsbpqm" data-trusted="1" class="code-example" data-demo-height="100" data-highlight="[{&quot;start&quot;:9,&quot;end&quot;:9}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ol id=&quot;list&quot;&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+&lt;script&gt;
+  let newLi = document.createElement('li');
+  newLi.innerHTML = '¡Hola, mundo!';
+
+  list.insertBefore(newLi, list.children[1]);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para insertar <code>newLi</code> como primer elemento, podemos hacerlo así:</p>
+<div id="nfmmmbycw3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>list.insertBefore(newLi, list.firstChild);</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>parentElem.replaceChild(node, oldChild)</code></dt>
+<dd>
+<p>Reemplaza <code>oldChild</code> con <code>node</code> entre los hijos de <code>parentElem</code>.</p>
+</dd>
+<dt><code>parentElem.removeChild(node)</code></dt>
+<dd>
+<p>Quita <code>node</code> de <code>parentElem</code> (asumiendo que <code>node</code> es su hijo).</p>
+<p>El siguiente ejemplo quita el primer <code>&lt;li&gt;</code> de <code>&lt;ol&gt;</code>:</p>
+<div id="i4ujj1k9sn" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ol id=&quot;list&quot;&gt;
+  &lt;li&gt;0&lt;/li&gt;
+  &lt;li&gt;1&lt;/li&gt;
+  &lt;li&gt;2&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  let li = list.firstElementChild;
+  list.removeChild(li);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<p>Todos estos métodos devuelven el nodo insertado/quitado. En otras palabras, <code>parentElem.appendChild(node)</code> devuelve <code>node</code>. Pero lo usual es que el valor no se use y solo ejecutemos el método.</p>
+<h2><a class="main__anchor" name="una-palabra-acerca-de-document-write" href="#una-palabra-acerca-de-document-write">Una palabra acerca de “document.write”</a></h2><p>Hay uno más, un método muy antiguo para agregar algo a una página web: <code>document.write</code>.</p>
+<p>La sintaxis:</p>
+<div id="x3c2d9paz4" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;En algún lugar de la página...&lt;/p&gt;
+&lt;script&gt;
+  document.write('&lt;b&gt;Saludos de JS&lt;/b&gt;');
+&lt;/script&gt;
+&lt;p&gt;Fin&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El llamado a <code>document.write(html)</code> escribe el <code>html</code> en la página “aquí y ahora”. El string <code>html</code> puede ser generado dinámicamente, así que es muy flexible. Podemos usar JavaScript para crear una página completa al vuelo y escribirla.</p>
+<p>El método viene de tiempos en que no había DOM ni estándares… Realmente viejos tiempos. Todavía vive, porque hay scripts que lo usan.</p>
+<p>En scripts modernos rara vez lo vemos, por una importante limitación:</p>
+<p><strong>El llamado a <code>document.write</code> solo funciona mientras la página está cargando.</strong></p>
+<p>Si la llamamos después, el contenido existente del documento es borrado.</p>
+<p>Por ejemplo:</p>
+<div id="bnoopltnk4" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;Después de un segundo el contenido de esta página será reemplazado...&lt;/p&gt;
+&lt;script&gt;
+  // document.write después de 1 segundo
+  // eso es después de que la página cargó, entonces borra el contenido existente
+  setTimeout(() =&gt; document.write('&lt;b&gt;...Por esto.&lt;/b&gt;'), 1000);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Así que es bastante inusable en el estado “after loaded” (después de cargado), al contrario de los otros métodos DOM que cubrimos antes.</p>
+<p>Ese es el punto en contra.</p>
+<p>También tiene un punto a favor. Técnicamente, cuando es llamado <code>document.write</code> mientras el navegador está leyendo el HTML entrante (“parsing”), y escribe algo, el navegador lo consume como si hubiera estado inicialmente allí, en el texto HTML.</p>
+<p>Así que funciona muy rápido, porque no hay una “modificación de DOM” involucrada. Escribe directamente en el texto de la página mientras el DOM ni siquiera está construido.</p>
+<p>Entonces: si necesitamos agregar un montón de texto en HTML dinámicamente, estamos en la fase de carga de página, y la velocidad es importante, esto puede ayudar. Pero en la práctica estos requerimientos raramente vienen juntos. Así que si vemos este método en scripts, probablemente sea solo porque son viejos.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>
+<p>Métodos para crear nuevos nodos:</p>
+<ul>
+<li><code>document.createElement(tag)</code> – crea un elemento con la etiqueta HTML dada</li>
+<li><code>document.createTextNode(value)</code> – crea un nodo de texto (raramente usado)</li>
+<li><code>elem.cloneNode(deep)</code> – clona el elemento. Si <code>deep==true</code>, lo clona con todos sus descendientes.</li>
+</ul>
+</li>
+<li>
+<p>Inserción y eliminación:</p>
+<ul>
+<li><code>node.append(...nodes or strings)</code> – inserta en <code>node</code>, al final</li>
+<li><code>node.prepend(...nodes or strings)</code> – inserta en <code>node</code>, al principio</li>
+<li><code>node.before(...nodes or strings)</code> –- inserta inmediatamente antes de <code>node</code></li>
+<li><code>node.after(...nodes or strings)</code> –- inserta inmediatamente después de <code>node</code></li>
+<li><code>node.replaceWith(...nodes or strings)</code> –- reemplaza <code>node</code></li>
+<li><code>node.remove()</code> –- quita el <code>node</code>.</li>
+</ul>
+<p>Los strings de texto son insertados “como texto”.</p>
+</li>
+<li>
+<p>También hay métodos “de vieja escuela”:</p>
+<ul>
+<li><code>parent.appendChild(node)</code></li>
+<li><code>parent.insertBefore(node, nextSibling)</code></li>
+<li><code>parent.removeChild(node)</code></li>
+<li><code>parent.replaceChild(newElem, node)</code></li>
+</ul>
+<p>Todos estos métodos devuelven <code>node</code>.</p>
+</li>
+<li>
+<p>Dado cierto HTML en <code>html</code>, <code>elem.insertAdjacentHTML(where, html)</code> lo inserta dependiendo del valor <code>where</code>:</p>
+<ul>
+<li><code>&quot;beforebegin&quot;</code> – inserta <code>html</code> inmediatamente antes de <code>elem</code></li>
+<li><code>&quot;afterbegin&quot;</code> – inserta <code>html</code> en <code>elem</code>, al principio</li>
+<li><code>&quot;beforeend&quot;</code> – inserta <code>html</code> en <code>elem</code>, al final</li>
+<li><code>&quot;afterend&quot;</code> – inserta <code>html</code> inmediatamente después de<code>elem</code></li>
+</ul>
+<p>También hay métodos similares, <code>elem.insertAdjacentText</code> y <code>elem.insertAdjacentElement</code>, que insertan strings de texto y elementos, pero son raramente usados.</p>
+</li>
+<li>
+<p>Para agregar HTML a la página antes de que haya terminado de cargar:</p>
+<ul>
+<li><code>document.write(html)</code></li>
+</ul>
+<p>Después de que la página fue cargada tal llamada borra el documento. Puede verse principalmente en scripts viejos.</p>
+</li>
+</ul>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#createtextnode-vs-innerhtml-vs-textcontent" name="createtextnode-vs-innerhtml-vs-textcontent">createTextNode vs innerHTML vs textContent</a></h3><a class="task__open-link" href="task/createtextnode-vs-innerhtml.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Tenemos un elemento DOM vacio <code>elem</code> y un string <code>text</code>.</p>
+<p>¿Cuáles de estos 3 comandos harán exactamente lo mismo?</p>
+<ol>
+<li><code>elem.append(document.createTextNode(text))</code></li>
+<li><code>elem.innerHTML = text</code></li>
+<li><code>elem.textContent = text</code></li>
+</ol>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Respuesta: <strong>1 y 3</strong>.</p>
+<p>Ambos comandos agregan <code>text</code> “como texto” dentro de <code>elem</code>.</p>
+<p>Aquí el ejemplo:</p>
+<div id="y4i7w5ve1p" data-trusted="1" class="code-example" data-demo-height="80">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div id=&quot;elem1&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;elem2&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;elem3&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  let text = '&lt;b&gt;text&lt;/b&gt;';
+
+  elem1.append(document.createTextNode(text));
+  elem2.innerHTML = text;
+  elem3.textContent = text;
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#limpiar-el-elemento" name="limpiar-el-elemento">Limpiar el elemento</a></h3><a class="task__open-link" href="task/clear-elem.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>clear(elem)</code> que remueva todo del elemento.</p>
+<div id="n9fxccvpgw" data-trusted="1" class="code-example" data-demo-height="60">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ol id=&quot;elem&quot;&gt;
+  &lt;li&gt;Hola&lt;/li&gt;
+  &lt;li&gt;mundo&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;script&gt;
+  function clear(elem) { /* tu código */ }
+
+  clear(elem); // borra la lista
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Primero veamos cómo <em>no</em> hacerlo:</p>
+<div id="716d5l77lx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function clear(elem) {
+  for (let i=0; i &lt; elem.childNodes.length; i++) {
+      elem.childNodes[i].remove();
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso no funciona, porque la llamada a <code>remove()</code> desplaza la colección <code>elem.childNodes</code>, entonces los elementos comienzan desde el índice <code>0</code> cada vez. Pero <code>i</code> se incrementa y algunos elementos serán saltados.</p>
+<p>El bucle <code>for..of</code> también hace lo mismo.</p>
+<p>Una variante correcta puede ser:</p>
+<div id="ar70ceo6vg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function clear(elem) {
+  while (elem.firstChild) {
+    elem.firstChild.remove();
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y también una manera más simple de hacer lo mismo:</p>
+<div id="sex9kt91ib" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function clear(elem) {
+  elem.innerHTML = '';
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#por-que-aaa-permanece" name="por-que-aaa-permanece">Por qué &quot;aaa&quot; permanece?</a></h3><a class="task__open-link" href="task/why-aaa.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 1</span></div><div class="task__content"><div class="task__formatted"><p>En el ejemplo de abajo, la llamada <code>table.remove()</code> quita la tabla del documento.</p>
+<p>Pero si la ejecutas, puedes ver que el texto “aaa”` es aún visible.</p>
+<p>¿Por qué ocurre esto?</p>
+<div id="j1h3s1zqrk" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;table id=&quot;table&quot;&gt;
+  aaa
+  &lt;tr&gt;
+    &lt;td&gt;Test&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;script&gt;
+  alert(table); // la tabla, tal como debería ser
+
+  table.remove();
+  // ¿Por qué aún está &quot;aaa&quot; en el documento?
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El HTML de la tarea es incorrecto. Esa es la razón del comportamiento extraño.</p>
+<p>El navegador tiene que corregirlo automáticamente. No debe haber texto dentro de <code>&lt;table&gt;</code>: de acuerdo con la especificación solo son permitidas las etiquetas específicas de tabla. Entonces el navegador ubica <code>&quot;aaa&quot;</code> <em>antes</em> de <code>&lt;table&gt;</code>.</p>
+<p>Ahora resulta obvio que cuando quitamos la tabla, ese texto permanece.</p>
+<p>La pregunta puede ser respondida fácilmente explorando el DOM usando la herramientas del navegador. Estas muestran <code>&quot;aaa&quot;</code> antes que <code>&lt;table&gt;</code>.</p>
+<p>El estándar HTML especifica en detalle cómo procesar HTML incorrecto, y tal comportamiento del navegador es el correcto.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crear-una-lista" name="crear-una-lista">Crear una lista</a></h3><a class="task__open-link" href="task/create-list.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Escribir una interfaz para crear una lista de lo que ingresa un usuario.</p>
+<p>Para cada item de la lista:</p>
+<ol>
+<li>Preguntar al usuario acerca del contenido usando <code>prompt</code>.</li>
+<li>Crear el <code>&lt;li&gt;</code> con ello y agregarlo a <code>&lt;ul&gt;</code>.</li>
+<li>Continuar hasta que el usuario cancela el ingreso (presionando <kbd class="shortcut">Esc</kbd> o con un ingreso vacío).</li>
+</ol>
+<p>Todos los elementos deben ser creados dinámicamente.</p>
+<p>Si el usuario ingresa etiquetas HTML, deben ser tratadas como texto.</p>
+<p><a href="https://es.js.cx/task/create-list/solution/" target="blank">Demo en nueva ventana</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Observa el uso de <code>textContent</code> para asignar el contenido de <code>&lt;li&gt;</code>.</p>
+<p><a href="https://plnkr.co/edit/ICz34vCzmZsXBAlQ?p=preview" target="_blank" data-plunk-id="ICz34vCzmZsXBAlQ">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crea-un-arbol-desde-el-objeto" name="crea-un-arbol-desde-el-objeto">Crea un árbol desde el objeto</a></h3><a class="task__open-link" href="task/create-object-tree.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>createTree</code> que crea una lista ramificada <code>ul/li</code> desde un objeto ramificado.</p>
+<p>Por ejemplo:</p>
+<div id="ya8qwz04j5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let data = {
+  &quot;Fish&quot;: {
+    &quot;trout&quot;: {},
+    &quot;salmon&quot;: {}
+  },
+
+  &quot;Tree&quot;: {
+    &quot;Huge&quot;: {
+      &quot;sequoia&quot;: {},
+      &quot;oak&quot;: {}
+    },
+    &quot;Flowering&quot;: {
+      &quot;apple tree&quot;: {},
+      &quot;magnolia&quot;: {}
+    }
+  }
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La sintaxis:</p>
+<div id="cpphhaccdp" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let container = document.getElementById('container');
+createTree(container, data); // crea el árbol en el contenedor</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El árbol resultante debe verse así:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="https://es.js.cx/task/create-object-tree/build-tree-dom/"></iframe>
+  </div><p>Elige una de estas dos formas para resolver esta tarea:</p>
+<ol>
+<li>Crear el HTML para el árbol y entonces asignarlo a <code>container.innerHTML</code>.</li>
+<li>Crear los nodos del árbol y añadirlos con métodos DOM.</li>
+</ol>
+<p>Sería muy bueno que hicieras ambas soluciones.</p>
+<p>P.S. El árbol no debe tener elementos “extras” como <code>&lt;ul&gt;&lt;/ul&gt;</code> vacíos para las hojas.</p>
+<p><a href="https://plnkr.co/edit/l0kBbEcYYo6GDIq8?p=preview" target="_blank" data-plunk-id="l0kBbEcYYo6GDIq8">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La forma más fácil de recorrer el objeto es usando recursividad.</p>
+<ol>
+<li><a href="https://plnkr.co/edit/X3lOXz8522p8T11r?p=preview">La solución con innerHTML</a>.</li>
+<li><a href="https://plnkr.co/edit/J6zGIkNbpWzSdT1O?p=preview">La solución con DOM</a>.</li>
+</ol>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#mostrar-descendientes-en-un-arbol" name="mostrar-descendientes-en-un-arbol">Mostrar descendientes en un árbol</a></h3><a class="task__open-link" href="task/tree-count.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Hay un árbol organizado como ramas <code>ul/li</code>.</p>
+<p>Escribe el código que agrega a cada <code>&lt;li&gt;</code> el número de su descendientes. No cuentes las hojas (nodos sin hijos).</p>
+<p>El resultado:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:300px" src="https://es.js.cx/task/tree-count/solution/"></iframe>
+  </div><p><a href="https://plnkr.co/edit/Q1Ru6e1WbVn5V4Pf?p=preview" target="_blank" data-plunk-id="Q1Ru6e1WbVn5V4Pf">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para añadir texto a cada <code>&lt;li&gt;</code> podemos alterar el nodo texto <code>data</code>.</p>
+<p><a href="https://plnkr.co/edit/v5UJKPbSnAoV9xbV?p=preview" target="_blank" data-plunk-id="v5UJKPbSnAoV9xbV">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crea-un-calendario" name="crea-un-calendario">Crea un calendario</a></h3><a class="task__open-link" href="task/calendar-table.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>createCalendar(elem, year, month)</code>.</p>
+<p>Su llamado debe crear un calendario para el año y mes dados y ponerlo dentro de <code>elem</code>.</p>
+<p>El calendario debe ser una tabla, donde una semana es <code>&lt;tr&gt;</code>, y un día es<code>&lt;td&gt;</code>. Los encabezados de la tabla deben ser <code>&lt;th&gt;</code> con los nombres de los días de la semana: el primer día debe ser “lunes” y así hasta “domingo”.</p>
+<p>Por ejemplo, <code>createCalendar(cal, 2012, 9)</code> debe generar en el elemento <code>cal</code> el siguiente calendario:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:210px" src="https://es.js.cx/task/calendar-table/solution/"></iframe>
+  </div><p>P.S. Para esta tarea es suficiente generar el calendario, no necesita aún ser cliqueable.</p>
+<p><a href="https://plnkr.co/edit/qCZOvoQjHsr6YpI4?p=preview" target="_blank" data-plunk-id="qCZOvoQjHsr6YpI4">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Crearemos la tabla como un string: <code>&quot;&lt;table&gt;...&lt;/table&gt;&quot;</code>, y entonces lo asignamos a <code>innerHTML</code>.</p>
+<p>El algoritmo:</p>
+<ol>
+<li>Crea el encabezado de la tabla con <code>&lt;th&gt;</code> y los nombres de los días de la semana.</li>
+<li>Crea el objeto date <code>d = new Date(year, month-1)</code>. Este es el primer día del mes <code>month</code> (tomando en cuenta que los meses en JavaScript comienzan en <code>0</code>, no <code>1</code>).</li>
+<li>Las primeras celdas hasta el primer día del mes <code>d.getDay()</code> podrían estar vacías. Las completamos con <code>&lt;td&gt;&lt;/td&gt;</code>.</li>
+<li>Incrementa el día en <code>d</code>: <code>d.setDate(d.getDate()+1)</code>. Si <code>d.getMonth()</code> no es aún del mes siguiente, agregamos una nueva celda <code>&lt;td&gt;</code> al calendario. Si es domingo, agregamos un nueva línea<code>&quot;&lt;/tr&gt;&lt;tr&gt;&quot;</code>.</li>
+<li>Si el mes terminó, pero la fila no está completa, le agregamos <code>&lt;td&gt;</code> vacíos para hacerlo rectangular.</li>
+</ol>
+<p><a href="https://plnkr.co/edit/Q4iQgj6roqbfSmUX?p=preview" target="_blank" data-plunk-id="Q4iQgj6roqbfSmUX">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#reloj-coloreado-con-setinterval" name="reloj-coloreado-con-setinterval">Reloj coloreado con setInterval</a></h3><a class="task__open-link" href="task/clock-setinterval.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Crea un reloj coloreado como aquí:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:60px" src="https://es.js.cx/task/clock-setinterval/solution/"></iframe>
+  </div><p>Usa HTML/CSS para el estilo, JavaScript solamente actualiza la hora en elements.</p>
+<p><a href="https://plnkr.co/edit/iRAuiZYTnUaJqXbn?p=preview" target="_blank" data-plunk-id="iRAuiZYTnUaJqXbn">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Primero escribamos HTML/CSS.</p>
+<p>Cada componente de la hora se verá muy bien dentro de su propio <code>&lt;span&gt;</code>:</p>
+<div id="jhwv174bi9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;div id=&quot;clock&quot;&gt;
+  &lt;span class=&quot;hour&quot;&gt;hh&lt;/span&gt;:&lt;span class=&quot;min&quot;&gt;mm&lt;/span&gt;:&lt;span class=&quot;sec&quot;&gt;ss&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También necesitamos CSS para colorearlos.</p>
+<p>La función <code>update</code> que refrescará el reloj será llamada por <code>setInterval</code> una vez por segundo:</p>
+<div id="ppgj8zry4v" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function update() {
+  let clock = document.getElementById('clock');
+  let date = new Date(); // (*)
+  let hours = date.getHours();
+  if (hours &lt; 10) hours = '0' + hours;
+  clock.children[0].innerHTML = hours;
+
+  let minutes = date.getMinutes();
+  if (minutes &lt; 10) minutes = '0' + minutes;
+  clock.children[1].innerHTML = minutes;
+
+  let seconds = date.getSeconds();
+  if (seconds &lt; 10) seconds = '0' + seconds;
+  clock.children[2].innerHTML = seconds;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En la línea <code>(*)</code> verificamos la hora cada vez. Las llamadas a <code>setInterval</code> no son confiables: pueden ocurrir con demoras.</p>
+<p>Las funciones que manejan el reloj:</p>
+<div id="bu2ka58z48" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let timerId;
+
+function clockStart() { // ejecuta el reloj
+  if (!timerId) { // solo establece un nuevo intervalo si el reloj no está corriendo
+    timerId = setInterval(update, 1000);
+  }
+  update(); // (*)
+}
+
+function clockStop() {
+  clearInterval(timerId);
+  timerId = null; // (**)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nota que la llamada a <code>update()</code> no solo está agendada en <code>clockStart()</code>, también la ejecuta inmediatamente en la línea <code>(*)</code>. De otro modo el visitante tendría que esperar hasta la primera ejecución de <code>setInterval</code>. Y el reloj estaría vacío hasta entonces.</p>
+<p>También es importante establecer un nuevo intervalo en <code>clockStart()</code> solamente cuando el reloj no está corriendo. De otra forma al cliquear el botón de inicio varias veces se establecerían múltiples intervalos concurrentes. Peor aún, solo mantendríamos el <code>timerID</code> del último intervalo, perdiendo referencia a todos los demás. ¡No podríamos detener el reloj nunca más! Nota que necesitamos limpiar <code>timerID</code> cuando el reloj es detenido en la línea <code>(**)</code>, así puede ser reiniciado corriendo <code>clockStart()</code>.</p>
+<p><a href="https://plnkr.co/edit/Xyrb3N72BciRwTgY?p=preview" target="_blank" data-plunk-id="Xyrb3N72BciRwTgY">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#inserta-el-html-en-la-lista" name="inserta-el-html-en-la-lista">Inserta el  HTML en la lista</a></h3><a class="task__open-link" href="task/append-to-list.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe el código para insertar  <code>&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;</code> entre dos <code>&lt;li&gt;</code> aquí:</p>
+<div id="4e0vl4rgou" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ul id=&quot;ul&quot;&gt;
+  &lt;li id=&quot;one&quot;&gt;1&lt;/li&gt;
+  &lt;li id=&quot;two&quot;&gt;4&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Cuando necesitamos insertar una pieza de HTML en algún lugar, <code>insertAdjacentHTML</code> es lo más adecuado.</p>
+<p>La solución:</p>
+<div id="argbyhiu53" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>one.insertAdjacentHTML('afterend', '&lt;li&gt;2&lt;/li&gt;&lt;li&gt;3&lt;/li&gt;');</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ordena-la-tabla" name="ordena-la-tabla">Ordena la tabla</a></h3><a class="task__open-link" href="task/sort-table.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Tenemos una tabla:</p>
+<div id="sgkc5lzwu9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;table&gt;
+&lt;thead&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Surname&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;John&lt;/td&gt;&lt;td&gt;Smith&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Pete&lt;/td&gt;&lt;td&gt;Brown&lt;/td&gt;&lt;td&gt;15&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Ann&lt;/td&gt;&lt;td&gt;Lee&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;...&lt;/td&gt;&lt;td&gt;...&lt;/td&gt;&lt;td&gt;...&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Puede haber más filas en ella.</p>
+<p>Escribe el código para ordenarla por la columna <code>&quot;name&quot;</code>.</p>
+<p><a href="https://plnkr.co/edit/BQJKn8foeUagO7bY?p=preview" target="_blank" data-plunk-id="BQJKn8foeUagO7bY">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La solución es corta, pero puede verse algo dificultosa así que brindamos comentarios extendidos:</p>
+<div id="ktsvme0u6r" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let sortedRows = Array.from(table.tBodies[0].rows) // 1
+  .sort((rowA, rowB) =&gt; rowA.cells[0].innerHTML.localeCompare(rowB.cells[0].innerHTML));
+
+table.tBodies[0].append(...sortedRows); // (3)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El algoritmo paso a paso:</p>
+<ol>
+<li>Obtener todos los <code>&lt;tr&gt;</code> de <code>&lt;tbody&gt;</code>.</li>
+<li>Entonces ordenarlos comparando por el contenido de su primer <code>&lt;td&gt;</code> (el campo nombre).</li>
+<li>Ahora insertar nodos en el orden correcto con <code>.append(...sortedRows)</code>.</li>
+</ol>
+<p>No necesitamos quitar los elementos row, simplemente “reinsertarlos”, ellos dejan el viejo lugar automáticamente.</p>
+<p>P.S. En nuestro caso, hay un <code>&lt;tbody&gt;</code> explícito en la tabla, pero incluso si la tabla HTML no tiene <code>&lt;tbody&gt;</code>, la estructura DOM siempre lo tiene.</p>
+<p><a href="https://plnkr.co/edit/DcRypTtwPr0Rcn9Z?p=preview" target="_blank" data-plunk-id="DcRypTtwPr0Rcn9Z">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="dom-attributes-and-properties.html" data-tooltip="Atributos y propiedades"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="styles-and-classes.html" data-tooltip="Estilos y clases"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fmodifying-document" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fmodifying-document" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/modifying-document","identifier":"\/modifying-document"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.html">Documento</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ejemplo-mostrar-un-mensaje">Ejemplo: mostrar un mensaje</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#creando-un-elemento">Creando un elemento</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#metodos-de-insercion">Métodos de inserción</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#insertadjacenthtml-text-element">insertAdjacentHTML/Text/Element</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#eliminacion-de-nodos">Eliminación de nodos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#clonando-nodos-clonenode">Clonando nodos: cloneNode</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#document-fragment">DocumentFragment</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#metodos-de-la-vieja-escuela-para-insertar-quitar">Métodos de la vieja escuela para insertar/quitar</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#una-palabra-acerca-de-document-write">Una palabra acerca de “document.write”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (10)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fmodifying-document" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fmodifying-document" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/1-document/07-modifying-document" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/modifying-document by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:26 GMT -->
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/default-browser-action by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Acciones predeterminadas del navegador</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="default-browser-action.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Acciones predeterminadas del navegador"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Acciones predeterminadas del navegador"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="event-delegation.html"><link rel="next" href="dispatch-events.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Acciones predeterminadas del navegador"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/default-browser-action"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/default-browser-action"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="default-browser-action.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/default-browser-action"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/default-browser-action"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/default-browser-action"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/default-browser-action"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/default-browser-action"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/default-browser-action"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/default-browser-action"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/default-browser-action"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/default-browser-action"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdefault-browser-action" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fdefault-browser-action" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/default-browser-action">عربي</option><option value="https://javascript.info/default-browser-action">English</option><option value="https://es.javascript.info/default-browser-action" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/default-browser-action">Français</option><option value="https://id.javascript.info/default-browser-action">Indonesia</option><option value="https://it.javascript.info/default-browser-action">Italiano</option><option value="https://ja.javascript.info/default-browser-action">日本語</option><option value="https://ko.javascript.info/default-browser-action">한국어</option><option value="https://learn.javascript.ru/default-browser-action">Русский</option><option value="https://tr.javascript.info/default-browser-action">Türkçe</option><option value="https://uk.javascript.info/default-browser-action">Українська</option><option value="https://zh.javascript.info/default-browser-action">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="15" max="32" data-tooltip="Lección 15 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="events.html"><span>Introducción a los eventos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Introducción a los eventos","item":"https://es.javascript.info/events"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 25 de octubre de 2022"><div class="updated-at__content">25 de octubre de 2022</div></div></div><h1 class="main__header-title">Acciones predeterminadas del navegador</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Acciones predeterminadas del navegador"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Muchos eventos conducen automáticamente a determinadas acciones realizadas por el navegador.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li>Un clic en un enlace: inicia la navegación a su URL.</li>
+<li>Un clic en el botón de envío de un formulario inicia su envío al servidor.</li>
+<li>Al presionar un botón del ratón sobre un texto y moverlo, se selecciona el texto.</li>
+</ul>
+<p>Si manejamos un evento en JavaScript, es posible que no queramos que suceda la acción correspondiente del navegador e implementar en cambio otro comportamiento.</p>
+<h2><a class="main__anchor" name="evitar-las-acciones-del-navegador" href="#evitar-las-acciones-del-navegador">Evitar las acciones del navegador</a></h2><p>Hay dos formas de decirle al navegador que no queremos que actúe:</p>
+<ul>
+<li>La forma principal es utilizar el objeto <code>event</code>. Hay un método <code>event.preventDefault()</code>.</li>
+<li>Si el controlador se asigna usando <code>on&lt;event&gt;</code> (no por <code>addEventListener</code>), entonces devolver <code>false</code> también funciona igual.</li>
+</ul>
+<p>En este HTML, un clic en un enlace no conduce a la navegación. El navegador no hace nada:</p>
+<div id="rwzjerwwpc" data-trusted="1" class="code-example" data-demo-height="60" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;a href=&quot;/&quot; onclick=&quot;return false&quot;&gt;Haz clic aquí&lt;/a&gt;
+o
+&lt;a href=&quot;/&quot; onclick=&quot;event.preventDefault()&quot;&gt;aquí&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-rwzjerwwpc"
+            style="height:60px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>En el siguiente ejemplo usaremos esta técnica para crear un menú basado en JavaScript.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Regresar <code>false</code> desde un controlador es una excepción</span></div>
+            <div class="important__content"><p>El valor devuelto por un controlador de eventos generalmente se ignora.</p>
+<p>La única excepción es <code>return false</code> de un controlador asignado usando <code>on&lt;event&gt;</code>.</p>
+<p>En todos los demás casos, se ignora el valor <code>return</code>. En particular, no tiene sentido devolver <code>true</code>.</p>
+</div></div>
+<h3><a class="main__anchor" name="ejemplo-el-menu" href="#ejemplo-el-menu">Ejemplo: el menú</a></h3><p>Considere un menú de sitio, como este:</p>
+<div id="9utjrn8dd7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;ul id=&quot;menu&quot; class=&quot;menu&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;/html&quot;&gt;HTML&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/javascript&quot;&gt;JavaScript&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/css&quot;&gt;CSS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Así es como se ve con algo de CSS:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"><div class="toolbar__tool">
+        <a href="https://es.js.cx/article/default-browser-action/menu/" target="_blank" title="abrir en nueva ventana" class="toolbar__button toolbar__button_external"></a>
+      </div>
+      <div class="toolbar__tool">
+        <a href="https://plnkr.co/edit/6vKf4TunhO1cEFiC?p=preview" target="_blank" title="abrir en entorno controlado"
+        data-plunk-id="6vKf4TunhO1cEFiC" class="toolbar__button toolbar__button_edit"></a>
+      </div>
+      </div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:70px" src="https://es.js.cx/article/default-browser-action/menu/"></iframe>
+  </div><p>Los elementos del menú se implementan como enlaces HTML <code>&lt;a&gt;</code>, no como botones <code>&lt;botón&gt;</code>. Hay varias razones para hacerlo, por ejemplo:</p>
+<ul>
+<li>A muchas personas les gusta usar “clic derecho” – “abrir en una nueva ventana”. Si usamos <code>&lt;button&gt;</code> o <code>&lt;span&gt;</code>, eso no funciona.</li>
+<li>Los motores de búsqueda siguen los enlaces <code>&lt;a href=&quot;...&quot;&gt;</code> durante la indexación.</li>
+</ul>
+<p>Entonces usamos <code>&lt;a&gt;</code> en el markup. Pero normalmente pretendemos manejar clics en JavaScript. Por tanto, deberíamos evitar la acción predeterminada del navegador.</p>
+<p>Como aquí:</p>
+<div id="lf8y6b8fwe" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>menu.onclick = function(event) {
+  if (event.target.nodeName != 'A') return;
+
+  let href = event.target.getAttribute('href');
+  alert( href ); // ...se puede cargar desde el servidor, generación de interfaz de usuario, etc.
+
+  return false; // evitar la acción del navegador (no vaya a la URL)
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si omitimos <code>return false</code>, luego de ejecutar nuestro código el navegador realizará su “acción predeterminada”: navegar a la URL en <code>href</code>. Y no lo necesitamos aquí, ya que estamos manejando el clic nosotros mismos.</p>
+<p>Por cierto, usar la delegación de eventos aquí hace que nuestro menú sea muy flexible. Podemos agregar listas anidadas y diseñarlas usando CSS para “deslizarlas hacia abajo”.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Eventos de seguimiento</span></div>
+            <div class="important__content"><p>Ciertos eventos fluyen unos a otros. Si evitamos el primer evento, no habrá segundo.</p>
+<p>Por ejemplo, <code>mousedown</code> en un campo <code>&lt;input&gt;</code> conduce a enfocarse en él, y al evento <code>focus</code>. Si evitamos el evento <code>mousedown</code>, no hay enfoque.</p>
+<p>Intenta hacer clic en el primer <code>&lt;input&gt;</code> a continuación: se produce el evento <code>focus</code>. Pero si haces clic en el segundo, no hay enfoque.</p>
+<div id="1nc7i69tnz" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:7,&quot;end&quot;:33}]}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;input value=&quot;Enfoque funciona&quot; onfocus=&quot;this.value=''&quot;&gt;
+&lt;input onmousedown=&quot;return false&quot; onfocus=&quot;this.value=''&quot; value=&quot;Haz clic en mí&quot;&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-1nc7i69tnz"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Eso es porque la acción del navegador se cancela en <code>mousedown</code>. El enfoque aún es posible si usamos otra forma de ingresar la entrada. Por ejemplo, la tecla <kbd class="shortcut">Tab</kbd> para cambiar de la primera entrada a la segunda. Pero ya no con el clic del ratón.</p>
+</div></div>
+<h2><a class="main__anchor" name="la-opcion-de-controlador-pasivo" href="#la-opcion-de-controlador-pasivo">La opción de controlador “pasivo”</a></h2><p>La opción opcional <code>passive:true</code> de <code>addEventListener</code> indica al navegador que el controlador no llamará a <code>preventDefault()</code>.</p>
+<p>¿Para qué podría ser necesario?</p>
+<p>Hay algunos eventos como <code>touchmove</code> en dispositivos móviles (cuando el usuario mueve el dedo por la pantalla), que provocan el desplazamiento por defecto, pero ese desplazamiento se puede evitar usando <code>preventDefault()</code> en el controlador.</p>
+<p>Entonces, cuando el navegador detecta tal evento, primero tiene que procesar todos los controladores, y luego, si no se llama a <code>preventDefault</code> en ninguna parte, puede continuar con el desplazamiento. Eso puede causar retrasos innecesarios y “movimientos de salto repentinos” en la interfaz de usuario.</p>
+<p>Las opciones <code>passive: true</code> le dicen al navegador que el controlador no va a cancelar el desplazamiento. Entonces el navegador se desplaza de inmediato para brindar una experiencia con la máxima fluidez, y el evento se maneja de inmediato.</p>
+<p>Para algunos navegadores (Firefox, Chrome), <code>passive</code> es <code>true</code> por defecto para los eventos <code>touchstart</code> y <code>touchmove</code>.</p>
+<h2><a class="main__anchor" name="event-defaultprevented" href="#event-defaultprevented">event.defaultPrevented</a></h2><p>La propiedad <code>event.defaultPrevented</code> es <code>true</code> si se impidió la acción predeterminada y <code>false</code> en caso contrario.</p>
+<p>Hay un caso de uso interesante para ello.</p>
+<p>¿Recuerdas que en el capítulo <a href="bubbling-and-capturing.html">Propagación y captura</a> hablamos sobre <code>event.stopPropagation()</code> y por qué detener propagación es malo?</p>
+<p>A veces podemos usar <code>event.defaultPrevented</code> en su lugar, para señalar a otros controladores de eventos que el evento fue manejado.</p>
+<p>Veamos un ejemplo práctico.</p>
+<p>Por defecto, el navegador en el evento <code>contextmenu</code> (clic derecho del ratón) muestra un menú contextual con opciones estándar. Podemos prevenirlo y mostrar el nuestro, así:</p>
+<div id="fx087v49kt" data-trusted="1" class="code-example" data-demo-height="50" data-highlight="[{&quot;start&quot;:2,&quot;cols&quot;:[{&quot;start&quot;:8,&quot;end&quot;:66}]}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;button&gt;El clic derecho muestra el menú contextual del navegador&lt;/button&gt;
+
+&lt;button oncontextmenu=&quot;alert('Dibuja nuestro menú'); return false&quot;&gt;
+  El clic derecho muestra nuestro menú contextual
+&lt;/button&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-fx087v49kt"
+            style="height:50px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Ahora, además de ese menú contextual, nos gustaría implementar un menú contextual para todo el documento.</p>
+<p>Al hacer clic derecho, debería aparecer el menú contextual más cercano.</p>
+<div id="nniisp1pkd" data-trusted="1" class="code-example" data-demo-height="80" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;Haz clic derecho aquí para el menú contextual del documento&lt;/p&gt;
+&lt;button id=&quot;elem&quot;&gt;Haz clic derecho aquí para el menú contextual del botón&lt;/button&gt;
+
+&lt;script&gt;
+  elem.oncontextmenu = function(event) {
+    event.preventDefault();
+    alert(&quot;Menú contextual del botón&quot;);
+  };
+
+  document.oncontextmenu = function(event) {
+    event.preventDefault();
+    alert(&quot;Menú contextual del documento&quot;);
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-nniisp1pkd"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>El problema es que cuando hacemos clic en <code>elem</code>, obtenemos dos menús: el de nivel de botón y (el evento emerge) el menú de nivel de documento.</p>
+<p>¿Como arreglarlo? Una de las soluciones es pensar así: “Cuando hagamos clic con el botón derecho en el controlador de botones, detengamos su propagación” y usemos <code>event.stopPropagation()</code>:</p>
+<div id="giqpvwkjy" data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;Haz clic derecho para el menú del documento&lt;/p&gt;
+&lt;button id=&quot;elem&quot;&gt;Haz clic derecho para el menú del botón (arreglado con event.stopPropagation)&lt;/button&gt;
+
+&lt;script&gt;
+  elem.oncontextmenu = function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    alert(&quot;Menú contextual del botón&quot;);
+  };
+
+  document.oncontextmenu = function(event) {
+    event.preventDefault();
+    alert(&quot;Menú contextual del documento&quot;);
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-giqpvwkjy"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Ahora, el menú de nivel de botón funciona según lo previsto. Pero el precio es alto. Siempre negamos el acceso a la información sobre los clics con el botón derecho del ratón para cualquier código externo, incluidos los contadores que recopilan estadísticas, etc. Eso es bastante imprudente.</p>
+<p>¿Sería una solución alternativa verificar en el controlador <code>document</code> si se evitó la acción predeterminada? Si es así, entonces se manejó el evento y no necesitamos reaccionar ante él.</p>
+<div id="e04l8vlgh5" data-trusted="1" class="code-example" data-demo-height="80" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10}]" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;Haz clic con el botón derecho en el menú del documento (se agregó una marca de verificación para event.defaultPrevented)&lt;/p&gt;
+&lt;button id=&quot;elem&quot;&gt;Haz clic derecho para el menú de botones&lt;/button&gt;
+
+&lt;script&gt;
+  elem.oncontextmenu = function(event) {
+    event.preventDefault();
+    alert(&quot;Menú contextual del botón&quot;);
+  };
+
+  document.oncontextmenu = function(event) {
+    if (event.defaultPrevented) return;
+
+    event.preventDefault();
+    alert(&quot;Menú contextual del documento&quot;);
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-e04l8vlgh5"
+            style="height:80px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>Ahora todo también funciona correctamente. Si tenemos elementos anidados, y cada uno de ellos tiene un menú contextual propio, eso también funcionaría. Solo asegúrate de buscar <code>event.defaultPrevented</code> en cada controlador de <code>contextmenu</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">event.stopPropagation() y event.preventDefault()</span></div>
+            <div class="important__content"><p>Como podemos ver claramente, <code>event.stopPropagation()</code> y <code>event.preventDefault()</code> (también conocido como <code>return false</code>) son dos cosas diferentes. No están relacionados entre sí.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Arquitectura de menús contextuales anidados</span></div>
+            <div class="important__content"><p>También hay formas alternativas de implementar menús contextuales anidados. Uno de ellos es tener un único objeto global con un manejador para <code>document.oncontextmenu</code>, y también métodos que nos permitan almacenar otros manejadores en él.</p>
+<p>El objeto detectará cualquier clic derecho, examinará los controladores almacenados y ejecutará el apropiado.</p>
+<p>Pero entonces cada fragmento de código que quiera un menú contextual debe conocer ese objeto y usar su ayuda en lugar del propio controlador <code>contextmenu</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Hay muchas acciones predeterminadas del navegador:</p>
+<ul>
+<li><code>mousedown</code> – inicia la selección (mueva el ratón para seleccionar).</li>
+<li><code>click</code> en <code>&lt;input type=&quot;checkbox&quot;&gt;</code> – marca/desmarca el <code>input</code>.</li>
+<li><code>submit</code> – dar clic en <code>&lt;input type=&quot;submit&quot;&gt;</code> o presionar <kbd class="shortcut">Enter</kbd> dentro de un campo de formulario hace que suceda este evento y el navegador envía el formulario a continuación.</li>
+<li><code>keydown</code> – presionar una tecla puede llevar a agregar un carácter a un campo u otras acciones.</li>
+<li><code>contextmenu</code> – el evento ocurre con un clic derecho, la acción es mostrar el menú contextual del navegador.</li>
+<li>…hay mas…</li>
+</ul>
+<p>Todas las acciones predeterminadas se pueden evitar si queremos manejar el evento exclusivamente mediante JavaScript.</p>
+<p>Para evitar una acción predeterminada, utiliza <code>event.preventDefault()</code> o <code>return false</code>. El segundo método funciona solo para los controladores asignados con <code>on&lt;event&gt;</code>.</p>
+<p>La opción <code>passive: true</code> de <code>addEventListener</code> le dice al navegador que la acción no se evitará. Eso es útil para algunos eventos móviles, como <code>touchstart</code> y <code>touchmove</code>, para decirle al navegador que no debe esperar a que todos los controladores terminen antes de desplazarse.</p>
+<p>Si se evitó la acción predeterminada, el valor de <code>event.defaultPrevented</code> se convierte en <code>true</code>, de lo contrario, es <code>false</code>.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Mantente semántico, no abuses</span></div>
+            <div class="important__content"><p>Técnicamente, al evitar acciones predeterminadas y agregar JavaScript, podemos personalizar el comportamiento de cualquier elemento. Por ejemplo, podemos hacer que un enlace <code>&lt;a&gt;</code> funcione como un botón, y un botón <code>&lt;button&gt;</code> se comporte como un enlace (redirigir a otra URL o algo así).</p>
+<p>Pero en general deberíamos mantener el significado semántico de los elementos HTML. Por ejemplo, la navegación debe realizarla <code>&lt;a&gt;</code>, no un botón.</p>
+<p>Además de ser “algo bueno”, hace que su HTML sea mejor en términos de accesibilidad.</p>
+<p>Además, si consideramos el ejemplo con <code>&lt;a&gt;</code>, ten en cuenta: un navegador nos permite abrir dichos enlaces en una nueva ventana (usando el botón derecho u otros medios). Y a la gente le gusta. Pero si hacemos que un botón se comporte como un enlace usando JavaScript e incluso parezca un enlace usando CSS, las características específicas de <code>&lt;a&gt;</code> no funcionarán en él.</p>
+</div></div>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#por-que-return-false-no-funciona" name="por-que-return-false-no-funciona">¿Por qué &quot;return false&quot; no funciona?</a></h3><a class="task__open-link" href="task/why-return-false-fails.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 3</span></div><div class="task__content"><div class="task__formatted"><p>¿Por qué en el código de abajo <code>return false</code> no funciona en absoluto?</p>
+<div id="ka6ryqnbps" data-trusted="1" class="code-example" data-autorun="true">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  function handler() {
+    alert( &quot;...&quot; );
+    return false;
+  }
+&lt;/script&gt;
+
+&lt;a href=&quot;https://w3.org&quot; onclick=&quot;handler()&quot;&gt;el navegador irá a w3.org&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+      <div class="code-result code-example__result">
+          <iframe
+            class="code-result__iframe"
+            name="test-ka6ryqnbps"
+            style="height:200px"
+            src="about:blank"></iframe>
+        </div>
+      </div><p>El navegador sigue la URL al hacer clic, pero no la queremos.</p>
+<p>¿Como se arregla?</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Cuando el navegador lee un atributo <code>on*</code> como <code>onclick</code>, crea el controlador a partir de su contenido.</p>
+<p>Para <code>onclick=&quot;handler()&quot;</code> la función será:</p>
+<div id="aht99nb8vi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function(event) {
+  handler() // el contenido de onclick
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora podemos ver que el valor devuelto por <code>handler()</code> no se usa y no afecta el resultado.</p>
+<p>La solución es simple:</p>
+<div id="wdm7gnldtg" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;cols&quot;:[{&quot;start&quot;:34,&quot;end&quot;:50}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  function handler() {
+    alert(&quot;...&quot;);
+    return false;
+  }
+&lt;/script&gt;
+
+&lt;a href=&quot;https://w3.org&quot; onclick=&quot;return handler()&quot;&gt;w3.org&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos usar <code>event.preventDefault()</code>, así:</p>
+<div id="f4iaa0kv4b" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;cols&quot;:[{&quot;start&quot;:34,&quot;end&quot;:48}]},{&quot;start&quot;:1,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script&gt;
+  function handler(event) {
+    alert(&quot;...&quot;);
+    event.preventDefault();
+  }
+&lt;/script&gt;
+
+&lt;a href=&quot;https://w3.org&quot; onclick=&quot;handler(event)&quot;&gt;w3.org&lt;/a&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#captura-enlaces-en-el-elemento" name="captura-enlaces-en-el-elemento">Captura enlaces en el elemento</a></h3><a class="task__open-link" href="task/catch-link-navigation.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Haz que todos los enlaces dentro del elemento con <code>id=&quot;contents&quot;</code> pregunten al usuario si realmente quiere irse. Y si no quiere, no sigas.</p>
+<p>Así:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:100px" src="https://es.js.cx/task/catch-link-navigation/solution/"></iframe>
+  </div><p>Detalles:</p>
+<ul>
+<li>El HTML dentro del elemento puede cargarse o regenerarse dinámicamente en cualquier momento, por lo que no podemos encontrar todos los enlaces y ponerles controladores. Utilice la delegación de eventos.</li>
+<li>El contenido puede tener etiquetas anidadas. Dentro de los enlaces también, como <code>&lt;a href=&quot;..&quot;&gt;&lt;i&gt;...&lt;/i&gt;&lt;/a&gt;</code>.</li>
+</ul>
+<p><a href="https://plnkr.co/edit/oURRxYjXezr4fV8K?p=preview" target="_blank" data-plunk-id="oURRxYjXezr4fV8K">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Ese es un gran uso para el patrón de delegación de eventos.</p>
+<p>En la vida real, en lugar de preguntar, podemos enviar una solicitud de “logging” al servidor que guarda la información sobre dónde se fue el visitante. O podemos cargar el contenido y mostrarlo directamente en la página (si está permitido).</p>
+<p>Todo lo que necesitamos es capturar el <code>contents.onclick</code> y usar <code>confirm</code> para preguntar al usuario. Una buena idea sería usar <code>link.getAttribute('href')</code> en lugar de <code>link.href</code> para la URL. Consulte la solución para obtener más detalles.</p>
+<p><a href="https://plnkr.co/edit/z2yEPx7daUlOq36y?p=preview" target="_blank" data-plunk-id="z2yEPx7daUlOq36y">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#galeria-de-imagenes" name="galeria-de-imagenes">Galería de imágenes</a></h3><a class="task__open-link" href="task/image-gallery.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una galería de imágenes donde la imagen principal cambia al hacer clic en una miniatura.</p>
+<p>Así:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:600px" src="https://es.js.cx/task/image-gallery/solution/"></iframe>
+  </div><p>P.D. Utiliza la delegación de eventos.</p>
+<p><a href="https://plnkr.co/edit/hQ5Fzyafpezgwdcb?p=preview" target="_blank" data-plunk-id="hQ5Fzyafpezgwdcb">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La solución es asignar el controlador al contenedor y realizar un seguimiento de los clics. Si haces clic en el enlace <code>&lt;a&gt;</code>, cambias <code>src</code> de <code>#largeImg</code> por el <code>href</code> de la miniatura.</p>
+<p><a href="https://plnkr.co/edit/L2prmDztUyfHnt7G?p=preview" target="_blank" data-plunk-id="L2prmDztUyfHnt7G">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="event-delegation.html" data-tooltip="Delegación de eventos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="dispatch-events.html" data-tooltip="Envío de eventos personalizados"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdefault-browser-action" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fdefault-browser-action" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/default-browser-action","identifier":"\/default-browser-action"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="events.html">Introducción a los eventos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#evitar-las-acciones-del-navegador">Evitar las acciones del navegador</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#la-opcion-de-controlador-pasivo">La opción de controlador “pasivo”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#event-defaultprevented">event.defaultPrevented</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdefault-browser-action" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fdefault-browser-action" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/2-events/04-default-browser-action" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/default-browser-action by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:32 GMT -->
+</html>

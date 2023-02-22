@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/script-async-defer by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Scripts: async, defer</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="script-async-defer.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Scripts: async, defer"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Scripts: async, defer"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="onload-ondomcontentloaded.html"><link rel="next" href="onload-onerror.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Scripts: async, defer"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/script-async-defer"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="script-async-defer.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/script-async-defer"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/script-async-defer"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/script-async-defer"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/script-async-defer"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/script-async-defer"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/script-async-defer"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/script-async-defer"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/script-async-defer"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fscript-async-defer" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fscript-async-defer" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/script-async-defer">English</option><option value="https://es.javascript.info/script-async-defer" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/script-async-defer">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/script-async-defer">Italiano</option><option value="https://ja.javascript.info/script-async-defer">日本語</option><option value="https://ko.javascript.info/script-async-defer">한국어</option><option value="https://learn.javascript.ru/script-async-defer">Русский</option><option value="https://tr.javascript.info/script-async-defer">Türkçe</option><option value="https://uk.javascript.info/script-async-defer">Українська</option><option value="https://zh.javascript.info/script-async-defer">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="28" max="32" data-tooltip="Lección 28 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="loading.html"><span>El documento y carga de recursos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"El documento y carga de recursos","item":"https://es.javascript.info/loading"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 12 de julio de 2022"><div class="updated-at__content">12 de julio de 2022</div></div></div><h1 class="main__header-title">Scripts: async, defer</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Scripts: async, defer"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>En los sitios web modernos los scripts suelen ser más “pesados” que el HTML, el tamaño de la descarga es grande y el tiempo de procesamiento es mayor.</p>
+<p>Cuando el navegador carga el HTML y se encuentra con una etiqueta <code>&lt;script&gt;...&lt;/script&gt;</code>, no puede continuar construyendo el DOM. Debe ejecutar el script en el momento. Lo mismo sucede con los scripts externos <code>&lt;script src=&quot;...&quot;&gt;&lt;/script&gt;</code>, el navegador tiene que esperar hasta que el script sea descargado, ejecutarlo y solo después procesa el resto de la página.</p>
+<p>Esto nos lleva a dos importantes problemas:</p>
+<ol>
+<li>Los scripts no pueden ver los elementos del DOM que se encuentran debajo de él por lo que no pueden agregar controladores de eventos, etc.</li>
+<li>Si hay un script muy pesado en la parte superior de la página, este “bloquea la página”. Los usuarios no pueden ver el contenido de la página hasta que sea descargado y ejecutado.</li>
+</ol>
+<div id="odkbm5axvt" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;...contenido previo al script...&lt;/p&gt;
+
+&lt;script src=&quot;https://javascript.info/article/script-async-defer/long.js?speed=1&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Esto no es visible hasta que el script sea cargado --&gt;
+&lt;p&gt;...contenido posterior al script...&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Hay algunas soluciones para eso. Por ejemplo podemos poner el script en la parte inferior de la página por lo que podrá ver los elementos sobre él y no bloqueará la visualización del contenido de la página.</p>
+<div id="1rwbxy7hxo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body&gt;
+  ...todo el contenido está arriba del script...
+
+  &lt;script src=&quot;https://javascript.info/article/script-async-defer/long.js?speed=1&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pero esta solución está lejos de ser perfecta. Por ejemplo el navegador solo se dará cuenta del script (y podrá empezar a descargarlo) después de descargar todo el documento HTML. Para documentos HTML extensos eso puede ser un retraso notable.</p>
+<p>Este tipo de cosas son imperceptibles para las personas que usan conexiones muy rápidas, pero muchas personas en el mundo todavía tienen velocidades de internet lentas y utilizan una conexión de internet móvil que esta lejos de ser perfecta.</p>
+<p>Afortunadamente hay dos atributos de <code>&lt;script&gt;</code> que resuelven ese problema para nosotros: <code>defer</code> y <code>async</code>.</p>
+<h2><a class="main__anchor" name="defer" href="#defer">defer</a></h2><p>El atributo <code>defer</code> indica al navegador que no espere por el script. En lugar de ello, debe seguir procesando el HTML, construir el DOM. El script carga “en segundo plano” y se ejecuta cuando el DOM esta completo.</p>
+<p>Aquí está el mismo ejemplo de arriba, pero con <code>defer</code>:</p>
+<div id="cfmip9tjyt" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;...contenido previo script...&lt;/p&gt;
+
+&lt;script defer src=&quot;https://javascript.info/article/script-async-defer/long.js?speed=1&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Inmediatamete visible --&gt;
+&lt;p&gt;...contenido posterior al script...&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En otras palabras:</p>
+<ul>
+<li>Los scripts con <code>defer</code> nunca bloquean la página.</li>
+<li>Los scripts con <code>defer</code> siempre se ejecutan cuando el DOM esta listo (pero antes del evento <code>DOMContentLoaded</code>).</li>
+</ul>
+<p>Los siguientes ejemplos demuestran la segunda parte:</p>
+<div id="x3h0yjnn7f" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;...contenido previo a los scripts...&lt;/p&gt;
+
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', () =&gt; alert(&quot;¡DOM listo después del defer!&quot;));
+&lt;/script&gt;
+
+&lt;script defer src=&quot;https://javascript.info/article/script-async-defer/long.js?speed=1&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;...contenido posterior a los scripts...&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>El contenido de la página se muestra inmediatamente.</li>
+<li><code>DOMContentLoaded</code> espera por el script diferido. Solo se dispara cuando el script es descargado y ejecutado.</li>
+</ol>
+<p>**Los scripts diferidos mantienen su orden relativo, tal cual los scripts regulares.</p>
+<p>Digamos que tenemos dos scripts diferidos, <code>long.js</code> (largo) y luego <code>small.js</code> (corto):</p>
+<div id="rhru9n5jk4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;script defer src=&quot;https://javascript.info/article/script-async-defer/long.js&quot;&gt;&lt;/script&gt;
+&lt;script defer src=&quot;https://javascript.info/article/script-async-defer/small.js&quot;&gt;&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los navegadores analizan la página en busca de scripts y los descarga en paralelo para mejorar el rendimiento. Entonces en el ejemplo superior ambos scripts se descargan en paralelo, el <code>small.js</code> probablemente lo haga primero.</p>
+<p>…Pero el atributo <code>defer</code>, además de decirle al navegador “no bloquear”, asegura que el orden relativo se mantenga. Entonces incluso si <code>small.js</code> se carga primero, aún espera y se ejecuta después de <code>long.js</code>.</p>
+<p>Por ello es importante para casos donde necesitamos cargar un librería JavaScript y entonces un script que depende de ella.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">El atributo <code>defer</code> es solo para scripts externos</span></div>
+            <div class="important__content"><p>El atributo <code>defer</code> es ignorado si el <code>&lt;script&gt;</code> no tiene el atributo <code>src</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="async" href="#async">async</a></h2><p>El atributo <code>async</code> es de alguna manera como <code>defer</code>. También hace el script no bloqueante. Pero tiene importantes diferencias de comportamiento.</p>
+<p>El atributo <code>async</code> significa que el script es completamente independiente:</p>
+<ul>
+<li>El navegador no se bloquea con scripts <code>async</code> (como <code>defer</code>).</li>
+<li>Otros scripts no esperan por scripts <code>async</code>, y scripts <code>async</code> no espera por ellos.</li>
+<li><code>DOMContentLoaded</code> y los scripts asincrónicos no se esperan entre sí:
+<ul>
+<li><code>DOMContentLoaded</code> puede suceder antes que un script asincrónico (si un script asincrónico termina de cargar una vez la página está completa)</li>
+<li>…o después de un script asincrónico (si tal script asincrónico es pequeño o está en cache)</li>
+</ul>
+</li>
+</ul>
+<p>En otras palabras, los scripts <code>async</code> cargan en segundo plano y se ejecutan cuando están listos. El DOM y otros scripts no esperan por ellos, y ellos no esperan por nada. Un script totalmente independiente que se ejecuta en cuanto se ha cargado. Tan simple como es posible, ¿cierto?</p>
+<p>Aquí hay un ejemplo similar al que vimos con <code>defer</code>: Dos scripts <code>long.js</code> y <code>small.js</code>, pero ahora con <code>async</code> en lugar de <code>defer</code>.</p>
+<p>Los unos no esperan por lo otros. El que cargue primero (probablemente <code>small.js</code>), se ejecuta primero.</p>
+<div id="l5chmqcr5c" data-trusted="1" class="code-example" data-demo-height="100">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;p&gt;...contenido previo a los scripts...&lt;/p&gt;
+
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', () =&gt; alert(&quot;¡DOM listo!&quot;));
+&lt;/script&gt;
+
+&lt;script async src=&quot;https://javascript.info/article/script-async-defer/long.js&quot;&gt;&lt;/script&gt;
+&lt;script async src=&quot;https://javascript.info/article/script-async-defer/small.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;...contenido posterior a los scripts...&lt;/p&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li>El contenido de la página se muestra inmediatamente: <code>async</code> no lo bloquea.</li>
+<li>El evento <code>DOMContentLoaded</code> puede suceder antes o después de <code>async</code>, no hay garantías aquí.</li>
+<li>Un script más pequeño <code>small.js</code> que esté segundo probablemente cargue antes que uno más largo <code>long.js</code>, entonces se ejecutará primero. Aunque podría ser que <code>long.js</code> cargue primero si está en caché y ejecute primero. A eso lo llamamos “load-first order”, se ejecuta primero el que cargue antes .</li>
+</ul>
+<p>Los scripts asincrónicos son excelentes cuando incluimos scripts de terceros (contadores, anuncios, etc) en la página debido a que ellos no dependen de nuestros scripts y nuestros scripts no deberían esperar por ellos.</p>
+<div id="3o7ubuh3t2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;!-- Google Analytics is usually added like this --&gt;
+&lt;script async src=&quot;https://google-analytics.com/analytics.js&quot;&gt;&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">El atributo <code>async</code> es solo para scripts externos</span></div>
+            <div class="important__content"><p>Tal como <code>defer</code>, el atributo <code>async</code> se ignora si la etiqueta <code>&lt;script&gt;</code> no tiene <code>src</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="scripts-dinamicos" href="#scripts-dinamicos">Scripts dinámicos</a></h2><p>Hay otra manera importante de agregar un script a la página.</p>
+<p>Podemos crear un script y agregarlo dinámicamente al documento usando JavaScript:</p>
+<div id="43maw5kfer" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let script = document.createElement('script');
+script.src = &quot;/article/script-async-defer/long.js&quot;;
+document.body.append(script); // (*)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El script comienza a cargar tan pronto como es agregado al documento <code>(*)</code>.</p>
+<p><strong>Los scripts dinámicos se comportan como <code>async</code> por defecto</strong></p>
+<p>Esto es:</p>
+<ul>
+<li>Ellos no esperan a nadie y nadie espera por ellos.</li>
+<li>El script que carga primero se ejecuta primero (<code>load-first order</code>)</li>
+</ul>
+<p>Esto puede ser cambiado si explícitamente establecemos <code>script.async=false</code>. Así los scripts serán ejecutados en el orden del documento, tal como en <code>defer</code>.</p>
+<p>En este ejemplo, la función <code>loadScript(src)</code> añade un script y también establece <code>async</code> a <code>false</code>.</p>
+<p>Entonces <code>long.js</code> siempre ejecuta primero (por haber sido agregado primero):</p>
+<div id="dtzsm0oshv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function loadScript(src) {
+  let script = document.createElement('script');
+  script.src = src;
+  script.async = false;
+  document.body.append(script);
+}
+
+// long.js se ejecuta primero a causa del async=false
+loadScript(&quot;/article/script-async-defer/long.js&quot;);
+loadScript(&quot;/article/script-async-defer/small.js&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Sin <code>script.async=false</code>, los scripts es ejecutarían de forma predeterminada, en el orden de carga primero (probablemente <code>small.js</code> primero).</p>
+<p>De nuevo, como con <code>defer</code>, el orden importa si queremos cargar una librería y luego otro script que depende de ella.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Ambos, <code>async</code> y <code>defer</code>, tienen algo en común: la descarga de tales scripts no bloquean el renderizado de la página. Por lo cual el usuario puede leer el contenido de la página y familiarizarse con la página inmediatamente.</p>
+<p>Pero hay algunas diferencias esenciales entre ellos:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Orden</th>
+<th><code>DOMContentLoaded</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>async</code></td>
+<td><em>Load-first order</em>. El orden del documento no importa. El que carga primero ejecuta primero</td>
+<td>Irrelevante. Puede cargar y ejecutarse mientras el documento no ha sido completamente descargado, eso puede pasar si el script es pequeño o está en cache y el documento es suficientemente extenso.</td>
+</tr>
+<tr>
+<td><code>defer</code></td>
+<td><em>Document order</em> (como van en el documento).</td>
+<td>Ejecutan después de que el documento es cargado y analizado (espera si es necesario), justo antes de <code>DOMContentLoaded</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>En la práctica, <code>defer</code> es usado para scripts que necesitan todo el DOM y/o si su orden de ejecución relativa es importante.</p>
+<p>Y <code>async</code> es usado para scripts independientes, como contadores y anuncios donde el orden de ejecución no importa.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">La página sin scripts debe ser utilizable</span></div>
+            <div class="important__content"><p>Ten en cuenta: si usas <code>defer</code> o <code>async</code>, el usuario verá la página <em>antes</em> de que el script sea cargado.</p>
+<p>En tal caso algunos componentes gráficos probablemente no estén listos.</p>
+<p>No olvides poner alguna señal de “cargando” y deshabilitar los botones que aún no estén funcionando. Esto permite al usuario ver claramente qué puede hacer en la página y qué está listo y qué no.</p>
+</div></div>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="onload-ondomcontentloaded.html" data-tooltip="Página: DOMContentLoaded, load, beforeunload, unload"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="onload-onerror.html" data-tooltip="Carga de recursos: onload y onerror"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fscript-async-defer" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fscript-async-defer" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/script-async-defer","identifier":"\/script-async-defer"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="loading.html">El documento y carga de recursos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#defer">defer</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#async">async</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#scripts-dinamicos">Scripts dinámicos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fscript-async-defer" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fscript-async-defer" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/5-loading/02-script-async-defer" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/script-async-defer by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:36 GMT -->
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/private-protected-properties-methods by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Propiedades y métodos privados y protegidos.</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="private-protected-properties-methods.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Propiedades y métodos privados y protegidos."><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Propiedades y métodos privados y protegidos."><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="static-properties-methods.html"><link rel="next" href="extend-natives.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Propiedades y métodos privados y protegidos."><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="private-protected-properties-methods.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/private-protected-properties-methods"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/private-protected-properties-methods"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fprivate-protected-properties-methods" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fprivate-protected-properties-methods" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/private-protected-properties-methods">عربي</option><option value="https://javascript.info/private-protected-properties-methods">English</option><option value="https://es.javascript.info/private-protected-properties-methods" selected>Español</option><option value="https://fa.javascript.info/private-protected-properties-methods">فارسی</option><option value="https://fr.javascript.info/private-protected-properties-methods">Français</option><option value="https://id.javascript.info/private-protected-properties-methods">Indonesia</option><option value="https://it.javascript.info/private-protected-properties-methods">Italiano</option><option value="https://ja.javascript.info/private-protected-properties-methods">日本語</option><option value="https://ko.javascript.info/private-protected-properties-methods">한국어</option><option value="https://learn.javascript.ru/private-protected-properties-methods">Русский</option><option value="https://tr.javascript.info/private-protected-properties-methods">Türkçe</option><option value="https://uk.javascript.info/private-protected-properties-methods">Українська</option><option value="https://zh.javascript.info/private-protected-properties-methods">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="69" max="93" data-tooltip="Lección 69 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="classes.html"><span>Clases</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Clases","item":"https://es.javascript.info/classes"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 2 de diciembre de 2021"><div class="updated-at__content">2 de diciembre de 2021</div></div></div><h1 class="main__header-title">Propiedades y métodos privados y protegidos.</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Propiedades y métodos privados y protegidos."><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Uno de los principios más importantes de la programación orientada a objetos: delimitar la interfaz interna de la externa.</p>
+<p>Esa es una práctica “imprescindible” en el desarrollo de algo más complejo que una aplicación “hola mundo”.</p>
+<p>Para entender esto, alejémonos del desarrollo y volvamos nuestros ojos al mundo real…</p>
+<p>Por lo general, los dispositivos que estamos usando son bastante complejos. Pero delimitar la interfaz interna de la externa permite usarlas sin problemas.</p>
+<h2><a class="main__anchor" name="un-ejemplo-de-la-vida-real" href="#un-ejemplo-de-la-vida-real">Un ejemplo de la vida real</a></h2><p>Por ejemplo, una máquina de café. Simple desde el exterior: un botón, una pantalla, algunos agujeros … Y, seguramente, el resultado: ¡excelente café! :)</p>
+<figure><div class="image" style="width:240px">
+      <div class="image__ratio" style="padding-top:166.66666666666669%"></div>
+      <img src="article/private-protected-properties-methods/coffee.jpg" alt="" width="240" height="400" class="image__image">
+      </div></figure><p>Pero adentro … (una imagen del manual de reparación)</p>
+<figure><div class="image" style="width:239px">
+      <div class="image__ratio" style="padding-top:167.36401673640165%"></div>
+      <img src="article/private-protected-properties-methods/coffee-inside.jpg" alt="" width="239" height="400" class="image__image">
+      </div></figure><p>Muchos detalles. Pero podemos usarlo sin saber nada.</p>
+<p>Las cafeteras son bastante confiables, ¿no es así? Podemos usarlos por años, y solo si algo sale mal, tráigalo para repararlo.</p>
+<p>El secreto de la fiabilidad y la simplicidad de una máquina de café: todos los detalles están bien ajustados y <em>ocultos</em> en su interior.</p>
+<p>Si retiramos la cubierta protectora de la cafetera, su uso será mucho más complejo (¿dónde presionar?) Y peligroso (puedes electrocutarte).</p>
+<p>Como veremos, en la programación los objetos son como máquinas de café.</p>
+<p>Pero para ocultar detalles internos, no utilizaremos una cubierta protectora, sino una sintaxis especial del lenguaje y las convenciones.</p>
+<h2><a class="main__anchor" name="interfaz-interna-y-externa" href="#interfaz-interna-y-externa">Interfaz interna y externa</a></h2><p>En la programación orientada a objetos, las propiedades y los métodos se dividen en dos grupos:</p>
+<ul>
+<li><em>Interfaz interna</em> – métodos y propiedades, accesibles desde otros métodos de la clase, pero no desde el exterior.</li>
+<li><em>Interfaz externa</em> – métodos y propiedades, accesibles también desde fuera de la clase.</li>
+</ul>
+<p>Si continuamos la analogía con la máquina de café, lo que está oculto en su interior: un tubo de caldera, un elemento calefactor, etc., es su interfaz interna.</p>
+<p>Se utiliza una interfaz interna para que el objeto funcione, sus detalles se utilizan entre sí. Por ejemplo, un tubo de caldera está unido al elemento calefactor.</p>
+<p>Pero desde afuera, una máquina de café está cerrada por la cubierta protectora, para que nadie pueda alcanzarlos. Los detalles están ocultos e inaccesibles. Podemos usar sus funciones a través de la interfaz externa.</p>
+<p>Entonces, todo lo que necesitamos para usar un objeto es conocer su interfaz externa. Es posible que no seamos completamente conscientes de cómo funciona dentro, y eso es genial.</p>
+<p>Esa fue una introducción general.</p>
+<p>En JavaScript, hay dos tipos de campos de objeto (propiedades y métodos):</p>
+<ul>
+<li>Público: accesible desde cualquier lugar. Comprenden la interfaz externa. Hasta ahora solo estábamos usando propiedades y métodos públicos.</li>
+<li>Privado: accesible solo desde dentro de la clase. Estos son para la interfaz interna.</li>
+</ul>
+<p>En muchos otros lenguajes también existen campos “protegidos”: accesibles solo desde dentro de la clase y aquellos que lo extienden (como privado, pero más acceso desde clases heredadas). También son útiles para la interfaz interna. En cierto sentido, están más extendidos que los privados, porque generalmente queremos que las clases heredadas tengan acceso a ellas.</p>
+<p>Los campos protegidos no se implementan en JavaScript a nivel de lenguaje, pero en la práctica son muy convenientes, por lo que se emulan.</p>
+<p>Ahora haremos una máquina de café en JavaScript con todos estos tipos de propiedades. Una máquina de café tiene muchos detalles, no los modelaremos todos, seremos simples (aunque podríamos).</p>
+<h2><a class="main__anchor" name="proteger-wateramount" href="#proteger-wateramount">Proteger “waterAmount”</a></h2><p>Hagamos primero una clase de cafetera simple:</p>
+<div id="g9t0o4peih" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class CoffeeMachine {
+  waterAmount = 0; // la cantidad de agua adentro
+
+  constructor(power) {
+    this.power = power;
+    alert( `Se creó una máquina de café, poder: ${power}` );
+  }
+
+}
+
+// se crea la máquina de café
+let coffeeMachine = new CoffeeMachine(100);
+
+// agregar agua
+coffeeMachine.waterAmount = 200;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En este momento las propiedades <code>waterAmount</code> y<code>power</code> son públicas. Podemos obtenerlos/configurarlos fácilmente desde el exterior a cualquier valor.</p>
+<p>Cambiemos la propiedad <code>waterAmount</code> a protegida para tener más control sobre ella. Por ejemplo, no queremos que nadie lo ponga por debajo de cero.</p>
+<p><strong>Las propiedades protegidas generalmente tienen el prefijo de subrayado <code>_</code>.</strong></p>
+<p>Eso no se aplica a nivel de lenguaje, pero existe una convención bien conocida entre los programadores de que no se debe acceder a tales propiedades y métodos desde el exterior.</p>
+<p>Entonces nuestra propiedad se llamará <code>_waterAmount</code>:</p>
+<div id="gl1tw8uss2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class CoffeeMachine {
+  _waterAmount = 0;
+
+  set waterAmount(value) {
+    if (value &lt; 0) {
+      value = 0;
+    }
+    this._waterAmount = value;
+  }
+
+  get waterAmount() {
+    return this._waterAmount;
+  }
+
+  constructor(power) {
+    this._power = power;
+  }
+
+}
+
+// se crea la máquina de café
+let coffeeMachine = new CoffeeMachine(100);
+
+// agregar agua
+coffeeMachine.waterAmount = -10; // _waterAmount se vuelve 0, no -10</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora el acceso está bajo control, por lo que establecer una cantidad de agua por debajo de cero se volvió imposible.</p>
+<h2><a class="main__anchor" name="power-de-solo-lectura" href="#power-de-solo-lectura">“Power” de solo lectura</a></h2><p>Para la propiedad <code>power</code>, hagámoslo de solo lectura. A veces sucede que una propiedad debe establecerse solo en el momento de la creación y nunca modificarse.</p>
+<p>Ese es exactamente el caso de una máquina de café: la potencia nunca cambia.</p>
+<p>Para hacerlo, solo necesitamos hacer <code>getter</code>, pero no <code>setter</code>:</p>
+<div id="1yox540d0j" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class CoffeeMachine {
+  // ...
+
+  constructor(power) {
+    this._power = power;
+  }
+
+  get power() {
+    return this._power;
+  }
+
+}
+
+// se crea la máquina de café
+let coffeeMachine = new CoffeeMachine(100);
+
+alert(`La potencia es: ${coffeeMachine.power}W`); // Potencia es: 100W
+
+coffeeMachine.power = 25; // Error (sin setter)</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Funciones getter/setter</span></div>
+            <div class="important__content"><p>Aquí usamos la sintaxis getter/setter.</p>
+<p>Pero la mayoría de las veces las funciones <code>get.../set...</code> son preferidas, como esta:</p>
+<div id="4uos0mtfhz" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;cols&quot;:[{&quot;start&quot;:2,&quot;end&quot;:18}]},{&quot;start&quot;:3,&quot;cols&quot;:[{&quot;start&quot;:2,&quot;end&quot;:23}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class CoffeeMachine {
+  _waterAmount = 0;
+
+  setWaterAmount(value) {
+    if (value &lt; 0) value = 0;
+    this._waterAmount = value;
+  }
+
+  getWaterAmount() {
+    return this._waterAmount;
+  }
+}
+
+new CoffeeMachine().setWaterAmount(100);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso parece un poco más largo, pero las funciones son más flexibles. Pueden aceptar múltiples argumentos (incluso si no los necesitamos en este momento).</p>
+<p>Por otro lado, la sintaxis get/set es más corta, por lo que, en última instancia, no existe una regla estricta, depende de usted decidir.</p>
+</div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Los campos protegidos son heredados.</span></div>
+            <div class="important__content"><p>Si heredamos <code>class MegaMachine extends CoffeeMachine</code>, entonces nada nos impide acceder a <code>this._waterAmount</code> o <code>this._power</code> desde los métodos de la nueva clase.</p>
+<p>Por lo tanto, los campos protegidos son naturalmente heredables. A diferencia de los privados que veremos a continuación.</p>
+</div></div>
+<h2><a class="main__anchor" name="waterlimit-privada" href="#waterlimit-privada">“#waterLimit” Privada</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Una adición reciente</span></div>
+            <div class="important__content">
+            Esta es una adición reciente al lenguaje.
+            No es compatible con motores de JavaScript, o es compatible parcialmente todavía, requiere polyfilling.
+            </div></div>
+<p>Hay una propuesta de JavaScript terminada, casi en el estándar, que proporciona soporte a nivel de lenguaje para propiedades y métodos privados.</p>
+<p>Los privados deberían comenzar con <code>#</code>. Solo son accesibles desde dentro de la clase.</p>
+<p>Por ejemplo, aquí hay una propiedad privada <code>#waterLimit</code> y el método privado de control de agua <code>#fixWaterAmount</code>:</p>
+<div id="9k2itl0ph3" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:16,&quot;end&quot;:18},{&quot;start&quot;:3,&quot;end&quot;:6},{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class CoffeeMachine {
+  #waterLimit = 200;
+
+  #fixWaterAmount(value) {
+    if (value &lt; 0) return 0;
+    if (value &gt; this.#waterLimit) return this.#waterLimit;
+  }
+
+  setWaterAmount(value) {
+    this.#waterLimit = this.#fixWaterAmount(value);
+  }
+
+}
+
+let coffeeMachine = new CoffeeMachine();
+
+// no puede acceder a privados desde fuera de la clase
+coffeeMachine.#fixWaterAmount(123); // Error
+coffeeMachine.#waterLimit = 1000; // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A nivel de lenguaje, <code>#</code> es una señal especial de que el campo es privado. No podemos acceder desde fuera o desde clases heredadas.</p>
+<p>Los campos privados no entran en conflicto con los públicos. Podemos tener campos privados <code>#waterAmount</code> y públicos <code>waterAmount</code> al mismo tiempo.</p>
+<p>Por ejemplo, hagamos que <code>waterAmount</code> sea un accesorio para <code>#waterAmount</code>:</p>
+<div id="wvy2wy6ybe" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class CoffeeMachine {
+
+  #waterAmount = 0;
+
+  get waterAmount() {
+    return this.#waterAmount;
+  }
+
+  set waterAmount(value) {
+    if (value &lt; 0) value = 0;
+    this.#waterAmount = value;
+  }
+}
+
+let machine = new CoffeeMachine();
+
+machine.waterAmount = 100;
+alert(machine.#waterAmount); // Error</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A diferencia de los protegidos, los campos privados son aplicados por el propio lenguaje. Eso es bueno.</p>
+<p>Pero si heredamos de <code>CoffeeMachine</code>, entonces no tendremos acceso directo a <code>#waterAmount</code>. Tendremos que confiar en el getter/setter de <code>waterAmount</code>:</p>
+<div id="2t066q0g77" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class MegaCoffeeMachine extends CoffeeMachine {
+  method() {
+    alert( this.#waterAmount ); // Error: solo se puede acceder desde CoffeeMachine
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En muchos escenarios, esta limitación es demasiado severa. Si ampliamos una <code>CoffeeMachine</code>, es posible que tengamos razones legítimas para acceder a sus componentes internos. Es por eso que los campos protegidos se usan con más frecuencia, aunque no sean compatibles con la sintaxis del lenguaje.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Los campos privados no están disponibles como this[name]</span></div>
+            <div class="important__content"><p>Los campos privados son especiales.</p>
+<p>Como sabemos, generalmente podemos acceder a los campos usando <code>this[name]</code>:</p>
+<div id="tnq9rgj7hx" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;cols&quot;:[{&quot;start&quot;:20,&quot;end&quot;:35}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>class User {
+  ...
+  sayHi() {
+    let fieldName = &quot;nombre&quot;;
+    alert(`Hello, ${this[fieldName]}`);
+  }
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Con campos privados eso es imposible: <code>this['#name']</code> no funciona. Esa es una limitación de sintaxis para garantizar la privacidad.</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>En términos de POO, la delimitación de la interfaz interna de la externa se llama <a href="https://es.wikipedia.org/wiki/Encapsulamiento_(informática)">encapsulamiento</a>.</p>
+<p>Ofrece los siguientes beneficios:</p>
+<dl>
+<dt>Protección para los usuarios, para que no se disparen en el pie</dt>
+<dd>
+<p>Imagínese, hay un equipo de desarrolladores que usan una máquina de café. Fue hecho por la compañía “Best CoffeeMachine” y funciona bien, pero se quitó una cubierta protectora. Entonces la interfaz interna está expuesta.</p>
+<p>Todos los desarrolladores son civilizados: usan la máquina de café según lo previsto. Pero uno de ellos, John, decidió que él era el más inteligente e hizo algunos ajustes en el interior de la máquina de café. Entonces la máquina de café falló dos días después.</p>
+<p>Seguramente no es culpa de John, sino de la persona que quitó la cubierta protectora y dejó que John hiciera sus manipulaciones.</p>
+<p>Lo mismo en programación. Si un usuario de una clase cambiará cosas que no están destinadas a ser cambiadas desde el exterior, las consecuencias son impredecibles.</p>
+</dd>
+<dt>Soportable</dt>
+<dd>
+<p>La situación en la programación es más compleja que con una máquina de café de la vida real, porque no solo la compramos una vez. El código se somete constantemente a desarrollo y mejora.</p>
+<p><strong>Si delimitamos estrictamente la interfaz interna, el desarrollador de la clase puede cambiar libremente sus propiedades y métodos internos, incluso sin informar a los usuarios.</strong></p>
+<p>Si usted es un desarrollador de tal clase, es bueno saber que los métodos privados se pueden renombrar de forma segura, sus parámetros se pueden cambiar e incluso eliminar, porque ningún código externo depende de ellos.</p>
+<p>Para los usuarios, cuando sale una nueva versión, puede ser una revisión total internamente, pero aún así es simple de actualizar si la interfaz externa es la misma.</p>
+</dd>
+<dt>Ocultando complejidad</dt>
+<dd>
+<p>La gente adora usar cosas que son simples. Al menos desde afuera. Lo que hay dentro es algo diferente.</p>
+<p>Los programadores no son una excepción.</p>
+<p><strong>Siempre es conveniente cuando los detalles de implementación están ocultos, y hay disponible una interfaz externa simple y bien documentada.</strong></p>
+</dd>
+</dl>
+<p>Para ocultar una interfaz interna utilizamos propiedades protegidas o privadas:</p>
+<ul>
+<li>Los campos protegidos comienzan con <code>_</code>. Esa es una convención bien conocida, no aplicada a nivel de lenguaje. Los programadores solo deben acceder a un campo que comience con <code>_</code> de su clase y las clases que hereden de él.</li>
+<li>Los campos privados comienzan con <code>#</code>. JavaScript se asegura de que solo podamos acceder a los que están dentro de la clase.</li>
+</ul>
+<p>En este momento, los campos privados no son compatibles entre los navegadores, pero se puede usar “polyfill”.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="static-properties-methods.html" data-tooltip="Propiedades y métodos estáticos."><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="extend-natives.html" data-tooltip="Ampliación de clases integradas"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fprivate-protected-properties-methods" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fprivate-protected-properties-methods" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/private-protected-properties-methods","identifier":"\/private-protected-properties-methods"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="classes.html">Clases</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#un-ejemplo-de-la-vida-real">Un ejemplo de la vida real</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#interfaz-interna-y-externa">Interfaz interna y externa</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#proteger-wateramount">Proteger “waterAmount”</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#power-de-solo-lectura">“Power” de solo lectura</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#waterlimit-privada">“#waterLimit” Privada</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fprivate-protected-properties-methods" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fprivate-protected-properties-methods" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/09-classes/04-private-protected-properties-methods" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/private-protected-properties-methods by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:13 GMT -->
+</html>

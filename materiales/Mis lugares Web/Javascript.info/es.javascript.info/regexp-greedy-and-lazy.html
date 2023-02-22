@@ -1,0 +1,516 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/regexp-greedy-and-lazy by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Cuantificadores codiciosos y perezosos</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="regexp-greedy-and-lazy.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Cuantificadores codiciosos y perezosos"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Cuantificadores codiciosos y perezosos"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="regexp-quantifiers.html"><link rel="next" href="regexp-groups.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Cuantificadores codiciosos y perezosos"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/regexp-greedy-and-lazy"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="regexp-greedy-and-lazy.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/regexp-greedy-and-lazy"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/regexp-greedy-and-lazy"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/regexp-greedy-and-lazy"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/regexp-greedy-and-lazy"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/regexp-greedy-and-lazy"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/regexp-greedy-and-lazy"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/regexp-greedy-and-lazy"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-greedy-and-lazy" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-greedy-and-lazy" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/regexp-greedy-and-lazy">English</option><option value="https://es.javascript.info/regexp-greedy-and-lazy" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/regexp-greedy-and-lazy">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/regexp-greedy-and-lazy">Italiano</option><option value="https://ja.javascript.info/regexp-greedy-and-lazy">日本語</option><option value="https://ko.javascript.info/regexp-greedy-and-lazy">한국어</option><option value="https://learn.javascript.ru/regexp-greedy-and-lazy">Русский</option><option value="https://tr.javascript.info/regexp-greedy-and-lazy">Türkçe</option><option value="https://uk.javascript.info/">Українська</option><option value="https://zh.javascript.info/regexp-greedy-and-lazy">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="10" max="17" data-tooltip="Lección 10 de 17"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="regular-expressions.html"><span>Expresiones Regulares</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Expresiones Regulares","item":"https://es.javascript.info/regular-expressions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 15 de noviembre de 2022"><div class="updated-at__content">15 de noviembre de 2022</div></div></div><h1 class="main__header-title">Cuantificadores codiciosos y perezosos</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Cuantificadores codiciosos y perezosos"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Los cuantificadores son muy simples a primera vista, pero de hecho pueden ser complicados.</p>
+<p>Debemos entender muy bien cómo funciona la búsqueda si planeamos buscar algo más complejo que <code class="pattern">/\d+/</code>.</p>
+<p>Tomemos la siguiente tarea como ejemplo.</p>
+<p>Tenemos un texto y necesitamos reemplazar todas las comillas <code>&quot;...&quot;</code> con comillas latinas: <code>«...»</code>. En muchos paises los tipógrafos las prefieren.</p>
+<p>Por ejemplo: <code>&quot;Hola, mundo&quot;</code> debe convertirse en <code>«Hola, mundo»</code>. Existen otras comillas, como <code>„Witaj, świecie!”</code> (Polaco) o <code>「你好，世界」</code> (Chino), pero para nuestra tarea elegimos <code>«...»</code>.</p>
+<p>Lo primero que debe hacer es ubicar las cadenas entre comillas, y luego podemos reemplazarlas.</p>
+<p>Una expresión regular como <code class="pattern">/&quot;.+&quot;/g</code> (una comilla, después algo, luego otra comilla) Puede parecer una buena opción, ¡pero no lo es!</p>
+<p>Vamos a intentarlo:</p>
+<div id="oe4l0rhsp3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /&quot;.+&quot;/g;
+
+let str = 'una &quot;bruja&quot; y su &quot;escoba&quot; son una';
+
+alert( str.match(regexp) ); // &quot;bruja&quot; y su &quot;escoba&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…¡Podemos ver que no funciona según lo previsto!</p>
+<p>En lugar de encontrar dos coincidencias <code class="match">&quot;bruja&quot;</code> y <code class="match">&quot;escoba&quot;</code>, encuentra una: <code class="match">&quot;bruja&quot; y su &quot;escoba&quot;</code>.</p>
+<p>Esto se puede describir como “la codicia es la causa de todo mal”.</p>
+<h2><a class="main__anchor" name="busqueda-codiciosa" href="#busqueda-codiciosa">Búsqueda codiciosa</a></h2><p>Para encontrar una coincidencia, el motor de expresión regular utiliza el siguiente algoritmo:</p>
+<ul>
+<li>Para cada posición en la cadena
+<ul>
+<li>Prueba si el patrón coincide en esta posición.</li>
+<li>Si no hay coincidencia, ir a la siguiente posición.</li>
+</ul>
+</li>
+</ul>
+<p>Estas palabras comunes no son tan obvias para determinar por qué la regexp falla, así que elaboremos el funcionamiento de la búsqueda del patrón <code class="pattern">&quot;.+&quot;</code>.</p>
+<ol>
+<li>
+<p>El primer carácter del patrón es una comilla doble <code class="pattern">&quot;</code>.</p>
+<p>El motor de expresión regular intenta encontrarla en la posición cero de la cadena fuente <code class="subject">una &quot;bruja&quot; y su &quot;escoba&quot; son una</code>, pero hay una <code class="subject">u</code> allí, por lo que inmediatamente no hay coincidencia.</p>
+<p>Entonces avanza: va a la siguiente posición en la cadena fuente y prueba encontrar el primer carácter del patrón allí, falla de nuevo, y finalmente encuentra la comilla doble en la 3ra posición:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy1.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy1.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+<li>
+<p>La comilla doble es detectada, y después el motor prueba encontrar una coincidencia para el resto del patrón. Prueba ver si el resto de la cadena objetivo satisface a <code class="pattern">.+&quot;</code>.</p>
+<p>En nuestro caso el próximo carácter de patrón es <code class="pattern">.</code> (un punto). Que denota “cualquiere carácter excepto línea nueva”, entonces la próxima letra de la cadena encaja <code class="match">'w'</code>:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy2.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy2.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+<li>
+<p>Entonces el punto (.) se repite por el cuantificador <code class="pattern">.+</code>. El motor de expresión regular agrega a la coincidencia un carácter uno después de otro.</p>
+<p>…¿Hasta cuando? Todos los caracteres coinciden con el punto, entonces se detiene hasta que alcanza el final de la cadena:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy3.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy3.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+<li>
+<p>Ahora el motor finalizó el ciclo de <code class="pattern">.+</code> y prueba encontrar el próximo carácter del patrón. El cual es la comilla doble <code class="pattern">&quot;</code>. Pero hay un problema: la cadena ha finalizado, ¡no hay más caracteres!</p>
+<p>El motor de expresión regular comprende que procesó demasiados <code class="pattern">.+</code> y <em>reinicia</em> la cadena.</p>
+<p>En otras palabras, acorta la coincidencia para el cuantificador en un carácter:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy4.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy4.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure><p>Ahora se supone que <code class="pattern">.+</code> finaliza un carácter antes del final de la cadena e intenta hacer coincidir el resto del patrón desde esa posición.</p>
+<p>Si hubiera comillas doble allí, entonces la búsqueda terminaría, pero el último carácter es <code class="subject">'a'</code>, por lo que no hay coincidencia.</p>
+</li>
+<li>
+<p>…Entonces el motor disminuye el número de repeticiones de <code class="pattern">.+</code> en uno:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy5.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy5.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure><p>Las comillas dobles <code class="pattern">'&quot;'</code> no coinciden con <code class="subject">'n'</code>.</p>
+</li>
+<li>
+<p>El motor continua reiniciando la lectura de la cadena: decrementa el contador de repeticiones para <code class="pattern">'.'</code> hasta que el resto del patrón (en nuestro caso <code class="pattern">'&quot;'</code>) coincida:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy6.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy6.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+<li>
+<p>La coincidencia está completa.</p>
+</li>
+<li>
+<p>Entonces la primera coincidencia es <code class="match">&quot;bruja&quot; y su &quot;escoba&quot;</code>. Si la expresión regular tiene la bandera <code class="pattern">g</code>, entonces la búsqueda continuará desde donde termina la primera coincidencia. No hay más comillas dobles en el resto de la cadena <code class="subject">son una</code>, entonces no hay más resultados.</p>
+</li>
+</ol>
+<p>Probablemente no es lo que esperabamos, pero así es como funciona.</p>
+<p><strong>En el modo codicioso (por defecto) un carácter cuantificado se repite tantas veces como sea posible.</strong></p>
+<p>El motor de regexp agrega a la coincidencia tantos caracteres como pueda abarcar el patrón <code class="pattern">.+</code>, y luego los abrevia uno por uno si el resto del patrón no coincide.</p>
+<p>En nuestro caso queremos otra cosa. Es entonces donde el modo perezoso puede ayudar.</p>
+<h2><a class="main__anchor" name="modo-perezoso" href="#modo-perezoso">Modo perezoso</a></h2><p>El modo perezoso de los cuantificadores es lo opuesto del modo codicioso. Eso significa: “repite el mínimo número de veces”.</p>
+<p>Podemos habilitarlo poniendo un signo de interrogación <code class="pattern">'?'</code> después del cuantificador, entonces tendríamos <code class="pattern">*?</code> o <code class="pattern">+?</code> o incluso <code class="pattern">??</code> para <code class="pattern">'?'</code>.</p>
+<p>Aclarando las cosas: generalmente un signo de interrogación <code class="pattern">?</code> es un cuantificador por si mismo (cero o uno), pero si se agrega <em>despues de otro cuantificador (o incluso el mismo)</em> toma otro significado, alterna el modo de coincidencia de codicioso a perezoso.</p>
+<p>La regexp <code class="pattern">/&quot;.+?&quot;/g</code> funciona como se esperaba: encuentra <code class="match">&quot;bruja&quot;</code> y <code class="match">&quot;escoba&quot;</code>:</p>
+<div id="pl1ukq3ap5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /&quot;.+?&quot;/g;
+
+let str = 'una &quot;bruja&quot; y su &quot;escoba&quot; son una';
+
+alert( str.match(regexp) ); // &quot;bruja&quot;, &quot;escoba&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para comprender claramente el cambio, rastreemos la búsqueda paso a paso.</p>
+<ol>
+<li>
+<p>El primer paso es el mismo: encuentra el inicio del patrón <code class="pattern">'&quot;'</code> en la 5ta posición:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy1.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy1.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+<li>
+<p>El siguiente paso también es similar: el motor encuentra una coincidencia para el punto <code class="pattern">'.'</code>:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_greedy2.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_greedy2.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+<li>
+<p>Y ahora la búsqueda es diferente. Porque tenemos el modo perezoso activado en <code class="pattern">+?</code>, el motor no prueba coincidir un punto una vez más, se detiene y prueba coincidir el resto del patrón (<code class="pattern">'&quot;'</code>) ahora mismo :</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_lazy3.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_lazy3.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure><p>Si hubiera comillas dobles allí, entonces la búsqueda terminaría, pero hay una <code>'r'</code>, entonces no hay coincidencia.</p>
+</li>
+<li>
+<p>Después el motor de expresión regular incrementa el número de repeticiones para el punto y prueba una vez más:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_lazy4.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_lazy4.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure><p>Falla de nuevo. Después el número de repeticiones es incrementado una y otra vez…</p>
+</li>
+<li>
+<p>…Hasta que se encuentre una coincidencia para el resto del patrón:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_lazy5.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_lazy5.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+<li>
+<p>La próxima busqueda inicia desde el final de la coincidencia actual y produce un resultado más:</p>
+<figure><div class="image" style="width:463px">
+      <div class="image__ratio" style="padding-top:28.077753779697623%"></div>
+      <object type="image/svg+xml" data="article/regexp-greedy-and-lazy/witch_lazy6.svg" width="463" height="130" class="image__image" data-use-theme>
+        <img src="article/regexp-greedy-and-lazy/witch_lazy6.svg" alt="" width="463" height="130">
+      </object>
+      </div></figure></li>
+</ol>
+<p>En este ejemplo vimos cómo funciona el modo perezoso para <code class="pattern">+?</code>. Los cuantificadores <code class="pattern">*?</code> y <code class="pattern">??</code> funcionan de manera similar, el motor regexp incrementa el número de repticiones solo si el resto del patrón no coincide en la posición dada.</p>
+<p><strong>La pereza solo está habilitada para el cuantificador con <code>?</code>.</strong></p>
+<p>Otros cuantificadores siguen siendo codiciosos.</p>
+<p>Por ejemplo:</p>
+<div id="go2z8s7it5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( &quot;123 456&quot;.match(/\d+ \d+?/) ); // 123 4</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>
+<p>El patrón <code class="pattern">\d+</code> intenta hacer coincidir tantos dígitos como sea posible (modo codicioso), por lo que encuentra  <code class="match">123</code> y se detiene, porque el siguiente carácter es un espacio <code class="pattern">' '</code>.</p>
+</li>
+<li>
+<p>Luego hay un espacio en el patrón, coincide.</p>
+</li>
+<li>
+<p>Después hay un <code class="pattern">\d+?</code>. El cuantificador está en modo perezoso, entonces busca un dígito <code class="match">4</code> y trata de verificar si el resto del patrón coincide desde allí.</p>
+<p>…Pero no hay nada en el patrón después de <code class="pattern">\d+?</code>.</p>
+<p>El modo perezoso no repite nada sin necesidad. El patrón terminó, así que terminamos. Tenemos una coincidencia <code class="match">123 4</code>.</p>
+</li>
+</ol>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Optimizaciones</span></div>
+            <div class="important__content"><p>Los motores modernos de expresiones regulares pueden optimizar algoritmos internos para trabajar más rápido. Estos trabajan un poco diferente del algoritmo descrito.</p>
+<p>Pero para comprender como funcionan las expresiones regulares y construirlas, no necesitamos saber nada al respecto. Solo se usan internamente para optimizar cosas.</p>
+<p>Las expresiones regulares complejas son difíciles de optimizar, por lo que la búsqueda también puede funcionar exactamente como se describe.</p>
+</div></div>
+<h2><a class="main__anchor" name="enfoque-alternativo" href="#enfoque-alternativo">Enfoque alternativo</a></h2><p>Con las regexps, por lo general hay muchas formas de hacer la misma cosa.</p>
+<p>En nuestro caso podemos encontrar cadenas entre comillas sin el modo perezoso usando la regexp <code class="pattern">&quot;[^&quot;]+&quot;</code>:</p>
+<div id="886xy5kzsh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /&quot;[^&quot;]+&quot;/g;
+
+let str = 'una &quot;bruja&quot; y su &quot;escoba&quot; son una';
+
+alert( str.match(regexp) ); // &quot;bruja&quot;, &quot;escoba&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La regexp <code class="pattern">&quot;[^&quot;]+&quot;</code> devuelve el resultado correcto, porque busca una comilla doble <code class="pattern">'&quot;'</code> seguida por uno o más caracteres no comilla doble <code class="pattern">[^&quot;]</code>, y luego la comilla doble de cierre.</p>
+<p>Cuando la máquina de regexp busca el carácter no comilla <code class="pattern">[^&quot;]+</code> se detiene la repetición cuando encuentra la comilla doble de cierre,y terminamos.</p>
+<p>Nótese, ¡esta lógica no reemplaza al cuantificador perezoso!</p>
+<p>Es solo diferente. Hay momentos en que necesitamos uno u otro.</p>
+<p><strong>Veamos un ejemplo donde los cuantificadores perezosos fallan y la variante funciona correctamente.</strong></p>
+<p>Por ejemplo, queremos encontrar enlaces en la forma <code>&lt;a href=&quot;...&quot; class=&quot;doc&quot;&gt;</code>, con cualquier <code>href</code>.</p>
+<p>¿Cual expresión regular usamos?</p>
+<p>La primera idea podría ser: <code class="pattern">/&lt;a href=&quot;.*&quot; class=&quot;doc&quot;&gt;/g</code>.</p>
+<p>Veámoslo:</p>
+<div id="u9nlwh2kbv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '...&lt;a href=&quot;link&quot; class=&quot;doc&quot;&gt;...';
+let regexp = /&lt;a href=&quot;.*&quot; class=&quot;doc&quot;&gt;/g;
+
+// ¡Funciona!
+alert( str.match(regexp) ); // &lt;a href=&quot;link&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Funcionó. Pero veamos ¿que pasa si hay varios enlaces en el texto?</p>
+<div id="xtrt2pnhwf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '...&lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;... &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;...';
+let regexp = /&lt;a href=&quot;.*&quot; class=&quot;doc&quot;&gt;/g;
+
+// ¡Vaya! ¡Dos enlaces en una coincidencia!
+alert( str.match(regexp) ); // &lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;... &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora el resultado es incorrecto por la misma razón del ejemplo de la bruja. El cuantificador <code class="pattern">.*</code> toma demasiados caracteres.</p>
+<p>La coincidencia se ve así:</p>
+<div id="fdn4j77862" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;a href=&quot;.....................................&quot; class=&quot;doc&quot;&gt;
+&lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;... &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Modifiquemos el patrón haciendo el cuantificador perezoso: <code class="pattern">.*?</code>:</p>
+<div id="m1b5sz537x" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '...&lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;... &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;...';
+let regexp = /&lt;a href=&quot;.*?&quot; class=&quot;doc&quot;&gt;/g;
+
+// ¡Funciona!
+alert( str.match(regexp) ); // &lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;, &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora parece funcionar, hay dos coincidencias:</p>
+<div id="619wro1ujc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;a href=&quot;.....&quot; class=&quot;doc&quot;&gt;    &lt;a href=&quot;.....&quot; class=&quot;doc&quot;&gt;
+&lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;... &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Pero probemos ahora con una entrada de texto adicional:</p>
+<div id="f1bh1773fo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '...&lt;a href=&quot;link1&quot; class=&quot;wrong&quot;&gt;... &lt;p style=&quot;&quot; class=&quot;doc&quot;&gt;...';
+let regexp = /&lt;a href=&quot;.*?&quot; class=&quot;doc&quot;&gt;/g;
+
+// ¡Coincidencia incorrecta!
+alert( str.match(regexp) ); // &lt;a href=&quot;link1&quot; class=&quot;wrong&quot;&gt;... &lt;p style=&quot;&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora falla. La coincidencia no solo incluye el enlace, sino también mucho texto después, incluyendo <code>&lt;p...&gt;</code>.</p>
+<p>¿Por qué?</p>
+<p>Eso es lo que está pasando:</p>
+<ol>
+<li>Primero la regexp encuentra un enlace inicial <code class="match">&lt;a href=&quot;</code>.</li>
+<li>Después busca para el patrón <code class="pattern">.*?</code>: toma un carácter (¡perezosamente!), verifica si hay una coincidencia para <code class="pattern">&quot; class=&quot;doc&quot;&gt;</code> (ninguna).</li>
+<li>Después toma otro carácter dentro de <code class="pattern">.*?</code>, y así… hasta que finalmente alcanza a  <code class="match">&quot; class=&quot;doc&quot;&gt;</code>.</li>
+</ol>
+<p>Pero el problema es que: eso ya está más allá del enlace <code>&lt;a...&gt;</code>, en otra etiqueta <code>&lt;p&gt;</code>. No es lo que queremos.</p>
+<p>Esta es la muestra de la coincidencia alineada con el texto:</p>
+<div id="dzaxir39k2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;a href=&quot;...................................&quot; class=&quot;doc&quot;&gt;
+&lt;a href=&quot;link1&quot; class=&quot;wrong&quot;&gt;... &lt;p style=&quot;&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces, necesitamos un patrón que busque <code>&lt;a href=&quot;...algo...&quot; class=&quot;doc&quot;&gt;</code>, pero ambas variantes, codiciosa y perezosa, tienen problemas.</p>
+<p>La variante correcta puede ser: <code class="pattern">href=&quot;[^&quot;]*&quot;</code>. Esta tomará todos los caracteres dentro del atributo <code>href</code> hasta la comilla doble más cercana, justo lo que necesitamos.</p>
+<p>Un ejemplo funcional:</p>
+<div id="jjlqzb8mja" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str1 = '...&lt;a href=&quot;link1&quot; class=&quot;wrong&quot;&gt;... &lt;p style=&quot;&quot; class=&quot;doc&quot;&gt;...';
+let str2 = '...&lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;... &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;...';
+let regexp = /&lt;a href=&quot;[^&quot;]*&quot; class=&quot;doc&quot;&gt;/g;
+
+// ¡Funciona!
+alert( str1.match(regexp) ); // null, sin coincidencia, eso es correcto
+alert( str2.match(regexp) ); // &lt;a href=&quot;link1&quot; class=&quot;doc&quot;&gt;, &lt;a href=&quot;link2&quot; class=&quot;doc&quot;&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Los cuantificadores tienen dos modos de funcionamiento:</p>
+<dl>
+<dt>Codiciosa</dt>
+<dd>Por defecto el motor de expresión regular prueba repetir el carácter cuantificado tantas veces como sea posible. Por ejemplo, <code class="pattern">\d+</code> consume todos los posibles dígitos. Cuando es imposible consumir más (no hay más dígitos o es el fin de la cadena), entonces continúa hasta coincidir con el resto del patrón. Si no hay coincidencia entonces se decrementa el número de repeticiones (reinicios) y prueba de nuevo.</dd>
+<dt>Perezoso</dt>
+<dd>Habilitado por el signo de interrogación <code class="pattern">?</code> después de un cuantificador. El motor de regexp prueba la coincidencia para el resto del patrón antes de cada repetición del carácter cuantificado.</dd>
+</dl>
+<p>Como vimos, el modo perezoso no es una “panacea” de la búsqueda codiciosa. Una alternativa es una búsqueda codiciosa refinada, con exclusiones, como en el patrón <code class="pattern">&quot;[^&quot;]+&quot;</code>.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#una-coincidencia-para-d-d" name="una-coincidencia-para-d-d">Una coincidencia para /d+? d+?/</a></h3><a class="task__open-link" href="task/lazy-greedy.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>¿Cual es la coincidencia aquí?</p>
+<div id="sxrk7fxk6q" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( &quot;123 456&quot;.match(/\d+? \d+?/g) ); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El resultado es: <code class="match">123 4</code>.</p>
+<p>Primero el perezoso <code class="pattern">\d+?</code> trata de tomar la menor cantidad de dígitos posible, pero tiene que llegar al espacio, por lo que toma <code class="match">123</code>.</p>
+<p>Después el segundo <code>\d+?</code> toma solo un dígito, porque es sufuciente.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#encuentra-el-comentario-html" name="encuentra-el-comentario-html">Encuentra el comentario HTML</a></h3><a class="task__open-link" href="task/find-html-comments.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>Encuentra todos los comentarios HTML en el texto:</p>
+<div id="u3ktes288l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /your regexp/g;
+
+let str = `... &lt;!-- Mi -- comentario
+ prueba --&gt; ..  &lt;!----&gt; ..
+`;
+
+alert( str.match(regexp) ); // '&lt;!-- Mi -- comentario \n prueba --&gt;', '&lt;!----&gt;'</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Necesitamos encontrar el inicio del comentario <code class="match">&lt;!--</code>, después todo hasta el fin de <code class="match">--&gt;</code>.</p>
+<p>Una variante aceptable es <code class="pattern">&lt;!--.*?--&gt;</code> – el cuantificador perezoso detiene el punto justo antes de <code class="match">--&gt;</code>. También necesitamos agregar la bandera <code class="pattern">s</code> al punto para incluir líneas nuevas.</p>
+<p>De lo contrario, no se encontrarán comentarios multilínea:</p>
+<div id="35jcddaz5r" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /&lt;!--.*?--&gt;/gs;
+
+let str = `... &lt;!-- Mi -- comentario
+ prueba --&gt; ..  &lt;!----&gt; ..
+`;
+
+alert( str.match(regexp) ); // '&lt;!-- Mi -- comentario \n prueba --&gt;', '&lt;!----&gt;'</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#encontrar-las-etiquetas-html" name="encontrar-las-etiquetas-html">Encontrar las etiquetas HTML</a></h3><a class="task__open-link" href="task/find-html-tags-greedy-lazy.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>Crear una expresión regular para encontrar todas las etiquetas HTML (de apertura y cierre) con sus atributos.</p>
+<p>Un ejemplo de uso:</p>
+<div id="l6tube8d1p" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /tu regexp/g;
+
+let str = '&lt;&gt; &lt;a href=&quot;/&quot;&gt; &lt;input type=&quot;radio&quot; checked &gt; &lt;b&gt;';
+
+alert( str.match(regexp) ); // '&lt;a href=&quot;/&quot;&gt;', '&lt;input type=&quot;radio&quot; checked &gt;', '&lt;b&gt;'</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Asumimos que los atributos de etiqueta no deben contener <code>&lt;</code> ni <code>&gt;</code> (dentro de comillas dobles también), esto simplifica un poco las cosas.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La solución es <code class="pattern">&lt;[^&lt;&gt;]+&gt;</code>.</p>
+<div id="njb0d132a5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let regexp = /&lt;[^&lt;&gt;]+&gt;/g;
+
+let str = '&lt;&gt; &lt;a href=&quot;/&quot;&gt; &lt;input type=&quot;radio&quot; checked &gt; &lt;b&gt;';
+
+alert( str.match(regexp) ); // '&lt;a href=&quot;/&quot;&gt;', '&lt;input type=&quot;radio&quot; checked &gt;', '&lt;b&gt;'</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="regexp-quantifiers.html" data-tooltip="Cuantificadores +, *, ? y {n}"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="regexp-groups.html" data-tooltip="Grupos de captura"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-greedy-and-lazy" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fregexp-greedy-and-lazy" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/regexp-greedy-and-lazy","identifier":"\/regexp-greedy-and-lazy"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="regular-expressions.html">Expresiones Regulares</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#busqueda-codiciosa">Búsqueda codiciosa</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#modo-perezoso">Modo perezoso</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#enfoque-alternativo">Enfoque alternativo</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fregexp-greedy-and-lazy" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fregexp-greedy-and-lazy" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/9-regular-expressions/10-regexp-greedy-and-lazy" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/regexp-greedy-and-lazy by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:02 GMT -->
+</html>

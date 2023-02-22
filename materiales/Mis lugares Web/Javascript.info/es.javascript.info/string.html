@@ -1,0 +1,1058 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/string by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Strings</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="string.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Strings"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Strings"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="number.html"><link rel="next" href="array.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Strings"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/string"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/string"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="string.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/string"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/string"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/string"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/string"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/string"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/string"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/string"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/string"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/string"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/string"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fstring" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fstring" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/string">عربي</option><option value="https://javascript.info/string">English</option><option value="https://es.javascript.info/string" selected>Español</option><option value="https://fa.javascript.info/string">فارسی</option><option value="https://fr.javascript.info/string">Français</option><option value="https://id.javascript.info/string">Indonesia</option><option value="https://it.javascript.info/string">Italiano</option><option value="https://ja.javascript.info/string">日本語</option><option value="https://ko.javascript.info/string">한국어</option><option value="https://learn.javascript.ru/string">Русский</option><option value="https://tr.javascript.info/string">Türkçe</option><option value="https://uk.javascript.info/string">Українська</option><option value="https://zh.javascript.info/string">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="39" max="93" data-tooltip="Lección 39 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="data-types.html"><span>Tipos de datos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Tipos de datos","item":"https://es.javascript.info/data-types"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 14 de noviembre de 2022"><div class="updated-at__content">14 de noviembre de 2022</div></div></div><h1 class="main__header-title">Strings</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Strings"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>En JavaScript, los datos textuales son almacenados como strings (cadena de caracteres). No hay un tipo de datos separado para caracteres unitarios.</p>
+<p>El formato interno para strings es siempre <a href="https://es.wikipedia.org/wiki/UTF-16">UTF-16</a>, no está vinculado a la codificación de la página.</p>
+<h2><a class="main__anchor" name="comillas" href="#comillas">Comillas</a></h2><p>Recordemos los tipos de comillas.</p>
+<p>Los strings pueden estar entre comillas simples, comillas dobles o backticks (acento grave):</p>
+<div id="5xm8hmq5b1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let single = 'comillas simples';
+let double = &quot;comillas dobles&quot;;
+
+let backticks = `backticks`;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Comillas simples y dobles son esencialmente lo mismo. En cambio, los “backticks” nos permiten además ingresar expresiones dentro del string envolviéndolos en <code>${…}</code>:</p>
+<div id="et26iwvbsl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sum(a, b) {
+  return a + b;
+}
+
+alert(`1 + 2 = ${sum(1, 2)}.`); // 1 + 2 = 3.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Otra ventaja de usar backticks es que nos permiten extender en múltiples líneas el string:</p>
+<div id="1axj9bumpr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let guestList = `Invitados:
+ * Juan
+ * Pedro
+ * Maria
+`;
+
+alert(guestList); // una lista de invitados, en múltiples líneas</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Se ve natural, ¿no es cierto? Pero las comillas simples y dobles no funcionan de esa manera.</p>
+<p>Si intentamos usar comillas simples o dobles de la misma forma, obtendremos un error:</p>
+<div id="vwbzuq518c" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let guestList = &quot;Invitados:  // Error: Unexpected token ILLEGAL
+  * Juan&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las comillas simples y dobles provienen de la creación de lenguajes en tiempos ancestrales, cuando la necesidad de múltiples líneas no era tomada en cuenta. Los backticks aparecieron mucho después y por ende son más versátiles.</p>
+<p>Los backticks además nos permiten especificar una “función de plantilla” antes del primer backtick. La sintaxis es: <code>func`string`</code>. La función <code>func</code> es llamada automáticamente, recibe el string y la expresión insertada, y los puede procesar. Eso se llama “plantillas etiquetadas”. Es raro verlo implementado, pero puedes leer más sobre esto en el <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates">manual</a>.</p>
+<h2><a class="main__anchor" name="caracteres-especiales" href="#caracteres-especiales">Caracteres especiales</a></h2><p>Es posible crear strings de múltiples líneas usando comillas simples, usando un llamado “carácter de nueva línea”, escrito como <code>\n</code>, lo que denota un salto de línea:</p>
+<div id="db9wb7iv5s" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let guestList = 'Invitados:\n * Juan\n * Pedro\n * Maria';
+
+alert(guestList); // lista de invitados en múltiples líneas, igual a la de más arriba</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como ejemplo más simple, estas dos líneas son iguales, pero escritas en forma diferente:</p>
+<div id="bguz2q22hg" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str1 = &quot;Hello\nWorld&quot;; // dos líneas usando el &quot;símbolo de nueva línea&quot;
+
+// dos líneas usando nueva línea normal y backticks
+let str2 = `Hello
+World`;
+
+alert(str1 == str2); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Existen otros caracteres especiales, menos comunes.</p>
+<table>
+<thead>
+<tr>
+<th>Carácter</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\n</code></td>
+<td>Nueva línea</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>En Windows, los archivos de texto usan una combinación de dos caracteres <code>\r\n</code> para representar un corte de línea, mientras que en otros SO es simplemente ‘\n’. Esto es por razones históricas, la mayoría del software para Windows también reconoce ‘\n’.</td>
+</tr>
+<tr>
+<td><code>\'</code>, <code>\&quot;</code>, <code>\`</code></td>
+<td>Comillas</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>Barra invertida</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>Tabulación</td>
+</tr>
+<tr>
+<td><code>\b</code>, <code>\f</code>, <code>\v</code></td>
+<td>Retroceso, avance de formulario, tabulación vertical – Se mencionan para ser exhaustivos. Vienen de muy viejos tiempos y no se usan actualmente (puedes olvidarlos ya).</td>
+</tr>
+</tbody>
+</table>
+<p>Como puedes ver, todos los caracteres especiales empiezan con la barra invertida <code>\</code>. Se lo llama “carácter de escape”.</p>
+<p>Y como es tan especial, si necesitamos mostrar el verdadero carácter <code>\</code> dentro de un string, necesitamos duplicarlo:</p>
+<div id="pi2uxfa7uw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( `La barra invertida: \\` ); // La barra invertida: \</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Las llamadas comillas “escapadas” <code>\'</code>, <code>\&quot;</code>, <code>\`</code> se usan para insertar una comilla en un string entrecomillado con el mismo tipo de comilla.</p>
+<p>Por ejemplo:</p>
+<div id="w2z0nnovjv" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('¡Yo soy la \'morsa\'!'); // ¡Yo soy la 'morsa'!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como puedes ver, debimos anteponer un carácter de escape <code>\</code> antes de cada comilla ya que de otra manera hubiera indicado el final del string.</p>
+<p>Obviamente, solo necesitan ser escapadas las comillas que son iguales a las que están rodeando al string. Una solución más elegante es cambiar a comillas dobles o backticks:</p>
+<div id="dlz3ukxl3o" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(&quot;¡Yo soy la 'morsa'!&quot;); // ¡Yo soy la 'morsa'!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Además de estos caracteres especiales, también hay una notación especial para códigos Unicode <code>\u…</code> que se usa raramente. Los cubrimos en el capítulo opcional acerca de <a href="unicode.html">Unicode</a>.</p>
+<h2><a class="main__anchor" name="largo-del-string" href="#largo-del-string">Largo del string</a></h2><p>La propiedad ‘length’ contiene el largo del string:</p>
+<div id="y6nc60rw0f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(`Mi\n`.length); // 3</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Nota que <code>\n</code> es un solo carácter, por lo que el largo total es <code>3</code>.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type"><code>length</code> es una propiedad</span></div>
+            <div class="important__content"><p>Quienes tienen experiencia en otros lenguajes pueden cometer el error de escribir <code>str.length()</code> en vez de <code>str.length</code>. Eso no funciona.</p>
+<p>Nota que <code>str.length</code> es una propiedad numérica, no una función. No hay que agregar paréntesis después de ella. No es <code>.length()</code>, sino <code>.length</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="accediendo-caracteres" href="#accediendo-caracteres">Accediendo caracteres</a></h2><p>Para acceder a un carácter en la posición <code>pos</code>, se debe usar corchetes, <code>[pos]</code>, o llamar al método <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/at">str.at(pos)</a>. El primer carácter comienza desde la posición cero:</p>
+<div id="mlc4x1ynww" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = `Hola`;
+
+// el primer carácter
+alert( str[0] ); // H
+alert( str.at(0) ); // H
+
+// el último carácter
+alert( str[str.length - 1] ); // a
+alert( str.at(-1) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como puedes ver, el método <code>.at(pos)</code> tiene el beneficio de permitir una posición negativa. Si <code>pos</code> es negativa, se cuenta desde el final del string.</p>
+<p>Así, <code>.at(-1)</code> significa el último carácter, y <code>.at(-2)</code> es el anterior a él, etc.</p>
+<p>Los corchetes siempre devuelven <code>undefined</code> para índices negativos:</p>
+<div id="uw4wjpfn6w" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = `Hola`;
+
+alert( str[-2] ); // undefined
+alert( str.at(-2) ); // l</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos además iterar sobre los caracteres usando <code>for..of</code>:</p>
+<div id="juuwpyyyo3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>for (let char of 'Hola') {
+  alert(char); // H,o,l,a (char se convierte en &quot;H&quot;, luego &quot;o&quot;, luego &quot;l&quot;, etc.)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="los-strings-son-inmutables" href="#los-strings-son-inmutables">Los strings son inmutables</a></h2><p>Los strings no pueden ser modificados en JavaScript. Es imposible modificar un carácter.</p>
+<p>Intentémoslo para demostrar que no funciona:</p>
+<div id="5ymj80cifi" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Hola';
+
+str[0] = 'h'; // error
+alert(str[0]); // no funciona</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Lo usual para resolverlo es crear un nuevo string y asignarlo a <code>str</code> reemplazando el string completo.</p>
+<p>Por ejemplo:</p>
+<div id="s7qotpt8nx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Hola';
+
+str = 'h' + str[1] + str[2] + str[3]; // reemplaza el string
+
+alert( str ); // hola</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En las secciones siguientes veremos más ejemplos de esto.</p>
+<h2><a class="main__anchor" name="cambiando-capitalizacion" href="#cambiando-capitalizacion">Cambiando capitalización</a></h2><p>Los métodos <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/toLowerCase">toLowerCase()</a> y <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/toUpperCase">toUpperCase()</a> cambian los caracteres a minúscula y mayúscula respectivamente:</p>
+<div id="pxby5cht6i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Interfaz'.toUpperCase()); // INTERFAZ
+alert('Interfaz'.toLowerCase()); // interfaz</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si queremos un solo carácter en minúscula:</p>
+<div id="zknevemv44" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Interfaz'[0].toLowerCase()); // 'i'</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="buscando-una-subcadena-de-caracteres" href="#buscando-una-subcadena-de-caracteres">Buscando una subcadena de caracteres</a></h2><p>Existen muchas formas de buscar por subcadenas de caracteres dentro de una cadena completa.</p>
+<h3><a class="main__anchor" name="str-indexof" href="#str-indexof">str.indexOf</a></h3><p>El primer método es <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/indexOf">str.indexOf(substr, pos)</a>.</p>
+<p>Este busca un <code>substr</code> en <code>str</code>, comenzando desde la posición entregada <code>pos</code>, y retorna la posición donde es encontrada la coincidencia o <code>-1</code> en caso de no encontrar nada.</p>
+<p>Por ejemplo:</p>
+<div id="xzbbalvjzb" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Widget con id';
+
+alert(str.indexOf('Widget')); // 0, ya que 'Widget' es encontrado al comienzo
+alert(str.indexOf('widget')); // -1, no es encontrado, la búsqueda toma en cuenta minúsculas y mayúsculas.
+
+alert(str.indexOf('id')); // 1, &quot;id&quot; es encontrado en la posición 1 (..idget con id)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El segundo parámetro es opcional y nos permite buscar desde la posición entregada.</p>
+<p>Por ejemplo, la primera ocurrencia de <code>&quot;id&quot;</code> es en la posición <code>1</code>. Para buscar por la siguiente ocurrencia, comencemos a buscar desde la posición <code>2</code>:</p>
+<div id="q4h2gim7cj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Widget con id';
+
+alert(str.indexOf('id', 2)); // 11</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si estamos interesados en todas las ocurrencias, podemos correr <code>indexOf</code> en un bucle. Cada nuevo llamado es hecho utilizando la posición posterior a la encontrada anteriormente:</p>
+<div id="ozl459odu7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Astuto como un zorro, fuerte como un buey';
+
+let target = 'como'; // busquemos por él
+
+let pos = 0;
+while (true) {
+  let foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) break;
+
+  alert(`Encontrado en ${foundPos}`);
+  pos = foundPos + 1; // continuar la búsqueda desde la siguiente posición
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos escribir el mismo algoritmo, pero más corto:</p>
+<div id="vw9h8d68to" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = 'Astuto como un zorro, fuerte como un buey';
+let target = &quot;como&quot;;
+
+let pos = -1;
+while ((pos = str.indexOf(target, pos + 1)) != -1) {
+  alert( pos );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>str.lastIndexOf(substr, position)</code></span></div>
+            <div class="important__content"><p>También hay un método similar <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/lastIndexOf">str.lastIndexOf(substr, position)</a> que busca desde el final del string hasta el comienzo.</p>
+<p>Este imprimirá las ocurrencias en orden invertido.</p>
+</div></div>
+<p>Existe un leve inconveniente con <code>indexOf</code> en la prueba <code>if</code>. No podemos utilizarlo en el <code>if</code> como sigue:</p>
+<div id="410pfwcy1j" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;Widget con id&quot;;
+
+if (str.indexOf(&quot;Widget&quot;)) {
+    alert(&quot;Lo encontramos&quot;); // no funciona!
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La <code>alerta</code> en el ejemplo anterior no se muestra ya que <code>str.indexOf(&quot;Widget&quot;)</code> retorna <code>0</code> (lo que significa que encontró el string en la posición inicial). Eos correcto, pero <code>if</code> considera <code>0</code> como <code>falso</code>.</p>
+<p>Por ello debemos preguntar por <code>-1</code>:</p>
+<div id="e1fkq81edh" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:2}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;Widget con id&quot;;
+
+if (str.indexOf(&quot;Widget&quot;) != -1) {
+    alert(&quot;Lo encontramos&quot;); // ahora funciona!
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="includes-startswith-endswith" href="#includes-startswith-endswith">includes, startsWith, endsWith</a></h3><p>El método más moderno <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/includes">str.includes(substr, pos)</a> devuelve <code>true</code> o <code>false</code> si <code>str</code> contiene <code>substr</code> o no.</p>
+<p>Es la opción adecuada si lo que necesitamos es verificar que exista, pero no su posición.</p>
+<div id="aookqqgxo0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Widget con id'.includes('Widget')); // true
+
+alert('Hola'.includes('Adiós')); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El segundo argumento opcional de <code>str.includes</code> es la posición desde donde comienza a buscar:</p>
+<div id="4vtm0gx3o9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Midget'.includes('id')); // true
+alert('Midget'.includes('id', 3)); // false, desde la posición 3 no hay &quot;id&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los métodos <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/startsWith">str.startsWith</a> (comienza con) y <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/endsWith">str.endsWith</a> (termina con) hacen exactamente lo que dicen:</p>
+<div id="rds0h2nsyz" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;cols&quot;:[{&quot;start&quot;:11,&quot;end&quot;:14}]},{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:8,&quot;end&quot;:11}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( &quot;Widget&quot;.startsWith(&quot;Wid&quot;) ); // true, &quot;Widget&quot; comienza con &quot;Wid&quot;
+alert( &quot;Widget&quot;.endsWith(&quot;get&quot;) ); // true, &quot;Widget&quot; termina con &quot;get&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="obteniendo-un-substring" href="#obteniendo-un-substring">Obteniendo un substring</a></h2><p>Existen 3 métodos en JavaScript para obtener un substring: <code>substring</code>, <code>substr</code> y <code>slice</code>.</p>
+<dl>
+<dt><code>str.slice(comienzo [, final])</code></dt>
+<dd>
+<p>Retorna la parte del string desde <code>comienzo</code> hasta (pero sin incluir) <code>final</code>.</p>
+<p>Por ejemplo:</p>
+<div id="vs3mysnf5z" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;stringify&quot;;
+alert( str.slice(0, 5) ); // 'strin', el substring desde 0 hasta 5 (sin incluir 5)
+alert( str.slice(0, 1) ); // 's', desde 0 hasta 1, pero sin incluir 1, por lo que sólo el carácter en 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si no existe el segundo argumento, entonces <code>slice</code> va hasta el final del string:</p>
+<div id="gkafa4791g" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:13,&quot;end&quot;:20}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;stringify&quot;;
+alert( str.slice(2) ); // ringify, desde la 2nda posición hasta el final</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También son posibles valores negativos para <code>comienzo/final</code>. Estos indican que la posición es contada desde el final del string.</p>
+<div id="j8iqwe9q7b" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:16,&quot;end&quot;:19}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;stringify&quot;;
+// comienza en la 4ta posición desde la derecha, finaliza en la 1era posición desde la derecha
+alert( str.slice(-4, -1) ); // 'gif'</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>str.substring(comienzo [, final])</code></dt>
+<dd>
+<p>Devuelve la parte del string <em>entre</em> <code>comienzo</code> y <code>final</code> (no incluyendo <code>final</code>).</p>
+<p>Esto es casi lo mismo que <code>slice</code>, pero permite que <code>comienzo</code> sea mayor que <code>final</code> (en este caso solo intercambia los valores de <code>comienzo</code> y <code>final</code>).</p>
+<p>Por ejemplo:</p>
+<div id="9qdmav7itu" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:13,&quot;end&quot;:17}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;stringify&quot;;
+
+// esto es lo mismo para substring
+alert( str.substring(2, 6) ); // &quot;ring&quot;
+alert( str.substring(6, 2) ); // &quot;ring&quot;
+
+// ...pero no para slice:
+alert( str.slice(2, 6) ); // &quot;ring&quot; (lo mismo)
+alert( str.slice(6, 2) ); // &quot;&quot; (un string vacío)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los argumentos negativos (al contrario de slice) no son soportados, son tratados como <code>0</code>.</p>
+</dd>
+<dt><code>str.substr(comienzo [, largo])</code></dt>
+<dd>
+<p>Retorna la parte del string desde <code>comienzo</code>, con el <code>largo</code> dado.</p>
+<p>A diferencia de los métodos anteriores, este nos permite especificar el <code>largo</code> en lugar de la posición final:</p>
+<div id="buvgozabol" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:13,&quot;end&quot;:17}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;stringify&quot;;
+alert( str.substr(2, 4) ); // ring, desde la 2nda posición toma 4 caracteres</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El primer argumento puede ser negativo, para contar desde el final:</p>
+<div id="rc3kg7tacg" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;cols&quot;:[{&quot;start&quot;:16,&quot;end&quot;:18}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = &quot;stringify&quot;;
+alert( str.substr(-4, 2) ); // gi, desde la 4ta posición toma 2 caracteres</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este método reside en el <a href="https://tc39.es/ecma262/#sec-string.prototype.substr">Anexo B</a> de la especificación del lenguaje. Esto significa que solo necesitan darle soporte los motores Javascript de los navegadores, y no es recomendable su uso. Pero en la práctica, es soportado en todos lados.</p>
+</dd>
+</dl>
+<p>Recapitulemos los métodos para evitar confusiones:</p>
+<table>
+<thead>
+<tr>
+<th>método</th>
+<th>selecciona…</th>
+<th>negativos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slice(comienzo, final)</code></td>
+<td>desde <code>comienzo</code> hasta <code>final</code> (sin incluir <code>final</code>)</td>
+<td>permite negativos</td>
+</tr>
+<tr>
+<td><code>substring(comienzo, final)</code></td>
+<td>entre <code>comienzo</code> y <code>final</code> (no incluye <code>final</code>)</td>
+<td>valores negativos significan <code>0</code></td>
+</tr>
+<tr>
+<td><code>substr(comienzo, largo)</code></td>
+<td>desde <code>comienzo</code> toma <code>largo</code> caracteres</td>
+<td>permite negativos <code>comienzo</code></td>
+</tr>
+</tbody>
+</table>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Cuál elegir?</span></div>
+            <div class="important__content"><p>Todos son capaces de hacer el trabajo. Formalmente, <code>substr</code> tiene una pequeña desventaja: no es descrito en la especificación central de JavaScript, sino en el anexo B, el cual cubre características sólo de navegadores, que existen principalmente por razones históricas. Por lo que entornos sin navegador pueden fallar en compatibilidad. Pero en la práctica, funciona en todos lados.</p>
+<p>De las otras dos variantes, <code>slice</code> es algo más flexible, permite argumentos negativos y es más corta.</p>
+<p>Entones, es suficiente recordar únicamente <code>slice</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="comparando-strings" href="#comparando-strings">Comparando strings</a></h2><p>Como aprendimos en el capítulo <a href="comparison.html">Comparaciones</a>, los strings son comparados carácter por carácter en orden alfabético.</p>
+<p>Aunque existen algunas singularidades.</p>
+<ol>
+<li>
+<p>Una letra minúscula es siempre mayor que una mayúscula:</p>
+<div id="7vxtz8opq0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('a' &gt; 'Z'); // true</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Las letras con marcas diacríticas están “fuera de orden”:</p>
+<div id="s8p3dhcp0s" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Österreich' &gt; 'Zealand'); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto puede conducir a resultados extraños si ordenamos los nombres de estos países. Usualmente, se esperaría que <code>Zealand</code> apareciera después de <code>Österreich</code> en la lista.</p>
+</li>
+</ol>
+<p>Para entender lo que pasa, debemos tener en cuenta que los strings en JavaScript son codificados usando <a href="https://es.wikipedia.org/wiki/UTF-16">UTF-16</a>. Esto significa: cada carácter tiene un código numérico correspondiente.</p>
+<p>Existen métodos especiales que permiten obtener el carácter para el código y viceversa.</p>
+<dl>
+<dt><code>str.codePointAt(pos)</code></dt>
+<dd>
+<p>Devuelve un número decimal que representa el código de carácter en la posición <code>pos</code>:</p>
+<div id="gbycjwogch" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// mayúsculas y minúsculas tienen códigos diferentes
+alert( &quot;Z&quot;.codePointAt(0) ); // 90
+alert( &quot;z&quot;.codePointAt(0) ); // 122
+alert( &quot;z&quot;.codePointAt(0).toString(16) ); // 7a (si necesitamos el valor del código en hexadecimal)</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+<dt><code>String.fromCodePoint(code)</code></dt>
+<dd>
+<p>Crea un carácter por su <code>código</code> numérico:</p>
+<div id="jh1tqg4wv2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( String.fromCodePoint(90) ); // Z
+alert( String.fromCodePoint(0x5a) ); // Z (también podemos usar un valor hexa como argumento)</code></pre>
+        </div>
+      </div>
+      
+      </div></dd>
+</dl>
+<p>Ahora veamos los caracteres con códigos <code>65..220</code> (el alfabeto latino y algo más) transformándolos a string:</p>
+<div id="831wlgau2m" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let str = '';
+
+for (let i = 65; i &lt;= 220; i++) {
+  str += String.fromCodePoint(i);
+}
+alert( str );
+// salida:
+// ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+// ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Lo ves? Caracteres en mayúsculas van primero, luego unos cuantos caracteres especiales, luego las minúsculas.</p>
+<p>Ahora se vuelve obvio por qué <code>a &gt; Z</code>.</p>
+<p>Los caracteres son comparados por su código numérico. Código mayor significa que el carácter es mayor. El código para <code>a</code> (97) es mayor que el código para <code>Z</code> (90).</p>
+<ul>
+<li>Todas las letras minúsculas van después de las mayúsculas ya que sus códigos son mayores.</li>
+<li>Algunas letras como <code>Ö</code> se mantienen apartadas del alfabeto principal. Aquí el código es mayor que cualquiera desde <code>a</code> hasta <code>z</code>.</li>
+</ul>
+<h3><a class="main__anchor" name="correct-comparisons" href="#correct-comparisons">Comparaciones correctas</a></h3><p>El algoritmo “correcto” para realizar comparaciones de strings es más complejo de lo que parece, debido a que los alfabetos son diferentes para diferentes lenguajes. Una letra que se ve igual en dos alfabetos distintos, pueden tener distintas posiciones.</p>
+<p>Por lo que el navegador necesita saber el lenguaje para comparar.</p>
+<p>Por suerte, todos los navegadores modernos mantienen la internacionalización del estándar <a href="https://www.ecma-international.org/publications-and-standards/standards/ecma-402/">ECMA 402</a>.</p>
+<p>Este provee un método especial para comparar strings en distintos lenguajes, siguiendo sus reglas.</p>
+<p>El llamado a <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/localeCompare">str.localeCompare(str2)</a> devuelve un entero indicando si <code>str</code> es menor, igual o mayor que <code>str2</code> de acuerdo a las reglas del lenguaje:</p>
+<ul>
+<li>Retorna <code>1</code> si <code>str</code> es mayor que <code>str2</code>.</li>
+<li>Retorna <code>-1</code> si <code>str</code> es menor que <code>str2</code>.</li>
+<li>Retorna <code>0</code> si son equivalentes.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="9l19xvrq5u" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert('Österreich'.localeCompare('Zealand')); // -1</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este método tiene dos argumentos adicionales especificados en <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String/localeCompare">la documentación</a>, la cual le permite especificar el lenguaje (por defecto lo toma del entorno) y configura reglas adicionales como sensibilidad a las mayúsculas y minúsculas, o si <code>&quot;a&quot;</code> y <code>&quot;á&quot;</code> deben ser tratadas como iguales, etc.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>Existen 3 tipos de entrecomillado. Los backticks permiten que una cadena abarque varias líneas e insertar expresiones <code>${…}</code>.</li>
+<li>Podemos usar caracteres especiales como el salto de línea <code>\n</code>.</li>
+<li>Para obtener un carácter, usa: <code>[]</code> o el método <code>at</code>.</li>
+<li>Para obtener un substring, usa: <code>slice</code> o <code>substring</code>.</li>
+<li>Para convertir un string en minúsculas/mayúsculas, usa: <code>toLowerCase/toUpperCase</code>.</li>
+<li>Para buscar un substring, usa: <code>indexOf</code>, o  para chequeos simples <code>includes/startsWith/endsWith</code>.</li>
+<li>Para comparar strings de acuerdo al idioma, usa: <code>localeCompare</code>, de otra manera serán comparados por sus códigos de carácter.</li>
+</ul>
+<p>Existen otros métodos útiles:</p>
+<ul>
+<li><code>str.trim()</code> – remueve (“recorta”) espacios desde el comienzo y final de un string.</li>
+<li><code>str.repeat(n)</code> – repite el string <code>n</code> veces.</li>
+<li>… y más. Puedes ver el <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/String">manual</a> para más detalles.</li>
+</ul>
+<p>Los strings también tienen métodos para buscar/reemplazar que usan “expresiones regulares”. Este es un tema muy amplio, por ello es explicado en una sección separada del tutorial <a href="regular-expressions.html">Expresiones Regulares</a>.</p>
+<p>Además, es importante saber que los strings están basados en la codificación Unicode, y se presentan algunas complicaciones en las comparaciones de string. Hay más acerca de Unicode en el capítulo <a href="unicode.html">Unicode, String internals</a>.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#hacer-mayuscula-el-primer-caracter" name="hacer-mayuscula-el-primer-caracter">Hacer mayúscula el primer carácter</a></h3><a class="task__open-link" href="task/ucfirst.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>ucFirst(str)</code> que devuelva el string <code>str</code> con el primer carácter en mayúscula, por ejemplo:</p>
+<div id="rgjabhsu5h" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>ucFirst(&quot;john&quot;) == &quot;John&quot;;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/xqjHD4ht7sY0aGHn?p=preview" target="_blank" data-plunk-id="xqjHD4ht7sY0aGHn">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>No podemos “reemplazar” el primer carácter, debido a que los strings en JavaScript son inmutables.</p>
+<p>Pero podemos hacer un nuevo string basado en el existente, con el primer carácter en mayúsculas:</p>
+<div id="edbu64otkh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let newStr = str[0].toUpperCase() + str.slice(1);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Sin embargo, hay un pequeño problema. Si <code>str</code> está vacío, entonces <code>str[0]</code> es <code>undefined</code>, y como  <code>undefined</code> no tiene  el método <code>toUpperCase()</code>, obtendremos un error.</p>
+<p>Lo más fácil es agregar una verificación de cadena vacía:</p>
+<div id="1cm0e3r5ub" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function ucFirst(str) {
+  if (!str) return str;
+
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+alert( ucFirst(&quot;john&quot;) ); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/dyi0QdGYRSuItABc?p=preview" target="_blank" data-plunk-id="dyi0QdGYRSuItABc">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#buscar-spam" name="buscar-spam">Buscar spam</a></h3><a class="task__open-link" href="task/check-spam.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe una función <code>checkSpam(str)</code> que devuelva <code>true</code> si <code>str</code> contiene ‘viagra’ o ‘XXX’, de lo contrario <code>false</code>.</p>
+<p>La función debe ser insensible a mayúsculas y minúsculas:</p>
+<div id="c8s0qqcilh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>checkSpam('compra ViAgRA ahora') == true
+checkSpam('xxxxx gratis') == true
+checkSpam(&quot;coneja inocente&quot;) == false</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/3eQzGtdn6zrvGa6I?p=preview" target="_blank" data-plunk-id="3eQzGtdn6zrvGa6I">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para que la búsqueda no distinga entre mayúsculas y minúsculas, llevemos el string a minúsculas y luego busquemos:</p>
+<div id="j01luv9xka" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function checkSpam(str) {
+  let lowerStr = str.toLowerCase();
+
+  return lowerStr.includes('viagra') || lowerStr.includes('xxx');
+}
+
+alert( checkSpam('compra ViAgRA ahora') );
+alert( checkSpam('xxxxx gratis') );
+alert( checkSpam(&quot;coneja inocente&quot;) );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/kK2BNJyUkTFRPibV?p=preview" target="_blank" data-plunk-id="kK2BNJyUkTFRPibV">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#truncar-el-texto" name="truncar-el-texto">Truncar el texto</a></h3><a class="task__open-link" href="task/truncate.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crea una función <code>truncate(str, maxlength)</code> que verifique la longitud de <code>str</code> y, si excede <code>maxlength</code> – reemplaza el final de <code>str</code> con el carácter de puntos suspensivos <code>&quot;…&quot;</code>, para hacer su longitud igual a <code>maxlength</code>.</p>
+<p>El resultado de la función debe ser la cadena truncada (si es necesario).</p>
+<p>Por ejemplo:</p>
+<div id="xoacvux8ze" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>truncate(&quot;Lo que me gustaría contar sobre este tema es:&quot;, 20) = &quot;Lo que me gustaría c…&quot;
+
+truncate(&quot;Hola a todos!&quot;, 20) = &quot;Hola a todos!&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/JoLnGKj5pvVWPXpe?p=preview" target="_blank" data-plunk-id="JoLnGKj5pvVWPXpe">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La longitud máxima debe ser ‘maxlength’, por lo que debemos acortarla un poco para dar espacio a los puntos suspensivos.</p>
+<p>Tener en cuenta que en realidad hay un único carácter unicode para puntos suspensivos. Eso no son tres puntos.</p>
+<div id="dyuquevqol" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function truncate(str, maxlength) {
+  return (str.length &gt; maxlength) ?
+    str.slice(0, maxlength - 1) + '…' : str;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/ZeFNWOG4C4u9aFyG?p=preview" target="_blank" data-plunk-id="ZeFNWOG4C4u9aFyG">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#extraer-el-dinero" name="extraer-el-dinero">Extraer el dinero</a></h3><a class="task__open-link" href="task/extract-currency.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Tenemos un costo en forma de “$120”. Es decir: el signo de dólar va primero y luego el número.</p>
+<p>Crea una función <code>extractCurrencyValue(str)</code> que extraiga el valor numérico de dicho string y lo devuelva.</p>
+<p>Por ejemplo:</p>
+<div id="v1yy16hcmh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( extractCurrencyValue('$120') === 120 ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/hyQIRBV7CZZHt6AJ?p=preview" target="_blank" data-plunk-id="hyQIRBV7CZZHt6AJ">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="hk6r1eofgd" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function extractCurrencyValue(str) {
+  return +str.slice(1);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/zH8Kh2HFgZiIALrt?p=preview" target="_blank" data-plunk-id="zH8Kh2HFgZiIALrt">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="number.html" data-tooltip="Números"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="array.html" data-tooltip="Arrays"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fstring" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fstring" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/string","identifier":"\/string"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="data-types.html">Tipos de datos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comillas">Comillas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#caracteres-especiales">Caracteres especiales</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#largo-del-string">Largo del string</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#accediendo-caracteres">Accediendo caracteres</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#los-strings-son-inmutables">Los strings son inmutables</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#cambiando-capitalizacion">Cambiando capitalización</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#buscando-una-subcadena-de-caracteres">Buscando una subcadena de caracteres</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#obteniendo-un-substring">Obteniendo un substring</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comparando-strings">Comparando strings</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (4)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fstring" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fstring" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/05-data-types/03-string" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/string by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+</html>

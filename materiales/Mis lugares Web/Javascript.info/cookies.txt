@@ -1,0 +1,11 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+es.wikipedia.org	TRUE	/	FALSE	1999999999	WMF-Last-Access	07-Feb-2023
+.wikipedia.org	TRUE	/	FALSE	1999999999	WMF-Last-Access-Global	07-Feb-2023
+es.wikipedia.org	TRUE	/	FALSE	1999999999	WMF-DP	d2b
+.wikipedia.org	TRUE	/	FALSE	1999999999	GeoIP	ES:CB:Santander:43.46:-3.80:v4
+github.com	TRUE	/	FALSE	1999999999	_gh_sess	A%2B%2FgZxhi0Aez1g%2BWf3RvYq4nhnQbkVltJKPpKDtIqQaw%2FEc9AXauNro8CjeJQKvAe8d5uyJGztZn7afDZBOE4bHHLvM0CUidbBAXEC58rivDiIUmPjgX6mm8QyjL0n6Kc%2B74G5%2FP6ZKLwH6%2F8XHmx5fn%2BAMZi7dITmKpmP%2FHGzwPRXZDTCng5whjY7HIXGHp3B2CvaE2VCx63UzKHJ7fa8iE8uzJZ%2BLFhjkG1Lf6fByWm75uISpRt8nJN0hW16fWwjGVnnyEtU9fHlnYk4s78Q%3D%3D--A%2BlLtEWma3UD1Bk5--wNkm6z1Pqyd5qT0NUt01bw%3D%3D
+github.com	TRUE	/	FALSE	1999999999	_octo	GH1.1.1239655544.1675804431
+github.com	TRUE	/	FALSE	1999999999	logged_in	no
+github.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+

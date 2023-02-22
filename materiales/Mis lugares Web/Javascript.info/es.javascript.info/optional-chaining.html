@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/optional-chaining by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "es";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Encadenamiento opcional '?.'</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="optional-chaining.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Encadenamiento opcional '?.'"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Encadenamiento opcional '?.'"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="constructor-new.html"><link rel="next" href="symbol.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Encadenamiento opcional '?.'"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/optional-chaining"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/optional-chaining"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="optional-chaining.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/optional-chaining"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/optional-chaining"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/optional-chaining"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/optional-chaining"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/optional-chaining"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/optional-chaining"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/optional-chaining"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/optional-chaining"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Foptional-chaining" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Foptional-chaining" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/optional-chaining">عربي</option><option value="https://javascript.info/optional-chaining">English</option><option value="https://es.javascript.info/optional-chaining" selected>Español</option><option value="https://fa.javascript.info/optional-chaining">فارسی</option><option value="https://fr.javascript.info/optional-chaining">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/optional-chaining">Italiano</option><option value="https://ja.javascript.info/optional-chaining">日本語</option><option value="https://ko.javascript.info/optional-chaining">한국어</option><option value="https://learn.javascript.ru/optional-chaining">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/optional-chaining">Українська</option><option value="https://zh.javascript.info/optional-chaining">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="34" max="93" data-tooltip="Lección 34 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="object-basics.html"><span>Objetos: lo básico</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Objetos: lo básico","item":"https://es.javascript.info/object-basics"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 3 de julio de 2022"><div class="updated-at__content">3 de julio de 2022</div></div></div><h1 class="main__header-title">Encadenamiento opcional '?.'</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Encadenamiento opcional '?.'"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Una adición reciente</span></div>
+            <div class="important__content">
+            Esta es una adición reciente al lenguaje.
+            Los navegadores antiguos pueden necesitar polyfills.
+            </div></div>
+<p>El encadenamiento opcional <code>?.</code> es una forma a prueba de errores para acceder a las propiedades anidadas de los objetos, incluso si no existe una propiedad intermedia.</p>
+<h2><a class="main__anchor" name="el-problema-de-la-propiedad-que-no-existe" href="#el-problema-de-la-propiedad-que-no-existe">El problema de la propiedad que no existe</a></h2><p>Si acaba de comenzar a leer el tutorial y aprender JavaScript, quizás el problema aún no lo haya tocado, pero es bastante común.</p>
+<p>Como ejemplo, digamos que tenemos objetos <code>user</code> que contienen información de nuestros usuarios.</p>
+<p>La mayoría de nuestros usuarios tienen la dirección en la propiedad <code>user.address</code>, con la calle en <code>user.address.street</code>, pero algunos no la proporcionaron.</p>
+<p>En tal caso, cuando intentamos obtener <code>user.address.street</code>en un usuario sin dirección obtendremos un error:</p>
+<div id="tr4amh52d7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {}; // usuario sin propiedad &quot;address&quot;
+
+alert(user.address.street); // Error!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este es el resultado esperado. JavaScript funciona así, como <code>user.address</code> es <code>undefined</code>, el intento de obtener <code>user.address.street</code> falla dando un error.</p>
+<p>En muchos casos prácticos preferiríamos obtener <code>undefined</code> en lugar del error (dando a entender “sin calle”)</p>
+<p>… y otro ejemplo. En desarrollo web, podemos obtener un objeto que corresponde a un elemento de página web usando el llamado a un método especial como <code>document.querySelector('.elem')</code>, que devuelve <code>null</code> cuando no existe tal elemento.</p>
+<div id="my7g9dc6a6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// Error si el resultado de querySelector (...) es null
+let html = document.querySelector('.my-element').innerHTML;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Una vez más, si el elemento no existe, obtendremos un error al intentar acceder a la propiedad <code>.innerHTML</code> de <code>null</code>. Y en algunos casos, cuando la ausencia del elemento es normal, quisiéramos evitar el error y simplemente aceptar <code>html = null</code> como resultado.</p>
+<p>¿Cómo podemos hacer esto?</p>
+<p>La solución obvia sería chequear el valor usando <code>if</code> o el operador condicional <code>?</code> antes de usar la propiedad:</p>
+<div id="rk1dtwsxtu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {};
+
+alert(user.address ? user.address.street : undefined);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto funciona, no hay error… Pero es bastante poco elegante. Como puedes ver, <code>&quot;user.address&quot;</code> aparece dos veces en el código.</p>
+<p>El mismo caso, pero con la búsqueda de <code>document.querySelector</code>:</p>
+<div id="5e4ht9mmsn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let html = document.querySelector('.elem') ? document.querySelector('.elem').innerHTML : null;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos ver que el elemento de búsqueda <code>document.querySelector('.elem')</code> es llamado dos veces aquí. Nada bueno.</p>
+<p>En propiedades anidadas más profundamente, esto se vuelve un problema porque se requerirán más repeticiones.</p>
+<p>Ejemplo: Tratemos de obtener <code>user.address.street.name</code> de manera similar.</p>
+<div id="r88no8vxwx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {}; // El usuario no tiene dirección
+
+alert(user.address ? user.address.street ? user.address.street.name : null : null);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto es horrible, podemos tener problemas para siquiera entender tal código.</p>
+<p>Hay una mejor manera de escribirlo, usando el operador <code>&amp;&amp;</code>:</p>
+<div id="qsdm4n2tu0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {}; // usuario sin dirección
+
+alert( user.address &amp;&amp; user.address.street &amp;&amp; user.address.street.name ); // undefined (sin error)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Poniendo AND en el camino completo a la propiedad asegura que todos los componentes existen (si no, la evaluación se detiene), pero no es lo ideal.</p>
+<p>Como puedes ver, los nombres de propiedad aún están duplicados en el código. Por ejemplo en el código de arriba <code>user.address</code> aparece tres veces.</p>
+<p>Es por ello que el encadenamiento opcional <code>?.</code> fue agregado al lenguaje. ¡Para resolver este problema de una vez por todas!</p>
+<h2><a class="main__anchor" name="encadenamiento-opcional" href="#encadenamiento-opcional">Encadenamiento opcional</a></h2><p>El encadenamiento opcional <code>?.</code> detiene la evaluación y devuelve <code>undefined</code> si el valor antes del <code>?.</code> es <code>undefined</code> o <code>null</code>.</p>
+<p><strong>De aquí en adelante en este artículo, por brevedad, diremos que algo “existe” si no es <code>null</code> o <code>undefined</code>.</strong></p>
+<p>En otras palabras, <code>value?.prop</code>:</p>
+<ul>
+<li>funciona como <code>value.prop</code> si <code>value</code> existe,</li>
+<li>de otro modo (cuando <code>value</code> es <code>undefined/null</code>) devuelve <code>undefined</code>.</li>
+</ul>
+<p>Aquí está la forma segura de acceder a <code>user.address.street</code> usando <code>?.</code>:</p>
+<div id="q8cgqcj6hw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {}; // El usuario no tiene dirección
+
+alert( user?.address?.street ); // undefined (no hay error)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código es corto y claro, no hay duplicación en absoluto</p>
+<p>Aquí tenemos un ejemplo con <code>document.querySelector</code>:</p>
+<div id="4f9306n74p" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let html = document.querySelector('.elem')?.innerHTML; // será undefined si no existe el elemento</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Leer la dirección con <code>user?.Address</code> funciona incluso si el objeto <code>user</code> no existe:</p>
+<div id="kqd7100n5s" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = null;
+
+alert( user?.address ); // undefined
+alert( user?.address.street ); // undefined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta: la sintaxis <code>?.</code> hace opcional el valor delante de él, pero no más allá.</p>
+<p>Por ejemplo, en <code>user?.address.street.name</code>, el <code>?.</code> permite que <code>user</code> sea <code>null/undefined</code> (y devuelve <code>undefined</code> en tal caso), pero solo a <code>user</code>. El resto de las propiedades son accedidas de la manera normal.  Si queremos que algunas de ellas sean opcionales, necesitamos reemplazar más <code>.</code> con <code>?.</code>.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">No abuses del encadenamiento opcional</span></div>
+            <div class="important__content"><p>Deberíamos usar <code>?.</code> solo donde está bien que algo no exista.</p>
+<p>Por ejemplo, si de acuerdo con la lógica de nuestro código, el objeto <code>user</code> debe existir, pero <code>address</code> es opcional, entonces deberíamos escribir <code>user.address?.street</code> y no <code>user?.address?.street</code>.</p>
+<p>De esta forma, si por un error <code>user</code> no está definido, lo sabremos y lo arreglaremos. De lo contrario, los errores de codificación pueden silenciarse donde no sea apropiado y volverse más difíciles de depurar.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">La variable antes de <code>?.</code> debe declararse</span></div>
+            <div class="important__content"><p>Si no hay una variable <code>user</code> declarada, entonces <code>user?.anything</code> provocará un error:</p>
+<div id="vx1any32md" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// ReferenceError: user no está definido
+user?.address;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La variable debe ser declarada (con <code>let/const/var user</code> o como parámetro de función). El encadenamiento opcional solo funciona para variables declaradas.</p>
+</div></div>
+<h2><a class="main__anchor" name="short-circuiting-cortocircuitos" href="#short-circuiting-cortocircuitos">Short-circuiting (Cortocircuitos)</a></h2><p>Como se dijo antes, el <code>?.</code> detiene inmediatamente (“cortocircuito”) la evaluación si la parte izquierda no existe.</p>
+<p>Entonces, si a la derecha de <code>?.</code> hay funciones u operaciones adicionales, estas no se ejecutarán:</p>
+<p>Por ejemplo:</p>
+<div id="kbg05e4l33" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = null;
+let x = 0;
+
+user?.sayHi(x++); // no hay &quot;user&quot;, por lo que la ejecución no alcanza a sayHi ni a x++
+
+alert(x); // 0, el valor no se incrementa</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="otros-casos" href="#otros-casos">Otros casos: ?.(), ?.[]</a></h2><p>El encadenamiento opcional <code>?.</code> no es un operador, es una construcción de sintaxis especial que también funciona con funciones y corchetes.</p>
+<p>Por ejemplo, <code>?.()</code> se usa para llamar a una función que puede no existir.</p>
+<p>En el siguiente código, algunos de nuestros usuarios tienen el método <code>admin</code>, y otros no:</p>
+<div id="hb5sp6rd26" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10},{&quot;start&quot;:8,&quot;end&quot;:8}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let userAdmin = {
+  admin() {
+    alert(&quot;I am admin&quot;);
+  }
+};
+
+let userGuest = {};
+
+userAdmin.admin?.(); // I am admin
+
+userGuest.admin?.(); // no pasa nada (no existe tal método)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí, en ambas líneas, primero usamos el punto (<code>userAdmin.admin</code>) para obtener la propiedad <code>admin</code>, porque asumimos que el objeto user existe y es seguro leerlo.</p>
+<p>Entonces <code>?.()</code> comprueba la parte izquierda: si la función <code>admin</code> existe, entonces se ejecuta (para <code>userAdmin</code>). De lo contrario (para <code>userGuest</code>) la evaluación se detiene sin errores.</p>
+<p>La sintaxis <code>?.[]</code> también funciona si quisiéramos usar corchetes <code>[]</code> para acceder a las propiedades en lugar de punto <code>.</code>. Al igual que en casos anteriores, permite leer de forma segura una propiedad de un objeto que puede no existir.</p>
+<div id="0pr91ao0r6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let key = &quot;firstName&quot;;
+
+let user1 = {
+  firstName: &quot;John&quot;
+};
+
+let user2 = null;
+
+alert( user1?.[key] ); // John
+alert( user2?.[key] ); // undefined</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También podemos usar <code>?.</code> con <code>delete</code>:</p>
+<div id="nza71ux0o1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>delete user?.name; // Eliminar user.name si el usuario existe</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Podemos usar <code>?.</code> para una lectura y eliminación segura, pero no para escribir</span></div>
+            <div class="important__content"><p>El encadenamiento opcional <code>?.</code> no puede usarse en el lado izquierdo de una asignación:</p>
+<p>Por ejemplo:</p>
+<div id="bbdh9qu93r" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = null;
+
+user?.name = &quot;John&quot;; // Error, no funciona
+// porque se evalúa como: undefined = &quot;John&quot;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>La sintaxis de encadenamiento opcional <code>?.</code> tiene tres formas:</p>
+<ol>
+<li><code>obj?.prop</code> – devuelve <code>obj.prop</code> si <code>obj</code> existe, si no, <code>undefined</code>.</li>
+<li><code>obj?.[prop]</code> – devuelve <code>obj[prop]</code> si <code>obj</code> existe, si no, <code>undefined</code>.</li>
+<li><code>obj.method?.()</code> – llama a <code>obj.method()</code> si <code>obj.method</code> existe, si no devuelve <code>undefined</code>.</li>
+</ol>
+<p>Como podemos ver, todos ellos son sencillos y fáciles de usar. El <code>?.</code> comprueba si la parte izquierda es <code>null/undefined</code> y permite que la evaluación continúe si no es así.</p>
+<p>Una cadena de <code>?.</code> permite acceder de forma segura a las propiedades anidadas.</p>
+<p>Aún así, debemos aplicar <code>?.</code> con cuidado, solamente donde sea aceptable que, de acuerdo con nuestra lógica, la parte izquierda no exista. Esto es para que no nos oculte errores de programación, si ocurren.</p>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="constructor-new.html" data-tooltip="Constructor, operador &quot;new&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="symbol.html" data-tooltip="Tipo Symbol"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Foptional-chaining" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Foptional-chaining" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/optional-chaining","identifier":"\/optional-chaining"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-basics.html">Objetos: lo básico</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#el-problema-de-la-propiedad-que-no-existe">El problema de la propiedad que no existe</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#encadenamiento-opcional">Encadenamiento opcional</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#short-circuiting-cortocircuitos">Short-circuiting (Cortocircuitos)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#otros-casos">Otros casos: ?.(), ?.[]</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Foptional-chaining" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Foptional-chaining" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/04-object-basics/07-optional-chaining" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/optional-chaining by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+</html>

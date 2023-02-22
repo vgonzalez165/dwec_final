@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/bezier-curve by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:48 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Curva de Bézier</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="bezier-curve.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Curva de Bézier"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Curva de Bézier"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="animation.html"><link rel="next" href="css-animations.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Curva de Bézier"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/bezier-curve"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/bezier-curve"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="bezier-curve.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/bezier-curve"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/bezier-curve"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/bezier-curve"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/bezier-curve"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/bezier-curve"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/bezier-curve"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/bezier-curve"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/bezier-curve"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fbezier-curve" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fbezier-curve" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/bezier-curve">عربي</option><option value="https://javascript.info/bezier-curve">English</option><option value="https://es.javascript.info/bezier-curve" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/bezier-curve">Français</option><option value="https://id.javascript.info/bezier-curve">Indonesia</option><option value="https://it.javascript.info/bezier-curve">Italiano</option><option value="https://ja.javascript.info/bezier-curve">日本語</option><option value="https://ko.javascript.info/bezier-curve">한국어</option><option value="https://learn.javascript.ru/bezier-curve">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/bezier-curve">Українська</option><option value="https://zh.javascript.info/bezier-curve">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="1" max="3" data-tooltip="Lección 1 de 3"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="animation.html"><span>Animaciones</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Animaciones","item":"https://es.javascript.info/animation"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 4 de febrero de 2023"><div class="updated-at__content">4 de febrero de 2023</div></div></div><h1 class="main__header-title">Curva de Bézier</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Curva de Bézier"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Las curvas de Bézier se utilizan en gráficos por ordenador para dibujar formas, para animación CSS y en muchos otros lugares.</p>
+<p>En realidad, son algo muy sencillo, vale la pena estudiarlos una vez y luego sentirse cómodo en el mundo de los gráficos vectoriales y las animaciones avanzadas.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Un poco de teoría, por favor</span></div>
+            <div class="important__content"><p>Este artículo brinda una base teórica, pero muy necesaria, de lo que son las curvas Bezier; mientras que el <a href="css-animations.html#bezier-curve">próximo</a> muestra cómo podemos usarlas en animaciones CSS.</p>
+<p>Por favor toma tu tiempo en leer y entender el concepto, te servirá bien.</p>
+</div></div>
+<h2><a class="main__anchor" name="puntos-de-control" href="#puntos-de-control">Puntos de Control</a></h2><p>Una <a href="https://es.wikipedia.org/wiki/Curva_de_Bézier">curva de Bézier</a> está definida por puntos de control.</p>
+<p>Puede haber 2, 3, 4 o más.</p>
+<p>Por ejemplo, curva de dos puntos:</p>
+<figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/bezier-curve/bezier2.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/bezier-curve/bezier2.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure><p>Curva de tres puntos:</p>
+<figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/bezier-curve/bezier3.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/bezier-curve/bezier3.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure><p>Curva de cuatro puntos:</p>
+<figure><div class="image" style="width:149px">
+      <div class="image__ratio" style="padding-top:125.503355704698%"></div>
+      <object type="image/svg+xml" data="article/bezier-curve/bezier4.svg" width="149" height="187" class="image__image" data-use-theme>
+        <img src="article/bezier-curve/bezier4.svg" alt="" width="149" height="187">
+      </object>
+      </div></figure><p>Si observas detenidamente estas curvas, puedes notar inmediatamente que:</p>
+<ol>
+<li>
+<p><strong>Los puntos no siempre están en la curva.</strong> Eso es perfectamente normal, luego veremos cómo se construye la curva.</p>
+</li>
+<li>
+<p><strong>El orden de la curva es igual al número de puntos menos uno</strong>.
+Para dos puntos tenemos una curva lineal (que es una línea recta), para tres puntos – curva cuadrática (parabólica), para cuatro puntos – curva cúbica.</p>
+</li>
+<li>
+<p><strong>Una curva siempre está dentro del <a href="https://en.wikipedia.org/wiki/Convex_hull">casco convexo</a> de los puntos de control:</strong></p>
+<p><img src="article/bezier-curve/bezier4-e.svg" alt="" width="149" height="187"> <img src="article/bezier-curve/bezier3-e.svg" alt="" width="149" height="187"></p>
+</li>
+</ol>
+<p>Debido a esa última propiedad, en gráficos por ordenador es posible optimizar las pruebas de intersección. Si los cascos convexos no se intersecan, las curvas tampoco. Por tanto, comprobar primero la intersección de los cascos convexos puede dar un resultado “sin intersección” muy rápido.  La comprobación de la intersección o los cascos convexos es mucho más fácil, porque son rectángulos, triángulos, etc. (vea la imagen de arriba), figuras mucho más simples que la curva.</p>
+<p><strong>El valor principal de las curvas de Bézier para dibujar: al mover los puntos, la curva cambia <em>de manera intuitiva</em>.</strong></p>
+<p>Intenta mover los puntos de control con el ratón en el siguiente ejemplo:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:370px" src="https://es.js.cx/article/bezier-curve/demo.svg?nocpath=1&amp;p=0,0,0.5,0,0.5,1,1,1"></iframe>
+  </div><p><strong>Como puedes observar, la curva se extiende a lo largo de las lineas tangenciales 1 → 2 y 3 → 4.</strong></p>
+<p>Después de algo de práctica, se vuelve obvio cómo colocar puntos para obtener la curva necesaria. Y al conectar varias curvas podemos obtener prácticamente cualquier cosa.</p>
+<p>Aquí tenemos algunos ejemplos:</p>
+<p><img src="article/bezier-curve/bezier-car.svg" alt="" width="260" height="130"> <img src="article/bezier-curve/bezier-letter.svg" alt="" width="166" height="173"> <img src="article/bezier-curve/bezier-vase.svg" alt="" width="110" height="170"></p>
+<h2><a class="main__anchor" name="algoritmo-de-de-casteljau" href="#algoritmo-de-de-casteljau">Algoritmo de De Casteljau</a></h2><p>Hay una fórmula matemática para las curvas de Bézier, pero la veremos un poco más tarde, porque el
+<a href="https://es.wikipedia.org/wiki/Algoritmo_de_De_Casteljau">algoritmo de De Casteljau</a> es idéntico a la definición matemática y muestra visualmente cómo se construye.</p>
+<p>Primero veamos el ejemplo de los 3 puntos.</p>
+<p>Aquí está la demostración, y la explicación a continuación.</p>
+<p>Los puntos de control (1,2 y 3) se pueden mover con el ratón. Presiona el botón “play” para ejecutarlo.</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:370px" src="https://es.js.cx/article/bezier-curve/demo.svg?p=0,0,0.5,1,1,0&amp;animate=1"></iframe>
+  </div><p><strong>El algoritmo de De Casteljau para construir la curva de Bézier de 3 puntos:</strong></p>
+<ol>
+<li>
+<p>Dibujar puntos de control. En la demostración anterior están etiquetados: <code>1</code>, <code>2</code>, <code>3</code>.</p>
+</li>
+<li>
+<p>Construir segmentos entre los puntos de control 1 → 2 → 3. En la demo anterior son <span style="color:#825E28">marrones</span>.</p>
+</li>
+<li>
+<p>El parámetro <code>t</code> se mueve de <code>0</code> a <code>1</code>. En el ejemplo de arriba se usa el paso <code>0.05</code>: el bucle pasa por <code>0, 0.05, 0.1, 0.15, ... 0.95, 1</code>.</p>
+<p>Para cada uno de estos valores de <code>t</code>:</p>
+<ul>
+<li>
+<p>En cada segmento <span style="color:#825E28">marrón</span> tomamos un punto ubicado en la distancia proporcional a <code>t</code> desde su comienzo. Como hay dos segmentos, tenemos dos puntos.</p>
+<p>Por ejemplo, para <code>t=0</code> – ambos puntos estarán al comienzo de los segmentos, y para <code>t=0.25</code> – en el 25% de la longitud del segmento desde el comienzo, para <code>t=0.5</code> – 50%(el medio), for <code>t=1</code> – al final de los segmentos.</p>
+</li>
+<li>
+<p>Conecta los puntos. En la imagen de abajo el segmento de conexión está pintado de <span style="color:#167490">azul</span>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Para <code>t=0.25</code></th>
+<th>Para <code>t=0.5</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="article/bezier-curve/bezier3-draw1.svg" alt="" width="340" height="350"></td>
+<td><img src="article/bezier-curve/bezier3-draw2.svg" alt="" width="340" height="350"></td>
+</tr>
+</tbody>
+</table>
+<ol start="4">
+<li>
+<p>Ahora, en el segmento <span style="color:#167490">azul</span>, toma un punto en la distancia proporcional al mismo valor de <code>t</code>. Es decir, para <code>t=0.25</code> (la imagen de la izquierda) tenemos un punto al final del cuarto izquierdo del segmento, y para <code>t=0.5</code> (la imagen de la derecha) – en la mitad del segmento. En las imágenes de arriba ese punto es <span style="color:red">rojo</span>.</p>
+</li>
+<li>
+<p>Como <code>t</code> va de <code>0</code> a <code>1</code>, cada valor de <code>t</code> añade un punto a la curva. El conjunto de tales puntos forma la curva de Bézier. Es rojo y parabólico en las imágenes de arriba.</p>
+</li>
+</ol>
+<p>Este fue el proceso para 3 puntos. Sería lo mismo para 4 puntos.</p>
+<p>La demo para 4 puntos (los puntos se pueden mover con el ratón):</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:370px" src="https://es.js.cx/article/bezier-curve/demo.svg?p=0,0,0.5,0,0.5,1,1,1&amp;animate=1"></iframe>
+  </div><p>El algoritmo para 4 puntos:</p>
+<ul>
+<li>Conectar puntos de control por segmentos: 1 → 2, 2 → 3, 3 → 4. Habrá 3 segmentos <span style="color:#825E28">marrones</span>.</li>
+<li>Para cada <code>t</code> en el intervalo de <code>0</code> a <code>1</code>:
+<ul>
+<li>Tomamos puntos en estos segmentos en la distancia proporcional a <code>t</code> desde el principio. Estos puntos están conectados, por lo que tenemos dos <span style="color:#0A0">segmentos verdes</span>.</li>
+<li>En estos segmentos tomamos puntos proporcionales a <code>t</code>. Obtenemos un <span style="color:#167490">segmento azul</span>.</li>
+<li>En el segmento azul tomamos un punto proporcional a <code>t</code>. En el ejemplo anterior es <span style="color:red">rojo</span>.</li>
+</ul>
+</li>
+<li>Estos puntos juntos forman la curva.</li>
+</ul>
+<p>El algoritmo es recursivo y se puede generalizar para cualquier número de puntos de control.</p>
+<p>Dados N de puntos de control:</p>
+<ol>
+<li>Los conectamos para obtener inicialmente N-1 segmentos.</li>
+<li>Entonces, para cada <code>t</code> de <code>0</code> a <code>1</code>, tomamos un punto en cada segmento en la distancia proporcional a <code>t</code> y los conectamos. Habrá N-2 segmentos.</li>
+<li>Repetimos el paso 2 hasta que solo quede un punto.</li>
+</ol>
+<p>Estos puntos forman la curva.</p>
+<p><strong>Ejecuta y pausa los ejemplos para ver claramente los segmentos y cómo se construye la curva.</strong></p>
+<p>Una curva que se parece a <code>y=1/t</code>:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:370px" src="https://es.js.cx/article/bezier-curve/demo.svg?p=0,0,0,0.75,0.25,1,1,1&amp;animate=1"></iframe>
+  </div><p>Los puntos de control en zig-zag también funcionan bien:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:370px" src="https://es.js.cx/article/bezier-curve/demo.svg?p=0,0,1,0.5,0,0.5,1,1&amp;animate=1"></iframe>
+  </div><p>Es posible hacer un bucle:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:370px" src="https://es.js.cx/article/bezier-curve/demo.svg?p=0,0,1,0.5,0,1,0.5,0&amp;animate=1"></iframe>
+  </div><p>Una curva de Bézier no suave (sí, eso también es posible):</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:370px" src="https://es.js.cx/article/bezier-curve/demo.svg?p=0,0,1,1,0,1,1,0&amp;animate=1"></iframe>
+  </div><p>Si hay algo que no está claro en la descripción del algoritmo, los ejemplos en vivo de arriba muestran cómo se construye la curva.</p>
+<p>Como el algoritmo es recursivo, podemos construir curvas de Bézier de cualquier orden, es decir, usando 5, 6 o más puntos de control. Pero en la práctica muchos puntos son menos útiles. Por lo general, tomamos 2-3 puntos, y para líneas complejas pegamos varias curvas juntas. Eso es más simple de desarrollar y calcular.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Cómo dibujar una curva <em>a través de</em> puntos dados?</span></div>
+            <div class="important__content"><p>Para especificar una curva de Bézier se utilizan puntos de control. Como podemos ver, no están en la curva, excepto el primero y el último.</p>
+<p>A veces tenemos otra tarea: dibujar una curva <em>a traves de varios puntos</em>, de modo que todos ellos estén en una sola curva suave. Esta tarea se llama   <a href="https://es.wikipedia.org/wiki/Interpolación">interpolación</a>, y aquí no la cubrimos.</p>
+<p>Hay fórmulas matemáticas para tales curvas, por ejemplo el <a href="https://es.wikipedia.org/wiki/Interpolación_polinómica_de_Lagrange">polinomio de Lagrange</a>. En gráficos por ordenador la <a href="https://en.wikipedia.org/wiki/Spline_interpolation">interpolación de spline</a> se usa a menudo para construir curvas suaves que conectan muchos puntos.</p>
+</div></div>
+<h2><a class="main__anchor" name="matematicas" href="#matematicas">Matemáticas</a></h2><p>Una curva de Bézier se puede describir usando una fórmula matemática.</p>
+<p>Como vimos, en realidad no hay necesidad de saberlo, la mayoría de la gente simplemente dibuja la curva moviendo los puntos con un mouse. Pero si te gustan las matemáticas, aquí están.</p>
+<p>Dadas las coordenadas de los puntos de control <code>P<sub>i</sub></code>: el primer punto de control tiene las coordenadas <code>P<sub>1</sub> = (x<sub>1</sub>, y<sub>1</sub>)</code>, el segundo: <code>P<sub>2</sub> = (x<sub>2</sub>, y<sub>2</sub>)</code>, y así sucesivamente, las coordenadas de la curva se describen mediante la ecuación que depende del parámetro <code>t</code> del segmento <code>[0,1]</code>.</p>
+<ul>
+<li>
+<p>La fórmula para una curva de 2 puntos:</p>
+<p><code>P = (1-t)P<sub>1</sub> + tP<sub>2</sub></code></p>
+</li>
+<li>
+<p>Para 3 puntos de control:</p>
+<p><code>P = (1−t)<sup>2</sup>P<sub>1</sub> + 2(1−t)tP<sub>2</sub> + t<sup>2</sup>P<sub>3</sub></code></p>
+</li>
+<li>
+<p>Para 4 puntos de control:</p>
+<p><code>P = (1−t)<sup>3</sup>P<sub>1</sub> + 3(1−t)<sup>2</sup>tP<sub>2</sub>  +3(1−t)t<sup>2</sup>P<sub>3</sub> + t<sup>3</sup>P<sub>4</sub></code></p>
+</li>
+</ul>
+<p>Estas son las ecuaciones vectoriales. En otras palabras, podemos poner <code>x</code> e <code>y</code> en lugar de <code>P</code> para obtener las coordenadas correspondientes.</p>
+<p>Por ejemplo, la curva de 3 puntos está formada por puntos <code>(x, y)</code> calculados como:</p>
+<ul>
+<li><code>x = (1−t)<sup>2</sup>x<sub>1</sub> + 2(1−t)tx<sub>2</sub> + t<sup>2</sup>x<sub>3</sub></code></li>
+<li><code>y = (1−t)<sup>2</sup>y<sub>1</sub> + 2(1−t)ty<sub>2</sub> + t<sup>2</sup>y<sub>3</sub></code></li>
+</ul>
+<p>En lugar de <code>x<sub>1</sub>, y<sub>1</sub>, x<sub>2</sub>, y<sub>2</sub>, x<sub>3</sub>, y<sub>3</sub></code> deberíamos poner coordenadas de 3 puntos de control, y luego a medida que te <code>t</code> se mueve de <code>0</code> a <code>1</code>, para cada valor de <code>t</code> tendremos <code>(x,y)</code> de la curva.</p>
+<p>Por ejemplo, si los puntos de control son  <code>(0,0)</code>, <code>(0.5, 1)</code> y <code>(1, 0)</code>, las ecuaciones se convierten en:</p>
+<ul>
+<li><code>x = (1−t)<sup>2</sup> * 0 + 2(1−t)t * 0.5 + t<sup>2</sup> * 1 = (1-t)t + t<sup>2</sup> = t</code></li>
+<li><code>y = (1−t)<sup>2</sup> * 0 + 2(1−t)t * 1 + t<sup>2</sup> * 0 = 2(1-t)t = –2t<sup>2</sup> + 2t</code></li>
+</ul>
+<p>Ahora como <code>t</code> se ejecuta desde <code>0</code> a <code>1</code>, el conjunto de valores <code>(x,y)</code> para cada <code>t</code> forman la curva para dichos puntos de control.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Las curvas de Bézier se definen por sus puntos de control.</p>
+<p>Vimos dos definiciones de curvas de Bézier:</p>
+<ol>
+<li>Utilizando un proceso de dibujo: el algoritmo de De Casteljau.</li>
+<li>Utilizando una fórmula matemática.</li>
+</ol>
+<p>Buenas propiedades de las curvas de Bezier:</p>
+<ul>
+<li>Podemos dibujar líneas suaves con un ratón moviendo los puntos de control.</li>
+<li>Las formas complejas se pueden construir con varias curvas Bezier.</li>
+</ul>
+<p>Uso:</p>
+<ul>
+<li>En gráficos por ordenador, modelado, editores gráficos vectoriales. Las fuentes están descritas por curvas de Bézier.</li>
+<li>En desarrollo web – para gráficos en Canvas y en formato SVG. Por cierto, los ejemplos “en vivo” de arriba están escritos en SVG. En realidad, son un solo documento SVG que recibe diferentes puntos como parámetros. Puede abrirlo en una ventana separada y ver el código fuente: <a href="article/bezier-curve/demo37af.svg?p=0,0,1,0.5,0,0.5,1,1&amp;animate=1">demo.svg</a>.</li>
+<li>En animación CSS para describir la trayectoria y la velocidad de la animación.</li>
+</ul>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="animation.html" data-tooltip="Animaciones"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="css-animations.html" data-tooltip="Animaciones CSS"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fbezier-curve" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fbezier-curve" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/bezier-curve","identifier":"\/bezier-curve"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="animation.html">Animaciones</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#puntos-de-control">Puntos de Control</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#algoritmo-de-de-casteljau">Algoritmo de De Casteljau</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#matematicas">Matemáticas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fbezier-curve" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fbezier-curve" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/7-animation/1-bezier-curve" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/bezier-curve by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:50 GMT -->
+</html>

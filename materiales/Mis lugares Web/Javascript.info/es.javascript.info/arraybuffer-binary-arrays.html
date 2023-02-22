@@ -1,0 +1,376 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/arraybuffer-binary-arrays by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:41 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "cl";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">ArrayBuffer, arrays binarios</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="arraybuffer-binary-arrays.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="ArrayBuffer, arrays binarios"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ArrayBuffer, arrays binarios"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="binary.html"><link rel="next" href="text-decoder.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="ArrayBuffer, arrays binarios"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/arraybuffer-binary-arrays"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="arraybuffer-binary-arrays.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/arraybuffer-binary-arrays"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/arraybuffer-binary-arrays"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/arraybuffer-binary-arrays"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/arraybuffer-binary-arrays"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/arraybuffer-binary-arrays"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/arraybuffer-binary-arrays"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Farraybuffer-binary-arrays" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Farraybuffer-binary-arrays" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/arraybuffer-binary-arrays">English</option><option value="https://es.javascript.info/arraybuffer-binary-arrays" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/arraybuffer-binary-arrays">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/arraybuffer-binary-arrays">Italiano</option><option value="https://ja.javascript.info/arraybuffer-binary-arrays">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/arraybuffer-binary-arrays">Русский</option><option value="https://tr.javascript.info/">Türkçe</option><option value="https://uk.javascript.info/arraybuffer-binary-arrays">Українська</option><option value="https://zh.javascript.info/arraybuffer-binary-arrays">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="1" max="4" data-tooltip="Lección 1 de 4"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="binary.html"><span>Datos binarios y archivos</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Datos binarios y archivos","item":"https://es.javascript.info/binary"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 12 de julio de 2022"><div class="updated-at__content">12 de julio de 2022</div></div></div><h1 class="main__header-title">ArrayBuffer, arrays binarios</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="ArrayBuffer, arrays binarios"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>En el desarrollo web nos encontramos con datos binarios sobre todo al tratar con archivos (crear, cargar, descargar). Otro caso de uso típico es el procesamiento de imágenes.</p>
+<p>Todo esto es posible en JavaScript y las operaciones binarias son de alto rendimiento.</p>
+<p>Aunque hay un poco de confusión porque hay muchas clases. Por nombrar algunas:</p>
+<ul>
+<li><code>ArrayBuffer</code>, <code>Uint8Array</code>, <code>DataView</code>, <code>Blob</code>, <code>File</code>, etc.</li>
+</ul>
+<p>Los datos binarios en JavaScript se implementan de una manera no estándar en comparación con otros lenguajes. Pero cuando ordenamos las cosas, todo se vuelve bastante sencillo.</p>
+<p><strong>El objeto binario básico es <code>ArrayBuffer</code> – una referencia a un área de memoria contigua de longitud fija.</strong></p>
+<p>Lo creamos así:</p>
+<div id="s0z849qqgj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let buffer = new ArrayBuffer(16); // crea un buffer de longitud 16
+alert(buffer.byteLength); // 16</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto asigna un área de memoria contigua de 16 bytes y la rellena previamente con ceros.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type"><code>ArrayBuffer</code> no es un array de algo</span></div>
+            <div class="important__content"><p>Eliminemos una posible fuente de confusión. <code>ArrayBuffer</code> no tiene nada en común con <code>Array</code>:</p>
+<ul>
+<li>Tiene una longitud fija, no podemos aumentarla ni disminuirla.</li>
+<li>Ocupa exactamente ese espacio en la memoria.</li>
+<li>Para acceder a bytes individuales, se necesita otro objeto “vista”, no <code>buffer[índice]</code>.</li>
+</ul>
+</div></div>
+<p><code>ArrayBuffer</code> es un área de memoria. ¿Qué se almacena en ella? No tiene ninguna pista. Sólo una secuencia cruda de bytes.</p>
+<p><strong>Para manipular un <code>ArrayBuffer</code>, necesitamos utilizar un objeto “vista”.</strong></p>
+<p>Un objeto vista no almacena nada por sí mismo. Son “gafas” que le dan una interpretación a los bytes almacenados en el <code>ArrayBuffer</code>.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li><strong><code>Uint8Array</code></strong> : trata cada byte del <code>ArrayBuffer</code> como un número separado, con valores posibles de 0 a 255 (un byte es de 8 bits, por lo que sólo puede contener esa cantidad). Este valor se denomina “entero sin signo de 8 bits”.</li>
+<li><strong><code>Uint16Array</code></strong> : trata cada 2 bytes como un entero, con valores posibles de 0 a 65535. Es lo que se llama un “entero sin signo de 16 bits”.</li>
+<li><strong><code>Uint32Array</code></strong> : trata cada 4 bytes como un entero, con valores posibles de 0 a 4294967295. Eso se llama “entero sin signo de 32 bits”.</li>
+<li><strong><code>Float64Array</code></strong> : trata cada 8 bytes como un número de punto flotante con valores posibles desde <code>5.0x10<sup>-324</sup></code> hasta <code>1.8x10<sup>308</sup></code>.</li>
+</ul>
+<p>Así, los datos binarios de un <code>ArrayBuffer</code> de 16 bytes pueden interpretarse como 16 “números diminutos”, u 8 números más grandes (2 bytes cada uno), o 4 aún más grandes (4 bytes cada uno), o 2 valores de punto flotante con alta precisión (8 bytes cada uno).</p>
+<figure><div class="image" style="width:603px">
+      <div class="image__ratio" style="padding-top:47.42951907131012%"></div>
+      <object type="image/svg+xml" data="article/arraybuffer-binary-arrays/arraybuffer-views.svg" width="603" height="286" class="image__image" data-use-theme>
+        <img src="article/arraybuffer-binary-arrays/arraybuffer-views.svg" alt="" width="603" height="286">
+      </object>
+      </div></figure><p><code>ArrayBuffer</code> es el objeto central, la raíz de todo, los datos binarios en bruto.</p>
+<p>Pero si vamos a escribir en él, o iterar sobre él (básicamente, para casi cualquier operación), debemos utilizar una vista. Por ejemplo:</p>
+<div id="tz5tb8kyyr" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:2,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let buffer = new ArrayBuffer(16); // crea un buffer de longitud 16
+
+let view = new Uint32Array(buffer); // trata el buffer como una secuencia de enteros de 32 bits
+
+alert(Uint32Array.BYTES_PER_ELEMENT); // 4 bytes por entero
+
+alert(view.length); // 4, almacena esa cantidad de enteros
+alert(view.byteLength); // 16, el tamaño en bytes
+
+// escribamos un valor
+view[0] = 123456;
+
+// iteración sobre los valores
+for(let num of view) {
+  alert(num); // 123456, luego 0, 0, 0 (4 valores en total)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="typedarray" href="#typedarray">TypedArray</a></h2><p>El término común para todas estas vistas (<code>Uint8Array</code>, <code>Uint32Array</code>, etc) es <a href="https://tc39.github.io/ecma262/#sec-typedarray-objects">TypedArray</a>. Comparten el mismo conjunto de métodos y propiedades.</p>
+<p>Por favor ten en cuenta que no hay ningún constructor llamado <code>TypedArray</code>, es sólo un término “paraguas” común para representar una de las vistas sobre <code>ArrayBuffer</code>: <code>Int8Array</code>, <code>Uint8Array</code> y así sucesivamente, la lista completa seguirá pronto.</p>
+<p>Cuando veas algo como <code>new TypedArray</code>, significa cualquiera de <code>new Int8Array</code>, <code>new Uint8Array</code>, etc.</p>
+<p>Las matrices tipificadas se comportan como las matrices normales: tienen índices y son iterables.</p>
+<p>Un constructor de array tipado (ya sea <code>Int8Array</code> o <code>Float64Array</code>) se comporta de forma diferente dependiendo del tipo de argumento.</p>
+<p>Hay 5 variantes de argumentos:</p>
+<div id="jbswgq4nne" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>new TypedArray(buffer, [byteOffset], [length]);
+new TypedArray(object);
+new TypedArray(typedArray);
+new TypedArray(length);
+new TypedArray();</code></pre>
+        </div>
+      </div>
+      
+      </div><ol>
+<li>
+<p>Si se suministra un argumento <code>ArrayBuffer</code>, la vista se crea sobre él. Ya usamos esa sintaxis.</p>
+<p>Opcionalmente podemos proporcionar <code>byteOffset</code> para empezar (0 por defecto) y la longitud o <code>length</code> (hasta el final del buffer por defecto), entonces la vista cubrirá sólo una parte del <code>buffer</code>.</p>
+</li>
+<li>
+<p>Si se da un <code>Array</code>, o cualquier objeto tipo array, se crea un array tipado de la misma longitud y se copia el contenido.</p>
+<p>Podemos usarlo para pre-llenar el array con los datos:</p>
+<div id="wvf1rgmn3v" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:0,&quot;end&quot;:0}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = new Uint8Array([0, 1, 2, 3]);
+alert( arr.length ); // 4, creó una matriz binaria de la misma longitud
+alert( arr[1] ); // 1, rellenado con 4 bytes (enteros de 8 bits sin signo) con valores dados</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Si se suministra otro <code>TypedArray</code> hace lo mismo: crea un array tipado de la misma longitud y copia los valores. Los valores se convierten al nuevo tipo en el proceso, si es necesario.</p>
+<div id="7t3krbphse" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr16 = new Uint16Array([1, 1000]);
+let arr8 = new Uint8Array(arr16);
+alert( arr8[0] ); // 1
+alert( arr8[1] ); // 232, trató de copiar 1000, pero no puede encajar 1000 en 8 bits (explicaciones a continuación)</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Para un argumento numérico <code>length</code> : crea el array tipado para contener ese número de elementos. Su longitud en bytes será <code>length</code> multiplicada por el número de bytes de un solo elemento <code>TypedArray.BYTES_PER_ELEMENT</code>:</p>
+<div id="2b9enzttpc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr = new Uint16Array(4); // crea un array tipado para 4 enteros
+alert( Uint16Array.BYTES_PER_ELEMENT ); // 2 bytes por entero
+alert( arr.byteLength ); // 8 (tamaño en bytes)</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Sin argumentos crea un array tipado de longitud cero.</p>
+</li>
+</ol>
+<p>Podemos crear un <code>TypedArray</code> directamente sin mencionar <code>ArrayBuffer</code>. Pero una vista no puede existir sin un <code>ArrayBuffer</code> subyacente, por lo que se crea automáticamente en todos estos casos excepto en el primero (cuando se proporciona).</p>
+<p>Para acceder al <code>ArrayBuffer</code> subyacente,  en <code>TypedArray</code> existen las propiedades:</p>
+<ul>
+<li><code>buffer</code> : hace referencia al <code>ArrayBuffer</code>.</li>
+<li><code>byteLength</code> : la longitud del <code>ArrayBuffer</code>.</li>
+</ul>
+<p>De esta forma siempre podemos pasar de una vista a otra:</p>
+<div id="svkjjx15n6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let arr8 = new Uint8Array([0, 1, 2, 3]);
+
+// otra vista sobre los mismos datos
+let arr16 = new Uint16Array(arr8.buffer);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esta es la lista de arrays tipados:</p>
+<ul>
+<li><code>Uint8Array</code>, <code>Uint16Array</code>, <code>Uint32Array</code> : para números enteros de 8, 16 y 32 bits.
+<ul>
+<li><code>Uint8ClampedArray</code> : para números enteros de 8 bits, los “sujeta” en la asignación (ver más abajo).</li>
+</ul>
+</li>
+<li><code>Int8Array</code>, <code>Int16Array</code>, <code>Int32Array</code> : para números enteros con signo (pueden ser negativos).</li>
+<li><code>Float32Array</code>, <code>Float64Array</code> : para números de punto flotante con signo de 32 y 64 bits.</li>
+</ul>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">No existe <code>int8</code> o tipos de valor único similares</span></div>
+            <div class="important__content"><p>Ten en cuenta que a pesar de los nombres como <code>Int8Array</code>, no hay ningún tipo de valor único como <code>int</code> o <code>int8</code> en JavaScript.</p>
+<p>Esto es lógico ya que <code>Int8Array</code> no es un array de estos valores individuales sino una vista sobre <code>ArrayBuffer</code>.</p>
+</div></div>
+<h3><a class="main__anchor" name="comportamiento-fuera-de-los-limites" href="#comportamiento-fuera-de-los-limites">Comportamiento fuera de los límites</a></h3><p>¿Qué pasa si intentamos escribir un valor fuera de límites en un array tipado? No habrá ningún error. Pero los bits extra se cortan.</p>
+<p>Por ejemplo, intentemos poner 256 en <code>Uint8Array</code>. En forma binaria 256 es <code>100000000</code> (9 bits), pero <code>Uint8Array</code> sólo proporciona 8 bits por valor, lo que hace que el rango disponible sea de 0 a 255.</p>
+<p>Para los números más grandes, sólo se almacenan los 8 bits más a la derecha (menos significativos), y el resto se corta:</p>
+<figure><div class="image" style="width:195px">
+      <div class="image__ratio" style="padding-top:74.35897435897436%"></div>
+      <object type="image/svg+xml" data="article/arraybuffer-binary-arrays/8bit-integer-256.svg" width="195" height="145" class="image__image" data-use-theme>
+        <img src="article/arraybuffer-binary-arrays/8bit-integer-256.svg" alt="" width="195" height="145">
+      </object>
+      </div></figure><p>Así que obtendremos un cero.</p>
+<p>Para el 257 la forma binaria es <code>100000001</code> (9 bits), los 8 más a la derecha se almacenan, por lo que tendremos <code>1</code> en el array:</p>
+<figure><div class="image" style="width:195px">
+      <div class="image__ratio" style="padding-top:74.35897435897436%"></div>
+      <object type="image/svg+xml" data="article/arraybuffer-binary-arrays/8bit-integer-257.svg" width="195" height="145" class="image__image" data-use-theme>
+        <img src="article/arraybuffer-binary-arrays/8bit-integer-257.svg" alt="" width="195" height="145">
+      </object>
+      </div></figure><p>Es decir, se guarda el número módulo 2<sup>8</sup>.</p>
+<p>Esta es la demo:</p>
+<div id="35azkw2dv0" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let uint8array = new Uint8Array(16);
+
+let num = 256;
+alert(num.toString(2)); // 100000000 (representación binaria)
+
+uint8array[0] = 256;
+uint8array[1] = 257;
+
+alert(uint8array[0]); // 0
+alert(uint8array[1]); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>Uint8ClampedArray</code> es especial en este aspecto y su comportamiento es diferente. Guarda 255 para cualquier número que sea mayor que 255, y 0 para cualquier número negativo. Este comportamiento es útil para el procesamiento de imágenes.</p>
+<h2><a class="main__anchor" name="metodos-typedarray" href="#metodos-typedarray">Métodos TypedArray</a></h2><p><code>TypedArray</code> tiene los métodos regulares de <code>Array</code>, con notables excepciones.</p>
+<p>Podemos iterar, <code>map</code>, <code>slice</code>, <code>find</code>, <code>reduce</code> etc.</p>
+<p>Sin embargo, hay algunas cosas que no podemos hacer:</p>
+<ul>
+<li>No hay <code>splice</code> : no podemos “borrar” un valor, porque los arrays tipados son vistas en un buffer y estos son áreas fijas y contiguas de memoria. Todo lo que podemos hacer es asignar un cero.</li>
+<li>No hay método <code>concat</code>.</li>
+</ul>
+<p>Hay dos métodos adicionales:</p>
+<ul>
+<li><code>arr.set(fromArr, [offset])</code> copia todos los elementos de <code>fromArr</code> al <code>arr</code>, empezando en la posición <code>offset</code> (0 por defecto).</li>
+<li><code>arr.subarray([begin, end])</code> crea una nueva vista del mismo tipo desde <code>begin</code> hasta <code>end</code> (excluyéndolo). Es similar al método <code>slice</code> (que también está soportado), pero no copia nada, sólo crea una nueva vista para operar sobre el trozo de datos dado.</li>
+</ul>
+<p>Estos métodos nos permiten copiar arrays tipados, mezclarlos, crear nuevos arrays a partir de los existentes, etc.</p>
+<h2><a class="main__anchor" name="dataview" href="#dataview">DataView</a></h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView">DataView</a> es una vista especial superflexible “no tipada” sobre <code>ArrayBuffer</code>. Permite acceder a los datos en cualquier desplazamiento en cualquier formato.</p>
+<ul>
+<li>En el caso de los arrays tipados, el constructor dicta cuál es el formato. Se supone que todo el array es uniforme. El número i es <code>arr[i]</code>.</li>
+<li>Con <code>DataView</code> accedemos a los datos con métodos como <code>.getUint8(i)</code> o <code>.getUint16(i)</code>. Elegimos el formato en el momento de la llamada al método en lugar de en el momento de la construcción.</li>
+</ul>
+<p>La sintaxis:</p>
+<div id="w5m4yux5lh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>new DataView(buffer, [byteOffset], [byteLength])</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><strong><code>buffer</code></strong> : el <code>ArrayBuffer</code> subyacente. A diferencia de los arrays tipados, <code>DataView</code> no crea un buffer por sí mismo. Necesitamos tenerlo preparado.</li>
+<li><strong><code>byteOffset</code></strong> : la posición inicial en bytes de la vista (por defecto 0).</li>
+<li><strong><code>byteLength</code></strong> : la longitud en bytes de la vista (por defecto hasta el final del <code>buffer</code>).</li>
+</ul>
+<p>Por ejemplo, aquí extraemos números en diferentes formatos del mismo buffer:</p>
+<div id="xiia0bl4le" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// arreglo binario de 4 bytes, todos tienen el valor máximo 255
+let buffer = new Uint8Array([255, 255, 255, 255]).buffer;
+
+let dataView = new DataView(buffer);
+
+// get 8-bit number at offset 0
+alert( dataView.getUint8(0) ); // 255
+
+// ahora obtenemos un número de 16 bits en el offset 0, que consta de 2 bytes, que juntos se interpretan como 65535
+alert( dataView.getUint16(0) ); // 65535 (mayor entero sin signo de 16 bits)
+
+// obtener un número de 32 bits en el offset 0
+alert( dataView.getUint32(0) ); // 4294967295 (mayor entero de 32 bits sin signo)
+
+dataView.setUint32(0, 0); // poner a cero el número de 4 bytes, poniendo así todos los bytes a 0</code></pre>
+        </div>
+      </div>
+      
+      </div><p><code>DataView</code> es genial cuando almacenamos datos de formato mixto en el mismo buffer. Por ejemplo, cuando almacenamos una secuencia de pares (entero de 16 bits, flotante de 32 bits), <code>DataView</code> permite acceder a ellos fácilmente.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p><code>ArrayBuffer</code> es el objeto central, una referencia al área de memoria contigua de longitud fija.</p>
+<p>Para hacer casi cualquier operación sobre <code>ArrayBuffer</code>, necesitamos una vista.</p>
+<ul>
+<li>Puede ser un <code>TypedArray</code>:
+<ul>
+<li><code>Uint8Array</code>, <code>Uint16Array</code>, <code>Uint32Array</code> : para enteros sin signo de 8, 16 y 32 bits.</li>
+<li><code>Uint8ClampedArray</code> : para enteros de 8 bits, los “sujeta” en la asignación.</li>
+<li><code>Int8Array</code>, <code>Int16Array</code>, <code>Int32Array</code> : para números enteros con signo (pueden ser negativos).</li>
+<li><code>Float32Array</code>, <code>Float64Array</code> : para números de punto flotante con signo de 32 y 64 bits.</li>
+</ul>
+</li>
+<li>O una <code>DataView</code> : la vista que utiliza métodos para especificar un formato, por ejemplo <code>getUint8(offset)</code>.</li>
+</ul>
+<p>En la mayoría de los casos creamos y operamos directamente sobre arrays tipados, dejando el <code>ArrayBuffer</code> a cubierto, como “denominador común”. Podemos acceder a él como <code>.buffer</code> y hacer otra vista si es necesario.</p>
+<p>También hay dos términos adicionales, que se utilizan en las descripciones de los métodos que operan con datos binarios:</p>
+<ul>
+<li><code>ArrayBufferView</code> es un término paraguas para todos estos tipos de vistas.</li>
+<li>El término <code>BufferSource</code> es un término general para <code>ArrayBuffer</code> o <code>ArrayBufferView</code>.</li>
+</ul>
+<p>Veremos estos términos en los próximos capítulos. El término <code>BufferSource</code> es uno de los más comunes, ya que significa “cualquier tipo de datos binarios” : un <code>ArrayBuffer</code> o una vista sobre él.</p>
+<p>Aquí tienes la hoja de ruta:</p>
+<figure><div class="image" style="width:707px">
+      <div class="image__ratio" style="padding-top:65.48797736916548%"></div>
+      <object type="image/svg+xml" data="article/arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg" width="707" height="463" class="image__image" data-use-theme>
+        <img src="article/arraybuffer-binary-arrays/arraybuffer-view-buffersource.svg" alt="" width="707" height="463">
+      </object>
+      </div></figure></div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#concatenar-arrays-tipados" name="concatenar-arrays-tipados">Concatenar arrays tipados</a></h3><a class="task__open-link" href="task/concat.html" target="_blank"></a></div><div class="task__header-note"></div><div class="task__content"><div class="task__formatted"><p>Dado un array de <code>Uint8Array</code>, escribir una función <code>concat(arrays)</code> que devuelva la concatenación de ellos en un único array.</p>
+<p><a href="https://plnkr.co/edit/qSV4rrZC4zZdKrjU?p=preview" target="_blank" data-plunk-id="qSV4rrZC4zZdKrjU">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="5ey9efxm6g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function concat(arrays) {
+  // suma de las longitudes de array individuales
+  let totalLength = arrays.reduce((acc, value) =&gt; acc + value.length, 0);
+
+  let result = new Uint8Array(totalLength);
+
+  if (!arrays.length) return result;
+
+  // para cada array: copiarlo sobre &quot;result&quot;
+  // el siguiente array es copiado inmediatamente después del anterior
+  let length = 0;
+  for(let array of arrays) {
+    result.set(array, length);
+    length += array.length;
+  }
+
+  return result;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/Ta2XI8YfGRbzGpfd?p=preview" target="_blank" data-plunk-id="Ta2XI8YfGRbzGpfd">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="binary.html" data-tooltip="Datos binarios y archivos"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="text-decoder.html" data-tooltip="TextDecoder y TextEncoder"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Farraybuffer-binary-arrays" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Farraybuffer-binary-arrays" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/arraybuffer-binary-arrays","identifier":"\/arraybuffer-binary-arrays"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="binary.html">Datos binarios y archivos</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#typedarray">TypedArray</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#metodos-typedarray">Métodos TypedArray</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dataview">DataView</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (1)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Farraybuffer-binary-arrays" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Farraybuffer-binary-arrays" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/4-binary/01-arraybuffer-binary-arrays" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/arraybuffer-binary-arrays by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:41 GMT -->
+</html>

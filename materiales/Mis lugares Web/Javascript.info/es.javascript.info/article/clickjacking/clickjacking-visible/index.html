@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+
+<!-- Mirrored from es.javascript.info/article/clickjacking/clickjacking-visible/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:21 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <style>
+    iframe {
+      width: 400px;
+      height: 100px;
+      position: absolute;
+      top: 5px;
+      left: -14px;
+      opacity: 0.5;
+      z-index: 1;
+    }
+  </style>
+
+  <div>Haga clic para hacerse rico ahora:</div>
+
+  <!-- la url de la víctima -->
+  <iframe src="https://es.javascript.info/article/clickjacking/clickjacking-visible/facebook.html"></iframe>
+
+  <button>¡Haga clic aquí!</button>
+
+  <div>...Y eres genial (en realidad soy un pirata informático genial)!</div>
+
+</body>
+
+<!-- Mirrored from es.javascript.info/article/clickjacking/clickjacking-visible/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:15:21 GMT -->
+</html>

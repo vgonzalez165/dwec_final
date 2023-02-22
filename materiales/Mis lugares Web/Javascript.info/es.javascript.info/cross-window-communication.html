@@ -1,0 +1,474 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/cross-window-communication by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "tm";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Comunicación entre ventanas</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="cross-window-communication.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Comunicación entre ventanas"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Comunicación entre ventanas"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="popup-windows.html"><link rel="next" href="clickjacking.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Comunicación entre ventanas"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/cross-window-communication"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="cross-window-communication.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/cross-window-communication"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/cross-window-communication"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/cross-window-communication"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/cross-window-communication"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/cross-window-communication"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/cross-window-communication"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/cross-window-communication"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcross-window-communication" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcross-window-communication" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/cross-window-communication">English</option><option value="https://es.javascript.info/cross-window-communication" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/cross-window-communication">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/cross-window-communication">Italiano</option><option value="https://ja.javascript.info/cross-window-communication">日本語</option><option value="https://ko.javascript.info/">한국어</option><option value="https://learn.javascript.ru/cross-window-communication">Русский</option><option value="https://tr.javascript.info/cross-window-communication">Türkçe</option><option value="https://uk.javascript.info/cross-window-communication">Українська</option><option value="https://zh.javascript.info/cross-window-communication">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="2" max="3" data-tooltip="Lección 2 de 3"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="frames-and-windows.html"><span>Marcos y ventanas</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"Marcos y ventanas","item":"https://es.javascript.info/frames-and-windows"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 21 de abril de 2022"><div class="updated-at__content">21 de abril de 2022</div></div></div><h1 class="main__header-title">Comunicación entre ventanas</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Comunicación entre ventanas"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>La política de “Mismo origen” (mismo sitio) limita el acceso de ventanas y marcos entre sí.</p>
+<p>La idea es que si un usuario tiene dos páginas abiertas: una de <code>john-smith.com</code>, y otra es <code>gmail.com</code>, entonces no querrán que un script de <code>john-smith.com</code> lea nuestro correo de <code>gmail.com</code>. Por lo tanto, el propósito de la política de “Mismo origen” es proteger a los usuarios del robo de información.</p>
+<h2><a class="main__anchor" name="same-origin" href="#same-origin">Mismo origen</a></h2><p>Se dice que dos URL tienen el “mismo origen” si tienen el mismo protocolo, dominio y puerto.</p>
+<p>Todas estas URL comparten el mismo origen:</p>
+<ul>
+<li><code>http://site.com</code></li>
+<li><code>http://site.com/</code></li>
+<li><code>http://site.com/my/page.html</code></li>
+</ul>
+<p>Estas no:</p>
+<ul>
+<li><code>http://<b>www.</b>site.com</code> (otro dominio: <code>www.</code> importa)</li>
+<li><code>http://<b>site.org</b></code> (otro dominio: <code>.org</code> importa)</li>
+<li><code><b>https://</b>site.com</code> (otro protocolo: <code>https</code>)</li>
+<li><code>http://site.com:<b>8080</b></code> (otro puerto: <code>8080</code>)</li>
+</ul>
+<p>La política “Mismo Origen” establece que:</p>
+<ul>
+<li>si tenemos una referencia a otra ventana, por ejemplo, una ventana emergente creada por <code>window.open</code> o una ventana dentro de <code>&lt;iframe&gt;</code>, y esa ventana viene del mismo origen, entonces tenemos acceso completo a esa ventana.</li>
+<li>en caso contrario, si viene de otro origen, entonces no podemos acceder al contenido de esa ventana: variables, documento, nada. La única excepción es <code>location</code>: podemos cambiarla (redirigiendo así al usuario). Pero no podemos <em>leer</em> location (por lo que no podemos ver dónde está el usuario ahora, no hay fuga de información).</li>
+</ul>
+<h3><a class="main__anchor" name="en-accion-iframe" href="#en-accion-iframe">En acción: iframe</a></h3><p>Una etiqueta <code>&lt;iframe&gt;</code> aloja una ventana incrustada por separado, con sus propios objetos <code>document</code> y <code>window</code> separados.</p>
+<p>Podemos acceder a ellos usando propiedades:</p>
+<ul>
+<li><code>iframe.contentWindow</code> para obtener la ventana dentro del <code>&lt;iframe&gt;</code>.</li>
+<li><code>iframe.contentDocument</code> para obtener el documento dentro del <code>&lt;iframe&gt;</code>, abreviatura de <code>iframe.contentWindow.document</code>.</li>
+</ul>
+<p>Cuando accedemos a algo dentro de la ventana incrustada, el navegador comprueba si el iframe tiene el mismo origen. Si no es así, se niega el acceso (escribir en <code>location</code> es una excepción, aún está permitido).</p>
+<p>Por ejemplo, intentemos leer y escribir en <code>&lt;iframe&gt;</code> desde otro origen:</p>
+<div id="2fvl9mryjp" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:22,&quot;end&quot;:22},{&quot;start&quot;:16,&quot;end&quot;:16},{&quot;start&quot;:8,&quot;end&quot;:8},{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;iframe src=&quot;https://example.com&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+
+&lt;script&gt;
+  iframe.onload = function() {
+    // podemos obtener la referencia a la ventana interior
+    let iframeWindow = iframe.contentWindow; // OK
+    try {
+      // ...pero no al documento que contiene
+      let doc = iframe.contentDocument; // ERROR
+    } catch(e) {
+      alert(e); // Error de seguridad (otro origen)
+    }
+
+    // tampoco podemos LEER la URL de la página en iframe
+    try {
+      // No se puede leer la URL del objeto Location
+      let href = iframe.contentWindow.location.href; // ERROR
+    } catch(e) {
+      alert(e); // Error de seguridad
+    }
+
+    // ...¡podemos ESCRIBIR en location (y así cargar algo más en el iframe)!
+    iframe.contentWindow.location = '/'; // OK
+
+    iframe.onload = null; // borra el controlador para no ejecutarlo después del cambio de ubicación
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El código anterior muestra errores para cualquier operación excepto:</p>
+<ul>
+<li>Obtener la referencia a la ventana interna <code>iframe.contentWindow</code> – eso está permitido.</li>
+<li>Escribir a <code>location</code>.</li>
+</ul>
+<p>Por el contrario, si el <code>&lt;iframe&gt;</code> tiene el mismo origen, podemos hacer cualquier cosa con él:</p>
+<div id="k3ipfxop5" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;!-- iframe from the same site --&gt;
+&lt;iframe src=&quot;/&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+
+&lt;script&gt;
+  iframe.onload = function() {
+    // solo haz cualquier cosa
+    iframe.contentDocument.body.prepend(&quot;¡Hola, mundo!&quot;);
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type"><code>iframe.onload</code> vs <code>iframe.contentWindow.onload</code></span></div>
+            <div class="important__content"><p>El evento <code>iframe.onload</code> (en la etiqueta <code>&lt;iframe&gt;</code>) es esencialmente el mismo que <code>iframe.contentWindow.onload</code> (en el objeto de ventana incrustado). Se activa cuando la ventana incrustada se carga completamente con todos los recursos.</p>
+<p>… Pero no podemos acceder a <code>iframe.contentWindow.onload</code> para un iframe de otro origen, así que usamos <code>iframe.onload</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="ventanas-en-subdominios-document-domain" href="#ventanas-en-subdominios-document-domain">Ventanas en subdominios: document.domain</a></h2><p>Por definición, dos URL con diferentes dominios tienen diferentes orígenes.</p>
+<p>Pero si las ventanas comparten el mismo dominio de segundo nivel, por ejemplo, <code>john.site.com</code>, <code>peter.site.com</code> y <code>site.com</code> (de modo que su dominio de segundo nivel común es <code>site.com</code>), podemos hacer que el navegador ignore esa diferencia, de modo que puedan tratarse como si vinieran del “mismo origen” para efecto de la comunicación entre ventanas.</p>
+<p>Para que funcione, cada una de estas ventanas debe ejecutar el código:</p>
+<div id="j9un1fdllj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.domain = 'site.com';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso es todo. Ahora pueden interactuar sin limitaciones. Nuevamente, eso solo es posible para páginas con el mismo dominio de segundo nivel.</p>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Obsoleto, pero aún funcionando</span></div>
+            <div class="important__content"><p>La propiedad <code>document.domain</code> está en proceso de ser removido de la <a href="https://html.spec.whatwg.org/multipage/origin.html#relaxing-the-same-origin-restriction">especificación</a>. Los mensajería cross-window  (explicado pronto más abajo) es el reemplazo sugerido.</p>
+<p>Dicho esto, hasta ahora todos los navegadores lo soportan. Y tal soporte será mantenido en el futuro, para no romper el código existente que se apoya en <code>document.domain</code>.</p>
+</div></div>
+<h2><a class="main__anchor" name="iframe-trampa-del-documento-incorrecto" href="#iframe-trampa-del-documento-incorrecto">Iframe: trampa del documento incorrecto</a></h2><p>Cuando un iframe proviene del mismo origen y podemos acceder a su <code>document</code>, existe una trampa. No está relacionado con cross-origin, pero es importante saberlo.</p>
+<p>Tras su creación, un iframe tiene inmediatamente un documento. ¡Pero ese documento es diferente del que se carga en él!</p>
+<p>Entonces, si hacemos algo con el documento de inmediato, probablemente se perderá.</p>
+<p>Aquí, mira:</p>
+<div id="wbknt09pdz" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:7}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;iframe src=&quot;/&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+
+&lt;script&gt;
+  let oldDoc = iframe.contentDocument;
+  iframe.onload = function() {
+    let newDoc = iframe.contentDocument;
+    // ¡el documento cargado no es el mismo que el inicial!
+    alert(oldDoc == newDoc); // false
+  };
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>No deberíamos trabajar con el documento de un iframe aún no cargado, porque ese es el <em>documento incorrecto</em>. Si configuramos algún controlador de eventos en él, se ignorarán.</p>
+<p>¿Cómo detectar el momento en que el documento está ahí?</p>
+<p>El documento correcto definitivamente está en su lugar cuando se activa <code>iframe.onload</code>. Pero solo se activa cuando se carga todo el iframe con todos los recursos.</p>
+<p>Podemos intentar capturar el momento anterior usando comprobaciones en <code>setInterval</code>:</p>
+<div id="3v498vjd4l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;iframe src=&quot;/&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+
+&lt;script&gt;
+  let oldDoc = iframe.contentDocument;
+
+  // cada 100 ms comprueba si el documento es el nuevo
+  let timer = setInterval(() =&gt; {
+    let newDoc = iframe.contentDocument;
+    if (newDoc == oldDoc) return;
+
+    alert(&quot;¡El nuevo documento está aquí!&quot;);
+
+    clearInterval(timer); // cancelo setInterval, ya no lo necesito
+  }, 100);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="coleccion-window-frames" href="#coleccion-window-frames">Colección: window.frames</a></h2><p>Una forma alternativa de obtener un objeto de ventana para <code>&lt;iframe&gt;</code> – es obtenerlo de la colección nombrada <code>window.frames</code>:</p>
+<ul>
+<li>Por número: <code>window.frames[0]</code> – el objeto de ventana para el primer marco del documento.</li>
+<li>Por nombre: <code>window.frames.iframeName</code> – el objeto de ventana para el marco con <code>name=&quot;iframeName&quot;</code>.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="zo05v99j5i" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;iframe src=&quot;/&quot; style=&quot;height:80px&quot; name=&quot;win&quot; id=&quot;iframe&quot;&gt;&lt;/iframe&gt;
+
+&lt;script&gt;
+  alert(iframe.contentWindow == frames[0]); // true
+  alert(iframe.contentWindow == frames.win); // true
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Un iframe puede tener otros iframes en su interior. Los objetos <code>window</code> correspondientes forman una jerarquía.</p>
+<p>Los enlaces de navegación son:</p>
+<ul>
+<li><code>window.frames</code> – la colección de ventanas “hijas” (para marcos anidados).</li>
+<li><code>window.parent</code> – la referencia a la ventana “padre” (exterior).</li>
+<li><code>window.top</code> – la referencia a la ventana padre superior.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="gkykwqcm1k" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.frames[0].parent === window; // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos usar la propiedad <code>top</code> para verificar si el documento actual está abierto dentro de un marco o no:</p>
+<div id="rmexmgkda4" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (window == top) { // current window == window.top?
+  alert('El script está en la ventana superior, no en un marco.');
+} else {
+  alert('¡El script se ejecuta en un marco!');
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="el-atributo-sandbox-de-iframe" href="#el-atributo-sandbox-de-iframe">El atributo “sandbox” de iframe</a></h2><p>El atributo <code>sandbox</code> permite la exclusión de ciertas acciones dentro de un <code>&lt;iframe&gt;</code> para evitar que ejecute código no confiable. Separa el iframe en un “sandbox” tratándolo como si procediera de otro origen y/o aplicando otras limitaciones.</p>
+<p>Hay un “conjunto predeterminado” de restricciones aplicadas para <code>&lt;iframe sandbox src=&quot;...&quot;&gt;</code>. Pero se puede relajar si proporcionamos una lista de restricciones separadas por espacios que no deben aplicarse como un valor del atributo, así: <code>&lt;iframe sandbox=&quot;allow-forms allow-popups&quot;&gt;</code>.</p>
+<p>En otras palabras, un atributo “sandbox” vacío pone las limitaciones más estrictas posibles, pero podemos poner una lista delimitada por espacios de aquellas que queremos levantar.</p>
+<p>Aquí hay una lista de limitaciones:</p>
+<dl>
+<dt><code>allow-same-origin</code></dt>
+<dd>Por defecto, “sandbox” fuerza la política de “origen diferente” para el iframe. En otras palabras, hace que el navegador trate el <code>iframe</code> como si viniera de otro origen, incluso si su <code>src</code> apunta al mismo sitio. Con todas las restricciones implícitas para los scripts. Esta opción elimina esa característica.</dd>
+<dt><code>allow-top-navigation</code></dt>
+<dd>Permite que el <code>iframe</code> cambie <code>parent.location</code>.</dd>
+<dt><code>allow-forms</code></dt>
+<dd>Permite enviar formularios desde <code>iframe</code>.</dd>
+<dt><code>allow-scripts</code></dt>
+<dd>Permite ejecutar scripts desde el <code>iframe</code>.</dd>
+<dt><code>allow-popups</code></dt>
+<dd>Permite <code>window.open</code> popups desde el <code>iframe</code></dd>
+</dl>
+<p>Consulta <a href="https://developer.mozilla.org/es/docs/Web/HTML/Elemento/iframe">el manual</a> para obtener más información.</p>
+<p>El siguiente ejemplo muestra un iframe dentro de un entorno controlado con el conjunto de restricciones predeterminado: <code>&lt;iframe sandbox src=&quot;...&quot;&gt;</code>. Tiene algo de JavaScript y un formulario.</p>
+<p>Tenga en cuenta que nada funciona. Entonces, el conjunto predeterminado es realmente duro:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">index.html</div><div class="code-tabs__switch">sandboxed.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/cross-window-communication/sandbox/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/Ph8oZDpoxUg24AGu?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:140px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/cross-window-communication/sandbox/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;div&gt;El siguiente iframe tiene el atributo &lt;code&gt; sandbox &lt;/code&gt;.&lt;/div&gt;
+
+  &lt;iframe sandbox src=&quot;sandboxed.html&quot; style=&quot;height:60px;width:90%&quot;&gt;&lt;/iframe&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;button onclick=&quot;alert(123)&quot;&gt;Haz clic para ejecutar un script (no funciona)&lt;/button&gt;
+
+  &lt;form action=&quot;http://google.com&quot;&gt;
+    &lt;input type=&quot;text&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Enviar (no funciona)&quot;&gt;
+  &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Por favor tome nota:</span></div>
+            <div class="important__content"><p>El propósito del atributo <code>&quot;sandbox&quot;</code> es solo <em>agregar más</em> restricciones. No puede eliminarlas. En particular, no puede relajar las restricciones del mismo origen si el iframe proviene de otro origen.</p>
+</div></div>
+<h2><a class="main__anchor" name="mensajeria-entre-ventanas" href="#mensajeria-entre-ventanas">Mensajería entre ventanas</a></h2><p>La interfaz <code>postMessage</code> permite que las ventanas se comuniquen entre sí sin importar de qué origen sean.</p>
+<p>Por lo tanto, es una forma de evitar la política del “mismo origen”. Permite a una ventana de <code>john-smith.com</code> hablar con <code>gmail.com</code> e intercambiar información, pero solo si ambos están de acuerdo y llaman a las funciones de JavaScript correspondientes. Eso lo hace seguro para los usuarios.</p>
+<p>La interfaz tiene dos partes.</p>
+<h3><a class="main__anchor" name="postmessage" href="#postmessage">postMessage</a></h3><p>La ventana que quiere enviar un mensaje llama al método <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window.postMessage">postMessage</a> de la ventana receptora. En otras palabras, si queremos enviar el mensaje a <code>win</code>, debemos llamar a <code>win.postMessage(data, targetOrigin)</code>.</p>
+<p>Argumentos:</p>
+<dl>
+<dt><code>data</code></dt>
+<dd>Los datos a enviar. Puede ser cualquier objeto, los datos se clonan mediante el “algoritmo de clonación estructurada”. IE solo admite strings, por lo que debemos usar <code>JSON.stringify</code> en objetos complejos para admitir ese navegador.</dd>
+<dt><code>targetOrigin</code></dt>
+<dd>Especifica el origen de la ventana de destino, de modo que solo una ventana del origen dado recibirá el mensaje.</dd>
+</dl>
+<p>El argumento “targetOrigin” es una medida de seguridad. Recuerde que si la ventana de destino proviene de otro origen, no podemos leer su <code>location</code> en la ventana del remitente. Por lo tanto, no podemos estar seguros qué sitio está abierto en la ventana deseada en este momento: el usuario podría navegar fuera del sitio y la ventana del remitente no tener idea de ello.</p>
+<p>Especificar <code>targetOrigin</code> asegura que la ventana solo reciba los datos si todavía está en el sitio correcto. Importante cuando los datos son sensibles.</p>
+<p>Por ejemplo, aquí <code>win</code> solo recibirá el mensaje si tiene un documento del origen <code>http://example.com</code>:</p>
+<div id="kxmam687uw" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;iframe src=&quot;http://example.com&quot; name=&quot;example&quot;&gt;
+
+&lt;script&gt;
+  let win = window.frames.example;
+
+  win.postMessage(&quot;message&quot;, &quot;http://example.com&quot;);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si no queremos esa comprobación, podemos establecer <code>targetOrigin</code> en <code>*</code>.</p>
+<div id="ih10gf2902" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;iframe src=&quot;http://example.com&quot; name=&quot;example&quot;&gt;
+
+&lt;script&gt;
+  let win = window.frames.example;
+
+  win.postMessage(&quot;message&quot;, &quot;*&quot;);
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="onmessage" href="#onmessage">onmessage</a></h3><p>Para recibir un mensaje, la ventana destino debe tener un controlador en el evento <code>message</code>. Se activa cuando se llama a <code>postMessage</code> (y la comprobación de <code>targetOrigin</code> es correcta).</p>
+<p>El objeto de evento tiene propiedades especiales:</p>
+<dl>
+<dt><code>data</code></dt>
+<dd>Los datos de <code>postMessage</code>.</dd>
+<dt><code>origin</code></dt>
+<dd>El origen del remitente, por ejemplo, <code>http://javascript.info</code>.</dd>
+<dt><code>source</code></dt>
+<dd>La referencia a la ventana del remitente. Podemos llamar inmediatamente <code>source.postMessage(...)</code> de regreso si queremos.</dd>
+</dl>
+<p>Para asignar ese controlador, debemos usar <code>addEventListener</code>, una sintaxis corta <code>window.onmessage</code> no funciona.</p>
+<p>He aquí un ejemplo:</p>
+<div id="isi56gbod6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>window.addEventListener(&quot;message&quot;, function(event) {
+  if (event.origin != 'http://javascript.info') {
+    // algo de un dominio desconocido, ignorémoslo
+    return;
+  }
+
+  alert( &quot;Recibí: &quot; + event.data );
+
+  // puedes enviar un mensaje usando event.source.postMessage(...)
+});</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El ejemplo completo:</p>
+<div class="code-tabs code-tabs_result_on"><div class="code-tabs__tools"><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_left" title="&amp;larr;" data-code-tabs-left="data-code-tabs-left"></button></div><div class="code-tabs__switches-wrap"><div class="code-tabs__switches" data-code-tabs-switches="data-code-tabs-switches"><div class="code-tabs__switches-items"><div class="code-tabs__switch code-tabs__switch_current">Resultado</div><div class="code-tabs__switch">iframe.html</div><div class="code-tabs__switch">index.html</div></div></div></div><div class="code-tabs__scroll-wrap"><button class="code-tabs__scroll-button code-tabs__scroll-button_right" title="&amp;rarr;" data-code-tabs-right="data-code-tabs-right"></button></div><div class="code-tabs__buttons"><a class="code-tabs__button code-tabs__button_external" target="_blank" title="abrir en una nueva ventana" href="article/cross-window-communication/postmessage/index.html"></a><a class="code-tabs__button code-tabs__button_edit" target="_blank" title="editar en entorno controlado" href="https://plnkr.co/edit/eDoxBvzrEN3SjcaB?p=preview"></a></div></div><div class="code-tabs__content" data-code-tabs-content="data-code-tabs-content" style="height:120px"><div class="code-tabs__section code-tabs__section_current"><iframe class="code-tabs__result" src="article/cross-window-communication/postmessage/index.html"></iframe></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  Recibiendo iframe.
+  &lt;script&gt;
+    window.addEventListener('message', function(event) {
+      alert(`Recibí ${event.data} de ${event.origin}`);
+    });
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div><div class="code-tabs__section"><pre class="language-markup line-numbers"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;form id=&quot;form&quot;&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;Ingresa mensaje&quot; name=&quot;message&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Haz clic para enviar&quot;&gt;
+  &lt;/form&gt;
+
+  &lt;iframe src=&quot;iframe.html&quot; id=&quot;iframe&quot; style=&quot;display:block;height:60px&quot;&gt;&lt;/iframe&gt;
+
+  &lt;script&gt;
+    form.onsubmit = function() {
+      iframe.contentWindow.postMessage(this.message.value, '*');
+      return false;
+    };
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div></div></div><h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Para llamar a métodos y acceder al contenido de otra ventana, primero debemos tener una referencia a ella.</p>
+<p>Para las ventanas emergentes tenemos estas referencias:</p>
+<ul>
+<li>Desde la ventana de apertura: <code>window.open</code> – abre una nueva ventana y devuelve una referencia a ella,</li>
+<li>Desde la ventana emergente: <code>window.opener</code> – es una referencia a la ventana de apertura desde una ventana emergente.</li>
+</ul>
+<p>Para iframes, podemos acceder a las ventanas padres o hijas usando:</p>
+<ul>
+<li><code>window.frames</code> – una colección de objetos de ventana anidados,</li>
+<li><code>window.parent</code>, <code>window.top</code> son las referencias a las ventanas principales y superiores,</li>
+<li><code>iframe.contentWindow</code> es la ventana dentro de una etiqueta <code>&lt;iframe&gt;</code>.</li>
+</ul>
+<p>Si las ventanas comparten el mismo origen (host, puerto, protocolo), las ventanas pueden hacer lo que quieran entre sí.</p>
+<p>En caso contrario, las únicas acciones posibles son:</p>
+<ul>
+<li>Cambiar <code>location</code> en otra ventana (acceso de solo escritura).</li>
+<li>Enviarle un mensaje.</li>
+</ul>
+<p>Las excepciones son:</p>
+<ul>
+<li>Ventanas que comparten el mismo dominio de segundo nivel: <code>a.site.com</code> y <code>b.site.com</code>. Luego, configurar <code>document.domain='site.com'</code> en ambos, los coloca en el estado de “mismo origen”.</li>
+<li>Si un iframe tiene un atributo <code>sandbox</code>, se coloca forzosamente en el estado de “origen diferente”, a menos que se especifique <code>allow-same-origin</code> en el valor del atributo. Eso se puede usar para ejecutar código que no es de confianza en iframes desde el mismo sitio.</li>
+</ul>
+<p>La interfaz <code>postMessage</code> permite que dos ventanas con cualquier origen hablen:</p>
+<ol>
+<li>
+<p>El remitente llama a <code>targetWin.postMessage(data, targetOrigin)</code>.</p>
+</li>
+<li>
+<p>Si <code>targetOrigin</code> no es <code>'*'</code>, entonces el navegador comprueba si la ventana <code>targetWin</code> tiene el origen <code>targetOrigin</code>.</p>
+</li>
+<li>
+<p>Si es así, entonces <code>targetWin</code> activa el evento <code>message</code> con propiedades especiales:</p>
+<ul>
+<li><code>origin</code> – el origen de la ventana del remitente (como<code>http://my.site.com</code>)</li>
+<li><code>source</code> – la referencia a la ventana del remitente.</li>
+<li><code>data</code> – los datos, cualquier objeto en todas partes excepto IE que solo admite cadenas.</li>
+</ul>
+<p>Deberíamos usar <code>addEventListener</code> para configurar el controlador para este evento dentro de la ventana de destino.</p>
+</li>
+</ol>
+</div></article></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="popup-windows.html" data-tooltip="Ventanas emergentes y métodos de ventana"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="clickjacking.html" data-tooltip="El ataque de secuestro de clics"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcross-window-communication" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fcross-window-communication" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/cross-window-communication","identifier":"\/cross-window-communication"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="frames-and-windows.html">Marcos y ventanas</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#same-origin">Mismo origen</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ventanas-en-subdominios-document-domain">Ventanas en subdominios: document.domain</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#iframe-trampa-del-documento-incorrecto">Iframe: trampa del documento incorrecto</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#coleccion-window-frames">Colección: window.frames</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#el-atributo-sandbox-de-iframe">El atributo “sandbox” de iframe</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#mensajeria-entre-ventanas">Mensajería entre ventanas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fcross-window-communication" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fcross-window-communication" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/3-frames-and-windows/03-cross-window-communication" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/cross-window-communication by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:39 GMT -->
+</html>

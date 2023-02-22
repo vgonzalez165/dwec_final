@@ -1,0 +1,519 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/dom-navigation by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:25 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Recorriendo el DOM</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="dom-navigation.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Recorriendo el DOM"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Recorriendo el DOM"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="dom-nodes.html"><link rel="next" href="searching-elements-dom.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><link rel='stylesheet' href='../es.js.cx/libs/domtree.css'>
+<script src="../cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="../es.js.cx/libs/domtree.js"></script>
+<style>
+#travel-dom-comment {
+  font-style: italic;
+}
+#travel-dom-control ul {
+  margin: 6px 0;
+}
+</style><meta property="og:title" content="Recorriendo el DOM"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/dom-navigation"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="dom-navigation.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/dom-navigation"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/dom-navigation"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/dom-navigation"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/dom-navigation"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/dom-navigation"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/dom-navigation"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/dom-navigation"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/dom-navigation"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdom-navigation" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fdom-navigation" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/">عربي</option><option value="https://javascript.info/dom-navigation">English</option><option value="https://es.javascript.info/dom-navigation" selected>Español</option><option value="https://fa.javascript.info/">فارسی</option><option value="https://fr.javascript.info/dom-navigation">Français</option><option value="https://id.javascript.info/">Indonesia</option><option value="https://it.javascript.info/dom-navigation">Italiano</option><option value="https://ja.javascript.info/dom-navigation">日本語</option><option value="https://ko.javascript.info/dom-navigation">한국어</option><option value="https://learn.javascript.ru/dom-navigation">Русский</option><option value="https://tr.javascript.info/dom-navigation">Türkçe</option><option value="https://uk.javascript.info/dom-navigation">Українська</option><option value="https://zh.javascript.info/dom-navigation">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="3" max="32" data-tooltip="Lección 3 de 32"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="ui.html"><span>El navegador: Documentos, Eventos e Interfaces</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="document.html"><span>Documento</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El navegador: Documentos, Eventos e Interfaces","item":"https://es.javascript.info/ui"},{"@type":"ListItem","position":3,"name":"Documento","item":"https://es.javascript.info/document"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 24 de octubre de 2022"><div class="updated-at__content">24 de octubre de 2022</div></div></div><h1 class="main__header-title">Recorriendo el DOM</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Recorriendo el DOM"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>El DOM nos permite hacer cualquier cosa con sus elementos y contenidos, pero lo primero que tenemos que hacer es llegar al objeto correspondiente del DOM.</p>
+<p>Todas las operaciones en el DOM comienzan con el objeto <code>document</code>. Este es el principal “punto de entrada” al DOM. Desde ahí podremos acceder a cualquier nodo.</p>
+<p>Esta imagen representa los enlaces que nos permiten viajar a través de los nodos del DOM:</p>
+<figure><div class="image" style="width:420px">
+      <div class="image__ratio" style="padding-top:92.38095238095238%"></div>
+      <object type="image/svg+xml" data="article/dom-navigation/dom-links.svg" width="420" height="388" class="image__image" data-use-theme>
+        <img src="article/dom-navigation/dom-links.svg" alt="" width="420" height="388">
+      </object>
+      </div></figure><p>Vamos a analizarlos con más detalle.</p>
+<h2><a class="main__anchor" name="en-la-parte-superior-documentelement-y-body" href="#en-la-parte-superior-documentelement-y-body">En la parte superior: documentElement y body</a></h2><p>Los tres nodos superiores están disponibles como propiedades de <code>document</code>:</p>
+<dl>
+<dt><code>&lt;html&gt;</code> = <code>document.documentElement</code></dt>
+<dd>El nodo superior del documento es <code>document.documentElement</code>. Este es el nodo del DOM para la etiqueta <code>&lt;html&gt;</code>.</dd>
+<dt><code>&lt;body&gt;</code> = <code>document.body</code></dt>
+<dd>Otro nodo muy utilizado es el elemento <code>&lt;body&gt;</code> – <code>document.body</code>.</dd>
+<dt><code>&lt;head&gt;</code> = <code>document.head</code></dt>
+<dd>La etiqueta <code>&lt;head&gt;</code> está disponible como <code>document.head</code>.</dd>
+</dl>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Hay una trampa: <code>document.body</code> puede ser <code>null</code></span></div>
+            <div class="important__content"><p>Un script no puede acceder a un elemento que no existe en el momento de su ejecución.</p>
+<p>Por ejemplo, si un script está dentro de <code>&lt;head&gt;</code>, entonces <code>document.body</code> no está disponible, porque el navegador no lo ha leído aún.</p>
+<p>Entonces, en el siguiente ejemplo <code>alert</code> muestra <code>null</code>:</p>
+<div id="a0y56mreyk" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;html&gt;
+
+&lt;head&gt;
+  &lt;script&gt;
+    alert( &quot;From HEAD: &quot; + document.body ); // null, no hay  &lt;body&gt; aún
+  &lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;script&gt;
+    alert( &quot;From BODY: &quot; + document.body ); // HTMLBodyElement, ahora existe
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">En el mundo del DOM <code>null</code> significa “no existe”</span></div>
+            <div class="important__content"><p>En el DOM, el valor <code>null</code> significa que “no existe” o “no hay tal nodo”.</p>
+</div></div>
+<h2><a class="main__anchor" name="hijos-childnodes-firstchild-lastchild" href="#hijos-childnodes-firstchild-lastchild">Hijos: childNodes, firstChild, lastChild</a></h2><p>Existen dos términos que vamos a utilizar de ahora en adelante:</p>
+<ul>
+<li><strong>Nodos hijos (childNodes)</strong> – elementos que son hijos directos, es decir sus descendientes inmediatos. Por ejemplo, <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code> son hijos del elemento <code>&lt;html&gt;</code>.</li>
+<li><strong>Descendientes</strong> – todos los elementos anidados de un elemento dado, incluyendo los hijos, sus hijos y así sucesivamente.</li>
+</ul>
+<p>Por ejemplo, aquí <code>&lt;body&gt;</code> tiene de hijos <code>&lt;div&gt;</code> y <code>&lt;ul&gt;</code> (y unos pocos nodos de texto en blanco):</p>
+<div id="icxmp9cra1" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Begin&lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;b&gt;Information&lt;/b&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>…Y los descendientes de <code>&lt;body&gt;</code> no son solo los hijos <code>&lt;div&gt;</code>, <code>&lt;ul&gt;</code> sino también elementos anidados más profundamente, como <code>&lt;li&gt;</code> (un hijo de <code>&lt;ul&gt;</code>) o <code>&lt;b&gt;</code> (un hijo de <code>&lt;li&gt;</code>) – el subárbol entero.</p>
+<p><strong>La colección <code>childNodes</code> enumera todos los nodos hijos, incluidos los nodos de texto.</strong></p>
+<p>El ejemplo inferior muestra todos los hijos de <code>document.body</code>:</p>
+<div id="egmqy7055e" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Begin&lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Information&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;div&gt;End&lt;/div&gt;
+
+  &lt;script&gt;
+    for (let i = 0; i &lt; document.body.childNodes.length; i++) {
+      alert( document.body.childNodes[i] ); // Texto, DIV, Texto, UL, ..., SCRIPT
+    }
+  &lt;/script&gt;
+  ...más cosas...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Por favor observa un interesante detalle aquí. Si ejecutamos el ejemplo anterior, el último elemento que se muestra es <code>&lt;script&gt;</code>. De hecho, el documento tiene más cosas debajo, pero en el momento de ejecución del script el navegador todavía no lo ha leído, por lo que el script no lo ve.</p>
+<p><strong>Las propiedades <code>firstChild</code> y <code>lastChild</code> dan acceso rápido al primer y al último hijo.</strong></p>
+<p>Son solo atajos. Si existieran nodos hijos, la respuesta siguiente sería siempre verdadera:</p>
+<div id="j4o3xkr68a" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>elem.childNodes[0] === elem.firstChild
+elem.childNodes[elem.childNodes.length - 1] === elem.lastChild</code></pre>
+        </div>
+      </div>
+      
+      </div><p>También hay una función especial <code>elem.hasChildNodes()</code> para comprobar si hay algunos nodos hijos.</p>
+<h3><a class="main__anchor" name="colecciones-del-dom" href="#colecciones-del-dom">Colecciones del DOM</a></h3><p>Como podemos ver, <code>childNodes</code> parece un array. Pero realmente no es un array, sino más bien una <em>colección</em> – un objeto especial iterable, simil-array.</p>
+<p>Hay dos importantes consecuencias de esto:</p>
+<ol>
+<li>Podemos usar <code>for..of</code> para iterar sobre él:</li>
+</ol>
+<div id="ca0mnk74ca" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>for (let node of document.body.childNodes) {
+  alert(node); // enseña todos los nodos de la colección
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><pre><code>Eso es porque es iterable (proporciona la propiedad `Symbol.iterator`, como se requiere).
+</code></pre>
+<ol start="2">
+<li>Los métodos de Array no funcionan, porque no es un array:</li>
+</ol>
+<div id="rcyuz9e95l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert(document.body.childNodes.filter); // undefined (¡No hay método filter!)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La primera consecuencia es agradable. La segunda es tolerable, porque podemos usar <code>Array.from</code> para crear un array “real” desde la colección si es que queremos usar métodos del array:</p>
+<div id="44ebmgrtun" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( Array.from(document.body.childNodes).filter ); // función</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_warn">
+            <div class="important__header"><span class="important__type">Las colecciones DOM son solo de lectura</span></div>
+            <div class="important__content"><p>Las colecciones DOM, incluso más-- <em>todas</em> las propiedades de navegación enumeradas en este capítulo son sólo de lectura.</p>
+<p>No podemos reemplazar a un hijo por otro elemento asignándolo así <code>childNodes[i] = ...</code>.</p>
+<p>Cambiar el DOM necesita otros métodos. Los veremos en el siguiente capítulo.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">Las colecciones del DOM están vivas</span></div>
+            <div class="important__content"><p>Casi todas las colecciones del DOM, salvo algunas excepciones, están <em>vivas</em>. En otras palabras, reflejan el estado actual del DOM.</p>
+<p>Si mantenemos una referencia a <code>elem.childNodes</code>, y añadimos o quitamos nodos del DOM, entonces estos nodos aparecen en la colección automáticamente.</p>
+</div></div>
+<div class="important important_warn">
+            <div class="important__header"><span class="important__type">No uses <code>for..in</code> para recorrer colecciones</span></div>
+            <div class="important__content"><p>Las colecciones son iterables usando <code>for..of</code>. Algunas veces las personas tratan de utilizar <code>for..in</code> para eso.</p>
+<p>Por favor, no lo hagas. El bucle <code>for..in</code> itera sobre todas las propiedades enumerables. Y las colecciones tienen unas propiedades “extra” raramente usadas que normalmente no queremos obtener:</p>
+<div id="3y2o0ymhu7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;body&gt;
+&lt;script&gt;
+  // enseña 0, 1, longitud, item, valores y más cosas.
+  for (let prop in document.body.childNodes) alert(prop);
+&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<h2><a class="main__anchor" name="hermanos-y-el-padre" href="#hermanos-y-el-padre">Hermanos y el padre</a></h2><p><em>Los hermanos</em> son nodos que son hijos del mismo padre.</p>
+<p>Por ejemplo, aquí <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code> son hermanos:</p>
+<div id="yciv1xgdn3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;html&gt;
+  &lt;head&gt;...&lt;/head&gt;&lt;body&gt;...&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><ul>
+<li><code>&lt;body&gt;</code> se dice que es el hermano “siguiente” o a la “derecha” de <code>&lt;head&gt;</code>,</li>
+<li><code>&lt;head&gt;</code> se dice que es el hermano “anterior” o a la “izquierda” de <code>&lt;body&gt;</code>.</li>
+</ul>
+<p>El hermano siguiente está en la propiedad <code>nextSibling</code> y el anterior – en <code>previousSibling</code>.</p>
+<p>El padre está disponible en <code>parentNode</code>.</p>
+<p>Por ejemplo:</p>
+<div id="790ap0nh42" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// el padre de &lt;body&gt; es &lt;html&gt;
+alert( document.body.parentNode === document.documentElement ); // verdadero
+
+// después de &lt;head&gt; va &lt;body&gt;
+alert( document.head.nextSibling ); // HTMLBodyElement
+
+// antes de &lt;body&gt; va &lt;head&gt;
+alert( document.body.previousSibling ); // HTMLHeadElement</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="navegacion-solo-por-elementos" href="#navegacion-solo-por-elementos">Navegación solo por elementos</a></h2><p>Las propiedades de navegación enumeradas abajo se refieren a <em>todos</em> los nodos. Por ejemplo, en <code>childNodes</code> podemos ver nodos de texto, nodos elementos; y si existen, incluso los nodos de comentarios.</p>
+<p>Pero para muchas tareas no queremos los nodos de texto o comentarios. Queremos manipular el nodo que representa las etiquetas y formularios de la estructura de la página.</p>
+<p>Así que vamos a ver más enlaces de navegación que solo tienen en cuenta los <em>elementos nodos</em>:</p>
+<figure><div class="image" style="width:440px">
+      <div class="image__ratio" style="padding-top:71.81818181818181%"></div>
+      <object type="image/svg+xml" data="article/dom-navigation/dom-links-elements.svg" width="440" height="316" class="image__image" data-use-theme>
+        <img src="article/dom-navigation/dom-links-elements.svg" alt="" width="440" height="316">
+      </object>
+      </div></figure><p>Los enlaces son similares a los de arriba, solo que tienen dentro la palabra <code>Element</code>:</p>
+<ul>
+<li><code>children</code> – solo esos hijos que tienen el elemento nodo.</li>
+<li><code>firstElementChild</code>, <code>lastElementChild</code> – el primer y el último elemento hijo.</li>
+<li><code>previousElementSibling</code>, <code>nextElementSibling</code> – elementos vecinos.</li>
+<li><code>parentElement</code> – elemento padre.</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">¿Por qué <code>parentElement</code>? ¿Puede el padre <em>no</em> ser un elemento?</span></div>
+            <div class="important__content"><p>La propiedad <code>parentElement</code> devuelve el “elemento” padre, mientras <code>parentNode</code> devuelve “cualquier nodo” padre. Estas propiedades son normalmente las mismas: ambas seleccionan el padre.</p>
+<p>Con la excepción de <code>document.documentElement</code>:</p>
+<div id="x9g4ksgpf2" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>alert( document.documentElement.parentNode ); // documento
+alert( document.documentElement.parentElement ); // null</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La razón es que el nodo raíz <code>document.documentElement</code> (<code>&lt;html&gt;</code>) tiene a <code>document</code> como su padre. Pero <code>document</code> no es un elemento nodo, por lo que <code>parentNode</code> lo devuelve y <code>parentElement</code> no lo hace.</p>
+<p>Este detalle puede ser útil cuando queramos navegar hacia arriba desde cualquier elemento <code>elem</code> al <code>&lt;html&gt;</code>, pero no hacia el <code>document</code>:</p>
+<div id="5to62pbd2f" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>while(elem = elem.parentElement) { // sube hasta &lt;html&gt;
+  alert( elem );
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p>Vamos a modificar uno de los ejemplos de arriba: reemplaza <code>childNodes</code> por <code>children</code>. Ahora enseña solo elementos:</p>
+<div id="co7t6umcno" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:13}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Begin&lt;/div&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;Information&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;div&gt;End&lt;/div&gt;
+
+  &lt;script&gt;
+    for (let elem of document.body.children) {
+      alert(elem); // DIV, UL, DIV, SCRIPT
+    }
+  &lt;/script&gt;
+  ...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><h2><a class="main__anchor" name="dom-navigation-tables" href="#dom-navigation-tables">Más enlaces: tablas</a></h2><p>Hasta ahora hemos descrito las propiedades de navegación básicas.</p>
+<p>Ciertos tipos de elementos del DOM pueden tener propiedades adicionales, específicas de su tipo, por conveniencia.</p>
+<p>Las tablas son un gran ejemplo de ello, y representan un particular caso importante:</p>
+<p><strong>El elemento <code>&lt;table&gt;</code></strong>  soporta estas propiedades (añadidas a las que hemos dado anteriormente):</p>
+<ul>
+<li><code>table.rows</code> – la colección de elementos<code>&lt;tr&gt;</code> de la tabla.</li>
+<li><code>table.caption/tHead/tFoot</code> – referencias a los elementos <code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tfoot&gt;</code>.</li>
+<li><code>table.tBodies</code> – la colección de elementos <code>&lt;tbody&gt;</code> (pueden ser muchos según el estándar, pero siempre habrá al menos uno, aunque no esté en el HTML el navegador lo pondrá en el DOM).</li>
+</ul>
+<p><strong><code>&lt;thead&gt;</code>, <code>&lt;tfoot&gt;</code>, <code>&lt;tbody&gt;</code></strong> estos elementos proporcionan las propiedades de las <code>filas</code>.</p>
+<ul>
+<li><code>tbody.rows</code> – la colección dentro de <code>&lt;tr&gt;</code>.</li>
+</ul>
+<p><strong><code>&lt;tr&gt;</code>:</strong></p>
+<ul>
+<li><code>tr.cells</code> – la colección de celdas <code>&lt;td&gt;</code> y <code>&lt;th&gt;</code> dentro del <code>&lt;tr&gt;</code> dado.</li>
+<li><code>tr.sectionRowIndex</code> – la posición (índice) del  <code>&lt;tr&gt;</code> dado dentro del <code>&lt;thead&gt;/&lt;tbody&gt;/&lt;tfoot&gt;</code> adjunto.</li>
+<li><code>tr.rowIndex</code> – el número de <code>&lt;tr&gt;</code> en la tabla en su conjunto (incluyendo todas las filas de una tabla).</li>
+</ul>
+<p><strong><code>&lt;td&gt;</code> and <code>&lt;th&gt;</code>:</strong></p>
+<ul>
+<li><code>td.cellIndex</code> – el número de celdas dentro del adjunto <code>&lt;tr&gt;</code>.</li>
+</ul>
+<p>Un ejemplo de uso:</p>
+<div id="3kud0lu2c1" data-trusted="1" class="code-example" data-demo-height="100" data-highlight="[{&quot;start&quot;:11,&quot;cols&quot;:[{&quot;start&quot;:17,&quot;end&quot;:33}]}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="mostrar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;table id=&quot;table&quot;&gt;
+  &lt;tr&gt;
+    &lt;td&gt;one&lt;/td&gt;&lt;td&gt;two&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;three&lt;/td&gt;&lt;td&gt;four&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;script&gt;
+  // seleccionar td con &quot;dos&quot; (primera fila, segunda columna)
+  let td = table.rows[0].cells[1];
+  td.style.backgroundColor = &quot;red&quot;; // destacarlo
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La especificación: <a href="https://html.spec.whatwg.org/multipage/tables.html">tabular data</a>.</p>
+<p>También hay propiedades de navegación adicionales para los formularios HTML. Las veremos más adelante cuando empecemos a trabajar con los formularios.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><p>Dado un nodo del DOM, podemos ir a sus inmediatos vecinos utilizando las propiedades de navegación.</p>
+<p>Hay dos conjuntos principales de ellas:</p>
+<ul>
+<li>Para todos los nodos: <code>parentNode</code>, <code>childNodes</code>, <code>firstChild</code>, <code>lastChild</code>, <code>previousSibling</code>, <code>nextSibling</code>.</li>
+<li>Para los nodos elementos: <code>parentElement</code>, <code>children</code>, <code>firstElementChild</code>, <code>lastElementChild</code>, <code>previousElementSibling</code>, <code>nextElementSibling</code>.</li>
+</ul>
+<p>Algunos tipos de elementos del DOM, por ejemplo las tablas, proveen propiedades adicionales y colecciones para acceder a su contenido.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dom-children" name="dom-children">DOM children</a></h3><a class="task__open-link" href="task/dom-children.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Mira esta página:</p>
+<div id="pk44y8aiua" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-markup"><code>&lt;html&gt;
+&lt;body&gt;
+  &lt;div&gt;Users:&lt;/div&gt;
+  &lt;ul&gt;
+    &lt;li&gt;John&lt;/li&gt;
+    &lt;li&gt;Pete&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para cada una de las siguientes preguntas, da al menos una forma de cómo acceder a ellos:</p>
+<ul>
+<li>¿El nodo <code>&lt;div&gt;</code> del DOM?</li>
+<li>¿El nodo <code>&lt;ul&gt;</code> del DOM?</li>
+<li>El segundo <code>&lt;li&gt;</code> (con Pete)?</li>
+</ul>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Hay muchas maneras, por ejemplo:</p>
+<p>El nodo <code>&lt;div&gt;</code> del DOM:</p>
+<div id="si9l02ti6e" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.body.firstElementChild
+// o
+document.body.children[0]
+// o (el primer nodo es un espacio, así que tomamos el segundo)
+document.body.childNodes[1]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El nodo <code>&lt;ul&gt;</code> del DOM:</p>
+<div id="rwjobh617y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>document.body.lastElementChild
+// o
+document.body.children[1]</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El segundo <code>&lt;li&gt;</code> (con Pete):</p>
+<div id="junxjpda9y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// obtener &lt;ul&gt;, y luego obtener su último elemento hijo
+document.body.lastElementChild.lastElementChild</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#la-pregunta-de-los-hermanos" name="la-pregunta-de-los-hermanos">La pregunta de los hermanos</a></h3><a class="task__open-link" href="task/navigation-links-which-null.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Si <code>elem</code> – es un elemento nodo arbitrario del DOM…</p>
+<ul>
+<li>¿Es cierto que <code>elem.lastChild.nextSibling</code> siempre es <code>null</code>?</li>
+<li>¿Es cierto que <code>elem.children[0].previousSibling</code> siempre es <code>null</code> ?</li>
+</ul>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><ol>
+<li>Sí, verdadero. El elemento <code>elem.lastChild</code> siempre es el último, no tiene <code>nextSibling</code>.</li>
+<li>No, falso. <code>elem.children[0]</code> es el primer hijo <em>entre elementos</em>, pero pueden existir nodos que no son elementos antes que él. <code>previousSibling</code> puede ser un nodo texto.</li>
+</ol>
+<p>Ten en cuenta: para ambos casos, si no hay hijos habrá un error.</p>
+<p>Si no hay hijos, <code>elem.lastChild</code> es <code>null</code>, entonces no podemos acceder a <code>elem.lastChild.nextSibling</code>. Y la colección <code>elem.children</code> es vacía (como un array vacío <code>[]</code>).</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#seleccionar-todas-las-celdas-diagonales" name="seleccionar-todas-las-celdas-diagonales">Seleccionar todas las celdas diagonales</a></h3><a class="task__open-link" href="task/select-diagonal-cells.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escribe el código para pintar todas las celdas diagonales de rojo.</p>
+<p>Necesitarás obtener todas las <code>&lt;td&gt;</code> de la <code>&lt;table&gt;</code> y pintarlas usando el código:</p>
+<div id="id16lw8nk3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// td debe ser la referencia a la celda de la tabla
+td.style.backgroundColor = 'red';</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El resultado debe ser:</p>
+<div class="code-result">
+    <div class="code-result__toolbar toolbar"></div>
+    <iframe class="code-result__iframe" data-trusted="1" style="height:180px" src="https://es.js.cx/task/select-diagonal-cells/solution/"></iframe>
+  </div><p><a href="https://plnkr.co/edit/3F491XF5ZF4BteSv?p=preview" target="_blank" data-plunk-id="3F491XF5ZF4BteSv">Abrir un entorno controlado para la tarea.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Usaremos las propiedades de las <code>filas</code> y las <code>celdas</code> para acceder a las celdas de la tabla diagonal</p>
+<p><a href="https://plnkr.co/edit/vBanix6LWN8UVYQ0?p=preview" target="_blank" data-plunk-id="vBanix6LWN8UVYQ0">Abrir la solución en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="dom-nodes.html" data-tooltip="Árbol del Modelo de Objetos del Documento (DOM)"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="searching-elements-dom.html" data-tooltip="Buscar: getElement*, querySelector*"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdom-navigation" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fdom-navigation" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/dom-navigation","identifier":"\/dom-navigation"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="document.html">Documento</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#en-la-parte-superior-documentelement-y-body">En la parte superior: documentElement y body</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#hijos-childnodes-firstchild-lastchild">Hijos: childNodes, firstChild, lastChild</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#hermanos-y-el-padre">Hermanos y el padre</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#navegacion-solo-por-elementos">Navegación solo por elementos</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#dom-navigation-tables">Más enlaces: tablas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fdom-navigation" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fdom-navigation" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/2-ui/1-document/03-dom-navigation" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/dom-navigation by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:25 GMT -->
+</html>

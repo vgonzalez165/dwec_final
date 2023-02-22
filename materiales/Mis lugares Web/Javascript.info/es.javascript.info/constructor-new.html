@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/constructor-new by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Constructor, operador &quot;new&quot;</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="constructor-new.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Constructor, operador &quot;new&quot;"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Constructor, operador &quot;new&quot;"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="object-methods.html"><link rel="next" href="optional-chaining.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Constructor, operador &quot;new&quot;"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/constructor-new"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/constructor-new"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="constructor-new.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/constructor-new"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/constructor-new"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/constructor-new"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/constructor-new"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/constructor-new"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/constructor-new"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/constructor-new"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/constructor-new"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/constructor-new"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/constructor-new"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fconstructor-new" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fconstructor-new" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/constructor-new">عربي</option><option value="https://javascript.info/constructor-new">English</option><option value="https://es.javascript.info/constructor-new" selected>Español</option><option value="https://fa.javascript.info/constructor-new">فارسی</option><option value="https://fr.javascript.info/constructor-new">Français</option><option value="https://id.javascript.info/constructor-new">Indonesia</option><option value="https://it.javascript.info/constructor-new">Italiano</option><option value="https://ja.javascript.info/constructor-new">日本語</option><option value="https://ko.javascript.info/constructor-new">한국어</option><option value="https://learn.javascript.ru/constructor-new">Русский</option><option value="https://tr.javascript.info/constructor-new">Türkçe</option><option value="https://uk.javascript.info/constructor-new">Українська</option><option value="https://zh.javascript.info/constructor-new">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="33" max="93" data-tooltip="Lección 33 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="object-basics.html"><span>Objetos: lo básico</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Objetos: lo básico","item":"https://es.javascript.info/object-basics"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 4 de octubre de 2022"><div class="updated-at__content">4 de octubre de 2022</div></div></div><h1 class="main__header-title">Constructor, operador &quot;new&quot;</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Constructor, operador &quot;new&quot;"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>El sintaxis habitual <code>{...}</code> nos permite crear un objeto. Pero a menudo necesitamos crear varios objetos similares, como múltiples usuarios, elementos de menú, etcétera.</p>
+<p>Esto se puede realizar utilizando el constructor de funciones y el operador <code>&quot;new&quot;</code>.</p>
+<h2><a class="main__anchor" name="funcion-constructora" href="#funcion-constructora">Función constructora</a></h2><p>La función constructora es técnicamente una función normal. Aunque hay dos convenciones:</p>
+<ol>
+<li>Son nombradas con la primera letra mayúscula.</li>
+<li>Sólo deben ejecutarse con el operador <code>&quot;new&quot;</code>.</li>
+</ol>
+<p>Por ejemplo:</p>
+<div id="276jqlv60n" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function User(name) {
+  this.name = name;
+  this.isAdmin = false;
+}
+
+let user = new User(&quot;Jack&quot;);
+
+alert(user.name); // Jack
+alert(user.isAdmin); // false</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Cuando una función es ejecutada con <code>new</code>, realiza los siguientes pasos:</p>
+<ol>
+<li>Se crea un nuevo objeto vacío y se asigna a <code>this</code>.</li>
+<li>Se ejecuta el cuerpo de la función. Normalmente se modifica <code>this</code> y se le agrega nuevas propiedades.</li>
+<li>Se devuelve el valor de <code>this</code>.</li>
+</ol>
+<p>En otras palabras, <code>new User(...)</code> realiza algo como:</p>
+<div id="a6gtrvmfia" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;end&quot;:7},{&quot;start&quot;:1,&quot;end&quot;:1}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function User(name) {
+  // this = {};  (implícitamente)
+
+  // agrega propiedades a this
+  this.name = name;
+  this.isAdmin = false;
+
+  // return this;  (implícitamente)
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces <code>let user = new User(&quot;Jack&quot;)</code> da el mismo resultado que:</p>
+<div id="n4v27304rc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = {
+  name: &quot;Jack&quot;,
+  isAdmin: false
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Ahora si queremos crear otros usuarios, podemos llamar a <code>new User(&quot;Ann&quot;)</code>, <code>new User(&quot;Alice&quot;)</code>, etcétera. Mucho más corto que usar literales todo el tiempo y también fácil de leer.</p>
+<p>Este es el principal propósito del constructor – implementar código de creación de objetos re-utilizables.</p>
+<p>Tomemos nota otra vez: técnicamente cualquier función (excepto las de flecha pues no tienen this) puede ser utilizada como constructor. Puede ser llamada con <code>new</code>, y ejecutará el algoritmo de arriba. La “primera letra mayúscula” es un acuerdo general, para dejar en claro que la función debe ser ejecutada con <code>new</code>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">new function() { … }</span></div>
+            <div class="important__content"><p>Si tenemos muchas líneas de código todas sobre la creación de un único objeto complejo, podemos agruparlas en un constructor de función que es llamado inmediatamente de esta manera:</p>
+<div id="xomt565zu3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// crea una función e inmediatamente la llama con new
+let user = new function() {
+  this.name = &quot;John&quot;;
+  this.isAdmin = false;
+
+  // ...otro código para creación de usuario
+  // tal vez lógica compleja y sentencias
+  // variables locales etc
+};</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este constructor no puede ser llamado de nuevo porque no es guardado en ninguna parte, sólo es creado y llamado. Por lo tanto este truco apunta a encapsular el código que construye el objeto individual, sin reutilización futura.</p>
+</div></div>
+<h2><a class="main__anchor" name="constructor-modo-test-new-target" href="#constructor-modo-test-new-target">Constructor modo test: new.target</a></h2><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Temas avanzados</span></div>
+            <div class="important__content"><p>La sintaxis de esta sección es raramente utilizada, puedes omitirla a menos que quieras saber todo.</p>
+</div></div>
+<p>Dentro de una función, podemos verificar si ha sido llamada con o sin el <code>new</code> utilizando una propiedad especial: <code>new.target</code>.</p>
+<p>En las llamadas normales devuelve <code>undefined</code>, y cuando es llamada con <code>new</code> devuelve la función:</p>
+<div id="jby6n2y7ku" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:8},{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function User() {
+  alert(new.target);
+}
+
+// sin  &quot;new&quot;:
+User(); // undefined
+
+// con  &quot;new&quot;:
+new User(); // function User { ... }</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto puede ser utilizado dentro de la función para conocer si ha sido llamada con <code>new</code>, &quot;en modo constructor &quot;; o sin él, “en modo regular”.</p>
+<p>También podemos hacer que ambas formas de llamarla, con <code>new</code> y “regular”, realicen lo mismo:</p>
+<div id="451a59asby" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function User(name) {
+  if (!new.target) { // si me ejecutas sin new
+    return new User(name); // ...Agregaré new por ti
+  }
+
+  this.name = name;
+}
+
+let john = User(&quot;John&quot;); // redirige llamado a new User
+alert(john.name); // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Este enfoque es utilizado aveces en las librerías para hacer el sintaxis más flexible. Así la gente puede llamar a la función con o sin <code>new</code> y aún funciona.</p>
+<p>Sin embargo, probablemente no sea algo bueno para usar en todas partes, porque omitir <code>new</code> hace que sea un poco menos obvio lo que está sucediendo. Con <code>new</code> todos sabemos que se está creando el nuevo objeto.</p>
+<h2><a class="main__anchor" name="return-desde-constructores" href="#return-desde-constructores">Return desde constructores</a></h2><p>Normalmente, los constructores no tienen una sentencia <code>return</code>. Su tarea es escribir todo lo necesario al <code>this</code>, y automáticamente este se convierte en el resultado.</p>
+<p>Pero si hay una sentencia <code>return</code>, entonces la regla es simple:</p>
+<ul>
+<li>Si <code>return</code> es llamado con un objeto, entonces se devuelve tal objeto en vez de <code>this</code>.</li>
+<li>Si <code>return</code> es llamado con un tipo de dato primitivo, es ignorado.</li>
+</ul>
+<p>En otras palabras, <code>return</code> con un objeto devuelve ese objeto, en todos los demás casos se devuelve <code>this</code>.</p>
+<p>Por ejemplo, aquí <code>return</code> anula <code>this</code> al devolver un objeto:</p>
+<div id="gvdnsv9u58" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function BigUser() {
+
+  this.name = &quot;John&quot;;
+
+  return { name: &quot;Godzilla&quot; };  // &lt;-- devuelve este objeto
+}
+
+alert( new BigUser().name );  // Godzilla, recibió ese objeto</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y aquí un ejemplo con un <code>return</code> vacío (o podemos colocar un primitivo después de él, no importa):</p>
+<div id="c424g3kleo" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function SmallUser() {
+
+  this.name = &quot;John&quot;;
+
+  return; // &lt;-- devuelve this
+}
+
+alert( new SmallUser().name );  // John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Normalmente los constructores no tienen una sentencia <code>return</code>. Aquí mencionamos el comportamiento especial con devolución de objetos principalmente por el bien de la integridad.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Omitir paréntesis</span></div>
+            <div class="important__content"><p>Por cierto, podemos omitir paréntesis después de <code>new</code>:</p>
+<div id="ej7zv3d5cn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let user = new User; // &lt;-- sin paréntesis
+// lo mismo que
+let user = new User();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Omitir paréntesis aquí no se considera “buen estilo”, pero la especificación permite esa sintaxis.</p>
+</div></div>
+<h2><a class="main__anchor" name="metodos-en-constructor" href="#metodos-en-constructor">Métodos en constructor</a></h2><p>Utilizar constructor de funciones para crear objetos nos da mucha flexibilidad. La función constructor puede tener argumentos que definan cómo construir el objeto y qué colocar dentro.</p>
+<p>Por supuesto podemos agregar a <code>this</code> no sólo propiedades, sino también métodos.</p>
+<p>Por ejemplo, <code>new User(name)</code> de abajo, crea un objeto con el <code>name</code> dado y el método <code>sayHi</code>:</p>
+<div id="5k06652x1u" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:8,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function User(name) {
+  this.name = name;
+
+  this.sayHi = function() {
+    alert( &quot;Mi nombre es: &quot; + this.name );
+  };
+}
+
+let john = new User(&quot;John&quot;);
+
+john.sayHi(); // Mi nombre es: John
+
+/*
+john = {
+   name: &quot;John&quot;,
+   sayHi: function() { ... }
+}
+*/</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para crear objetos complejos existe una sintaxis más avanzada, <a href="classes.html">classes</a>, que cubriremos más adelante.</p>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>Las funciones Constructoras o, más corto, constructores, son funciones normales, pero existe un común acuerdo para nombrarlas con la primera letra en mayúscula.</li>
+<li>Las funciones Constructoras sólo deben ser llamadas utilizando <code>new</code>. Tal llamado implica la creación de un <code>this</code> vacío al comienzo y devolver el <code>this</code> rellenado al final.</li>
+</ul>
+<p>Podemos utilizar funciones constructoras para crear múltiples objetos similares.</p>
+<p>JavaScript proporciona funciones constructoras para varios objetos de lenguaje incorporados: como <code>Date</code> para fechas, <code>Set</code> para conjuntos y otros que planeamos estudiar.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Objetos, ¡volveremos!</span></div>
+            <div class="important__content"><p>En este capítulo solo cubrimos los conceptos básicos sobre objetos y constructores. Son esenciales para aprender más sobre tipos de datos y funciones en los próximos capítulos.</p>
+<p>Después de aprender aquello, volvemos a los objetos y los cubrimos en profundidad en los capítulos <a href="prototypes.html">Prototipos y herencia</a> y <a href="classes.html">Clases</a>.</p>
+</div></div>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#dos-funciones-un-objeto" name="dos-funciones-un-objeto">Dos funciones – un objeto</a></h3><a class="task__open-link" href="task/two-functions-one-object.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 2</span></div><div class="task__content"><div class="task__formatted"><p>¿Es posible crear las funciones <code>A</code> y <code>B</code> para que se cumpla <code>new A() == new B()</code>?</p>
+<div id="9r8gtc5pjx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function A() { ... }
+function B() { ... }
+
+let a = new A();
+let b = new B();
+
+alert( a == b ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si es posible, entonces proporcione un ejemplo de su código.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Si, es posible.</p>
+<p>Si una función devuelve un objeto, entonces <code>new</code> lo devuelve en vez de <code>this</code>.</p>
+<p>Por lo tanto pueden, por ejemplo, devolver el mismo objeto definido externamente <code>obj</code>:</p>
+<div id="x5xl9q8p78" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let obj = {};
+
+function A() { return obj; }
+function B() { return obj; }
+
+alert( new A() == new B() ); // true</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crear-nueva-calculadora" name="crear-nueva-calculadora">Crear nueva Calculadora</a></h3><a class="task__open-link" href="task/calculator-constructor.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crear una función constructora <code>Calculator</code> que crea objetos con 3 métodos:</p>
+<ul>
+<li><code>read()</code> pide dos valores usando <code>prompt</code> y los guarda en las propiedades del objeto con los nombres <code>a</code> y <code>b</code>.</li>
+<li><code>sum()</code> devuelve la suma de estas propiedades.</li>
+<li><code>mul()</code> devuelve el producto de la multiplicación de estas propiedades.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="xpl8lu2atj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let calculator = new Calculator();
+calculator.read();
+
+alert( &quot;Sum=&quot; + calculator.sum() );
+alert( &quot;Mul=&quot; + calculator.mul() );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="#" onclick="event.preventDefault(); runDemo(this)">Ejecutar el demo</a></p><p><a href="https://plnkr.co/edit/3nR68H2HWFG661Ca?p=preview" target="_blank" data-plunk-id="3nR68H2HWFG661Ca">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="5gdt342y2j" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function Calculator() {
+
+  this.read = function() {
+    this.a = +prompt('a?', 0);
+    this.b = +prompt('b?', 0);
+  };
+
+  this.sum = function() {
+    return this.a + this.b;
+  };
+
+  this.mul = function() {
+    return this.a * this.b;
+  };
+}
+
+let calculator = new Calculator();
+calculator.read();
+
+alert( &quot;Sum=&quot; + calculator.sum() );
+alert( &quot;Mul=&quot; + calculator.mul() );</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/R1EA5jTTlEwBTjUS?p=preview" target="_blank" data-plunk-id="R1EA5jTTlEwBTjUS">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#crear-nuevo-acumulador" name="crear-nuevo-acumulador">Crear nuevo Acumulador</a></h3><a class="task__open-link" href="task/accumulator.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Crear una función constructor <code>Accumulator(startingValue)</code>.</p>
+<p>El objeto que crea debería:</p>
+<ul>
+<li>Almacene el “valor actual” en la propiedad <code>value</code>. El valor inicial se establece en el argumento del constructor <code>startingValue</code>.</li>
+<li>El método <code>read()</code> debe usar <code>prompt</code> para leer un nuevo número y agregarlo a <code>value</code>.</li>
+</ul>
+<p>En otras palabras, la propiedad <code>value</code> es la suma de todos los valores ingresados por el usuario con el valor inicial <code>startingValue</code>.</p>
+<p>Aquí está la demostración del código:</p>
+<div id="ypk05saxqj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let accumulator = new Accumulator(1); // valor inicial 1
+
+accumulator.read(); // agrega el valor introducido por el usuario
+accumulator.read(); // agrega el valor introducido por el usuario
+
+alert(accumulator.value); // muestra la suma de estos valores</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="#" onclick="event.preventDefault(); runDemo(this)">Ejecutar el demo</a></p><p><a href="https://plnkr.co/edit/Uhk0b96PaSMW96RZ?p=preview" target="_blank" data-plunk-id="Uhk0b96PaSMW96RZ">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="1ufyht54ys" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function Accumulator(startingValue) {
+  this.value = startingValue;
+
+  this.read = function() {
+    this.value += +prompt('Cuánto más agregar?', 0);
+  };
+
+}
+
+let accumulator = new Accumulator(1);
+accumulator.read();
+accumulator.read();
+alert(accumulator.value);</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/5068ze7vJe21t2A9?p=preview" target="_blank" data-plunk-id="5068ze7vJe21t2A9">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="object-methods.html" data-tooltip="Métodos del objeto, &quot;this&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="optional-chaining.html" data-tooltip="Encadenamiento opcional '?.'"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fconstructor-new" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fconstructor-new" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/constructor-new","identifier":"\/constructor-new"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="object-basics.html">Objetos: lo básico</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#funcion-constructora">Función constructora</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#constructor-modo-test-new-target">Constructor modo test: new.target</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#return-desde-constructores">Return desde constructores</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#metodos-en-constructor">Métodos en constructor</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (3)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fconstructor-new" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fconstructor-new" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/04-object-basics/06-constructor-new" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/constructor-new by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:13:57 GMT -->
+</html>

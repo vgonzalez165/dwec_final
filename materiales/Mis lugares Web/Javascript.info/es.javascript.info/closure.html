@@ -1,0 +1,1062 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/closure by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:02 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Ámbito de Variable y el concepto &quot;closure&quot;</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="closure.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Ámbito de Variable y el concepto &quot;closure&quot;"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ámbito de Variable y el concepto &quot;closure&quot;"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="rest-parameters-spread.html"><link rel="next" href="var.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Ámbito de Variable y el concepto &quot;closure&quot;"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/closure"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/closure"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="closure.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/closure"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/closure"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/closure"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/closure"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/closure"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/closure"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/closure"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/closure"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/closure"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/closure"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fclosure" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fclosure" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/closure">عربي</option><option value="https://javascript.info/closure">English</option><option value="https://es.javascript.info/closure" selected>Español</option><option value="https://fa.javascript.info/closure">فارسی</option><option value="https://fr.javascript.info/closure">Français</option><option value="https://id.javascript.info/closure">Indonesia</option><option value="https://it.javascript.info/closure">Italiano</option><option value="https://ja.javascript.info/closure">日本語</option><option value="https://ko.javascript.info/closure">한국어</option><option value="https://learn.javascript.ru/closure">Русский</option><option value="https://tr.javascript.info/closure">Türkçe</option><option value="https://uk.javascript.info/closure">Українська</option><option value="https://zh.javascript.info/closure">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="51" max="93" data-tooltip="Lección 51 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="advanced-functions.html"><span>Trabajo avanzado con funciones</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Trabajo avanzado con funciones","item":"https://es.javascript.info/advanced-functions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 4 de febrero de 2023"><div class="updated-at__content">4 de febrero de 2023</div></div></div><h1 class="main__header-title">Ámbito de Variable y el concepto &quot;closure&quot;</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Ámbito de Variable y el concepto &quot;closure&quot;"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>JavaScript es un lenguaje muy orientado a funciones. Nos da mucha libertad. Una función se puede crear en cualquier momento, pasar como argumento a otra función y luego llamar desde un lugar de código totalmente diferente más tarde.</p>
+<p>Ya sabemos que una función puede acceder a variables fuera de ella.</p>
+<p>Pero, ¿qué sucede si estas variables “externas” cambian desde que se crea una función? ¿La función verá los valores nuevos o los antiguos?</p>
+<p>Y si una función se pasa como parámetro y se llama desde otro lugar del código, ¿tendrá acceso a las variables externas en el nuevo lugar?</p>
+<p>Ampliemos nuestro conocimiento para comprender estos escenarios y otros más complejos.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Aquí hablaremos de variables let/const</span></div>
+            <div class="important__content"><p>En JavaScript, hay 3 formas de declarar una variable: <code>let</code>, <code>const</code> (las modernas) y <code>var</code> (más antigua).</p>
+<ul>
+<li>En este artículo usaremos las variables <code>let</code> en los ejemplos.</li>
+<li>Las variables declaradas con <code>const</code> se comportan igual, por lo que este artículo también trata sobre <code>const</code>.</li>
+<li>El antiguo <code>var</code> tiene algunas diferencias notables que se tratarán en el artículo <a href="var.html">La vieja &quot;var&quot;</a>.</li>
+</ul>
+</div></div>
+<h2><a class="main__anchor" name="bloques-de-codigo" href="#bloques-de-codigo">Bloques de código</a></h2><p>Si una variable se declara dentro de un bloque de código <code>{...}</code>, solo es visible dentro de ese bloque.</p>
+<p>Por ejemplo:</p>
+<div id="tfceqlbb5a" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>{
+  // hacer un trabajo con variables locales que no deberían verse fuera
+  let message = &quot;Hello&quot;; // solo visible en este bloque
+  alert(message); // Hello
+}
+
+alert(message); // Error: el mensaje no se ha definido (undefined)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos usar esto para aislar un fragmento de código que realiza su propia tarea, con variables que solo le pertenecen a él:</p>
+<div id="y6qwky9a4l" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>{
+  // ver mensaje
+  let message = &quot;Hello&quot;;
+  alert(message);
+}
+
+{
+  // ver otro mensaje
+  let message = &quot;Goodbye&quot;;
+  alert(message);
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Sin bloques, habría un error</span></div>
+            <div class="important__content"><p>Tenga en cuenta que, sin bloques separados, habría un error si usáramos ‘let’ con el nombre de la variable existente:</p>
+<div id="k3i5p9lu75" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// ver mensaje
+let message = &quot;Hello&quot;;
+alert(message);
+
+// ver otro mensaje
+let message = &quot;Goodbye&quot;; // Error: la variable ya ha sido declarada
+alert(message);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div>
+<p>Para <code>if</code>, <code>for</code>, <code>while</code> y otros, las variables declaradas dentro de <code>{...}</code> también son solo visibles en su interior:</p>
+<div id="604qe68l3b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>if (true) {
+  let phrase = &quot;Hello!&quot;;
+
+  alert(phrase); // Hello!
+}
+
+alert(phrase); // ¡Error, no hay tal variable!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí, después de que <code>if</code> termine, la <code>alerta</code> a continuación no verá la <code>phrase</code>, de ahí el error.</p>
+<p>Eso es genial, ya que nos permite crear variables locales de bloque, específicas de una rama <code>if</code>.</p>
+<p>De la misma manera que para los bucles <code>for</code> y <code>while</code>:</p>
+<div id="qthdal9vqa" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>for (let i = 0; i &lt; 3; i++) {
+  // la variable i solo es visible dentro de este for
+  alert(i); // 0, then 1, then 2
+}
+
+alert(i); // ¡Error, no hay tal variable!</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Visualmente, <code>let i</code> está fuera de <code>{...}</code>; pero la construcción <code>for</code> es especial aquí: la variable declarada dentro de ella se considera parte del bloque.</p>
+<h2><a class="main__anchor" name="funciones-anidadas" href="#funciones-anidadas">Funciones anidadas</a></h2><p>Una función se llama “anidada” cuando se crea dentro de otra función.</p>
+<p>Es fácilmente posible hacer esto con JavaScript.</p>
+<p>Podemos usarlo para organizar nuestro código:</p>
+<div id="bdj9zek5mr" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHiBye(firstName, lastName) {
+
+  // función anidada auxiliar para usar a continuación
+  function getFullName() {
+    return firstName + &quot; &quot; + lastName;
+  }
+
+  alert( &quot;Hello, &quot; + getFullName() );
+  alert( &quot;Bye, &quot; + getFullName() );
+
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí la función <em>anidada</em> <code>getFullName()</code> se hace por conveniencia. Puede acceder a las variables externas y, por lo tanto, puede devolver el nombre completo. Las funciones anidadas son bastante comunes en JavaScript.</p>
+<p>Lo que es mucho más interesante, es que puede devolverse una función anidada: ya sea como propiedad de un nuevo objeto o como resultado en sí mismo. Luego se puede usar en otro lugar. No importa dónde, todavía tiene acceso a las mismas variables externas.</p>
+<p>A continuación, <code>makeCounter</code> crea la función “contador” que devuelve el siguiente número en cada invocación:</p>
+<div id="f25izgzwet" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++;
+  };
+}
+
+let counter = makeCounter();
+
+alert( counter() ); // 0
+alert( counter() ); // 1
+alert( counter() ); // 2</code></pre>
+        </div>
+      </div>
+      
+      </div><p>A pesar de ser simples, variantes ligeramente modificadas de ese código tienen usos prácticos, como por ejemplo un <a href="https://es.wikipedia.org/wiki/Generador_de_números_pseudoaleatorios">generador de números aleatorios</a> para pruebas automatizadas.</p>
+<p>¿Cómo funciona esto? Si creamos múltiples contadores, ¿serán independientes? ¿Qué está pasando con las variables aquí?</p>
+<p>Entender tales cosas es excelente para el conocimiento general de JavaScript y beneficioso para escenarios más complejos. Así que vamos a profundizar un poco.</p>
+<h2><a class="main__anchor" name="ambito-o-alcance-lexico" href="#ambito-o-alcance-lexico">Ámbito o alcance léxico</a></h2><div class="important important_warn">
+            <div class="important__header"><span class="important__type">¡Aquí hay dragones!</span></div>
+            <div class="important__content"><p>La explicación técnica en profundidad está por venir.</p>
+<p>Me gustaría evitar los detalles de lenguaje de bajo nivel, pero cualquier comprensión sin ellos sería insuficiente e incompleta, así que prepárate.</p>
+</div></div>
+<p>Para mayor claridad, la explicación se divide en múltiples pasos.</p>
+<h3><a class="main__anchor" name="paso-1-variables" href="#paso-1-variables">Paso 1. Variables</a></h3><p>En JavaScript, todas las funciones en ejecución, el bloque de código <code>{...}</code> y el script en su conjunto tienen un objeto interno (oculto) asociado, conocido como <em>Alcance léxico</em>.</p>
+<p>El objeto del alcance léxico consta de dos partes:</p>
+<ol>
+<li><em>Registro de entorno</em>: es un objeto que almacena en sus propiedades todas las variables locales (y alguna otra información, como el valor de <code>this</code>).</li>
+<li>Una referencia al <em>entorno léxico externo</em>, asociado con el código externo.</li>
+</ol>
+<p><strong>Una “variable” es solo una propiedad del objeto interno especial, el <code>Registro de entorno</code>. “Obtener o cambiar una variable” significa “obtener o cambiar una propiedad de ese objeto”.</strong></p>
+<p>En este código simple y sin funciones, solo hay un entorno léxico:</p>
+<figure><div class="image" style="width:492px">
+      <div class="image__ratio" style="padding-top:21.951219512195124%"></div>
+      <object type="image/svg+xml" data="article/closure/lexical-environment-global.svg" width="492" height="108" class="image__image" data-use-theme>
+        <img src="article/closure/lexical-environment-global.svg" alt="" width="492" height="108">
+      </object>
+      </div></figure><p>Este es el denominado entorno léxico <em>global</em>, asociado con todo el script.</p>
+<p>En la imagen de arriba, el rectángulo significa Registro de entornos (almacén de variables) y la flecha significa la referencia externa. El entorno léxico global no tiene referencia externa, por eso la flecha apunta a <code>nulo</code>.</p>
+<p>A medida que el código comienza a ejecutarse y continúa, el entorno léxico cambia.</p>
+<p>Aquí hay un código un poco más largo:</p>
+<figure><div class="image" style="width:550px">
+      <div class="image__ratio" style="padding-top:27.27272727272727%"></div>
+      <object type="image/svg+xml" data="article/closure/closure-variable-phrase.svg" width="550" height="150" class="image__image" data-use-theme>
+        <img src="article/closure/closure-variable-phrase.svg" alt="" width="550" height="150">
+      </object>
+      </div></figure><p>Los rectángulos en el lado derecho demuestran cómo cambia el entorno léxico global durante la ejecución:</p>
+<ol>
+<li>Cuando se inicia el script, el entorno léxico se rellena previamente con todas las variables declaradas.
+     – Inicialmente, están en el estado “No inicializado”. Ese es un estado interno especial, significa que el motor conoce la variable, pero no se puede hacer referencia a ella hasta que se haya declarado con <code>let</code>. Es casi lo mismo que si la variable no existiera.</li>
+<li>Luego aparece la definición <code>let phrase</code>.Todavía no hay una asignación, por lo que su valor es <code>undefined</code>. Podemos usar la variable desde este punto en adelante.</li>
+<li><code>phrase</code> se le asigna un valor.</li>
+<li><code>phrase</code> cambia el valor.</li>
+</ol>
+<p>Todo parece simple por ahora, ¿verdad?</p>
+<ul>
+<li>Una variable es una propiedad de un objeto interno especial que está asociado con el bloque/función/script actualmente en ejecución.</li>
+<li>Trabajar con variables es realmente trabajar con las propiedades de ese objeto.</li>
+</ul>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">El entorno léxico es un objeto de especificación</span></div>
+            <div class="important__content"><p>El “entorno léxico” es un objeto de especificación: solo existe “teóricamente” en la <a href="https://tc39.es/ecma262/#sec-lexical-environments">especificación del lenguaje</a> para describir cómo funcionan las cosas. No podemos obtener este objeto en nuestro código y manipularlo directamente.</p>
+<p>Los motores de JavaScript también pueden optimizarlo, descartar variables que no se utilizan para ahorrar memoria y realizar otros trucos internos, siempre que el comportamiento visible permanezca como se describe.</p>
+</div></div>
+<h3><a class="main__anchor" name="paso-2-declaracion-de-funciones" href="#paso-2-declaracion-de-funciones">Paso 2. Declaración de funciones</a></h3><p>Una función también es un valor, como una variable.</p>
+<p><strong>La diferencia es que una <code>declaración de función</code> se inicializa completamente al instante.</strong></p>
+<p>Cuando se crea un entorno léxico, una declaración de función se convierte inmediatamente en una función lista para usar (a diferencia de <code>let</code>, que no se puede usar hasta la declaración).</p>
+<p>Es por eso que podemos usar una función, declarada como <code>declaración de función</code>, incluso antes de la declaración misma.</p>
+<p>Por ejemplo, aquí está el estado inicial del entorno léxico global cuando agregamos una función:</p>
+<figure><div class="image" style="width:678px">
+      <div class="image__ratio" style="padding-top:24.926253687315633%"></div>
+      <object type="image/svg+xml" data="article/closure/closure-function-declaration.svg" width="678" height="169" class="image__image" data-use-theme>
+        <img src="article/closure/closure-function-declaration.svg" alt="" width="678" height="169">
+      </object>
+      </div></figure><p>Naturalmente, este comportamiento solo se aplica a las <code>declaraciones de funciones</code>, no a las <code>expresiones de funciones</code>, donde asignamos una función a una variable, como <code>let say = function (name) ...</code>.</p>
+<h3><a class="main__anchor" name="paso-3-entorno-lexico-interno-y-externo" href="#paso-3-entorno-lexico-interno-y-externo">Paso 3. Entorno léxico interno y externo</a></h3><p>Cuando se ejecuta una función, al comienzo de la llamada se crea automáticamente un nuevo entorno léxico para almacenar variables y parámetros locales de la llamada.</p>
+<p>Por ejemplo, para <code>say(&quot; John &quot;)</code>, se ve así (la ejecución está en la línea etiquetada con una flecha):</p>
+<!--
+    ```js
+    let phrase = "Hello";
+
+    function say(name) {
+     alert( `${phrase}, ${name}` );
+    }
+
+    say("John"); // Hello, John
+    ```-->
+<figure><div class="image" style="width:723px">
+      <div class="image__ratio" style="padding-top:20.74688796680498%"></div>
+      <object type="image/svg+xml" data="article/closure/lexical-environment-simple.svg" width="723" height="150" class="image__image" data-use-theme>
+        <img src="article/closure/lexical-environment-simple.svg" alt="" width="723" height="150">
+      </object>
+      </div></figure><p>Durante la llamada a la función tenemos dos entornos léxicos: el interno (para la llamada a la función) y el externo (global):</p>
+<ul>
+<li>El entorno léxico interno corresponde a la ejecución actual de <code>say</code>. Tiene una sola propiedad: <code>name</code>, el argumento de la función. Llamamos a <code>say(&quot;John&quot;)</code>, por lo que el valor de <code>name</code> es <code>&quot;John&quot;</code>.</li>
+<li>El entorno léxico externo es el entorno léxico global. Tiene la variable <code>phrase</code> y la función misma.</li>
+</ul>
+<p>El entorno léxico interno tiene una referencia al <code>externo</code>.</p>
+<p><strong>Cuando el código quiere acceder a una variable: primero se busca el entorno léxico interno, luego el externo, luego el más externo y así sucesivamente hasta el global.</strong></p>
+<p>Si no se encuentra una variable en ninguna parte, en el modo estricto se trata de un error (sin <code>use strict</code>, una asignación a una variable no existente crea una nueva variable global, por compatibilidad con el código antiguo).</p>
+<p>En este ejemplo la búsqueda procede como sigue:</p>
+<ul>
+<li>Para la variable <code>name</code>, la <code>alert</code> dentro de <code>say</code> lo encuentra inmediatamente en el entorno léxico interno.</li>
+<li>Cuando quiere acceder a <code>phrase</code>, no existe un <code>phrase</code> local por lo que sigue la referencia al entorno léxico externo y lo encuentra allí.</li>
+</ul>
+<figure><div class="image" style="width:711px">
+      <div class="image__ratio" style="padding-top:21.09704641350211%"></div>
+      <object type="image/svg+xml" data="article/closure/lexical-environment-simple-lookup.svg" width="711" height="150" class="image__image" data-use-theme>
+        <img src="article/closure/lexical-environment-simple-lookup.svg" alt="" width="711" height="150">
+      </object>
+      </div></figure><h3><a class="main__anchor" name="paso-4-devolviendo-una-funcion" href="#paso-4-devolviendo-una-funcion">Paso 4. Devolviendo una función</a></h3><p>Volvamos al ejemplo de <code>makeCounter</code>.</p>
+<div id="v6hocujl2g" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++;
+  };
+}
+
+let counter = makeCounter();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Al comienzo de cada llamada a <code>makeCounter()</code>, se crea un nuevo objeto de entorno léxico para almacenar variables para la ejecución <code>makeCounter</code>.</p>
+<p>Entonces tenemos dos entornos léxicos anidados, como en el ejemplo anterior:</p>
+<figure><div class="image" style="width:711px">
+      <div class="image__ratio" style="padding-top:24.331926863572434%"></div>
+      <object type="image/svg+xml" data="article/closure/closure-makecounter.svg" width="711" height="173" class="image__image" data-use-theme>
+        <img src="article/closure/closure-makecounter.svg" alt="" width="711" height="173">
+      </object>
+      </div></figure><p>Lo que es diferente es que, durante la ejecución de <code>makeCounter()</code>, se crea una pequeña función anidada de solo una línea: <code>return count++</code>. Aunque no la ejecutamos, solo la creamos.</p>
+<p>Todas las funciones recuerdan el entorno léxico en el que fueron realizadas. Técnicamente, no hay magia aquí: todas las funciones tienen la propiedad oculta llamada <code>[[Environment]</code>, que mantiene la referencia al entorno léxico donde se creó la función:</p>
+<figure><div class="image" style="width:775px">
+      <div class="image__ratio" style="padding-top:22.193548387096772%"></div>
+      <object type="image/svg+xml" data="article/closure/closure-makecounter-environment.svg" width="775" height="172" class="image__image" data-use-theme>
+        <img src="article/closure/closure-makecounter-environment.svg" alt="" width="775" height="172">
+      </object>
+      </div></figure><p>Entonces, <code>counter.[[Environment]]</code> tiene la referencia al Entorno léxico de <code>{count: 0}</code>. Así es como la función recuerda dónde se creó, sin importar dónde se la llame. La referencia <code>[[Environment]]</code> se establece una vez y para siempre en el momento de creación de la función.</p>
+<p>Luego, cuando <code>counter()</code> es llamado, un nuevo Entorno Léxico es creado por la llamada, y su referencia externa del entorno léxico se toma de <code>counter.[[Environment]]</code>:</p>
+<figure><div class="image" style="width:774px">
+      <div class="image__ratio" style="padding-top:27.131782945736433%"></div>
+      <object type="image/svg+xml" data="article/closure/closure-makecounter-nested-call.svg" width="774" height="210" class="image__image" data-use-theme>
+        <img src="article/closure/closure-makecounter-nested-call.svg" alt="" width="774" height="210">
+      </object>
+      </div></figure><p>Ahora cuando el código dentro de <code>counter()</code> busca la variable <code>count</code>, primero busca su propio entorno léxico (vacío, ya que no hay variables locales allí), luego el entorno léxico del exterior llama a <code>makeCounter()</code>, donde lo encuentra y lo cambia.</p>
+<p><strong>Una variable se actualiza en el entorno léxico donde vive.</strong></p>
+<p>Aquí está el estado después de la ejecución:</p>
+<figure><div class="image" style="width:774px">
+      <div class="image__ratio" style="padding-top:28.68217054263566%"></div>
+      <object type="image/svg+xml" data="article/closure/closure-makecounter-nested-call-2.svg" width="774" height="222" class="image__image" data-use-theme>
+        <img src="article/closure/closure-makecounter-nested-call-2.svg" alt="" width="774" height="222">
+      </object>
+      </div></figure><p>Si llamamos a <code>counter()</code> varias veces, la variable <code>count</code> se incrementará a <code>2</code>, <code>3</code> y así sucesivamente, en el mismo lugar.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Closure (clausura)</span></div>
+            <div class="important__content"><p>Existe un término general de programación “closure” que los desarrolladores generalmente deben conocer.</p>
+<p>Una <a href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">clausura</a> es una función que recuerda sus variables externas y puede acceder a ellas. En algunos lenguajes, eso no es posible, o una función debe escribirse de una manera especial para que suceda. Pero como se explicó anteriormente, en JavaScript todas las funciones son clausuras naturales (solo hay una excepción, que se cubrirá en <a href="new-function.html">La sintaxis &quot;new Function&quot;</a>).</p>
+<p>Es decir: recuerdan automáticamente dónde se crearon utilizando una propiedad oculta <code>[[Environment]]</code>, y luego su código puede acceder a las variables externas.</p>
+<p>Cuando en una entrevista un desarrollador frontend recibe una pregunta sobre “¿qué es una clausura?”, una respuesta válida sería una definición de clausura y una explicación de que todas las funciones en JavaScript son clausuras, y tal vez algunas palabras más sobre detalles técnicos: la propiedad <code>[[Environment]]</code> y cómo funcionan los entornos léxicos.</p>
+</div></div>
+<h2><a class="main__anchor" name="recolector-de-basura" href="#recolector-de-basura">Recolector de basura</a></h2><p>Por lo general, un entorno léxico se elimina de la memoria con todas las variables una vez que finaliza la llamada a la función. Eso es porque ya no hay referencias a él. Como cualquier objeto de JavaScript, solo se mantiene en la memoria mientras es accesible.</p>
+<p>Sin embargo, si hay una función anidada a la que todavía se puede llegar después del final de una función, entonces tiene la propiedad <code>[[Environment]]</code> que hace referencia al entorno léxico.</p>
+<p>En ese caso, el entorno léxico aún es accesible incluso después de completar la función, por lo que permanece vigente.</p>
+<p>Por ejemplo:</p>
+<div id="7x9aa4kmth" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  let value = 123;
+
+  return function() {
+    alert(value);
+  }
+}
+
+let g = f(); // g.[[Environment]] almacena una referencia al entorno léxico
+// de la llamada f() correspondiente</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta que si se llama a <code>f()</code> muchas veces y se guardan las funciones resultantes, todos los objetos del entorno léxico correspondientes también se conservarán en la memoria. Veamos las 3 funciones en el siguiente ejemplo:</p>
+<div id="favy5kxisf" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  let value = Math.random();
+
+  return function() { alert(value); };
+}
+
+// 3 funciones en un array, cada una de ellas enlaza con el entorno léxico
+// desde la ejecución f() correspondiente
+let arr = [f(), f(), f()];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Un objeto de entorno léxico muere cuando se vuelve inalcanzable (como cualquier otro objeto). En otras palabras, existe solo mientras haya al menos una función anidada que haga referencia a ella.</p>
+<p>En el siguiente código, después de eliminar la función anidada, su entorno léxico adjunto (y por lo tanto el <code>value</code>) se limpia de la memoria:</p>
+<div id="5grqiij105" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  let value = 123;
+
+  return function() {
+    alert(value);
+  }
+}
+
+let g = f(); // mientras exista la función g, el valor permanece en la memoria
+
+g = null; // ... y ahora la memoria está limpia</code></pre>
+        </div>
+      </div>
+      
+      </div><h3><a class="main__anchor" name="optimizaciones-en-la-vida-real" href="#optimizaciones-en-la-vida-real">Optimizaciones en la vida real</a></h3><p>Como hemos visto, en teoría, mientras una función está viva, todas las variables externas también se conservan.</p>
+<p>Pero en la práctica, los motores de JavaScript intentan optimizar eso. Analizan el uso de variables y si es obvio que el código no usa una variable externa, la elimina.</p>
+<p><strong>Un efecto secundario importante en V8 (Chrome, Edge, Opera) es que dicha variable no estará disponible en la depuración.</strong></p>
+<p>Intente ejecutar el siguiente ejemplo en Chrome con las Herramientas para desarrolladores abiertas.</p>
+<p>Cuando se detiene, en el tipo de consola <code>alert(value)</code>.</p>
+<div id="nce67mei6b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function f() {
+  let value = Math.random();
+
+  function g() {
+    debugger; // en console: type alert(value); ¡No hay tal variable!
+  }
+
+  return g;
+}
+
+let g = f();
+g();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como puede ver, ¡no existe tal variable! En teoría, debería ser accesible, pero el motor lo optimizó.</p>
+<p>Eso puede conducir a problemas de depuración divertidos (si no son muy largos). Uno de ellos: podemos ver una variable externa con el mismo nombre en lugar de la esperada:</p>
+<div id="mydrrw7zmu" data-trusted="1" data-global="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let value = &quot;Surprise!&quot;;
+
+function f() {
+  let value = &quot;the closest value&quot;;
+
+  function g() {
+    debugger; // en la consola escriba: alert(value); Surprise!
+  }
+
+  return g;
+}
+
+let g = f();
+g();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Es bueno conocer esta característica de V8. Si está depurando con Chrome/Edge/Opera, tarde o temprano la encontrará.</p>
+<p>Eso no es un error en el depurador, sino más bien una característica especial de V8. Tal vez en algún momento la cambiarán. Siempre puede verificarlo ejecutando los ejemplos en esta página.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#esta-funcion-recoge-los-ultimos-cambios" name="esta-funcion-recoge-los-ultimos-cambios">Esta función: ¿recoge los últimos cambios?</a></h3><a class="task__open-link" href="task/closure-latest-changes.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>La función sayHi usa un nombre de variable externo. Cuando se ejecuta la función, ¿qué valor va a utilizar?</p>
+<div id="w28gf9gzi8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let name = &quot;John&quot;;
+
+function sayHi() {
+  alert(&quot;Hi, &quot; + name);
+}
+
+name = &quot;Pete&quot;;
+
+sayHi(); // ¿qué mostrará: &quot;John&quot; o &quot;Pete&quot;?</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tales situaciones son comunes tanto en el desarrollo del navegador como del lado del servidor. Se puede programar que una función se ejecute más tarde de lo que se creó, por ejemplo, después de una acción del usuario o una solicitud de red.</p>
+<p>Entonces, la pregunta es: ¿recoge los últimos cambios?</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La respuesta es: <strong>Pete</strong>.</p>
+<p>Una función obtiene variables externas con su estado actual, y utiliza los valores más recientes.</p>
+<p>Los valores de variables anteriores no se guardan en ningún lado. Cuando una función quiere una variable, toma el valor actual de su propio entorno léxico o el externo.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#que-variables-estan-disponibles" name="que-variables-estan-disponibles">¿Qué variables están disponibles?</a></h3><a class="task__open-link" href="task/closure-variable-access.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>La función <code>makeWorker</code> a continuación crea otra función y la devuelve. Esa nueva función se puede llamar desde otro lugar.</p>
+<p>¿Tendrá acceso a las variables externas desde su lugar de creación, o desde el lugar de invocación, o ambos?</p>
+<div id="ilaygm85cu" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeWorker() {
+  let name = &quot;Pete&quot;;
+
+  return function() {
+    alert(name);
+  };
+}
+
+let name = &quot;John&quot;;
+
+// crea una función
+let work = makeWorker();
+
+// la llama
+work(); // ¿qué mostrará?</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Qué valor mostrará? “Pete” o “John”?</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La respuesta es: <strong>Pete</strong>.</p>
+<p>La función <code>work()</code> en el código a continuación obtiene <code>name</code> del lugar de su origen a través de la referencia del entorno léxico externo:</p>
+<figure><div class="image" style="width:762px">
+      <div class="image__ratio" style="padding-top:29.527559055118108%"></div>
+      <object type="image/svg+xml" data="task/closure-variable-access/lexenv-nested-work.svg" width="762" height="225" class="image__image" data-use-theme>
+        <img src="task/closure-variable-access/lexenv-nested-work.svg" alt="" width="762" height="225">
+      </object>
+      </div></figure><p>Entonces, el resultado es “Pete”.</p>
+<p>Pero si no hubiera <code>let name</code> en<code>makeWorker ()</code>, entonces la búsqueda saldría y tomaría la variable global como podemos ver en la cadena de arriba. En ese caso, el resultado sería <code>John</code>.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#son-independientes-los-contadores" name="son-independientes-los-contadores">¿Son independientes los contadores?</a></h3><a class="task__open-link" href="task/counter-independent.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Aquí hacemos dos contadores: <code>counter</code> y <code>counter2</code> usando la misma función <code>makeCounter</code>.</p>
+<p>¿Son independientes? ¿Qué va a mostrar el segundo contador? <code>0,1</code> o <code>2,3</code> o algo más?</p>
+<div id="ewp0b968o7" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:14,&quot;end&quot;:15}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++;
+  };
+}
+
+let counter = makeCounter();
+let counter2 = makeCounter();
+
+alert( counter() ); // 0
+alert( counter() ); // 1
+
+alert( counter2() ); // ?
+alert( counter2() ); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>La respuesta: <strong>0,1.</strong></p>
+<p>Las funciones <code>counter</code> y<code>counter2</code> son creadas por diferentes invocaciones de <code>makeCounter</code>.</p>
+<p>Por lo tanto, tienen entornos léxicos externos independientes, cada uno tiene su propio <code>count</code>.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#objeto-contador" name="objeto-contador">Objeto contador</a></h3><a class="task__open-link" href="task/counter-object-independent.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Aquí se crea un objeto contador con la ayuda de la función constructora.</p>
+<p>¿Funcionará? ¿Qué mostrará?</p>
+<div id="wxbqtte9qq" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function Counter() {
+  let count = 0;
+
+  this.up = function() {
+    return ++count;
+  };
+  this.down = function() {
+    return --count;
+  };
+}
+
+let counter = new Counter();
+
+alert( counter.up() ); // ?
+alert( counter.up() ); // ?
+alert( counter.down() ); // ?</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Seguramente funcionará bien.</p>
+<p>Ambas funciones anidadas se crean dentro del mismo entorno léxico externo, por lo que comparten acceso a la misma variable <code>count</code>:</p>
+<div id="ju6bqonr2w" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function Counter() {
+  let count = 0;
+
+  this.up = function() {
+    return ++count;
+  };
+  this.down = function() {
+    return --count;
+  };
+}
+
+let counter = new Counter();
+
+alert( counter.up() ); // 1
+alert( counter.up() ); // 2
+alert( counter.down() ); // 1</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#funcion-en-if" name="funcion-en-if">Función en if</a></h3><a class="task__open-link" href="task/function-in-if.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Mira el código ¿Cuál será el resultado de la llamada en la última línea?</p>
+<div id="dij1s1om1s" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:10,&quot;end&quot;:10}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let phrase = &quot;Hello&quot;;
+
+if (true) {
+  let user = &quot;John&quot;;
+
+  function sayHi() {
+    alert(`${phrase}, ${user}`);
+  }
+}
+
+sayHi();</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El resultado es <strong>un error</strong>.</p>
+<p>La función <code>sayHi</code> se declara dentro de <code>if</code>, por lo que solo vive dentro de ella. No hay <code>sayHi</code> afuera.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#suma-con-clausuras" name="suma-con-clausuras">Suma con clausuras</a></h3><a class="task__open-link" href="task/closure-sum.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>Escriba la función <code>sum</code> que funcione así: <code>sum(a)(b) = a+b</code>.</p>
+<p>Sí, exactamente de esta manera, usando paréntesis dobles (no es un error de tipeo).</p>
+<p>Por ejemplo:</p>
+<div id="9i1wq3mta8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>sum(1)(2) = 3
+sum(5)(-1) = 4</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Para que funcionen los segundos paréntesis, los primeros deben devolver una función.</p>
+<p>Como esto:</p>
+<div id="zxg8uht24y" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sum(a) {
+
+  return function(b) {
+    return a + b; // toma &quot;a&quot; del entorno léxico externo
+  };
+}
+
+alert( sum(1)(2) ); // 3
+alert( sum(5)(-1) ); // 4</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#es-visible-la-variable" name="es-visible-la-variable">¿Es visible la variable?</a></h3><a class="task__open-link" href="task/let-scope.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 4</span></div><div class="task__content"><div class="task__formatted"><p>¿Cuál será el resultado de este código?</p>
+<div id="vcbiz2nyqc" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let x = 1;
+
+function func() {
+  console.log(x); // ?
+
+  let x = 2;
+}
+
+func();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>P.D Hay una trampa en esta tarea. La solución no es obvia.</p>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>El resultado es: <strong>error</strong>.</p>
+<p>Intenta correr esto:</p>
+<div id="fwlmne3m6y" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:3,&quot;end&quot;:3}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let x = 1;
+
+function func() {
+  console.log(x); // ReferenceError: No se puede acceder a 'x' antes de la inicialización
+  let x = 2;
+}
+func();</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En este ejemplo podemos observar la diferencia peculiar entre una variable “no existente” y una variable “no inicializada”.</p>
+<p>Como habrás leído en el artículo <a href="closure.html">Ámbito de Variable y el concepto &quot;closure&quot;</a>, una variable comienza en el estado “no inicializado” desde el momento en que la ejecución entra en un bloque de código (o una función). Y permanece sin inicializar hasta la correspondiente declaración <code>let</code>.</p>
+<p>En otras palabras, una variable técnicamente existe, pero no se puede usar antes de <code>let</code>.</p>
+<p>El código anterior lo demuestra.</p>
+<div id="ticik8ponj" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:1,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function func() {
+
+// la variable local x es conocida por el motor desde el comienzo de la función,
+// pero &quot;unitialized&quot; (inutilizable) hasta let (&quot;zona muerta&quot;)
+// de ahí el error
+
+  console.log(x); // ReferenceError: No se puede acceder a 'x' antes de la inicialización
+
+  let x = 2;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esta zona de inutilización temporal de una variable (desde el comienzo del bloque de código hasta <code>let</code>) a veces se denomina&quot; zona muerta &quot;.</p>
+</div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#filtrar-a-traves-de-una-funcion" name="filtrar-a-traves-de-una-funcion">Filtrar a través de una función</a></h3><a class="task__open-link" href="task/filter-through-function.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Tenemos un método incorporado <code>arr.filter(f)</code> para arrays. Filtra todos los elementos a través de la función <code>f</code>. Si devuelve <code>true</code>, entonces ese elemento se devuelve en el array resultante.</p>
+<p>Haga un conjunto de filtros “listos para usar”:</p>
+<ul>
+<li><code>inBetween(a, b)</code> – entre <code>a</code> y <code>b</code> o igual a ellos (inclusive).</li>
+<li><code>inArray([...])</code> – en el array dado</li>
+</ul>
+<p>El uso debe ser así:</p>
+<ul>
+<li><code>arr.filter(inBetween(3,6))</code> – selecciona solo valores entre 3 y 6.</li>
+<li><code>arr.filter(inArray([1,2,3]))</code> – selecciona solo elementos que coinciden con uno de los miembros de <code>[1,2,3]</code>.</li>
+</ul>
+<p>Por ejemplo:</p>
+<div id="mhfgm5jdwk" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>/* .. tu código para inBetween y inArray */
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6
+
+alert( arr.filter(inArray([1, 2, 10])) ); // 1,2</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/kquKDgTc9qeuPlIr?p=preview" target="_blank" data-plunk-id="kquKDgTc9qeuPlIr">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Filtrar inBetween</button><div class="task__answer-content"><h4 class="task__step-title">Filtrar inBetween</h4><div class="formatted"><div id="glxu9pmu3b" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function inBetween(a, b) {
+  return function(x) {
+    return x &gt;= a &amp;&amp; x &lt;= b;
+  };
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+alert( arr.filter(inBetween(3, 6)) ); // 3,4,5,6</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div></div><div class="task__step task__step_open"><button class="task__step-show" type="button" onclick="showStep(this)">Filtrar inArray</button><div class="task__answer-content"><h4 class="task__step-title">Filtrar inArray</h4><div class="formatted"><div id="x01g70gn0f" data-trusted="1" class="code-example" data-demo="1">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function inArray(arr) {
+  return function(x) {
+    return arr.includes(x);
+  };
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+alert( arr.filter(inArray([1, 2, 10])) ); // 1,2</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/zb3H7pZzRWDRFdIV?p=preview" target="_blank" data-plunk-id="zb3H7pZzRWDRFdIV">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ordenar-por-campo" name="ordenar-por-campo">Ordenar por campo</a></h3><a class="task__open-link" href="task/sort-by-field.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Tenemos una variedad de objetos para ordenar:</p>
+<div id="saw2lx5dgn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let users = [
+  { name: &quot;John&quot;, age: 20, surname: &quot;Johnson&quot; },
+  { name: &quot;Pete&quot;, age: 18, surname: &quot;Peterson&quot; },
+  { name: &quot;Ann&quot;, age: 19, surname: &quot;Hathaway&quot; }
+];</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La forma habitual de hacerlo sería:</p>
+<div id="fc9zxwhr54" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// por nombre(Ann, John, Pete)
+users.sort((a, b) =&gt; a.name &gt; b.name ? 1 : -1);
+
+// por edad (Pete, Ann, John)
+users.sort((a, b) =&gt; a.age &gt; b.age ? 1 : -1);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Podemos hacerlo aún menos detallado, como este?</p>
+<div id="k27aapbya" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>users.sort(byField('name'));
+users.sort(byField('age'));</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Entonces, en lugar de escribir una función, simplemente ponga <code>byField (fieldName)</code>.</p>
+<p>Escriba la función <code>byField</code> que se pueda usar para eso.</p>
+<p><a href="https://plnkr.co/edit/Q5Gya91zpmWidwhW?p=preview" target="_blank" data-plunk-id="Q5Gya91zpmWidwhW">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><div id="00icitlmlx" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function byField(fieldName){
+  return (a, b) =&gt; a[fieldName] &gt; b[fieldName] ? 1 : -1;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p><a href="https://plnkr.co/edit/iBWw4fVlWMsJHV97?p=preview" target="_blank" data-plunk-id="iBWw4fVlWMsJHV97">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#ejercito-de-funciones" name="ejercito-de-funciones">Ejército de funciones</a></h3><a class="task__open-link" href="task/make-army.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>El siguiente código crea una serie de <code>shooters</code>.</p>
+<p>Cada función está destinada a generar su número. Pero algo anda mal …</p>
+<div id="odz0zhxfmo" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:18,&quot;end&quot;:21}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeArmy() {
+  let shooters = [];
+
+  let i = 0;
+  while (i &lt; 10) {
+    let shooter = function() { // crea la función shooter
+      alert( i ); // debería mostrar su número
+    };
+    shooters.push(shooter); // y agregarlo al array
+    i++;
+  }
+
+  // ...y  devolver el array de tiradores
+  return shooters;
+}
+
+let army = makeArmy();
+
+// ... todos los tiradores muestran 10 en lugar de sus 0, 1, 2, 3 ...
+army[0](); // 10 del tirador número 0
+army[1](); // 10 del tirador número 1
+army[2](); // 10 ...y así sucesivamente.</code></pre>
+        </div>
+      </div>
+      
+      </div><p>¿Por qué todos los tiradores muestran el mismo valor?</p>
+<p>Arregle el código para que funcionen según lo previsto.</p>
+<p><a href="https://plnkr.co/edit/rSUbEr5r2bTqFUMl?p=preview" target="_blank" data-plunk-id="rSUbEr5r2bTqFUMl">Abrir en entorno controlado con pruebas.</a></p></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Examinemos lo que sucede dentro de <code>makeArmy</code>, y la solución será obvia.</p>
+<ol>
+<li>
+<p>Esta crea un array vacío de tiradores, <code>shooters</code>:</p>
+<div id="5ecqefnttl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let shooters = [];</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>Lo llena en el bucle a través de <code>shooters.push(function...)</code>.</p>
+<p>Cada elemento es una función, por lo que el array resultante se ve así:</p>
+<div id="r8nqbd8zqz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>shooters = [
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); },
+  function () { alert(i); }
+];</code></pre>
+        </div>
+      </div>
+      
+      </div></li>
+<li>
+<p>El array se devuelve desde la función.</p>
+<p>Más tarde la llamada a cualquier miembro, por ejemplo <code>army[5]()</code>, obtendrá el elemento <code>army[5]</code> del array (será una función) y lo llamará.</p>
+<p>Ahora, ¿por qué todas esas funciones muestran el mismo valor, <code>10</code>?</p>
+<p>Esto se debe a que no hay una variable local <code>i</code> dentro de las funciones <code>shooter</code>. Cuando se llama a tal función, toma <code>i</code> de su entorno léxico externo.</p>
+<p>Entonces ¿cuál será el valor de <code>i</code>?</p>
+<p>Si miramos la fuente:</p>
+<div id="lt1172a7gl" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeArmy() {
+  ...
+  let i = 0;
+  while (i &lt; 10) {
+    let shooter = function() { // shooter function
+      alert( i ); // debería mostrar su número
+    };
+    shooters.push(shooter); // agrega la función al array
+    i++;
+  }
+  ...
+}</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Podemos ver que todas las funciones <code>shooter</code> están creadas en el ambiente léxico asociado a la ejecución de <code>makeArmy()</code>.  Pero cuando se llama a <code>army[5]()</code>, <code>makeArmy</code> ya ha terminado su trabajo, y el valor final de <code>i</code> es <code>10</code> (<code>while</code> finaliza en <code>i=10</code>).</p>
+<p>Como resultado, todas las funciones <code>shooter</code> obtienen el mismo valor del mismo entorno léxico externo, que es el último valor <code>i=10</code>.</p>
+<figure><div class="image" style="width:566px">
+      <div class="image__ratio" style="padding-top:32.332155477031804%"></div>
+      <object type="image/svg+xml" data="task/make-army/lexenv-makearmy-empty.svg" width="566" height="183" class="image__image" data-use-theme>
+        <img src="task/make-army/lexenv-makearmy-empty.svg" alt="" width="566" height="183">
+      </object>
+      </div></figure><p>Como puedes ver arriba, con cada iteración del bloque <code>while {...}</code> un nuevo ambiente léxico es creado. Entonces, para corregir el problema podemos copiar el valor de <code>i</code> en una variable dentro del bloque <code>while {...}</code> como aquí:</p>
+<div id="n0469wrl7" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:7,&quot;cols&quot;:[{&quot;start&quot;:13,&quot;end&quot;:14}]},{&quot;start&quot;:5,&quot;end&quot;:5}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeArmy() {
+  let shooters = [];
+
+  let i = 0;
+  while (i &lt; 10) {
+    let j = i;
+    let shooter = function() { // shooter function
+      alert( j ); // debería mostrar su número
+    };
+    shooters.push(shooter);
+    i++;
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+// Ahora el código funciona correctamente
+army[0](); // 0
+army[5](); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Aquí <code>let j = i</code> declara una variable de iteración local <code>j</code> y copia <code>i</code> en ella. Las primitivas son copiadas por valor, así que realmente obtenemos una copia independiente de <code>i</code>, perteneciente a la iteración del bucle actual.</p>
+<p>Los shooters funcionan correctamente, porque el valor de <code>i</code> ahora vive más cerca. No en el ambiente léxico de <code>makeArmy()</code> sino en el que corresponde a la iteración del bucle actual:</p>
+<figure><div class="image" style="width:566px">
+      <div class="image__ratio" style="padding-top:32.332155477031804%"></div>
+      <object type="image/svg+xml" data="task/make-army/lexenv-makearmy-while-fixed.svg" width="566" height="183" class="image__image" data-use-theme>
+        <img src="task/make-army/lexenv-makearmy-while-fixed.svg" alt="" width="566" height="183">
+      </object>
+      </div></figure><p>Tal problema habría sido evitado si hubiéramos usado <code>for</code> desde el principio:</p>
+<div id="s1fjijc6xz" data-trusted="1" class="code-example" data-demo="1" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function makeArmy() {
+
+  let shooters = [];
+
+  for(let i = 0; i &lt; 10; i++) {
+    let shooter = function() { // shooter function
+      alert( i ); // debería mostrar su número
+    };
+    shooters.push(shooter);
+  }
+
+  return shooters;
+}
+
+let army = makeArmy();
+
+army[0](); // 0
+army[5](); // 5</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Esto es esencialmente lo mismo, ya que cada iteración de <code>for</code> genera un nuevo ambiente léxico con su propia variable <code>i</code>. Así el <code>shooter</code> generado en cada iteración hace referencia a su propio <code>i</code>, de esa misma iteración.</p>
+<figure><div class="image" style="width:566px">
+      <div class="image__ratio" style="padding-top:32.332155477031804%"></div>
+      <object type="image/svg+xml" data="task/make-army/lexenv-makearmy-for-fixed.svg" width="566" height="183" class="image__image" data-use-theme>
+        <img src="task/make-army/lexenv-makearmy-for-fixed.svg" alt="" width="566" height="183">
+      </object>
+      </div></figure></li>
+</ol>
+<p>Ahora, como has puesto mucho esfuerzo leyendo esto, y la receta final es tan simple: simplemente usa <code>for</code>, puede que te preguntes: ¿valió la pena?</p>
+<p>Bien, si pudiste resolver el problema fácilmente probablemente no habrías necesitado leer la solución, así que esperamos que esta tarea te haya ayudado a entender las cosas mejor.</p>
+<p>Además, efectivamente hay casos donde uno prefiere <code>while</code> a <code>for</code>, y otros escenarios donde tales problemas son reales.</p>
+<p><a href="https://plnkr.co/edit/TGESJOQM4fcrQe4m?p=preview" target="_blank" data-plunk-id="TGESJOQM4fcrQe4m">Abrir la solución con pruebas en un entorno controlado.</a></p></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="rest-parameters-spread.html" data-tooltip="Parámetros Rest y operador Spread"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="var.html" data-tooltip="La vieja &quot;var&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fclosure" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fclosure" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/closure","identifier":"\/closure"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.html">Trabajo avanzado con funciones</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#bloques-de-codigo">Bloques de código</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#funciones-anidadas">Funciones anidadas</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#ambito-o-alcance-lexico">Ámbito o alcance léxico</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#recolector-de-basura">Recolector de basura</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (10)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fclosure" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fclosure" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/06-advanced-functions/03-closure" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/closure by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:05 GMT -->
+</html>

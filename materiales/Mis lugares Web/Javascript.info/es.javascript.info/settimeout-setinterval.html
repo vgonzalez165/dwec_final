@@ -1,0 +1,520 @@
+<!DOCTYPE html><html lang="es" data-theme-enabled="1">
+<!-- Mirrored from es.javascript.info/settimeout-setinterval by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:05 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head><script>window.currentUser = null;</script><script>window.shopCurrency = "EUR";</script><script>window.localCurrency = "EUR";</script><script>window.countryCode = "us";</script><script>window.rateShopTo = {"EUR":1,"USD":1.0766800785115114,"AMD":432.27119525485557};</script><title itemprop="name">Planificación: setTimeout y setInterval</title><link href="pack/styles.40bd864cfdb7b5d1a94b.css" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1.0"><meta name="apple-mobile-web-app-capable" content="yes"><!-- chrome autotranslate is enabled only for "en" main version--><meta name="google" content="notranslate"><script>if (window.devicePixelRatio > 1) document.cookie = 'pixelRatio=' + window.devicePixelRatio + ';path=/;expires=Tue, 19 Jan 2038 03:14:07 GMT';</script><link href="http://fonts.googleapis.com/css?family=Open+Sans:bold,italic,bolditalic" rel="stylesheet"><link rel="apple-touch-icon-precomposed" href="img/favicon/apple-touch-icon-precomposed.png"><link rel="canonical" href="settimeout-setinterval.html"><meta name="msapplication-TileColor" content="#222A2C"><meta name="msapplication-TileImage" content="/img/favicon/tileicon.png"><link rel="icon" href="img/favicon/favicon.png"><meta itemprop="image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><meta property="og:title" content="Planificación: setTimeout y setInterval"><meta property="og:image" content="https://es.javascript.info/img/site_preview_en_1200x630.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="fb:admins" content="100001562528165"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Planificación: setTimeout y setInterval"><meta name="twitter:site" content="@iliakan"><meta name="twitter:creator" content="@iliakan"><meta name="twitter:image" content="https://es.javascript.info/img/site_preview_en_512x512.png"><link rel="prev" href="new-function.html"><link rel="next" href="call-apply-decorators.html"><script>window.GA_ID = "UA-2056213-15";</script><script>window.YANDEX_METRIKA_ID = 32184394;</script><script>window.GoogleAnalyticsObject="ga",window.ga=function(){window.ga.q.push(arguments)},window.ga.q=[],window.ga.l=Date.now(),ga("create",GA_ID,"auto"),window.GTM_ID&&ga("require",GTM_ID),window.currentUser?ga("set","&uid",currentUser.id):ga("set","anonymizeIp",!0),window.addEventListener("error",function(e){var r=(e.filename||e.errorUrl)+": "+(e.lineno||e.errorLine),n=e.stack||e.error&&e.error.stack;ga("send","exception",{exDescription:e.message+" "+r+" "+n,exFatal:!0})});</script><script src="../www.google-analytics.com/analytics.js" async></script><script>ga('send', 'pageview');</script><script>window.metrika={reachGoal:function(){}},window.yandex_metrika_callbacks=[function(){try{window.metrika=new Ya.Metrika({id:YANDEX_METRIKA_ID,webvisor:!0,clickmap:!0,params:{user:window.currentUser&&window.currentUser.id}}),metrika.trackLinks({delay:150}),window.addEventListener("error",function(r){window.metrika.reachGoal("JSERROR",{src:(r.filename||r.errorUrl)+": "+(r.lineno||r.errorLine),stack:r.stack||r.error&&r.error.stack,message:r.message})})}catch(r){}}];</script><script src="../mc.yandex.ru/metrika/watch.js" async></script><script>window.RECAPTCHA_ID = "6LfmLAEVAAAAAJMykMnf7aY8nkyTRmYi2ynx51R1";</script><script src="pack/init.da0cbf9711553523e21d.js"></script><script src="pack/head.d82dc89d7b800e91179f.js" defer></script><meta property="og:title" content="Planificación: setTimeout y setInterval"><meta property="og:type" content="article"><script src="pack/tutorial.7967275b5846db2d02db.js" defer></script><script src="pack/footer.378d5659c5f335e3ee99.js" defer></script></head><body class="no-icons"><script>window.fontTest();</script><div class="page-wrapper page-wrapper_sidebar_on"><!--[if IE]><div style="color:red;text-align:center">Lo sentimos, Internet Explorer no es compatible. Utilice un navegador más nuevo.</div><![endif]--><div class="sitetoolbar sitetoolbar_tutorial"><script>window.langs = [{"code":"ar","name":"Arabic"},{"code":"az","name":"Azerbaijani"},{"code":"bg","name":"Bulgarian"},{"code":"bn","name":"Bengali"},{"code":"bs","name":"Bosnian"},{"code":"ca","name":"Catalan"},{"code":"cs","name":"Czech"},{"code":"da","name":"Danish"},{"code":"de","name":"German"},{"code":"el","name":"Greek"},{"code":"en","name":"English"},{"code":"es","name":"Spanish"},{"code":"fa","name":"Persian (Farsi)"},{"code":"fi","name":"Finnish"},{"code":"fr","name":"French"},{"code":"he","name":"Hebrew"},{"code":"hi","name":"Hindi"},{"code":"hr","name":"Croatian"},{"code":"hu","name":"Hungarian"},{"code":"hy","name":"Armenian"},{"code":"id","name":"Indonesian"},{"code":"it","name":"Italian"},{"code":"ja","name":"Japanese"},{"code":"ka","name":"Georgian"},{"code":"kk","name":"Kazakh"},{"code":"km","name":"Central Khmer"},{"code":"ko","name":"Korean"},{"code":"ky","name":"Kyrgyz"},{"code":"lt","name":"Lithuanian"},{"code":"me","name":"Montenegrin"},{"code":"ml","name":"Malayalam"},{"code":"ms","name":"Malay"},{"code":"my","name":"Burmese"},{"code":"nl","name":"Dutch"},{"code":"no","name":"Norvegian"},{"code":"pa","name":"Punjabi"},{"code":"pl","name":"Polish"},{"code":"pt","name":"Portuguese"},{"code":"ro","name":"Romanian"},{"code":"ru","name":"Russian"},{"code":"si","name":"Sinhala"},{"code":"sk","name":"Slovak"},{"code":"sl","name":"Slovenian"},{"code":"sq","name":"Albanian"},{"code":"sr","name":"Serbian"},{"code":"ta","name":"Tamil"},{"code":"te","name":"Telugu"},{"code":"test","name":"Test"},{"code":"th","name":"Thai"},{"code":"tk","name":"Turkmen"},{"code":"tr","name":"Turkish"},{"code":"uk","name":"Ukrainian"},{"code":"ur","name":"Urdu"},{"code":"uz","name":"Uzbek"},{"code":"v2","name":"v2"},{"code":"vi","name":"Vietnamese"},{"code":"zh-hant","name":"Chinese Traditional"},{"code":"zh","name":"Chinese"}];</script><script>window.lang = "es";</script><script>{let t=navigator.languages||[];t=t.map(t=>t.toLowerCase());let o,i,n=[];for(let o of window.langs)for(let i of t)if(i===o.code||i.startsWith(o.code+"-")){n.push(o);break}if(!o&&"ru"!=lang&&"en"!=lang){n.find(t=>"en"==t.code)&&(o=`\n            According to your browser headers, you know English. Please help to <a href="https://github.com/javascript-tutorial/${lang}.javascript.info#readme">translate the tutorial</a>.\n            Thank you!\n          `,i="notify-translate-tutorial-local")}if(o){let t=`<div class="notification notification_top notification_info sitetoolbar__notification" style="display:none" id="${i}">\n          <div class="notification__content">${o}</div>\n          <button class="notification__close" title="Close"></button>\n        </div>`;document.write(t),showTopNotification()}}</script><div class="sitetoolbar__content"><div class="sitetoolbar__lang-switcher"><button class="sitetoolbar__dropdown-button" data-dropdown-toggler>ES</button><div class="sitetoolbar__dropdown-wrap"><div class="sitetoolbar__dropdown-body"><div class="sitetoolbar__lang-switcher-body"><div class="supported-langs supported-langs_toolbar"><div class="supported-langs__container"><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://ar.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">AR</span><span class="supported-langs__title">عربي</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://javascript.info/settimeout-setinterval"><span class="supported-langs__brief">EN</span><span class="supported-langs__title">English</span></a></li><li class="supported-langs__item supported-langs__item_current"><a class="supported-langs__link" href="settimeout-setinterval.html"><span class="supported-langs__brief">ES</span><span class="supported-langs__title">Español</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fa.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">FA</span><span class="supported-langs__title">فارسی</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://fr.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">FR</span><span class="supported-langs__title">Français</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://id.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">ID</span><span class="supported-langs__title">Indonesia</span></a></li></ul><ul class="supported-langs__list" style="height:200px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://it.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">IT</span><span class="supported-langs__title">Italiano</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ja.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">JA</span><span class="supported-langs__title">日本語</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://ko.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">KO</span><span class="supported-langs__title">한국어</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://learn.javascript.ru/settimeout-setinterval"><span class="supported-langs__brief">RU</span><span class="supported-langs__title">Русский</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://tr.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">TR</span><span class="supported-langs__title">Türkçe</span></a></li><li class="supported-langs__item"><a class="supported-langs__link" href="https://uk.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">UK</span><span class="supported-langs__title">Українська</span></a></li></ul><ul class="supported-langs__list" style="height:20px"><li class="supported-langs__item"><a class="supported-langs__link" href="https://zh.javascript.info/settimeout-setinterval"><span class="supported-langs__brief">ZH</span><span class="supported-langs__title">简体中文</span></a></li></ul></div><div class="supported-langs__text"><p>Queremos que este proyecto de código abierto esté disponible para personas de todo el mundo.</p> <p><a href="https://javascript.info/translate">Ayuda a traducir</a> el contenido de este tutorial a tu idioma!</p>
+</div></div></div></div></div></div><div class="sitetoolbar__logo-wrap"><a class="sitetoolbar__link sitetoolbar__link_logo" href="index.html"><img class="sitetoolbar__logo sitetoolbar__logo_normal" src="img/sitetoolbar__logo_en.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_normal sitetoolbar__logo_dark" src="img/sitetoolbar__logo_en-white.svg" width="200" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small" src="img/sitetoolbar__logo_small_en.svg" width="70" alt="" role="presentation"/><img class="sitetoolbar__logo sitetoolbar__logo_small sitetoolbar__logo_dark" src="img/sitetoolbar__logo_small_en-white.svg" width="70" alt="" role="presentation"/><script>Array.prototype.forEach.call(document.querySelectorAll("img.sitetoolbar__logo"),function(e){let t=document.createElement("object");t.type="image/svg+xml",t.className=e.className,t.style.cssText="left:0;top:0;position:absolute",t.onload=function(){t.onload=null,e.style.visibility="hidden"},t.data=e.src,e.parentNode.insertBefore(t,e)});</script></a></div><div class="sitetoolbar__nav-toggle-wrap"><button class="sitetoolbar__nav-toggle" type="button"></button></div><nav class="sitetoolbar__sections"><ul class="sitetoolbar__sections-list"></ul></nav><div class="sitetoolbar__book-wrap"><a class="buy-book-button" href="ebook.html"><span class="buy-book-button__extra-text">Comprar</span>EPUB/PDF</a></div><div class="sitetoolbar__theme-switcher"><div class="theme-changer"><label class="theme-changer__label" for="theme-changer-input" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span></label></div></div><div class="sitetoolbar__search-wrap"><div class="sitetoolbar__search-content"><button class="sitetoolbar__search-toggle" type="button"></button><form class="sitetoolbar__search" method="GET" action="https://es.javascript.info/search"><div class="sitetoolbar__search-input"><div class="text-input"><input class="text-input__control" name="query" placeholder="Buscar en Javascript.info" required="required" type="text"/></div><button class="sitetoolbar__find" type="submit">Buscar</button></div></form></div></div></div><div class="tablet-menu"><div class="tablet-menu__line"><div class="tablet-menu__content"><form class="tablet-menu-search" action="https://es.javascript.info/search/"><input class="tablet-menu-search__input" type="search" name="query" placeholder="Buscar en el tutorial" required="required"/><button class="tablet-menu-search__button" type="submit" name="type" value="articles">Buscar</button></form></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="theme-changer theme-changer_tablet-menu theme-changer_has-label"><label class="theme-changer__label" for="theme-changer-input-tablet" data-tooltip="Change theme"><input class="theme-changer__input" type="checkbox" id="theme-changer-input-tablet" data-theme-changer="data-theme-changer"/><span class="theme-changer__icon theme-changer__icon_light-theme"></span><span class="theme-changer__icon theme-changer__icon_dark-theme"></span><span class="theme-changer__label-text theme-changer__label-text_light-theme">Light theme</span><span class="theme-changer__label-text theme-changer__label-text_dark-theme">Dark theme</span></label></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fsettimeout-setinterval" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fsettimeout-setinterval" rel="nofollow"></a></div></div></div><div class="tablet-menu__line"><div class="tablet-menu__content"><select class="tablet-menu__nav input-select input-select input-select_small" onchange="if(this.value) window.location.href=this.value"><option value="https://ar.javascript.info/settimeout-setinterval">عربي</option><option value="https://javascript.info/settimeout-setinterval">English</option><option value="https://es.javascript.info/settimeout-setinterval" selected>Español</option><option value="https://fa.javascript.info/settimeout-setinterval">فارسی</option><option value="https://fr.javascript.info/settimeout-setinterval">Français</option><option value="https://id.javascript.info/settimeout-setinterval">Indonesia</option><option value="https://it.javascript.info/settimeout-setinterval">Italiano</option><option value="https://ja.javascript.info/settimeout-setinterval">日本語</option><option value="https://ko.javascript.info/settimeout-setinterval">한국어</option><option value="https://learn.javascript.ru/settimeout-setinterval">Русский</option><option value="https://tr.javascript.info/settimeout-setinterval">Türkçe</option><option value="https://uk.javascript.info/settimeout-setinterval">Українська</option><option value="https://zh.javascript.info/settimeout-setinterval">简体中文</option></select></div></div></div><progress class="tutorial-progress" data-sticky value="56" max="93" data-tooltip="Lección 56 de 93"></progress></div><div class="page page_sidebar_on page_inner_padding"><script>if(localStorage.noSidebar){document.querySelector(".page").classList.remove("page_sidebar_on");let e=document.querySelector(".page-wrapper");e&&e.classList.remove("page-wrapper_sidebar_on")}setTimeout(function(){document.querySelector(".page").classList.add("page_sidebar-animation-on")});</script><div class="page__inner"><main class="main main_width-limit"><header class="main__header"><div class="main__header-inner"><div class="main__header-group"><ol class="breadcrumbs"><li class="breadcrumbs__item breadcrumbs__item_home"><a class="breadcrumbs__link" href="index.html"><span class="breadcrumbs__hidden-text">Tutorial</span></a></li><li class="breadcrumbs__item" id="breadcrumb-1"><a class="breadcrumbs__link" href="js.html"><span>El lenguaje JavaScript</span></a></li><li class="breadcrumbs__item" id="breadcrumb-2"><a class="breadcrumbs__link" href="advanced-functions.html"><span>Trabajo avanzado con funciones</span></a></li><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial","item":"https://es.javascript.info/"},{"@type":"ListItem","position":2,"name":"El lenguaje JavaScript","item":"https://es.javascript.info/js"},{"@type":"ListItem","position":3,"name":"Trabajo avanzado con funciones","item":"https://es.javascript.info/advanced-functions"}]}</script></ol><div class="updated-at" data-tooltip="Última actualización el 21 de noviembre de 2022"><div class="updated-at__content">21 de noviembre de 2022</div></div></div><h1 class="main__header-title">Planificación: setTimeout y setInterval</h1></div></header><div class="content"><article class="formatted" itemscope itemtype="http://schema.org/TechArticle"><meta itemprop="name" content="Planificación: setTimeout y setInterval"><div itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="email" content="iliakan@gmail.com"><meta itemprop="name" content="Ilya Kantor"></div><div itemprop="articleBody"><p>Podemos decidir ejecutar una función no ahora, sino un determinado tiempo después. Eso se llama “planificar una llamada”.</p>
+<p>Hay dos métodos para ello:</p>
+<ul>
+<li><code>setTimeout</code> nos permite ejecutar una función una vez, pasado un intervalo de tiempo dado.</li>
+<li><code>setInterval</code> nos permite ejecutar una función repetidamente, comenzando después del intervalo de tiempo, luego repitiéndose continuamente cada intervalo.</li>
+</ul>
+<p>Estos métodos no son parte de la especificación de JavaScript. Pero la mayoría de los entornos tienen el planificador interno y proporcionan estos métodos. En particular, son soportados por todos los navegadores y por Node.js.</p>
+<h2><a class="main__anchor" name="settimeout" href="#settimeout">setTimeout</a></h2><p>La sintaxis:</p>
+<div id="kqjtm0wec6" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let timerId = setTimeout(func|código, [retraso], [arg1], [arg2], ...)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Parámetros:</p>
+<dl>
+<dt><code>func|código</code></dt>
+<dd>Una función o un string con código para ejecutar. Lo normal es que sea una función. Por razones históricas es posible pasar una cadena de código, pero no es recomendable.</dd>
+<dt><code>retraso</code></dt>
+<dd>El retraso o <em>delay</em> antes de la ejecución, en milisegundos (1000 ms = 1 segundo), por defecto 0.</dd>
+<dt><code>arg1</code>, <code>arg2</code>…</dt>
+<dd>Argumentos para la función</dd>
+</dl>
+<p>Por ejemplo, este código llama a <code>sayHi()</code> después de un segundo:</p>
+<div id="ntzairebfw" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHi() {
+  alert('Hola');
+}
+
+setTimeout(sayHi, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Con argumentos:</p>
+<div id="gx90errhgs" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:4,&quot;end&quot;:4}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function sayHi(phrase, who) {
+  alert( phrase + ', ' + who );
+}
+
+setTimeout(sayHi, 1000, &quot;Hola&quot;, &quot;John&quot;); // Hola, John</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Si el primer argumento es un string, JavaScript crea una función a partir de él.</p>
+<p>Entonces, esto también funcionará:</p>
+<div id="unve644gv8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>setTimeout(&quot;alert('Hola')&quot;, 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Pero no se recomienda usar strings, use funciones de flecha en lugar de ello:</p>
+<div id="bo8i25bydz" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>setTimeout(() =&gt; alert('Hola'), 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">Pasa una función, pero no la ejecuta</span></div>
+            <div class="important__content"><p>Los principiantes a veces cometen un error al agregar paréntesis <code>()</code> después de la función:</p>
+<div id="bgzuuuzpu3" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// ¡mal!
+setTimeout(sayHi(), 1000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Eso no funciona, porque <code>setTimeout</code> espera una referencia a una función. Y aquí <code>sayHi()</code> ejecuta la función, y el <em>resultado de su ejecución</em> se pasa a <code>setTimeout</code>. En nuestro caso, el resultado de <code>sayHi()</code> es <code>undefined</code> (la función no devuelve nada), por lo que no habrá nada planificado.</p>
+</div></div>
+<h3><a class="main__anchor" name="cancelando-con-cleartimeout" href="#cancelando-con-cleartimeout">Cancelando con clearTimeout</a></h3><p>Una llamada a <code>setTimeout</code> devuelve un “identificador de temporizador” <code>timerId</code> que podemos usar para cancelar la ejecución.</p>
+<p>La sintaxis para cancelar:</p>
+<div id="8v3128yg1n" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let timerId = setTimeout(...);
+clearTimeout(timerId);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>En el siguiente código, planificamos la función y luego la cancelamos (cambiamos de opinión). Como resultado, no pasa nada:</p>
+<div id="u1zdb6qns7" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let timerId = setTimeout(() =&gt; alert(&quot;no pasa nada&quot;), 1000);
+alert(timerId); // identificador del temporizador
+
+clearTimeout(timerId);
+alert(timerId); // mismo identificador (No se vuelve nulo después de cancelar)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Como podemos ver en la salida <code>alert</code>, en un navegador el identificador del temporizador es un número. En otros entornos, esto puede ser otra cosa. Por ejemplo, Node.js devuelve un objeto de temporizador con métodos adicionales.</p>
+<p>De nuevo: no hay una especificación universal para estos métodos.</p>
+<p>Para los navegadores, los temporizadores se describen en la <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers">sección timers</a> del estándar HTML.</p>
+<h2><a class="main__anchor" name="setinterval" href="#setinterval">setInterval</a></h2><p>El método <code>setInterval</code> tiene la misma sintaxis que <code>setTimeout</code>:</p>
+<div id="4xh86l5cmh" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let timerId = setInterval(func|código, [retraso], [arg1], [arg2], ...)</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Todos los argumentos tienen el mismo significado. Pero a diferencia de <code>setTimeout</code>, ejecuta la función no solo una vez, sino regularmente después del intervalo de tiempo dado.</p>
+<p>Para detener las llamadas, debemos llamar a ‘clearInterval (timerId)’.</p>
+<p>El siguiente ejemplo mostrará el mensaje cada 2 segundos. Después de 5 segundos, la salida se detiene:</p>
+<div id="liednbho89" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// repetir con el intervalo de 2 segundos
+let timerId = setInterval(() =&gt; alert('tick'), 2000);
+
+// después de 5 segundos parar
+setTimeout(() =&gt; { clearInterval(timerId); alert('stop'); }, 5000);</code></pre>
+        </div>
+      </div>
+      
+      </div><div class="important important_smart">
+            <div class="important__header"><span class="important__type">El tiempo pasa mientras se muestra ‘alerta’</span></div>
+            <div class="important__content"><p>En la mayoría de los navegadores, incluidos Chrome y Firefox, el temporizador interno continúa “marcando” mientras muestra “alert/confirm/prompt”.</p>
+<p>Entonces, si ejecuta el código anterior y no descarta la ventana de ‘alerta’ por un tiempo, la próxima ‘alerta’ se mostrará de inmediato. El intervalo real entre alertas será más corto que 2 segundos.</p>
+</div></div>
+<h2><a class="main__anchor" name="settimeout-anidado" href="#settimeout-anidado">setTimeout anidado</a></h2><p>Hay dos formas de ejecutar algo regularmente.</p>
+<p>Uno es <code>setInterval</code>. El otro es un <code>setTimeout</code> anidado, como este:</p>
+<div id="3rwi6g11cp" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:6,&quot;end&quot;:6}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>/** en vez de:
+let timerId = setInterval(() =&gt; alert('tick'), 2000);
+*/
+
+let timerId = setTimeout(function tick() {
+  alert('tick');
+  timerId = setTimeout(tick, 2000); // (*)
+}, 2000);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El <code>setTimeout</code> anterior planifica la siguiente llamada justo al final de la actual <code>(*)</code>.</p>
+<p>El <code>setTimeout</code> anidado es un método más flexible que <code>setInterval</code>. De esta manera, la próxima llamada se puede planificar de manera diferente, dependiendo de los resultados de la actual.</p>
+<p>Ejemplo: necesitamos escribir un servicio que envíe una solicitud al servidor cada 5 segundos solicitando datos, pero en caso de que el servidor esté sobrecargado, deber aumentar el intervalo a 10, 20, 40 segundos…</p>
+<p>Aquí está el pseudocódigo:</p>
+<div id="d1jl4b8kt9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let delay = 5000;
+
+let timerId = setTimeout(function request() {
+  ...enviar solicitud...
+
+  if (solicitud fallida debido a sobrecarga del servidor) {
+    //aumentar el intervalo en la próxima ejecución
+    delay *= 2;
+  }
+
+  timerId = setTimeout(request, delay);
+
+}, delay);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Y si las funciones que estamos planificando requieren mucha CPU, entonces podemos medir el tiempo que tarda la ejecución y planificar la próxima llamada más tarde o más temprano.</p>
+<p><strong><code>setTimeout</code> anidado permite establecer el retraso entre las ejecuciones con mayor precisión que <code>setInterval</code>.</strong></p>
+<p>Comparemos dos fragmentos de código. El primero usa <code>setInterval</code>:</p>
+<div id="2ht1ji1uwj" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let i = 1;
+setInterval(function() {
+  func(i++);
+}, 100);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>El segundo usa <code>setTimeout</code> anidado:</p>
+<div id="88bjmtdpmm" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let i = 1;
+setTimeout(function run() {
+  func(i++);
+  setTimeout(run, 100);
+}, 100);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para  <code>setInterval</code> el planificador interno se ejecutará <code>func(i++)</code> cada 100ms:</p>
+<figure><div class="image" style="width:566px">
+      <div class="image__ratio" style="padding-top:30.565371024734983%"></div>
+      <object type="image/svg+xml" data="article/settimeout-setinterval/setinterval-interval.svg" width="566" height="173" class="image__image" data-use-theme>
+        <img src="article/settimeout-setinterval/setinterval-interval.svg" alt="" width="566" height="173">
+      </object>
+      </div></figure><p>¿Te diste cuenta?</p>
+<p><strong>¡El retraso real entre las llamadas de <code>func</code> para <code>setInterval</code> es menor que en el código!</strong></p>
+<p>Eso es normal, porque el tiempo que tarda la ejecución de <code>func</code> “consume” una parte del intervalo.</p>
+<p>Es posible que la ejecución de <code>func</code> sea más larga de lo esperado y demore más de 100 ms.</p>
+<p>En este caso, el motor espera a que se complete <code>func</code>, luego verifica el planificador y, si se acabó el tiempo, lo ejecuta de nuevo <em>inmediatamente</em>.</p>
+<p>En caso límite, si la ejecución de la función siempre demora más que los ms de <code>retraso</code>, entonces las llamadas se realizarán sin pausa alguna.</p>
+<p>Y aquí está la imagen para el <code>setTimeout</code> anidado:</p>
+<figure><div class="image" style="width:566px">
+      <div class="image__ratio" style="padding-top:32.332155477031804%"></div>
+      <object type="image/svg+xml" data="article/settimeout-setinterval/settimeout-interval.svg" width="566" height="183" class="image__image" data-use-theme>
+        <img src="article/settimeout-setinterval/settimeout-interval.svg" alt="" width="566" height="183">
+      </object>
+      </div></figure><p><strong>El <code>setTimeout</code> anidado garantiza el retraso fijo (aquí 100ms).</strong></p>
+<p>Esto se debe a que se planea una nueva llamada al final de la anterior.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">Recolección de basura y setInterval/setTimeout callback</span></div>
+            <div class="important__content"><p>Cuando se pasa una función en <code>setInterval / setTimeout</code>, se crea una referencia interna y se guarda en el planificador. Esto evita que la función se recolecte, incluso si no hay otras referencias a ella…</p>
+<div id="ch29hxod6a" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>// la función permanece en la memoria hasta que el planificador la llame
+setTimeout(function() {...}, 100);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Para <code>setInterval</code>, la función permanece en la memoria hasta que se invoca <code>clearInterval</code>.</p>
+<p>Hay un efecto secundario. Una función hace referencia al entorno léxico externo, por lo tanto, mientras vive, las variables externas también viven. Pueden tomar mucha más memoria que la función misma. Entonces, cuando ya no necesitamos la función planificada es mejor cancelarla, incluso si es muy pequeña.</p>
+</div></div>
+<h2><a class="main__anchor" name="retraso-cero-en-settimeout" href="#retraso-cero-en-settimeout">Retraso cero en setTimeout</a></h2><p>Hay un caso de uso especial: <code>setTimeout (func, 0)</code>, o simplemente <code>setTimeout (func)</code>.</p>
+<p>Esto planifica la ejecución de <code>func</code> lo antes posible. Pero el planificador lo invocará solo después de que se complete el script que se está ejecutando actualmente.</p>
+<p>Por lo tanto, la función está planificada para ejecutarse “justo después” del script actual.</p>
+<p>Por ejemplo, esto genera “Hola”, e inmediatamente después “Mundo”:</p>
+<div id="exsw4lbbwt" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>setTimeout(() =&gt; alert(&quot;Mundo&quot;));
+
+alert(&quot;Hola&quot;);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>La primera línea “pone la llamada en el calendario después de 0 ms”. Pero el planificador solo “verificará el calendario” una vez que se haya completado el script actual, por lo que “Hola” es primero y “Mundo” después.</p>
+<p>También hay casos de uso avanzados relacionados con el navegador y el tiempo de espera cero (zero-delay), que discutiremos en el capítulo <a href="event-loop.html">Loop de eventos: microtareas y macrotareas</a>.</p>
+<div class="important important_smart">
+            <div class="important__header"><span class="important__type">De hecho, el retraso cero no es cero (en un navegador)</span></div>
+            <div class="important__content"><p>En el navegador, hay una limitación de la frecuencia con la que se pueden ejecutar los temporizadores anidados. EL <a href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers">estándar dinámico de HTML</a> dice: “después de cinco temporizadores anidados, el intervalo debe ser forzado a que el mínimo sea de 4 milisegundos”.</p>
+<p>Demostremos lo que significa con el siguiente ejemplo. La llamada <code>setTimeout</code> se planifica a sí misma con cero retraso. Cada llamada recuerda el tiempo real de la anterior en el array <code>times</code>. ¿Cómo son los retrasos reales? Veamos:</p>
+<div id="hklbc7i5qe" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let start = Date.now();
+let times = [];
+
+setTimeout(function run() {
+  times.push(Date.now() - start); // recuerda el retraso de la llamada anterior
+
+  if (start + 100 &lt; Date.now()) alert(times); // mostrar los retrasos después de 100 ms
+  else setTimeout(run); // de lo contrario replanificar
+});
+
+// Un ejemplo de la salida:
+// 1,1,1,1,9,15,20,24,30,35,40,45,50,55,59,64,70,75,80,85,90,95,100</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Los primeros temporizadores se ejecutan inmediatamente (tal como está escrito en la especificación), y luego vemos <code>9, 15, 20, 24 ...</code>. Entra en juego el retraso obligatorio de más de 4 ms entre invocaciones.</p>
+<p>Lo mismo sucede si usamos <code>setInterval</code> en lugar de <code>setTimeout</code>: <code>setInterval(f)</code> ejecuta <code>f</code> algunas veces con cero retraso, y luego con 4+ ms de retraso.</p>
+<p>Esa limitación proviene de la antigüedad y muchos scripts dependen de ella, por lo que existe por razones históricas.</p>
+<p>Para JavaScript del lado del servidor, esa limitación no existe, y existen otras formas de planificar un trabajo asincrónico inmediato, como <a href="https://nodejs.org/api/timers.html">setImmediate</a> para Node.js. Así que esta nota es específica del navegador.</p>
+</div></div>
+<h2><a class="main__anchor" name="resumen" href="#resumen">Resumen</a></h2><ul>
+<li>Los métodos <code>setTimeout(func, delay, ... args)</code> y <code>setInterval(func, delay, ... args)</code> nos permiten ejecutar <code>func</code> “una vez” y “regularmente” después del retardo <code>delay</code> dado en milisegundos.</li>
+<li>Para cancelar la ejecución, debemos llamar a <code>clearTimeout / clearInterval</code> con el valor devuelto por <code>setTimeout / setInterval</code>.</li>
+<li>Las llamadas anidadas <code>setTimeout</code> son una alternativa más flexible a <code>setInterval</code>, lo que nos permite establecer el tiempo <em>entre</em> ejecuciones con mayor precisión.</li>
+<li>La programación de retardo cero con <code>setTimeout(func, 0)</code>(lo mismo que <code>setTimeout(func)</code>) se usa para programar la llamada “lo antes posible, pero después de que se complete el script actual”.</li>
+<li>El navegador limita la demora mínima para cinco o más llamadas anidadas de <code>setTimeout</code> o para <code>setInterval</code> (después de la quinta llamada) a 4 ms. Eso es por razones históricas.</li>
+</ul>
+<p>Tenga en cuenta que todos los métodos de planificación no <em>garantizan</em> el retraso exacto.</p>
+<p>Por ejemplo, el temporizador en el navegador puede ralentizarse por muchas razones:</p>
+<ul>
+<li>La CPU está sobrecargada.</li>
+<li>La pestaña del navegador está en modo de “segundo plano”.</li>
+<li>El portátil está en modo “ahorro de batería”.</li>
+</ul>
+<p>Todo eso puede aumentar la resolución mínima del temporizador (el retraso mínimo) a 300 ms o incluso 1000 ms dependiendo de la configuración de rendimiento del navegador y del nivel del sistema operativo.</p>
+</div></article><div class="tasks formatted"><h2 class="tasks__title" id="tasks"><a class="tasks__title-anchor main__anchor main__anchor main__anchor_noicon" href="#tasks">Tareas</a></h2><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#salida-cada-segundo" name="salida-cada-segundo">Salida cada segundo</a></h3><a class="task__open-link" href="task/output-numbers-100ms.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>Escriba una función <code>printNumbers(from, to)</code> que genere un número cada segundo, comenzando desde <code>from</code> y terminando con <code>to</code>.</p>
+<p>Haz dos variantes de la solución.</p>
+<ol>
+<li>Usando <code>setInterval</code>.</li>
+<li>Usando <code>setTimeout</code> anidado.</li>
+</ol>
+</div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Usando <code>setInterval</code>:</p>
+<div id="utteet8vkn" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function printNumbers(from, to) {
+  let current = from;
+
+  let timerId = setInterval(function() {
+    alert(current);
+    if (current == to) {
+      clearInterval(timerId);
+    }
+    current++;
+  }, 1000);
+}
+
+// uso:
+printNumbers(5, 10);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Usando <code>setTimeout</code> anidado:</p>
+<div id="3s6pey0lr9" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function printNumbers(from, to) {
+  let current = from;
+
+  setTimeout(function go() {
+    alert(current);
+    if (current &lt; to) {
+      setTimeout(go, 1000);
+    }
+    current++;
+  }, 1000);
+}
+
+// uso:
+printNumbers(5, 10);</code></pre>
+        </div>
+      </div>
+      
+      </div><p>Tenga en cuenta que en ambas soluciones, hay un retraso inicial antes de la primera salida. La función se llama después de <code>1000ms</code> la primera vez.</p>
+<p>Si también queremos que la función se ejecute inmediatamente, entonces podemos agregar una llamada adicional en una línea separada, como esta:</p>
+<div id="b3dswgyllc" data-trusted="1" class="code-example" data-highlight="[{&quot;start&quot;:11,&quot;end&quot;:11}]">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>function printNumbers(from, to) {
+  let current = from;
+
+  function go() {
+    alert(current);
+    if (current == to) {
+      clearInterval(timerId);
+    }
+    current++;
+  }
+
+  go();
+  let timerId = setInterval(go, 1000);
+}
+
+printNumbers(5, 10);</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div><div class="task tasks__task"><div class="task__header"><div class="task__title-wrap"><h3 class="task__title"><a class="main__anchor" href="#que-mostrara-settimeout" name="que-mostrara-settimeout">¿Qué mostrará setTimeout?</a></h3><a class="task__open-link" href="task/settimeout-result.html" target="_blank"></a></div><div class="task__header-note"><span class="task__importance" title="Qué tan importante es la tarea, del 1 a 5">importancia: 5</span></div><div class="task__content"><div class="task__formatted"><p>En el siguiente código hay una llamada programada <code>setTimeout</code>, luego se ejecuta un cálculo pesado que demora más de 100 ms en finalizar.</p>
+<p>¿Cuándo se ejecutará la función programada?</p>
+<ol>
+<li>Después del bucle.</li>
+<li>Antes del bucle.</li>
+<li>Al comienzo del bucle.</li>
+</ol>
+<p>¿Qué va a mostrar ´alert()´?</p>
+<div id="5i7j7umcn8" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let i = 0;
+
+setTimeout(() =&gt; alert(i), 100); // ?
+
+// asumimos que el tiempo para ejecutar esta función es &gt; 100 ms
+for(let j = 0; j &lt; 100000000; j++) {
+  i++;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div><button class="task__solution" type="button">solución</button><div class="task__answer"><div class="task__answer-content"><div class="formatted"><p>Cualquier <code>setTimeout</code> solo se ejecutará después de que el código actual haya finalizado.</p>
+<p>La <code>i</code> será la última:<code>100000000</code>.</p>
+<div id="8t91eikpry" data-trusted="1" class="code-example">
+      <div class="codebox code-example__codebox">
+        
+        <div class="toolbar codebox__toolbar">
+          <div class="toolbar__tool">
+            <a href="#" title="ejecutar" data-action="run" class="toolbar__button toolbar__button_run"></a>
+          </div>
+          <div class="toolbar__tool">
+            <a href="#" title="abrir en entorno controlado" target="_blank" data-action="edit" class="toolbar__button toolbar__button_edit"></a>
+          </div>
+        </div>
+        <div class="codebox__code" data-code="1">
+          <pre class="line-numbers language-javascript"><code>let i = 0;
+
+setTimeout(() =&gt; alert(i), 100); // 100000000
+
+// asumimos que el tiempo para ejecutar esta función es &gt; 100 ms
+for(let j = 0; j &lt; 100000000; j++) {
+  i++;
+}</code></pre>
+        </div>
+      </div>
+      
+      </div></div></div><button class="close-button task__answer-close" type="button" title="cerrar"></button></div></div></div></div></div></div><div class="page__nav-wrap"><a class="page__nav page__nav_prev" href="new-function.html" data-tooltip="La sintaxis &quot;new Function&quot;"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Lección anterior</span></a><a class="page__nav page__nav_next" href="call-apply-decorators.html" data-tooltip="Decoradores y redirecciones, call/apply"><span class="page__nav-text"><span class="page__nav-text-shortcut"></span></span><span class="page__nav-text-alternate">Próxima lección</span></a></div><div class="article-tablet-foot tablet-only"><div class="article-tablet-foot__layout"><div class="share-icons"><span class="share-icons__title">Compartir</span><a class="share share_tw" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fsettimeout-setinterval" rel="nofollow"></a><a class="share share_fb" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Burl%5D=https%3A%2F%2Fes.javascript.info%2Fsettimeout-setinterval" rel="nofollow"></a></div><div class="article-tablet-foot__map"><a class="map" href="tutorial/map.html" data-action="tutorial-map"><span class="map__text">Mapa del Tutorial</span></a></div></div></div><div class="comments formatted" id="comments"><div class="comments__header"><h2 class="comments__header-title"><a href="#comments" name="comments">Comentarios</a></h2><div class="comments__read-before"><span class="comments__read-before-link">lea esto antes de comentar…</span><div class="comments__read-before-popup"><div class="comments__read-before-popup-i"><ul><li>Si tiene sugerencias sobre qué mejorar, por favor <a href="https://github.com/javascript-tutorial/en.javascript.info/issues/new">enviar una propuesta de GitHub</a> o una solicitud de extracción en lugar de comentar.</li><li>Si no puede entender algo en el artículo, por favor explique.</li><li>Para insertar algunas palabras de código, use la etiqueta <code>&lt;code&gt;</code>, para varias líneas – envolverlas en la etiqueta <code>&lt;pre&gt;</code>, para más de 10 líneas – utilice una entorno controlado (sandbox) (<a href='https://plnkr.co/edit/?p=preview'>plnkr</a>, <a href='https://jsbin.com/'>jsbin</a>, <a href='http://codepen.io/'>codepen</a>…)</li></ul></div></div></div></div><div id="disqus_thread"></div><script>var disqus_config = function() { if (!this.page) this.page = {}; Object.assign(this.page, {"url":"https:\/\/es.javascript.info\/settimeout-setinterval","identifier":"\/settimeout-setinterval"}); };</script><script>var disqus_shortname = "es-javascript-info";</script><script>var disqus_enabled = true;</script></div></main></div><div class="sidebar page__sidebar sidebar sidebar_sticky-footer"><button class="sidebar__toggle" data-sidebar-toggle></button><a class="map" href="tutorial/map.html" data-action="tutorial-map" data-tooltip="Mapa del Tutorial"></a><div class="sidebar__inner"><div class="sidebar__content"><div class="sidebar__section"><h4 class="sidebar__section-title">Capítulo</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="advanced-functions.html">Trabajo avanzado con funciones</a></li></ul></nav></div><div class="sidebar__section"><h4 class="sidebar__section-title">Navegación de lección</h4><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#settimeout">setTimeout</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#setinterval">setInterval</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#settimeout-anidado">setTimeout anidado</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#retraso-cero-en-settimeout">Retraso cero en setTimeout</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#resumen">Resumen</a></li></ul></nav></div><div class="sidebar__section"><nav class="sidebar__navigation"><ul class="sidebar__navigation-links"><li class="sidebar__navigation-link"><a class="sidebar__link" href="#tasks">Tareas (2)</a></li><li class="sidebar__navigation-link"><a class="sidebar__link" href="#comments">Comentarios</a></li></ul></nav></div><div class="sidebar__section"><div class="sidebar__section-title">Compartir</div><a class="share share_tw sidebar__share" href="https://twitter.com/share?url=https%3A%2F%2Fes.javascript.info%2Fsettimeout-setinterval" rel="nofollow"></a><a class="share share_fb sidebar__share" href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Fes.javascript.info%2Fsettimeout-setinterval" rel="nofollow"></a></div><div class="sidebar__section"><a class="sidebar__link" href="https://github.com/javascript-tutorial/es.javascript.info/blob/master/1-js/06-advanced-functions/08-settimeout-setinterval" rel="nofollow">Editar en GitHub</a></div></div></div></div></div></div><div class="page-footer"><ul class="page-footer__list"><li class="page-footer__item page-footer__item_copy">©&nbsp;2007—2023&nbsp; Ilya Kantor</li><li class="page-footer__item page-footer__item_about"><a class="page-footer__link" href="about.html">acerca del proyecto</a></li><li class="page-footer__item page-footer__item_contact"><a class="page-footer__link" href="about.html#contact-us">contáctenos</a></li></ul></div></body>
+<!-- Mirrored from es.javascript.info/settimeout-setinterval by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Feb 2023 21:14:05 GMT -->
+</html>
